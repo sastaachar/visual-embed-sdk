@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2021
  *
- * Embed search or a saved answer
+ * Embed ThoughtSpot search or a saved answer
  *
  * @summary Search embed
  * @author Ayon Ghosh <ayon.ghosh@thoughtspot.com>
@@ -12,13 +12,29 @@ import { getQueryParamString } from '../utils';
 import { ViewConfig, TsEmbed } from './base';
 
 /**
+ * Configuration for search options
+ */
+interface SearchOptions {
+    /**
+     * The tml string to load the answer
+     */
+    searchTokenString: string;
+    /**
+     * Boolean to determine if the search should be executed or not.
+     * if it is executed, put the focus on the results.
+     * if it’s not executed, put the focus in the search bar - at the end of the tokens
+     */
+    executeSearch?: boolean;
+}
+
+/**
  * The configuration attributes for the embedded search view.
  *
  * @Category Search Embed
  */
 export interface SearchViewConfig extends ViewConfig {
     /**
-     * If set to true, the data sources panel is collapsed on load
+     * If set to true, the data sources panel is collapsed on load,
      * but can be expanded manually.
      */
     collapseDataSources?: boolean;
@@ -33,7 +49,7 @@ export interface SearchViewConfig extends ViewConfig {
      */
     hideResults?: boolean;
     /**
-     * If set to true, the search assist feature is enabled.
+     * If set to true, the Search Assist feature is enabled.
      */
     enableSearchAssist?: boolean;
     /**
@@ -44,6 +60,10 @@ export interface SearchViewConfig extends ViewConfig {
      * The initial search query to load the answer with.
      */
     searchQuery?: string;
+    /**
+     * Configuration for search options
+     */
+    searchOptions?: SearchOptions;
     /**
      * The GUID of a saved answer to load initially.
      */
@@ -57,9 +77,9 @@ export interface SearchViewConfig extends ViewConfig {
  */
 export class SearchEmbed extends TsEmbed {
     /**
-     * The view configuration for the embedded ThoughtSpot search
+     * The view configuration for the embedded ThoughtSpot search.
      */
-    private viewConfig: SearchViewConfig;
+    protected viewConfig: SearchViewConfig;
 
     constructor(domSelector: DOMSelector, viewConfig: SearchViewConfig) {
         super(domSelector);
@@ -68,7 +88,7 @@ export class SearchEmbed extends TsEmbed {
 
     /**
      * Get the state of the data sources panel that the embedded
-     * ThoughtSpot search will be initialized with
+     * ThoughtSpot search will be initialized with.
      */
     private getDataSourceMode() {
         let dataSourceMode = DataSourceVisualMode.Expanded;
@@ -100,11 +120,21 @@ export class SearchEmbed extends TsEmbed {
             hiddenActions,
             hideResults,
             enableSearchAssist,
+            searchOptions,
         } = this.viewConfig;
         const answerPath = answerId ? `saved-answer/${answerId}` : 'answer';
         const queryParams = {};
         if (dataSources && dataSources.length) {
             queryParams[Param.DataSources] = JSON.stringify(dataSources);
+        }
+        if (searchOptions?.searchTokenString) {
+            queryParams[Param.searchTokenString] = encodeURIComponent(
+                searchOptions.searchTokenString,
+            );
+
+            if (searchOptions.executeSearch) {
+                queryParams[Param.executeSearch] = true;
+            }
         }
         if (searchQuery) {
             queryParams[Param.SearchQuery] = encodeURIComponent(searchQuery);
@@ -138,7 +168,7 @@ export class SearchEmbed extends TsEmbed {
     }
 
     /**
-     * Render ThoughtSpot search
+     * Render the embedded ThoughtSpot search
      */
     public render(): SearchEmbed {
         super.render();

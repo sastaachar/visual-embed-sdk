@@ -30,6 +30,8 @@ import {
     MAX_MOBILE_RESOLUTION,
     MAIN_HEIGHT_WITHOUT_DOC_CONTENT,
 } from '../constants/uiConstants';
+import { SearchQueryResult } from '../interfaces';
+import { getAllPageIds } from '../components/LeftSidebar/helper';
 
 // markup
 const IndexPage = ({ location }) => {
@@ -46,6 +48,7 @@ const IndexPage = ({ location }) => {
     const [navTitle, setNavTitle] = useState('');
     const [navContent, setNavContent] = useState('');
     const [backLink, setBackLink] = useState('');
+    const [allPageIds, setAllPageIds] = useState([]);
     const [leftNavWidth, setLeftNavWidth] = useState(
         width > MAX_TABLET_RESOLUTION
             ? LEFT_NAV_WIDTH_DESKTOP
@@ -182,8 +185,15 @@ const IndexPage = ({ location }) => {
         `,
     );
 
+    useEffect(() => {
+        setAllPageIds(getAllPageIds(navContent));
+    }, [navContent]);
+
     const results = useFlexSearch(keyword, index, store).reduce((acc, cur) => {
-        if (!acc.some((data) => data.pageid === cur.pageid)) {
+        if (
+            !acc.some((data) => data.pageid === cur.pageid) &&
+            allPageIds.includes(cur.pageid)
+        ) {
             acc.push(cur);
         }
         return acc;
@@ -202,7 +212,9 @@ const IndexPage = ({ location }) => {
             <main
                 ref={ref as React.RefObject<HTMLDivElement>}
                 className={isPublicSiteOpen ? 'withHeaderFooter' : ''}
-                style={{ height: !docContent && MAIN_HEIGHT_WITHOUT_DOC_CONTENT }}
+                style={{
+                    height: !docContent && MAIN_HEIGHT_WITHOUT_DOC_CONTENT,
+                }}
             >
                 <LeftSidebar
                     navTitle={navTitle}
@@ -231,6 +243,7 @@ const IndexPage = ({ location }) => {
                         options={results}
                         optionSelected={optionSelected}
                         leftNavOpen={leftNavOpen}
+                        updateKeyword={updateKeyword}
                     />
                     <div className="introWrapper">
                         <Document docTitle={docTitle} docContent={docContent} />
