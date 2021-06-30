@@ -237,9 +237,11 @@ Indicates if the user is onboarded.
 
 * `preferredLocale` __String__
 +
-Sets the ThoughtSpot locale for the specified user account. For example, to allow a user to view the ThoughtSpot UI in Deutsche, you can set the `prefrredLocale` parameter to `de-DE`. 
+Sets the ThoughtSpot locale for the specified user account. For example, to allow a user to view the ThoughtSpot UI in Deutsche, you can set the `preferredLocale` parameter to `de-DE`. 
+
 +
 The allowed values are:
+
 +
 [#locale-setting]
 [width="60%", cols="1,2"]
