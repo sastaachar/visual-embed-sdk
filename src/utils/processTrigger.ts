@@ -10,6 +10,17 @@ function reload(iFrame: HTMLIFrameElement) {
     parent.appendChild(oldFrame);
 }
 
+/**
+ * Post Iframe message.
+ */
+function postIframeMessage(
+    iFrame: HTMLIFrameElement,
+    message: { type: HostEvent; data: any },
+    thoughtSpotHost: string,
+) {
+    return iFrame.contentWindow.postMessage(message, thoughtSpotHost);
+}
+
 export function processTrigger(
     iFrame: HTMLIFrameElement,
     messageType: HostEvent,
@@ -20,11 +31,9 @@ export function processTrigger(
         case HostEvent.Reload:
             return reload(iFrame);
         default:
-            return iFrame.contentWindow.postMessage(
-                {
-                    type: messageType,
-                    data,
-                },
+            return postIframeMessage(
+                iFrame,
+                { type: messageType, data },
                 thoughtSpotHost,
             );
     }
