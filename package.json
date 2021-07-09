@@ -1,6 +1,6 @@
 {
     "name": "@thoughtspot/visual-embed-sdk",
-    "version": "1.2.0-alpha.6",
+    "version": "1.2.0-alpha.10",
     "description": "ThoughtSpot Embed SDK",
     "module": "lib/src/index.js",
     "main": "dist/tsembed.js",
@@ -63,6 +63,7 @@
         "coveralls": "^3.1.0",
         "dts-bundle": "0.7.3",
         "eslint": "^7.12.1",
+        "eslint-plugin-react-hooks": "^4.2.0",
         "eslint-config-airbnb-base": "^14.2.0",
         "eslint-config-prettier": "^6.15.0",
         "eslint-import-resolver-typescript": "^2.3.0",

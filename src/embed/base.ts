@@ -33,6 +33,7 @@ import {
     MIXPANEL_EVENT,
 } from '../mixpanel-service';
 import { processData } from '../utils/processData';
+import { processTrigger } from '../utils/processTrigger';
 
 let config = {} as EmbedConfig;
 
@@ -68,7 +69,12 @@ const handleAuth = () => {
 export const init = (embedConfig: EmbedConfig): void => {
     config = embedConfig;
     handleAuth();
-    initMixpanel(embedConfig);
+    initMixpanel(authPromise, embedConfig);
+
+    uploadMixpanelEvent(MIXPANEL_EVENT.VISUAL_SDK_CALLED_INIT, {
+        authType: config.authType,
+        host: config.thoughtSpotHost,
+    });
 };
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -256,7 +262,8 @@ export class TsEmbed {
     /**
      * Constructs the base URL string to load the ThoughtSpot app.
      */
-    protected getEmbedBasePath(queryString: string): string {
+    protected getEmbedBasePath(query: string): string {
+        let queryString = query;
         if (this.shouldEncodeUrlQueryParams) {
             queryString = `?base64UrlEncodedFlags=${getEncodedQueryParamsString(
                 queryString.substr(1),
@@ -453,14 +460,10 @@ export class TsEmbed {
         messageType: HostEvent,
         data: any,
     ): typeof TsEmbed.prototype {
-        this.iFrame.contentWindow.postMessage(
-            {
-                type: messageType,
-                data,
-            },
-            this.thoughtSpotHost,
+        processTrigger(this.iFrame, messageType, this.thoughtSpotHost, data);
+        uploadMixpanelEvent(
+            `${MIXPANEL_EVENT.VISUAL_SDK_TRIGGER}-${messageType}`,
         );
-
         return this;
     }
 

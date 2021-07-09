@@ -23,7 +23,6 @@ $highlight-fadedgreen: #dfd;
 
 $header-zIndex: 99;
 $header-logo-width: 158px;
-$footer-zIndex: 99;
 $font-weight-normal: 300;
 $font-weight-bold: 500;
 $line-height-normal: 31px;
@@ -125,12 +124,12 @@ $admonition-font-factor-pre: 15;
 
 $tag-border-radius: 14px;
 $tag-font-size: 14px;
-$tag-font-weight: 700;
+$tag-font-weight: 400;
 $tag-height: 28px;
 $tag-line-height: 28px;
 $tag-margin-right: 10px;
 $tag-padding: 0 10px;
-$tag-width: 100px;
+$tag-width: auto;
 $tag-font-color: #fff;
 $tag-color-yellow: #ffbc00;
 
@@ -153,6 +152,8 @@ $tag-color-yellow: #ffbc00;
     --highlight-darkred: #900;
     --highlight-violet: #990073;
     --secondary-color: #2770ef;
+    --box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 12%), 0 0px 6px 0 rgba(0, 0, 0, 11%);
+    --box-shadow-hover: 0 4px 8px 0 rgba(0, 0, 0, 6%), 0 6px 20px 0 rgba(0, 0, 0, 0.06);
 }
 
 #wrapper[data-theme='dark'] {
@@ -174,4 +175,6 @@ $tag-color-yellow: #ffbc00;
     --highlight-darkred: #ef9a9a;
     --highlight-violet: #f8bbd0;
     --secondary-color: #8388fe;
+    --box-shadow: 0 2px 2px 0 rgba(255, 255, 255, 12%), 0 0px 6px 0 rgba(255, 255, 255, 11%);
+    --box-shadow-hover: 0 4px 8px 0 rgb(255 255 255 / 6%), 0 6px 20px 0 rgb(255 255 255 / 6%);
 }
