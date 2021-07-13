@@ -109,7 +109,10 @@ A function that invokes the trusted authentication endpoint and returns a `Promi
 frameParams:: Sets the `width` and `height` dimensions to render the iframe containing the pinboard. You can set the `width` and `height` attribute values in pixels or as a percentage. 
 
 fullHeight::
-_Boolean_. Adjusts the height of the embedded widget to fit the entire pinboard.
+_Boolean_. Dynamically resizes the embedded pinboard frame according to the height of the pinboard. 
+
++
+If the embedded pinboard does not fit vertically within your application page, a second scroll bar may appear. When `fullHeight` is set to `true`, the embedded pinboard frame is automatically adjusted according to the height of the pinboard, and the second scroll bar does not appear.
 
 disabledActions::
 _Array of strings_. The action menu items to be disabled on the Pinboards page.
