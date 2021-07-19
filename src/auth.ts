@@ -1,4 +1,4 @@
-import { config } from 'gatsby/dist/redux/reducers';
+import { initMixpanel } from './mixpanel-service';
 import { AuthType, EmbedConfig, EmbedEvent } from './types';
 import { appendToUrlHash } from './utils';
 
@@ -23,28 +23,27 @@ export const EndPoints = {
  */
 async function isLoggedIn(thoughtSpotHost: string): Promise<boolean> {
     const authVerificationUrl = `${thoughtSpotHost}${EndPoints.AUTH_VERIFICATION}`;
-    sessionInfo = null;
+    let response = null;
     try {
-        const response = await fetch(authVerificationUrl, {
+        response = await fetch(authVerificationUrl, {
             credentials: 'include',
         });
-        if (response.status === 200) {
-            sessionInfo = response.json();
-        }
     } catch (e) {
-        sessionInfo = null;
+        return false;
     }
-    return !!sessionInfo;
+    return response.status === 200;
 }
 
 /**
  * Return sessionInfo if available else make a loggedIn check to fetch the sessionInfo
  */
-export async function getSessionInfo(thoughtSpotHost: string) {
-    if (!sessionInfo) {
-        await isLoggedIn(thoughtSpotHost);
-    }
+export function getSessionInfo() {
     return sessionInfo;
+}
+
+export function initSession(sessionDetails: any) {
+    sessionInfo = sessionDetails;
+    initMixpanel(sessionInfo);
 }
 
 /**
