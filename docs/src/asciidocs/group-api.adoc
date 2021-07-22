@@ -6,7 +6,7 @@
 :page-pageid: group-api
 :page-description: Group API
 
-For ease of user management and access control,ThoughtSpot administrators can create user groups and assign users to these groups. If you are an admin user, you can create, edit, and delete user groups, add users to a group, and assign privileges. The Group APIs allow you to create, edit, and delete a group, add users to a group, and assign privileges. 
+For ease of user management and access control, ThoughtSpot administrators can create user groups and assign users to these groups. If you are an admin user, you can create, edit and delete user groups, add users to a group, and assign privileges. The Group APIs allow you to create, edit, and delete a group, add users to a group, and assign privileges. 
 
 == Supported operations
  
@@ -15,65 +15,8 @@ include::{path}/group-api-list.adoc[]
 [#group-privilege]
 == User groups and privileges
 
-The group APIs allow administrators to programmatically assign the following types of privileges to a user group:
+include::{path}/group-privileges.adoc[]
 
-* `ADMINISTRATION`   
-+
-Allows users to perform the following functions:
-
-** Create, edit, and delete users and user groups.
-** View and edit access to all data. 
-** Download a saved answer.
-
-* `DEVELOPER`
-+
-Allows users to perform the following functions:
-
-** Access Developer portal
-** Embed ThoughtSpot app or its content in an external application 
-** Add custom menu options in the embedded pinboards and visualizations
-** Re-brand the interface elements of the embedded ThoughtSpot content 
-
-* `USERDATAUPLOADING`
-+
-Allows users to upload data to ThoughtSpot.
-
-* `DATADOWNLOADING`
-+
-Allows users to download ThoughtSpot data from search results and pinboards.
-
-* `DATAMANAGEMENT` 
-+
-Allows users to create worksheets and views. To edit a worksheet or view created and shared by another user, the user must have the edit permission to modify the object.
-
-* `SHAREWITHALL`
-+
-Allows users to view the names and share objects with users of another group. 
-
-* `EXPERIMENTALFEATUREPRIVILEGE`
-+
-Allows access to trial and experimental features that ThoughtSpot makes available to evaluating users and early adopters.
-
-* `JOBSCHEDULING`
-+
-Allows scheduling and editing pinboard jobs.
-
-* `RANALYSIS`
-+
-Allows invoking R scripts to explore search answers and sharing custom scripts.
-
-* `A3ANALYSIS`
-+ 
-Allows users to generate and access SpotIQ analyses.
-
-* `BYPASSRLS`
-+
-Allows users to perform the following functions:
-
-** Create, edit, or delete existing RLS rules.
-** Enable or disable Bypass RLS on a worksheet.
-
-If a user group belongs to another user group, it inherits privileges from its parent group.
 
 [#create-group]
 == Create a user group
@@ -113,7 +56,7 @@ POST /tspublic/v1/group/
 * `BYPASSRLS`
 |`grouptype` __Optional__ a|__String__. Type of user group. Default value is `LOCAL_GROUP`, which indicates that the user group is created locally in the ThoughtSpot system.    
 |`tenantid` __Optional__|__String__. GUID of the tenant for which the user group is being created.
-|`visibility` __Optional__|__String__.Visibility of the user group. The `visibility` attribute is set to `DEFAULT`. The `DEFAULT` attribute makes the user group visible for other user groups and allows them to share  objects.  
+|`visibility` __Optional__|__String__. Visibility of the user group. The `visibility` attribute is set to `DEFAULT`. The `DEFAULT` attribute makes the user group visible for other user groups and allows them to share  objects.  
 |===
 
 === Example request
@@ -185,7 +128,7 @@ If the user group is successfully created in ThoughtSpot, the API returns the us
 
 == Update a user group
 
-If you have admin user privileges, you can programmatically modify the properties a group using the `/tspublic/v1/group/{groupid}` API. Using this API, you can assign privileges and modify the group visibility setting.
+If you have admin user privileges, you can programmatically modify the properties of a group using the `/tspublic/v1/group/{groupid}` API. Using this API, you can assign also privileges and modify group visibility.
 
 === Resource URL
 ----
@@ -370,7 +313,7 @@ If you have admin user credentials, you can programmatically assign a privilege 
 
 [NOTE]
 ====
-ThoughtSpot also has a default group called `ALL_GROUP`. When you create new users in ThoughtSpot, they are automatically assigned to the `ALL_GROUP` group. By default, the members of `ALL_GROUP` do not have the permission to download or upload data. You can use this API to add these privileges to the `ALL_GROUP` group.
+ThoughtSpot also has a default group called `ALL_GROUP`. When you create new users in ThoughtSpot, they are automatically assigned to the `ALL_GROUP` group. By default, the members of `ALL_GROUP` do not have permissions to download or upload data. You can use this API to add these privileges to the `ALL_GROUP` group.
 ====
 
 === Resource URL
@@ -555,7 +498,7 @@ To get the details of users assigned to a group, send a `GET` request to the `/t
 GET /tspublic/v1/group/listuser/{groupid}
 ----
 
-=== Request paramaters
+=== Request parameters
 [width="100%" cols="1,4"]
 [options='header']
 |===
@@ -651,11 +594,11 @@ https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/group/listuser/e5fc80ce-db65-
 [#delete-user-assoc]
 == Delete a user from a user group
 
-To programmatically remove a user from user group, send a `DELETE` request to the  `/tspublic/v1/group/{groupid}/user/{userid}` API endpoint.
+To programmatically remove a user from a user group, send a `DELETE` request to the  `/tspublic/v1/group/{groupid}/user/{userid}` API endpoint.
 
 [NOTE]
 ====
-The API removes only the user association from a user group. It does not delete the user from the Thoughtspot system. To delete the user, use the xref:user-api.adoc#delete-user[*DELETE* /tspublic/v1/user/{userid}] API.
+The API removes only the user association. It does not delete the user from the Thoughtspot system. To delete a user, use the xref:user-api.adoc#delete-user[*DELETE* /tspublic/v1/user/{userid}] API.
 ====
 
 === Resource URL
@@ -751,4 +694,3 @@ Response Code
 |**403**| Forbidden client
 |**500**| Invalid group ID 
 |===
-

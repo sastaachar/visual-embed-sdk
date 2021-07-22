@@ -22,76 +22,16 @@ To allow your client application to connect to ThoughtSpot:
 
 . Configure the URL with ThoughtSpot hostname or IP address.
 . Specify the authentication method to use for authenticating application users.
-+
-[source,javascript]
-----
-init
-    ({
-        thoughtSpotHost:"https://<hostname>:<port>",
-        authType: AuthType.SSO,
-    });
-----
-+
-thoughtSpotHost::
-_String_. Hostname or IP address of the ThoughtSpot application.
 
-+
-authType::
-_String_. Authentication type. You can set the `authType` attribute to one of the following values:
+include::{path}/embed-auth-config.adoc[]
 
-* `*None*`
-+
-Requires no authentication. The user must already be logged in to ThoughtSpot before interacting with the embedded content.
-
-+
-[WARNING]
-Do not use this authentication method in production environments.
-
-* `*Basic*`
-+
-Allows authenticating and logging in a user using the ThoughtSpot `/tspublic/v1/session/login` API. The API request passes `username` and `password` parameters to obtain an authentication token. For more information, see xref:session-api.adoc[Session API].
-
-+
-[WARNING]
-Do not use this authentication method in production environments.
-
-* `*SSO*`
-+
-Sets SAML SSO as the authentication method. Federated users can authenticate with their SSO credentials to access the embedded ThoughtSpot content.
-
-** `*noRedirect*` _Optional_
-+
-_Boolean_. When set to `true`, it opens the SAML SSO authentication workflow in a pop-up window, instead of refreshing the application web page to direct users to the SAML login page. 
-
-+
-* `*AuthServer*`
-
-+
-+
-Enables trusted authentication method. To use the trusted authentication method, specify the  trusted authentication server in the `authEndpoint` attribute or use the `getAuthToken` method. 
-
-+
-
-** `*authEndpoint*` _Optional_
-+
-_String_. The endpoint URL of the authentication server. When the `authEndPoint` attribute is defined, a GET request is sent to the authentication endpoint, which returns the authentication token as plaintext in its API response. This attribute is not required if `getAuthToken` is used.
-
-** `*username*`
-+
-_String_. The username of the ThoughtSpot user.
-
-** `*getAuthToken*` _Optional_
-+
-A function that invokes the trusted authentication endpoint and returns a `Promise` string that resolves to the authentication token. This attribute is not required if `authEndpoint` is used. +
-
-    getAuthToken: () => Promise.resolve(token) 
-
+For more information, see xref:embed-authentication.adoc[Embed user authentication].
 
 == Construct the embed content
 [source,JavaScript]
 ----
  const pinboardEmbed = new PinboardEmbed(
-    document.getElementById('ts-embed'), 
+    document.getElementById('ts-embed'),
     {
 	  frameParams: {
 		width: '100%',
@@ -106,14 +46,13 @@ A function that invokes the trusted authentication endpoint and returns a `Promi
     },
 });
 ----
-frameParams:: Sets the `width` and `height` dimensions to render the iframe containing the visualization. You can set the `width` and `height` attribute values in pixels or as a percentage. 
+frameParams:: Sets the `width` and `height` dimensions to render the iframe containing the visualization. You can set the `width` and `height` attribute values in pixels or as a percentage.
 
 disabledActions [small]_optional_::
 _Array of strings_. Disables the specified action menu items from the *More* menu image:./images/icon-more-10px.png[the more options menu] on the visualization page.
 +
 
 For example, to disable the *Change Title* action from the *More* menu image:./images/icon-more-10px.png[the more options menu], specify the  `EditTitle` action menu string in the `disabledActions` attribute.
-
 
 +
 ----
@@ -165,6 +104,7 @@ _String_. The Global Unique Identifier (GUID) of the visualization.
 
 pinboardId::
 _String_. The GUID of the pinboard to which the visualization is pinned.
+
 runtimeFilters [small]_optional_::
 Runtime filters to be applied when the embedded visualization loads.
 +
@@ -180,106 +120,27 @@ runtimeFilters: [{
   values: [ 'red' ]
   }]
 ----
-+
-Runtime filters have several operators you can use to filter your embedded visualizations.
 
-+
-[width="50%" cols="1,2,1"]
-[options='header']
-|===
-|Operator|Description|Number of Values
-
-| `EQ`
-| equals
-| 1
-
-| `NE`
-| does not equal
-| 1
-
-| `LT`
-| less than
-| 1
-
-| `LE`
-| less than or equal to
-| 1
-
-| `GT`
-| greater than
-| 1
-
-| `GE`
-| greater than or equal to
-| 1
-
-| `CONTAINS`
-| contains
-| 1
-
-| `BEGINS_WITH`
-| begins with
-| 1
-
-| `ENDS_WITH`
-| ends with
-| 1
-
-| `BW_INC_MAX`
-| between inclusive of the higher value
-| 2
-
-| `BW_INC_MIN`
-| between inclusive of the lower value
-| 2
-
-| `BW_INC`
-| between inclusive
-| 2
-
-| `BW`
-| between non-inclusive
-| 2
-|===
-
-You can use runtime filters on these data types:
-
-* VARCHAR
-* BIGINT
-* INT
-* FLOAT
-* DOUBLE
-* BOOLEAN
-* DATE
-* DATE_TIME
-* TIME
-
-[IMPORTANT]
-====
-The `DATE` and `DATE_TIME` data type requires you to provide the date and time values in the Epoch time format, The Epoch time is also referred POSIX or Unix time. The Epoch timestamp is always in GMT/UTC time. You may have to convert time zones to calculate the appropriate timestamp.
-
-For example, if you want to filter data for 2020-05-22, you can specify the date value in the Epoch time format as `1590192000`, or use the following JavaScript method to calculate the timestamp:
-
-----
-new Date('2020-05-22').getTime() / 1000
-----
-====
 
 ++++
 <a href="{{previewPrefix}}/playground/answer?runtimeFilters=true" id="preview-in-playground" target="_blank">Try it in Playground</a>
 ++++
+
+include::{path}/runtime-filter.adoc[]
+
+For more information about the supported data types and how to use runtime filters, see xref:runtime-filters.adoc[Runtime filters].
 
 == Render the embedded visualization
 Construct the URL for the embedded visualization and render the embedded content:
 
 [source,javaScript]
 ----
-  pinboardEmbed.render();
+pinboardEmbed.render();
 ----
 
 == Define a method to process callback custom actions payload
 
-include::callback-payload.adoc[]
+include::{path}/callback-payload.adoc[]
 
 == Subscribe to events
 Register event handlers to subscribe to events triggered by the embedded visualizations:
@@ -301,7 +162,7 @@ If you have added a xref:customize-actions-menu.adoc[custom action], register an
           console.log('Custom Action event:', data.columnsAndData);
       }
   })
- 
+
 ----
 For a complete list of event types that you can register, see  link:{{visualEmbedSDKPrefix}}/enums/embedevent.html[EmbedEvent, window=_blank].
 
@@ -315,29 +176,7 @@ For a complete list of event types that you can register, see  link:{{visualEmbe
 
 == Code sample
 
-[source,javascript]
-----
- import { PinboardEmbed, AuthType, init } from '@thoughtspot/visual-embed-sdk';
- init({
-    	thoughtSpotHost: '<%=tshost%>',
-    	authType: AuthType.None,
-    });
- const pinboardEmbed = new PinboardEmbed(document.getElementById('ts-embed'), 
-    {
-    	frameParams: {
-    		width: '100%',
-    		height: '100%',
-    	},
-    	pinboardId: '6294b4fc-c289-412a-b458-073fcf6e4516',
-    	vizId: '28b73b4a-1341-4535-ab71-f76b6fe7bf92',
-    },
-    });
- pinboardEmbed.render();
-----
-
-++++
-<a href="{{previewPrefix}}/playground/answer" id="preview-in-playground" target="_blank">Preview in Playground</a>
-++++
+See xref:code-samples.adoc[Code samples].
 
 == Additional resources
 For more information on PinboardEmbed SDK reference, see xref:sdk-reference.adoc[Visual Embed SDK Reference].
