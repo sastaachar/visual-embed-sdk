@@ -43,7 +43,7 @@ Note the following points about token validity:
 
 * The token stays valid until another token is generated. 
 * When a new token is generated using the same secret key, the old token expires after a few minutes.
-* When you generate a new token using the new secret key, the old token becomes invalid immediately.
+* When you generate a new token using the new secret key, the old token immediately becomes invalid.
 * If users make multiple attempts to log in to ThoughtSpot using an invalid or expired token, they may get locked out of their accounts.
  
 == Trusted authentication workflow 

@@ -104,16 +104,8 @@ xref:customize-style.adoc[Learn more about customizing the UI elements ->]
 
 
 
-[width="100%" cols="6,6,6"]
+[width="100%" cols="6,6"]
 |====
-a|[div boxDiv]
---
-+++ <h3>Check what's new</h3> +++   
-
-See what's new in ThoughtSpot Everywhere and try out new features and enhancements.
-
-xref:whats-new.adoc[See what's new ->]
---
 a|
 [div boxDiv]
 --
@@ -127,12 +119,16 @@ a|[div boxDiv]
 --
 +++ <h3>Learn how to embed</h3> +++     
 
-Learn how to use Developer portal, Playground, and embed ThoughtSpot content
+Learn how to use Developer portal, Playground, and embed ThoughtSpot content.
 
 link:https://training.thoughtspot.com/getting-started-with-thoughtspot-everywhere[Learn more ->, window=_blank]
  
 --
 |====
+
+
+
+
 
 ////
  
@@ -150,6 +146,15 @@ Experiment with Embed APIs and link:{{previewPrefix}}/playground/search[preview 
 
 link:https://training.thoughtspot.com/getting-started-with-thoughtspot-everywhere[Learn how to use Developer portal and embed ThoughtSpot content]
  
+--
+
+[div boxDiv]
+--
++++ <h3>Check what's new</h3> +++   
+
+See what's new in ThoughtSpot Everywhere and try out new features and enhancements.
+
+xref:whats-new.adoc[See what's new ->]
 --
 
 ////
