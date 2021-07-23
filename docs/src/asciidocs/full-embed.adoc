@@ -96,16 +96,18 @@ For example, to disable the *download* action from the *More* (*...*) menu on th
 +
 [source,JavaScript]
 ----
-
 disabledActions: Action.Download
-
 ----
+
+////
 +
 ++++
 <a href="{{previewPrefix}}/playground/fullApp?modifyActions=true" id="preview-in-playground" target="_blank">Try it in Playground</a>
 ++++
 
 +
+////
+
 For a complete list of action menu items and the corresponding strings to use for disabling menu items, see link:{{visualEmbedSDKPrefix}}/enums/action.html[Action, window=_blank].
 
 
@@ -126,15 +128,17 @@ For example, to hide the *Download* action from the *More* menu image:./images/i
 [source,JavaScript]
 +
 ----
-
 hiddenActions: Action.Download
-
 ----
+
+////
 +
 ++++
 <a href="{{previewPrefix}}/playground/fullApp?modifyActions=true" id="preview-in-playground" target="_blank">Try it in Playground</a>
 ++++
+
 +
+////
 For a complete list of action menu items and the corresponding strings to use for hiding menu items, see link:{{visualEmbedSDKPrefix}}/enums/action.html[Action, window=_blank].
 
 [NOTE]
@@ -142,11 +146,12 @@ If you have xref:customize-actions-menu.adoc[added a custom action] and you want
  
 showPrimaryNavbar::   
 _Boolean_. Shows or hides the ThoughtSpot navigation bar.
-
+////
 +
 ++++
 <a href="{{previewPrefix}}/playground/fullApp?showNavBar=true" id="preview-in-playground" target="_blank">Preview in Playground</a>
 ++++
+////
 path::
 _String_. The URL path of the ThoughtSpot application page to embed. 
 
@@ -174,11 +179,12 @@ Displays the *Data* page when the application loads.
 * `*Page.Home*`
 +
 Displays the *Home* page when the application loads.
-
+////
 +
 ++++
 <a href="{{previewPrefix}}/playground/fullApp?pageId=search" id="preview-in-playground" target="_blank">Preview in Playground</a>
 ++++
+////
 runtimeFilters [small]_optional_::
 Runtime filters to be applied when the pinboard or visualization page loads.
 Runtime filters provide the ability to pass filter specifications in the URL query parameters and filter data at the time of retrieval.  
@@ -197,10 +203,11 @@ runtimeFilters: [
 ]
 ----
 
-
+////
 ++++
 <a href="{{previewPrefix}}/playground/fullApp?runtimeFilters=true" id="preview-in-playground" target="_blank">Try it in Playground</a>
 ++++
+////
 
 include::{path}/runtime-filter.adoc[]
 

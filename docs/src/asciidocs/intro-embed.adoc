@@ -16,6 +16,11 @@ Using Visual Embed SDK::
 You can install the Visual Embed SDK, import the Javascript library, and programmatically integrate ThoughtSpot application and its components.
 The Visual Embed SDK includes separate libraries for embedding ThoughtSpot content, such as search, visualizations, pinboards, and the full application.
 
+[NOTE]
+====
+If your cluster is running ThoughtSpot Software 7.1.0 version, make sure you install the Visual Embed SDK version 1.2.0 NPM package. 
+====
+
 +
 For more information, see xref:visual-embed-sdk.adoc[Visual Embed SDK].
 

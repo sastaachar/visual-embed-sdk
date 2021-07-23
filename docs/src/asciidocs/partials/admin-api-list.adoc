@@ -1,26 +1,27 @@
 
 [div boxDiv boxFullWidth]
 --
-`xref:admin-api.adoc#get-configInfo[*GET* /tspublic/v1/admin/configinfo]` [tag greenBackground]#New# 
+`xref:admin-api.adoc#get-configInfo[*GET* /tspublic/v1/admin/configinfo]` 
 
 Gets details of the current configuration of a ThoughtSpot cluster
 
 ---
-`xref:admin-api.adoc#configinfo-update[*POST* /tspublic/v1/admin/configinfo/update]` [tag greenBackground]#New# 
+`xref:admin-api.adoc#configinfo-update[*POST* /tspublic/v1/admin/configinfo/update]` 
 
 Updates the configuration settings of the current ThoughtSpot cluster
 
 ---
-`xref:admin-api.adoc#get-config-overrides[*GET* /tspublic/v1/admin/configinfo/override]` [tag greenBackground]#New# 
+`xref:admin-api.adoc#get-config-overrides[*GET* /tspublic/v1/admin/configinfo/override]` 
 
 Gets details of configuration overrides on the current ThoughtSpot cluster 
 
 ---
 
-`xref:admin-api.adoc#get-embed-actions[*GET* /tspublic/v1/admin/embed/actions]` [tag greenBackground]#New# 
+`xref:admin-api.adoc#get-embed-actions[*GET* /tspublic/v1/admin/embed/actions]` 
 
 Gets details of the custom actions enabled on the cluster
 
+////
 --- 
 
 `xref:admin-api.adoc#get-action-by-id[*GET* /tspublic/v1/admin/embed/actions/{actionid}]` [tag greenBackground]#New# 
@@ -62,5 +63,5 @@ Gets the details of the ThoughtSpot objects associated with a custom action.
 `xref:admin-api.adoc#del-action-association[*DELETE* /tspublic/v1/admin/embed/actions/{actionid}/associations]` [tag greenBackground]#New# 
 
 Removes custom action associations. 
-
+////
 --

@@ -103,11 +103,11 @@ For example, to disable the *Show underlying data* action from the *More* menu i
 ----
 disabledActions: [Action.ShowUnderlyingData]
 ----
-
+////
 ++++
 <a href="{{previewPrefix}}/playground/search?modifyActions=true" id="preview-in-playground" target="_blank">Try it out</a>
 ++++
-
+////
 Similarly, to disable multiple actions, you can specify the action strings in the `disabledActions` attribute.
 
 [source,JavaScript]
@@ -116,12 +116,12 @@ Similarly, to disable multiple actions, you can specify the action strings in th
 disabledActions: [Action.AddFilter, Action.Present]
 ----
 
-
+////
 ++++
 
 <a href="{{previewPrefix}}/playground/pinboard?modifyActions=true" id="preview-in-playground" target="_blank">Try it out</a>
 ++++
-
+////
 === Disable a custom action
 
 ThoughtSpot allows you to create custom actions for your embedded instance in the Developer portal. If you want to disable a custom action, you can specify the ID of the custom action in the `disabledActions` attribute.  
@@ -143,11 +143,11 @@ To add a tooltip for the disabled attribute, you can specify the message text st
 disabledActionReason: "Contact your administrator to enable this action"
 ----
 
-
+////
 ++++
 <a href="{{previewPrefix}}/playground/pinboard?modifyActions=true" id="preview-in-playground" target="_blank">Try it out</a>
 ++++
-
+////
 === Hide actions
 
 The Visual Embed SDK allows you to hide the actions that are not required for your application context. 
@@ -162,11 +162,11 @@ For example:
 hiddenActions: [Action.AddFilter, Action.Share]
 ----
 
-
+////
 ++++
 <a href="{{previewPrefix}}/playground/pinboard?modifyActions=true" id="preview-in-playground" target="_blank">Try it out</a>
 ++++
- 
+//// 
 === Hide a custom action
 
 To hide a custom action, specify the ID of the custom action in the `disabledActions` attribute.  

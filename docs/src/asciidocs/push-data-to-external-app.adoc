@@ -72,7 +72,7 @@ This example shows how to handle the `show-data` callback custom action and the 
  }
  }
 ----
-
+////
 ThoughtSpot visualization objects can include several rows of records. For callback custom action payloads, the Visual Embed SDK supports retrieving data in batches. 
 
 The following example shows how to handle large datasets in custom action payloads:
@@ -87,7 +87,7 @@ The following example shows how to handle large datasets in custom action payloa
     }
 })
 ----
-
+////
 [#handle-data]
 === Define functions and classes to handle custom action data
 The following code snippet shows the sample classes and functions for handling custom action data:

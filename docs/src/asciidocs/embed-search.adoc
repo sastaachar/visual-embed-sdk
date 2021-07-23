@@ -56,6 +56,32 @@ const searchEmbed = new SearchEmbed(
     	hiddenActions: [],
     	hideDataSources: false,
     	hideResults: false,
+    	searchQuery: "<query-string>",
+     },
+    	
+    },
+});
+----
+////
+
+[source,javascript]
+
+----
+const searchEmbed = new SearchEmbed(
+    document.getElementById('ts-embed'), 
+    {
+	    frameParams: {
+		width: '100%',
+		height: '100%',
+	},
+    	answerId: "<%=savedAnswerGUID%>",
+    	dataSources: ['<%=datasourceGUID%>'],
+    	collapseDataSources: false,
+    	disabledActions: [],
+    	disabledActionReason: '<reason for disabling>',
+    	hiddenActions: [],
+    	hideDataSources: false,
+    	hideResults: false,
     	searchOptions: {
             searchTokenString: '<TML-query-string>',
             executeSearch: true,
@@ -64,7 +90,8 @@ const searchEmbed = new SearchEmbed(
     },
 });
 ----
- 
+////
+
 frameParams::
 Sets the `width` and `height` dimensions to render the iframe in the web browser. You can set the `width` and `height` attribute values in pixels or as a percentage. 
 
@@ -78,10 +105,12 @@ collapseDataSources [small]#__Optional__#::
 _Boolean_. When set to true, it minimizes the Data Source panel.
 
 +
+
+////
 ++++
 <a href="{{previewPrefix}}/playground/search?collapseDataSources=true" id="preview-in-playground" target="_blank">Preview in Playground</a>
 ++++
-
+////
 
 disabledActions [small]#__Optional__#::
 _Array of strings_. Disables the specified menu items from the list of actions on a  search answer page. You can use this attribute to restrict user access to certain features.
@@ -94,9 +123,13 @@ For example, to disable the *Show underlying data* action from the *More* menu i
 disabledActions: Action.ShowUnderlyingData
 ----
 +
+
+////
 ++++
 <a href="{{previewPrefix}}/playground/search?modifyActions=true" id="preview-in-playground" target="_blank">Preview in Playground</a>
 ++++
+////
+
 +
 For a complete list of action menu items and the corresponding strings to use for disabling menu items, see link:{{visualEmbedSDKPrefix}}/enums/action.html[Action, window=_blank].
 
@@ -113,18 +146,20 @@ hideDataSources [small]#__Optional__#::
 _Boolean_. When set to true, it hides the default Data Source panel. Use this attribute if you want to create a custom data panel.
 
 +
+
+////
 ++++
 <a href="{{previewPrefix}}/playground/search?hideDataSources=true" id="preview-in-playground" target="_blank">Preview in Playground</a>
 ++++
-
-
+////
 hideResults [small]#__Optional__#::
 _Boolean_. When set to true, it hides charts and tables that appear beneath the search bar. You can use this attribute to hide charts and tables when creating custom visualizations using raw data from a search answer.
-+
+
+////
 ++++
 <a href="{{previewPrefix}}/playground/search?hideResults=true" id="preview-in-playground" target="_blank">Preview in Playground</a>
 ++++
-////
+
 enableSearchAssist [small]_optional_::
 _Boolean_. When set to true, it enables Search Assist. Search Assist allows you to create a custom onboarding experience for your users by demonstrating how to search data from the example queries created on your worksheet.
 
@@ -138,26 +173,26 @@ _Boolean_. When set to true, it enables Search Assist. Search Assist allows you 
 hiddenActions [small]#__Optional__#::
 _Array of strings_. Hides the specified action menu items on a search answer page. You can use this attribute to remove actions that are not applicable to your application context.
 
+////
 +
 ++++
 <a href="{{previewPrefix}}/playground/search?modifyActions=true" id="preview-in-playground" target="_blank">Preview in Playground</a>
 ++++
-
-+
+////
+ 
 For example, to hide the *Share* action from the *More* menu image:./images/icon-more-10px.png[the more options menu], specify the `Share` action menu string in the `hiddenActions` attribute.
 
-+
 ----
 hiddenActions: ['Action.Share']
 ----
 
-+
 For a complete list of action menu items and the corresponding strings to use for disabling or hiding menu items, see link:{{visualEmbedSDKPrefix}}/enums/action.html[Action, window=_blank].
 
 
 [NOTE]
 If you have xref:customize-actions-menu.adoc[added a custom action] and you want to hide this custom action, make sure you specify the ID of the custom action in the `hiddenActions` attribute. For example, if a custom action is created with the *Send Email* label and the ID is set as *send-email*, use `send-email` in the `hiddenActions` attribute to hide this action on the  search answer page.
 
+////
 searchOptions [small]#__Optional__#::
 Attribute for defining search tokens and executing search. 
 
@@ -199,15 +234,17 @@ For example, to fetch revenue data by shipping mode, you can use the following s
 searchQuery: "[Revenue] by [Shipmode]"
 ----
 
-
+////
 ++++
 <a href="{{previewPrefix}}/playground/search/searchQuery=true" id="preview-in-playground" target="_blank">Try it in Playground</a>
 ++++
 ////
+
+////
 == Define a method to process callback custom action payloads
 
 include::{path}/callback-payload.adoc[]
-
+////
 == Subscribe to events
 Register event handlers to subscribe to embed events triggered by the ThoughtSpot Search function:
 [source, javascript]

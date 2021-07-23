@@ -13,7 +13,7 @@ The examples in this section show the contents of the payload sent from ThoughtS
 === Search answer payload
 
 The following example shows the visualization data payload for a callback custom action in a search answer page:
-
+////
 [source, JSON]
 ----
 {
@@ -224,6 +224,39 @@ The following example shows the visualization data payload for a callback custom
       "loading": false
     }
   }
+}
+----
+////
+[source, JSON]
+----
+{
+  "__typename": "TableViz",
+  "id": "f2524330-7c21-4b23-8cd9-10d74bb75b53",
+  "columns": [
+    {
+      "__typename": "VizColumn",
+      "column": {
+        "__typename": "AnswerColumn",
+        "id": "f70df70d-b37f-4cfc-b3b6-28af82183d2d",
+        "name": "Account Balance",
+        "type": "MEASURE"
+      }
+    }
+  ],
+  "data": {
+    "columnDataLite": [
+      {
+        "columnId": "f70df70d-b37f-4cfc-b3b6-28af82183d2d",
+        "columnDataType": "DOUBLE",
+        "dataValue": [
+          8542.212710650001
+        ]
+      }
+    ],
+    "completionRatio": 1,
+    "samplingRatio": 1,
+    "totalRowCount": "1"
+  },
 }
 ----
 

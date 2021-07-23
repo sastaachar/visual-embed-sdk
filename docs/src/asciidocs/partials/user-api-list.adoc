@@ -1,25 +1,25 @@
 
 [div boxDiv boxFullWidth]
 --
-`xref:group-api.adoc#create-group[*POST* /tspublic/v1/user/]` [tag greenBackground]#New#
+`xref:user-api.adoc#create-user[*POST* /tspublic/v1/user/]` 
 
 Creates a user account.
 
 ---
 
-`xref:user-api.adoc#update-user[*PUT* /tspublic/v1/user/{userid}]` [tag greenBackground]#New#
+`xref:user-api.adoc#update-user[*PUT* /tspublic/v1/user/{userid}]` 
 
 Modifies a user account.
 
 ---
 
-`xref:user-api.adoc#get-user-details[*GET* /tspublic/v1/user/]` [tag greenBackground]#New#
+`xref:user-api.adoc#get-user-details[*GET* /tspublic/v1/user/]` 
 
 Gets details of the users in a ThoughtSpot system.
 
 ---
 
-`xref:user-api.adoc#delete-user[*DELETE* /tspublic/v1/user/{userid}]` [tag greenBackground]#New#
+`xref:user-api.adoc#delete-user[*DELETE* /tspublic/v1/user/{userid}]`
 
 Deletes a user account.
 
@@ -34,7 +34,7 @@ Gets all users, groups, and their inter-dependencies.
 Modifies a user profile.
 
 ---
-`xref:user-api.adoc#transfer-ownership[**POST** /tspublic/v1/user/transfer/ownership]` [tag orangeBackground]#Modified#
+`xref:user-api.adoc#transfer-ownership[**POST** /tspublic/v1/user/transfer/ownership]` 
 
 Transfers the ownership of objects from one user to another.
 

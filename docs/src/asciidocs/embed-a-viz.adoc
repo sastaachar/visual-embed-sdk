@@ -58,11 +58,13 @@ For example, to disable the *Change Title* action from the *More* menu image:./i
 ----
 disabledActions: Action.EditTitle
 ----
+////
 +
 ++++
 <a href="{{previewPrefix}}/playground/answer?modifyActions=true" id="preview-in-playground" target="_blank">Try it in Playground</a>
 ++++
 +
+////
 For a complete list of action menu items and the corresponding strings to use for disabling menu items, see link:{{visualEmbedSDKPrefix}}/enums/action.html[Action, window=_blank].
 
 
@@ -82,13 +84,13 @@ For example, to hide *Download As PDF* action from the *More* menu image:./image
 hiddenActions: Action.DownloadAsPdf
 ----
 
-
+////
 +
 ++++
 <a href="{{previewPrefix}}/playground/answer?modifyActions=true" id="preview-in-playground" target="_blank">Try it in Playground</a>
 ++++
+////
 
-+
 For a complete list of action menu items and the corresponding strings to use for hiding menu items, see link:{{visualEmbedSDKPrefix}}/enums/action.html[Action, window=_blank].
 
 
@@ -109,6 +111,7 @@ runtimeFilters [small]_optional_::
 Runtime filters to be applied when the embedded visualization loads.
 +
 Runtime filters provide the ability to filter data at the time of retrieval. Runtime filters allow you to apply a filter to a visualization by passing filter specifications in the URL query parameters.
+
 +
 For example, to sort values equal to `red` in the `Color` column for a visualization, you can pass the runtime filter in the URL query parameters as shown here:
 +
@@ -120,12 +123,12 @@ runtimeFilters: [{
   values: [ 'red' ]
   }]
 ----
-
+////
 
 ++++
 <a href="{{previewPrefix}}/playground/answer?runtimeFilters=true" id="preview-in-playground" target="_blank">Try it in Playground</a>
 ++++
-
+////
 include::{path}/runtime-filter.adoc[]
 
 For more information about the supported data types and how to use runtime filters, see xref:runtime-filters.adoc[Runtime filters].

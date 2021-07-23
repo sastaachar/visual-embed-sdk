@@ -25,9 +25,11 @@ include::{path}/metadata-api-list.adoc[]
 
 include::{path}/admin-api-list.adoc[]
 
+////
 == Data connections 
 
 include::{path}/connection-apis.adoc[]
+////
 
 == TML objects
 
@@ -45,14 +47,18 @@ include::{path}/pinboard-api-list.adoc[]
 
 Allows searching for data from a specific data source in the ThoughtSpot application.
 --
+
+////
 == Object dependencies
 
 include::{path}/dependency-api-list.adoc[]
 
+////
 == Security
 
 include::{path}/security-api-list.adoc[]
 
+////
 == Log Streaming Service
 
 [div boxDiv boxFullWidth]
@@ -61,3 +67,4 @@ include::{path}/security-api-list.adoc[]
 
 Gets security audit logs from the ThoughtSpot system.
 --
+////

@@ -45,7 +45,7 @@ Learn how to xref:custom-actions-viz.adoc[assign a custom action to a specific v
 
 Requires edit privileges to modify a search answer or a visualization in a pinboard. 
 --
-
+////
 [div boxDiv boxFullWidth]
 --
 +++<h4>Add a custom action to a worksheet</h4>+++
@@ -54,7 +54,7 @@ Learn how to xref:custom-actions-worksheet.adoc[assign a custom action to a spec
 
 Requires edit privileges to access and modify the worksheet.
 --
-
+////
 == Custom action examples
 
 [div boxDiv boxFullWidth]

@@ -25,13 +25,18 @@ The Visual Embed SDK is available for installation as a Node Package Manager (NP
 You can also access Visual Embed SDK, including information about how to install from NPM or run from a web repository, in the link:https://github.com/thoughtspot/visual-embed-sdk[ThoughtSpot Visual Embed SDK GitHub repository, window=_blank]. 
 
 == Install the Visual Embed SDK
-The latest version of the Visual Embed SDK is available at link:https://www.npmjs.com/package/@thoughtspot/visual-embed-sdk[https://www.npmjs.com/package/@thoughtspot/visual-embed-sdk, window=_blank].
+You can access Visual Embed SDK package at link:https://www.npmjs.com/package/@thoughtspot/visual-embed-sdk[https://www.npmjs.com/package/@thoughtspot/visual-embed-sdk, window=_blank].
 
 To install the SDK, run the following command at the command line:
 [source,console]
 ----
 npm install @thoughtspot/visual-embed-sdk
 ----
+
+[NOTE]
+====
+If your cluster is running ThoughtSpot Software version 7.1.0, make sure you download and install the Visual Embed SDK 1.2.0 NPM package. 
+====
 
 == Import the embed package
 
