@@ -25,6 +25,15 @@ include::{path}/metadata-api-list.adoc[]
 
 include::{path}/admin-api-list.adoc[]
 
+== Materialization service
+
+[div boxDiv boxFullWidth]
+--
+`xref:materialization-api.adoc[*POST* /tspublic/v1/materialization/refreshview/{id}]`  
+
+Allows you refresh a materialized view.
+--
+
 ////
 == Data connections 
 

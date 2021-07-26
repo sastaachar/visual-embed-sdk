@@ -21,7 +21,6 @@ The Visual Embed SDK includes separate libraries for embedding ThoughtSpot conte
 If your cluster is running ThoughtSpot Software 7.1.0 version, make sure you install the Visual Embed SDK version 1.2.0 NPM package. 
 ====
 
-+
 For more information, see xref:visual-embed-sdk.adoc[Visual Embed SDK].
 
 Using REST APIs::
