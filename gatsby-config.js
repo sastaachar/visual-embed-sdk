@@ -293,4 +293,5 @@ module.exports = {
             },
         },
     ],
+    
 };
