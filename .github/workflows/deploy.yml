@@ -9,10 +9,11 @@ on:
     # Push events on `main` branch
       - main
       - '^[0-9]+.[0-9]+.[0-9]+$'
-    paths: 
-    - 'static/typedoc/**'
-    - 'docs/src/**'
-    - 'gatsby-config.js'
+      - 7.1.1
+#     paths: 
+#     - 'static/typedoc/**'
+#     - 'docs/src/**'
+#     - 'gatsby-config.js'
   
   # For manually triggering the build
   workflow_dispatch:
