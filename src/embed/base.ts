@@ -173,6 +173,12 @@ export class TsEmbed {
     private eventHandlerMap: Map<string, MessageCallback[]>;
 
     /**
+     * A map of event port for EmbedEvents to facilitate
+     * request-response and error propagation using MessageChannel
+     */
+    private eventPortMap: Map<string, MessagePort>;
+
+    /**
      * A flag that is set to true post render.
      */
     private isRendered: boolean;
@@ -196,6 +202,7 @@ export class TsEmbed {
         this.thoughtSpotHost = getThoughtSpotHost(config);
         this.thoughtSpotV2Base = getV2BasePath(config);
         this.eventHandlerMap = new Map();
+        this.eventPortMap = new Map();
         this.isError = false;
         this.viewConfig = viewConfig;
         this.shouldEncodeUrlQueryParams = config.shouldEncodeUrlQueryParams;
@@ -242,6 +249,18 @@ export class TsEmbed {
     }
 
     /**
+     * Extracts the port field from the event payload
+     * @param event  The window message event
+     * @returns 
+     */
+    private getEventPort(event: MessageEvent) {
+        if(event.ports.length && event.ports[0]) {
+            return event.ports[0];
+        }
+        return null;
+    }
+
+    /**
      * Adds a global event listener to window for "message" events.
      * ThoughtSpot detects if a particular event is targeted to this
      * embed instance through an identifier contained in the payload,
@@ -250,10 +269,12 @@ export class TsEmbed {
     private subscribeToEvents() {
         window.addEventListener('message', (event) => {
             const eventType = this.getEventType(event);
+            const eventPort = this.getEventPort(event);
             if (event.source === this.iFrame.contentWindow) {
                 this.executeCallbacks(
                     eventType,
                     processData(event.data, this.thoughtSpotHost),
+                    eventPort,
                 );
             }
         });
@@ -404,8 +425,12 @@ export class TsEmbed {
      * Executes all registered event handlers for a particular event type
      * @param eventType The event type
      * @param data The payload invoked with the event handler
+     * @param eventPort The event Port for a specific MessageChannel
      */
-    protected executeCallbacks(eventType: EmbedEvent, data: any): void {
+    protected executeCallbacks(eventType: EmbedEvent, data: any, eventPort: MessagePort|void): void {
+        if(eventPort) {
+            this.eventPortMap.set(eventType,eventPort);
+        }
         const callbacks = this.eventHandlerMap.get(eventType) || [];
         callbacks.forEach((callback) => callback(data));
     }
@@ -425,6 +450,34 @@ export class TsEmbed {
      */
     protected getCompatibleEventType(eventType: EmbedEvent): EmbedEvent {
         return V1EventMap[eventType] || eventType;
+    }
+
+    /**
+     * Calculates the iframe center for the current visible viewPort
+     * of iframe using Scroll position of Host App, offsetTop for iframe
+     * in Host app. ViewPort height of the tab.
+     * @returns iframe Center in visible viewport,
+     *  Iframe height,
+     *  View port height.
+     */
+    protected getIframeCenter() {
+        var offsetTopClient = this.iFrame.offsetTop;
+        var scrollTopClient = window.scrollY;
+        var viewPortHeight = window.innerHeight;
+        var iframeHeight = this.iFrame.offsetHeight;        
+        var iframeScrolled = scrollTopClient - offsetTopClient;
+        var iframeVisibleViewPort, iframeOffset, iframeCenter;
+        
+        if(iframeScrolled < 0) {
+        iframeVisibleViewPort = viewPortHeight - (offsetTopClient - scrollTopClient) ;
+        iframeVisibleViewPort = Math.min(iframeHeight,iframeVisibleViewPort);
+        iframeOffset = 0;
+        } else {
+        iframeVisibleViewPort = Math.min(iframeHeight - iframeScrolled,viewPortHeight);
+        iframeOffset = iframeScrolled;
+        }
+        iframeCenter = iframeOffset + iframeVisibleViewPort/2;
+        return {iframeCenter,iframeHeight,viewPortHeight};
     }
 
     /**
@@ -449,6 +502,23 @@ export class TsEmbed {
         this.eventHandlerMap.set(messageType, callbacks);
 
         return this;
+    }
+    /**
+     * Triggers an event on specific Port registered against 
+     * eventPortMap for the EmbedEvent
+     * @param eventType The message type
+     * @param data The payload to send
+     */
+    public triggerEventOnPort(
+        eventType: HostEvent|EmbedEvent,
+        data:any
+    ){
+        let eventPort = this.eventPortMap.get(EmbedEvent.EmbedIframeCenter);
+        try{
+            eventPort.postMessage({type:eventType, data});
+        }catch(e){
+            eventPort.postMessage({error:e});
+        }
     }
 
     /**

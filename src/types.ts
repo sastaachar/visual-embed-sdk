@@ -266,6 +266,7 @@ export enum EmbedEvent {
      * @return data - The height of the embedded pinboard or visualization
      */
     EmbedHeight = 'EMBED_HEIGHT',
+    EmbedIframeCenter = 'EmbedIframeCenter',
     /**
      * The v1 event type for Data
      * @hidden
@@ -308,6 +309,7 @@ export enum HostEvent {
      * @hidden
      */
     Reload = 'reload',
+    EmbedIframeCenter = 'EmbedIframeCenter',
 }
 
 /**
