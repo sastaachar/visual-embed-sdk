@@ -483,7 +483,13 @@ export class TsEmbed {
             iframeOffset = iframeScrolled;
         }
         const iframeCenter = iframeOffset + iframeVisibleViewPort / 2;
-        return { iframeCenter, iframeScrolled, iframeHeight, viewPortHeight, iframeVisibleViewPort};
+        return {
+            iframeCenter,
+            iframeScrolled,
+            iframeHeight,
+            viewPortHeight,
+            iframeVisibleViewPort,
+        };
     }
 
     /**
