@@ -312,7 +312,6 @@ export enum HostEvent {
      * @hidden
      */
     Reload = 'reload',
-    EmbedIframeCenter = 'EmbedIframeCenter',
 }
 
 /**

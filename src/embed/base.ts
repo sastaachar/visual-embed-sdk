@@ -423,7 +423,7 @@ export class TsEmbed {
     protected executeCallbacks(
         eventType: EmbedEvent,
         data: any,
-        eventPort: MessagePort | void,
+        eventPort?: MessagePort | void,
     ): void {
         const callbacks = this.eventHandlerMap.get(eventType) || [];
         callbacks.forEach((callback) =>
@@ -483,7 +483,7 @@ export class TsEmbed {
             iframeOffset = iframeScrolled;
         }
         const iframeCenter = iframeOffset + iframeVisibleViewPort / 2;
-        return { iframeCenter, iframeScrolled, iframeHeight, viewPortHeight };
+        return { iframeCenter, iframeScrolled, iframeHeight, viewPortHeight, iframeVisibleViewPort};
     }
 
     /**
@@ -516,7 +516,7 @@ export class TsEmbed {
      * @param eventType The message type
      * @param data The payload to send
      */
-    public triggerEventOnPort(eventPort: MessagePort | void, payload: any) {
+    private triggerEventOnPort(eventPort: MessagePort | void, payload: any) {
         if (eventPort) {
             try {
                 eventPort.postMessage({
@@ -525,6 +525,7 @@ export class TsEmbed {
                 });
             } catch (e) {
                 eventPort.postMessage({ error: e });
+                console.log(e);
             }
         } else {
             console.log('Event Port is not defined');

@@ -57,7 +57,7 @@ describe('test view config', () => {
         await executeAfterWait(() => {
             expect(onErrorSpy).toHaveBeenCalledWith({
                 error: 'Please register event handlers before calling render',
-            });
+            },expect.any(Function));
         }, EVENT_WAIT_TIME);
     });
 });
