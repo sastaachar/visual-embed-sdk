@@ -130,3 +130,13 @@ export const getEncodedQueryParamsString = (queryString: string) => {
         .replace(/\//g, '_')
         .replace(/=+$/, '');
 };
+
+export const getOffsetTop = (element: any) => {
+    let offsetTop = 0;
+    while (element) {
+        offsetTop += element.offsetTop;
+        // eslint-disable-next-line no-param-reassign
+        element = element.offsetParent;
+    }
+    return offsetTop;
+};
