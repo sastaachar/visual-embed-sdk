@@ -132,11 +132,6 @@ export const getEncodedQueryParamsString = (queryString: string) => {
 };
 
 export const getOffsetTop = (element: any) => {
-    let offsetTop = 0;
-    while (element) {
-        offsetTop += element.offsetTop;
-        // eslint-disable-next-line no-param-reassign
-        element = element.offsetParent;
-    }
-    return offsetTop;
+    const rect = element.getBoundingClientRect();
+    return rect.top + window.scrollY;
 };
