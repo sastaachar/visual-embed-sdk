@@ -426,15 +426,11 @@ export class TsEmbed {
         eventPort: MessagePort | void,
     ): void {
         const callbacks = this.eventHandlerMap.get(eventType) || [];
-        if (eventPort) {
-            callbacks.forEach((callback) =>
-                callback(data, (payload) => {
-                    this.triggerEventOnPort(eventPort, payload);
-                }),
-            );
-        } else {
-            callbacks.forEach((callback) => callback(data));
-        }
+        callbacks.forEach((callback) =>
+            callback(data, (payload) => {
+                this.triggerEventOnPort(eventPort, payload);
+            }),
+        );
     }
 
     /**
@@ -520,14 +516,18 @@ export class TsEmbed {
      * @param eventType The message type
      * @param data The payload to send
      */
-    public triggerEventOnPort(eventPort: MessagePort, payload: any) {
-        try {
-            eventPort.postMessage({
-                type: payload.eventType,
-                data: payload.data,
-            });
-        } catch (e) {
-            eventPort.postMessage({ error: e });
+    public triggerEventOnPort(eventPort: MessagePort | void, payload: any) {
+        if (eventPort) {
+            try {
+                eventPort.postMessage({
+                    type: payload.eventType,
+                    data: payload.data,
+                });
+            } catch (e) {
+                eventPort.postMessage({ error: e });
+            }
+        } else {
+            console.log('Event Port is not defined');
         }
     }
 
