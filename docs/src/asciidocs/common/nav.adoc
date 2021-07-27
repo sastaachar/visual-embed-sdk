@@ -64,6 +64,7 @@
 ** link:{{navprefix}}=session-api[Session APIs]
 ** link:{{navprefix}}=metadata-api[Metadata APIs]
 ** link:{{navprefix}}=admin-api[Admin APIs]
+** link:{{navprefix}}=materialization-api[Materialization API]
 ** link:{{navprefix}}=tml-api[TML APIs]
 ** link:{{navprefix}}=search-data-api[Search data API]
 ** link:{{navprefix}}=pinboard-api[Pinboard data API]

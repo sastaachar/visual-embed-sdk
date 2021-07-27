@@ -270,7 +270,7 @@ If you have added a xref:customize-actions-menu.adoc[custom action], register an
 
 [source, javascript]
 ----
- searchEmbed.render();
+searchEmbed.render();
 ----
 
 == Test the embedded workflow

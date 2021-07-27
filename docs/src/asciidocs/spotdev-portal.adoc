@@ -48,12 +48,12 @@ The *Playground* allows you to explore the following Visual Embed SDK components
 * xref:developer-playground.adoc#playground-pinboard[Pinboards]
 * xref:developer-playground.adoc#playground-visualization[Visualizations]
 * xref:developer-playground.adoc#playground-fullapp[Full application]
-
+////
 +
 ++++
 <a href="{{previewPrefix}}/playground/search" id="preview-in-playground" target="_blank">Visit the  Playground</a>
 ++++
-
+////
 
 Customizations::
 The Developer portal displays the following customization options for Thoughtspot embedded instances:
