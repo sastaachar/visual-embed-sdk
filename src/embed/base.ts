@@ -519,14 +519,14 @@ export class TsEmbed {
     /**
      * Triggers an event on specific Port registered against
      * for the EmbedEvent
-     * @param eventType The message type
+     * @param eventPort The message Port
      * @param data The payload to send
      */
     private triggerEventOnPort(eventPort: MessagePort | void, payload: any) {
         if (eventPort) {
             try {
                 eventPort.postMessage({
-                    type: payload.eventType,
+                    type: payload.type,
                     data: payload.data,
                 });
             } catch (e) {
