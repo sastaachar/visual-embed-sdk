@@ -270,7 +270,6 @@ export enum EmbedEvent {
      */
     EmbedHeight = 'EMBED_HEIGHT',
     EmbedIframeCenter = 'EmbedIframeCenter',
-    EmbedScrolledIframe = 'EmbedScrolledIframe',
     /**
      * The v1 event type for Data
      * @hidden
@@ -314,7 +313,6 @@ export enum HostEvent {
      */
     Reload = 'reload',
     EmbedIframeCenter = 'EmbedIframeCenter',
-    EmbedScrolledIframe = 'EmbedScrolledIframe',
 }
 
 /**
