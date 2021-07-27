@@ -530,7 +530,7 @@ export class TsEmbed {
         if (eventPort) {
             try {
                 eventPort.postMessage({
-                    type: payload.eventType,
+                    type: payload.type,
                     data: payload.data,
                 });
             } catch (e) {
