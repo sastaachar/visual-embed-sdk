@@ -101,7 +101,10 @@ export interface EmbedConfig {
 }
 
 export type MessagePayload = { type: string; data: any };
-export type MessageCallback = (payload: MessagePayload) => void;
+export type MessageCallback = (
+    payload: MessagePayload,
+    responder?: (data: any) => void,
+) => void;
 
 export type GenericCallbackFn = (...args: any[]) => any;
 
@@ -267,6 +270,7 @@ export enum EmbedEvent {
      */
     EmbedHeight = 'EMBED_HEIGHT',
     EmbedIframeCenter = 'EmbedIframeCenter',
+    EmbedScrolledIframe = 'EmbedScrolledIframe',
     /**
      * The v1 event type for Data
      * @hidden
@@ -310,6 +314,7 @@ export enum HostEvent {
      */
     Reload = 'reload',
     EmbedIframeCenter = 'EmbedIframeCenter',
+    EmbedScrolledIframe = 'EmbedScrolledIframe',
 }
 
 /**

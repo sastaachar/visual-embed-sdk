@@ -173,12 +173,6 @@ export class TsEmbed {
     private eventHandlerMap: Map<string, MessageCallback[]>;
 
     /**
-     * A map of event port for EmbedEvents to facilitate
-     * request-response and error propagation using MessageChannel
-     */
-    private eventPortMap: Map<string, MessagePort>;
-
-    /**
      * A flag that is set to true post render.
      */
     private isRendered: boolean;
@@ -202,7 +196,6 @@ export class TsEmbed {
         this.thoughtSpotHost = getThoughtSpotHost(config);
         this.thoughtSpotV2Base = getV2BasePath(config);
         this.eventHandlerMap = new Map();
-        this.eventPortMap = new Map();
         this.isError = false;
         this.viewConfig = viewConfig;
         this.shouldEncodeUrlQueryParams = config.shouldEncodeUrlQueryParams;
@@ -251,10 +244,10 @@ export class TsEmbed {
     /**
      * Extracts the port field from the event payload
      * @param event  The window message event
-     * @returns 
+     * @returns
      */
     private getEventPort(event: MessageEvent) {
-        if(event.ports.length && event.ports[0]) {
+        if (event.ports.length && event.ports[0]) {
             return event.ports[0];
         }
         return null;
@@ -427,12 +420,21 @@ export class TsEmbed {
      * @param data The payload invoked with the event handler
      * @param eventPort The event Port for a specific MessageChannel
      */
-    protected executeCallbacks(eventType: EmbedEvent, data: any, eventPort: MessagePort|void): void {
-        if(eventPort) {
-            this.eventPortMap.set(eventType,eventPort);
-        }
+    protected executeCallbacks(
+        eventType: EmbedEvent,
+        data: any,
+        eventPort: MessagePort | void,
+    ): void {
         const callbacks = this.eventHandlerMap.get(eventType) || [];
-        callbacks.forEach((callback) => callback(data));
+        if (eventPort) {
+            callbacks.forEach((callback) =>
+                callback(data, (payload) => {
+                    this.triggerEventOnPort(eventPort, payload);
+                }),
+            );
+        } else {
+            callbacks.forEach((callback) => callback(data));
+        }
     }
 
     /**
@@ -461,23 +463,39 @@ export class TsEmbed {
      *  View port height.
      */
     protected getIframeCenter() {
-        var offsetTopClient = this.iFrame.offsetTop;
-        var scrollTopClient = window.scrollY;
-        var viewPortHeight = window.innerHeight;
-        var iframeHeight = this.iFrame.offsetHeight;        
-        var iframeScrolled = scrollTopClient - offsetTopClient;
-        var iframeVisibleViewPort, iframeOffset, iframeCenter;
-        
-        if(iframeScrolled < 0) {
-        iframeVisibleViewPort = viewPortHeight - (offsetTopClient - scrollTopClient) ;
-        iframeVisibleViewPort = Math.min(iframeHeight,iframeVisibleViewPort);
-        iframeOffset = 0;
+        const offsetTopClient = this.iFrame.offsetTop;
+        const scrollTopClient = window.scrollY;
+        const viewPortHeight = window.innerHeight;
+        const iframeHeight = this.iFrame.offsetHeight;
+        const iframeScrolled = scrollTopClient - offsetTopClient;
+        let iframeVisibleViewPort;
+        let iframeOffset;
+
+        if (iframeScrolled < 0) {
+            iframeVisibleViewPort =
+                viewPortHeight - (offsetTopClient - scrollTopClient);
+            iframeVisibleViewPort = Math.min(
+                iframeHeight,
+                iframeVisibleViewPort,
+            );
+            iframeOffset = 0;
         } else {
-        iframeVisibleViewPort = Math.min(iframeHeight - iframeScrolled,viewPortHeight);
-        iframeOffset = iframeScrolled;
+            iframeVisibleViewPort = Math.min(
+                iframeHeight - iframeScrolled,
+                viewPortHeight,
+            );
+            iframeOffset = iframeScrolled;
         }
-        iframeCenter = iframeOffset + iframeVisibleViewPort/2;
-        return {iframeCenter,iframeHeight,viewPortHeight};
+        const iframeCenter = iframeOffset + iframeVisibleViewPort / 2;
+        return { iframeCenter, iframeScrolled, iframeHeight, viewPortHeight };
+    }
+
+    protected getIframeScrolled() {
+        const scrollTopClient = window.scrollY;
+        const offsetTopClient = this.iFrame.offsetTop;
+        const viewPortHeight = window.innerHeight;
+        const iframeScrolled = Math.max(0, scrollTopClient - offsetTopClient);
+        return { iframeScrolled, viewPortHeight };
     }
 
     /**
@@ -503,21 +521,21 @@ export class TsEmbed {
 
         return this;
     }
+
     /**
-     * Triggers an event on specific Port registered against 
-     * eventPortMap for the EmbedEvent
+     * Triggers an event on specific Port registered against
+     * for the EmbedEvent
      * @param eventType The message type
      * @param data The payload to send
      */
-    public triggerEventOnPort(
-        eventType: HostEvent|EmbedEvent,
-        data:any
-    ){
-        let eventPort = this.eventPortMap.get(EmbedEvent.EmbedIframeCenter);
-        try{
-            eventPort.postMessage({type:eventType, data});
-        }catch(e){
-            eventPort.postMessage({error:e});
+    public triggerEventOnPort(eventPort: MessagePort, payload: any) {
+        try {
+            eventPort.postMessage({
+                type: payload.eventType,
+                data: payload.data,
+            });
+        } catch (e) {
+            eventPort.postMessage({ error: e });
         }
     }
 

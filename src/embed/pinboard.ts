@@ -135,11 +135,11 @@ export class PinboardEmbed extends V1Embed {
         this.setIFrameHeight(data.data);
     };
 
-    private EmbedIframeCenter = (data: MessagePayload) => {
-        let obj = this.getIframeCenter();
-        this.triggerEventOnPort(EmbedEvent.EmbedIframeCenter,obj);
+    private embedIframeCenter = (data: MessagePayload, responder: any) => {
+        const obj = this.getIframeCenter();
+        responder({ type: EmbedEvent.EmbedIframeCenter, data: obj });
     };
-    
+
     /**
      * Render an embedded ThoughtSpot pinboard or visualization
      * @param renderOptions An object specifying the pinboard ID,
@@ -154,7 +154,7 @@ export class PinboardEmbed extends V1Embed {
 
         if (this.viewConfig.fullHeight === true) {
             this.on(EmbedEvent.EmbedHeight, this.updateIFrameHeight);
-            this.on(EmbedEvent.EmbedIframeCenter, this.EmbedIframeCenter);
+            this.on(EmbedEvent.EmbedIframeCenter, this.embedIframeCenter);
         }
 
         super.render();
