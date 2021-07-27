@@ -490,14 +490,6 @@ export class TsEmbed {
         return { iframeCenter, iframeScrolled, iframeHeight, viewPortHeight };
     }
 
-    protected getIframeScrolled() {
-        const scrollTopClient = window.scrollY;
-        const offsetTopClient = this.iFrame.offsetTop;
-        const viewPortHeight = window.innerHeight;
-        const iframeScrolled = Math.max(0, scrollTopClient - offsetTopClient);
-        return { iframeScrolled, viewPortHeight };
-    }
-
     /**
      * Registers an event listener to trigger an alert when the ThoughtSpot app
      * sends an event of a particular message type to the host application.
