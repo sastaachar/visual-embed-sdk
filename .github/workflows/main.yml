@@ -43,7 +43,7 @@ jobs:
       - uses: 5monkeys/cobertura-action@master
         with:
           path: coverage/sdk/cobertura-coverage.xml
-          repo_token: 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
+          repo_token: ${{ secrets.ACTION_KEY_SECRET }}
           minimum_coverage: 0
 
       # Runs TypeScript compiler
