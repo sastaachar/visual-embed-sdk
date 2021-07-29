@@ -46,7 +46,7 @@ export interface PinboardViewConfig extends ViewConfig {
      * If set to true, all filter chips from a
      * pinboard page will be read-only (no X buttons)
      */
-     preventPinboardFilterRemoval?: boolean;
+    preventPinboardFilterRemoval?: boolean;
 }
 
 /**
