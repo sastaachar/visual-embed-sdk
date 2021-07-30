@@ -45,6 +45,7 @@ jobs:
           path: coverage/sdk/cobertura-coverage.xml
           repo_token: ${{ secrets.ACTION_KEY_SECRET }}
           minimum_coverage: 0
+          continue-on-error: true
 
       # Runs TypeScript compiler
       - name: Run TypeScript compiler
