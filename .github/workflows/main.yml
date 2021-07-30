@@ -44,7 +44,7 @@ jobs:
         continue-on-error: true
         with:
           path: coverage/sdk/cobertura-coverage.xml
-          repo_token: ${{ secrets.ACTION_KEY_SECRET }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           minimum_coverage: 0
 
       # Runs TypeScript compiler
