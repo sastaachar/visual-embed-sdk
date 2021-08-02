@@ -5,7 +5,7 @@
 :page-pageid: user-roles
 :page-description: Configure users and groups with developer privileges
 
-To embed ThoughtSpot content in your application, you must have developer privileges. ThoughtSpot users with the `Developer` privilieges can perform the following tasks:
+To embed ThoughtSpot content in your application, you must have developer privileges. ThoughtSpot users with the `Developer` privileges can perform the following tasks:
 
 * Use Visual Embed SDK to embed ThoughtSpot in their host applications.
 * Customize and rebrand the look and feel of the UI.
