@@ -1,5 +1,5 @@
 import { initSession } from '../auth';
-import { Action, EmbedEvent, OperationType } from '../types';
+import { EmbedEvent, OperationType } from '../types';
 import { getAnswerServiceInstance } from './answerService';
 
 export function processCustomAction(e: any, thoughtSpotHost: string) {

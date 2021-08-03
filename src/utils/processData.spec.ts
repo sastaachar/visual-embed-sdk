@@ -6,7 +6,9 @@ import { EmbedEvent, OperationType } from '../types';
 describe('Unit test for process data', () => {
     const thoughtSpotHost = 'http://localhost';
     test('processDataInstance, when operation is GetChartWithData', () => {
+        const answerService = {};
         const processChartData = {
+            answerService,
             data: {
                 session: 'session',
                 query: 'query',
@@ -16,7 +18,7 @@ describe('Unit test for process data', () => {
         jest.spyOn(
             answerServiceInstance,
             'getAnswerServiceInstance',
-        ).mockImplementation(async () => ({}));
+        ).mockReturnValue(answerService);
         expect(
             processDataInstance.processCustomAction(
                 processChartData,
