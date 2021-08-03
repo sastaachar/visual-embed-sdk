@@ -75,17 +75,17 @@ describe('Unit test for auth', () => {
     });
 
     test('endpoints, SSO_LOGIN_TEMPLATE', () => {
-        const ssoTemplateUrl = authInstance.EndPoints.SSO_LOGIN_TEMPLATE(thoughtSpotHost);
+        const ssoTemplateUrl = authInstance.EndPoints.SSO_LOGIN_TEMPLATE(
+            thoughtSpotHost,
+        );
         expect(ssoTemplateUrl).toBe(
             `/callosum/v1/saml/login?targetURLPath=${thoughtSpotHost}`,
         );
     });
 
     test('when session info giving response', async () => {
-        authInstance.initSession(mockSessionInfo)
-        expect(authInstance.getSessionInfo()).toStrictEqual(
-            mockSessionInfo,
-        );
+        authInstance.initSession(mockSessionInfo);
+        expect(authInstance.getSessionInfo()).toStrictEqual(mockSessionInfo);
     });
 
     test('doTokenAuth: when authEndpoint and getAuthToken are not there, it throw error', async () => {
@@ -286,6 +286,8 @@ describe('Unit test for auth', () => {
     });
 
     it('user is authenticated when loggedInStatus is true', () => {
-        expect(authInstance.isAuthenticated()).toBe(authInstance.loggedInStatus);
+        expect(authInstance.isAuthenticated()).toBe(
+            authInstance.loggedInStatus,
+        );
     });
 });
