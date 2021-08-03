@@ -36,7 +36,7 @@ import {
     uploadMixpanelEvent,
     MIXPANEL_EVENT,
 } from '../mixpanel-service';
-import { processData } from '../utils/processData';
+import { getProcessData } from '../utils/processData';
 import { processTrigger } from '../utils/processTrigger';
 
 let config = {} as EmbedConfig;
@@ -269,7 +269,7 @@ export class TsEmbed {
             if (event.source === this.iFrame.contentWindow) {
                 this.executeCallbacks(
                     eventType,
-                    processData(eventType, event.data, this.thoughtSpotHost),
+                    getProcessData(eventType, event.data, this.thoughtSpotHost),
                     eventPort,
                 );
             }

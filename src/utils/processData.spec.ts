@@ -32,7 +32,11 @@ describe('Unit test for process data', () => {
             'processCustomAction',
         ).mockImplementation(async () => ({}));
         expect(
-            processDataInstance.processData(EmbedEvent.CustomAction, processedData, thoughtSpotHost),
+            processDataInstance.getProcessData(
+                EmbedEvent.CustomAction,
+                processedData,
+                thoughtSpotHost,
+            ),
         ).toStrictEqual(processedData);
     });
 
@@ -46,7 +50,11 @@ describe('Unit test for process data', () => {
             answerServiceInstance,
             'getAnswerServiceInstance',
         ).mockImplementation(async () => ({}));
-        processDataInstance.processData(EmbedEvent.Data, processedData, thoughtSpotHost);
+        processDataInstance.getProcessData(
+            EmbedEvent.Data,
+            processedData,
+            thoughtSpotHost,
+        );
         expect(processDataInstance.processCustomAction).not.toBeCalled();
     });
 
@@ -58,7 +66,7 @@ describe('Unit test for process data', () => {
         };
         const e = { type: EmbedEvent.AuthInit, data: sessionInfo };
         jest.spyOn(auth, 'initSession').mockReturnValue(null);
-        expect(processDataInstance.processData(e.type, e, '')).toEqual({
+        expect(processDataInstance.getProcessData(e.type, e, '')).toEqual({
             type: e.type,
             data: {
                 userGuid: sessionInfo.userGuid,

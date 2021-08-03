@@ -37,7 +37,11 @@ function processAuthInit(e: any) {
     };
 }
 
-export function processData(type: EmbedEvent, e: any, thoughtSpotHost: string) {
+export function getProcessData(
+    type: EmbedEvent,
+    e: any,
+    thoughtSpotHost: string,
+) {
     switch (type) {
         case EmbedEvent.CustomAction:
             return processCustomAction(e, thoughtSpotHost);
