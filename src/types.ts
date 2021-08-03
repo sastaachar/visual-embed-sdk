@@ -101,7 +101,10 @@ export interface EmbedConfig {
 }
 
 export type MessagePayload = { type: string; data: any };
-export type MessageCallback = (payload: MessagePayload) => void;
+export type MessageCallback = (
+    payload: MessagePayload,
+    responder?: (data: any) => void,
+) => void;
 
 export type GenericCallbackFn = (...args: any[]) => any;
 
@@ -266,6 +269,7 @@ export enum EmbedEvent {
      * @return data - The height of the embedded pinboard or visualization
      */
     EmbedHeight = 'EMBED_HEIGHT',
+    EmbedIframeCenter = 'EmbedIframeCenter',
     /**
      * The v1 event type for Data
      * @hidden
@@ -341,6 +345,7 @@ export enum Param {
     DisableActions = 'disableAction',
     DisableActionReason = 'disableHint',
     ForceTable = 'forceTable',
+    preventPinboardFilterRemoval = 'preventPinboardFilterRemoval',
     SearchQuery = 'searchQuery',
     HideActions = 'hideAction',
     EnableVizTransformations = 'enableVizTransform',
@@ -410,13 +415,14 @@ export enum Action {
     Subscription = 'subscription',
     Explore = 'explore',
     DrillInclude = 'context-menu-item-include',
-    DrillExlude = 'context-menu-item-exclude',
+    DrillExclude = 'context-menu-item-exclude',
     CopyToClipboard = 'context-menu-item-copy-to-clipboard',
     DrillEdit = 'context-menu-item-edit',
     EditMeasure = 'context-menu-item-edit-measure',
     Separator = 'context-menu-item-separator',
     DrillDown = 'DRILL',
     RequestAccess = 'requestAccess',
+    QueryDetailsButtons = 'queryDetailsButtons',
 }
 
 export interface SessionInterface {
