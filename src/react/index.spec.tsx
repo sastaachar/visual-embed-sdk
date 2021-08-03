@@ -5,6 +5,7 @@ import { cleanup, fireEvent, render, waitFor } from '@testing-library/react';
 import { getIFrameEl, getIFrameSrc } from '../test/test-utils';
 import { SearchEmbed, AppEmbed, PinboardEmbed } from './index';
 import { AuthType, init } from '../index';
+import { version } from '../../package.json';
 
 const thoughtSpotHost = 'localhost';
 
@@ -25,7 +26,7 @@ describe('React Components', () => {
             await waitFor(() => getIFrameEl(container));
 
             expect(getIFrameSrc(container)).toBe(
-                `http://${thoughtSpotHost}/?dataSourceMode=hide&useLastSelectedSources=false#/embed/answer`,
+                `http://${thoughtSpotHost}/?dataSourceMode=hide&useLastSelectedSources=false&version=${version}#/embed/answer`,
             );
         });
 

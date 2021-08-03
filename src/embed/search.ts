@@ -10,6 +10,7 @@
 import { DataSourceVisualMode, DOMSelector, Param } from '../types';
 import { getQueryParamString } from '../utils';
 import { ViewConfig, TsEmbed } from './base';
+import { version } from '../../package.json';
 
 /**
  * Configuration for search options
@@ -165,7 +166,7 @@ export class SearchEmbed extends TsEmbed {
 
         queryParams[Param.DataSourceMode] = this.getDataSourceMode();
         queryParams[Param.UseLastSelectedDataSource] = false;
-
+        queryParams[Param.Version] = version;
         let query = '';
         const queryParamsString = getQueryParamString(queryParams, true);
         if (queryParamsString) {

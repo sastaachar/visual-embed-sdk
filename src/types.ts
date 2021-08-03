@@ -356,6 +356,7 @@ export enum Param {
     searchTokenString = 'searchTokenString',
     executeSearch = 'executeSearch',
     fullHeight = 'isFullHeightPinboard',
+    Version = 'version',
     ViewPortHeight = 'viewPortHeight',
     ViewPortWidth = 'viewPortWidth',
 }
