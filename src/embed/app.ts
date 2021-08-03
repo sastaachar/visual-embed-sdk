@@ -71,6 +71,10 @@ export interface AppViewConfig extends ViewConfig {
      * pinboards and answers, would be filtered by this tag.
      */
     tag?: string;
+     /**
+     * The array of pinboard GUIDs to be hidden
+     */
+    hiddenPinboards?: string[];
 }
 
 /**
@@ -96,6 +100,7 @@ export class AppEmbed extends V1Embed {
             disabledActionReason,
             hiddenActions,
             tag,
+            hiddenPinboards,
         } = this.viewConfig;
 
         if (disabledActions?.length) {
@@ -109,6 +114,9 @@ export class AppEmbed extends V1Embed {
         }
         if (tag) {
             params[Param.Tag] = tag;
+        }
+        if (hiddenPinboards && hiddenPinboards.length) {
+            params[Param.hiddenPinboards] = JSON.stringify(hiddenPinboards);
         }
 
         const queryParams = getQueryParamString(params, true);
