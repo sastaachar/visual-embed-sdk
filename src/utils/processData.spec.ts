@@ -62,7 +62,7 @@ describe('Unit test for process data', () => {
 
     test('AuthInit', () => {
         const sessionInfo = {
-            userGuid: '1234',
+            userGUID: '1234',
             mixpanelToken: 'abc123',
             isPublicUser: false,
         };
@@ -71,7 +71,7 @@ describe('Unit test for process data', () => {
         expect(processDataInstance.getProcessData(e.type, e, '')).toEqual({
             type: e.type,
             data: {
-                userGuid: sessionInfo.userGuid,
+                userGUID: sessionInfo.userGUID,
             },
         });
         expect(auth.initSession).toBeCalledWith(sessionInfo);

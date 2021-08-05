@@ -28,11 +28,11 @@ function processAuthInit(e: any) {
     // Store user session details sent by app.
     initSession(e.data);
 
-    // Expose only allowed details (eg: userGuid) back to SDK users.
+    // Expose only allowed details (eg: userGUID) back to SDK users.
     return {
         ...e,
         data: {
-            userGuid: e.data.userGuid,
+            userGUID: e.data.userGUID,
         },
     };
 }

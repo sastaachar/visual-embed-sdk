@@ -56,7 +56,7 @@ export function initMixpanel(sessionInfo: any): void {
     if (token) {
         mixpanel.init(token);
         if (!isPublicCluster) {
-            mixpanel.identify(sessionInfo.userGuid);
+            mixpanel.identify(sessionInfo.userGUID);
         }
         setEventCollectorOn();
         emptyQueue();

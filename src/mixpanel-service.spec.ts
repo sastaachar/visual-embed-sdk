@@ -22,12 +22,12 @@ describe('Unit test for mixpanel', () => {
     test('initMixpanel and test upload event', () => {
         const sessionInfo = {
             mixpanelToken: 'abc123',
-            userGuid: '12345',
+            userGUID: '12345',
             isPublicUser: false,
         };
         initMixpanel(sessionInfo);
         expect(mixpanel.init).toHaveBeenCalledWith(sessionInfo.mixpanelToken);
-        expect(mixpanel.identify).toHaveBeenCalledWith(sessionInfo.userGuid);
+        expect(mixpanel.identify).toHaveBeenCalledWith(sessionInfo.userGUID);
 
         uploadMixpanelEvent(MIXPANEL_EVENT.VISUAL_SDK_CALLED_INIT, {
             authType: config.authType,
@@ -40,13 +40,13 @@ describe('Unit test for mixpanel', () => {
         const sessionInfo = {
             mixpanelToken: 'newToken',
             isPublicUser: true,
-            userGuid: 'newUser',
+            userGUID: 'newUser',
         };
         initMixpanel(sessionInfo);
 
         expect(mixpanel.init).toHaveBeenCalledWith(sessionInfo.mixpanelToken);
         expect(mixpanel.identify).not.toHaveBeenCalledWith(
-            sessionInfo.userGuid,
+            sessionInfo.userGUID,
         );
     });
 });

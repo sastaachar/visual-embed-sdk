@@ -426,6 +426,7 @@ export class TsEmbed {
         eventPort?: MessagePort | void,
     ): void {
         const callbacks = this.eventHandlerMap.get(eventType) || [];
+        console.log(eventType, callbacks);
         callbacks.forEach((callback) =>
             callback(data, (payload) => {
                 this.triggerEventOnPort(eventPort, payload);
