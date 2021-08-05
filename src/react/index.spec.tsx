@@ -2,7 +2,11 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import '@testing-library/jest-dom/extend-expect';
 import { cleanup, fireEvent, render, waitFor } from '@testing-library/react';
-import { getIFrameEl, getIFrameSrc, postMessageToParent } from '../test/test-utils';
+import {
+    getIFrameEl,
+    getIFrameSrc,
+    postMessageToParent,
+} from '../test/test-utils';
 import { SearchEmbed, AppEmbed, PinboardEmbed } from './index';
 import { AuthType, init } from '../index';
 import { EmbedEvent } from '../types';
@@ -49,8 +53,8 @@ describe('React Components', () => {
             postMessageToParent(iframe.contentWindow, {
                 type: EmbedEvent.AuthInit,
                 data: {
-                    userGUID
-                }
+                    userGUID,
+                },
             });
         });
     });
