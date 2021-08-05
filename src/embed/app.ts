@@ -72,9 +72,9 @@ export interface AppViewConfig extends ViewConfig {
      */
     tag?: string;
     /**
-     * The array of pinboard GUIDs to be hidden
+     * The array of GUIDs to be skipped
      */
-    hiddenPinboards?: string[];
+    skipIds?: string[];
 }
 
 /**
@@ -100,7 +100,7 @@ export class AppEmbed extends V1Embed {
             disabledActionReason,
             hiddenActions,
             tag,
-            hiddenPinboards,
+            skipIds,
         } = this.viewConfig;
 
         if (disabledActions?.length) {
@@ -115,8 +115,8 @@ export class AppEmbed extends V1Embed {
         if (tag) {
             params[Param.Tag] = tag;
         }
-        if (hiddenPinboards && hiddenPinboards.length) {
-            params[Param.hiddenPinboards] = JSON.stringify(hiddenPinboards);
+        if (skipIds && skipIds.length) {
+            params[Param.skipIds] = JSON.stringify(skipIds);
         }
 
         const queryParams = getQueryParamString(params, true);
