@@ -71,7 +71,7 @@ export interface AppViewConfig extends ViewConfig {
      * pinboards and answers, would be filtered by this tag.
      */
     tag?: string;
-     /**
+    /**
      * The array of pinboard GUIDs to be hidden
      */
     hiddenPinboards?: string[];
