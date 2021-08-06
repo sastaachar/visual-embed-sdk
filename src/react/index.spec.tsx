@@ -26,7 +26,7 @@ describe('React Components', () => {
             await waitFor(() => getIFrameEl(container));
 
             expect(getIFrameSrc(container)).toBe(
-                `http://${thoughtSpotHost}/?dataSourceMode=hide&useLastSelectedSources=false&version=${version}#/embed/answer`,
+                `http://${thoughtSpotHost}/?dataSourceMode=hide&useLastSelectedSources=false&sdkVersion=${version}#/embed/answer`,
             );
         });
 
