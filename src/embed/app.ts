@@ -72,9 +72,9 @@ export interface AppViewConfig extends ViewConfig {
      */
     tag?: string;
     /**
-     * The array of GUIDs to be skipped
+     * The array of GUIDs to be hidden
      */
-    skipIds?: string[];
+    hideObjects?: string[];
 }
 
 /**
@@ -100,7 +100,7 @@ export class AppEmbed extends V1Embed {
             disabledActionReason,
             hiddenActions,
             tag,
-            skipIds,
+            hideObjects,
         } = this.viewConfig;
 
         if (disabledActions?.length) {
@@ -115,8 +115,8 @@ export class AppEmbed extends V1Embed {
         if (tag) {
             params[Param.Tag] = tag;
         }
-        if (skipIds && skipIds.length) {
-            params[Param.skipIds] = JSON.stringify(skipIds);
+        if (hideObjects && hideObjects.length) {
+            params[Param.HideObjects] = JSON.stringify(hideObjects);
         }
 
         const queryParams = getQueryParamString(params, true);

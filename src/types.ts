@@ -348,7 +348,7 @@ export enum Param {
     preventPinboardFilterRemoval = 'preventPinboardFilterRemoval',
     SearchQuery = 'searchQuery',
     HideActions = 'hideAction',
-    skipIds = 'skipIds',
+    HideObjects = 'hideObjects',
     EnableVizTransformations = 'enableVizTransform',
     EnableSearchAssist = 'enableSearchAssist',
     HideResult = 'hideResult',
