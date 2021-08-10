@@ -30,10 +30,7 @@ import {
     Param,
 } from '../types';
 import { authenticate } from '../auth';
-import {
-    uploadMixpanelEvent,
-    MIXPANEL_EVENT,
-} from '../mixpanel-service';
+import { uploadMixpanelEvent, MIXPANEL_EVENT } from '../mixpanel-service';
 import { getProcessData } from '../utils/processData';
 import { processTrigger } from '../utils/processTrigger';
 

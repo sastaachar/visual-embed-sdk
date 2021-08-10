@@ -15,7 +15,8 @@ const defaultViewConfig = {
     },
 };
 const thoughtSpotHost = 'tshost';
-const defaultParams = '&hostAppUrl=http://localhost&viewPortHeight=768&viewPortWidth=1024';
+const defaultParams =
+    '&hostAppUrl=http://localhost&viewPortHeight=768&viewPortWidth=1024';
 
 beforeAll(() => {
     init({

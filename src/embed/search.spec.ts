@@ -16,7 +16,8 @@ const defaultViewConfig = {
 };
 const answerId = 'eca215d4-0d2c-4a55-90e3-d81ef6848ae0';
 const thoughtSpotHost = 'tshost';
-const defaultParams = 'hostAppUrl=http://localhost&viewPortHeight=768&viewPortWidth=1024'
+const defaultParams =
+    'hostAppUrl=http://localhost&viewPortHeight=768&viewPortWidth=1024';
 
 beforeAll(() => {
     init({
