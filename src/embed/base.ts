@@ -25,14 +25,12 @@ import {
     HostEvent,
     EmbedEvent,
     MessageCallback,
-    AuthType,
     Action,
     RuntimeFilter,
-    OperationType,
+    Param,
 } from '../types';
-import { authenticate, isAuthenticated } from '../auth';
+import { authenticate } from '../auth';
 import {
-    initMixpanel,
     uploadMixpanelEvent,
     MIXPANEL_EVENT,
 } from '../mixpanel-service';
@@ -295,6 +293,18 @@ export class TsEmbed {
             .join('/');
 
         return `${basePath}#/embed`;
+    }
+
+    /**
+     * Common query params set for all the embed modes.
+     * @returns queryParams
+     */
+    protected getBaseQueryParams() {
+        const queryParams = {};
+        queryParams[Param.HostAppUrl] = window?.location?.origin || '';
+        queryParams[Param.ViewPortHeight] = window.innerHeight;
+        queryParams[Param.ViewPortWidth] = window.innerWidth;
+        return queryParams;
     }
 
     /**
