@@ -1,6 +1,6 @@
-const asciidoc = require(`asciidoctor`)();
-const config = require('./docs/src/configs/doc-configs');
+const asciidoc = require('asciidoctor')();
 const { htmlToText } = require('html-to-text');
+const config = require('./docs/src/configs/doc-configs');
 
 const buildEnv = process.env.BUILD_ENV || config.BUILD_ENVS.LOCAL; // Default build env
 
@@ -57,7 +57,7 @@ class CustomDocConverter {
             let target = node.getTarget();
 
             // get anchor attributes
-            let attributes = node.getAttributes();
+            const attributes = node.getAttributes();
             if (this.isTransformLink(target)) {
                 // check if link is for 'Visual Embed SDK' documents or not
                 if (target.includes(config.VISUAL_EMBED_SDK_PREFIX)) {
@@ -140,17 +140,17 @@ module.exports = {
                 // language file path
                 defaultLanguage: 'en',
                 // option to redirect to `/en` when connecting `/`
-                redirect: true,
+                redirect: false,
             },
         },
         {
             resolve: 'gatsby-transformer-asciidoc',
             options: {
-                safe: `server`,
+                safe: 'server',
                 attributes: {
                     showtitle: true,
                     imagesdir: '/doc-images',
-                    path:`${__dirname}/docs/src/asciidocs/partials`,
+                    path: `${__dirname}/docs/src/asciidocs/partials`,
                 },
                 fileExtensions: ['ad', 'adoc'],
                 converterFactory: CustomDocConverter,
