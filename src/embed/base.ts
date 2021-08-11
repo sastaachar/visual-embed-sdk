@@ -33,7 +33,6 @@ import { authenticate } from '../auth';
 import { uploadMixpanelEvent, MIXPANEL_EVENT } from '../mixpanel-service';
 import { getProcessData } from '../utils/processData';
 import { processTrigger } from '../utils/processTrigger';
-import { version } from '../../package.json';
 
 let config = {} as EmbedConfig;
 
@@ -310,7 +309,6 @@ export class TsEmbed {
         queryParams[Param.HostAppUrl] = window?.location?.origin || '';
         queryParams[Param.ViewPortHeight] = window.innerHeight;
         queryParams[Param.ViewPortWidth] = window.innerWidth;
-        queryParams[Param.Version] = version;
         return queryParams;
     }
 
