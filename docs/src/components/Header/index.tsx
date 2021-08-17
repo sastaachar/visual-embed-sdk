@@ -21,7 +21,7 @@ const Header = (props: { location: Location }) => (
                     <a className="m-0 d-inline-block docsWrapper" href="?pageid=introduction">{t('DOCS')}</a>
                 </div>
 
-                <Dropdown location={props.location} />
+                {/* <Dropdown location={props.location} /> */}
             </div>
         </section>
     </header>
