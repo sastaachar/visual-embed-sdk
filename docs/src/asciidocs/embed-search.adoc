@@ -18,24 +18,19 @@ In your .html page, include the JavaScript file in the `<script>` tag under `<he
 == Import the SearchEmbed package
 Import the SearchEmbed SDK library to your application environment:
 
+
+**npm**
 [source,javascript]
 ----
 import { SearchEmbed, AuthType, init } from '@thoughtspot/visual-embed-sdk';
 ----
-////
-== Import styles
+
+**ES6**
 [source,javascript]
 ----
-import "./styles.css"
+<script type='module'>
+import { SearchEmbed, AuthType, init } from 'https://cdn.jsdelivr.net/npm/@thoughtspot/visual-embed-sdk/dist/tsembed.es.js';
 ----
-
-+
-
-SearchEmbed::
-The JavaScript library for embedding the ThoughtSpot search module.
-
-Action::
-////
 
 == Add the embed domain
 
@@ -43,78 +38,20 @@ To allow your client application to connect to ThoughtSpot:
 
 . Configure the URL with ThoughtSpot hostname or IP address.
 . Specify the authentication method to use for authenticating application users.
-+
-[source,javascript]
-----
-init
-    ({
-        thoughtSpotHost:"https://<hostname>:<port>",
-        authType: AuthType.SSO,
-    });
-----
-+
-thoughtSpotHost::
-_String_. Hostname or IP address of the ThoughtSpot application.
 
-+
-authType::
-_String_. Authentication type. You can set the `authType` attribute to one of the following values:
+include::{path}/embed-auth-config.adoc[]
 
-* `*None*`
-+
-Requires no authentication. The user must already be logged in to ThoughtSpot before interacting with the embedded content.
-
-+
-[WARNING]
-Do not use this authentication method in production environments.
-
-* `*Basic*`
-+
-Allows authenticating and logging in a user using the ThoughtSpot `/tspublic/v1/session/login` API. The API request passes `username` and `password` parameters to obtain an authentication token. For more information, see xref:session-api.adoc[Session API].
-
-+
-[WARNING]
-Do not use this authentication method in production environments.
-
-* `*SSO*`
-+
-Sets SAML SSO as the authentication method. Federated users can authenticate with their SSO credentials to access the embedded ThoughtSpot content.
-
-** `*noRedirect*` _Optional_
-+
-_Boolean_. When set to `true`, it opens the SAML SSO authentication workflow in a pop-up window, instead of refreshing the application web page to direct users to the SAML login page. 
-
-* `*AuthServer*`
-
-+
-+
-Enables trusted authentication method. To use the trusted authentication method, specify the  trusted authentication server in the `authEndpoint` attribute or use the `getAuthToken` method. 
-
-+
-
-** `*authEndpoint*` _Optional_
-+
-_String_. The endpoint URL of the authentication server. When the `authEndPoint` attribute is defined, a GET request is sent to the authentication endpoint, which returns the authentication token as plaintext in its API response. This attribute is not required if `getAuthToken` is used.
-
-** `*username*`
-+
-_String_. The username of the ThoughtSpot user.
-
-** `*getAuthToken*` _Optional_
-+
-A function that invokes the trusted authentication endpoint and returns a `Promise` string that resolves to the authentication token. This attribute is not required if `authEndpoint` is used. +
-
-    getAuthToken: () => Promise.resolve(token) 
-
+For more information, see xref:embed-authentication.adoc[Embed user authentication].
 
 == Create an instance of the SearchEmbed class
 
 Create an instance of the SearchEmbed object and customize your search page view.
 
 [source,javascript]
+
 ----
 const searchEmbed = new SearchEmbed(
-    document.getElementById('ts-embed'), 
+    document.getElementById('ts-embed'),
     {
 	    frameParams: {
 		width: '100%',
@@ -128,22 +65,25 @@ const searchEmbed = new SearchEmbed(
     	hiddenActions: [],
     	hideDataSources: false,
     	hideResults: false,
-    	searchQuery: "<query-string>",
+    	searchOptions: {
+            searchTokenString: '<TML-query-string>',
+            executeSearch: true,
+     },
+
     },
 });
 ----
 
-
 frameParams::
-Sets the `width` and `height` dimensions to render the iframe in the web browser. You can set the `width` and `height` attribute values in pixels or as a percentage. 
+Sets the `width` and `height` dimensions to render the iframe in the web browser. You can set the `width` and `height` attribute values in pixels or as a percentage.
 
-answerID::
-_String_. The Global Unique Identifiers (GUID) of the search answers saved in a user profile.
+answerID [small]#__Optional__#::
+_String_. The Global Unique Identifiers (GUID) of the answers saved in a user profile.
 
 dataSources::
 _Array of strings_. The GUIDs of the data sources for running a search query on.
 
-collapseDataSources [small]*_optional_*::
+collapseDataSources [small]#__Optional__#::
 _Boolean_. When set to true, it minimizes the Data Source panel.
 
 +
@@ -152,8 +92,8 @@ _Boolean_. When set to true, it minimizes the Data Source panel.
 ++++
 
 
-disabledActions [small]_optional_::
-_Array of strings_. Disables the specified menu items from the list of actions on a  search answer page. You can use this attribute to restrict user access to certain features.
+disabledActions [small]#__Optional__#::
+_Array of strings_. Disables the specified menu items from the list of actions on a search results page. You can use this attribute to restrict user access to certain features.
 +
 For example, to disable the *Show underlying data* action from the *More* menu image:./images/icon-more-10px.png[the more options menu], specify the `ShowUnderlyingData` action menu string in the `disabledActions` attribute.
 
@@ -171,14 +111,17 @@ For a complete list of action menu items and the corresponding strings to use fo
 
 
 [NOTE]
-If you have xref:customize-actions-menu.adoc[added a custom action] and you want to disable this custom action, make sure you specify the ID of the custom action in the `disabledActions` attribute. For example, if a custom action is labelled as *Send Email* and its ID is set as *send-email*, use `send-email` in the `disabledActions` attribute to disable this action on the search answer page.
+====
+If you have xref:customize-actions-menu.adoc[added a custom action] and you want to disable this custom action, make sure you specify the ID of the custom action in the `disabledActions` attribute.
+
+For example, if the custom action ID is set as *send-email*, use `send-email` in the `disabledActions` attribute to disable this action on the search results page.
+====
+
+disabledActionReason [small]#__Optional__#::
+_String_. Indicates the reason for disabling an action on search data.
 
 
-disabledActionReason [small]_optional_::
-_String_. Indicates the reason for disabling an action on a search answer page.
-
-
-hideDataSources [small]_optional_::
+hideDataSources [small]#__Optional__#::
 _Boolean_. When set to true, it hides the default Data Source panel. Use this attribute if you want to create a custom data panel.
 
 +
@@ -187,9 +130,8 @@ _Boolean_. When set to true, it hides the default Data Source panel. Use this at
 ++++
 
 
-hideResults [small]_optional_::
-_Boolean_. When set to true, it hides charts and tables in search answers. Use this attribute if you want to create your own visualization.
-
+hideResults [small]#__Optional__#::
+_Boolean_. When set to true, it hides charts and tables that appear beneath the search bar. You can use this attribute to hide charts and tables when creating custom visualizations using raw data from a search data.
 +
 ++++
 <a href="{{previewPrefix}}/playground/search?hideResults=true" id="preview-in-playground" target="_blank">Preview in Playground</a>
@@ -205,8 +147,8 @@ _Boolean_. When set to true, it enables Search Assist. Search Assist allows you 
 ////
 
 
-hiddenActions::
-_Array of strings_. Hides the specified action menu items on a search answer page. You can use this attribute to remove actions that are not applicable to your application context.
+hiddenActions [small]#__Optional__#::
+_Array of strings_. Hides the specified action menu items on an answer page. You can use this attribute to remove actions that are not relevant to your application context.
 
 +
 ++++
@@ -214,11 +156,11 @@ _Array of strings_. Hides the specified action menu items on a search answer pag
 ++++
 
 +
-For example, to hide the *Replay Search* action from the *More* menu image:./images/icon-more-10px.png[the more options menu], specify the `ReplaySearch`  action menu string in the `hiddenActions` attribute.
+For example, to hide the *Share* action from the *More* menu image:./images/icon-more-10px.png[the more options menu], specify the `Share` action menu string in the `hiddenActions` attribute.
 
 +
 ----
-hiddenActions: Action.ReplaySearch
+hiddenActions: ['Action.Share']
 ----
 
 +
@@ -226,9 +168,42 @@ For a complete list of action menu items and the corresponding strings to use fo
 
 
 [NOTE]
-If you have xref:customize-actions-menu.adoc[added a custom action] and you want to hide this custom action, make sure you specify the ID of the custom action in the `hiddenActions` attribute. For example, if a custom action is created with the *Send Email* label and the ID is set as *send-email*, use `send-email` in the `hiddenActions` attribute to hide this action on the  search answer page.
+====
+If you have xref:customize-actions-menu.adoc[added a custom action] and you want to hide this custom action, make sure you specify the ID of the custom action in the `hiddenActions` attribute.
+
+For example, if the custom action ID is set as *send-email*, use `send-email` in the `hiddenActions` attribute to hide this action on the search results page.
+====
+
+[#search-query]
+searchOptions [small]#__Optional__#::
+Attribute for defining search tokens and executing search.
+
+* `searchTokenString`
++
+__String__. The ThoughtSpot Modeling Language (TML) query string. For example, to use the `product` and `sales` keywords, you can set the search token as shown here:
+
++
+
+    searchTokenString: '[sales][product name]'
+
+* `executeSearch`
+__Boolean__. When set to `true`, the  focus is placed on search results. When set to `false`, the focus is placed at the end of search tokens in the search bar.
++
+
+[source, javascript]
+----
+searchOptions: {
+        searchTokenString: '[product][sales][date].daily',
+        executeSearch: true,
+    }
+----
 
 
+++++
+<a href="{{previewPrefix}}/playground/search/searchOptions=true" id="preview-in-playground" target="_blank">Try it in Playground</a>
+++++
+
+////
 searchQuery::
 _String_. The search query string to use when the application loads. You can use the following types of search tokens to construct a search query:
 * xref:search-data-api.adoc#Column[Column]
@@ -248,13 +223,10 @@ searchQuery: "[Revenue] by [Shipmode]"
 ++++
 <a href="{{previewPrefix}}/playground/search/searchQuery=true" id="preview-in-playground" target="_blank">Try it in Playground</a>
 ++++
+////
+== Define a method to process callback custom action payloads
 
-== Render the embedded search
-
-[source, javascript]
-----
- searchEmbed.render();
-----
+include::{path}/callback-payload.adoc[]
 
 == Subscribe to events
 Register event handlers to subscribe to embed events triggered by the ThoughtSpot Search function:
@@ -264,6 +236,7 @@ Register event handlers to subscribe to embed events triggered by the ThoughtSpo
  searchEmbed.on(EmbedEvent.load, hideLoader)
  searchEmbed.on(EmbedEvent.Error)
 ----
+
 If you have added a xref:customize-actions-menu.adoc[custom action], register an event handler to manage the events triggered by the custom action:
 
 [source, javascript]
@@ -275,7 +248,13 @@ If you have added a xref:customize-actions-menu.adoc[custom action], register an
 	}
 })
 ----
-For a complete list of event types that you can register, see  link:{{visualEmbedSDKPrefix}}/enums/embedevent.html[EmbedEvent, window=_blank].
+
+== Render the embedded search
+
+[source, javascript]
+----
+ searchEmbed.render();
+----
 
 == Test the embedded workflow
 
@@ -284,33 +263,12 @@ To verify the ThoughtSpot Search integration, perform the following tasks:
 * Load your application.
 * Search for data from a data source.
 * Verify if the page view parameters, such as hiding or showing the data source panel, function as expected.
-* If you have disabled a menu item on a search answer page, verify if the menu command is disabled.
+* If you have disabled an action for search data obtained from a query, verify if the menu command shows as disabled.
 
 == Code sample
 
-[source,javascript]
-----
-    import { SearchEmbed, AuthType, init } from '@thoughtspot/visual-embed-sdk';
-    init({
-    	thoughtSpotHost: "<%=tshost%>",
-    	authType: AuthType.SSO,
-    });
-    const searchEmbed = new SearchEmbed(document.getElementById('ts-embed'), {
-    	frameParams: {
-    		width: '100%',
-    		height: '100%',
-    	},
-    	dataSources: ['4f289824-e301-4001-ad06-8888f69c4748'],
-    },
-    });
-    searchEmbed.render();
-----
-
-
-++++
-<a href="{{previewPrefix}}/playground/search" id="preview-in-playground" target="_blank">Preview in Playground</a>
-++++
+See xref:code-samples.adoc[Code samples].
 
 == Additional resources
 
-For more information on searchEmbed SDK reference, see xref:sdk-reference.adoc[Visual Embed SDK Reference].
+For more information on `searchEmbed` SDK reference, see xref:sdk-reference.adoc[Visual Embed SDK Reference].

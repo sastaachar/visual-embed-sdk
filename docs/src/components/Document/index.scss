@@ -1,11 +1,17 @@
 @import '../../assets/styles/variables.scss';
 @import '../../assets/styles/highlight.scss';
 @import '../../assets/styles/admonition.scss';
+@import '../../assets/styles/grid.scss';
+
 
 .documentWrapper {
     width: calc(100% - #{$docmap-width-desktop});
-    padding: $padding-md;
     color: var(--primary-color);
+
+    .documentView {
+        min-height: 75vh;
+        padding: $padding-md $padding-md 0;
+    }
 
     /* In order to hide TOC in main component */
     #toc {
@@ -13,7 +19,7 @@
     }
 
     h1 {
-        margin-top: 0;
+        margin-top: $title-margin;
     }
 
     p {
@@ -143,13 +149,23 @@
     h3 {
         margin-top: $sub-title-margin;
         font-size: $font-size-h3;
+        font-weight: $font-weight-normal;
     }
 
     h4 {
         font-size: $font-size-h4;
         margin-top: $sub-title-margin;
+        font-weight: $font-weight-normal;
     }
 
+    h5 {
+        font-size: $font-size-h5;
+        margin-top: $sub-title-margin-h5;
+        margin-bottom: $sub-title-margin-h5;
+        font-weight: $font-weight-bold;
+        color: var(--primary-color);
+    }
+    
     ol > li {
         &::marker {
             font-weight: $font-weight-normal;
@@ -200,7 +216,7 @@
 
     .admonitionblock {
         code {
-            font-family: Optimo-Plain;
+            font-family: $font-family-code;
         }
     }
 
@@ -209,9 +225,14 @@
         width: $icon-height;
     }
 
-    a, a:active {
+    a,
+    a:active {
         color: var(--secondary-color);
     }
+}
+
+hr {
+    border-color: var(--border-color);
 }
 
 pre {

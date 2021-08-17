@@ -3,6 +3,7 @@
 .searchWrapper {
     padding: $padding-md;
     border-bottom: 1px var(--border-color) solid;
+    box-shadow: var(--box-shadow);
     position: fixed;
     width: calc(100% - 250px);
     background: var(--body-background-color);
@@ -41,7 +42,7 @@
     }
 
     input::placeholder {
-        color: var(--primary-color);
+        color: $darkgrey;
     }
 
     .searchIcon {
@@ -107,7 +108,7 @@
 @media screen and (max-width: $mobile-resolution-max) {
     .searchWrapper {
         left: 0;
-        padding: 12px 24px;
+        padding: 12px;
         width: 100%;
 
         .searchInputWrapper {

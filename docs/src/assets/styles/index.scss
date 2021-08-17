@@ -36,7 +36,6 @@ main {
 
 main.withHeaderFooter {
     padding-top: 51px;
-    padding-bottom: 25px;
     display: flex;
     min-height: 100vh;
 }
@@ -53,8 +52,12 @@ a {
     margin: $gutter;
 }
 
-.container {
+.containerWrapper {
     padding: 10px 25px;
+}
+
+.d-inline-block {
+    display: inline-block;
 }
 
 /*active class with background*/
@@ -153,6 +156,47 @@ button {
 
 /*Tags style end*/
 
+/* Div box style start */
+
+.boxDiv {
+    padding: 10px;
+    display: inline-block;
+    margin: 10px;
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
+    &:hover {
+        box-shadow: var(--box-shadow-hover);
+    }
+}
+
+.boxHalfWidth {
+    width: 48%;
+    display: inline-block;
+}
+
+.boxFullWidth {
+    width: 100%;
+}
+
+.divider {
+    border-bottom: 1px solid var(--border-color);
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.boxBody {
+    font-weight: $font-size-doc;
+    font-size: $font-size-normal;
+    line-height: $line-height-doc;
+    color: var(--primary-color);
+
+}
+
+
+
+/* Div box style end */
+
 /*Scrollbar styling start*/
 ::-webkit-scrollbar {
     width: 0.4em;
@@ -188,6 +232,14 @@ button {
     .documentBody {
         width: 100%;
         padding-left: 0;
+    }
+
+    .boxDiv {
+        width: 100%;
+    }
+
+    .boxHalfWidth {
+        width: 100%;
     }
 }
 

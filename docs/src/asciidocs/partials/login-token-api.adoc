@@ -1,4 +1,5 @@
-When trusted authentication is enabled on ThoughtSpot, the authentication server obtains an authentication token from ThoughtSpot on a user's behalf. The `/tspublic/v1/session/login/token` API allows you to log in as an authorized user and access ThoughtSpot content.
+
+When trusted authentication is enabled on ThoughtSpot, trusted client applications can obtain an authentication token from the authentication server for ThoughtSpot user. The `/tspublic/v1/session/login/token` API allows you to log in to ThoughtSpot with the authentication token obtained from the trusted authentication server.
 
 === Resource URL
 ----
@@ -17,8 +18,7 @@ GET /tspublic/v1/session/login/token
 
 `\https://<redirect-domain>/?authtoken=<user_auth_token>&embedApp=true&primaryNavHidden=true#/embed/viz/<pinboard_id>/<viz-id>`
 
-For example, if the user has requested access to a specific visualization on a pinboard, the redirect URL includes the host domain to which the user will be redirected, the authentication token, and the visualization and pinboard IDs.
-
+For example, if the user has requested access to a specific visualization on a pinboard, the redirect URL includes the host domain to which the user will be redirected, the authentication token, and the visualization and pinboard IDs. 
 |====
 
 
@@ -37,7 +37,7 @@ https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/session/login/token?username=
 ----
 
 === Example response
-On successful login, the API returns the application details.
+On successful login, the API returns the application details. 
 The following example shows a partial output.
 [source, HTML]
 ----
@@ -183,7 +183,7 @@ The following example shows a partial output.
         var chrome = ua && ua.indexOf('Chrome');
 
     </script>
-
+    
         <link type="text/css" rel="stylesheet" href="resources/css/all.min.90630a0a141abec0.css">
 
         <script src="js/lib.min.bcef417e2b193abd.js"></script>
@@ -203,6 +203,6 @@ The following example shows a partial output.
 |===
 |HTTP status code|Description
 |**200**|The user is logged in successfully.
-|**302**|The user is redirected to the specified URL.
+|**302**|The user is redirected to the specified URL. 
 |**401**|Unauthorized request or invalid token.
 |===
