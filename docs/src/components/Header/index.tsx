@@ -45,7 +45,7 @@ const Header = (props: { location: Location }) => {
 
                         </div>
                     </div>
-                    /* <Dropdown location={props.location} /> */
+                    {/*  <Dropdown location={props.location} /> */}
                 </div>
             </section>
         </header>
