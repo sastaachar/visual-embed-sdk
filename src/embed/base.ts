@@ -46,3 +46,13 @@ export const init = (embedConfig: EmbedConfig): void => {
         host: config.thoughtSpotHost,
     });
 };
+
+export const prefetch = (url?: string): void => {
+    const iFrame = document.createElement('iframe');
+    iFrame.src = config.thoughtSpotHost || url || '';
+    iFrame.style.width = '0';
+    iFrame.style.height = '0';
+    iFrame.style.border = '0';
+    iFrame.id = 'prefetchIframe';
+    document.body.appendChild(iFrame);
+};
