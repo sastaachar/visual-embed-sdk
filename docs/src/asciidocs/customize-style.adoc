@@ -35,7 +35,7 @@ To access style customization settings:
 
 [TIP]
 The style customization settings are also available in the ThoughtSpot *Admin*  console.
-For more information on setting UI styles from the *Admin* console, see link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/style-customization.html[Style Customization].
+For more information on setting UI styles from the *Admin* console, see link:https://docs.thoughtspot.com/latest/admin/admin-portal/style-customization.html[Style Customization].
 
 [#logo-change]
 == Change application logo and favicon
@@ -193,4 +193,3 @@ To customize the page title displayed in the browser bar:
 When you customize styles, the changes take effect after you refresh the browser.
 
 To revert your changes, use the *Reset* button that appears when you move your cursor to the right of the style setting option.
-

@@ -7,11 +7,11 @@
 
 The user access control in ThoughtSpot is applied based on the users and groups configured in your application instance. The users and groups are stored locally in ThoughtSpot, even if the authentication is done using the SAML SSO or trusted authentication service.
 
-To provide access to ThoughtSpot content or define role-based privileges, you need to add users and groups in ThoughtSpot. You can add link:https://cloud-docs.thoughtspot.com/admin/users-groups/add-user.html[users,  window=_blank] and link:https://cloud-docs.thoughtspot.com/admin/users-groups/add-group.html[user groups]  either manually in the UI or by using the xref:rest-api-reference.adoc[REST API services].
+To provide access to ThoughtSpot content or define role-based privileges, you need to add users and groups in ThoughtSpot. You can add link:https://docs.thoughtspot.com/latest/admin/users-groups/add-user.html[users,  window=_blank] and link:https://docs.thoughtspot.com/latest/admin/users-groups/add-group.html[user groups] either in the UI or by using the xref:rest-api-reference.adoc[REST API services].
 
 == Group privileges
 
-Each user group includes a set of privileges for its users. When a user is assigned to a group in ThoughtSpot, the default privileges associated with a group are assigned to its users. The group privileges allow users belonging to a group to perform specific operations and access workflows. If a user belongs to more than one group, they will have the highest level of privileges from all the groups they belong to. 
+Each user group includes a set of privileges for its users. When a user is assigned to a group in ThoughtSpot, the default privileges associated with a group are assigned to its users. The group privileges allow users belonging to a group to perform specific operations and access workflows. If a user belongs to more than one group, they will have the highest level of privileges from all the groups they belong to.
 
 [NOTE]
 ====

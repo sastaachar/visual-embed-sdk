@@ -18,9 +18,9 @@ ThoughtSpot supports connecting to external data warehouses and using these as d
 
 
 If you want to get a list of data connections that are currently used by your ThoughtSpot cluster, you can use the connection APIs.
-
+////
 Before using these APIs, make sure the data connection is set up. For information about how to set up a data connection to an external database and link it as a data source, see link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/embrace.html[https://cloud-docs.thoughtspot.com/admin/ts-cloud/embrace.html, window=_blank].
-
+////
 
 == Supported operations
 
@@ -39,8 +39,8 @@ GET /tspublic/v1/connection/types
 
 None
 
-=== Example request 
- 
+=== Example request
+
 .cURL
 [source,cURL]
 ----
@@ -148,7 +148,7 @@ GET /tspublic/v1/connection/list
 [width="100%" cols="1,4"]
 [options='header']
 |====
-|Query Parameter|Description 
+|Query Parameter|Description
 |`category` __Optional__ a|__String__. Type of the live query object. Valid values are:
 
 * `ALL`
@@ -164,7 +164,7 @@ Gets a list of live query objects that are set up in the current logged-in user'
 * `DEFAULT` to use the default sort order in the response.
 * `NAME` to sort headers by the connection name.
 * `DISPLAY_NAME` to sort  headers by the display name of the connections.
-* `AUTHOR` to sort the headers by the author who set up the live query connection.  
+* `AUTHOR` to sort the headers by the author who set up the live query connection.
 * `CREATED` to sort headers by the timestamp at which live query connections were set up.
 * `MODIFIED` to sort headers by the timestamp at which the live query connections were modified.
 | `sortascending` a|__Boolean__. A flag to specify the sort order. A null value defines the default order.
@@ -174,7 +174,7 @@ Gets a list of live query objects that are set up in the current logged-in user'
 |`offset` __Optional__|__Integer__. Batch offset to value to fetch page headers. The default value is `-1`, which implies first page.
 |`batchsize` __Optional__ |__Integer__. Number of batches in which you want to fetch page headers in a single query. The default value is `-1`, which implies no pagination.
 |`tagname` __Optional__  |__Array of strings__. A JSON array of tag names to filter response headers by tags. A tag is a  label applied to a ThoughtSpot object.
-|`pattern` __Optional__  |__String__. A pattern to match the name of the object. This parameter supports matching case-insensitive strings. For a wildcard match, use `%`.  
+|`pattern` __Optional__  |__String__. A pattern to match the name of the object. This parameter supports matching case-insensitive strings. For a wildcard match, use `%`.
 |====
 
 === Example request
@@ -191,7 +191,7 @@ curl -X GET --header 'Accept: application/json' --header 'X-Requested-By: Though
 https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/connection/list
 ----
 
-=== Example response 
+=== Example response
 
 [source,JSON]
 ----
