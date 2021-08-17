@@ -5,7 +5,16 @@ const config = require('./docs/src/configs/doc-configs');
 const buildEnv = process.env.BUILD_ENV || config.BUILD_ENVS.LOCAL; // Default build env
 
 const getPathPrefix = () => {
-    return 'docs';
+    switch (buildEnv) {
+        case config.BUILD_ENVS.PROD:
+            return config.DEPLOY_ENVS.RELEASE;
+        case config.BUILD_ENVS.DEV:
+        case config.BUILD_ENVS.STAGING:
+            return config.DEPLOY_ENVS.DEV;
+        case config.BUILD_ENVS.LOCAL:
+        default:
+            return ''; // Default path prefix
+    }
 };
 
 const stripLinks = (text) => {
@@ -281,6 +290,5 @@ module.exports = {
                 icon: `${__dirname}/docs/src/assets/icons/favicon.svg`,
             },
         },
-        'gatsby-plugin-output',
     ],
 };
