@@ -10,7 +10,7 @@
 ** link:{{navprefix}}=spotdev-portal[ThoughtSpot Developer portal]
 
 * Authentication and security
-** link:{{navprefix}}=user-roles[User configuration]
+** link:{{navprefix}}=user-roles[Developer access]
 ** link:{{navprefix}}=saml-sso[SAML SSO authentication]
 ** link:{{navprefix}}=trusted-auth[Trusted authentication]
 ** link:{{navprefix}}=security-settings[Security settings]

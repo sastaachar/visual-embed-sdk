@@ -37,6 +37,8 @@ main {
 main.withHeaderFooter {
     padding-top: 51px;
     padding-bottom: 25px;
+    display: flex;
+    min-height: 100vh;
 }
 
 * {
@@ -81,8 +83,7 @@ a {
 /*end visited class*/
 
 .documentBody {
-    float: right;
-    padding-left: 7px;
+    padding-left: 6px;
 }
 
 .introWrapper {
@@ -187,5 +188,11 @@ button {
     .documentBody {
         width: 100%;
         padding-left: 0;
+    }
+}
+
+@media screen and (max-width: $mobile-resolution-max) {
+    main.withHeaderFooter {
+        flex-direction: column;
     }
 }

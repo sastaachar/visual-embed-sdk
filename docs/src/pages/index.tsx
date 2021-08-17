@@ -5,7 +5,6 @@ import { useFlexSearch } from 'react-use-flexsearch';
 import { queryStringParser, isPublicSite } from '../utils/app-utils';
 import passThroughHandler from '../utils/doc-utils';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
 import LeftSidebar from '../components/LeftSidebar';
 import Docmap from '../components/Docmap';
 import Document from '../components/Document';
@@ -28,6 +27,7 @@ import {
     MAX_TABLET_RESOLUTION,
     LEFT_NAV_WIDTH_TABLET,
     MAX_MOBILE_RESOLUTION,
+    MAX_CONTENT_WIDTH_DESKTOP,
     MAIN_HEIGHT_WITHOUT_DOC_CONTENT,
 } from '../constants/uiConstants';
 import { SearchQueryResult } from '../interfaces';
@@ -217,6 +217,16 @@ const IndexPage = ({ location }) => {
         });
     }
 
+    const calculateDocumentBodyWidth = () => {
+        if (isMaxMobileResolution) {
+            if (width > MAX_CONTENT_WIDTH_DESKTOP) {
+                return `${MAX_CONTENT_WIDTH_DESKTOP - 300}px`;
+            }
+            return `${width - 300}px`;
+        }
+        return '100%';
+    };
+
     return (
         <div id="wrapper" data-theme={isDarkMode ? 'dark' : 'light'}>
             {isPublicSiteOpen && <Header />}
@@ -244,9 +254,10 @@ const IndexPage = ({ location }) => {
                 <div
                     className="documentBody"
                     style={{
-                        width: isMaxMobileResolution
-                            ? `${width - leftNavWidth}px`
-                            : '100%',
+                        width: calculateDocumentBodyWidth(),
+                        marginLeft: isMaxMobileResolution
+                            ? `${leftNavWidth}px`
+                            : '0px',
                     }}
                 >
                     <Search
@@ -261,18 +272,24 @@ const IndexPage = ({ location }) => {
                         isMaxMobileResolution={isMaxMobileResolution}
                         setDarkMode={setDarkMode}
                         isDarkMode={isDarkMode}
+                        isPublicSiteOpen={isPublicSiteOpen}
                     />
                     <div className="introWrapper">
-                        <Document docTitle={docTitle} docContent={docContent} />
-                        <Docmap
+                        <Document
+                            docTitle={docTitle}
                             docContent={docContent}
-                            location={location}
-                            options={results}
+                            isPublicSiteOpen={isPublicSiteOpen}
                         />
+                        <div>
+                            <Docmap
+                                docContent={docContent}
+                                location={location}
+                                options={results}
+                            />
+                        </div>
                     </div>
                 </div>
             </main>
-            {isPublicSiteOpen && <Footer />}
         </div>
     );
 };
