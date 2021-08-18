@@ -5,7 +5,7 @@
 :page-pageid: integration-guidelines
 :page-description: ThoughtSpot Embedded Analytics
 
-ThoughtSpot recommends that you browse through the following guidelines before you begin embedding.
+ThoughtSpot recommends that you browse through the following guidelines before embedding ThoughtSpot in your application.
 
 == Define application workflows
 
@@ -35,25 +35,24 @@ For example, to embed ThoughtSpot components in a business application or web pa
 
 == Define an authentication method
 
-For initial development and testing purposes, you can use the xref:api-auth-session.adoc[session REST API] to manage ThoughtSpot user logins and sessions. However, ThoughtSpot does not recommend using the session REST API to manage user sessions in production environments. Instead, you can use the SAML SSO or trusted authentication service to authenticate users.
+For initial development and testing purposes, you can use the basic authentication method with xref:api-auth-session.adoc[session REST APIs] to manage ThoughtSpot user logins and sessions. However, ThoughtSpot recommends that you use the SAML SSO or trusted authentication service to authenticate users in production environments.
 
 SAML SSO::
-To provide a seamless login experience for your application users, you can configure SSO and enable SAML authentication, so that the federated users are automatically authenticated to ThoughtSpot.
-With SSO, you can use your host application, or an external service as the identity provider, and allow authenticated users to access the ThoughtSpot service.
-ThoughtSpot administrators can set up SAML SSO either using the *Admin* console in the ThoughtSpot application.
+To provide a seamless login experience for your application users, you can configure SSO and enable SAML authentication.
+With the SAML authentication method, you can use your host application or an external service as the identity provider, and allow authenticated users to access ThoughtSpot content with their SSO credentials.
++
+ThoughtSpot administrators can set up SAML SSO using the *Admin* UI in the ThoughtSpot application.
 
 +
-To use SSO authentication, you must add the identity provider domain as a SAML redirect domain in the *Security Settings* page of the Developer portal.
-
-+
-For more information, see xref:configure-saml.adoc[Configure SAML].
+To use SSO authentication for an embedded instance, you must add the identity provider domain as a SAML redirect domain in the *Security Settings* page of the Developer portal.
+For more information, see xref:configure-saml.adoc[SAML SSO authentication].
 
 Trusted Authentication::
-Trusted authentication is a token-based authentication service that uses a central authentication service to authenticate ThoughtSpot users. In a trusted authentication workflow, ThoughtSpot provides the authentication service with a token for a given ThoughtSpot user. This token is used for obtaining trust from the client applications before granting  access to ThoughtSpot content.
+Trusted authentication is a token-based authentication service that uses a central authentication service to authenticate ThoughtSpot users. In a trusted authentication workflow, ThoughtSpot provides the authentication server with a token for a given ThoughtSpot user. This token is used for obtaining trust from the client applications before granting access to ThoughtSpot content.
 +
 ThoughtSpot users with administrator privileges can generate a trusted authentication token in the *Security Settings* page of the Developer portal.
 +
-For more information, see xref:trusted-authentication.adoc[Configure trusted authentication].
+For more information, see xref:trusted-authentication.adoc[Trusted authentication].
 
 == Define security settings
 

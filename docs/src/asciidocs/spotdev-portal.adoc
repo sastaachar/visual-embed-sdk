@@ -58,9 +58,8 @@ The Developer portal displays the following customization options for Thoughtspo
 
 * *Styles*
 +
-Provides a set of style customization controls for rebranding the embedded ThoughtSpot content. 
-+
-For more information, see To xref:customize-style.adoc[Customize styles].
+Provides a set of style customization controls to rebrand the embedded ThoughtSpot content. 
+For more information, see xref:customize-style.adoc[Customize styles].
 
 * *Actions*
 +
