@@ -1,4 +1,4 @@
-import { config, handleAuth } from '../embed/base';
+import { getEmbedConfig, handleAuth } from '../embed/base';
 import { initSession } from '../auth';
 import { EmbedEvent, OperationType } from '../types';
 import { getAnswerServiceInstance } from './answerService';
@@ -39,7 +39,7 @@ function processAuthInit(e: any) {
 }
 
 function processAuthExpire(e: any) {
-    const { autoLogin = true } = config; // Set default to true
+    const { autoLogin = true } = getEmbedConfig(); // Set default to true
     if (autoLogin) {
         handleAuth();
     }

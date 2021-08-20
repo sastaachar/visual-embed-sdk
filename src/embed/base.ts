@@ -6,18 +6,14 @@
  * @summary Base classes
  * @author Ayon Ghosh <ayon.ghosh@thoughtspot.com>
  */
-import {
-    getThoughtSpotHost,
-} from '../config';
-import {
-    EmbedConfig,
-} from '../types';
+import { getThoughtSpotHost } from '../config';
+import { EmbedConfig } from '../types';
 import { authenticate } from '../auth';
 import { uploadMixpanelEvent, MIXPANEL_EVENT } from '../mixpanel-service';
 
-export let config = {} as EmbedConfig;
+let config = {} as EmbedConfig;
 
-export let authPromise: Promise<void>;
+let authPromise: Promise<void>;
 
 /**
  * Perform authentication on the ThoughtSpot app as applicable.
@@ -29,6 +25,10 @@ export const handleAuth = () => {
     };
     authPromise = authenticate(authConfig);
 };
+
+export const getEmbedConfig = (): EmbedConfig => config;
+
+export const getAuthPromise = () => authPromise;
 
 /**
  * Initialize the ThoughtSpot embed settings globally and perform
