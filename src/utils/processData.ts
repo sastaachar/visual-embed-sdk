@@ -39,7 +39,8 @@ function processAuthInit(e: any) {
 }
 
 function processAuthExpire(e: any) {
-    if (config.autoLogin) {
+    const { autoLogin = true } = config; // Set default to true
+    if (autoLogin) {
         handleAuth();
     }
     return e;

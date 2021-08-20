@@ -110,6 +110,7 @@ export interface EmbedConfig {
 
     /**
      * Re-login when session expires with the previous login options
+     * @default true
      */
     autoLogin?: boolean;
 }
