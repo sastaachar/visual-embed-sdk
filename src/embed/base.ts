@@ -53,6 +53,6 @@ export const prefetch = (url?: string): void => {
     iFrame.style.width = '0';
     iFrame.style.height = '0';
     iFrame.style.border = '0';
-    iFrame.id = 'prefetchIframe';
+    iFrame.classList.add('prefetchIframe');
     document.body.appendChild(iFrame);
 };
