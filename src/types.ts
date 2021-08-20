@@ -107,6 +107,11 @@ export interface EmbedConfig {
      * @default false
      */
     suppressNoCookieAccessAlert?: boolean;
+
+    /**
+     * Re-login when session expires with the previous login options
+     */
+    autoLogin?: boolean;
 }
 
 export type MessagePayload = { type: string; data: any };
