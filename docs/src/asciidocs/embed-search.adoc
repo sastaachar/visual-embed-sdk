@@ -107,7 +107,7 @@ disabledActions: Action.ShowUnderlyingData
 <a href="{{previewPrefix}}/playground/search?modifyActions=true" id="preview-in-playground" target="_blank">Preview in Playground</a>
 ++++
 +
-For a complete list of action menu items and the corresponding strings to use for disabling menu items, see link:{{visualEmbedSDKPrefix}}/enums/action.html[Action, window=_blank].
+For a complete list of action menu items and the corresponding strings to use for disabling menu items, see link:https://docs.thoughtspot.com/visual-embed-sdk/release/typedoc/enums/action.html[Action, window=_blank].
 
 
 [NOTE]
@@ -164,7 +164,7 @@ hiddenActions: ['Action.Share']
 ----
 
 +
-For a complete list of action menu items and the corresponding strings to use for disabling or hiding menu items, see link:{{visualEmbedSDKPrefix}}/enums/action.html[Action, window=_blank].
+For a complete list of action menu items and the corresponding strings to use for disabling or hiding menu items, see link:https://docs.thoughtspot.com/visual-embed-sdk/release/typedoc/enums/action.html[Action, window=_blank].
 
 
 [NOTE]

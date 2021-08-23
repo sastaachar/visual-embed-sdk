@@ -7,7 +7,7 @@
 
 This page contains code samples to help you embed ThoughtSpot features and data and build your applications.
 
-== Visual Embed SDK 
+== Visual Embed SDK
 
 You can use the following code snippets to build your code and embed ThoughtSpot content in your host  application.
 
@@ -130,7 +130,7 @@ appEmbed.render();
 
 == REST APIs
 
-The following examples show how to call REST APIs to query and import data using Javascript. 
+The following examples show how to call REST APIs to query and import data using Javascript.
 
 === Search data API
 
@@ -254,7 +254,7 @@ See the following articles:
 
 * xref:rest-api-reference.adoc[REST API Reference Guide]
 
-* link:{{visualEmbedSDKPrefix}}/modules.html[Visual Embed SDK Reference Guide, window=_blank]
+* link:https://docs.thoughtspot.com/visual-embed-sdk/release/typedoc/modules.html[Visual Embed SDK Reference Guide, window=_blank]
 
 * link:https://developers.thoughtspot.com/guides[Tutorials, window=_blank]
 
@@ -263,4 +263,3 @@ See the following articles:
 * link:https://github.com/thoughtspot/ts_rest_api_and_tml_tools[REST API and TML Python library and examples, window=_blank]
 
 * link:https://github.com/thoughtspot/ts_everywhere_resources[Visual Embed SDK examples, window=_blank]
-
