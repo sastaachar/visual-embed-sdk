@@ -5,10 +5,10 @@
 
 Gets a list of data connections that are currently operational on the ThoughtSpot cluster.
 
----
++++<p class="divider"> </p>+++
 
 `xref:connection-apis.adoc#live-query-connections[*GET*  /tspublic/v1/connection/list]` [tag greenBackground]#New#
 
-Gets a list of data connections set up for a live query service on the ThoughtSpot cluster.  
+Gets a list of data connections set up for a live query service on the ThoughtSpot cluster.
 
 --

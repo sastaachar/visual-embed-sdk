@@ -6,13 +6,13 @@
 :page-description: Using ThoughtSpot Developer Portal
 
 
-The ThoughtSpot Developer portal allows you to explore Visual Embed SDK and build your web applications with ThoughtSpot content.
-The portal helps business application owners and developers to learn about ThoughtSpot APIs, and evaluate ThoughtSpot features that are available for integration.
-The portal also allows authorized users to customize and rebrand the look and feel of the UI and add custom actions to an embedded visualization or pinboard.
+The ThoughtSpot Developer portal lets you explore the Visual Embed SDK APIs and build your web applications with ThoughtSpot content.
+Business application owners and developers can learn about ThoughtSpot APIs and evaluate ThoughtSpot embedding functionality.
+The portal also allows ThoughtSpot users to customize and rebrand the look and feel of the UI, and add custom actions to an embedded visualization or pinboard.
 
 == Access Developer portal
 
-If you are an existing ThoughtSpot user:: 
+If you are an existing ThoughtSpot user::
 You can access the Developer portal from your ThoughtSpot application instance.
 . Log in to ThoughtSpot.
 . Navigate to the **Develop** tab.
@@ -35,7 +35,7 @@ The ThoughtSpot Developer portal includes several sections that assist you throu
 
 Home::
 The *Home* page of the Developer portal provides a pictorial view of ThoughtSpot features that you can integrate with your applications.
-This page also includes links to the *Developer Guides* and *Playground*. 
+This page also includes links to the *Developer Guides* and *Playground*.
 
 image::./images/develop-home.png[Developer Portal]
 
@@ -60,21 +60,20 @@ The Developer portal displays the following customization options for Thoughtspo
 
 * *Styles*
 +
-Provides a set of style customization controls for rebranding the embedded ThoughtSpot content. 
+Provides a set of style customization controls for rebranding the embedded ThoughtSpot content.
 +
 For more information, see To xref:customize-style.adoc[Customize styles].
 
 * *Actions*
 +
-Provides UI workflows to create custom actions in the ThoughtSpot UI. For example, you can a create an action that triggers a callback to your host application, or invoke a URL to send ThoughtSpot data. For more information, see xref:custom-actions.adoc[Custom actions].
+Provides UI workflows to create custom actions in the ThoughtSpot UI. For example, you can create an action that triggers a callback to your host application, or invoke a URL to send ThoughtSpot data. For more information, see xref:custom-actions.adoc[Custom actions].
 
 * *Settings*
 +
 
-Provides security controls to add third-party domains as xref:security-settings.adoc[trusted hosts for CORS and CSP]. The *Security Settings* page also allows you to xref:trusted-authentication.adoc[enable trusted authentiation] method, or xref:configure-saml.adoc[add a SAML redirect domain] to the allowed list of domains. 
+Provides security controls to add third-party domains as xref:security-settings.adoc[trusted hosts for CORS and CSP]. The *Security Settings* page also allows you to xref:trusted-authentication.adoc[enable trusted authentiation] method, or xref:configure-saml.adoc[add a SAML redirect domain] to the allowed list of domains.
 
 * *Links*
 +
 
-Allows you to customize the format of system-generated links. For more information, see xref:customize-links.adoc[Customize links]. 
- 
+Allows you to customize the format of system-generated links. For more information, see xref:customize-links.adoc[Customize links].

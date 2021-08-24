@@ -72,14 +72,14 @@ The following example shows a snippet of the configuration information:
       "enabled": true,
       "title": "How search works",
       "id": "BLINK_HOW_SEARCH_WORKS",
-      "url": "https://cloud-docs.thoughtspot.com/{versionNameForLink}/release/help-center.html",
+      "url": "https://docs.thoughtspot.com/{versionNameForLink}/release/help-center.html",
       "iconFilePath": ""
     },
     {
       "enabled": true,
       "title": "Keywords",
       "id": "BLINK_KEYWORDS",
-      "url": "https://cloud-docs.thoughtspot.com/{versionNameForLink}/reference/keywords.html",
+      "url": "https://docs.thoughtspot.com/{versionNameForLink}/reference/keywords.html",
       "iconFilePath": ""
     }
 
@@ -193,8 +193,8 @@ The following example shows a snippet of the configuration information:
     "thoughtspotLogoUrl": "https://storage.pardot.com/710713/5660/TS_logo_260x68.png",
     "welcomeEmailConfig": {
       "enabled": true,
-      "fromEmail": "ThoughtSpot Administrator <noreply@cloud.thoughtspot.com>",
-      "supportEmail": "ThoughtSpot Administrator <contact@cloud.thoughtspot.com>",
+      "fromEmail": "ThoughtSpot Administrator <noreply@thoughtspot.com>",
+      "supportEmail": "ThoughtSpot Administrator <contact@thoughtspot.com>",
       "customMessage": "",
       "getStartedLink": "https://notyetset",
       "learnMoreLink": "https://docs.thoughtspot.com",
@@ -625,7 +625,7 @@ Make sure the API request has the following headers:
 
 [source,curl]
 ----
-curl -X GET --header 'Accept: text/html' --header 'X-Requested-By: ThoughtSpot' 'https://jun-us-west-1.thoughtspotdev.cloud/callosum/v1/tspublic/v1/admin/embed/actions'
+curl -X GET --header 'Accept: text/html' --header 'X-Requested-By: ThoughtSpot' 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/admin/embed/actions'
 ----
 
 .Request URL

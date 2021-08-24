@@ -1,5 +1,6 @@
 = SAML SSO authentication
 :toc: true
+:toclevels: 1
 
 :page-title: SAML SSO Authentication
 :page-pageid: saml-sso
@@ -119,7 +120,7 @@ The IDP metadata file. For example, *idp-meta.xml*. Upload the Identity Provider
 +
 Automatically add SAML users to ThoughtSpot upon first authentication::
 Specify if you want to add SAML users to ThoughtSpot when they first authenticate. If you select *yes*, the new users will be added to  ThoughtSpot upon their first successful SSO login.
-If you select *no*, the SAML users will not be added in ThoughtSpot upon first successful SSO login. Instead, you must  link:https://docs.thoughtspot.com/latest/admin/users-groups/add-user.html[add users manually, window=_blank].
+If you select *no*, the SAML users will not be added in ThoughtSpot upon first successful SSO login. Instead, you must  link:https://docs.thoughtspot.com/software/latest/user-management.html[add users manually, window=_blank].
 +
 . Click *Save*.
 

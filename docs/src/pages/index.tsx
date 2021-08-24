@@ -3,7 +3,7 @@ import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { useResizeDetector } from 'react-resize-detector';
 import { useFlexSearch } from 'react-use-flexsearch';
 import { queryStringParser, isPublicSite } from '../utils/app-utils';
-import passThroughHandler from '../utils/doc-utils';
+import { passThroughHandler, fetchChild } from '../utils/doc-utils';
 import Header from '../components/Header';
 import LeftSidebar from '../components/LeftSidebar';
 import Docmap from '../components/Docmap';
@@ -21,6 +21,7 @@ import {
     DEFAULT_HOST,
     DEFAULT_PREVIEW_HOST,
     DEFAULT_APP_ROOT,
+    HOME_PAGE_ID,
 } from '../configs/doc-configs';
 import {
     LEFT_NAV_WIDTH_DESKTOP,
@@ -40,7 +41,7 @@ const IndexPage = ({ location }) => {
     const [params, setParams] = useState({
         [TS_HOST_PARAM]: DEFAULT_HOST,
         [TS_ORIGIN_PARAM]: '',
-        [TS_PAGE_ID_PARAM]: '',
+        [TS_PAGE_ID_PARAM]: 'introduction',
         [NAV_PREFIX]: '',
         [PREVIEW_PREFIX]: `${DEFAULT_PREVIEW_HOST}/#${DEFAULT_APP_ROOT}`,
     });
@@ -48,6 +49,7 @@ const IndexPage = ({ location }) => {
     const [docContent, setDocContent] = useState('');
     const [navTitle, setNavTitle] = useState('');
     const [navContent, setNavContent] = useState('');
+    const [breadcrumsData, setBreadcrumsData] = useState([]);
     const [backLink, setBackLink] = useState('');
     const [allPageIds, setAllPageIds] = useState([]);
     const [leftNavWidth, setLeftNavWidth] = useState(
@@ -98,7 +100,7 @@ const IndexPage = ({ location }) => {
                 // get and set page title
                 setDocTitle(
                     edges[edgeIndex].node.document.title ||
-                        edges[edgeIndex].node.pageAttributes.title,
+                    edges[edgeIndex].node.pageAttributes.title,
                 );
 
                 // get and set doc page content with dynamic data replaced
@@ -123,9 +125,11 @@ const IndexPage = ({ location }) => {
             setNavTitle(edges[navIndex].node.pageAttributes.title);
 
             // get & set left navigation area content with dynamic link creation
-            setNavContent(
-                passThroughHandler(edges[navIndex].node.html, params),
-            );
+            const navContentData = passThroughHandler(edges[navIndex].node.html, params)
+            setNavContent(navContentData);
+
+            // set breadcrums data
+            setBreadcrumsData(fetchChild(navContentData));
 
             // get & set left navigation 'SpotDev Home' button url
             setBackLink(params[TS_ORIGIN_PARAM]);
@@ -143,7 +147,11 @@ const IndexPage = ({ location }) => {
         setNavTitle(edges[navIndex].node.pageAttributes.title);
 
         // get & set left navigation area content with dynamic link creation
-        setNavContent(passThroughHandler(edges[navIndex].node.html, params));
+        const navContentData = passThroughHandler(edges[navIndex].node.html, params)
+        setNavContent(navContentData);
+
+        // set breadcrums data
+        setBreadcrumsData(fetchChild(navContentData));
 
         // get & set left navigation 'Back' button url
         setBackLink(params[TS_ORIGIN_PARAM]);
@@ -212,7 +220,7 @@ const IndexPage = ({ location }) => {
         results.push({
             link: '',
             pageid: 'stringnotfound',
-            title: t('KEYWORD_NOT_FOUND_MSG') + ` "${keyword}".`,
+            title: `${t('KEYWORD_NOT_FOUND_MSG')} "${keyword}".`,
             type: 'text',
         });
     }
@@ -226,12 +234,12 @@ const IndexPage = ({ location }) => {
         }
         return '100%';
     };
+    const shouldShowRightNav = params[TS_PAGE_ID_PARAM] !== HOME_PAGE_ID;
+
 
     return (
         <div id="wrapper" data-theme={isDarkMode ? 'dark' : 'light'}>
-            
-            {isPublicSiteOpen && <Header  location={location}/>}
-            
+            {isPublicSiteOpen && <Header location={location} />}
             <main
                 ref={ref as React.RefObject<HTMLDivElement>}
                 className={`dark ${isPublicSiteOpen ? 'withHeaderFooter' : ''}`}
@@ -276,19 +284,25 @@ const IndexPage = ({ location }) => {
                         isDarkMode={isDarkMode}
                         isPublicSiteOpen={isPublicSiteOpen}
                     />
+
                     <div className="introWrapper">
                         <Document
+                            shouldShowRightNav={shouldShowRightNav}
+                            pageid={params[TS_PAGE_ID_PARAM]}
                             docTitle={docTitle}
                             docContent={docContent}
+                            breadcrumsData={breadcrumsData}
                             isPublicSiteOpen={isPublicSiteOpen}
                         />
-                        <div>
-                            <Docmap
-                                docContent={docContent}
-                                location={location}
-                                options={results}
-                            />
-                        </div>
+                        {shouldShowRightNav &&
+                            <div>
+                                <Docmap
+                                    docContent={docContent}
+                                    location={location}
+                                    options={results}
+                                />
+                            </div>
+                        }
                     </div>
                 </div>
             </main>

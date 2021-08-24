@@ -6,7 +6,7 @@
 :page-pageid: tml-api
 :page-description: TML Export and Import API
 
-The TML APIs enable you to programmatically export, validate, and import scriptable link:https://cloud-docs.thoughtspot.com//admin/ts-cloud/tml.html[ThoughtSpot Modeling Language (TML), window=_blank] files. You can use these APIs to automate the change management and deployment processes between your development and production environments. With these APIs, you can easily migrate your ThoughtSpot content from one environment to another by automating the entire change management process and thereby reducing the risk of human error.
+The TML APIs enable you to programmatically export, validate, and import scriptable link:https://docs.thoughtspot.com/software/latest/tml.html[ThoughtSpot Modeling Language (TML), window=_blank] files. You can use these APIs to automate the change management and deployment processes between your development and production environments. With these APIs, you can easily migrate your ThoughtSpot content from one environment to another by automating the entire change management process and thereby reducing the risk of human error.
 
 == Supported operations
 
@@ -22,7 +22,7 @@ POST /tspublic/v1/metadata/tml/import
 ----
 
 === Request parameters
-[width="100%" cols="2,1,6,2"]
+[width="100%" cols="1,1,2,1"]
 [options='header']
 |====
 |Form Parameter|Data Type|Description|Default
@@ -33,7 +33,7 @@ If in YAML format within the JSON array, use escape characters for YAML quotes, 
 For example:
 
 * To import a single object, `["guid: 3729c085-8659-48fd-9479-a67bd7307496\npinboard:\n  name: …"]`
-* To import multiple objects, `["guid: 3729c085-8659-48fd-9479-a67bd7307496\npinboard:\n  name: …“, “["guid: 3729c085-8659-48fd-9479-a67bd7307496\npinboard:\n  name: "4f3827f2-ee0c-4771-848a-29e449901c86”]`
+* To import multiple objects, `["guid: 3729c085-8659-48fd-9479-a67bd7307496\npinboard:\n  name: …“, "guid: 5739d025-8659-48fd-9479-a67bd7704212\npinboard:\n  name: …”]`
 |None
 |`import_policy`|string a|Policy to follow during import. The allowed values are:
 
@@ -48,10 +48,7 @@ Validates the objects but does not import them.|`PARTIAL`
 
 By default, ThoughtSpot updates existing objects that have the same GUID as the objects you are importing. When set to `true`, the GUID property in the imported TML is replaced on the server, and the response headers will include the `id_guid` property with the GUID of the new object.
 
-The new object will be assigned a new GUID, even if the imported TML file included a guid value. Thus, there is no need to include the `guid` in the TML file if you are using `force_create=true`.
-
-
-|`false`|
+The new object will be assigned a new GUID, even if the imported TML file included a `guid` value. Thus, there is no need to include the `guid` in the TML file if you are using `force_create=true`. |`false`|
 |====
 
 === Example request

@@ -1,4 +1,4 @@
-= REST API Reference 
+= REST API Reference
 :toc: true
 
 :page-title: REST API Reference Guide
@@ -29,13 +29,13 @@ include::{path}/admin-api-list.adoc[]
 
 [div boxDiv boxFullWidth]
 --
-`xref:materialization-api.adoc[*POST* /tspublic/v1/materialization/refreshview/{id}]`  
+`xref:materialization-api.adoc[*POST* /tspublic/v1/materialization/refreshview/{id}]`
 
 Allows you refresh a materialized view.
 --
 
 ////
-== Data connections 
+== Data connections
 
 include::{path}/connection-apis.adoc[]
 ////
@@ -52,7 +52,7 @@ include::{path}/pinboard-api-list.adoc[]
 
 [div boxDiv boxFullWidth]
 --
-`xref:search-data-api.adoc[**POST** /tspublic/v1/searchdata]`  
+`xref:search-data-api.adoc[**POST** /tspublic/v1/searchdata]`
 
 Allows searching for data from a specific data source in the ThoughtSpot application.
 --

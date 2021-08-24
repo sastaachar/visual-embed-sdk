@@ -23,6 +23,7 @@ $highlight-fadedgreen: #dfd;
 
 $header-zIndex: 99;
 $header-logo-width: 158px;
+$header-link-margin: 45px;
 $font-weight-normal: 300;
 $font-weight-bold: 500;
 $line-height-normal: 31px;
@@ -37,12 +38,12 @@ $font-size-doc: 15px;
 $font-size-large: 18px;
 $font-size-404: 1.25rem;
 $padding-md: 24px;
-$margin-lg: 40px;
+$margin-lg: 35px;
 $margin-md: 24px;
 $margin-xs: 5px;
 $padding-xs: 5px;
 $padding-sm: 10px;
-$document-margin-top: 81px;
+$document-margin-top: 88px;
 $padding-nested-ul: 12px;
 $margin-links: 16px;
 $docmap-width-desktop: 300px;
@@ -63,14 +64,18 @@ $font-family-doc: Optimo-Plain;
 $font-family-back-button: Optimo-Plain;
 $width-back-button: 32px;
 $height-back-button: 32px;
-$margin-top-mobile: 55px;
+$margin-top-mobile: 58px;
 $menu-icon-width: 43px;
 $z-index-search: 1;
 $z-index-left-nav: 9;
 $arrow-icon-width: 12px;
+$title-margin: 10px;
 $sub-title-margin: 30px;
-$font-size-h3: 20px;
-$font-size-h4: 18px;
+$sub-title-margin-h5: 10px;
+$font-size-h3: 22px;
+$font-size-h4: 20px;
+$font-size-h5: 18px;
+$font-size-breadcrums: 13px;
 $icon-width: 16px;
 $icon-height: 16px;
 
@@ -136,10 +141,11 @@ $tag-color-yellow: #ffbc00;
 :root {
     --body-background-color: #fff;
     --primary-color: #1d232f;
+    --breadcrums-font-color: #5f6368;
     --admonition-background: #fafafa;
     --code-block-color: #f6f8fa;
-    --text-color-code-lang: $darkgrey;
-    --icon-color: #1d232f;
+    --text-color-code-lang: #999;
+    --icon-color: #999;
     --back-button-background: #e6e6e6;
     --border-color: #c0c6cf;
     --scrollbar-color: #a5acb9;
@@ -153,12 +159,14 @@ $tag-color-yellow: #ffbc00;
     --highlight-violet: #990073;
     --secondary-color: #2770ef;
     --box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 12%), 0 0px 6px 0 rgba(0, 0, 0, 11%);
-    --box-shadow-hover: 0 4px 8px 0 rgba(0, 0, 0, 6%), 0 6px 20px 0 rgba(0, 0, 0, 0.06);
+    --box-shadow-hover: 0 4px 8px 0 rgba(0, 0, 0, 6%),
+        0 6px 20px 0 rgba(0, 0, 0, 0.06);
 }
 
 #wrapper[data-theme='dark'] {
     --body-background-color: #21252c;
     --primary-color: #fff;
+    --breadcrums-font-color: #a5acb9;
     --admonition-background: #3c4356;
     --code-block-color: #3c4356;
     --text-color-code-lang: #fff;
@@ -175,6 +183,8 @@ $tag-color-yellow: #ffbc00;
     --highlight-darkred: #ef9a9a;
     --highlight-violet: #f8bbd0;
     --secondary-color: #8388fe;
-    --box-shadow: 0 2px 2px 0 rgba(255, 255, 255, 12%), 0 0px 6px 0 rgba(255, 255, 255, 11%);
-    --box-shadow-hover: 0 4px 8px 0 rgb(255 255 255 / 6%), 0 6px 20px 0 rgb(255 255 255 / 6%);
+    --box-shadow: 0 2px 2px 0 rgba(255, 255, 255, 12%),
+        0 0px 6px 0 rgba(255, 255, 255, 11%);
+    --box-shadow-hover: 0 4px 8px 0 rgb(255 255 255 / 6%),
+        0 6px 20px 0 rgb(255 255 255 / 6%);
 }

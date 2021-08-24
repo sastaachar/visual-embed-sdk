@@ -13,30 +13,24 @@ This section lists the tasks you need to complete before embedding ThoughtSpot c
 
 * Verify if the ThoughtSpot admin has enabled the authentication service.
 +
-ThoughtSpot supports SAML SSO and trusted authentication services.
+ThoughtSpot supports xref:configure.saml.adoc[SAML SSO] and xref:trusted-authentication.adoc[trusted authentication] services.
 
 * Verify if your host application domain is xref:security-settings.adoc[whitelisted for CORS and CSP].
-* Verify if the same-site cookie setting is set to `none`.
-* If you want to rebrand and white-label the embedded content or add custom actions to the embedded visualizations, you will require access to the ThoughtSpot Developer portal. Make sure you have administrator or developer  privileges to access the *Customizations* menu in the *Develop* tab.
+* If you want to rebrand and white-label the embedded content or add custom actions to the embedded visualizations, you will require access to the ThoughtSpot Developer portal. Make sure you have xref:user-roles.adoc[developer  privileges] to access the *Customizations* menu in the *Develop* tab.
 
 == Prepare your project environment
-The Visual Embed SDK is available for installation as a Node Package Manager (NPM) package. Make sure the link:https://www.npmjs.com/get-npm[NPM is installed, window=_blank] in your environment. 
+The Visual Embed SDK is available for installation as a Node Package Manager (NPM) package. Make sure the link:https://www.npmjs.com/get-npm[NPM is installed, window=_blank] in your environment.
 
-You can also access Visual Embed SDK, including information about how to install from NPM or run from a web repository, in the link:https://github.com/thoughtspot/visual-embed-sdk[ThoughtSpot Visual Embed SDK GitHub repository, window=_blank]. 
+You can also access Visual Embed SDK, including information about how to install from NPM or run from a web repository, in the link:https://github.com/thoughtspot/visual-embed-sdk[ThoughtSpot Visual Embed SDK GitHub repository, window=_blank].
 
 == Install the Visual Embed SDK
-You can access Visual Embed SDK package at link:https://www.npmjs.com/package/@thoughtspot/visual-embed-sdk[https://www.npmjs.com/package/@thoughtspot/visual-embed-sdk, window=_blank].
+The latest version of the Visual Embed SDK is available at link:https://www.npmjs.com/package/@thoughtspot/visual-embed-sdk[https://www.npmjs.com/package/@thoughtspot/visual-embed-sdk, window=_blank].
 
 To install the SDK, run the following command at the command line:
 [source,console]
 ----
 npm install @thoughtspot/visual-embed-sdk
 ----
-
-[NOTE]
-====
-If your cluster is running ThoughtSpot Software version 7.1.0, make sure you download and install the Visual Embed SDK 1.2.0 NPM package. 
-====
 
 == Import the embed package
 
@@ -45,9 +39,19 @@ Based on integration requirements, import any of the following embed modules and
 * *SearchEmbed*
 +
 To xref:embed-search.adoc[embed the ThoughtSpot search] functionality.
++
+The **SearchEmbed** component can be loaded up blank with a specified data source and no existing search, with a specified data source and a set of example search tokens, or with an existing saved answer.
++
+In all cases, the search bar will appear along with full capabilities to edit and modify the search and the resulting chart or table.
+
 * *PinboardEmbed*
 +
 To embed ThoughtSpot xref:embed-a-viz.adoc[visualizations] and xref:embed-pinboard.adoc[pinboards].
++
+You can use the **PinboardEmbed** component to embed a full pinboard with multiple answers, as well as a specific answer on a pinboard without the search bar. These answers are referred to as pinboard visualizations.
++
+Although you can use a saved answer as a data source in SearchEmbed, ThoughtSpot does not support embedding a saved answer. However, you can embed a specific visualization from a pinboard using the `pinboardId` and `vizId` properties of PinboardEmbed.
+
 * *AppEmbed*
 +
-To embed xref:full-embed.adoc[the full ThoughtSpot application].
+To embed xref:full-embed.adoc[the full ThoughtSpot application experience].
