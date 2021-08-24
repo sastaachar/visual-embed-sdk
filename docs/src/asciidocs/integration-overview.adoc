@@ -23,11 +23,11 @@ ThoughtSpot admin::
 ThoughtSpot administrators who define the authentication workflow and create user groups. +
 Access control in ThoughtSpot is managed through the users and groups that are stored locally on ThoughtSpot, even if the users are authenticated using SSO or Trusted Authentication. This means that to provide access to content or system privileges, admin users must create users and groups in ThoughtSpot.
 +
-For more information, see link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/groups.html[Managing users, window=_blank] and link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/groups.html[Managing Groups, window=_blank].
+For more information, see link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/users.html[Managing users, window=_blank] and link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/groups.html[Managing Groups, window=_blank].
 
 Developer::
 Application developers with privileges to use the Developer portal and embed ThoughtSpot components in their host application. +
-Developer users can also customize the look and feel of the UI, add custom actions to an embedded visualization or pinboard, and modify security settings such as CORS and CSP. For more information, see xref:user-roles.adoc[User configuration].
+Developer users can also customize the look and feel of the UI, add custom actions to an embedded visualization or pinboard, and modify security settings such as CORS and CSP. For more information, see xref:user-roles.adoc[Developer access].
 
 Host application admin::
 The host application owners or users with admin privileges to modify the application interface. +
@@ -79,17 +79,3 @@ The ThoughtSpot Developer portal provides a playground for developers to explore
 <a href="{{previewPrefix}}/playground/search" id="preview-in-playground" target="_blank">Go to Playground</a>
 ++++
 
-////
-== Identify the UI elements to rebrand
-
-ThoughtSpot has an automated feature that collects feedback from users and sends it to ThoughtSpot Support.
-Depending on what and how you embed, user actions with your embedded application can trigger feedback.
-You can continue to forward feedback in this manner or direct the feedback to another email.
-To learn how to change the feedback email, see link:{{site.baseurl }}/admin/setup/work-with-ts-support.html#manage-the-feedback-contact[Manage the feedback contact].
-
-== Remove the ThoughtSpot branded footer
-
-The ThoughtSpot footer appears by default in the ThoughtSpot application.
-It also appears with an embed application that encompasses an individual Pinboard, or a full application.
-In embed applications that are have a single visualization, you can ask your ThoughtSpot support engineer to disable the footer.
-////
