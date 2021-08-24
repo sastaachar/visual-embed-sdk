@@ -12,23 +12,13 @@ The portal also allows ThoughtSpot users to customize and rebrand the look and f
 
 == Access Developer portal
 
-If you are an existing ThoughtSpot user::
 You can access the Developer portal from your ThoughtSpot application instance.
+
 . Log in to ThoughtSpot.
 . Navigate to the **Develop** tab.
+
 +
 The *Develop* tab is available only if your user account has developer or administrator privilege. For more information about configuring developer privilege, see the xref:user-roles.adoc[Developer access].
-If you are not an existing ThoughtSpot user::
-If you do not have a ThoughtSpot user account, and you want to evaluate the APIs in the developer playground:
-. Go to link:https://developers.thoughtspot.com/[developers.thoughtspot.com, window=_blank].
-. From the header bar, click *Playground*.
-. Enter your name and email address.
-. Click *Try Live Playground*.
-
-[NOTE]
-====
-You can also link:https://www.thoughtspot.com/trial?tsref=trialtsefaq[register for a free trial, window=_blank] and evaluate the SDK and APIs on ThoughtSpot free trial cluster.
-====
 
 == Find your way around
 The ThoughtSpot Developer portal includes several sections that assist you through your embedding journey.

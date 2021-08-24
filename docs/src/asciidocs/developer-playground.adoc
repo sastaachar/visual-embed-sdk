@@ -37,7 +37,6 @@ a|**Hide data panel**
 
 Hides the default data panel. You can use this function to create a custom data panel when embedding the search module in your application.
 
-
 ////
 +++
 <a href="{{previewPrefix}}/playground/search?hideDataSources=true" id="preview-in-playground" target="_blank">Preview in Playground</a>
@@ -84,16 +83,19 @@ For a complete list of action menu items and the corresponding text strings to u
 
 a|**Add search tokens**
 
-Allows constructing a TML-based search query string to set search tokens. You can also execute search to view the search results.
+Allows constructing search a query string and execute it. You can use the following types of search tokens to construct a search query:
 
-The following example shows how to create a search a searchTokenString and execute search:
+* xref:search-data-api.adoc#Column[Column] 
+* xref:search-data-api.adoc#Operator[Operator] 
+* xref:search-data-api.adoc#Value[Value] 
+* xref:search-data-api.adoc#Date-Bucket[Date Bucket] 
+* xref:search-data-api.adoc#Keyword[Keyword] 
+* xref:search-data-api.adoc#Calendar[Calendar] 
+ 
+For example, to fetch revenue data by shipping mode, you can use the following search query string:
 
-[source, Javascript]
 ----
- searchOptions: {
-    searchTokenString: '[product][sales][date].daily',
-    executeSearch: true,
-    }
+searchQuery: "[Revenue] by [Shipmode]"
 ----
 
 ////
