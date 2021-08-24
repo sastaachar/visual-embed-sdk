@@ -1,0 +1,33 @@
+@import '../../assets/styles/variables.scss';
+
+.breadcrumsWrapper {
+    padding: $padding-md $padding-md 0px;
+    .breadcrumb {
+        margin: 0;
+        list-style: none;
+        list-style-type: none;
+        padding-inline-start: 0px;
+        padding-inline-end: 0px;
+        li {
+            display: inline;
+            margin: 0;
+            font-weight: 300;
+            color: var(--breadcrums-font-color);
+            font-size: $font-size-breadcrums;
+        }
+
+        li + li:before {
+            padding: 0px 5px;
+            content: '\003E';
+        }
+
+        li a {
+            text-decoration: none;
+            color: var(--breadcrums-font-color);
+            font-size: $font-size-breadcrums;
+            &:hover {
+                color: var(--secondary-color);
+            }
+        }
+    }
+}
