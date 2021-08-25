@@ -1,4 +1,4 @@
-import { AuthType, init, SearchEmbed, EmbedEvent } from '../index';
+import { AuthType, init, prefetch, SearchEmbed, EmbedEvent } from '../index';
 import {
     executeAfterWait,
     getAllIframeEl,
@@ -40,5 +40,14 @@ describe('Base TS Embed', () => {
             );
             done();
         });
+    });
+
+    test('Should add the prefetch iframe when prefetch is called. Should remove it once init is called.', async () => {
+        prefetch('https://10.87.90.95');
+        await executeAfterWait(() => {
+            expect(getAllIframeEl().length).toBe(1);
+            const prefetchIframe = document.querySelectorAll('.prefetchIframe');
+            expect(prefetchIframe.length).toBe(1);
+        }, 100);
     });
 });
