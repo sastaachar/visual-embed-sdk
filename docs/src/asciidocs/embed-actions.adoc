@@ -14,7 +14,7 @@ The Visual Embed SDK allows you to configure menu components for embedded pinboa
 
 The SDK packages include the `disabledActions` and `hiddenActions` attributes and action enumerators that disable or hide the specified actions.
 
-For a complete list of menu actions and the corresponding strings to use for disabling or hiding an action, see link:https://docs.thoughtspot.com/visual-embed-sdk/release/typedoc/enums/action.html[Action, window=_blank] or below in the Supported menu actions section.
+For a complete list of menu actions and the corresponding strings to use for disabling or hiding an action, see link:{{visualEmbedSDKPrefix}}/enums/action.html[Action, window=_blank] or below in the Supported menu actions section.
 
 === Disable actions
 

@@ -11,7 +11,7 @@
 
 import { getFilterQuery, getQueryParamString } from '../utils';
 import { Param, RuntimeFilter, DOMSelector } from '../types';
-import { V1Embed, ViewConfig } from './base';
+import { V1Embed, ViewConfig } from './ts-embed';
 
 /**
  * Pages within the ThoughtSpot app that can be embedded.
@@ -71,6 +71,10 @@ export interface AppViewConfig extends ViewConfig {
      * pinboards and answers, would be filtered by this tag.
      */
     tag?: string;
+    /**
+     * The array of GUIDs to be hidden
+     */
+    hideObjects?: string[];
 }
 
 /**
@@ -90,12 +94,13 @@ export class AppEmbed extends V1Embed {
      * embedded pinboard or visualization.
      */
     private getEmbedParams() {
-        const params = {};
+        const params = this.getBaseQueryParams();
         const {
             disabledActions,
             disabledActionReason,
             hiddenActions,
             tag,
+            hideObjects,
         } = this.viewConfig;
 
         if (disabledActions?.length) {
@@ -109,6 +114,9 @@ export class AppEmbed extends V1Embed {
         }
         if (tag) {
             params[Param.Tag] = tag;
+        }
+        if (hideObjects && hideObjects.length) {
+            params[Param.HideObjects] = JSON.stringify(hideObjects);
         }
 
         const queryParams = getQueryParamString(params, true);

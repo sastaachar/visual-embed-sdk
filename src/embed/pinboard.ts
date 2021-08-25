@@ -15,9 +15,10 @@ import {
     Param,
     RuntimeFilter,
     DOMSelector,
+    HostEvent,
 } from '../types';
 import { getFilterQuery, getQueryParamString } from '../utils';
-import { V1Embed, ViewConfig } from './base';
+import { V1Embed, ViewConfig } from './ts-embed';
 
 /**
  * The configuration for the embedded pinboard or visualization page view.
@@ -41,6 +42,11 @@ export interface PinboardViewConfig extends ViewConfig {
      * The visualization within the pinboard to display.
      */
     vizId?: string;
+    /**
+     * If set to true, all filter chips from a
+     * pinboard page will be read-only (no X buttons)
+     */
+    preventPinboardFilterRemoval?: boolean;
 }
 
 /**
@@ -60,13 +66,14 @@ export class PinboardEmbed extends V1Embed {
      * embedded pinboard or visualization.
      */
     private getEmbedParams() {
-        const params = {};
+        const params = this.getBaseQueryParams();
         const {
             disabledActions,
             disabledActionReason,
             hiddenActions,
             enableVizTransformations,
             fullHeight,
+            preventPinboardFilterRemoval,
         } = this.viewConfig;
 
         if (fullHeight === true) {
@@ -86,8 +93,9 @@ export class PinboardEmbed extends V1Embed {
                 Param.EnableVizTransformations
             ] = enableVizTransformations.toString();
         }
-        params[Param.ViewPortHeight] = window.innerHeight;
-        params[Param.ViewPortWidth] = window.innerWidth;
+        if (preventPinboardFilterRemoval) {
+            params[Param.preventPinboardFilterRemoval] = true;
+        }
 
         const queryParams = getQueryParamString(params, true);
 
@@ -134,6 +142,11 @@ export class PinboardEmbed extends V1Embed {
         this.setIFrameHeight(data.data);
     };
 
+    private embedIframeCenter = (data: MessagePayload, responder: any) => {
+        const obj = this.getIframeCenter();
+        responder({ type: EmbedEvent.EmbedIframeCenter, data: obj });
+    };
+
     /**
      * Render an embedded ThoughtSpot pinboard or visualization
      * @param renderOptions An object specifying the pinboard ID,
@@ -148,6 +161,7 @@ export class PinboardEmbed extends V1Embed {
 
         if (this.viewConfig.fullHeight === true) {
             this.on(EmbedEvent.EmbedHeight, this.updateIFrameHeight);
+            this.on(EmbedEvent.EmbedIframeCenter, this.embedIframeCenter);
         }
 
         super.render();

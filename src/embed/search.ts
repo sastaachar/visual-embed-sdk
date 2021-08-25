@@ -9,7 +9,8 @@
 
 import { DataSourceVisualMode, DOMSelector, Param } from '../types';
 import { getQueryParamString } from '../utils';
-import { ViewConfig, TsEmbed } from './base';
+import { ViewConfig, TsEmbed } from './ts-embed';
+import { version } from '../../package.json';
 
 /**
  * Configuration for search options
@@ -66,6 +67,7 @@ export interface SearchViewConfig extends ViewConfig {
     dataSources?: string[];
     /**
      * The initial search query to load the answer with.
+     * @deprecated Use {@link searchOptions} instead
      */
     searchQuery?: string;
     /**
@@ -133,7 +135,7 @@ export class SearchEmbed extends TsEmbed {
             searchOptions,
         } = this.viewConfig;
         const answerPath = answerId ? `saved-answer/${answerId}` : 'answer';
-        const queryParams = {};
+        const queryParams = this.getBaseQueryParams();
         if (dataSources && dataSources.length) {
             queryParams[Param.DataSources] = JSON.stringify(dataSources);
         }
@@ -173,7 +175,6 @@ export class SearchEmbed extends TsEmbed {
 
         queryParams[Param.DataSourceMode] = this.getDataSourceMode();
         queryParams[Param.UseLastSelectedDataSource] = false;
-
         let query = '';
         const queryParamsString = getQueryParamString(queryParams, true);
         if (queryParamsString) {

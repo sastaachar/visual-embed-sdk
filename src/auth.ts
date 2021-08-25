@@ -1,12 +1,25 @@
-import { config } from 'gatsby/dist/redux/reducers';
+import { initMixpanel } from './mixpanel-service';
 import { AuthType, EmbedConfig, EmbedEvent } from './types';
 import { appendToUrlHash } from './utils';
+// eslint-disable-next-line import/no-cycle
+import {
+    fetchSessionInfoService,
+    fetchAuthTokenService,
+    fetchAuthService,
+    fetchBasicAuthService,
+} from './utils/authService';
 
-let loggedInStatus = false;
-let samlAuthWindow: Window = null;
-let samlCompletionPromise: Promise<void> = null;
+// eslint-disable-next-line import/no-mutable-exports
+export let loggedInStatus = false;
+// eslint-disable-next-line import/no-mutable-exports
+export let samlAuthWindow: Window = null;
+// eslint-disable-next-line import/no-mutable-exports
+export let samlCompletionPromise: Promise<void> = null;
+// eslint-disable-next-line import/no-mutable-exports
+export let sessionInfo: any = null;
 
-const SSO_REDIRECTION_MARKER_GUID = '5e16222e-ef02-43e9-9fbd-24226bf3ce5b';
+export const SSO_REDIRECTION_MARKER_GUID =
+    '5e16222e-ef02-43e9-9fbd-24226bf3ce5b';
 
 export const EndPoints = {
     AUTH_VERIFICATION: '/callosum/v1/session/info',
@@ -22,16 +35,25 @@ export const EndPoints = {
  */
 async function isLoggedIn(thoughtSpotHost: string): Promise<boolean> {
     const authVerificationUrl = `${thoughtSpotHost}${EndPoints.AUTH_VERIFICATION}`;
-    let response;
+    let response = null;
     try {
-        response = await fetch(authVerificationUrl, {
-            credentials: 'include',
-        });
+        response = await fetchSessionInfoService(authVerificationUrl);
     } catch (e) {
         return false;
     }
-
     return response.status === 200;
+}
+
+/**
+ * Return sessionInfo if available else make a loggedIn check to fetch the sessionInfo
+ */
+export function getSessionInfo() {
+    return sessionInfo;
+}
+
+export function initSession(sessionDetails: any) {
+    sessionInfo = sessionDetails;
+    initMixpanel(sessionInfo);
 }
 
 /**
@@ -77,16 +99,10 @@ export const doTokenAuth = async (embedConfig: EmbedConfig): Promise<void> => {
         if (getAuthToken) {
             authToken = await getAuthToken();
         } else {
-            authToken = await fetch(authEndpoint).then((response) =>
-                response.text(),
-            );
+            const response = await fetchAuthTokenService(authEndpoint);
+            authToken = response.text();
         }
-        await fetch(
-            `${thoughtSpotHost}${EndPoints.TOKEN_LOGIN}?username=${username}&auth_token=${authToken}`,
-            {
-                credentials: 'include',
-            },
-        );
+        await fetchAuthService(thoughtSpotHost, username, authToken);
         loggedInStatus = false;
     }
 
@@ -105,19 +121,10 @@ export const doBasicAuth = async (embedConfig: EmbedConfig): Promise<void> => {
     const { thoughtSpotHost, username, password } = embedConfig;
     const loggedIn = await isLoggedIn(thoughtSpotHost);
     if (!loggedIn) {
-        const response = await fetch(
-            `${thoughtSpotHost}${EndPoints.BASIC_LOGIN}`,
-            {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/x-www-form-urlencoded',
-                    'x-requested-by': 'ThoughtSpot',
-                },
-                body: `username=${encodeURIComponent(
-                    username,
-                )}&password=${encodeURIComponent(password)}`,
-                credentials: 'include',
-            },
+        const response = await fetchBasicAuthService(
+            thoughtSpotHost,
+            username,
+            password,
         );
         loggedInStatus = response.status === 200;
     }

@@ -1,5 +1,4 @@
 import * as mixpanel from 'mixpanel-browser';
-import { EmbedConfig } from './types';
 
 export const EndPoints = {
     CONFIG: '/callosum/v1/system/config',
@@ -10,6 +9,7 @@ export const MIXPANEL_EVENT = {
     VISUAL_SDK_CALLED_INIT: 'visual-sdk-called-init',
     VISUAL_SDK_RENDER_COMPLETE: 'visual-sdk-render-complete',
     VISUAL_SDK_RENDER_FAILED: 'visual-sdk-render-failed',
+    VISUAL_SDK_TRIGGER: 'visual-sdk-trigger',
     VISUAL_SDK_IFRAME_LOAD_PERFORMANCE: 'visual-sdk-iframe-load-performance',
 };
 
@@ -46,25 +46,19 @@ function emptyQueue() {
     });
 }
 
-export async function initMixpanel(config: EmbedConfig): Promise<any> {
-    const { thoughtSpotHost } = config;
-    return fetch(`${thoughtSpotHost}${EndPoints.CONFIG}`, {
-        headers: {
-            'content-type': 'application/x-www-form-urlencoded',
-            'x-requested-by': 'ThoughtSpot',
-        },
-    })
-        .then((response) => response.json())
-        .then((data) => {
-            const token = data.mixpanelAccessToken;
-            if (token) {
-                mixpanel.init(token);
-                setEventCollectorOn();
-                emptyQueue();
-                uploadMixpanelEvent(MIXPANEL_EVENT.VISUAL_SDK_CALLED_INIT, {
-                    authType: config.authType,
-                    host: config.thoughtSpotHost,
-                });
-            }
-        });
+export function initMixpanel(sessionInfo: any): void {
+    if (!sessionInfo || !sessionInfo.mixpanelToken) {
+        return;
+    }
+    // On a public cluster the user is anonymous, so don't set the identify to userGUID
+    const isPublicCluster = !!sessionInfo.isPublicUser;
+    const token = sessionInfo.mixpanelToken;
+    if (token) {
+        mixpanel.init(token);
+        if (!isPublicCluster) {
+            mixpanel.identify(sessionInfo.userGUID);
+        }
+        setEventCollectorOn();
+        emptyQueue();
+    }
 }

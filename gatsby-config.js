@@ -5,16 +5,7 @@ const config = require('./docs/src/configs/doc-configs');
 const buildEnv = process.env.BUILD_ENV || config.BUILD_ENVS.LOCAL; // Default build env
 
 const getPathPrefix = () => {
-    switch (buildEnv) {
-        case config.BUILD_ENVS.PROD:
-            return config.DEPLOY_ENVS.RELEASE;
-        case config.BUILD_ENVS.DEV:
-        case config.BUILD_ENVS.STAGING:
-            return config.DEPLOY_ENVS.DEV;
-        case config.BUILD_ENVS.LOCAL:
-        default:
-            return ''; // Default path prefix
-    }
+    return 'docs';
 };
 
 const stripLinks = (text) => {
@@ -27,6 +18,9 @@ const stripLinks = (text) => {
     }
     return '';
 };
+
+const getTextFromHtml = (html) =>
+    htmlToText(stripLinks(html)).replace(/\r?\n|\r/g, ' ');
 
 const getPath = (path) =>
     getPathPrefix() ? `${path}/${getPathPrefix()}` : path;
@@ -102,6 +96,7 @@ class CustomDocConverter {
     }
 }
 
+console.log(getPath(config.DOC_REPO_NAME));
 module.exports = {
     pathPrefix: getPath(config.DOC_REPO_NAME),
     siteMetadata: {
@@ -225,7 +220,7 @@ module.exports = {
                                 const pageid = edge.node.pageAttributes.pageid;
                                 const body =
                                     edge && edge.node
-                                        ? htmlToText(stripLinks(edge.node.html))
+                                        ? getTextFromHtml(edge.node.html)
                                         : '';
                                 return {
                                     pageid,
@@ -243,11 +238,8 @@ module.exports = {
                                     edge &&
                                     edge.node &&
                                     edge.node.childHtmlRehype
-                                        ? htmlToText(
-                                              stripLinks(
-                                                  edge.node.childHtmlRehype
-                                                      .html,
-                                              ),
+                                        ? getTextFromHtml(
+                                              edge.node.childHtmlRehype.html,
                                           )
                                         : '';
                                 return {
@@ -290,5 +282,6 @@ module.exports = {
                 icon: `${__dirname}/docs/src/assets/icons/favicon.svg`,
             },
         },
+        'gatsby-plugin-output',
     ],
 };

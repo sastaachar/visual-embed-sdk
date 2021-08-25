@@ -249,8 +249,6 @@ If you have added a xref:customize-actions-menu.adoc[custom action], register an
 })
 ----
 
-For a complete list of event types that you can register, see  link:https://docs.thoughtspot.com/visual-embed-sdk/release/typedoc/enums/embedevent.html[EmbedEvent, window=_blank].
-
 == Render the embedded search
 
 [source, javascript]
