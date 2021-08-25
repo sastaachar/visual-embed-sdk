@@ -1,5 +1,4 @@
 import React from 'react';
-import { HOME_PAGE_ID } from '../../configs/doc-configs';
 import { getBreadcrumsPath } from '../../utils/doc-utils';
 import './index.scss';
 
@@ -16,11 +15,7 @@ const Breadcrums: React.FC<BreadcrumsProps> = (props: BreadcrumsProps) => {
             {breadcrums.length ? (
                 <div className="breadcrumsWrapper">
                     <ul className="breadcrumb">
-                        <li>
-                            <a href={`?pageid=${HOME_PAGE_ID}`}>
-                                Developer Guides
-                            </a>
-                        </li>
+                        <li>Developer Guides</li>
                         {breadcrums.map(({ name, href }) => (
                             <li key={`${name}-${href}`}>
                                 {href ? <a href={href}>{name}</a> : name}

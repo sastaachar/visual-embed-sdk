@@ -27,15 +27,4 @@ header {
         color: $lightgrey;
         cursor: pointer;
     }
-
-    .headerLink {
-        a {
-            margin-left: $header-link-margin;
-            cursor: pointer;
-            color: $lightgrey;
-        }
-        @media (max-width: 768px) {
-            display: none;
-        }
-    }
 }

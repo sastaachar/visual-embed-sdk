@@ -12,8 +12,7 @@
             display: inline;
             margin: 0;
             font-weight: 300;
-            color: var(--breadcrums-font-color);
-            font-size: $font-size-breadcrums;
+            color: var(--primary-color);
         }
 
         li + li:before {
@@ -23,8 +22,7 @@
 
         li a {
             text-decoration: none;
-            color: var(--breadcrums-font-color);
-            font-size: $font-size-breadcrums;
+            color: var(--primary-color);
             &:hover {
                 color: var(--secondary-color);
             }

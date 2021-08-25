@@ -74,7 +74,7 @@ This example shows how to handle the `show-data` callback custom action and the 
 ----
 
 [#large-dataset]
-ThoughtSpot visualization objects can include several rows of records. For callback custom action payloads, the Visual Embed SDK supports retrieving data in batches.
+ThoughtSpot visualization objects can include several rows of records. For callback custom action payloads, the Visual Embed SDK supports retrieving data in batches. 
 
 The following example shows how to handle large datasets in custom action payloads:
 
@@ -84,7 +84,7 @@ The following example shows how to handle large datasets in custom action payloa
   if (data.id === 'show-data') {
       const fetchAnswerData = await payload.answerService.fetchData(1, 5);  //where the first integer is the offset value and second integer is batchsize
       console.log('fetchAnswerData:::', fetchAnswerData);
-
+ 
   }
 ----
 
