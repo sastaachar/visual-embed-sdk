@@ -124,6 +124,11 @@ If you select *no*, the SAML users will not be added in ThoughtSpot upon first s
 +
 . Click *Save*.
 
+[NOTE]
+====
+You can also configure SAML authentication support on ThoughtSpot using the `tscli` command `tscli saml configure`. For more information, see link:https://docs.thoughtspot.com/software/latest/saml.html#saml-configure-tscli[Configure SAML using tscli].
+====
+
 [#idp-config]
 === Configure the IdP server for SAML authentication
 To enable IdP to recognize your host application and ThoughtSpot as a valid service provider, you must configure the IdP with the required attributes and metadata.

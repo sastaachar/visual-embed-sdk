@@ -103,7 +103,11 @@ __String__. The GUID of the pinboard or answer.
 This parameter is required only for the `REPORT_BOOK_VIEW` access mode.
 
 . ThoughtSpot verifies the authentication server's request and returns a token.
-. The authentication server returns the token to the user's web browser. **If using the Visual Embed SDK, the following steps are handled automatically.** For more information, see xref:trusted-authentication.adoc#trusted-auth-sdk[Trusted authentication workflow with Visual Embed SDK].
+. The authentication server returns the token to the user's web browser. 
+
++
+Note that the following steps are handled automatically if you are using the Visual Embed SDK. For more information, see  xref:trusted-authentication.adoc#trusted-auth-sdk[Trusted authentication workflow with Visual Embed SDK].
+
 . The client application constructs a fully encoded URL with the authentication token and the embedded resource endpoint and sends it as a query parameter in the GET request to the ThoughtSpot application server.
 +
 [source, HTML]
@@ -135,10 +139,6 @@ https://<redirect-domain>/?authtoken=<user_auth_token>&embedApp=true&primaryNavH
 The request URL includes the `auth_token` attribute and the redirect URL uses the `authtoken` attribute.
 
 . ThoughtSpot validates the request and allows access to the requested content.
-
-The following illustration depicts the trusted authentication workflow:
-
-image::./images/trusted-auth-workflow.png[Trusted Authentication Workflow]
 
 [#trusted-auth-sdk]
 == Trusted authentication workflow with Visual Embed SDK
@@ -176,6 +176,10 @@ This key is required for making API calls to get a token for ThoughtSpot users.
 . Store the key in a secure location.
 . Click *Save Changes*.
 
+[NOTE]
+====
+You can also use the `tscli tokenauthentication enable` command to enable trusted authentication. For more information about tscli commands, see link:https://docs.thoughtspot.com.netlify.app/software/latest/tscli-command-ref.html[tscli command reference, window=_blank].
+====
 
 == Disable trusted authentication
 
@@ -191,3 +195,9 @@ A pop-up window appears and prompts you to confirm the disable action.
 +
 When you disable trusted authentication, the validity of your existing authentication token expires. Your application will become inoperable until you add a new token to it.
 To generate a new token, re-enable trusted authentication and obtain the security key.
+
+
+[NOTE]
+====
+You can also use the `tscli tokenauthentication disable` command to disable trusted authentication. For more information about `tscli` commands, see link:https://docs.thoughtspot.com/software/latest/tscli-command-ref.html[tscli command reference, window=_blank].
+====

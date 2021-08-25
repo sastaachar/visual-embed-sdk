@@ -5,40 +5,41 @@
 :page-pageid: embed-analytics
 :page-description: Embedded Analytics with ThoughtSpot
 
-ThoughtSpot Everywhere provides a low-code embedded analytics platform for developers and product owners to build interactive data apps and incorporate ThoughtSpot functions and services directly into their apps, products, or services. Using ThoughtSpot Everywhere, you can embed search-driven analytics, infuse insights into your application, and enrich your website, portal, or product with ThoughtSpot's analytical capabilities.
+ThoughtSpot Everywhere provides a low-code embedded analytics platform for developers and product owners to build interactive data apps and incorporate ThoughtSpot functions and services directly into their apps, products, or services. Using ThoughtSpot Everywhere, you can embed search-driven analytics, infuse insights into your application, and enrich your website, portal, or product with ThoughtSpot's capabilities.
 
-The ThoughtSpot Everywhere platform provides the Visual Embed SDK to allow your application users to  programmatically embed search-driven analytics, pinboards, visualizations, and even the entire ThoughtSpot application. ThoughtSpot also provides REST API services to programmatically query data, manage users and user sessions, push data to an external application, and automate deployments.
+ThoughtSpot Everywhere provides the Visual Embed SDK to embed search-driven analytics, pinboards, visualizations, and even the entire ThoughtSpot experience in your application. ThoughtSpot also supports REST API services to programmatically query data, manage users and user sessions, push data to an external application, and automate deployments.
 
-== Embedding methods
-You can use one of the following methods to embed ThoughtSpot into your host application:
+== Embed methods
 
-Using Visual Embed SDK::
-You can install the Visual Embed SDK, import the Javascript library, and programmatically integrate ThoughtSpot application and its components.
-The Visual Embed SDK includes separate libraries for embedding ThoughtSpot content, such as search, visualizations, pinboards, and the full application.
-
-[NOTE]
+[IMPORTANT]
 ====
-If your cluster is running ThoughtSpot Software 7.1.0 version, make sure you install the Visual Embed SDK version 1.2.0 NPM package.
+If you want to embed ThoughtSpot application or its components in your web page, portal, or product, we recommend that you use the Visual Embed SDK and customization features in the Developer portal, instead of the legacy JavaScript API (JS API). 
+
+To get access to the Developer portal and start using the Visual Embed SDK, contact ThoughtSpot Support.
 ====
 
-For more information, see xref:visual-embed-sdk.adoc[Visual Embed SDK].
+To embed ThoughtSpot content in your application, use one of the following methods:
+
+Visual Embed SDK::
+The Visual Embed SDK provides a Javascript library to embed ThoughtSpot content, such as search, visualizations, pinboards, and the full application experience. 
+
++
+For more information about how to install the Visual Embed SDK, import the Javascript library, and integrate ThoughtSpot application and its components, see xref:visual-embed-sdk.adoc[Visual Embed SDK]. 
 
 Using REST APIs::
-You can use the REST APIs to programmatically query data from the ThoughtSpot application. You can also use REST APIs to manage users and perform other key functions.
+You can use the REST APIs to programmatically query data from the ThoughtSpot application. You can also use REST APIs to manage users, user sessions, metadata objects, and perform other key functions.
 +
 For more information, see xref:about-rest-apis.adoc[REST APIs].
 
 == ThoughtSpot Developer portal
 To allow your application developers to experiment with the Visual Embed APIs, ThoughtSpot provides the Developer portal. The portal includes a playground for developers to learn and explore the Visual Embed SDK components. Developers can interact with the embed modules, try integrating ThoughtSpot content in a fictional app, and view results instantly.
 
-If you want to try the Developer playground and evaluate ThoughtSpot embedding experience, you can access the Playground from the link:https://developers.thoughtspot.com/[ThoughtSpot Developers website, window=_blank].
-
 If you are a ThoughtSpot user, you can access this portal by clicking the *Develop* tab in your ThoughtSpot application instance. To access the portal, you need administrator or developer privileges. For authenticated ThoughtSpot users, the portal provides a set of customization controls to rebrand the look and feel of your application, insert custom buttons and actions, customize link format and URLs, and so on.
 
 For more information, see xref:spotdev-portal.adoc[ThoughtSpot Developer portal].
 
-
 == UI customization and rebranding
+
 If you have embedded the ThoughtSpot application in your host application, you can customize the look and feel of ThoughtSpot UI to match your organization's branding guidelines.
 
 You can customize the ThoughtSpot application UI by using the style customization settings in the Developer portal.
