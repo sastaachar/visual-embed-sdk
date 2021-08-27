@@ -31,7 +31,7 @@ export interface PinboardViewConfig extends ViewConfig {
      */
     fullHeight?: boolean;
 
-    defaultHeight?:number;
+    defaultHeight?: number;
     /**
      * If set to true, the context menu in visualizations will be enabled.
      */
@@ -57,7 +57,9 @@ export interface PinboardViewConfig extends ViewConfig {
  */
 export class PinboardEmbed extends V1Embed {
     protected viewConfig: PinboardViewConfig;
-    private defaultHeight: number = 500;
+
+    private defaultHeight = 500;
+
     // eslint-disable-next-line no-useless-constructor
     constructor(domSelector: DOMSelector, viewConfig: PinboardViewConfig) {
         super(domSelector, viewConfig);
@@ -82,7 +84,7 @@ export class PinboardEmbed extends V1Embed {
         if (fullHeight === true) {
             params[Param.fullHeight] = true;
         }
-        if(defaultHeight) {
+        if (defaultHeight) {
             this.defaultHeight = defaultHeight;
         }
         if (disabledActions?.length) {
@@ -145,7 +147,7 @@ export class PinboardEmbed extends V1Embed {
      * @param data The event payload
      */
     private updateIFrameHeight = (data: MessagePayload) => {
-        this.setIFrameHeight(Math.max(data.data,this.defaultHeight));
+        this.setIFrameHeight(Math.max(data.data, this.defaultHeight));
     };
 
     private embedIframeCenter = (data: MessagePayload, responder: any) => {
@@ -154,7 +156,10 @@ export class PinboardEmbed extends V1Embed {
     };
 
     private handleRouteChangeFullHeightPinboard = (data: MessagePayload) => {
-        if(data.data.canvasState !== 'EMBED' && data.data.canvasState !== 'pinboard') {
+        if (
+            data.data.canvasState !== 'EMBED' &&
+            data.data.canvasState !== 'pinboard'
+        ) {
             this.setIFrameHeight(this.defaultHeight);
         }
     };
@@ -172,7 +177,10 @@ export class PinboardEmbed extends V1Embed {
         }
 
         if (this.viewConfig.fullHeight === true) {
-            this.on(EmbedEvent.RouteChange, this.handleRouteChangeFullHeightPinboard);
+            this.on(
+                EmbedEvent.RouteChange,
+                this.handleRouteChangeFullHeightPinboard,
+            );
             this.on(EmbedEvent.EmbedHeight, this.updateIFrameHeight);
             this.on(EmbedEvent.EmbedIframeCenter, this.embedIframeCenter);
         }
