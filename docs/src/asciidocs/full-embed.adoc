@@ -75,7 +75,7 @@ _String_. Hostname or IP address of the ThoughtSpot application.
 
 == Configure an authentication method
 
-Define an authentication method. 
+Define an authentication method.
 
 In the following example, the authentication method is set to SSO.
 
@@ -89,7 +89,7 @@ init
 
 include::{path}/embed-auth-config.adoc[]
 
-== Configure security parameters 
+== Configure security parameters
 
 include::{path}/embed-config.adoc[]
 
@@ -139,7 +139,7 @@ disabledActions: Action.Download
 ++++
 
 +
-For a complete list of action menu items and the corresponding strings to use for disabling menu items, see link:https://docs.thoughtspot.com/visual-embed-sdk/release/typedoc/enums/action.html[Action, window=_blank].
+For a complete list of action menu items and the corresponding strings to use for disabling menu items, see link:{{visualEmbedSDKPrefix}}/enums/action.html[Action, window=_blank].
 
 
 [NOTE]
@@ -171,7 +171,7 @@ hiddenActions: Action.Download
 <a href="{{previewPrefix}}/playground/fullApp?modifyActions=true" id="preview-in-playground" target="_blank">Try it in Playground</a>
 ++++
 +
-For a complete list of action menu items and the corresponding strings to use for hiding menu items, see link:https://docs.thoughtspot.com/visual-embed-sdk/release/typedoc/enums/action.html[Action, window=_blank].
+For a complete list of action menu items and the corresponding strings to use for hiding menu items, see link:{{visualEmbedSDKPrefix}}/enums/action.html[Action, window=_blank].
 
 [NOTE]
 ====
@@ -278,7 +278,7 @@ appEmbed.on(EmbedEvent.customAction, payload => {
 	}
 })
 ----
-For a complete list of event types that you can register, see  link:https://docs.thoughtspot.com/visual-embed-sdk/release/typedoc/enums/embedevent.html[EmbedEvent, window=_blank].
+For a complete list of event types that you can register, see  link:{{visualEmbedSDKPrefix}}/enums/embedevent.html[EmbedEvent, window=_blank].
 
 === Test the embedded workflow
 
