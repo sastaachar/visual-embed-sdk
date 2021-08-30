@@ -285,6 +285,7 @@ export enum EmbedEvent {
     EmbedIframeCenter = 'EmbedIframeCenter',
     /**
      * Detects the route change.
+     * @hidden
      */
     RouteChange = 'ROUTE_CHANGE',
     /**

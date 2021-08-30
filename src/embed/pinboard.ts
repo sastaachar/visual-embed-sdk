@@ -30,7 +30,11 @@ export interface PinboardViewConfig extends ViewConfig {
      * of the pinboard after loading.
      */
     fullHeight?: boolean;
-
+    /**
+     * Minimum height for the FullHeight pinboard and height for
+     * other screens inside pinboard.
+     * use-cases: min-height for empty pinboard or schedules screen height.
+     */
     defaultHeight?: number;
     /**
      * If set to true, the context menu in visualizations will be enabled.
