@@ -37,19 +37,18 @@ export const getAuthPromise = (): Promise<void> => authPromise;
  * @param url The URL provided for prefetch
  */
 export const prefetch = (url?: string): void => {
-    const iFrame = document.createElement('iframe');
-    iFrame.src = url || config.thoughtSpotHost || '';
-
-    if (iFrame.src === '') {
+    if (url === '') {
         // eslint-disable-next-line no-console
         console.warn('The prefetch method does not have a valid URL');
+    } else {
+        const iFrame = document.createElement('iframe');
+        iFrame.src = url || config.thoughtSpotHost;
+        iFrame.style.width = '0';
+        iFrame.style.height = '0';
+        iFrame.style.border = '0';
+        iFrame.classList.add('prefetchIframe');
+        document.body.appendChild(iFrame);
     }
-
-    iFrame.style.width = '0';
-    iFrame.style.height = '0';
-    iFrame.style.border = '0';
-    iFrame.classList.add('prefetchIframe');
-    document.body.appendChild(iFrame);
 };
 
 /**
