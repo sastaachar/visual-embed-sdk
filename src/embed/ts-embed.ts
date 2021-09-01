@@ -313,7 +313,6 @@ export class TsEmbed {
         if (!isAppEmbed) {
             path = `${path}/embed`;
         }
-
         return path;
     }
 
