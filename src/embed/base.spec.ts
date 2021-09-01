@@ -53,4 +53,14 @@ describe('Base TS Embed', () => {
         const firstIframe = <HTMLIFrameElement>prefetchIframe[0];
         expect(firstIframe.src).toBe(url);
     });
+
+    test('Should not generate a prefetch iframe when url is empty string', async () => {
+        const url = '';
+        prefetch(url);
+        expect(getAllIframeEl().length).toBe(0);
+        const prefetchIframe = document.querySelectorAll<HTMLIFrameElement>(
+            '.prefetchIframe',
+        );
+        expect(prefetchIframe.length).toBe(0);
+    });
 });
