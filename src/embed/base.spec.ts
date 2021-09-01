@@ -43,11 +43,14 @@ describe('Base TS Embed', () => {
     });
 
     test('Should add the prefetch iframe when prefetch is called. Should remove it once init is called.', async () => {
-        prefetch('https://10.87.90.95');
-        await executeAfterWait(() => {
-            expect(getAllIframeEl().length).toBe(1);
-            const prefetchIframe = document.querySelectorAll('.prefetchIframe');
-            expect(prefetchIframe.length).toBe(1);
-        }, 100);
+        const url = 'https://10.87.90.95/';
+        prefetch(url);
+        expect(getAllIframeEl().length).toBe(1);
+        const prefetchIframe = document.querySelectorAll<HTMLIFrameElement>(
+            '.prefetchIframe',
+        );
+        expect(prefetchIframe.length).toBe(1);
+        const firstIframe = <HTMLIFrameElement>prefetchIframe[0];
+        expect(firstIframe.src).toBe(url);
     });
 });
