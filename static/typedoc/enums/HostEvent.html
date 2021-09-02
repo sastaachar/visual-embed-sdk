@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>AuthType | @thoughtspot/visual-embed-sdk
+	<title>HostEvent | @thoughtspot/visual-embed-sdk
 	</title>
 	<meta name="description" content="Documentation for @thoughtspot/visual-embed-sdk">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -57,10 +57,10 @@
 					<a href="../modules.html">@thoughtspot/visual-embed-sdk</a>
 				</li>
 				<li>
-					<a href="AuthType.html">AuthType</a>
+					<a href="HostEvent.html">HostEvent</a>
 				</li>
 			</ul>
-			<h1>Enumeration AuthType</h1>
+			<h1>Enumeration HostEvent</h1>
 		</div>
 	</div>
 </header>
@@ -79,36 +79,27 @@
 					<li class=" tsd-kind-enum">
 						<a href="Action.html" class="tsd-kind-icon">Action</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-enum">
+					<li class=" tsd-kind-enum">
 						<a href="AuthType.html" class="tsd-kind-icon">Auth<wbr>Type</a>
-						<ul>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="AuthType.html#AuthServer" class="tsd-kind-icon">Auth<wbr>Server</a>
-							</li>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="AuthType.html#Basic" class="tsd-kind-icon">Basic</a>
-							</li>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="AuthType.html#None" class="tsd-kind-icon">None</a>
-							</li>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="AuthType.html#SSO" class="tsd-kind-icon">SSO</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-enum">
 						<a href="DataSourceVisualMode.html" class="tsd-kind-icon">Data<wbr>Source<wbr>Visual<wbr>Mode</a>
 					</li>
 					<li class=" tsd-kind-enum">
 						<a href="EmbedEvent.html" class="tsd-kind-icon">Embed<wbr>Event</a>
 					</li>
-					<li class=" tsd-kind-enum">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-enum">
 						<a href="HostEvent.html" class="tsd-kind-icon">Host<wbr>Event</a>
+						<ul>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="HostEvent.html#Search" class="tsd-kind-icon">Search</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-enum">
 						<a href="Page.html" class="tsd-kind-icon">Page</a>
 					</li>
@@ -149,8 +140,8 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>The authentication mechanism for allowing access to the
-						the embedded app</p>
+						<p>Event types that can be triggered by the host application
+						to the embedded ThoughtSpot app</p>
 					</div>
 				</div>
 			</section>
@@ -161,10 +152,7 @@
 						<section class="tsd-index-section ">
 							<h3>Enumeration members</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="AuthType.html#AuthServer" class="tsd-kind-icon">Auth<wbr>Server</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="AuthType.html#Basic" class="tsd-kind-icon">Basic</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="AuthType.html#None" class="tsd-kind-icon">None</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="AuthType.html#SSO" class="tsd-kind-icon">SSO</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="HostEvent.html#Search" class="tsd-kind-icon">Search</a></li>
 							</ul>
 						</section>
 					</div>
@@ -173,65 +161,26 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Enumeration members</h2>
 				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="AuthServer" class="tsd-anchor"></a>
-					<h3>Auth<wbr>Server</h3>
-					<div class="tsd-signature tsd-kind-icon">Auth<wbr>Server<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;AuthServer&quot;</span></div>
+					<a name="Search" class="tsd-anchor"></a>
+					<h3>Search</h3>
+					<div class="tsd-signature tsd-kind-icon">Search<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;search&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/f43a66d/src/types.ts#L27">types.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/c90aa5f/src/types.ts#L319">types.ts:319</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Trusted authentication server</p>
+							<p>Trigger a search</p>
 						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="Basic" class="tsd-anchor"></a>
-					<h3>Basic</h3>
-					<div class="tsd-signature tsd-kind-icon">Basic<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;Basic&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/f43a66d/src/types.ts#L34">types.ts:34</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Use the ThoughtSpot login API to authenticate to the cluster directly.</p>
-						</div>
-						<p>Warning: This feature is primarily intended for developer testing. It is
-						strongly advised not to use this authentication method in production.</p>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="None" class="tsd-anchor"></a>
-					<h3>None</h3>
-					<div class="tsd-signature tsd-kind-icon">None<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;None&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/f43a66d/src/types.ts#L19">types.ts:19</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>No authentication. Use this only for testing purposes.</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="SSO" class="tsd-anchor"></a>
-					<h3>SSO</h3>
-					<div class="tsd-signature tsd-kind-icon">SSO<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;SSO_SAML&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/f43a66d/src/types.ts#L23">types.ts:23</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>SSO using SAML</p>
-						</div>
+						<dl class="tsd-comment-tags">
+							<dt class="param">param</dt>
+							<dd><p>The list of data source GUIDs</p>
+							</dd>
+							<dt class="param">param</dt>
+							<dd><p>The search query</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 			</section>
