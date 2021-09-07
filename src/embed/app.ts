@@ -99,6 +99,7 @@ export class AppEmbed extends V1Embed {
             disabledActions,
             disabledActionReason,
             hiddenActions,
+            visibleActions,
             tag,
             hideObjects,
         } = this.viewConfig;
@@ -111,6 +112,9 @@ export class AppEmbed extends V1Embed {
         }
         if (hiddenActions?.length) {
             params[Param.HideActions] = hiddenActions;
+        }
+        if (visibleActions?.length) {
+            params[Param.VisibleActions] = visibleActions;
         }
         if (tag) {
             params[Param.Tag] = tag;

@@ -124,6 +124,7 @@ export class SearchEmbed extends TsEmbed {
             disabledActions,
             disabledActionReason,
             hiddenActions,
+            visibleActions,
             hideResults,
             enableSearchAssist,
             forceTable,
@@ -160,6 +161,9 @@ export class SearchEmbed extends TsEmbed {
         }
         if (hiddenActions?.length) {
             queryParams[Param.HideActions] = hiddenActions;
+        }
+        if (visibleActions?.length) {
+            queryParams[Param.VisibleActions] = visibleActions;
         }
         if (forceTable) {
             queryParams[Param.ForceTable] = true;
