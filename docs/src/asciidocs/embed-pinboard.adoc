@@ -159,7 +159,7 @@ _Boolean_. When set to `true`, it displays the contextual menu for visualization
 
 [#filter-removal]
 preventPinboardFilterRemoval::
-_Boolean_. When set to `true`, it disables filter actions, such as editing and removing a filter that is applied to a visualization.
+_Boolean_. When set to `true`, it disables the filter removal action and thus prevents users from removing filter chips added on a pinboard visualization.
 
 runtimeFilters [small]_optional_::
 Runtime filters to be applied when the pinboard page loads.
