@@ -152,7 +152,7 @@ enableVizTransformations::
 _Boolean_. When set to `true`, it displays the contextual menu for visualizations. The contextual menu allows users to drill down a visualization, apply filters, and view detailed insights.
 
 preventPinboardFilterRemoval::
-_Boolean_. When set to `true`, it disables filter actions, such as editing and removing a filter applied to a visualization.
+_Boolean_. When set to `true`, it disables the filter removal action and thus prevents users from removing the filters applied to a pinboard visualization.
 
 runtimeFilters [small]_optional_::
 Runtime filters to be applied when the embedded visualization loads.
