@@ -88,7 +88,7 @@ To view a sample response payload, see xref:callback-response-payload.adoc#searc
 
 |[tag greenBackground]#New feature# a|**preventPinboardFilterRemoval**
 
-The `pinboardEmbed` SDK package now includes the `preventPinboardFilterRemoval` attribute. You can use this attribute to disable filter-specific actions, such as editing or removing a filter applied to a visualization.
+The `pinboardEmbed` SDK package now includes the `preventPinboardFilterRemoval` attribute. You can use this attribute to disable the filter removal action and thus prevent users from removing filter chips added on a pinboard page.
 
 For more information, see xref:embed-pinboard.adoc[Embed a pinboard] and xref:embed-a-viz.adoc[Embed a visualization].
 |[tag greenBackground]#New feature# a|**suppressNoCookieAccessAlert**
