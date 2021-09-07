@@ -97,6 +97,11 @@ export interface ViewConfig {
      */
     hiddenActions?: Action[];
     /**
+     * The list of actions to display from the primary menu, more menu
+     * (...), and the contextual menu.
+     */
+    visibleActions?: Action[];
+    /**
      * The list of runtime filters to apply to a search answer,
      * visualization, or pinboard.
      */

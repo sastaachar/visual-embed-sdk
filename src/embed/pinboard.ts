@@ -80,6 +80,7 @@ export class PinboardEmbed extends V1Embed {
             disabledActions,
             disabledActionReason,
             hiddenActions,
+            visibleActions,
             enableVizTransformations,
             fullHeight,
             preventPinboardFilterRemoval,
@@ -100,6 +101,9 @@ export class PinboardEmbed extends V1Embed {
         }
         if (hiddenActions?.length) {
             params[Param.HideActions] = hiddenActions;
+        }
+        if (visibleActions?.length) {
+            params[Param.VisibleActions] = visibleActions;
         }
         if (enableVizTransformations !== undefined) {
             params[
