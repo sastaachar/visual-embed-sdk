@@ -58,6 +58,7 @@
 ** link:{{navprefix}}=metadata-api[Metadata APIs]
 ** link:{{navprefix}}=admin-api[Admin APIs]
 ** link:{{navprefix}}=materialization-api[Materialization API]
+** link:{{navprefix}}=dependent-objects-api[Dependent objects APIs]
 ** link:{{navprefix}}=tml-api[TML APIs]
 ** link:{{navprefix}}=search-data-api[Search data API]
 ** link:{{navprefix}}=pinboard-api[Pinboard data API]

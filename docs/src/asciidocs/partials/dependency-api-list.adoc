@@ -5,6 +5,7 @@
 
 Creates a list of dependents for a given data object type.
 
+////
 +++<p class="divider"> </p>+++
 
 `xref:dependency-apis.adoc#get-column-dependents[*GET* /tspublic/v1/dependency/logicalcolumn]` [tag greenBackground]#New#
@@ -46,5 +47,5 @@ Gets a list of dependent object headers for a pinboard.
 `xref:admin-api.adoc#get-incomplete-objects[*GET* /tspublic/v1/dependency/listincomplete]` [tag greenBackground]#New#
 
 Gets a list of objects with incomplete metadata.
-
+////
 --

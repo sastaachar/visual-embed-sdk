@@ -129,6 +129,7 @@ If the `POST` operation is successful, the API returns a response body with depe
 |**500**|Null object ID
 |===
 
+////
 [#get-column-dependents]
 == Get dependent objects for a column
 To get the details of dependent objects for a logical column in a worksheet, table, or view, send a `GET` request to `/tspublic/v1/dependency/logicalcolumn` API endpoint.
@@ -811,3 +812,4 @@ If the cluster has objects with incomplete metadata details, the API returns the
 |**204**|Successful retrieval of dependent objects
 |**400**|Invalid object ID
 |===
+////
