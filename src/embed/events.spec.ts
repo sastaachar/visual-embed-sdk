@@ -135,4 +135,23 @@ describe('test communication between host app and ThoughtSpot', () => {
             expect(spyTwo).not.toHaveBeenCalled();
         }, EVENT_WAIT_TIME);
     });
+
+    test('send getIframeCenter Event without eventPort', async () => {
+        const pinboardEmbed = new PinboardEmbed(getRootEl(), {
+            ...defaultViewConfig,
+            fullHeight: true,
+            pinboardId: 'eca215d4-0d2c-4a55-90e3-d81ef6848ae0',
+        } as PinboardViewConfig);
+        pinboardEmbed.render();
+        const spy1 = jest.spyOn(global.console, 'log');
+
+        await executeAfterWait(() => {
+            const iframe = getIFrameEl();
+            postMessageToParent(iframe.contentWindow, {
+                type: EmbedEvent.EmbedIframeCenter,
+                data: PAYLOAD,
+            });
+        });
+        expect(spy1).toHaveBeenCalledWith('Event Port is not defined');
+    });
 });
