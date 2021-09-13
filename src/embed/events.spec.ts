@@ -165,7 +165,6 @@ describe('test communication between host app and ThoughtSpot', () => {
         const mockPort: any = {
             postMessage: jest.fn(),
         };
-        const spy1 = jest.spyOn(mockPort, 'postMessage');
         await executeAfterWait(() => {
             const iframe = getIFrameEl();
             postMessageToParent(
@@ -187,6 +186,6 @@ describe('test communication between host app and ThoughtSpot', () => {
             },
             type: EmbedEvent.EmbedIframeCenter,
         };
-        expect(spy1).toHaveBeenCalledWith(heightObj);
+        expect(mockPort.postMessage).toHaveBeenCalledWith(heightObj);
     });
 });
