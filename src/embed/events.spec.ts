@@ -154,4 +154,41 @@ describe('test communication between host app and ThoughtSpot', () => {
         });
         expect(spy1).toHaveBeenCalledWith('Event Port is not defined');
     });
+
+    test('send getIframeCenter Event with eventPort', async () => {
+        const pinboardEmbed = new PinboardEmbed(getRootEl(), {
+            ...defaultViewConfig,
+            fullHeight: true,
+            pinboardId: 'eca215d4-0d2c-4a55-90e3-d81ef6848ae0',
+        } as PinboardViewConfig);
+        pinboardEmbed.render();
+        const mockPort: any = {
+            postMessage(...args: any) {
+                console.log('EmbedIframeCenter Event triggered');
+            },
+        };
+        const spy1 = jest.spyOn(mockPort, 'postMessage');
+        await executeAfterWait(() => {
+            const iframe = getIFrameEl();
+            postMessageToParent(
+                iframe.contentWindow,
+                {
+                    type: EmbedEvent.EmbedIframeCenter,
+                    data: PAYLOAD,
+                },
+                mockPort,
+            );
+        });
+        const heightObj = {
+            data: {
+                iframeCenter: 0,
+                iframeHeight: 0,
+                iframeScrolled: 0,
+                iframeVisibleViewPort: 0,
+                viewPortHeight: 768,
+            },
+            type: 'EmbedIframeCenter',
+        };
+        expect(spy1).toHaveBeenCalledWith(heightObj);
+    });
 });
