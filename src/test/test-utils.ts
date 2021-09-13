@@ -35,12 +35,12 @@ export const getIFrameSrc = (container: DOMElement = document) =>
 export const postMessageToParent = (
     window: WindowProxy,
     data: any,
-    mockPort?: any,
+    port?: any,
 ) => {
     const message = new MessageEvent('message', {
         data,
         source: window,
-        ports: [mockPort],
+        ports: [port],
     });
     window.parent.dispatchEvent(message);
 };
