@@ -163,9 +163,7 @@ describe('test communication between host app and ThoughtSpot', () => {
         } as PinboardViewConfig);
         pinboardEmbed.render();
         const mockPort: any = {
-            postMessage(...args: any) {
-                console.log('EmbedIframeCenter Event triggered');
-            },
+            postMessage: jest.fn(),
         };
         const spy1 = jest.spyOn(mockPort, 'postMessage');
         await executeAfterWait(() => {
@@ -187,7 +185,7 @@ describe('test communication between host app and ThoughtSpot', () => {
                 iframeVisibleViewPort: 0,
                 viewPortHeight: 768,
             },
-            type: 'EmbedIframeCenter',
+            type: EmbedEvent.EmbedIframeCenter,
         };
         expect(spy1).toHaveBeenCalledWith(heightObj);
     });
