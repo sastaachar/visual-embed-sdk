@@ -95,27 +95,8 @@ export class AppEmbed extends V1Embed {
      */
     private getEmbedParams() {
         const params = this.getBaseQueryParams();
-        const {
-            disabledActions,
-            disabledActionReason,
-            hiddenActions,
-            visibleActions,
-            tag,
-            hideObjects,
-        } = this.viewConfig;
+        const { tag, hideObjects } = this.viewConfig;
 
-        if (disabledActions?.length) {
-            params[Param.DisableActions] = disabledActions;
-        }
-        if (disabledActionReason) {
-            params[Param.DisableActionReason] = disabledActionReason;
-        }
-        if (hiddenActions?.length) {
-            params[Param.HideActions] = hiddenActions;
-        }
-        if (visibleActions?.length) {
-            params[Param.VisibleActions] = visibleActions;
-        }
         if (tag) {
             params[Param.Tag] = tag;
         }

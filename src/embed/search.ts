@@ -121,10 +121,6 @@ export class SearchEmbed extends TsEmbed {
         searchQuery?: string,
     ) {
         const {
-            disabledActions,
-            disabledActionReason,
-            hiddenActions,
-            visibleActions,
             hideResults,
             enableSearchAssist,
             forceTable,
@@ -152,18 +148,6 @@ export class SearchEmbed extends TsEmbed {
         }
         if (hideResults) {
             queryParams[Param.HideResult] = true;
-        }
-        if (disabledActions?.length) {
-            queryParams[Param.DisableActions] = disabledActions;
-        }
-        if (disabledActionReason) {
-            queryParams[Param.DisableActionReason] = disabledActionReason;
-        }
-        if (hiddenActions?.length) {
-            queryParams[Param.HideActions] = hiddenActions;
-        }
-        if (visibleActions?.length) {
-            queryParams[Param.VisibleActions] = visibleActions;
         }
         if (forceTable) {
             queryParams[Param.ForceTable] = true;
