@@ -57,7 +57,7 @@ import { AppEmbed, Page, AuthType, init } from '@thoughtspot/visual-embed-sdk';
 import { AppEmbed, Page, AuthType, init } from 'https://cdn.jsdelivr.net/npm/@thoughtspot/visual-embed-sdk/dist/tsembed.es.js';
 ----
 
-== Add the embed domain
+== Initialize the SDK
 
 To allow your client application to connect to ThoughtSpot, configure the URL with ThoughtSpot hostname or IP address.
 
@@ -118,7 +118,7 @@ Create an instance of the AppEmbed object and pass the parameters for the applic
 
   });
 ----
-frameParams:: Sets the `width` and `height` dimensions to render the pages in the web application. You can set the `width` and `height` attribute values in pixels or as a percentage.
+frameParams:: Sets the `width` and `height` dimensions to render ThoughtSpot pages in your application. You can set the `width` and `height` attribute values in pixels or as a percentage.
 
 disabledActions::
 _Array of strings_. The action menu items to be disabled on the ThoughtSpot application pages.
