@@ -24,7 +24,7 @@ import { SearchEmbed, AuthType, init } from '@thoughtspot/visual-embed-sdk';
 import { SearchEmbed, AuthType, init } from 'https://cdn.jsdelivr.net/npm/@thoughtspot/visual-embed-sdk/dist/tsembed.es.js';
 ----
 
-== Add the embed domain
+== Initialize the SDK
 
 To allow your client application to connect to ThoughtSpot, configure the URL with ThoughtSpot hostname or IP address.
 
@@ -92,7 +92,7 @@ const searchEmbed = new SearchEmbed(
 ----
 
 frameParams::
-Sets the `width` and `height` dimensions to render the iframe in the web browser. You can set the `width` and `height` attribute values in pixels or as a percentage.
+Sets the `width` and `height` dimensions to render the search object in the web browser. You can set the `width` and `height` attribute values in pixels or as a percentage.
 
 answerID [small]#__Optional__#::
 _String_. The Global Unique Identifiers (GUID) of the answers saved in a user profile.
