@@ -24,7 +24,7 @@ import { PinboardEmbed, AuthType, init } from '@thoughtspot/visual-embed-sdk';
 import { PinboardEmbed, AuthType, init } from 'https://cdn.jsdelivr.net/npm/@thoughtspot/visual-embed-sdk/dist/tsembed.es.js';
 ----
 
-== Add the embed domain
+== Initialize the SDK
 
 To allow your client application to connect to ThoughtSpot, configure the URL with ThoughtSpot hostname or IP address.
 
@@ -84,7 +84,7 @@ include::{path}/embed-config.adoc[]
 ----
 frameParams::
 
-Sets the `width` and `height` dimensions to render the iframe containing the pinboard. You can set the `width` and `height` attribute values in pixels or as a percentage.
+Sets the `width` and `height` dimensions to render the pinboard object. You can set the `width` and `height` attribute values in pixels or as a percentage.
 
 fullHeight __Optional__::
 
