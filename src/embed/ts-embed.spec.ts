@@ -120,14 +120,18 @@ describe('Unit test case for ts embed', () => {
 
     describe('when visible actions are set', () => {
         test('should throw error when there are both visible and hidden actions', async () => {
+            spyOn(console, 'log');
             const pinboardEmbed = new PinboardEmbed(getRootEl(), {
                 hiddenActions: [Action.DownloadAsCsv],
                 visibleActions: [Action.DownloadAsCsv],
                 ...defaultViewConfig,
                 pinboardId,
             } as PinboardViewConfig);
-            pinboardEmbed.render();
+            await pinboardEmbed.render();
             expect(pinboardEmbed['isError']).toBe(true);
+            expect(console.log).toHaveBeenCalledWith(
+                'You cannot have both hidden actions and visible actions',
+            );
         });
         test('should not throw error when there are only visible or hidden actions', async () => {
             const pinboardEmbed = new PinboardEmbed(getRootEl(), {
