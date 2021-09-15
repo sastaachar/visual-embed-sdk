@@ -26,7 +26,7 @@ import { PinboardEmbed, AuthType, init } from '@thoughtspot/visual-embed-sdk';
 import { PinboardEmbed, AuthType, init } from 'https://cdn.jsdelivr.net/npm/@thoughtspot/visual-embed-sdk/dist/tsembed.es.js';
 ----
 
-== Add the embed domain
+== Initialize the SDK
 
 To allow your client application to connect to ThoughtSpot, configure the URL with ThoughtSpot hostname or IP address.
 
@@ -83,7 +83,7 @@ include::{path}/embed-config.adoc[]
     },
 });
 ----
-frameParams:: Sets the `width` and `height` dimensions to render the iframe containing the visualization. You can set the `width` and `height` attribute values in pixels or as a percentage.
+frameParams:: Sets the `width` and `height` dimensions to render the visualization object. You can set the `width` and `height` attribute values in pixels or as a percentage.
 
 disabledActions [small]_optional_::
 _Array of strings_. Disables the specified action menu items from the *More* menu image:./images/icon-more-10px.png[the more options menu] on the visualization page.
