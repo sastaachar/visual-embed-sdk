@@ -294,7 +294,7 @@ const IndexPage = ({ location }) => {
                             : '0px',
                     }}
                 >
-                    {<Search
+                    <Search
                         keyword={keyword}
                         onChange={(e: React.FormEvent<HTMLInputElement>) =>
                             updateKeyword((e.target as HTMLInputElement).value)
@@ -307,7 +307,7 @@ const IndexPage = ({ location }) => {
                         setDarkMode={setDarkMode}
                         isDarkMode={isDarkMode}
                         isPublicSiteOpen={isPublicSiteOpen}
-                    />}
+                    />
 
                     <div className="introWrapper">
                         <Document
