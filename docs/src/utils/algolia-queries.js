@@ -132,7 +132,10 @@ const queries = [
     },
     indexName: gatsbyIndex,
     settings: { attributesToSnippet: ['body:15',
-    'title']},
+    'title'],
+    highlightPreTag: '<em style="color:blue;">',
+    highlightPostTag: '</em>'
+  },
   },
 ]
 
