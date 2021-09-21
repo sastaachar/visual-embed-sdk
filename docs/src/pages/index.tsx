@@ -204,11 +204,11 @@ const IndexPage = ({ location }) => {
           ),
         []
       );
-    const gatsbyIndex = searchClient.initIndex('Pages');
+    const searchIndex = searchClient.initIndex('Pages');
 
     useEffect(()=>{
         if(keyword) {
-            gatsbyIndex
+            searchIndex
             .search(keyword)
             .then(({ hits }) => {
                 const t = hits.reduce((acc, cur:any) => {
