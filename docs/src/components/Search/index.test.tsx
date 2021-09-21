@@ -121,7 +121,7 @@ describe('Search', () => {
         expect(queryAllByTestId('search-result')[0]).toHaveClass('active');
     })
 
-    it.only('should keyword and input value on enter', async () => {
+    it('should keyword and input value on enter', async () => {
         const { container, queryAllByTestId, getByTestId } = render(<Search  {...searchPropsWithOptions} />);
         const input = await getByTestId('search-input');
 
