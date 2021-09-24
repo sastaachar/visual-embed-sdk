@@ -1,7 +1,10 @@
 const config = require('../configs/doc-configs');
 const { htmlToText } = require('html-to-text');
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
+const { TextDecoder, TextEncoder } =require('util');
+global.TextDecoder = global.TextDecoder || TextDecoder
+global.TextEncoder = global.TextEncoder || TextEncoder
+const { JSDOM }  = require("jsdom");
+
 const Pages = `Pages`
 
 const getPathPrefix = () => {
@@ -117,11 +120,14 @@ const queries = [
             .reduce((acc,edge) => {
                 const newDiv = new JSDOM(`<div>${edge.node.html}</div>`).window.document;
                 const preambleEle = newDiv.querySelector('#preamble');
-                const preamble = pageToAlgoliaRecordForASCII(preambleEle, 'preamble',edge.node);
+                const preamble = preambleEle ? pageToAlgoliaRecordForASCII(preambleEle, 'preamble',edge.node) : null;
                 const sections = Array.prototype.map.call(newDiv.querySelectorAll('.sect1'),(sect) => 
                     pageToAlgoliaRecordForASCII(sect,'section',edge.node)
                 );
-                return [...acc,...sections, preamble];
+                if(preamble) {
+                    acc = [...acc,preamble];
+                }
+                return [...acc,...sections];
             },[]),
         ...data.allFile.edges
             .filter((edge) => edge.node.extension === 'html')
@@ -139,4 +145,8 @@ const queries = [
   },
 ]
 
-module.exports = queries
+module.exports = {
+    queries,
+    pageToAlgoliaRecordForTypedoc,
+    pageToAlgoliaRecordForASCII,
+};
