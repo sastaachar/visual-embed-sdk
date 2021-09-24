@@ -5,6 +5,9 @@ const config = require('./docs/src/configs/doc-configs');
 const buildEnv = process.env.BUILD_ENV || config.BUILD_ENVS.LOCAL; // Default build env
 
 const getPathPrefix = () => {
+    if(buildEnv === config.BUILD_ENVS.LOCAL) {
+        return null;
+    }
     return 'docs';
 };
 
@@ -87,6 +90,7 @@ module.exports = {
     pathPrefix: getPath(config.DOC_REPO_NAME),
     siteMetadata: {
         title: 'tseverywhere-docs',
+        siteUrl: 'https://developers.thoughtspot.com/docs/',
     },
     plugins: [
         'gatsby-plugin-sass',
@@ -177,6 +181,7 @@ module.exports = {
               apiKey: process.env.ALGOLIA_ADMIN_KEY,
               queries: require(`${__dirname}/docs/src/utils/algolia-queries`)
             },
-        }
+        },
+        'gatsby-plugin-sitemap',
     ],
 };
