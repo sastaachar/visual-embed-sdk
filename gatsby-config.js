@@ -90,7 +90,6 @@ module.exports = {
     pathPrefix: getPath(config.DOC_REPO_NAME),
     siteMetadata: {
         title: 'tseverywhere-docs',
-        siteUrl: 'https://developers.thoughtspot.com/docs/',
     },
     plugins: [
         'gatsby-plugin-sass',
@@ -182,6 +181,43 @@ module.exports = {
               queries: require(`${__dirname}/docs/src/utils/algolia-queries`)
             },
         },
-        'gatsby-plugin-sitemap',
+        {
+            resolve:'gatsby-plugin-sitemap',
+            options: {
+                query: `
+                {   
+                    allAsciidoc {
+                        edges {
+                            node {
+                                pageAttributes {
+                                    pageid
+                                }
+                            }
+                        }
+                    }
+                }`,
+                resolveSiteUrl: () => config.SITE_URL,
+                resolvePages: ({
+                    allAsciidoc: { edges },
+                }) => {
+                    const asciiNodeSet = new Set();
+                    edges.forEach(edge => {
+                        if(edge.node && edge.node.pageAttributes && edge.node.pageAttributes.pageid) {
+                            asciiNodeSet.add(edge.node.pageAttributes.pageid);
+                        }
+                    });
+                    let paths = [];
+                    for (let item of asciiNodeSet) {
+                        paths.push({path:`?pageid=${item}`});
+                    }
+                    return paths;
+                },
+                serialize: ({ path }) => {
+                    return {
+                      url: path,
+                    }
+                },
+            }
+        },
     ],
 };
