@@ -49,7 +49,10 @@ const Search: React.FC<SearchProps> = (props) => {
     };
     const onSearchOptionSelected = () => {
         props.updateKeyword('');
-        updateShowSearchResult(false);
+        if(searchInput.current) {
+            searchInput.current.blur();
+        }
+        updateShowSearchResult(false);  
     }
     useEffect(() => {
         document.addEventListener('mousedown', handleClick);
@@ -84,17 +87,13 @@ const Search: React.FC<SearchProps> = (props) => {
                     if (anchor?.current) {
                         anchor.current.click();
                     }
-                    props.updateKeyword('');
                 } else {
                     props.optionSelected(
                         props.options[highlightedIndex].pageid,
                         props.options[highlightedIndex].sectionId,
                     );
-                    if(searchInput.current) {
-                        searchInput.current.blur();
-                    }
-                    onSearchOptionSelected();
                 }
+                onSearchOptionSelected();
                 setHighlightedIndex(0);
                 return;
             default:
