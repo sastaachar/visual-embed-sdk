@@ -1,0 +1,7 @@
+= Troubleshooting the Visual Embed SDK
+
+:page-title: Troubleshooting the Visual Embed SDK
+:page-pageid: troubleshooting-embed-sdk
+:page-description: Troubleshooting the Visual Embed SDK
+
+This page lists the solutions for common issues encountered in the initial setup of the Visual Embed SDK
