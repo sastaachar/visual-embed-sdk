@@ -212,8 +212,67 @@ You can add more than one filter by specifying `col2`, `op2`, `val2`, and so on.
 These parameters are case-insensitive. For example, `EQ`, `eq`, and `eQ` have the same result.
 
 ==== Runtime filter operators
+[width="100%" cols="1,2,1"]
+[options='header']
+|===
+| Operator | Description | Number of Values
 
-include::{path}/runtime-filter.adoc[]
+| `EQ`
+| equals
+| 1
+
+| `NE`
+| does not equal
+| 1
+
+| `LT`
+| less than
+| 1
+
+| `LE`
+| less than or equal to
+| 1
+
+| `GT`
+| greater than
+| 1
+
+| `GE`
+| greater than or equal to
+| 1
+
+| `CONTAINS`
+| contains
+| 1
+
+| `BEGINS_WITH`
+| begins with
+| 1
+
+| `ENDS_WITH`
+| ends with
+| 1
+
+| `BW_INC_MAX`
+| between inclusive of the higher value
+| 2
+
+| `BW_INC_MIN`
+| between inclusive of the lower value
+| 2
+
+| `BW_INC`
+| between inclusive
+| 2
+
+| `BW`
+| between non-inclusive
+| 2
+
+| `IN`
+| is included in this list of values
+| multiple
+|===
 
 === Response codes
 
