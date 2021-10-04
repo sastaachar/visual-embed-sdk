@@ -5,6 +5,9 @@ const config = require('./docs/src/configs/doc-configs');
 const buildEnv = process.env.BUILD_ENV || config.BUILD_ENVS.LOCAL; // Default build env
 
 const getPathPrefix = () => {
+    if(buildEnv === config.BUILD_ENVS.LOCAL) {
+        return null;
+    }
     return 'docs';
 };
 
@@ -182,7 +185,7 @@ module.exports = {
             resolve:'gatsby-plugin-sitemap',
             options: {
                 query: `
-                {
+                {   
                     allAsciidoc {
                         edges {
                             node {
