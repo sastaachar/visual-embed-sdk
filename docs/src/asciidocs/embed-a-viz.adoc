@@ -9,6 +9,8 @@ This page explains how to embed a single ThoughtSpot visualization, such as a ta
 
 You cannot embed a saved answer as an individual visualization. Saved answers can be used in the *SearchEmbed* component, where they will load with the search bar and other options of ThoughtSpot search. Any visualization you want to show via *PinboardEmbed* must exist on a pinboard object in ThoughtSpot.
 
+Note that you sometimes want to display multiple charts or tables that have been saved in a pinboard.  In these situations you should try to embed a single pinboard rather than multiple visualizations for performance reasons.  If you have to embed multiple visualizations, you should xref:prefetch-and-cache.adoc[prefetch the static resources] before displaying the page.  You should also limit the page to fewer than four visualizations.
+
 == Import the PinboardEmbed package
 Import the visualization SDK library to your application environment:
 
