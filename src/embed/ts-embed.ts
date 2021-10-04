@@ -70,7 +70,7 @@ export interface ViewConfig {
      */
     layoutConfig?: LayoutConfig;
     /**
-     * The <b>width</b> and <b>height</b> dimensions to render an embedded object inside your app.  Specify the values in pixels or percentage.
+     * The height and width of the iFrame.
      */
     frameParams?: FrameParams;
     /**
@@ -96,13 +96,6 @@ export interface ViewConfig {
      * (...), and the contextual menu.
      */
     hiddenActions?: Action[];
-    /**
-     * The list of actions to display from the primary menu, more menu
-     * (...), and the contextual menu.
-     *
-     * _since 1.5.0_
-     */
-    visibleActions?: Action[];
     /**
      * The list of runtime filters to apply to a search answer,
      * visualization, or pinboard.
@@ -297,33 +290,6 @@ export class TsEmbed {
         queryParams[Param.ViewPortHeight] = window.innerHeight;
         queryParams[Param.ViewPortWidth] = window.innerWidth;
         queryParams[Param.Version] = version;
-
-        const {
-            disabledActions,
-            disabledActionReason,
-            hiddenActions,
-            visibleActions,
-        } = this.viewConfig;
-
-        if (visibleActions?.length && hiddenActions?.length) {
-            this.handleError(
-                'You cannot have both hidden actions and visible actions',
-            );
-            return queryParams;
-        }
-
-        if (disabledActions?.length) {
-            queryParams[Param.DisableActions] = disabledActions;
-        }
-        if (disabledActionReason) {
-            queryParams[Param.DisableActionReason] = disabledActionReason;
-        }
-        if (hiddenActions?.length) {
-            queryParams[Param.HideActions] = hiddenActions;
-        }
-        if (visibleActions?.length) {
-            queryParams[Param.VisibleActions] = visibleActions;
-        }
         return queryParams;
     }
 
@@ -355,6 +321,7 @@ export class TsEmbed {
         if (!isAppEmbed) {
             path = `${path}/embed`;
         }
+
         return path;
     }
 
@@ -390,7 +357,6 @@ export class TsEmbed {
                 uploadMixpanelEvent(MIXPANEL_EVENT.VISUAL_SDK_RENDER_COMPLETE);
 
                 this.iFrame = this.iFrame || document.createElement('iframe');
-
                 this.iFrame.src = url;
 
                 // according to screenfull.js documentation
@@ -428,14 +394,6 @@ export class TsEmbed {
                 });
                 this.el.innerHTML = '';
                 this.el.appendChild(this.iFrame);
-                const prefetchIframe = document.querySelectorAll(
-                    '.prefetchIframe',
-                );
-                if (prefetchIframe.length) {
-                    prefetchIframe.forEach((el) => {
-                        el.remove();
-                    });
-                }
                 this.subscribeToEvents();
             })
             .catch((error) => {
@@ -554,27 +512,6 @@ export class TsEmbed {
     }
 
     /**
-     * Navigates users to the specified application page.
-     * Use this method to navigate users from the embedded
-     * ThoughtSpot context to a specific page in your app.
-     * @param path The page path string.
-     * For example, to navigate users to a pinboard page,
-     * define the method as navigateToPage('pinboard/&lt;pinboardId&gt;').
-     */
-    public navigateToPage(path: string): void {
-        const iframeSrc = this.iFrame?.src;
-        if (iframeSrc) {
-            const embedPath = '#/embed';
-            const currentPath = iframeSrc.includes(embedPath) ? embedPath : '#';
-            this.iFrame.src = `${
-                iframeSrc.split(currentPath)[0]
-            }${currentPath}/${path.replace(/^\/?#?\//, '')}`;
-        } else {
-            console.log('Please call render before invoking this method');
-        }
-    }
-
-    /**
      * Triggers an event on specific Port registered against
      * for the EmbedEvent
      * @param eventType The message type
@@ -622,6 +559,12 @@ export class TsEmbed {
         this.isRendered = true;
 
         return this;
+    }
+
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+    // eslint-disable-next-line camelcase
+    public test_setIframe(iframe: any): void {
+        this.iFrame = iframe;
     }
 }
 

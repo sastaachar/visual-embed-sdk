@@ -18,7 +18,7 @@ type SearchProps = {
     keyword: string;
     isMaxMobileResolution: boolean;
     isDarkMode: boolean;
-    optionSelected: (pageid: string, sectionId:string) => void;
+    optionSelected: (pageid: string) => void;
     onChange: (e: React.FormEvent<HTMLInputElement>) => void;
     updateKeyword: Function;
     setDarkMode: Function;
@@ -33,12 +33,10 @@ const Search: React.FC<SearchProps> = (props) => {
     const [highlightedIndex, setHighlightedIndex] = useState(0);
 
     useEffect(() => {
-        if (props.options.length > 0 && props.keyword) {
+        if (props.options.length > 0) {
             updateShowSearchResult(true);
-        } else {
-            updateShowSearchResult(false); 
         }
-    }, [props.keyword, props.options]);
+    }, [props.options]);
 
     // This handles the mouse click events for suggestion list
     const handleClick = (event: Event) => {
@@ -47,13 +45,7 @@ const Search: React.FC<SearchProps> = (props) => {
         }
         updateShowSearchResult(false);
     };
-    const onSearchOptionSelected = () => {
-        props.updateKeyword('');
-        if(searchInput.current) {
-            searchInput.current.blur();
-        }
-        updateShowSearchResult(false);  
-    }
+
     useEffect(() => {
         document.addEventListener('mousedown', handleClick);
         return () => {
@@ -62,9 +54,9 @@ const Search: React.FC<SearchProps> = (props) => {
     }, [node]);
 
     const onFocus = () => updateShowSearchResult(true);
-    const searchInput = useRef<HTMLInputElement>();
+
     const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (props.options.length === 0) return;
+        if (!props.keyword || props.options.length === 0) return;
 
         const optionSize = props.options.length;
 
@@ -87,13 +79,12 @@ const Search: React.FC<SearchProps> = (props) => {
                     if (anchor?.current) {
                         anchor.current.click();
                     }
+                    props.updateKeyword('');
                 } else {
                     props.optionSelected(
                         props.options[highlightedIndex].pageid,
-                        props.options[highlightedIndex].sectionId,
                     );
                 }
-                onSearchOptionSelected();
                 setHighlightedIndex(0);
                 return;
             default:
@@ -106,19 +97,18 @@ const Search: React.FC<SearchProps> = (props) => {
             case 'html':
                 return (
                     <a
-                        data-testid="result-link"
                         key={option.pageid}
                         className="result"
                         href={option.link}
                         target="_blank"
                         ref={anchor}
-                        onClick={onSearchOptionSelected}
+                        onClick={() => props.updateKeyword('')}
                     >
                         <SearchResult
                             highlightedIndex={highlightedIndex}
                             index={index}
-                            keyword={option.title}
-                            title={option._snippetResult && option._snippetResult.body.value}
+                            keyword={props.keyword}
+                            title={option.title}
                         />
                     </a>
                 );
@@ -145,10 +135,7 @@ const Search: React.FC<SearchProps> = (props) => {
                     <div
                         key={option.pageid}
                         className="result"
-                        onClick={() => {
-                            props.optionSelected(option.pageid,option.sectionId);
-                            onSearchOptionSelected();
-                        }}
+                        onClick={() => props.optionSelected(option.pageid)}
                         ref={(el: HTMLDivElement) => {
                             optionListRef.current[index] = el;
                         }}
@@ -156,8 +143,8 @@ const Search: React.FC<SearchProps> = (props) => {
                         <SearchResult
                             highlightedIndex={highlightedIndex}
                             index={index}
-                            keyword={`${option.title} | ${option.sectionTitle}`}
-                            title={option._snippetResult && option._snippetResult.body.value}
+                            keyword={props.keyword}
+                            title={option.title}
                         />
                     </div>
                 );
@@ -183,8 +170,6 @@ const Search: React.FC<SearchProps> = (props) => {
                         <BiSearch />
                     </IconContext.Provider>
                     <input
-                        ref={searchInput}
-                        data-testid="search-input"
                         type="Search"
                         placeholder={t('SEARCH_PLACEHOLDER')}
                         onFocus={onFocus}
@@ -194,7 +179,7 @@ const Search: React.FC<SearchProps> = (props) => {
                     />
                 </div>
                 {showSearchResult && props.options?.length ? (
-                    <div ref={node} className="resultContainer" data-testid="resultContainer">
+                    <div ref={node} className="resultContainer">
                         {props.options.map(
                             (option: SearchQueryResult, index: number) => {
                                 return renderOption(option, index);
@@ -202,8 +187,8 @@ const Search: React.FC<SearchProps> = (props) => {
                         )}
                     </div>
                 ) : (
-                        ''
-                    )}
+                    ''
+                )}
             </div>
             {props.isMaxMobileResolution && (
                 <div className="ml-4">

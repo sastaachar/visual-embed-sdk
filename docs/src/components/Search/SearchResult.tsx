@@ -12,11 +12,8 @@ const SearchResult = (props: SearchResultProps) => (
     <div
         className={`${!props.isKeywordNotFound && 'textContainer'} 
         ${props.index === props.highlightedIndex && 'active'}`}
-        data-testid="search-result"
     >
-        <p className="title"
-            dangerouslySetInnerHTML = {{ __html: props.keyword }}
-        ></p>
+        <p className="title">{props.keyword}</p>
         <p
             className="footer"
             dangerouslySetInnerHTML={{ __html: props.title }}

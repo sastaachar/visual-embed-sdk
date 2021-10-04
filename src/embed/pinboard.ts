@@ -2,8 +2,7 @@
  * Copyright (c) 2021
  *
  * Embed a ThoughtSpot pinboard or visualization
- * https://developers.thoughtspot.com/docs/?pageid=embed-pinboard
- * https://developers.thoughtspot.com/docs/?pageid=embed-a-viz
+ * https://docs.thoughtspot.com/visual-embed-sdk/release/en/?pageid=embed-a-viz
  *
  * @summary Pinboard & visualization embed
  * @author Ayon Ghosh <ayon.ghosh@thoughtspot.com>
@@ -27,18 +26,10 @@ import { V1Embed, ViewConfig } from './ts-embed';
  */
 export interface PinboardViewConfig extends ViewConfig {
     /**
-     * If set to true, the embedded object container dynamically resizes
-     * according to the height of the pinboard.
+     * If set to true, the iFrame will adjust to the full height
+     * of the pinboard after loading.
      */
     fullHeight?: boolean;
-    /**
-     * This is the minimum height(in pixels) for a full height pinboard.
-     * Setting this height helps resolves issues with empty pinboards and
-     * other screens navigable from a pinboard.
-     * @default 500
-     * _since 1.5.0_
-     */
-    defaultHeight?: number;
     /**
      * If set to true, the context menu in visualizations will be enabled.
      */
@@ -65,8 +56,6 @@ export interface PinboardViewConfig extends ViewConfig {
 export class PinboardEmbed extends V1Embed {
     protected viewConfig: PinboardViewConfig;
 
-    private defaultHeight = 500;
-
     // eslint-disable-next-line no-useless-constructor
     constructor(domSelector: DOMSelector, viewConfig: PinboardViewConfig) {
         super(domSelector, viewConfig);
@@ -79,17 +68,25 @@ export class PinboardEmbed extends V1Embed {
     private getEmbedParams() {
         const params = this.getBaseQueryParams();
         const {
+            disabledActions,
+            disabledActionReason,
+            hiddenActions,
             enableVizTransformations,
             fullHeight,
             preventPinboardFilterRemoval,
-            defaultHeight,
         } = this.viewConfig;
 
         if (fullHeight === true) {
             params[Param.fullHeight] = true;
         }
-        if (defaultHeight) {
-            this.defaultHeight = defaultHeight;
+        if (disabledActions?.length) {
+            params[Param.DisableActions] = disabledActions;
+        }
+        if (disabledActionReason) {
+            params[Param.DisableActionReason] = disabledActionReason;
+        }
+        if (hiddenActions?.length) {
+            params[Param.HideActions] = hiddenActions;
         }
         if (enableVizTransformations !== undefined) {
             params[
@@ -142,21 +139,12 @@ export class PinboardEmbed extends V1Embed {
      * @param data The event payload
      */
     private updateIFrameHeight = (data: MessagePayload) => {
-        this.setIFrameHeight(Math.max(data.data, this.defaultHeight));
+        this.setIFrameHeight(data.data);
     };
 
     private embedIframeCenter = (data: MessagePayload, responder: any) => {
         const obj = this.getIframeCenter();
         responder({ type: EmbedEvent.EmbedIframeCenter, data: obj });
-    };
-
-    private handleRouteChangeFullHeightPinboard = (data: MessagePayload) => {
-        if (
-            data.data.canvasState !== 'EMBED' &&
-            data.data.canvasState !== 'pinboard'
-        ) {
-            this.setIFrameHeight(this.defaultHeight);
-        }
     };
 
     /**
@@ -172,10 +160,6 @@ export class PinboardEmbed extends V1Embed {
         }
 
         if (this.viewConfig.fullHeight === true) {
-            this.on(
-                EmbedEvent.RouteChange,
-                this.handleRouteChangeFullHeightPinboard,
-            );
             this.on(EmbedEvent.EmbedHeight, this.updateIFrameHeight);
             this.on(EmbedEvent.EmbedIframeCenter, this.embedIframeCenter);
         }
