@@ -19,7 +19,7 @@ const SearchResult = (props: SearchResultProps) => (
         ></p>
         <p
             className="footer"
-            dangerouslySetInnerHTML={{ __html: props.title }}
+            dangerouslySetInnerHTML={{ __html: `${props.title}...` }}
         ></p>
     </div>
 );
