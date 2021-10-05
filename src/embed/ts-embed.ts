@@ -235,20 +235,22 @@ export class TsEmbed {
         }
         return null;
     }
+
     /**
      * fix for ts7.sep.cl
      * will be removed for ts7.oct.cl
      * @hidden
      */
     private formatEventData(event: MessageEvent) {
-        let eventData = {
+        const eventData = {
             ...event.data,
-        }
-        if(!eventData.data) {
+        };
+        if (!eventData.data) {
             eventData.data = event.data.payload;
         }
         return eventData;
     }
+
     /**
      * Adds a global event listener to window for "message" events.
      * ThoughtSpot detects if a particular event is targeted to this
