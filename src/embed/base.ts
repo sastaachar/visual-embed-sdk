@@ -69,3 +69,32 @@ export const init = (embedConfig: EmbedConfig): void => {
         prefetch(config.thoughtSpotHost);
     }
 };
+
+type PromiseFn = () => Promise<any>;
+const renderQueue: PromiseFn[] = [];
+let currentRenderFn: PromiseFn = null;
+
+const runNextInQueue = () => {
+    if (!currentRenderFn && renderQueue.length > 0) {
+        currentRenderFn = renderQueue.shift();
+        currentRenderFn().then(() => {
+            currentRenderFn = null;
+            runNextInQueue();
+        })
+    }
+}
+
+/**
+ * Renders functions in a queue, resolves to next function only after the callback next is called
+ * @param fn The function being registered
+ */
+export const renderInQueue = (fn: (next?: Function) => void) => {
+    const { queueMultiRenders = true } = config;
+    if (queueMultiRenders) {
+        const promiseFn = () => new Promise(res => fn(res));
+        renderQueue.push(promiseFn);
+        runNextInQueue();
+    } else {
+        fn();
+    }
+}
