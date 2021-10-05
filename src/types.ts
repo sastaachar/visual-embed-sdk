@@ -124,7 +124,7 @@ export interface EmbedConfig {
      * When there are multiple embeds, queue the render of embed to start
      *  after the previous embed's render is complete. This helps in the load performance
      *  by decreasing the load on the browser.
-     * @default true
+     * @default false
      */
     queueMultiRenders?: boolean;
 }

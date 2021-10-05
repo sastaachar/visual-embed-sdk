@@ -70,31 +70,18 @@ export const init = (embedConfig: EmbedConfig): void => {
     }
 };
 
-type PromiseFn = () => Promise<any>;
-const renderQueue: PromiseFn[] = [];
-let currentRenderFn: PromiseFn = null;
-
-const runNextInQueue = () => {
-    if (!currentRenderFn && renderQueue.length > 0) {
-        currentRenderFn = renderQueue.shift();
-        currentRenderFn().then(() => {
-            currentRenderFn = null;
-            runNextInQueue();
-        })
-    }
-}
+let renderQueue: Promise<any> = Promise.resolve();
 
 /**
  * Renders functions in a queue, resolves to next function only after the callback next is called
  * @param fn The function being registered
  */
-export const renderInQueue = (fn: (next?: Function) => void) => {
-    const { queueMultiRenders = true } = config;
+export const renderInQueue = (fn: (next?: (val?: any) => void) => void) => {
+    const { queueMultiRenders = false } = config;
     if (queueMultiRenders) {
-        const promiseFn = () => new Promise(res => fn(res));
-        renderQueue.push(promiseFn);
-        runNextInQueue();
+        renderQueue = renderQueue.then(() => new Promise((res) => fn(res)));
     } else {
-        fn();
+        // Sending an empty function to keep it consistent with the above usage.
+        fn(() => {}); // eslint-disable-line @typescript-eslint/no-empty-function
     }
-}
+};

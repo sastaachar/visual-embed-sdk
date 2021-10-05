@@ -391,7 +391,7 @@ export class TsEmbed {
             // warn: The URL is too long
         }
 
-        renderInQueue(nextInQueue => {
+        renderInQueue((nextInQueue) => {
             const initTimestamp = Date.now();
 
             this.executeCallbacks(EmbedEvent.Init, {
@@ -404,9 +404,12 @@ export class TsEmbed {
 
             getAuthPromise()
                 ?.then(() => {
-                    uploadMixpanelEvent(MIXPANEL_EVENT.VISUAL_SDK_RENDER_COMPLETE);
+                    uploadMixpanelEvent(
+                        MIXPANEL_EVENT.VISUAL_SDK_RENDER_COMPLETE,
+                    );
 
-                    this.iFrame = this.iFrame || document.createElement('iframe');
+                    this.iFrame =
+                        this.iFrame || document.createElement('iframe');
 
                     this.iFrame.src = url;
 
@@ -430,7 +433,7 @@ export class TsEmbed {
                     this.iFrame.style.border = '0';
                     this.iFrame.name = 'ThoughtSpot Embedded Analytics';
                     this.iFrame.addEventListener('load', () => {
-                        nextInQueue && nextInQueue();
+                        nextInQueue();
                         const loadTimestamp = Date.now();
                         this.executeCallbacks(EmbedEvent.Load, {
                             data: {
@@ -443,6 +446,9 @@ export class TsEmbed {
                                 timeTookToLoad: loadTimestamp - initTimestamp,
                             },
                         );
+                    });
+                    this.iFrame.addEventListener('error', () => {
+                        nextInQueue();
                     });
                     this.el.innerHTML = '';
                     this.el.appendChild(this.iFrame);
@@ -457,7 +463,10 @@ export class TsEmbed {
                     this.subscribeToEvents();
                 })
                 .catch((error) => {
-                    uploadMixpanelEvent(MIXPANEL_EVENT.VISUAL_SDK_RENDER_FAILED);
+                    nextInQueue();
+                    uploadMixpanelEvent(
+                        MIXPANEL_EVENT.VISUAL_SDK_RENDER_FAILED,
+                    );
                     this.handleError(error);
                 });
         });
