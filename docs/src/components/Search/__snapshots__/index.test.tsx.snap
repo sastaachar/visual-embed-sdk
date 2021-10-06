@@ -44,7 +44,7 @@ exports[`Search should highlight text on key down arrow down and arrow up  1`] =
         >
           <div
             class="textContainer 
-        false"
+            false"
             data-testid="search-result"
           >
             <p
@@ -55,7 +55,7 @@ exports[`Search should highlight text on key down arrow down and arrow up  1`] =
             <p
               class="footer"
             >
-              undefined...
+              test content...
             </p>
           </div>
         </a>
@@ -67,7 +67,7 @@ exports[`Search should highlight text on key down arrow down and arrow up  1`] =
         >
           <div
             class="textContainer 
-        active"
+            active"
             data-testid="search-result"
           >
             <p
@@ -78,7 +78,7 @@ exports[`Search should highlight text on key down arrow down and arrow up  1`] =
             <p
               class="footer"
             >
-              undefined...
+              test content...
             </p>
           </div>
         </a>
@@ -87,7 +87,7 @@ exports[`Search should highlight text on key down arrow down and arrow up  1`] =
         >
           <div
             class="false 
-        false"
+            false"
             data-testid="search-result"
           >
             <p
@@ -98,7 +98,7 @@ exports[`Search should highlight text on key down arrow down and arrow up  1`] =
             <p
               class="footer"
             >
-              test title...
+              test content...
             </p>
           </div>
         </div>
@@ -152,7 +152,7 @@ exports[`Search should render correctly with options 1`] = `
         >
           <div
             class="textContainer 
-        active"
+            active"
             data-testid="search-result"
           >
             <p
@@ -163,7 +163,7 @@ exports[`Search should render correctly with options 1`] = `
             <p
               class="footer"
             >
-              undefined...
+              test content...
             </p>
           </div>
         </a>
@@ -175,7 +175,7 @@ exports[`Search should render correctly with options 1`] = `
         >
           <div
             class="textContainer 
-        false"
+            false"
             data-testid="search-result"
           >
             <p
@@ -186,7 +186,7 @@ exports[`Search should render correctly with options 1`] = `
             <p
               class="footer"
             >
-              undefined...
+              test content...
             </p>
           </div>
         </a>
@@ -195,7 +195,7 @@ exports[`Search should render correctly with options 1`] = `
         >
           <div
             class="false 
-        false"
+            false"
             data-testid="search-result"
           >
             <p
@@ -206,7 +206,7 @@ exports[`Search should render correctly with options 1`] = `
             <p
               class="footer"
             >
-              test title...
+              test content...
             </p>
           </div>
         </div>
