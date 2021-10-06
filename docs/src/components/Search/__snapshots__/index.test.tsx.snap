@@ -54,7 +54,9 @@ exports[`Search should highlight text on key down arrow down and arrow up  1`] =
             </p>
             <p
               class="footer"
-            />
+            >
+              undefined...
+            </p>
           </div>
         </a>
         <a
@@ -75,7 +77,9 @@ exports[`Search should highlight text on key down arrow down and arrow up  1`] =
             </p>
             <p
               class="footer"
-            />
+            >
+              undefined...
+            </p>
           </div>
         </a>
         <div
@@ -94,7 +98,7 @@ exports[`Search should highlight text on key down arrow down and arrow up  1`] =
             <p
               class="footer"
             >
-              test title
+              test title...
             </p>
           </div>
         </div>
@@ -158,7 +162,9 @@ exports[`Search should render correctly with options 1`] = `
             </p>
             <p
               class="footer"
-            />
+            >
+              undefined...
+            </p>
           </div>
         </a>
         <a
@@ -179,7 +185,9 @@ exports[`Search should render correctly with options 1`] = `
             </p>
             <p
               class="footer"
-            />
+            >
+              undefined...
+            </p>
           </div>
         </a>
         <div
@@ -198,7 +206,7 @@ exports[`Search should render correctly with options 1`] = `
             <p
               class="footer"
             >
-              test title
+              test title...
             </p>
           </div>
         </div>
