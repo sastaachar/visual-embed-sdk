@@ -1278,7 +1278,7 @@ https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/connection/list
 | No live query connections on the cluster
 |===
 
-[export-connections]
+[#export-connections]
 == Export a connection map
 
 To export the metadata of an active connection map, send a `GET` request to the `/tspublic/v1/connection/export` API. 
@@ -1337,7 +1337,7 @@ Click the link in the `Response body` to download the YAML file.
 |===
 
 
-[del-connection]
+[#del-connection]
 == Delete a data connection
 
 To delete a data connection, send a `POST` request to the `/tspublic/v1/connection/delete` API. 
