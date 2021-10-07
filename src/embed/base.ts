@@ -32,6 +32,25 @@ export const getEmbedConfig = (): EmbedConfig => config;
 export const getAuthPromise = (): Promise<void> => authPromise;
 
 /**
+ * Prefetches static resources from the specified URL. Web browsers can then cache the prefetched resources and serve them from the user's local disk to provide faster access to your app.
+ * @param url The URL provided for prefetch
+ */
+export const prefetch = (url?: string): void => {
+    if (url === '') {
+        // eslint-disable-next-line no-console
+        console.warn('The prefetch method does not have a valid URL');
+    } else {
+        const iFrame = document.createElement('iframe');
+        iFrame.src = url || config.thoughtSpotHost;
+        iFrame.style.width = '0';
+        iFrame.style.height = '0';
+        iFrame.style.border = '0';
+        iFrame.classList.add('prefetchIframe');
+        document.body.appendChild(iFrame);
+    }
+};
+
+/**
  * Initialize the ThoughtSpot embed settings globally and perform
  * authentication if applicable.
  * @param embedConfig The configuration object containing ThoughtSpot host,
@@ -45,6 +64,10 @@ export const init = (embedConfig: EmbedConfig): void => {
         authType: config.authType,
         host: config.thoughtSpotHost,
     });
+
+    if (config.callPrefetch) {
+        prefetch(config.thoughtSpotHost);
+    }
 };
 
 let renderQueue: Promise<any> = Promise.resolve();

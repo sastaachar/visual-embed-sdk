@@ -1278,7 +1278,6 @@ https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/connection/list
 | No live query connections on the cluster
 |===
 
-
 [#export-connections]
 == Export a connection map
 

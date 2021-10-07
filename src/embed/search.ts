@@ -58,7 +58,8 @@ export interface SearchViewConfig extends ViewConfig {
      */
     enableSearchAssist?: boolean;
     /**
-     *
+     * If set to true, the tabular view is set as the default
+     * format for presenting search data.
      */
     forceTable?: boolean;
     /**
@@ -117,17 +118,9 @@ export class SearchEmbed extends TsEmbed {
      * loaded in the iframe
      * @param answerId The GUID of a saved answer
      * @param dataSources A list of data source GUIDs
-     * @param searchQuery A search query to be generated on load
      */
-    private getIFrameSrc(
-        answerId: string,
-        dataSources?: string[],
-        searchQuery?: string,
-    ) {
+    private getIFrameSrc(answerId: string, dataSources?: string[]) {
         const {
-            disabledActions,
-            disabledActionReason,
-            hiddenActions,
             hideResults,
             expandAllDataSource,
             enableSearchAssist,
@@ -148,26 +141,11 @@ export class SearchEmbed extends TsEmbed {
                 queryParams[Param.executeSearch] = true;
             }
         }
-        if (searchQuery) {
-            queryParams[Param.SearchQuery] = encodeURIComponent(searchQuery);
-        }
         if (enableSearchAssist) {
             queryParams[Param.EnableSearchAssist] = true;
         }
         if (hideResults) {
             queryParams[Param.HideResult] = true;
-        }
-        if (expandAllDataSource) {
-            queryParams[Param.ExpandAllDataSource] = true;
-        }
-        if (disabledActions?.length) {
-            queryParams[Param.DisableActions] = disabledActions;
-        }
-        if (disabledActionReason) {
-            queryParams[Param.DisableActionReason] = disabledActionReason;
-        }
-        if (hiddenActions?.length) {
-            queryParams[Param.HideActions] = hiddenActions;
         }
         if (forceTable) {
             queryParams[Param.ForceTable] = true;
@@ -189,9 +167,9 @@ export class SearchEmbed extends TsEmbed {
      */
     public render(): SearchEmbed {
         super.render();
-        const { answerId, dataSources, searchQuery } = this.viewConfig;
+        const { answerId, dataSources } = this.viewConfig;
 
-        const src = this.getIFrameSrc(answerId, dataSources, searchQuery);
+        const src = this.getIFrameSrc(answerId, dataSources);
         this.renderIFrame(src, this.viewConfig.frameParams);
         return this;
     }

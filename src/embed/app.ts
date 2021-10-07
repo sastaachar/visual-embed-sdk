@@ -2,7 +2,7 @@
  * Copyright (c) 2021
  *
  * Full application embedding
- * https://docs.thoughtspot.com/visual-embed-sdk/release/en/?pageid=full-embed
+ * https://developers.thoughtspot.com/docs/?pageid=full-embed
  *
  * @summary Full app embed
  * @module
@@ -95,23 +95,8 @@ export class AppEmbed extends V1Embed {
      */
     private getEmbedParams() {
         const params = this.getBaseQueryParams();
-        const {
-            disabledActions,
-            disabledActionReason,
-            hiddenActions,
-            tag,
-            hideObjects,
-        } = this.viewConfig;
+        const { tag, hideObjects } = this.viewConfig;
 
-        if (disabledActions?.length) {
-            params[Param.DisableActions] = disabledActions;
-        }
-        if (disabledActionReason) {
-            params[Param.DisableActionReason] = disabledActionReason;
-        }
-        if (hiddenActions?.length) {
-            params[Param.HideActions] = hiddenActions;
-        }
         if (tag) {
             params[Param.Tag] = tag;
         }

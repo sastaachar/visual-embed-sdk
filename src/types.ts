@@ -115,6 +115,12 @@ export interface EmbedConfig {
     autoLogin?: boolean;
 
     /**
+     * Calls the prefetch method internally when set to true
+     * @default false
+     */
+    callPrefetch?: boolean;
+
+    /**
      * When there are multiple embeds, queue the render of embed to start
      *  after the previous embed's render is complete. This helps in the load performance
      *  by decreasing the load on the browser.
@@ -234,8 +240,7 @@ export enum EmbedEvent {
      */
     AuthInit = 'authInit',
     /**
-     * The iFrame has loaded. This only refers to the iFrame load event
-     * and does not mean the ThoughtSpot app has completed loading.
+     * The embed object container has loaded.
      * @return timestamp - The timestamp when the event was generated.
      */
     Load = 'load',
@@ -251,7 +256,6 @@ export enum EmbedEvent {
     FiltersChanged = 'filtersChanged',
     /**
      * Search query has been updated
-     * @hidden
      */
     QueryChanged = 'queryChanged',
     /**
@@ -273,6 +277,12 @@ export enum EmbedEvent {
      */
     CustomAction = 'customAction',
     /**
+     * A double click has been triggered on table/chart
+     * @return ContextMenuInputPoints - data point that is double clicked
+     * _since: 1.5.0_
+     */
+    VizPointDoubleClick = 'vizPointDoubleClick',
+    /**
      * An error has occurred.
      * @return error - An error object or message
      */
@@ -284,15 +294,25 @@ export enum EmbedEvent {
     Alert = 'alert',
     /**
      * The ThoughtSpot auth session has expired.
-     * @hidden
      */
     AuthExpire = 'ThoughtspotAuthExpired',
     /**
      * The height of the embedded pinboard or visualization has been computed.
      * @return data - The height of the embedded pinboard or visualization
+     * @hidden
      */
     EmbedHeight = 'EMBED_HEIGHT',
+    /**
+     * The center of visible iframe viewport is calculated.
+     * @return data - The center of the visible Iframe viewport.
+     * @hidden
+     */
     EmbedIframeCenter = 'EmbedIframeCenter',
+    /**
+     * Detects the route change.
+     * @hidden
+     */
+    RouteChange = 'ROUTE_CHANGE',
     /**
      * The v1 event type for Data
      * @hidden
@@ -325,6 +345,15 @@ export enum HostEvent {
      * @param searchQuery - The search query
      */
     Search = 'search',
+    /**
+     * Trigger a drill on certain points by certain column
+     * @param points - an object containing selectedPoints/clickedPoints
+     *              eg. { selectedPoints: []}
+     * @param columnGuid - a string guid of the column to drill by. This is optional,
+     *                     if not provided it will auto drill by the configured column.
+     * _since: 1.5.0_
+     */
+    DrillDown = 'triggerDrillDown',
     /**
      * Apply filters
      * @hidden
@@ -385,6 +414,7 @@ export enum Param {
     Version = 'sdkVersion',
     ViewPortHeight = 'viewPortHeight',
     ViewPortWidth = 'viewPortWidth',
+    VisibleActions = 'visibleActions',
 }
 
 /**
