@@ -17,7 +17,7 @@ Authenticates and logs in a user.
 
 Authenticates and logs in a user using token. 
 
-__Unnecessary to call directly when using Visual Embed SDK__.
+__Unnecessary to call this API directly when using Visual Embed SDK__.
 
 +++<p class="divider"> </p>+++
 
