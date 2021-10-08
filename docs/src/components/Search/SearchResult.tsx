@@ -1,5 +1,5 @@
 import React from 'react';
-
+import cx from 'classnames';
 type SearchResultProps = {
     index: number;
     highlightedIndex: number;
@@ -10,11 +10,12 @@ type SearchResultProps = {
 
 const SearchResult = (props: SearchResultProps) => { 
     const searchResultContent = props.title + '...';
-    const searchResultCss = (!props.isKeywordNotFound ? 'textContainer ' : '') + 
-        (props.index === props.highlightedIndex ? 'active' : '');
     return (
         <div
-            className={searchResultCss}
+            className={ cx(
+              { textContainer : !props.isKeywordNotFound },
+              { active: props.index === props.highlightedIndex }
+            )}
             data-testid="search-result"
         >
             <p className="title"
