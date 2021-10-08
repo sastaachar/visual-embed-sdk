@@ -170,6 +170,6 @@ describe('Search', () => {
             fireEvent.keyDown(input, { key: 'ArrowDown', code: 'ArrowDown' });
         })
 
-        expect(queryAllByTestId('search-result')[2]).toHaveClass('false active');
+        expect(queryAllByTestId('search-result')[2]).toHaveClass('active');
     })
 })

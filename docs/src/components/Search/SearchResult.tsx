@@ -10,7 +10,7 @@ type SearchResultProps = {
 
 const SearchResult = (props: SearchResultProps) => { 
     const searchResultContent = props.title + '...';
-    const searchResultCss = (!props.isKeywordNotFound ? 'textContainer' : '') +  
+    const searchResultCss = (!props.isKeywordNotFound ? 'textContainer ' : '') + 
         (props.index === props.highlightedIndex ? 'active' : '');
     return (
         <div

@@ -43,8 +43,7 @@ exports[`Search should highlight text on key down arrow down and arrow up  1`] =
           target="_blank"
         >
           <div
-            class="textContainer 
-            false"
+            class="textContainer "
             data-testid="search-result"
           >
             <p
@@ -66,8 +65,7 @@ exports[`Search should highlight text on key down arrow down and arrow up  1`] =
           target="_blank"
         >
           <div
-            class="textContainer 
-            active"
+            class="textContainer active"
             data-testid="search-result"
           >
             <p
@@ -86,8 +84,7 @@ exports[`Search should highlight text on key down arrow down and arrow up  1`] =
           class="result"
         >
           <div
-            class="false 
-            false"
+            class=""
             data-testid="search-result"
           >
             <p
@@ -151,8 +148,7 @@ exports[`Search should render correctly with options 1`] = `
           target="_blank"
         >
           <div
-            class="textContainer 
-            active"
+            class="textContainer active"
             data-testid="search-result"
           >
             <p
@@ -174,8 +170,7 @@ exports[`Search should render correctly with options 1`] = `
           target="_blank"
         >
           <div
-            class="textContainer 
-            false"
+            class="textContainer "
             data-testid="search-result"
           >
             <p
@@ -194,8 +189,7 @@ exports[`Search should render correctly with options 1`] = `
           class="result"
         >
           <div
-            class="false 
-            false"
+            class=""
             data-testid="search-result"
           >
             <p
