@@ -278,8 +278,8 @@ export enum EmbedEvent {
     CustomAction = 'customAction',
     /**
      * A double click has been triggered on table/chart
-     * @return ContextMenuInputPoints - data point that is double clicked
-     * _since: 1.5.0_
+     * @return ContextMenuInputPoints - data point that is double clicked  
+     * * _since: 1.5.0_
      */
     VizPointDoubleClick = 'vizPointDoubleClick',
     /**
@@ -350,8 +350,8 @@ export enum HostEvent {
      * @param points - an object containing selectedPoints/clickedPoints
      *              eg. { selectedPoints: []}
      * @param columnGuid - a string guid of the column to drill by. This is optional,
-     *                     if not provided it will auto drill by the configured column.
-     * _since: 1.5.0_
+     *                     if not provided it will auto drill by the configured column.  
+     * * _since: 1.5.0_
      */
     DrillDown = 'triggerDrillDown',
     /**
