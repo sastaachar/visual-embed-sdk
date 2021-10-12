@@ -35,8 +35,7 @@ export interface PinboardViewConfig extends ViewConfig {
      * This is the minimum height(in pixels) for a full height pinboard.
      * Setting this height helps resolves issues with empty pinboards and
      * other screens navigable from a pinboard.
-     * @default 500  
-     *   
+     * @default 500
      * * _since 1.5.0_
      */
     defaultHeight?: number;

@@ -98,7 +98,7 @@ export interface ViewConfig {
     hiddenActions?: Action[];
     /**
      * The list of actions to display from the primary menu, more menu
-     * (...), and the contextual menu.  
+     * (...), and the contextual menu.
      * * _since 1.6.0_
      */
     visibleActions?: Action[];
