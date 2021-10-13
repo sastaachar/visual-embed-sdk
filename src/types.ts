@@ -332,9 +332,12 @@ export enum EmbedEvent {
      */
     SAMLComplete = 'samlComplete',
     /**
-     * Emitted when Answer/Pinboard filter modal is opened closed
+     * Emitted when any modal is opened in the app
      */
     DialogOpen = 'dialog-open',
+    /**
+     * Emitted when any modal is closed in the app
+     */
     DialogClose = 'dialog-close',
 }
 
