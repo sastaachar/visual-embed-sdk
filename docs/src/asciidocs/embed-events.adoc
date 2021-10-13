@@ -96,7 +96,6 @@ The host events are triggered by the host application that the embedded ThoughtS
 |===
 |Event| Description
 |`Search`| Triggers search. The event returns the data source GUID and search query details.
-|`DrillDown`| Triggers a drill down event when a user clicks on specific points in a column.
 |===
 
 == Related resources

@@ -9,8 +9,7 @@
 
 This article provides information about new features, enhancements, and deprecated functionality in ThoughtSpot Everywhere.
 
-
-== September 2021
+== September 2021 (ts7.sep.cl)
 
 [width="100%" cols="1,4"]
 |====
@@ -74,18 +73,12 @@ For more information, see xref:embed-search.adoc[Embed ThoughtSpot search].
 |[tag redBackground]#Removed# | 
 
 The `searchQuery` parameter is no longer supported and is removed from the `searchEmbed` SDK package.  
-|[tag greenBackground]#New feature# a|+++<h5>+++Pinboard embed +++</h5>+++
-
-The `pinboardEmbed` package includes the `defaultHeight` attribute that sets a minimum height for embedded objects on a pinboard page and the corresponding visualization pages that a user can navigate to. 
- 
-For more information, see xref:embed-search.adoc[Embed a pinboard].
 
 |[tag greenBackground]#New feature# a|+++<h5>+++Embed events +++</h5>+++
 The SDK EmbedEvent library includes the following events: 
 
 * `QueryChanged`
 * `AuthExpired`
-* `Drilldown`
 
 For more information, see xref:embed-events.adoc[Event subscription and handling].
 
@@ -134,7 +127,7 @@ The ThoughtSpot 7 Cloud September release includes the following new endpoints a
 ====
 --
 
-== August 2021
+== August 2021 (ts7.aug.cl)
 
 === Custom actions
 
@@ -237,7 +230,7 @@ For a complete list of APIs, see xref:rest-api-reference.adoc[REST API Reference
 --
 --
 
-== June 2021
+== June 2021 (ts7.jun.cl)
 
 The ThoughtSpot 7 Cloud June release introduces the following features and enhancements:
 
@@ -322,7 +315,7 @@ For more information, see xref:user-api.adoc#updatepreference-api[Update a user 
 <div class="divider"> </div>
 ++++
 
-== May 2021
+== May 2021 (ts7.may.cl)
 The ThoughtSpot 7 Cloud May consists of several new and enhanced features for the  ThoughtSpot Developer users.
 
 === Custom actions in the context menu
