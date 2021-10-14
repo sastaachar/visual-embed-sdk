@@ -127,7 +127,7 @@ If the user group is successfully created in ThoughtSpot, the API returns the us
 [#update-group]
 == Update a user group
 
-If you have admin user privileges, you can programmatically modify the properties of a group using the `/tspublic/v1/group/{groupid}` API. Using this API, you can assign also privileges and modify group visibility.
+If you have admin privileges, you can programmatically modify the properties of a group using the `/tspublic/v1/group/{groupid}` API endpoint. Using this API, you can also assign privileges and modify group visibility.
 
 === Resource URL
 ----
@@ -159,7 +159,7 @@ curl -X PUT \
 https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/group/{groupid}
 ----
 
-==== JSON file example for updating user profile
+==== Example JSON for group updates
 
 [source,JSON]
 ----
@@ -200,7 +200,7 @@ https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/group/{groupid}
 
 === Example response
 
-On successful update of the user group profile, the API returns the following response code:
+If the user group update operation is successful, the API returns the following response code:
 
 ----
 Response Code
