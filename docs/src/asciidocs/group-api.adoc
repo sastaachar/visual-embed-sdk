@@ -54,7 +54,7 @@ POST /tspublic/v1/group/
 * `RANALYSIS`
 * `A3ANALYSIS`
 * `BYPASSRLS`
-|`grouptype` __Optional__ a|__String__. Type of user group. Default value is `LOCAL_GROUP`, which indicates that the user group is created locally in the ThoughtSpot system.    
+|`grouptype` __Optional__ a|__String__. Type of user group. The default value is `LOCAL_GROUP`, which indicates that the user group is created locally in the ThoughtSpot system.    
 |`tenantid` __Optional__|__String__. GUID of the tenant for which the user group is being created.
 |`visibility` __Optional__|__String__. Visibility of the user group. The `visibility` attribute is set to `DEFAULT`. The `DEFAULT` attribute makes the user group visible for other user groups and allows them to share  objects.  
 |===
@@ -222,7 +222,7 @@ Response Code
 [#get-ug-details]
 == Get details of a user group
 
-To get the details of a specific user group or all user groups in the ThoughtSpot system, send a `GET` request to `/tspublic/v1/group/` API endpoint.
+To get the details of a specific user group or all user groups in the ThoughtSpot system, send a `GET` request to the `/tspublic/v1/group/` API endpoint.
 
 === Resource URL
 ----
@@ -310,7 +310,7 @@ https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/group/?groupid=0f7af46f-e48c-
 == Add a privilege to a user group
 For ease of user management and access control, ThoughtSpot administrators can create user groups and assign privileges to these groups. The privileges determine the actions that the users belonging to a group are allowed to do.  
 
-If you have admin user credentials, you can programmatically assign a privilege to a user group using the `/tspublic/v1/group/addprivilege` API. 
+If you have admin user credentials, you can programmatically assign a privilege to a user group using the `/tspublic/v1/group/addprivilege` API endpoint. 
 
 [NOTE]
 ====
@@ -988,7 +988,7 @@ DELETE /tspublic/v1/group/{groupid}/groups
 |===
 |Form Parameter|Description
 |`principalids`|__String__. A JSON array of the subgroup GUIDs that you want to delete.
-|`groupid`|__String__. The GUID of the group from which you want remove the group association. 
+|`groupid`|__String__. The GUID of the group from which you want to remove the group association. 
 |===
 
 === Example request
@@ -1042,8 +1042,8 @@ POST /tspublic/v1/group/removememberships
 [options='header']
 |===
 |Form Parameter|Description
-|`userids`|__String__. The GUID of the user that you want to remove from the specified `groupids`.
-|`groupids`|__String__. The GUID of the user group from which you want to remove the sepcified `userids`.
+|`userids`|__String__. A JSON array of the GUIDs of the users that you want to remove from the specified `groupids`.
+|`groupids`|__String__. A JSON array of the GUIDs of the user groups from which you want to remove the specified `userids`.
 |===
 
 === Example request
