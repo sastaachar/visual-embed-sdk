@@ -1,7 +1,7 @@
 const config = require('../configs/doc-configs');
 const { JSDOM }  = require("jsdom");
 const { htmlToText } = require("html-to-text");
-const Pages = `Pages`
+const Pages = `dev`
 
 const getPathPrefix = () => {
   return 'docs';
@@ -142,10 +142,9 @@ const queries = [
       ];
     },
     indexName: Pages,
-    settings: { attributesToSnippet: ['body:7'],
-    highlightPreTag: '<em style="color:blue;">',
-    highlightPostTag: '</em>'
-  },
+    settings: {
+        attributesToSnippet: ['body:10'],
+    },
   },
 ]
 
