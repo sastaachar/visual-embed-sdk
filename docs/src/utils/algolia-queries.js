@@ -1,7 +1,7 @@
 const config = require('../configs/doc-configs');
 const { JSDOM }  = require("jsdom");
 const { htmlToText } = require("html-to-text");
-const Pages = `dev`
+const Pages = `Pages`
 
 const getPathPrefix = () => {
   return 'docs';
