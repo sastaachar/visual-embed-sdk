@@ -1,4 +1,4 @@
-import { PinboardEmbed, PinboardViewConfig } from './pinboard';
+import { PinboardEmbed, LiveboardViewConfig } from './liveboard';
 import { init } from '../index';
 import { Action, AuthType, EmbedEvent, RuntimeFilterOp } from '../types';
 import {
@@ -36,7 +36,7 @@ describe('Pinboard/viz embed tests', () => {
         const pinboardEmbed = new PinboardEmbed(getRootEl(), {
             ...defaultViewConfig,
             pinboardId,
-        } as PinboardViewConfig);
+        } as LiveboardViewConfig);
         pinboardEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
@@ -55,7 +55,7 @@ describe('Pinboard/viz embed tests', () => {
             disabledActionReason: 'Action denied',
             ...defaultViewConfig,
             pinboardId,
-        } as PinboardViewConfig);
+        } as LiveboardViewConfig);
         pinboardEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
@@ -73,7 +73,7 @@ describe('Pinboard/viz embed tests', () => {
             ],
             ...defaultViewConfig,
             pinboardId,
-        } as PinboardViewConfig);
+        } as LiveboardViewConfig);
         pinboardEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
@@ -91,7 +91,7 @@ describe('Pinboard/viz embed tests', () => {
             ],
             ...defaultViewConfig,
             pinboardId,
-        } as PinboardViewConfig);
+        } as LiveboardViewConfig);
         pinboardEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
@@ -105,7 +105,7 @@ describe('Pinboard/viz embed tests', () => {
             enableVizTransformations: true,
             ...defaultViewConfig,
             pinboardId,
-        } as PinboardViewConfig);
+        } as LiveboardViewConfig);
         pinboardEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
@@ -119,7 +119,7 @@ describe('Pinboard/viz embed tests', () => {
             enableVizTransformations: false,
             ...defaultViewConfig,
             pinboardId,
-        } as PinboardViewConfig);
+        } as LiveboardViewConfig);
         pinboardEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
@@ -133,7 +133,7 @@ describe('Pinboard/viz embed tests', () => {
             ...defaultViewConfig,
             pinboardId,
             vizId,
-        } as PinboardViewConfig);
+        } as LiveboardViewConfig);
         pinboardEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
@@ -154,7 +154,7 @@ describe('Pinboard/viz embed tests', () => {
                     values: [1000],
                 },
             ],
-        } as PinboardViewConfig);
+        } as LiveboardViewConfig);
         pinboardEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
@@ -169,7 +169,7 @@ describe('Pinboard/viz embed tests', () => {
             fullHeight: true,
             pinboardId,
             vizId,
-        } as PinboardViewConfig);
+        } as LiveboardViewConfig);
 
         const onSpy = jest.spyOn(pinboardEmbed, 'on');
         pinboardEmbed.render();

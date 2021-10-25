@@ -3,8 +3,8 @@ import { SearchEmbed as _SearchEmbed, SearchViewConfig } from '../embed/search';
 import { AppEmbed as _AppEmbed, AppViewConfig } from '../embed/app';
 import {
     PinboardEmbed as _PinboardEmbed,
-    PinboardViewConfig,
-} from '../embed/pinboard';
+    LiveboardViewConfig,
+} from '../embed/liveboard';
 import { TsEmbed, ViewConfig } from '../embed/ts-embed';
 
 import { EmbedEvent, MessageCallback } from '../types';
@@ -55,10 +55,10 @@ export const AppEmbed = componentFactory<
     AppViewConfig
 >(_AppEmbed);
 
-interface PinboardProps extends EmbedProps, PinboardViewConfig {}
+interface PinboardProps extends EmbedProps, LiveboardViewConfig {}
 
 export const PinboardEmbed = componentFactory<
     typeof _PinboardEmbed,
     PinboardProps,
-    PinboardViewConfig
+    LiveboardViewConfig
 >(_PinboardEmbed);
