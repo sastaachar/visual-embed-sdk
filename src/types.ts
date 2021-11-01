@@ -488,7 +488,7 @@ export enum Action {
      * @hidden
      */
     PinboardInfo = 'pinboardInfo',
-    LiveboardInfo = 'liveboardInfo',// update-TSCB
+    LiveboardInfo = 'liveboardInfo', // update-TSCB
     SendAnswerFeedback = 'sendFeedback',
     /**
      * @deprecated Will be removed in next version
