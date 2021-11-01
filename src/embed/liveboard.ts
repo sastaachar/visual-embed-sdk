@@ -94,7 +94,8 @@ export class LiveboardEmbed extends V1Embed {
             defaultHeight,
         } = this.viewConfig;
 
-        const preventLiveboardFilterRemoval = this.viewConfig.preventLiveboardFilterRemoval ||
+        const preventLiveboardFilterRemoval =
+            this.viewConfig.preventLiveboardFilterRemoval ||
             this.viewConfig.preventPinboardFilterRemoval;
 
         if (fullHeight === true) {
@@ -178,7 +179,8 @@ export class LiveboardEmbed extends V1Embed {
      */
     public render(): LiveboardEmbed {
         const { vizId, runtimeFilters } = this.viewConfig;
-        const liveboardId = this.viewConfig.liveboardId ?? this.viewConfig.pinboardId;
+        const liveboardId =
+            this.viewConfig.liveboardId ?? this.viewConfig.pinboardId;
 
         if (!liveboardId && !vizId) {
             this.handleError(ERROR_MESSAGE.LIVEBOARD_VIZ_ID_VALIDATION);
@@ -205,4 +207,4 @@ export class LiveboardEmbed extends V1Embed {
 /**
  * @hidden
  */
-export class PinboardEmbed extends LiveboardEmbed {};
+export class PinboardEmbed extends LiveboardEmbed {}

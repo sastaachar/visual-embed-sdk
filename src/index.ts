@@ -10,7 +10,11 @@
 
 import { AppEmbed, Page, AppViewConfig } from './embed/app';
 import { init, prefetch } from './embed/base';
-import { PinboardEmbed, LiveboardViewConfig, LiveboardEmbed } from './embed/liveboard';
+import {
+    PinboardEmbed,
+    LiveboardViewConfig,
+    LiveboardEmbed,
+} from './embed/liveboard';
 import { SearchEmbed, SearchViewConfig } from './embed/search';
 import {
     AuthType,
