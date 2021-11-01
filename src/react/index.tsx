@@ -2,7 +2,7 @@ import React from 'react';
 import { SearchEmbed as _SearchEmbed, SearchViewConfig } from '../embed/search';
 import { AppEmbed as _AppEmbed, AppViewConfig } from '../embed/app';
 import {
-    PinboardEmbed as _PinboardEmbed,
+    LiveboardEmbed as _LiveboardEmbed,
     LiveboardViewConfig,
 } from '../embed/liveboard';
 import { TsEmbed, ViewConfig } from '../embed/ts-embed';
@@ -55,10 +55,16 @@ export const AppEmbed = componentFactory<
     AppViewConfig
 >(_AppEmbed);
 
-interface PinboardProps extends EmbedProps, LiveboardViewConfig {}
+interface LiveboardProps extends EmbedProps, LiveboardViewConfig {}
+
+export const LiveboardEmbed = componentFactory<
+    typeof _LiveboardEmbed,
+    LiveboardProps,
+    LiveboardViewConfig
+>(_LiveboardEmbed);
 
 export const PinboardEmbed = componentFactory<
-    typeof _PinboardEmbed,
-    PinboardProps,
+    typeof _LiveboardEmbed,
+    LiveboardProps,
     LiveboardViewConfig
->(_PinboardEmbed);
+>(_LiveboardEmbed);
