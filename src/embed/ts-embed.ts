@@ -27,6 +27,7 @@ import {
     Action,
     RuntimeFilter,
     Param,
+    EmbedConfig,
 } from '../types';
 import { uploadMixpanelEvent, MIXPANEL_EVENT } from '../mixpanel-service';
 import { getProcessData } from '../utils/processData';
@@ -128,6 +129,8 @@ export class TsEmbed {
 
     protected viewConfig: ViewConfig;
 
+    protected embedConfig: EmbedConfig;
+
     /**
      * The ThoughtSpot hostname or IP address
      */
@@ -166,14 +169,14 @@ export class TsEmbed {
     constructor(domSelector: DOMSelector, viewConfig?: ViewConfig) {
         this.el = this.getDOMNode(domSelector);
         // TODO: handle error
-        const config = getEmbedConfig();
-        this.thoughtSpotHost = getThoughtSpotHost(config);
-        this.thoughtSpotV2Base = getV2BasePath(config);
+        this.embedConfig = getEmbedConfig();
+        this.thoughtSpotHost = getThoughtSpotHost(this.embedConfig);
+        this.thoughtSpotV2Base = getV2BasePath(this.embedConfig);
         this.eventHandlerMap = new Map();
         this.isError = false;
         this.viewConfig = viewConfig;
-        this.shouldEncodeUrlQueryParams = config.shouldEncodeUrlQueryParams;
-        if (!config.suppressNoCookieAccessAlert) {
+        this.shouldEncodeUrlQueryParams = this.embedConfig.shouldEncodeUrlQueryParams;
+        if (!this.embedConfig.suppressNoCookieAccessAlert) {
             this.on(EmbedEvent.NoCookieAccess, () => {
                 // eslint-disable-next-line no-alert
                 alert(
@@ -313,6 +316,10 @@ export class TsEmbed {
         queryParams[Param.ViewPortWidth] = window.innerWidth;
         queryParams[Param.Version] = version;
 
+        if (this.embedConfig.customCssUrl) {
+            queryParams[Param.CustomCSSUrl] = this.embedConfig.customCssUrl;
+        }
+
         const {
             disabledActions,
             disabledActionReason,
@@ -336,7 +343,7 @@ export class TsEmbed {
         if (hiddenActions?.length) {
             queryParams[Param.HideActions] = hiddenActions;
         }
-        if (visibleActions?.length) {
+        if (Array.isArray(visibleActions)) {
             queryParams[Param.VisibleActions] = visibleActions;
         }
         return queryParams;

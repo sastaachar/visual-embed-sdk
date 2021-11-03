@@ -44,9 +44,9 @@ When a user is set to *SHAREABLE*, other users within the same *SHAREABLE* group
 
 [NOTE]
 ====
-Any user with *Share with all* privilege, including administrators, can share objects with any group regardless of the shareable property. Every user is automatically added to the *NOT SHAREABLE* *All* group within ThoughtSpot.
+Any user with *Share with all* privilege, including administrators, can share objects with any group regardless of the shareable property. Every user is automatically added to the *NOT SHAREABLE* "All" group within ThoughtSpot.
 
-*Only grant the separate "Share with all" privilege to app developer or system-level users, not to end customer users*.
+*Only grant the separate "Share with all privilege" to app developer / system level users, not to end customer users*
 ====
 
 The non-admin users can only share to:

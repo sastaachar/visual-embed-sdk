@@ -127,6 +127,13 @@ export interface EmbedConfig {
      * @default false
      */
     queueMultiRenders?: boolean;
+
+    /**
+     * Dynamic CSS Url to be injected in the loaded application.
+     * _Since: 1.6.0_
+     * @default ''
+     */
+    customCssUrl?: string;
 }
 
 export type MessagePayload = { type: string; data: any };
@@ -331,6 +338,16 @@ export enum EmbedEvent {
      * @hidden
      */
     SAMLComplete = 'samlComplete',
+    /**
+     * Emitted when any modal is opened in the app
+     * * _since: 1.6.0_
+     */
+    DialogOpen = 'dialog-open',
+    /**
+     * Emitted when any modal is closed in the app
+     * * _since: 1.6.0_
+     */
+    DialogClose = 'dialog-close',
 }
 
 /**
@@ -350,7 +367,7 @@ export enum HostEvent {
      * @param points - an object containing selectedPoints/clickedPoints
      *              eg. { selectedPoints: []}
      * @param columnGuid - a string guid of the column to drill by. This is optional,
-     *                     if not provided it will auto drill by the configured column.
+     *                     if not provided it will auto drill by the configured column. \
      * * _since: 1.5.0_
      */
     DrillDown = 'triggerDrillDown',
@@ -364,6 +381,13 @@ export enum HostEvent {
      * @hidden
      */
     Reload = 'reload',
+    /**
+     * Set the visible Vizs on a pinboard/liveboard.
+     * @param - an array of ids of vizs to show, the ids not passed
+     *          will be hidden.
+     * _since: 1.6.0_
+     */
+    SetVisibleVizs = 'SetPinboardVisibleVizs',
 }
 
 /**
@@ -411,10 +435,12 @@ export enum Param {
     searchTokenString = 'searchTokenString',
     executeSearch = 'executeSearch',
     fullHeight = 'isFullHeightPinboard',
+    livedBoardEmbed = 'isLiveboardEmbed',
     Version = 'sdkVersion',
     ViewPortHeight = 'viewPortHeight',
     ViewPortWidth = 'viewPortWidth',
-    VisibleActions = 'visibleActions',
+    VisibleActions = 'visibleAction',
+    CustomCSSUrl = 'customCssUrl',
 }
 
 /**
