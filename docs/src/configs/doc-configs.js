@@ -1,5 +1,6 @@
 module.exports = {
-    DOC_REPO_NAME: '/visual-embed-sdk',
+    DOC_REPO_NAME: '',
+    SITE_URL: 'https://developers.thoughtspot.com/docs/',
     DOC_NAV_PAGE_ID: 'nav',
     TS_HOST_PARAM: 'tshost',
     TS_ORIGIN_PARAM: 'origin',
