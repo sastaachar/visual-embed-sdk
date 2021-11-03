@@ -45,6 +45,7 @@ export interface LiveboardViewConfig extends ViewConfig {
     enableVizTransformations?: boolean;
     /**
      * The liveboard to display in the embedded view.
+     * Use either of liveboardId or pinboardId to reference the Liveboard to embed.
      */
     liveboardId?: string;
     /**
@@ -182,7 +183,7 @@ export class LiveboardEmbed extends V1Embed {
         const liveboardId =
             this.viewConfig.liveboardId ?? this.viewConfig.pinboardId;
 
-        if (!liveboardId && !vizId) {
+        if (!liveboardId) {
             this.handleError(ERROR_MESSAGE.LIVEBOARD_VIZ_ID_VALIDATION);
         }
 
