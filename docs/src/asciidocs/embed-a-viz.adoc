@@ -37,10 +37,9 @@ Specify the hostname or IP address of your ThoughtSpot application instance.
 
 [source,javascript]
 ----
-init
-    ({
-        thoughtSpotHost:"https://<hostname>:<port>",
-    });
+init({
+	thoughtSpotHost: "https://<hostname>:<port>",
+});
 ----
 
 
@@ -53,10 +52,9 @@ Define an authentication method. In the following example, the authentication me
 
 [source,javascript]
 ----
-init
-    ({
-        authType: AuthType.SSO,
-    });
+init({
+	authType: AuthType.SSO,
+});
 ----
 
 include::{path}/embed-auth-config.adoc[]
@@ -74,22 +72,20 @@ include::{path}/embed-config.adoc[]
 == Construct the embed content
 [source,JavaScript]
 ----
- const pinboardEmbed = new PinboardEmbed(
-    document.getElementById('ts-embed'),
-    {
-	  frameParams: {
+const pinboardEmbed = new PinboardEmbed(document.getElementById('ts-embed'), {
+	frameParams: {
 		width: '100%',
 		height: '100%',
 	},
-	  disabledActions: [],
-	  disabledActionReason: '<reason for disabling>',
-	  hiddenActions: [],
-	  pinboardId: '<%=pinboardGUID%>',
-	  vizId: '<%=vizGUID%>',
-	  enableVizTransformations: true,
-	  preventPinboardFilterRemoval: true,
-	  runtimeFilters: [],
-    },
+	disabledActions: [],
+	disabledActionReason: '<reason for disabling>',
+	hiddenActions: [],
+	pinboardId: '<%=pinboardGUID%>',
+	vizId: '<%=vizGUID%>',
+	enableVizTransformations: true,
+	preventPinboardFilterRemoval: true,
+	runtimeFilters: [],
+},
 });
 ----
 frameParams:: Sets the `width` and `height` dimensions to render the visualization object. You can set the `width` and `height` attribute values in pixels or as a percentage.
@@ -171,15 +167,15 @@ For example, to sort values equal to `red` in the `Color` column for a visualiza
 [source,javascript]
 ----
 runtimeFilters: [{
-  columnName: 'Product Type',
-  operator: RuntimeFilterOp.EQ,
-  values: ['Jackets']
-  }]
+	columnName: 'Product Type',
+	operator: RuntimeFilterOp.EQ,
+	values: ['Jackets']
+}]
 ----
 
 
 columnName;;
-__String__. Name of the column to filter by. 
+__String__. Name of the column to filter by.
 
 operator;;
 __String__. The runtime filter operator. For more information about the runtime filter operators, see xref:runtime-filters.adoc#runtimeFilterOp[Runtime filters].
@@ -204,8 +200,8 @@ Register event handlers to subscribe to events:
 
 [source,javascript]
 ----
- pinboardEmbed.on(EmbedEvent.init, showLoader)
- pinboardEmbed.on(EmbedEvent.load, hideLoader)
+pinboardEmbed.on(EmbedEvent.init, showLoader)
+pinboardEmbed.on(EmbedEvent.load, hideLoader)
 ----
 
 For more information, see xref:embed-events.adoc[Event subscription and handling].

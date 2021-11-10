@@ -47,7 +47,7 @@
     pre {
         white-space: pre-wrap;
         background: var(--code-block-color);
-        padding: 20px 10px;
+        padding: 25px;
         display: flex;
         justify-content: space-between;
         font-family: $font-family-code;
@@ -169,7 +169,7 @@
         font-weight: $font-weight-bold;
         color: var(--primary-color);
     }
-    
+
     ol > li {
         &::marker {
             font-weight: $font-weight-normal;

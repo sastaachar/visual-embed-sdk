@@ -1,11 +1,6 @@
 
 When trusted authentication is enabled on ThoughtSpot, trusted client applications can obtain an authentication token from the authentication server for a ThoughtSpot user. The `/tspublic/v1/session/login/token` API allows you to log in to ThoughtSpot with the authentication token obtained from the trusted authentication server.
 
-[NOTE]
-====
-This API call is not required if you are using Visual Embed SDK. 
-====
-
 === Resource URL
 ----
 GET /tspublic/v1/session/login/token

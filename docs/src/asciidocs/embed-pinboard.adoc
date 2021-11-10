@@ -30,10 +30,9 @@ Specify the hostname or IP address of your ThoughtSpot application instance.
 
 [source,javascript]
 ----
-init
-    ({
-        thoughtSpotHost:"https://<hostname>:<port>",
-    });
+init({
+	thoughtSpotHost: "https://<hostname>:<port>",
+});
 ----
 thoughtSpotHost::
 _String_. Hostname or IP address of the ThoughtSpot application.
@@ -44,10 +43,9 @@ Define an authentication method. In the following example, the authentication me
 
 [source,javascript]
 ----
-init
-    ({
-        authType: AuthType.SSO,
-    });
+init({
+	authType: AuthType.SSO,
+});
 ----
 
 include::{path}/embed-auth-config.adoc[]
@@ -65,26 +63,23 @@ include::{path}/embed-config.adoc[]
 == Construct the embed content
 [source,JavaScript]
 ----
- const pinboardEmbed = new PinboardEmbed(
-    document.getElementById('ts-embed'),
-    {
+const pinboardEmbed = new PinboardEmbed(document.getElementById('ts-embed'), {
 	frameParams: {
 		width: '100%',
 		height: '100%',
 	},
-    disabledActions: [],
-    fullHeight: true,
-    disabledActionReason: '<reason for disabling>'
-    hiddenActions: [],
-    pinboardId: '<%=pinboardGUID%>',
-    enableVizTransformations: true,
-    preventPinboardFilterRemoval: true,
-    runtimeFilters: [],
-    },
-
+	disabledActions: [],
+	fullHeight: true,
+	disabledActionReason: '<reason for disabling>'
+	hiddenActions: [],
+	pinboardId: '<%=pinboardGUID%>',
+	enableVizTransformations: true,
+	preventPinboardFilterRemoval: true,
+	runtimeFilters: [],
+},
 });
 ----
-frameParams:: 
+frameParams::
 Sets the `width` and `height` dimensions to render the pinboard object. You can set the `width` and `height` attribute values in pixels or as a percentage.
 
 fullHeight __Optional__::
@@ -93,10 +88,10 @@ _Boolean_. Dynamically resizes the embedded pinboard frame according to the heig
 +
 If the embedded pinboard does not fit vertically within your application page, a second scroll bar may appear. When `fullHeight` is set to `true`, the embedded pinboard frame is automatically adjusted according to the height of the pinboard, and the second scroll bar does not appear.
 
-////
+
 defaultHeight::
 _Integer_. Minimum height to set for embedded objects on a pinboard page and the corresponding visualization pages that a user can navigate to from the pinboard page. The default value is `500` pixels.
-////
+
 
 +
 ++++
@@ -184,15 +179,15 @@ For example, to sort values equal to `red` in the `Color` column for a visualiza
 [source,javascript]
 ----
 runtimeFilters: [{
-  columnName: 'Region',
-  operator: RuntimeFilterOp.IN,
-  values: ['Midwest', 'East', 'West']
-  }]
+	columnName: 'Region',
+	operator: RuntimeFilterOp.IN,
+	values: ['Midwest', 'East', 'West']
+}]
 ----
 
 
 columnName;;
-__String__. Name of the column to filter by. 
+__String__. Name of the column to filter by.
 
 operator;;
 __String__. The runtime filter operator. For more information about the runtime filter operators, see xref:runtime-filters.adoc#runtimeFilterOp[Runtime filters].
@@ -217,8 +212,8 @@ Register event handlers to subscribe to the events triggered by the embedded pin
 
 [source,javascript]
 ----
-  pinboardEmbed.on(EmbedEvent.init, showLoader)
-  pinboardEmbed.on(EmbedEvent.load, hideLoader)
+pinboardEmbed.on(EmbedEvent.init, showLoader)
+pinboardEmbed.on(EmbedEvent.load, hideLoader)
 ----
 
 For more information, see xref:embed-events.adoc[Event subscription and handling].

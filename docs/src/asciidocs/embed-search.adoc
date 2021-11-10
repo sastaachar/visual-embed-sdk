@@ -6,19 +6,22 @@
 :page-pageid: search-embed
 :page-description: Embed Search
 
-This topic provides instructions for embedding the ThoughtSpot search function. The embedded Search API enables external applications to search for data from one or several data sources.
+This topic provides instructions for embedding the ThoughtSpot search function.
+The embedded Search API enables external applications to search for data from one or several data sources.
 
 == Import the SearchEmbed package
 
 Import the SearchEmbed SDK library to your application environment:
 
 **npm**
+
 [source,javascript]
 ----
 import { SearchEmbed, AuthType, init, prefetch, EmbedEvent } from '@thoughtspot/visual-embed-sdk';
 ----
 
 **ES6**
+
 [source,javascript]
 ----
 <script type='module'>
@@ -29,7 +32,7 @@ import { SearchEmbed, AuthType, init, prefetch, EmbedEvent } from 'https://cdn.j
 
 Specify the hostname or IP address of your ThoughtSpot application instance.
 
-[source,javascript]
+[source, javascript]
 ----
 init
     ({
@@ -38,12 +41,13 @@ init
 ----
 
 thoughtSpotHost::
-_String_. Hostname or IP address of the ThoughtSpot application.
-
+_String_.
+Hostname or IP address of the ThoughtSpot application.
 
 == Configure an authentication method
 
-Define an authentication method. In the following example, the authentication method is set to SSO.
+Define an authentication method.
+In the following example, the authentication method is set to SSO.
 
 [source,javascript]
 ----
@@ -70,43 +74,44 @@ include::{path}/embed-config.adoc[]
 Create an instance of the SearchEmbed object and customize your search page view.
 
 [source,javascript]
-
 ----
-const searchEmbed = new SearchEmbed(
-    document.getElementById('ts-embed'),
-    {
-	    frameParams: {
+const searchEmbed = new SearchEmbed(document.getElementById('ts-embed'), {
+	frameParams: {
 		width: '100%',
 		height: '100%',
 	},
-    	answerId: "<%=savedAnswerGUID%>",
-    	dataSources: ['<%=datasourceGUID%>'],
-    	collapseDataSources: false,
-    	disabledActions: [],
-    	disabledActionReason: '<reason for disabling>',
-    	forceTable: false,
-    	hiddenActions: [],
-    	hideDataSources: false,
-    	hideResults: false,
-    	searchOptions: {
-            searchTokenString: '<TML-query-string>',
-            executeSearch: true,
-     },
-
-    },
+	answerId: "<%=savedAnswerGUID%>",
+	dataSources: ['<%=datasourceGUID%>'],
+	collapseDataSources: false,
+	disabledActions: [],
+	disabledActionReason: '<reason for disabling>',
+	forceTable: false,
+	hiddenActions: [],
+	hideDataSources: false,
+	hideResults: false,
+	searchOptions: {
+		searchTokenString: '<TML-query-string>',
+		executeSearch: true,
+	},
+},
 });
 ----
+
 frameParams::
-Sets the `width` and `height` dimensions to render the search object in a web browser. You can set the `width` and `height` attribute values in pixels or as a percentage.
+Sets the `width` and `height` dimensions to render the search object in a web browser.
+You can set the `width` and `height` attribute values in pixels or as a percentage.
 
 answerID [small]#__Optional__#::
-_String_. The Global Unique Identifiers (GUID) of the answers saved in a user profile.
+_String_.
+The Global Unique Identifiers (GUID) of the answers saved in a user profile.
 
 dataSources::
-_Array of strings_. The GUIDs of the data sources for running a search query on.
+_Array of strings_.
+The GUIDs of the data sources for running a search query on.
 
 collapseDataSources [small]#__Optional__#::
-_Boolean_. When set to true, it minimizes the Data Source panel.
+_Boolean_.
+When set to true, it minimizes the Data Source panel.
 
 +
 ++++
@@ -115,7 +120,9 @@ _Boolean_. When set to true, it minimizes the Data Source panel.
 
 
 disabledActions [small]#__Optional__#::
-_Array of strings_. Disables the specified menu items from the list of actions on a search results page. You can use this attribute to restrict user access to certain features.
+_Array of strings_.
+Disables the specified menu items from the list of actions on a search results page.
+You can use this attribute to restrict user access to certain features.
 +
 For example, to disable the *Show underlying data* action from the *More* menu image:./images/icon-more-10px.png[the more options menu], specify the `ShowUnderlyingData` action menu string in the `disabledActions` attribute.
 
@@ -129,8 +136,7 @@ disabledActions: Action.ShowUnderlyingData
 <a href="{{previewPrefix}}/playground/search?modifyActions=true" id="preview-in-playground" target="_blank">Preview in Playground</a>
 ++++
 +
-For a complete list of action menu items and the corresponding strings to use for disabling menu items, see link:{{visualEmbedSDKPrefix}}/enums/action.html[Action, window=_blank].
-
+For a complete list of action menu items and the corresponding strings to use for disabling menu items, see link:{{visualEmbedSDKPrefix}}/enums/action.html[Action,window=_blank].
 
 [NOTE]
 ====
@@ -140,11 +146,14 @@ For example, if the custom action ID is set as *send-email*, use `send-email` in
 ====
 
 disabledActionReason [small]#__Optional__#::
-_String_. Indicates the reason for disabling an action on search data.
+_String_.
+Indicates the reason for disabling an action on search data.
 
 
 hideDataSources [small]#__Optional__#::
-_Boolean_. When set to true, it hides the default Data Source panel. Use this attribute if you want to create a custom data panel.
+_Boolean_.
+When set to true, it hides the default Data Source panel.
+Use this attribute if you want to create a custom data panel.
 
 +
 ++++
@@ -153,7 +162,8 @@ _Boolean_. When set to true, it hides the default Data Source panel. Use this at
 
 
 forceTable  [small]#__Optional__#:::
-_Boolean_. When set to `true`, the tabular view is set as the default format for presenting search data. 
+_Boolean_.
+When set to `true`, the tabular view is set as the default format for presenting search data.
 
 +
 ++++
@@ -161,7 +171,9 @@ _Boolean_. When set to `true`, the tabular view is set as the default format for
 ++++
 
 hideResults [small]#__Optional__#::
-_Boolean_. When set to true, it hides charts and tables that appear beneath the search bar. You can use this attribute to hide charts and tables when creating custom visualizations using raw data from a saved answer.
+_Boolean_.
+When set to true, it hides charts and tables that appear beneath the search bar.
+You can use this attribute to hide charts and tables when creating custom visualizations using raw data from a saved answer.
 
 +
 ++++
@@ -180,7 +192,9 @@ _Boolean_. When set to true, it enables Search Assist. Search Assist allows you 
 
 ////
 hiddenActions [small]#__Optional__#::
-_Array of strings_. Hides the specified action menu items on an answer page. You can use this attribute to remove actions that are not relevant to your application context.
+_Array of strings_.
+Hides the specified action menu items on an answer page.
+You can use this attribute to remove actions that are not relevant to your application context.
 
 +
 ++++
@@ -196,8 +210,7 @@ hiddenActions: ['Action.Share']
 ----
 
 +
-For a complete list of action menu items and the corresponding strings to use for disabling or hiding menu items, see link:{{visualEmbedSDKPrefix}}/enums/action.html[Action, window=_blank].
-
+For a complete list of action menu items and the corresponding strings to use for disabling or hiding menu items, see link:{{visualEmbedSDKPrefix}}/enums/action.html[Action,window=_blank].
 
 [NOTE]
 ====
@@ -212,24 +225,27 @@ Allows you to specifiy a search token string and execute search.
 
 * `searchTokenString`
 +
-__String__. The ThoughtSpot Modeling Language (TML) query string. For example, to use the `product` and `sales` keywords, you can set the search token as shown here:
+__String__.
+The ThoughtSpot Modeling Language (TML) query string.
+For example, to use the `product` and `sales` keywords, you can set the search token as shown here:
 
 +
 
     searchTokenString: '[sales][product name]'
 
 * `executeSearch`
-__Boolean__. When set to `true`, the  focus is placed on search results. When set to `false`, the focus is placed at the end of search tokens in the search bar.
+__Boolean__.
+When set to `true`, the focus is placed on search results.
+When set to `false`, the focus is placed at the end of search tokens in the search bar.
 +
 
-[source, javascript]
+[source,javascript]
 ----
 searchOptions: {
         searchTokenString: '[product][sales][date].daily',
         executeSearch: true,
     }
 ----
-
 
 ++++
 <a href="{{previewPrefix}}/playground/search/searchOptions=true" id="preview-in-playground" target="_blank">Try it in Playground</a>
@@ -241,21 +257,21 @@ include::{path}/callback-payload.adoc[]
 
 == Subscribe to events
 
-Register event handlers to subscribe to embed events triggered by the ThoughtSpot Search function. 
+Register event handlers to subscribe to embed events triggered by the ThoughtSpot Search function.
 
-[source, javascript]
+[source,javascript]
 ----
- searchEmbed.on(EmbedEvent.Init, showLoader) 
- searchEmbed.on(EmbedEvent.Load, hideLoader) 
+searchEmbed.on(EmbedEvent.Init, showLoader)
+searchEmbed.on(EmbedEvent.Load, hideLoader)
 ----
- 
+
 For more information, see xref:embed-events.adoc[Event subscription and handling].
 
 == Render the embedded search
 
-[source, javascript]
+[source,javascript]
 ----
- searchEmbed.render();
+searchEmbed.render();
 ----
 
 == Test the embedded workflow
@@ -266,7 +282,6 @@ To verify the ThoughtSpot Search integration, perform the following tasks:
 * Search for data from a data source.
 * Verify if the page view parameters, such as hiding or showing the data source panel, function as expected.
 * If you have disabled an action for search data obtained from a query, verify if the menu command shows as disabled.
-
 
 == Additional resources
 
