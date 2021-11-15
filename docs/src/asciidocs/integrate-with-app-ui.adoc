@@ -6,7 +6,22 @@
 :page-description: You can use Visual Embed SDK and REST API capabilities to integrate embedded ThoughtSpot with your application's UI
 
 
+== Handle load and errors
+The Visual Embed SDK provides xref:events.adoc[events] to take action at various places within the loading process. 
+
+A common workflow is to detect if the SSO process has completed correctly using the `AuthInit` event, then display a custom loader image until the `Load` event fires off. The `NoCookieAccess` event is also available for detecting browsers with strict settings that prohibit the standard SSO process.
+
 == Filters 
+ThoughtSpot has four levels of filters:
+
+ - Row-level security (RLS) rules: Tied to the logged-in user and their group memberships
+ - Run-time filters: Set via the Visual Embed SDK or URL parameters
+ - Search / answer filters: Established via the search definition, not visible in the UI on a pinboard 
+ - Pinboard filters: Visible at the top of a pinboard, affecting all answers on the pinboard
+
+RLS rules are only affected by the SSO process, which makes them the appropriate layer for secure data filtering. The other filter types can all be adjusted by the end user in the browser.
+
+
 
 == Dynamic menus and selection boxes
 The more dynamic your content creation process is, the more likely you will want to automate the retrieval of lists of content a user can see. All ThoughtSpot content is referenced by GUIDs, which can be obtained directly from the URLs of the ThoughtSpot UI or via REST API metadata calls. Once the user session is established in the browser via SSO, any REST API can be called for the logged in user if you xref:api-auth-session.adoc[include the credentials in the request].
