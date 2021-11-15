@@ -5,6 +5,18 @@
 :page-pageid: integrate-with-app-ui
 :page-description: You can use Visual Embed SDK and REST API capabilities to integrate embedded ThoughtSpot with your application's UI
 
+
 == Filters 
 
 == Dynamic menus and selection boxes
+The more dynamic your content creation process is, the more likely you will want to automate the retrieval of lists of content a user can see. All ThoughtSpot content is referenced by GUIDs, which can be obtained directly from the URLs of the ThoughtSpot UI or via REST API metadata calls. Once the user session is established in the browser via SSO, any REST API can be called for the logged in user if you xref:api-auth-session.adoc[include the credentials in the request].
+
+There are two REST API calls that provide the names and GUIDs to generate menu or selection box items: xref:metadata-api.adoc#metadata-list[metadata/list] and xref:metadata-api#object-header[metadata/listobjectheaders]. The metadata/list endpoint provides more information around tags than metadata/listobjectheaders, and is most likely the endpoint you will call. Both calls are scoped to the user and will only show the objects the user has access to.
+
+You must specify what object type to receive - `PINBOARD_ANSWER_BOOK` for pinboards, `QUESTION_ANSWER_BOOK` for answers or `LOGICAL_TABLE` for data objects, which can take an additional `subtype` parameter to limit  specifically to ThoughtSpot tables, worksheets or views.
+
+Both endpoints include parameters for sorting and a `category` parameter that can filter the response to the user's own created objects or objects they have favorited. 
+
+== Additional Resources
+
+link:https://github.com/thoughtspot/ts_everywhere_resources/blob/master/apis/rest-api.js[Example implementation of REST API calls in JavaScript, window=_blank]
