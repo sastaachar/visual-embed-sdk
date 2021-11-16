@@ -26,12 +26,13 @@ The second argument of the constructors is a JavaScript object of options, two o
 ThoughtSpot has four levels of filters:
 
  - Row-level security (RLS) rules: Tied to the logged-in user and their group memberships
- - Run-time filters: Set via the Visual Embed SDK or URL parameters
+ - Runtime filters: xref:runtime-filters.adoc[Set via the Visual Embed SDK] or URL parameters
  - Search / answer filters: Established via the search definition, not visible in the UI on a pinboard 
  - Pinboard filters: Visible at the top of a pinboard, affecting all answers on the pinboard
 
 RLS rules are only affected by the SSO process, which makes them the appropriate layer for secure data filtering. The other filter types can all be adjusted by the end user in the browser.
 
+Runtime filters can be tied into the embedding application, because they can be set programmatically prior to loading the embedded ThoughtSpot content. If you want users to set filter values outside of the embedded ThoughtSpot content, display some type of filter UI in the embedding application, then set those values in the runtime filters section of the constructor of the *PinboardEmbed* object. 
 
 
 == Dynamic menus and selection boxes
