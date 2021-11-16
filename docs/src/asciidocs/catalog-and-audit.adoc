@@ -1,0 +1,16 @@
+= Catalog and audit ThoughtSpot content
+:toc: true
+
+:page-title: Catalog and audit ThoughtSpot content
+:page-pageid: catalog-and-audit
+:page-description: ThoughtSpot REST APIs can be used to audit system configurations and bring metadata into data catalogs
+
+The ThoughtSpot REST API can easily retrieve information about the objects stored on the ThoughtSpot server. 
+
+== List metadata objects
+
+== Full object details
+
+== Retrieve object access (sharing)
+
+== Dependency tracking
