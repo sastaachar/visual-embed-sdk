@@ -9,7 +9,18 @@
 == Handle load and errors
 The Visual Embed SDK provides xref:events.adoc[events] to take action at various places within the loading process. 
 
-A common workflow is to detect if the SSO process has completed correctly using the `AuthInit` event, then display a custom loader image until the `Load` event fires off. The `NoCookieAccess` event is also available for detecting browsers with strict settings that prohibit the standard SSO process.
+A common workflow is to use an overlay to hide the embed content until you know that SSO has completed and the content is fully loaded: 
+
+ 1. Display a custom loader overlay which visibly covers the same area on the page as the ThoughtSpot embed target div.
+ 2. Listen to the `NoCookieAccess` event to detect browsers with strict settings that prohibit the standard SSO process. Display message telling user to adjust their browser settings and reload the page.
+ 2. Listen to the `AuthInit` event to detect if the SSO process has completed correctly. If SSO fails, display a message saying "analytics is unavailable at this time"
+ 3. If SSO succeeds, listen to the `Load` event and remove the loader overlay to display the ThoughtSpot content
+
+
+== Sizing and placement within page
+The first argument of the constructors of each the Embed classes in the Visual Embed SDK (xref:search-embed.adoc[SearchEmbed], xref:embed-pinboard.adoc[PinboardEmbed], etc.) is a *div* element in the embedding page, where the embedded ThoughtSpot content will load.
+
+The second argument of the constructors is a JavaScript object of options, two of which control how the embedded content fill the div. 
 
 == Filters 
 ThoughtSpot has four levels of filters:
