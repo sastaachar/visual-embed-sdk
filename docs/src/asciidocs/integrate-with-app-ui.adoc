@@ -13,14 +13,51 @@ A common workflow is to use an overlay to hide the embed content until you know 
 
  1. Display a custom loader overlay which visibly covers the same area on the page as the ThoughtSpot embed target div.
  2. Listen to the `NoCookieAccess` event to detect browsers with strict settings that prohibit the standard SSO process. Display message telling user to adjust their browser settings and reload the page.
- 2. Listen to the `AuthInit` event to detect if the SSO process has completed correctly. If SSO fails, display a message saying "analytics is unavailable at this time"
- 3. If SSO succeeds, listen to the `Load` event and remove the loader overlay to display the ThoughtSpot content
+ 3. Listen to the `AuthInit` event to detect if the SSO process has completed correctly. If SSO fails, display a message saying "analytics is unavailable at this time"
+ 4. Listen to the `Error` event for any other errors that may occur
+ 5. If SSO succeeds, listen to the `Load` event and remove the loader overlay to display the ThoughtSpot content
 
+[source,javascript]
+----
+ // Instantiate class for embedding a pinboard
+ const embed = new PinboardEmbed("#thoughtspot-embed", {
+     pinboardId: '<pinboard-guid>',
+ });
+ 
+ embed
+    // Register event listeners
+    .on(EmbedEvent.Init, showLoader)
+    .on(EmbedEvent.Load, hideLoader)
+    .on(EmbedEvent.NoCookieAccess, displayBrowserSettingsWarning)
+    .on(EmbedEvent.AuthInit, (isLoggedIn) => {
+        if (!successFlag) {
+           displayAnalyticsErrorMsg();
+        }
+    })
+    .on(EmbedEvent.Error, () => {
+        showNoDataImage();
+        hideLoader();
+    })
+    // Render pinboard
+    .render();
+----
 
 == Sizing and placement within page
 The first argument of the constructors of each the Embed classes in the Visual Embed SDK (xref:search-embed.adoc[SearchEmbed], xref:embed-pinboard.adoc[PinboardEmbed], etc.) is a *div* element in the embedding page, where the embedded ThoughtSpot content will load.
 
-The second argument of the constructors is a JavaScript object of options, two of which control how the embedded content fill the div. 
+The second argument of the constructors is a JavaScript object of options, several of which control how the embedded content fill the div. 
+
+`frameParams` is an object with `width` and `height` attributes. `fullHeight` controls whether the embedded pinboard area expands automatically based on the height of the . `defaultHeight` sets a minimum 
+
+[source,javascript]
+----
+{
+  frameParams : { 'width' : '100%', 'height' : '100%' },
+  fullHeight : false,
+  defaultHeight : '250px'
+}
+----
+
 
 == Filters 
 ThoughtSpot has four levels of filters:
