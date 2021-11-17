@@ -5,6 +5,29 @@
 :page-pageid: integrate-with-app-ui
 :page-description: You can use Visual Embed SDK and REST API capabilities to integrate embedded ThoughtSpot with your application's UI
 
+== Dynamic lists of ThoughtSpot content in menus and selection boxes
+The more dynamic your content creation process is, the more likely you will want to automate the retrieval of lists of content a user can see. All ThoughtSpot content is referenced by GUIDs, which can be obtained directly from the URLs of the ThoughtSpot UI or via REST API metadata calls. Once the user session is established in the browser via SSO, any REST API can be called for the logged in user if you xref:api-auth-session.adoc[include the credentials in the request].
+
+There are two REST API calls that provide the names and GUIDs to generate menu or selection box items: xref:metadata-api.adoc#metadata-list[metadata/list] and xref:metadata-api#object-header[metadata/listobjectheaders]. The metadata/list endpoint provides more information around tags than metadata/listobjectheaders, and is most likely the endpoint you will call. Both calls are scoped to the user and will only show the objects the user has access to.
+
+You must specify what object type to receive - `PINBOARD_ANSWER_BOOK` for pinboards, `QUESTION_ANSWER_BOOK` for answers or `LOGICAL_TABLE` for data objects, which can take an additional `subtype` parameter to limit  specifically to ThoughtSpot tables, worksheets or views.
+
+Both endpoints include parameters for sorting and a `category` parameter that can filter the response to the user's own created objects or objects they have favorited. 
+
+== Filters in embedding app UI
+xref:runtime-filters.adoc[Runtime filters] can be tied into the embedding application, since they are set programmatically prior to loading the embedded ThoughtSpot content. If you want users to set filter values outside of the embedded ThoughtSpot content, display some type of filter UI in the embedding application, then set those values in the runtime filters section of the constructor of the *PinboardEmbed* object. 
+
+ThoughtSpot pinboards have four levels of filters:
+
+ - Row-level security (RLS) rules: Tied to the logged-in user and their group memberships
+ - Runtime filters: Set via the Visual Embed SDK or URL parameters. Do not display as UI filter components
+ - Search / answer filters: Established via the search definition, not visible as UI filter components on a pinboard, only in Explore or Edit modes. 
+ - Pinboard filters: Visible as UI components at the top of a pinboard, affecting all answers on the pinboard
+
+RLS rules are only affected by the SSO process, which makes them the appropriate layer for secure data filtering. The other filter types can all be adjusted by the end user in the browser. 
+
+Embedded searches will always be filtered by RLS rules. The end user can create their own UI filters via search within the embedded search component.
+
 
 == Handle load and errors
 The Visual Embed SDK provides xref:events.adoc[events] to take action at various places within the loading process. 
@@ -59,27 +82,10 @@ The second argument of the constructors is a JavaScript object of options, sever
 ----
 
 
-== Filters 
-ThoughtSpot has four levels of filters:
-
- - Row-level security (RLS) rules: Tied to the logged-in user and their group memberships
- - Runtime filters: xref:runtime-filters.adoc[Set via the Visual Embed SDK] or URL parameters
- - Search / answer filters: Established via the search definition, not visible in the UI on a pinboard 
- - Pinboard filters: Visible at the top of a pinboard, affecting all answers on the pinboard
-
-RLS rules are only affected by the SSO process, which makes them the appropriate layer for secure data filtering. The other filter types can all be adjusted by the end user in the browser.
-
-Runtime filters can be tied into the embedding application, because they can be set programmatically prior to loading the embedded ThoughtSpot content. If you want users to set filter values outside of the embedded ThoughtSpot content, display some type of filter UI in the embedding application, then set those values in the runtime filters section of the constructor of the *PinboardEmbed* object. 
 
 
-== Dynamic menus and selection boxes
-The more dynamic your content creation process is, the more likely you will want to automate the retrieval of lists of content a user can see. All ThoughtSpot content is referenced by GUIDs, which can be obtained directly from the URLs of the ThoughtSpot UI or via REST API metadata calls. Once the user session is established in the browser via SSO, any REST API can be called for the logged in user if you xref:api-auth-session.adoc[include the credentials in the request].
 
-There are two REST API calls that provide the names and GUIDs to generate menu or selection box items: xref:metadata-api.adoc#metadata-list[metadata/list] and xref:metadata-api#object-header[metadata/listobjectheaders]. The metadata/list endpoint provides more information around tags than metadata/listobjectheaders, and is most likely the endpoint you will call. Both calls are scoped to the user and will only show the objects the user has access to.
 
-You must specify what object type to receive - `PINBOARD_ANSWER_BOOK` for pinboards, `QUESTION_ANSWER_BOOK` for answers or `LOGICAL_TABLE` for data objects, which can take an additional `subtype` parameter to limit  specifically to ThoughtSpot tables, worksheets or views.
-
-Both endpoints include parameters for sorting and a `category` parameter that can filter the response to the user's own created objects or objects they have favorited. 
 
 == Additional Resources
 
