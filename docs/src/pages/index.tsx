@@ -195,48 +195,48 @@ const IndexPage = ({ location }) => {
     useEffect(() => {
         setAllPageIds(getAllPageIds(navContent));
     }, [navContent]);
-    const [results,setResults]=useState([]);
+    const [results, setResults] = useState([]);
 
     const searchClient = React.useMemo(
         () =>
-          algoliasearch(
-            process.env.GATSBY_ALGOLIA_APP_ID,
-            process.env.GATSBY_ALGOLIA_SEARCH_KEY
-          ),
+            algoliasearch(
+                process.env.GATSBY_ALGOLIA_APP_ID,
+                process.env.GATSBY_ALGOLIA_SEARCH_KEY
+            ),
         []
-      );
+    );
     const searchIndex = searchClient.initIndex(getAlgoliaIndex());
 
-    useEffect(()=>{
-        if(keyword) {
+    useEffect(() => {
+        if (keyword) {
             searchIndex
-            .search(keyword,{
-                highlightPreTag: '<em class="searchResultHighlightColor">',
-                highlightPostTag: '</em>'
-            })
-            .then(({ hits }) => {
-                const t = hits.reduce((acc, cur:any) => {
-                    if(cur.typedoc) {
-                        acc.push(cur);
-                    }
-                    else if(cur.pageid) {
-                        if (
-                            !acc.some((data) => data.pageid === cur.pageid) &&
-                            allPageIds.includes(cur.pageid)
-                        ) {
+                .search(keyword, {
+                    highlightPreTag: '<em class="searchResultHighlightColor">',
+                    highlightPostTag: '</em>'
+                })
+                .then(({ hits }) => {
+                    const t = hits.reduce((acc, cur: any) => {
+                        if (cur.typedoc) {
                             acc.push(cur);
                         }
-                    }
-                    return acc;
-                },[]);
-                setResults(t);
-            })
-            .catch(err => {
-                console.log(err);
-            });
+                        else if (cur.pageid) {
+                            if (
+                                !acc.some((data) => data.pageid === cur.pageid) &&
+                                allPageIds.includes(cur.pageid)
+                            ) {
+                                acc.push(cur);
+                            }
+                        }
+                        return acc;
+                    }, []);
+                    setResults(t);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
         }
-    },[keyword]);
-    
+    }, [keyword]);
+
     const optionSelected = (pageid: string, sectionId: string) => {
         updateKeyword('');
         navigate(`${params[NAV_PREFIX]}=${pageid}#${sectionId}`);
