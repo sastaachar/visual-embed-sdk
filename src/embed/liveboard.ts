@@ -183,7 +183,7 @@ export class LiveboardEmbed extends V1Embed {
         const liveboardId =
             this.viewConfig.liveboardId ?? this.viewConfig.pinboardId;
 
-        if (!liveboardId || liveboardId === "") {
+        if (!liveboardId || liveboardId === '') {
             this.handleError(ERROR_MESSAGE.LIVEBOARD_VIZ_ID_VALIDATION);
         }
 
@@ -208,4 +208,4 @@ export class LiveboardEmbed extends V1Embed {
 /**
  * @hidden
  */
-export class PinboardEmbed extends LiveboardEmbed { }
+export class PinboardEmbed extends LiveboardEmbed {}
