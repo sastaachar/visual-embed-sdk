@@ -39,6 +39,7 @@ const LeftSideBar = (props: {
     const params = queryStringParser(props.location.search);
     const [navContent, setNavContent] = useState('');
     const { width, ref, height } = useResizeDetector();
+    const sideNavRef: any = useRef();
 
     const expandedTabsRef = useRef({});
 
@@ -63,7 +64,7 @@ const LeftSideBar = (props: {
     }, [params[NAV_PREFIX], params[TS_PAGE_ID_PARAM], props.navContent]);
 
     useEffect(() => {
-        props.handleLeftNavChange(width);
+        props.handleLeftNavChange(sideNavRef.current.state.width);
     }, [width]);
 
     useEffect(() => {
@@ -92,6 +93,7 @@ const LeftSideBar = (props: {
     const renderLeftNav = () => {
         return isMaxMobileResolution ? (
             <ResizableBox
+                ref={sideNavRef}
                 width={
                     isMaxTabletResolution
                         ? LEFT_NAV_WIDTH_DESKTOP
@@ -124,52 +126,49 @@ const LeftSideBar = (props: {
                 />
             </ResizableBox>
         ) : (
-            <div className="menuMain">
-                <div className="menuContainer">
-                    <IconContext.Provider
-                        value={{
-                            className: `icon ${
-                                props.leftNavOpen && 'imgOpacity'
-                            }`,
-                        }}
-                    >
-                        <GiHamburgerMenu onClick={onMenuClick} />
-                    </IconContext.Provider>
-                    <IconContext.Provider
-                        value={{
-                            className: `icon ${
-                                props.leftNavOpen && 'imgOpacity'
-                            }`,
-                        }}
-                    >
-                        {props.isDarkMode
-                            ? <RiMoonClearLine onClick={() => props.setDarkMode(false)} />
-                            : <FiSun onClick={() => props.setDarkMode(true)} />
-                        }
-                    </IconContext.Provider>
-                    <IconContext.Provider
-                        value={{
-                            className: `icon ${
-                                !props.leftNavOpen && 'imgOpacity'
-                            } clearIcon`,
-                        }}
-                    >
-                        <MdClear onClick={onMenuClick} />
-                    </IconContext.Provider>
+                <div className="menuMain">
+                    <div className="menuContainer">
+                        <IconContext.Provider
+                            value={{
+                                className: `icon ${props.leftNavOpen && 'imgOpacity'
+                                    }`,
+                            }}
+                        >
+                            <GiHamburgerMenu onClick={onMenuClick} />
+                        </IconContext.Provider>
+                        <IconContext.Provider
+                            value={{
+                                className: `icon ${props.leftNavOpen && 'imgOpacity'
+                                    }`,
+                            }}
+                        >
+                            {props.isDarkMode
+                                ? <RiMoonClearLine onClick={() => props.setDarkMode(false)} />
+                                : <FiSun onClick={() => props.setDarkMode(true)} />
+                            }
+                        </IconContext.Provider>
+                        <IconContext.Provider
+                            value={{
+                                className: `icon ${!props.leftNavOpen && 'imgOpacity'
+                                    } clearIcon`,
+                            }}
+                        >
+                            <MdClear onClick={onMenuClick} />
+                        </IconContext.Provider>
+                    </div>
+                    <NavContent
+                        backLink={props.backLink}
+                        navContent={navContent}
+                        navTitle={props.navTitle}
+                        refObj={ref as React.RefObject<HTMLDivElement>}
+                        leftNavOpen={props.leftNavOpen}
+                        isPublicSiteOpen={props.isPublicSiteOpen}
+                        isMaxMobileResolution={isMaxMobileResolution}
+                        setDarkMode={props.setDarkMode}
+                        isDarkMode={props.isDarkMode}
+                    />
                 </div>
-                <NavContent
-                    backLink={props.backLink}
-                    navContent={navContent}
-                    navTitle={props.navTitle}
-                    refObj={ref as React.RefObject<HTMLDivElement>}
-                    leftNavOpen={props.leftNavOpen}
-                    isPublicSiteOpen={props.isPublicSiteOpen}
-                    isMaxMobileResolution={isMaxMobileResolution}
-                    setDarkMode={props.setDarkMode}
-                    isDarkMode={props.isDarkMode}
-                />
-            </div>
-        );
+            );
     };
 
     return renderLeftNav();
