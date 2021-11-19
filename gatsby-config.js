@@ -284,5 +284,6 @@ module.exports = {
                 icon: `${__dirname}/docs/src/assets/icons/favicon.svg`,
             },
         },
+	'gatsby-plugin-output'
     ],
 };
