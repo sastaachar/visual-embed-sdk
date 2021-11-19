@@ -86,7 +86,7 @@
       <p class="boxBody"> Embed the full ThoughtSpot experience in your application, including search, charts and tables, automated insights, and pinboards. </p>
       <img src="../doc-images/images/full-app.png" alt="Embed full ThoughtSpot app">
       <p>
-        <a href="?pageid=full-embed"> Learn more about embedding pinboards -></a>
+        <a href="?pageid=full-embed"> Learn more about embedding full app -></a>
       </p>
     </div></a>
   </div>
