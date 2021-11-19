@@ -39,7 +39,6 @@ const LeftSideBar = (props: {
     const params = queryStringParser(props.location.search);
     const [navContent, setNavContent] = useState('');
     const { width, ref, height } = useResizeDetector();
-    const sideNavRef: any = useRef();
 
     const expandedTabsRef = useRef({});
 
@@ -64,7 +63,7 @@ const LeftSideBar = (props: {
     }, [params[NAV_PREFIX], params[TS_PAGE_ID_PARAM], props.navContent]);
 
     useEffect(() => {
-        props.handleLeftNavChange(sideNavRef.current.state.width);
+        props.handleLeftNavChange(ref.current.offsetWidth);
     }, [width]);
 
     useEffect(() => {
@@ -93,7 +92,6 @@ const LeftSideBar = (props: {
     const renderLeftNav = () => {
         return isMaxMobileResolution ? (
             <ResizableBox
-                ref={sideNavRef}
                 width={
                     isMaxTabletResolution
                         ? LEFT_NAV_WIDTH_DESKTOP
