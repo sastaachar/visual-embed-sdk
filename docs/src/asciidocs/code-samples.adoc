@@ -85,7 +85,6 @@ document.getElementById('ts-embed'), {
 	pinboardId: 'f4a4e205-3b43-4b77-8ec0-8723da49ce1d',
 },
 });
-
 pinboardEmbed.render();
 ----
 
