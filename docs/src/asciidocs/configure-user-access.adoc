@@ -76,6 +76,6 @@ For more information, see link:https://cloud-docs.thoughtspot.com/admin/data-sec
 
 == Granular access to menu actions
 
-If you are using Visual Embed SDK to embed ThoughtSpot objects and you want to restrict user access to certain menu actions, you can use the `disableActions` and `hideActions` parameters. 
+If you are using Visual Embed SDK to embed ThoughtSpot objects and you want to restrict user access to certain menu actions, you can use the `disabledActions` and `hiddenActions` parameters. 
 
 For more information on disabling or hiding an action, see xref:embed-actions.adoc[Disable or hide menu actions].
