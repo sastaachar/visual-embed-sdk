@@ -35,7 +35,7 @@ Import the AppEmbed SDK library to your application environment:
 **npm**
 [source,javascript]
 ----
-import { AppEmbed, AuthType, init, prefetch, EmbedEvent } from '@thoughtspot/visual-embed-sdk';
+import { AppEmbed, Page, AuthType, init, prefetch, EmbedEvent } from '@thoughtspot/visual-embed-sdk';
 ----
 
 **ES6**
