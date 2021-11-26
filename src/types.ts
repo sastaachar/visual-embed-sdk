@@ -506,7 +506,7 @@ export enum Action {
     DownloadEmbraceQueries = 'downloadEmbraceQueries',
     Pin = 'pin',
     AnalysisInfo = 'analysisInfo',
-    Subscription = 'subscription',
+    Subscription = 'schedule',
     Explore = 'explore',
     DrillInclude = 'context-menu-item-include',
     DrillExclude = 'context-menu-item-exclude',
