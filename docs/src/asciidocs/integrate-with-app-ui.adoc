@@ -14,6 +14,13 @@ You must specify what object type to receive - `PINBOARD_ANSWER_BOOK` for pinboa
 
 Both endpoints include parameters for sorting and a `category` parameter that can filter the response to the user's own created objects or objects they have favorited. 
 
+Once the user has selected or click on an item, the GUID must pass to the appropriate parameter in the options object of the Embed constructor: 
+
+ - `pinboardId` for a xref:embed-pinboard.adoc[whole pinboard] in a PinboardEmbed object
+ - `pinboardId` and `vizId` for an xref:embed-a-viz.adoc[individual visualization] on a pinboard through the PinboardEmbed object
+ - `datasources` array for a xref:embed-search.adoc[blank SearchEmbed]
+ - `answerId` for a SearchEmbed loading an xref:embed-search.adoc[existing Answer]
+
 == Filters in embedding app UI
 xref:runtime-filters.adoc[Runtime filters] can be tied into the embedding application, since they are set programmatically prior to loading the embedded ThoughtSpot content. If you want users to set filter values outside of the embedded ThoughtSpot content, display some type of filter UI in the embedding application, then set those values in the runtime filters section of the constructor of the *PinboardEmbed* object. 
 
