@@ -53,6 +53,7 @@
 ** link:{{navprefix}}=customize-style[Customize layout and styles]
 ** link:{{navprefix}}=customize-links[Customize links] 
 ** link:{{navprefix}}=customize-emails[Customize onboarding settings]
+** link:{{navprefix}}=integrate-with-app-ui[Integrate with embedding application UI]
 
 * link:{{navprefix}}=runtime-filters[Runtime filters]
 
