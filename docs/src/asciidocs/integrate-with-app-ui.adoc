@@ -132,12 +132,9 @@ There are several events that fire only on the SearchEmbed component
 
  - `DataSourceSelected` : Fires when a change occurs in the data sources, including initial load of the SearchEmbed component. Can be used to hide a loader screen. Return object contains an array of the selected column GUIDs (accessible using `LOGICAL_COLUMN` type within metadata REST API commands).
  - `QueryChanged` : Fires when a change occurs in the search bar, including initial load of the SearchEmbed component. Returned object includes a `data.search` property with the TML search query from the search box
- - `Data` : 
- - `Load` : Fires on SearchEmbed when the 'GO' button is pressed
  
-=== Alternative worklows
-`hideResults` blocks the 'GO' button from displaying the chart or table results. It also blocks the `Data` event from firing
-
+=== Use search bar without displaying results
+The `hideResults` parameter in the options object blocks the 'GO' button from displaying the chart or table results. When this option is *true*, you can listen to the `QueryChanged` event to capture the TML search string from the search bar, then use that query string in the xref:search-data-api.adoc[search data REST API]. 
 
 == Additional Resources
 
