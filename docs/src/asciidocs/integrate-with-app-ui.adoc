@@ -44,6 +44,8 @@ The Visual Embed SDK provides xref:events.adoc[events] to take action at various
 
 The full list events are defined in the link:https://github.com/thoughtspot/visual-embed-sdk/blob/main/src/types.ts[types.ts, window=_blank] file of the Visual Embed SDK source.
 
+`AuthExpire` and `AuthInit` can be used together to determine if the SSO process completed correctly. To determine if `AuthExpire` is firing because SSO did not complete or if the ThoughtSpot session timed out, you can set a variable to act as a flag for if SSO ever completed (*tsLoggedIn* in the example below). When `AuthInit` fires, set the flag to *true*. Have the callback function attached to `AuthExpire` look at the flag to determine which state change caused the `AuthExpire` event to fire.
+
 [source,javascript]
 ----
  // Instantiate class for embedding a pinboard
