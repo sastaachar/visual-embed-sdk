@@ -37,7 +37,7 @@ The Visual Embed SDK provides xref:events.adoc[events] to take action at various
  1. `Init` : Fires at the beginning of the loading process. 
  2. `NoCookieAccess` :  Some browsers (Safari in particular) default to strict settings on cookie origins that prohibit the standard SSO process. Fires if cookies are restricted by the browser
  3. `AuthExpire` : Fires if SSO does not complete and if the ThoughtSpot session times out at some point. Listen to the `AuthExpire` event in the load process to determine when it is safe to show the ThoughtSpot content, and listen to it after loading to hide the ThoughtSpot login screen if the session expires for some reason
- 4. `AuthInit` : Fires when the SSO process has completed correctly. Does not fire when an SSO process fails, instead `AuthExpire` fires in that situation. The logged-in username is available in the response of the `AuthInit` event.
+ 4. `AuthInit` : Fires when the SSO process has completed correctly. Does not fire when an SSO process fails, instead `AuthExpire` fires in that situation. The logged-in user GUID is available in the response of the `AuthInit` event.
  4. `Error` :  Fires if any other errors occur in the Visual Embed SDK process. Does not fire for errors within the embedded ThoughtSpot content
  5. `Load`: Fires as soon as the area for embedding is created, not when the content has begun or finished loading.
  6. `Data` : Fires only on SearchEmbed components. Never fires with a PinboardEmbed component
@@ -53,22 +53,28 @@ The full list events are defined in the link:https://github.com/thoughtspot/visu
      pinboardId: '<pinboard-guid>',
  });
  
- embed
-    // Register event listeners
+let tsloggedIn = false;
+embed
     .on(EmbedEvent.Init, showLoader)
-    .on(EmbedEvent.Load, hideLoader)
-    .on(EmbedEvent.NoCookieAccess, displayBrowserSettingsWarning)
-    .on(EmbedEvent.AuthInit, (isLoggedIn) => {
-        if (!successFlag) {
-           displayAnalyticsErrorMsg();
+    .on(EmbedEvent.NoCookieAccess, showCookieSettingsMsg)
+    .on(EmbedEvent.AuthInit, (response) => {
+        // Set that AuthInit has fired
+        tsLoggedIn = true;
+        // authInit returns object -> {type: 'authInit', data: {userGuid: <guid>} } }
+        let userGUID = response.data.userGuid;
+    } )
+    .on(EmbedEvent.AuthExpire, (response) => {
+        // Handle if session dies while content shows
+        if (tsLoggedIn == true){
+            tsSessionTimeoutCleanup();
         }
-    })
-    .on(EmbedEvent.Error, () => {
-        showNoDataImage();
-        hideLoader();
-    })
-    // Render pinboard
-    .render();
+        else {
+            // Display custom message if SSO issues
+            showSSOFailedMsg();
+        }
+    } )
+    .on(EmbedEvent.Error, showGenericErrorMsg)
+    .render()
 ----
 
 == Sizing and placement within page
