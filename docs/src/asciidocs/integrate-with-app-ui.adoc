@@ -14,10 +14,10 @@ You must specify what object type to receive - `PINBOARD_ANSWER_BOOK` for pinboa
 
 Both endpoints include parameters for sorting and a `category` parameter that can filter the response to the user's own created objects or objects they have favorited. 
 
-Once the user has selected or click on an item, the GUID must pass to the appropriate parameter in the options object of the Embed constructor: 
+Once the user has selected or click on an item, the GUID(s) must pass to the appropriate parameter in the options object of the Embed constructor: 
 
  - `pinboardId` for a xref:embed-pinboard.adoc[whole pinboard] in a PinboardEmbed object
- - `pinboardId` and `vizId` for an xref:embed-a-viz.adoc[individual visualization] on a pinboard through the PinboardEmbed object
+ - `pinboardId` and `vizId` for an xref:embed-a-viz.adoc[individual visualization] from a pinboard through the PinboardEmbed object
  - `datasources` array for a xref:embed-search.adoc[blank SearchEmbed]
  - `answerId` for a SearchEmbed loading an xref:embed-search.adoc[existing Answer]
 
@@ -36,7 +36,7 @@ RLS rules are only affected by the SSO process, which makes them the appropriate
 Embedded searches will always be filtered by RLS rules. The end user can create their own UI filters via search within the embedded search component.
 
 
-== Handle load and errors
+== Handle load and errors with PinboardEmbed components
 A common workflow is to use an overlay DIV element to hide the embed content until you know that SSO has completed and the content is fully loaded. If an error occurs in the process, you may prefer to display your own custom message to the end user rather than have them see the embedded ThoughtSpot content in an error state.
 
 The Visual Embed SDK provides xref:events.adoc[events] to take action at various places within the loading process. The following events are related to the load process: 
@@ -60,7 +60,7 @@ The full list events are defined in the link:https://github.com/thoughtspot/visu
      pinboardId: '<pinboard-guid>',
  });
  
-let tsloggedIn = false;
+let tsLoggedIn = false;
 embed
     .on(EmbedEvent.Init, showLoader)
     .on(EmbedEvent.NoCookieAccess, showCookieSettingsMsg)
@@ -84,26 +84,59 @@ embed
     .render()
 ----
 
-== Sizing and placement within page
+== Custom actions and interaction events
+xref:custom-action-intro.adoc[Custom actions] fire an event when a user clicks on a menu item when set to be xref:custom-action-callback.adoc[callback actions]. The event provides the custom action identifier, the data from the visualization and additional information depending on the configuration. 
+
+Custom actions provide a way for interaction within the ThoughtSpot components to trigger further workflows within the embedding application. 
+
+There are other xref:events.adoc#_embed_events[events] that fire as the user interacts with the SearchEmbed and PinboardEmbed components:
+ 
+ - `Drilldown`
+ - `VizPointDoubleClick`
+
+See below for additional events that fire only on the SearchEmbed component.
+
+== Size and placement of PinboardEmbed component within page
 The first argument of the constructors of each the Embed classes in the Visual Embed SDK (xref:search-embed.adoc[SearchEmbed], xref:embed-pinboard.adoc[PinboardEmbed], etc.) is a *div* element in the embedding page, where the embedded ThoughtSpot content will load.
 
 The second argument of the constructors is a JavaScript object of options, several of which control how the embedded content fill the div. 
 
-`frameParams` is an object with `width` and `height` attributes. `fullHeight` controls whether the embedded pinboard area expands automatically based on the height of the . `defaultHeight` sets a minimum 
+`frameParams` is an object with `width` and `height` attributes. If `frameParams` is not included, the embedded ThoughtSpot will fill the entirety of the div, and resize automatically if the div adjusts in size. This is equivalent to `width '100%', height: '100%'`. When `width` and `height` are set to percentages, the embedded area will be that proportion of the embedded div. When set to exact pixel sizes, the embedded area size stays fixed regardless of what happens to the div.
+
+When `fullHeight` is set to *true*, there will not be a scrollbar within the embedded pinboard area. 
+
 
 [source,javascript]
 ----
 {
   frameParams : { 'width' : '100%', 'height' : '100%' },
-  fullHeight : false,
-  defaultHeight : '250px'
+  fullHeight : false
 }
 ----
 
+== Control SearchEmbed component behavior
+There are three general ways to use the xref:embed-search.adoc[SearchEmbed component] component:
 
+ 1. Load with no datasources selected
+ 2. Load with particular datasources
+ 3. Load an existing saved answer
 
+In cases 1 and 2, you can also define items to appear in the search bar using the `searchOptions` object in the options object. `searchOptions` has two properties: `searchTokenString` and `executeSearch`. When `executeSearch` is *true*, the search component will load the chart or table automatically. If `executeSearch` is *false*, the search bar will display the terms from `searchTokenString` but the user must press the 'GO' button to make the search execute. 
 
+The `forceTable` option causes the search to load in table mode rather than with the automatically chosen visualization. 
 
+`collapseDataSources` and `hideDataSources` control the data source pane on the left side of the search component. When `hideDataSources` is *true*, there is no way for the user to see the data source pane, while `collapseDataSources` loads to only an icon which can be used to expand the pane.
+
+=== Events
+There are several events that fire only on the SearchEmbed component
+
+ - `DataSourceSelected` : Fires when a change occurs in the data sources, including initial load of the SearchEmbed component. Can be used to hide a loader screen. Return object contains an array of the selected column GUIDs (accessible using `LOGICAL_COLUMN` type within metadata REST API commands).
+ - `QueryChanged` : Fires when a change occurs in the search bar, including initial load of the SearchEmbed component. Returned object includes a `data.search` property with the TML search query from the search box
+ - `Data` : 
+ - `Load` : Fires on SearchEmbed when the 'GO' button is pressed
+ 
+=== Alternative worklows
+`hideResults` blocks the 'GO' button from displaying the chart or table results. It also blocks the `Data` event from firing
 
 
 == Additional Resources
