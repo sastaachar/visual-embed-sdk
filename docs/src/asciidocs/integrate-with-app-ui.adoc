@@ -30,15 +30,19 @@ Embedded searches will always be filtered by RLS rules. The end user can create 
 
 
 == Handle load and errors
-The Visual Embed SDK provides xref:events.adoc[events] to take action at various places within the loading process. 
+A common workflow is to use an overlay DIV element to hide the embed content until you know that SSO has completed and the content is fully loaded. If an error occurs in the process, you may prefer to display your own custom message to the end user rather than have them see the embedded ThoughtSpot content in an error state.
 
-A common workflow is to use an overlay to hide the embed content until you know that SSO has completed and the content is fully loaded: 
+The Visual Embed SDK provides xref:events.adoc[events] to take action at various places within the loading process. The following events are related to the load process: 
 
- 1. Display a custom loader overlay which visibly covers the same area on the page as the ThoughtSpot embed target div.
- 2. Listen to the `NoCookieAccess` event to detect browsers with strict settings that prohibit the standard SSO process. Display message telling user to adjust their browser settings and reload the page.
- 3. Listen to the `AuthInit` event to detect if the SSO process has completed correctly. If SSO fails, display a message saying "analytics is unavailable at this time"
- 4. Listen to the `Error` event for any other errors that may occur
- 5. If SSO succeeds, listen to the `Load` event and remove the loader overlay to display the ThoughtSpot content
+ 1. `Init` : Fires at the beginning of the loading process. 
+ 2. `NoCookieAccess` :  Some browsers (Safari in particular) default to strict settings on cookie origins that prohibit the standard SSO process. Fires if cookies are restricted by the browser
+ 3. `AuthExpire` : Fires if SSO does not complete and if the ThoughtSpot session times out at some point. Listen to the `AuthExpire` event in the load process to determine when it is safe to show the ThoughtSpot content, and listen to it after loading to hide the ThoughtSpot login screen if the session expires for some reason
+ 4. `AuthInit` : Fires when the SSO process has completed correctly. Does not fire when an SSO process fails, instead `AuthExpire` fires in that situation. The logged-in username is available in the response of the `AuthInit` event.
+ 4. `Error` :  Fires if any other errors occur in the Visual Embed SDK process. Does not fire for errors within the embedded ThoughtSpot content
+ 5. `Load`: Fires as soon as the area for embedding is created, not when the content has begun or finished loading.
+ 6. `Data` : Fires only on SearchEmbed components. Never fires with a PinboardEmbed component
+
+The full list events are defined in the link:https://github.com/thoughtspot/visual-embed-sdk/blob/main/src/types.ts[types.ts, window=_blank] file of the Visual Embed SDK source.
 
 [source,javascript]
 ----
