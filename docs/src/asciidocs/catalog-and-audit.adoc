@@ -5,7 +5,7 @@
 :page-pageid: catalog-and-audit
 :page-description: ThoughtSpot REST APIs can be used to audit system configurations and bring metadata into data catalogs
 
-The ThoughtSpot REST API can easily retrieve information about the objects stored on the ThoughtSpot server. 
+The ThoughtSpot REST API can easily retrieve information about the objects stored on the ThoughtSpot server. The REST API can also retrieve every object in the link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/tml.html[ThoughtSpot Modeling language (TML), window=_blank], which can be parsed as YAML or JSON for additional details.
 
 == Map user and group GUIDs to names
 Some API responses only include the GUIDs for other objects, without the string names. If you need the human-readable names of users and groups, use the xref:user-api.adoc#get-user-details[get user details] and the xref:group-api.adoc#get-ug-details [get group details] endpoints. 
@@ -14,10 +14,13 @@ These calls include the names along with the GUIDs, allowing you to map the stri
 
 
 == List metadata objects
-
+To get listing of all objects on a ThoughtSpot instance, use the xref:metadata-api.adoc#object-header[metadata/listobjectsheaders] REST API call. You must call this API endpoint for each *type* parameter. 
 
 == Full object details
 
 == Retrieve object access (sharing)
+Permissions to access objects is called *sharing* in ThoughtSpot. The owner of an object, typically also the creator of the object, has full access rights automatically. Additional access is granted by sharing to other users and groups.
+
+To check who has access to a given object, use the xref:security-api.adoc#obj-permission-all[security/metadata/permissions] REST API endpoint.
 
 == Dependency tracking
