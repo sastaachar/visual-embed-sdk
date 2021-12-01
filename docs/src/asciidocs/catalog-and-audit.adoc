@@ -42,5 +42,6 @@ The first key is the GUID of the object. Inside there is a *"permissions"* key w
 
 To get a human-readable version of the response, create maps of GUID:name for the object, users, and groups, then add the names in where only GUIDs are provided.
 
+`shareMode` will be either `READ_ONLY` (*View* in the UI) or `MODIFY` (*Edit* in the UI).
 
 == Dependency tracking
