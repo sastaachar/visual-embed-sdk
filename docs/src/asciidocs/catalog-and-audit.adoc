@@ -21,6 +21,26 @@ To get listing of all objects on a ThoughtSpot instance, use the xref:metadata-a
 == Retrieve object access (sharing)
 Permissions to access objects is called *sharing* in ThoughtSpot. The owner of an object, typically also the creator of the object, has full access rights automatically. Additional access is granted by sharing to other users and groups.
 
-To check who has access to a given object, use the xref:security-api.adoc#obj-permission-all[security/metadata/permissions] REST API endpoint.
+To check who has access to a given object, use the xref:security-api.adoc#obj-permission-all[security/metadata/permissions] REST API endpoint. This endpoint requires a list of GUIDs, so to get the full list of all objects of one type, you'll need to use the *metadata/listobjectheaders* call first to retrieve all existing GUIDs.
+
+The *security/metadata/permissions* endpoint also takes an argument for the `permissiontype`, which can be `DEFINED` or `EFFECTIVE`. `DEFINED` matches with what an administrator would see in the Share menu within the ThoughtSpot user interface. 
+
+The response from *security/metadata/permissions* is a nested object with mostly GUIDs: 
+
+[source,javascript]
+----
+{
+  "41a39422-2da0-4601-9d4a-59c27181c5f5": {
+    "permissions": {
+      "59481331-ee53-42be-a548-bd87be6ddd4a": {
+        "topLevelObjectId": "41a39422-2da0-4601-9d4a-59c27181c5f5",
+        "shareMode": "READ_ONLY",
+...
+----
+
+The first key is the GUID of the object. Inside there is a *"permissions"* key whose value is an object where the keys are *user* and *group* GUIDs. 
+
+To get a human-readable version of the response, create maps of GUID:name for the object, users, and groups, then add the names in where only GUIDs are provided.
+
 
 == Dependency tracking
