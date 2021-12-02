@@ -1278,7 +1278,7 @@ Click the link in the `Response body` to download the YAML file.
 
 **204**
 
-| Successful export of the connection object.
+| Successful export of the connection object
 | **401**
 | Unauthorized or wrong credentials
 
@@ -1346,12 +1346,12 @@ Response Code
 
 | **200**
 
-**204**  |Successful deletion of the connection object.
+**204**  |Successful deletion of the connection object
 
 | **401**
 | Unauthorized or wrong credentials
 
 | **500**
-| The connection could not be deleted due to table dependencies.
+| The connection could not be deleted due to table dependencies
 |===
 
