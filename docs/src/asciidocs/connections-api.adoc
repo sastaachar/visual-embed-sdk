@@ -930,14 +930,15 @@ If the connection modification is successful, the API returns a response body wi
 |HTTP status code | Description
 
 | **200**
+
 **204**
 
-| Successful update of the connection object.
+| Successful update operation
 | **401**
 | Unauthorized or wrong credentials
 
 | **500**
-| The connection could not be created
+| Invalid parameters
 |===
 
 
@@ -1277,12 +1278,12 @@ Click the link in the `Response body` to download the YAML file.
 
 **204**
 
-| Successful deletion of the connection object.
+| Successful export of the connection object.
 | **401**
 | Unauthorized or wrong credentials
 
 | **500**
-| The connection could not be deleted.
+| Invalid connection ID
 |===
 
 [#del-connection]
