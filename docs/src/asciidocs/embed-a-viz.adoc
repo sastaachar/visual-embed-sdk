@@ -5,10 +5,21 @@
 :page-pageid: embed-a-viz
 :page-description: Embed charts and tables
 
+This article explains how to embed a single ThoughtSpot visualization in your Web page, portal, or application. 
 
-This page explains how to embed a ThoughtSpot visualization, such as tables and charts, in your Web page, portal, or application.
+A visualization is a single answer pinned to a pinboard. Pinned visualizations appear without the search bar or the other options to change the visualization.
+
+You cannot embed a saved answer as an individual visualization. Saved answers can be used in the *SearchEmbed* component, where they will load with the search bar and other options available with ThoughtSpot search. Any visualization you want to embed using  *PinboardEmbed* must exist on a pinboard object in ThoughtSpot.
+
+[NOTE]
+====
+If you want to display multiple charts or tables that have been saved in a pinboard, try to embed a single pinboard rather than multiple individual visualizations. This helps in improving your application performance.
+====
+
+To embed a ThoughtSpot visualization in your app, complete the steps described in the following sections.  
 
 == Import the PinboardEmbed package
+
 Import the visualization SDK library to your application environment:
 
 [source,javascript]
@@ -131,13 +142,6 @@ include::{path}/runtime-filter.adoc[]
 
 For more information about the supported data types and how to use runtime filters, see xref:runtime-filters.adoc[Runtime filters].
 
-== Render the embedded visualization
-Construct the URL for the embedded visualization and render the embedded content:
-
-[source,javaScript]
-----
-pinboardEmbed.render();
-----
 
 == Define a method to process callback custom actions payload
 
@@ -153,20 +157,21 @@ pinboardEmbed.on(EmbedEvent.load, hideLoader)
 pinboardEmbed.on(EmbedEvent.Error)
 ----
 
-If you have added a xref:customize-actions-menu.adoc[custom action], register an event handler to manage the events triggered by the custom action:
-
-[source, javascript]
-----
-pinboardEmbed.on(EmbedEvent.customAction, payload => {
-	const data = payload.data;
-	if(data.id === 'insert Custom Action ID here') {
-		console.log('Custom Action event:', data.columnsAndData);
-	}
-})
-----
 For a complete list of event types that you can register, see  link:{{visualEmbedSDKPrefix}}/enums/embedevent.html[EmbedEvent, window=_blank].
 
-== Test the embedded workflow
+
+== Render the embedded visualization
+
+Render the embedded visualization.
+
+[source,javaScript]
+----
+pinboardEmbed.render();
+----
+
+== Test your embedding
+
+Perform the following tests:
 
 * Load the client application.
 * Try accessing a visualization embedded in your application.

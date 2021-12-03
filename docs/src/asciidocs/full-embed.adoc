@@ -1,45 +1,29 @@
 = Embed full application
 :toc: true
 
-:page-title: Embed Full Application
+:page-title: Embed full application
 :page-pageid: full-embed
-:page-description: Embed Full Application
+:page-description: You can embed full ThoughtSpot experience in your application and allow your users to create content for live analytics.
 
+To integrate full ThoughtSpot experience in your application, you can use the full app embedding method. 
 
-Full embedding allows you to integrate the full ThoughtSpot content in an application.
-
-== Full application embedding
-
-The full embedded ThoughtSpot content gives your users the ability to perform many essential tasks:
+The full app embedding allows you to integrate many features and pages of the ThoughtSpot application, and provide your users the ability to perform the following tasks:
 
 * create answers and pinboards
 * share objects with other users
-* upload data, and refresh uploaded data
+* upload data 
 * relate uploaded data to existing worksheets
-* use search answers
+* use saved answers
 * use SpotIQ
 
-
-=== Limitations
-Users in a fully  embedded application cannot perform the following tasks:
+However, your application users will not have access to the following features in the embedded ThoughtSpot instance:
 
 * create worksheets
 * create views
 * modify profiles
 * view the Help Center
 
-////
-=== Error messages and full embed
-
-In ThoughtSpot, you can disable error messages within the ThoughtSpot embedded context.
-We provide APIs so you can access error messages and display them in your application UI appropriately.
-
-This approach of suppressing error messages inside the `<iframe>` uses the `window.postMessage` function to pass them through to the parent application, which acts as the listener.
-
-You can view these 'hidden' messages in the console logs.
-Contact ThoughtSpot Support to enable this feature.
-////
-== Full application embedding workflow
+To embed the full ThoughtSpot application in your app, website, or product, complete the steps described in the following sections.  
 
 === Import the AppEmbed package
 Import the AppEmbed SDK library to your application environment:
@@ -61,7 +45,8 @@ include::{path}/embed-auth-config.adoc[]
 For more information, see xref:embed-authentication.adoc[Embed user authentication].
 
 === Create an instance of the AppEmbed object
-Create an instance of the AppEmbed object and pass the parameters for the application page view.
+
+Create an instance of the AppEmbed object and pass parameters to set a page view.
 
 [source,javascript]
 ----
@@ -82,7 +67,7 @@ const appEmbed = new AppEmbed(document.getElementById('ts-embed'), {
 ----
 frameParams:: Sets the `width` and `height` dimensions to render the pages in the web application. You can set the `width` and `height` attribute values in pixels or as a percentage. 
 
-disabledActions::
+disabledActions _optional_::
 _Array of strings_. The actions that you want to show as disabled in the embedded ThoughtSpot UI.
 +
 
@@ -108,13 +93,15 @@ For a complete list of action menu items and the corresponding strings, see link
 
 [NOTE]
 ====
-If you have xref:customize-actions-menu.adoc[added a custom action] and you want to disable this custom action, make sure you specify the ID of the custom action in the `disabledActions` attribute. For example, if a custom action is created with the *Send Email* label and the ID is set as *send-email*, use `send-email` in the `disabledActions` attribute to disable this action on a ThoughtSpot application page.
+If you want to disable a xref:customize-actions-menu.adoc[custom action], make sure you specify the ID of the custom action in the `disabledActions` attribute.
+
+For example, if the custom action ID is set as *send-email*, use `send-email` in the `disabledActions` attribute to disable this action on a pinboard or answer page.
 ====
 
-disabledActionReason::
+disabledActionReason _optional_::
 _String_. The text to show for disabled actions. The text string specified in `disabledActionReason` shows as a tooltip when a user hovers over a disabled action in the embedded UI. For example, if you have disabled the `Download` action and you intend to enable this action for only authorized users, you can specify `disabledActionReason` as `Contact your administrator to enable this feature`.
 
-hiddenActions::
+hiddenActions _optional_::
 _Array of strings_. The action menu items to hide on a pinboard or visualization page.
 +
 
@@ -138,10 +125,14 @@ hiddenActions: [Action.Download]
 For a complete list of action menu items and the corresponding strings, see link:{{visualEmbedSDKPrefix}}/enums/action.html[Action, window=_blank].
 
 [NOTE]
-If you have xref:customize-actions-menu.adoc[added a custom action] and you want to hide this custom action, make sure you specify the ID of the custom action in the `hiddenActions` attribute. For example, if a custom action is created with the *Send Email* label and the ID is set as *send-email*, use `send-email` in the `hiddenActions` attribute to hide this action on a  ThoughtSpot application page.
- 
-showPrimaryNavbar::   
-_Boolean_. Shows or hides the ThoughtSpot navigation bar.
+====
+If you want to hide a xref:customize-actions-menu.adoc[custom action], make sure you specify the ID of the custom action in the `hiddenActions` attribute.
+
+For example, if the custom action ID is set as *send-email*, use `send-email` in the `hiddenActions` attribute to hide this action on a pinboard or answer page.
+====
+
+showPrimaryNavbar  [small]_optional_::   
+_Boolean_. Shows or hides the ThoughtSpot navigation bar. By default, the navigation bar is hidden.
 ////
 +
 ++++
@@ -152,30 +143,30 @@ path::
 _String_. The URL path of the ThoughtSpot application page to embed. 
 
 [NOTE]
-When both `path` and `pageId` attributes are defined, the path definition takes precedence.
+If both `path` and `pageId` attributes are defined, the path definition takes precedence.
 
 pageId::
-The unique identifier for the ThoughtSpot application page. The following values are valid.
+The unique identifier for the ThoughtSpot application page. The value specified in the `pageId` attribute will be set as the active tab, which is displayed by default when the embedded ThoughtSpot UI loads. Valid values are:
 
 `*Page.Search*`;;
 
-Displays the search answers page when the application loads.
+Displays the page showing ThoughtSpot search bar
 
 `*Page.Answers*`;;
 
-Displays the saved search answers (*Answers*) page when the application loads.
+Displays the saved search answers (*Answers*) page
 
 `*Page.Pinboards*`;;
 
-Displays the *Pinboards* page when the application loads.
+Displays the *Pinboards* page
 
 `*Page.Data*`;;
  
-Displays the *Data* page when the application loads.
+Displays the *Data* page
 
 `*Page.Home*`;;
 
-Displays the *Home* page when the application loads.
+Displays the *Home* page
 ////
 +
 ++++
@@ -207,19 +198,14 @@ include::{path}/runtime-filter.adoc[]
 
 For more information about the supported data types and how to use runtime filters, see xref:runtime-filters.adoc[Runtime filters].
 
-=== Render the embedded application
-Render the embedded content.
-[source, javascript]
-----
-appEmbed.render();
-----
 
 === Define a method to process callback custom actions payload
 
 include::{path}/callback-payload.adoc[]
 
 === Subscribe to events
-Register event handlers to subscribe to the events triggered by the ThoughtSpot Search function; for example, application errors, and  embedded content initialization and loading.
+
+Register event listeners.
 
 [source, javascript]
 ----
@@ -228,22 +214,19 @@ appEmbed.on(EmbedEvent.load, hideLoader)
 appEmbed.on(EmbedEvent.Error)
 ----
 
-If you have added a xref:customize-actions-menu.adoc[custom action], register an event handler to manage the event triggered by the custom action:
-
-[source, javascript]
-----
-appEmbed.on(EmbedEvent.customAction, payload => {
-	const data = payload.data;
-	if(data.id === 'insert Custom Action ID here') {
-		console.log('Custom Action event:', data.columnsAndData);
-	}
-})
-----
 For a complete list of event types that you can register, see  link:{{visualEmbedSDKPrefix}}/enums/embedevent.html[EmbedEvent, window=_blank].
 
-=== Test the embedded workflow
+=== Render the embedded application
 
-To verify the ThoughtSpot application integration, perform the following tasks:
+Render the embedded content.
+[source, javascript]
+----
+appEmbed.render();
+----
+
+=== Test your embedding
+
+To verify the ThoughtSpot application integration, perform the following tests:
 
 * Load your application.
 * Verify if the page you set as the active tab opens when you load the application.
