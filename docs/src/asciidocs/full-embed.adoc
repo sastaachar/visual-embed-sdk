@@ -222,7 +222,7 @@ Displays the *Home* page
 
 +
 ++++
-<a href="{{previewPrefix}}/playground/fullApp?pageId=search" id="preview-in-playground" target="_blank">Preview in Playground</a>
+<a href="{{previewPrefix}}/playground/fullApp?pageId=fullApp" id="preview-in-playground" target="_blank">Preview in Playground</a>
 ++++
 
 
@@ -266,7 +266,8 @@ tag: 'sales'
 include::{path}/callback-payload.adoc[]
 
 == Subscribe to events
-Register event handlers to subscribe to the events triggered by the ThoughtSpot Search function; for example, application errors, and  embedded content initialization and loading.
+
+Register event listeners.
 
 [source, javascript]
 ----
@@ -287,7 +288,7 @@ appEmbed.render();
 
 == Test your embedding
 
-To verify the ThoughtSpot application integration, perform the following tasks:
+To verify the ThoughtSpot application integration, perform the following tests:
 
 * Load your application.
 * Verify if the page you set as the active tab opens when you load the application.
