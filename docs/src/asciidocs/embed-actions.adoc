@@ -123,7 +123,7 @@ Adds filters to all visualizations in a pinboard.
 |*Download as PDF*|Downloads the pinboard or visualizations in a pinboard as a PDF file.|`Action.DownloadAsPdf`
 |*Make a copy*| Creates a copy of the pinboard.| `Action.MakeACopy`
 |*Add schedule*| Adds a pinboard job schedule.|`Action.Schedule`
-|*Manage schedules*|Allows scheduling and monitoring pinboard jobs.|`Action.ScheduleList`
+|*Manage schedules*|Allows scheduling and monitoring pinboard jobs.|`Action.SchedulesList`
 |*Present*|Presents the pinboard in fullscreen mode.| `Action.Present`
 |*Pinboard info*|Displays information about the pinboard.|`Action.PinboardInfo`
 |*Save*| Saves the pinboard.| `Action.Save`
