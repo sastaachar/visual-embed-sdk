@@ -14,7 +14,11 @@ These calls include the names along with the GUIDs, allowing you to map the stri
 
 
 == List metadata objects
-To get listing of all objects on a ThoughtSpot instance, use the xref:metadata-api.adoc#object-header[metadata/listobjectsheaders] REST API call. You must call this API endpoint for each *type* parameter. 
+To get listing of all objects on a ThoughtSpot instance, use the xref:metadata-api.adoc#object-header[metadata/listobjectsheaders] REST API call. 
+
+The `type` parameter reflects the various xref:development-and-deployment.adoc#_data_objects[object types] within ThoughtSpot. The API endpoint responds for one `type` at a time, so you must decide which object types to bring back and catalog. 
+
+The *metadata/listobjectheaders* API is paginated by default. You can return the entire set in one response by setting the `batchsize` parameter to *-1*. Alternatively, set `batchsize` to your preferred size, then use the `offset` parameter to move through the pages. `offset` is based on individual records, so to paginate, set `offset` in multiples of the `batchsize` value until you reach a response that is smaller than the batchsize value or is empty.
 
 == Full object details
 
