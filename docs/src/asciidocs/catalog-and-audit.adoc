@@ -49,3 +49,6 @@ To get a human-readable version of the response, create maps of GUID:name for th
 `shareMode` will be either `READ_ONLY` (*View* in the UI) or `MODIFY` (*Edit* in the UI).
 
 == Dependency tracking
+The dependency REST APIs allow you to see which content objects rely on a data object. You can request the dependencies of a *table* object, which will return back *worksheets*, *answers*, *liveboards*, etc. that use the *table*. 
+
+To go "up" the chain, from an object to what it references, you need to either export and process the object's TML or use the /metadata/details API endpoint, which returns a very large and complex data structure.
