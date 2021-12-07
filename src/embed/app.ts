@@ -72,7 +72,7 @@ export interface AppViewConfig extends ViewConfig {
     pageId?: Page;
     /**
      * This puts a filter tag on the application. All metadata lists in the application, such as
-     * liveboards and answers, would be filtered by this tag.
+     * Liveboards and answers, would be filtered by this tag.
      */
     tag?: string;
     /**
@@ -95,7 +95,7 @@ export class AppEmbed extends V1Embed {
 
     /**
      * Constructs a map of parameters to be passed on to the
-     * embedded liveboard or visualization.
+     * embedded Liveboard or visualization.
      */
     private getEmbedParams() {
         const params = this.getBaseQueryParams();
@@ -171,6 +171,25 @@ export class AppEmbed extends V1Embed {
         }
 
         return path;
+    }
+
+    /**
+     * Navigate to particular page for app embed. eg:answers/pinboards/home
+     * This is used for embedding answers, pinboards, visualizations and full application only.
+     * @param path The string, set to iframe src and navigate to new page
+     * eg: appEmbed.navigateToPage('pinboards')
+     */
+    public navigateToPage(path: string): void {
+        if (this.iFrame) {
+            const iframeSrc = this.iFrame.src;
+            const embedPath = '#/embed';
+            const currentPath = iframeSrc.includes(embedPath) ? embedPath : '#';
+            this.iFrame.src = `${
+                iframeSrc.split(currentPath)[0]
+            }${currentPath}/${path.replace(/^\/?#?\//, '')}`;
+        } else {
+            console.log('Please call render before invoking this method');
+        }
     }
 
     /**
