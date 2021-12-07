@@ -101,7 +101,7 @@ Fires only on `SearchEmbed` components. Never fires with a `LiveboardEmbed` comp
 
 The full list events are defined in the link:https://github.com/thoughtspot/visual-embed-sdk/blob/main/src/types.ts[types.ts, window=_blank] file of the Visual Embed SDK source.
 
-`AuthExpire` and `AuthInit` can be used together to determine if the SSO process completed correctly. To determine if `AuthExpire` is firing because SSO did not complete or if the ThoughtSpot session has timed out, you can set a variable to act as a flag to determine if SSO is  completed. When `AuthInit` fires, set the flag to *true*. You can also associate a callback function to `AuthExpire` to look up the flag to determine which state change has caused the `AuthExpire` event to fire. In the following example, the `tsLoggedIn` flag is set to indicate the SSO login state. 
+`AuthExpire` and `AuthInit` can be used together to determine if the SSO process is completed correctly. To determine if `AuthExpire` is firing because SSO did not complete or if the ThoughtSpot session has timed out, you can set a variable to act as a flag to determine if SSO is completed. When `AuthInit` fires, set the flag to *true*. You can also associate a callback function to `AuthExpire` to look up the flag to determine which state change has caused the `AuthExpire` event to fire. In the following example, the `tsLoggedIn` flag is set to indicate the SSO login state. 
 
 [source,javascript]
 ----
