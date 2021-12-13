@@ -21,6 +21,9 @@ The `type` parameter reflects the various xref:development-and-deployment.adoc#_
 The *metadata/listobjectheaders* API is paginated by default. You can return the entire set in one response by setting the `batchsize` parameter to *-1*. Alternatively, set `batchsize` to your preferred size, then use the `offset` parameter to move through the pages. `offset` is based on individual records, so to paginate, set `offset` in multiples of the `batchsize` value until you reach a response that is smaller than the batchsize value or is empty.
 
 == Full object details
+The REST API provides a xref:metadata-api.adoc#metadata-details[metadata/details] endpoint which returns back very complex objects with all metadata available. For purposes of cataloging, it may be easier to use a combination of the metadata list methods and the TML APIs to build a picture of what is available.
+
+For example, to know the columns and data types of a table, you can get the table's GUID from the *metadata/listobjectheaders* endpoint, then request the TML for the table using the xref:tml-api.adoc[TML APIs]. If you need the more complex linkeages of how ThoughtSpot stores the columns internally, then the *metadata/details* endpoint could be used.
 
 == Retrieve object access (sharing)
 Permissions to access objects is called *sharing* in ThoughtSpot. The owner of an object, typically also the creator of the object, has full access rights automatically. Additional access is granted by sharing to other users and groups.
