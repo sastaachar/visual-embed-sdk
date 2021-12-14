@@ -7,6 +7,8 @@ const getPathPrefix = () => {
   return 'docs';
 };
 
+const SW_Index=`7.2`;
+
 const getPath = (path) =>
     getPathPrefix() ? `${path}/${getPathPrefix()}` : path;
 
@@ -141,7 +143,7 @@ const queries = [
             }),
       ];
     },
-    indexName: getAlgoliaIndex(),
+    indexName: SW_Index,
     settings: {
         attributesToSnippet: ['body:10'],
     },
