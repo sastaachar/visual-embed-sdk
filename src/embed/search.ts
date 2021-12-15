@@ -7,7 +7,7 @@
  * @author Ayon Ghosh <ayon.ghosh@thoughtspot.com>
  */
 
-import { DataSourceVisualMode, DOMSelector, Param } from '../types';
+import { DataSourceVisualMode, DOMSelector, Param, Action } from '../types';
 import { getQueryParamString } from '../utils';
 import { ViewConfig, TsEmbed } from './ts-embed';
 import { version } from '../../package.json';
@@ -77,6 +77,11 @@ export interface SearchViewConfig extends ViewConfig {
     answerId?: string;
 }
 
+export const HiddenActionItemByDefaultForSearchEmbed = [
+    Action.EditACopy,
+    Action.SpotIQAnalyze,
+];
+
 /**
  * Embed ThoughtSpot search
  *
@@ -124,6 +129,13 @@ export class SearchEmbed extends TsEmbed {
         } = this.viewConfig;
         const answerPath = answerId ? `saved-answer/${answerId}` : 'answer';
         const queryParams = this.getBaseQueryParams();
+
+        queryParams[Param.HideActions] = queryParams[Param.HideActions]
+            ? [
+                  ...queryParams[Param.HideActions],
+                  ...HiddenActionItemByDefaultForSearchEmbed,
+              ]
+            : HiddenActionItemByDefaultForSearchEmbed;
         if (dataSources && dataSources.length) {
             queryParams[Param.DataSources] = JSON.stringify(dataSources);
         }
