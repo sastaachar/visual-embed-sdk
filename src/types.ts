@@ -124,13 +124,14 @@ export interface EmbedConfig {
      * When there are multiple embeds, queue the render of embed to start
      *  after the previous embed's render is complete. This helps in the load performance
      *  by decreasing the load on the browser.
+     * @version 1.5.0 or later
      * @default false
      */
     queueMultiRenders?: boolean;
 
     /**
      * Dynamic CSS Url to be injected in the loaded application.
-     * _Since: 1.6.0_
+     * @version 1.6.0 or later
      * @default ''
      */
     customCssUrl?: string;
@@ -212,7 +213,7 @@ export enum RuntimeFilterOp {
 }
 
 /**
- * A filter that can be applied to ThoughtSpot answers, pinboards, or
+ * A filter that can be applied to ThoughtSpot answers, Liveboards, or
  * visualizations at runtime.
  */
 export interface RuntimeFilter {
@@ -252,12 +253,12 @@ export enum EmbedEvent {
      */
     Load = 'load',
     /**
-     * Data pertaining to answer or pinboard is received
-     * @return data - The answer or pinboard data
+     * Data pertaining to answer or Liveboard is received
+     * @return data - The answer or Liveboard data
      */
     Data = 'data',
     /**
-     * Search/answer/pinboard filters have been applied/updated
+     * Search/answer/Liveboard filters have been applied/updated
      * @hidden
      */
     FiltersChanged = 'filtersChanged',
@@ -280,13 +281,13 @@ export enum EmbedEvent {
     /**
      * A custom action has been triggered
      * @return actionId - The id of the custom action
-     * @return data - The answer or pinboard data
+     * @return data - The answer or Liveboard data
      */
     CustomAction = 'customAction',
     /**
      * A double click has been triggered on table/chart
      * @return ContextMenuInputPoints - data point that is double clicked
-     * * _since: 1.5.0_
+     * @version 1.5.0 or later
      */
     VizPointDoubleClick = 'vizPointDoubleClick',
     /**
@@ -304,8 +305,8 @@ export enum EmbedEvent {
      */
     AuthExpire = 'ThoughtspotAuthExpired',
     /**
-     * The height of the embedded pinboard or visualization has been computed.
-     * @return data - The height of the embedded pinboard or visualization
+     * The height of the embedded Liveboard or visualization has been computed.
+     * @return data - The height of the embedded Liveboard or visualization
      * @hidden
      */
     EmbedHeight = 'EMBED_HEIGHT',
@@ -317,7 +318,6 @@ export enum EmbedEvent {
     EmbedIframeCenter = 'EmbedIframeCenter',
     /**
      * Detects the route change.
-     * @hidden
      */
     RouteChange = 'ROUTE_CHANGE',
     /**
@@ -329,7 +329,7 @@ export enum EmbedEvent {
      * Emitted when the embed does not have cookie access. This
      * happens on Safari where third-party cookies are blocked by default.
      *
-     * @version 1.1.0
+     * @version 1.1.0 or later
      */
     NoCookieAccess = 'noCookieAccess',
     /**
@@ -340,12 +340,12 @@ export enum EmbedEvent {
     SAMLComplete = 'samlComplete',
     /**
      * Emitted when any modal is opened in the app
-     * * _since: 1.6.0_
+     * @version 1.6.0 or later
      */
     DialogOpen = 'dialog-open',
     /**
      * Emitted when any modal is closed in the app
-     * * _since: 1.6.0_
+     * @version 1.6.0 or later
      */
     DialogClose = 'dialog-close',
 }
@@ -368,7 +368,7 @@ export enum HostEvent {
      *              eg. { selectedPoints: []}
      * @param columnGuid - a string guid of the column to drill by. This is optional,
      *                     if not provided it will auto drill by the configured column. \
-     * * _since: 1.5.0_
+     * @version 1.5.0 or later
      */
     DrillDown = 'triggerDrillDown',
     /**
@@ -382,10 +382,10 @@ export enum HostEvent {
      */
     Reload = 'reload',
     /**
-     * Set the visible Vizs on a pinboard/liveboard.
-     * @param - an array of ids of vizs to show, the ids not passed
+     * Set the visible visualizations on a Liveboard.
+     * @param - an array of ids of visualizations to show, the ids not passed
      *          will be hidden.
-     * _since: 1.5.0_
+     * @version 1.6.0 or later
      */
     SetVisibleVizs = 'SetPinboardVisibleVizs',
 }
@@ -422,7 +422,7 @@ export enum Param {
     DisableActions = 'disableAction',
     DisableActionReason = 'disableHint',
     ForceTable = 'forceTable',
-    preventPinboardFilterRemoval = 'preventPinboardFilterRemoval',
+    preventLiveboardFilterRemoval = 'preventPinboardFilterRemoval', // update-TSCB
     SearchQuery = 'searchQuery',
     HideActions = 'hideAction',
     HideObjects = 'hideObjects',
@@ -445,7 +445,7 @@ export enum Param {
 
 /**
  * The list of actions that can be performed on visual ThoughtSpot
- * entities, such as answers and pinboards.
+ * entities, such as answers and Liveboards.
  */
 // eslint-disable-next-line no-shadow
 export enum Action {
@@ -456,7 +456,6 @@ export enum Action {
     MakeACopy = 'makeACopy',
     EditACopy = 'editACopy',
     CopyLink = 'embedDocument',
-    PinboardSnapshot = 'pinboardSnapshot',
     ResetLayout = 'resetLayout',
     Schedule = 'schedule',
     SchedulesList = 'schedule-list',
@@ -489,7 +488,11 @@ export enum Action {
     Describe = 'describe',
     Relate = 'relate',
     CustomizeHeadlines = 'customizeHeadlines',
+    /**
+     * @hidden
+     */
     PinboardInfo = 'pinboardInfo',
+    LiveboardInfo = 'pinboardInfo',
     SendAnswerFeedback = 'sendFeedback',
     /**
      * @deprecated Will be removed in next version
