@@ -511,6 +511,19 @@ export enum Action {
     DrillDown = 'DRILL',
     RequestAccess = 'requestAccess',
     QueryDetailsButtons = 'queryDetailsButtons',
+    Monitor = 'createMonitor',
+    AnswerDelete = 'onDeleteAnswer',
+    ChooseDataSources = 'chooseDataSources',
+    AnswerChartSwitcher = 'answerChartSwitcher',
+    AnswerChartSelector = 'ANSWER_EDIT_PANEl_CHART_SELECTOR',
+    AnswerVizEditor = 'ANSWER_EDIT_PANEl_VIZ_EDITOR',
+    AnswerQueryDetails = 'ANSWER_EDIT_PANEl_QUERY_DETAILS',
+    AnswerActionSelector = 'ANSWER_EDIT_PANEl_ACTION_SELECTOR',
+    AnswerPathAnalyzer = 'ANSWER_EDIT_PANEl_PATH_ANALYZER',
+    SearchUndo = 'searchUndo',
+    SearchRedo = 'searchRedo',
+    SearchReset = 'searchReset',
+    CopyAndEdit = 'copyAndEdit',
 }
 
 export interface SessionInterface {
