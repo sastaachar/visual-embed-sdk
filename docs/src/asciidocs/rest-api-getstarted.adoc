@@ -54,12 +54,12 @@ Request headers::
 +
 [width="100%" cols="1,4"]
 |===
-|`X-Requested-By`|Make sure you include the `'X-Requested-By: ThoughtSpot'` header in all API requests. 
+|`X-Requested-By`| Make sure you include the `'X-Requested-By: ThoughtSpot'` header in all API requests. 
 |`User-Agent`|The `User-Agent` header is required for all requests.  Most clients will add the `User-Agent` header automatically. However, when making API calls from code, especially `.NET`, you need to add the `User-Agent` header. 
 
 The `User-Agent` can be any string; for example, you can set the header as `'User-Agent: <browser>/<browser-version><os/platform>'`.
-|`Accept`|Use this header to specify the content type for the API responses. You can set it to `'Accept: application/json'` for JSON and `'Accept: text/plain'` for plain text responses.
-|`Content-Type` a|Use this header to indicate the content type to use in the request body. Set this header as `'Content-Type: application/json'`. 
+|`Accept`| Use this header to specify the content type for the API responses. You can set it to `'Accept: application/json'` for JSON and `'Accept: text/plain'` for plain text responses.
+|`Content-Type` a| Use this header to indicate the content type to use in the request body. Set this header as `'Content-Type: application/json'`. 
 
 * Some `POST` operations, such as sharing an object with another user, require the URL-encoded objects to be passed as parameters in the URL. For such API requests, set the header as `'Content-Type: application/x-www-form-urlencoded'`.
 

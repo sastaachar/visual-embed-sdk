@@ -5,7 +5,7 @@
 :page-pageid: rest-api-reference
 :page-description: REST API Reference
 
-[div]
+
 
 == User management
 
@@ -35,7 +35,7 @@ include::{path}/data-connection-apis.adoc[]
 
 include::{path}/tml-api-list.adoc[]
 
-== Pinboard data
+== Liveboard data
 
 include::{path}/pinboard-api-list.adoc[]
 
