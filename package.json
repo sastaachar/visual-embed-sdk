@@ -127,6 +127,9 @@
         "type": "git",
         "url": "git+https://github.com/thoughtspot/visual-embed-sdk.git"
     },
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org"
+    },
     "keywords": [
         "thoughtspot",
         "everywhere",
