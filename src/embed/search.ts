@@ -132,7 +132,7 @@ export class SearchEmbed extends TsEmbed {
         const queryParams = this.getBaseQueryParams();
 
         queryParams[Param.HideActions] = [
-            ...queryParams[Param.HideActions] ?? [],
+            ...(queryParams[Param.HideActions] ?? []),
             ...HiddenActionItemByDefaultForSearchEmbed,
         ];
 
