@@ -131,12 +131,11 @@ export class SearchEmbed extends TsEmbed {
         const answerPath = answerId ? `saved-answer/${answerId}` : 'answer';
         const queryParams = this.getBaseQueryParams();
 
-        queryParams[Param.HideActions] = queryParams[Param.HideActions]
-            ? [
-                  ...queryParams[Param.HideActions],
-                  ...HiddenActionItemByDefaultForSearchEmbed,
-              ]
-            : HiddenActionItemByDefaultForSearchEmbed;
+        queryParams[Param.HideActions] = [
+            ...queryParams[Param.HideActions] ?? [],
+            ...HiddenActionItemByDefaultForSearchEmbed,
+        ];
+
         if (dataSources && dataSources.length) {
             queryParams[Param.DataSources] = JSON.stringify(dataSources);
         }
