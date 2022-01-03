@@ -1269,7 +1269,7 @@ To export the metadata of an active connection map, send a `GET` request to the 
 
 === Resource URL
 ----
-POST /tspublic/v1/connection/export
+GET /tspublic/v1/connection/export
 ----
 
 === Request parameters
@@ -1379,7 +1379,7 @@ Response Code
 |Successful deletion of the connection object
 
 | **401**
-| Unauthorized or wrong credentials
+| Unauthorized request or wrong credentials
 
 | **500**
 | The connection could not be deleted due to table dependencies
