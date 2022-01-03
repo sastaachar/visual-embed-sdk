@@ -974,7 +974,7 @@ If the connection modification is successful, the API returns a response body wi
 | Unauthorized or wrong credentials
 
 | **500**
-| Invalid paramters
+| Invalid parameters
 |===
 
 
