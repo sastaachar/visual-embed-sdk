@@ -526,6 +526,9 @@ export enum Action {
     DrillDown = 'DRILL',
     RequestAccess = 'requestAccess',
     QueryDetailsButtons = 'queryDetailsButtons',
+    Monitor = 'createMonitor',
+    AnswerDelete = 'onDeleteAnswer',
+    AnswerChartSwitcher = 'answerChartSwitcher',
 }
 
 export interface SessionInterface {
