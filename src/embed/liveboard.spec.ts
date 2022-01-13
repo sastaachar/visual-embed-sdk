@@ -1,4 +1,8 @@
-import { LiveboardEmbed, LiveboardViewConfig } from './liveboard';
+import {
+    LiveboardEmbed,
+    LiveboardViewConfig,
+    HiddenActionItemByDefaultForLiveboardEmbed,
+} from './liveboard';
 import { init } from '../index';
 import { Action, AuthType, EmbedEvent, RuntimeFilterOp } from '../types';
 import {
@@ -6,6 +10,7 @@ import {
     getDocumentBody,
     getIFrameSrc,
     getRootEl,
+    fixedEncodeURI,
 } from '../test/test-utils';
 import { version } from '../../package.json';
 
@@ -20,6 +25,10 @@ const vizId = '6e73f724-660e-11eb-ae93-0242ac130002';
 const thoughtSpotHost = 'tshost';
 const defaultParams = `&hostAppUrl=local-host&viewPortHeight=768&viewPortWidth=1024&sdkVersion=${version}`;
 const prefixParams = '&isLiveboardEmbed=true';
+const hideBydefault = `&hideAction=${fixedEncodeURI(
+    JSON.stringify(HiddenActionItemByDefaultForLiveboardEmbed),
+)}`;
+const defaultParamsWithHiddenActions = defaultParams + hideBydefault;
 
 beforeAll(() => {
     init({
@@ -41,7 +50,7 @@ describe('Liveboard/viz embed tests', () => {
         liveboardEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
-                `http://${thoughtSpotHost}/?embedApp=true${defaultParams}${prefixParams}#/embed/viz/${liveboardId}`,
+                `http://${thoughtSpotHost}/?embedApp=true${defaultParamsWithHiddenActions}${prefixParams}#/embed/viz/${liveboardId}`,
             );
         });
     });
@@ -60,25 +69,32 @@ describe('Liveboard/viz embed tests', () => {
         liveboardEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
-                `http://${thoughtSpotHost}/?embedApp=true${defaultParams}&disableAction=[%22${Action.DownloadAsCsv}%22,%22${Action.DownloadAsPdf}%22,%22${Action.DownloadAsXlsx}%22]&disableHint=Action%20denied${prefixParams}#/embed/viz/${liveboardId}`,
+                `http://${thoughtSpotHost}/?embedApp=true${defaultParams}&disableAction=[%22${Action.DownloadAsCsv}%22,%22${Action.DownloadAsPdf}%22,%22${Action.DownloadAsXlsx}%22]&disableHint=Action%20denied${hideBydefault}${prefixParams}#/embed/viz/${liveboardId}`,
             );
         });
     });
 
     test('should set hidden actions', async () => {
+        const hiddenActions = [
+            Action.DownloadAsCsv,
+            Action.DownloadAsPdf,
+            Action.DownloadAsXlsx,
+        ];
         const liveboardEmbed = new LiveboardEmbed(getRootEl(), {
-            hiddenActions: [
-                Action.DownloadAsCsv,
-                Action.DownloadAsPdf,
-                Action.DownloadAsXlsx,
-            ],
+            hiddenActions,
             ...defaultViewConfig,
             liveboardId,
         } as LiveboardViewConfig);
         liveboardEmbed.render();
+        const hideActionUrl = fixedEncodeURI(
+            JSON.stringify([
+                ...hiddenActions,
+                ...HiddenActionItemByDefaultForLiveboardEmbed,
+            ]),
+        );
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
-                `http://${thoughtSpotHost}/?embedApp=true${defaultParams}&hideAction=[%22${Action.DownloadAsCsv}%22,%22${Action.DownloadAsPdf}%22,%22${Action.DownloadAsXlsx}%22]${prefixParams}#/embed/viz/${liveboardId}`,
+                `http://${thoughtSpotHost}/?embedApp=true${defaultParams}&hideAction=${hideActionUrl}${prefixParams}#/embed/viz/${liveboardId}`,
             );
         });
     });
@@ -124,7 +140,7 @@ describe('Liveboard/viz embed tests', () => {
         liveboardEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
-                `http://${thoughtSpotHost}/?embedApp=true${defaultParams}&enableVizTransform=true${prefixParams}#/embed/viz/${liveboardId}`,
+                `http://${thoughtSpotHost}/?embedApp=true${defaultParamsWithHiddenActions}&enableVizTransform=true${prefixParams}#/embed/viz/${liveboardId}`,
             );
         });
     });
@@ -138,7 +154,7 @@ describe('Liveboard/viz embed tests', () => {
         liveboardEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
-                `http://${thoughtSpotHost}/?embedApp=true${defaultParams}&enableVizTransform=false${prefixParams}#/embed/viz/${liveboardId}`,
+                `http://${thoughtSpotHost}/?embedApp=true${defaultParamsWithHiddenActions}&enableVizTransform=false${prefixParams}#/embed/viz/${liveboardId}`,
             );
         });
     });
@@ -152,7 +168,7 @@ describe('Liveboard/viz embed tests', () => {
         liveboardEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
-                `http://${thoughtSpotHost}/?embedApp=true${defaultParams}${prefixParams}#/embed/viz/${liveboardId}/${vizId}`,
+                `http://${thoughtSpotHost}/?embedApp=true${defaultParamsWithHiddenActions}${prefixParams}#/embed/viz/${liveboardId}/${vizId}`,
             );
         });
     });
@@ -173,7 +189,7 @@ describe('Liveboard/viz embed tests', () => {
         liveboardEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
-                `http://${thoughtSpotHost}/?embedApp=true&col1=sales&op1=EQ&val1=1000${defaultParams}${prefixParams}#/embed/viz/${liveboardId}/${vizId}`,
+                `http://${thoughtSpotHost}/?embedApp=true&col1=sales&op1=EQ&val1=1000${defaultParamsWithHiddenActions}${prefixParams}#/embed/viz/${liveboardId}/${vizId}`,
             );
         });
     });

@@ -11,6 +11,7 @@
 
 import { ERROR_MESSAGE } from '../errors';
 import {
+    Action,
     EmbedEvent,
     MessagePayload,
     Param,
@@ -69,6 +70,8 @@ export interface LiveboardViewConfig extends ViewConfig {
     preventPinboardFilterRemoval?: boolean;
 }
 
+export const HiddenActionItemByDefaultForLiveboardEmbed = [Action.CopyLink];
+
 /**
  * Embed a ThoughtSpot Liveboard or visualization
  * @Category Liveboards and Charts
@@ -94,6 +97,12 @@ export class LiveboardEmbed extends V1Embed {
             fullHeight,
             defaultHeight,
         } = this.viewConfig;
+        if (!Array.isArray(params[Param.VisibleActions])) {
+            params[Param.HideActions] = [
+                ...(params[Param.HideActions] ?? []),
+                ...HiddenActionItemByDefaultForLiveboardEmbed,
+            ];
+        }
 
         const preventLiveboardFilterRemoval =
             this.viewConfig.preventLiveboardFilterRemoval ||
