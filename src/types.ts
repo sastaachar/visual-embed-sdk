@@ -526,9 +526,26 @@ export enum Action {
     DrillDown = 'DRILL',
     RequestAccess = 'requestAccess',
     QueryDetailsButtons = 'queryDetailsButtons',
+    /**
+     * * _since 1.5.0 8.1.0.cl_
+     */
     Monitor = 'createMonitor',
+    /**
+     * * _since 1.5.0 8.1.0.cl_
+     */
     AnswerDelete = 'onDeleteAnswer',
+    /**
+     * * _since 1.5.0 8.1.0.cl_
+     */
     AnswerChartSwitcher = 'answerChartSwitcher',
+    /**
+     * * _since 1.5.0 8.1.0.cl_
+     */
+    AddToFavorites = 'addToFavorites',
+    /**
+     * * _since 1.5.0 8.1.0.cl_
+     */
+    EditDetails = 'editDetails',
 }
 
 export interface SessionInterface {
