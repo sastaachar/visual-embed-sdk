@@ -65,7 +65,7 @@ For more information, see xref:prefetch-and-cache.adoc[Prefetch static resources
 
 include::{path}/embed-config.adoc[]
 
-== Create an instance of the SearchEmbed class
+== Create an instance of the SearchEmbed class 
 
 Create an instance of the SearchEmbed object and customize your search page view.
 

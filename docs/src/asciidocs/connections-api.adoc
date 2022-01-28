@@ -1311,7 +1311,7 @@ Click the link in the `Response body` to download the YAML file.
 | **200**
 | Successful export of the connection object
 | **401**
-| Unauthorized or wrong credentials
+| Unauthorized request or wrong credentials
 
 | **500**
 | Invalid connection ID

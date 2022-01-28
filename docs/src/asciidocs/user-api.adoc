@@ -1190,7 +1190,7 @@ Make sure you use a JSON file encoded as `application/json` or `text/json` for t
 |`applyChanges`|
 __Boolean__.
 Specify whether to sync the users and groups to the system and apply the difference evaluated.
-By default, this attribute is set to `false`.
+ By default, this attribute is set to `false`.
 
 |`removeDeleted`|
 __Boolean__.

@@ -22,9 +22,9 @@ export enum AuthType {
      */
     SSO = 'SSO_SAML',
     /**
-     * SSO using IODC
+     * SSO using OIDC
      */
-    IODC = 'SSO_IODC',
+    OIDC = 'SSO_OIDC',
     /**
      * Trusted authentication server
      */
@@ -357,6 +357,9 @@ export enum EmbedEvent {
 /**
  * Event types that can be triggered by the host application
  * to the embedded ThoughtSpot app
+ *
+ * To trigger an event use the corresponding
+ * {@link LiveboardEmbed.trigger} or {@link AppEmbed.trigger} or {@link SearchEmbed.trigger} method.
  */
 // eslint-disable-next-line no-shadow
 export enum HostEvent {
@@ -392,6 +395,12 @@ export enum HostEvent {
      * @version 1.6.0 or later
      */
     SetVisibleVizs = 'SetPinboardVisibleVizs',
+    /**
+     * Update the runtime filters
+     * @param - {@link RuntimeFilter}[] an array of {@link RuntimeFilter} Types.
+     * @version 1.8.0 or later
+     */
+    UpdateRuntimeFilters = 'UpdateRuntimeFilters',
 }
 
 /**
@@ -440,6 +449,7 @@ export enum Param {
     executeSearch = 'executeSearch',
     fullHeight = 'isFullHeightPinboard',
     livedBoardEmbed = 'isLiveboardEmbed',
+    searchEmbed = 'isSearchEmbed',
     Version = 'sdkVersion',
     ViewPortHeight = 'viewPortHeight',
     ViewPortWidth = 'viewPortWidth',
@@ -461,7 +471,7 @@ export enum Action {
     EditACopy = 'editACopy',
     CopyLink = 'embedDocument',
     ResetLayout = 'resetLayout',
-    Schedule = 'schedule',
+    Schedule = 'subscription',
     SchedulesList = 'schedule-list',
     Share = 'share',
     AddFilter = 'addFilter',
@@ -510,6 +520,7 @@ export enum Action {
     DrillInclude = 'context-menu-item-include',
     DrillExclude = 'context-menu-item-exclude',
     CopyToClipboard = 'context-menu-item-copy-to-clipboard',
+    CopyAndEdit = 'context-menu-item-copy-and-edit',
     DrillEdit = 'context-menu-item-edit',
     EditMeasure = 'context-menu-item-edit-measure',
     Separator = 'context-menu-item-separator',
