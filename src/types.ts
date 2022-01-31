@@ -527,23 +527,23 @@ export enum Action {
     RequestAccess = 'requestAccess',
     QueryDetailsButtons = 'queryDetailsButtons',
     /**
-     * * _since 1.5.0 8.1.0.cl_
+     * @version 1.8.0 8.1.0.cl
      */
     Monitor = 'createMonitor',
     /**
-     * * _since 1.5.0 8.1.0.cl_
+     * @version 1.8.0 8.1.0.cl
      */
     AnswerDelete = 'onDeleteAnswer',
     /**
-     * * _since 1.5.0 8.1.0.cl_
+     * @version 1.8.0 8.1.0.cl
      */
     AnswerChartSwitcher = 'answerChartSwitcher',
     /**
-     * * _since 1.5.0 8.1.0.cl_
+     * @version 1.8.0 8.1.0.cl
      */
     AddToFavorites = 'addToFavorites',
     /**
-     * * _since 1.5.0 8.1.0.cl_
+     * @version 1.8.0 8.1.0.cl
      */
     EditDetails = 'editDetails',
 }
