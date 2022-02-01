@@ -527,28 +527,23 @@ export enum Action {
     RequestAccess = 'requestAccess',
     QueryDetailsButtons = 'queryDetailsButtons',
     /**
-     * @version 1.8.0
-     * _ThoughtSpot Version:_ 8.1.0.cl
+     * @version SDK: 1.8.0 | ThoughtSpot: 8.1.0.cl
      */
     Monitor = 'createMonitor',
     /**
-     * @version 1.8.0
-     * _ThoughtSpot Version:_ 8.1.0.cl
+     * @version SDK: 1.8.0 | ThoughtSpot: 8.1.0.cl
      */
     AnswerDelete = 'onDeleteAnswer',
     /**
-     * @version 1.8.0
-     * _ThoughtSpot Version:_ 8.1.0.cl
+     * @version SDK: 1.8.0 | ThoughtSpot: 8.1.0.cl
      */
     AnswerChartSwitcher = 'answerChartSwitcher',
     /**
-     * @version 1.8.0
-     * _ThoughtSpot Version:_ 8.1.0.cl
+     * @version SDK: 1.8.0 | ThoughtSpot: 8.1.0.cl
      */
     AddToFavorites = 'addToFavorites',
     /**
-     * @version 1.8.0
-     * _ThoughtSpot Version:_ 8.1.0.cl
+     * @version SDK: 1.8.0 | ThoughtSpot: 8.1.0.cl
      */
     EditDetails = 'editDetails',
 }
