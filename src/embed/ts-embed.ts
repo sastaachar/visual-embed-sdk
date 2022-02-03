@@ -263,10 +263,13 @@ export class TsEmbed {
      */
     private subscribeToEvents() {
         window.addEventListener('message', (event) => {
+            console.log('message event-----', event)
             const eventType = this.getEventType(event);
             const eventPort = this.getEventPort(event);
             const eventData = this.formatEventData(event);
+            console.log('come0 this.iFrame.contentWindow ', this.iFrame.contentWindow )
             if (event.source === this.iFrame.contentWindow) {
+                console.log('come1', event)
                 this.executeCallbacks(
                     eventType,
                     getProcessData(eventType, eventData, this.thoughtSpotHost),
@@ -468,6 +471,7 @@ export class TsEmbed {
                             el.remove();
                         });
                     }
+                    console.log('before subscribeToEvents')
                     this.subscribeToEvents();
                 })
                 .catch((error) => {
@@ -499,9 +503,14 @@ export class TsEmbed {
         data: any,
         eventPort?: MessagePort | void,
     ): void {
+        console.log('start executeCallbacks', this.eventHandlerMap);
+        console.log('eventType ', eventType)
+
         const callbacks = this.eventHandlerMap.get(eventType) || [];
+        console.log('callbacks ', callbacks)
         callbacks.forEach((callback) =>
             callback(data, (payload) => {
+                console.log('eventPort::', eventPort, payload)
                 this.triggerEventOnPort(eventPort, payload);
             }),
         );
@@ -586,6 +595,7 @@ export class TsEmbed {
         const callbacks = this.eventHandlerMap.get(messageType) || [];
         callbacks.push(callback);
         this.eventHandlerMap.set(messageType, callbacks);
+        console.log('START ON this.eventHandlerMap ', this.eventHandlerMap)
         return this;
     }
 
@@ -666,6 +676,7 @@ export class V1Embed extends TsEmbed {
         messageType: EmbedEvent,
         callback: MessageCallback,
     ): typeof TsEmbed.prototype {
+        console.log("START ON", messageType )
         const eventType = this.getCompatibleEventType(messageType);
 
         return super.on(eventType, callback);

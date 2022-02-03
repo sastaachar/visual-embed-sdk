@@ -283,6 +283,11 @@ export enum EmbedEvent {
      */
     DataSourceSelected = 'dataSourceSelected',
     /**
+     * One or more data columns have been selected.
+     * @return columnIds - the list of columns
+     */
+    AddColumn = 'addColumn',
+    /**
      * A custom action has been triggered
      * @return actionId - The id of the custom action
      * @return data - The answer or Liveboard data
