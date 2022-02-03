@@ -285,8 +285,9 @@ export enum EmbedEvent {
     /**
      * One or more data columns have been selected.
      * @return columnIds - the list of columns
+     * @version SDK: 1.9.0 | ThoughtSpot: 8.2.0.cl
      */
-    AddColumn = 'addColumn',
+    AddRemoveColumns = 'addRemoveColumns',
     /**
      * A custom action has been triggered
      * @return actionId - The id of the custom action
@@ -531,6 +532,26 @@ export enum Action {
     DrillDown = 'DRILL',
     RequestAccess = 'requestAccess',
     QueryDetailsButtons = 'queryDetailsButtons',
+    /**
+     * @version SDK: 1.8.0 | ThoughtSpot: 8.1.0.cl
+     */
+    Monitor = 'createMonitor',
+    /**
+     * @version SDK: 1.8.0 | ThoughtSpot: 8.1.0.cl
+     */
+    AnswerDelete = 'onDeleteAnswer',
+    /**
+     * @version SDK: 1.8.0 | ThoughtSpot: 8.1.0.cl
+     */
+    AnswerChartSwitcher = 'answerChartSwitcher',
+    /**
+     * @version SDK: 1.8.0 | ThoughtSpot: 8.1.0.cl
+     */
+    AddToFavorites = 'addToFavorites',
+    /**
+     * @version SDK: 1.8.0 | ThoughtSpot: 8.1.0.cl
+     */
+    EditDetails = 'editDetails',
 }
 
 export interface SessionInterface {
