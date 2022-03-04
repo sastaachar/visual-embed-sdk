@@ -25,6 +25,7 @@ import {
     DataSourceVisualMode,
     Action,
     EmbedConfig,
+    Plugin,
 } from './types';
 
 export {
@@ -47,4 +48,5 @@ export {
     SearchViewConfig,
     LiveboardViewConfig,
     AppViewConfig,
+    Plugin,
 };

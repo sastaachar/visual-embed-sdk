@@ -28,10 +28,12 @@ import {
     RuntimeFilter,
     Param,
     EmbedConfig,
+    Plugin,
 } from '../types';
 import { uploadMixpanelEvent, MIXPANEL_EVENT } from '../mixpanel-service';
 import { getProcessData } from '../utils/processData';
 import { processTrigger } from '../utils/processTrigger';
+// eslint-disable-next-line import/no-cycle
 import pkgInfo from '../../package.json';
 import { getAuthPromise, getEmbedConfig, renderInQueue } from './base';
 
@@ -117,6 +119,13 @@ export interface ViewConfig {
      * @version 1.8.0
      */
     additionalFlags?: { [key: string]: string | number | boolean };
+    /**
+     * Provide a list of plugins, the plugins are executed in the order
+     * provided below,
+     *
+     * @version alpha
+     */
+    plugins?: Plugin[];
 }
 
 /**
@@ -139,6 +148,8 @@ export class TsEmbed {
     protected viewConfig: ViewConfig;
 
     protected embedConfig: EmbedConfig;
+
+    protected hasVizConfigOverride: boolean;
 
     /**
      * The ThoughtSpot hostname or IP address
@@ -185,6 +196,8 @@ export class TsEmbed {
         this.isError = false;
         this.viewConfig = viewConfig;
         this.shouldEncodeUrlQueryParams = this.embedConfig.shouldEncodeUrlQueryParams;
+        this.registerPlugins(viewConfig?.plugins);
+
         if (!this.embedConfig.suppressNoCookieAccessAlert) {
             this.on(EmbedEvent.NoCookieAccess, () => {
                 // eslint-disable-next-line no-alert
@@ -193,6 +206,18 @@ export class TsEmbed {
                 );
             });
         }
+    }
+
+    private registerPlugins(plugins: Plugin[]) {
+        if (!plugins) {
+            return;
+        }
+        plugins.forEach((plugin) => {
+            Object.keys(plugin.handlers).forEach((eventName: EmbedEvent) => {
+                const listener = plugin.handlers[eventName];
+                this.on(eventName, listener);
+            });
+        });
     }
 
     /**
@@ -356,6 +381,9 @@ export class TsEmbed {
         if (Array.isArray(visibleActions)) {
             queryParams[Param.VisibleActions] = visibleActions;
         }
+        if (this.hasVizConfigOverride) {
+            queryParams[Param.hasVizConfigOverride] = true;
+        }
         if (additionalFlags && additionalFlags.constructor.name === 'Object') {
             Object.assign(queryParams, additionalFlags);
         }
@@ -512,7 +540,7 @@ export class TsEmbed {
     ): void {
         const callbacks = this.eventHandlerMap.get(eventType) || [];
         callbacks.forEach((callback) =>
-            callback(data, (payload) => {
+            callback.call(this, data, (payload) => {
                 this.triggerEventOnPort(eventPort, payload);
             }),
         );
@@ -592,6 +620,10 @@ export class TsEmbed {
             this.handleError(
                 'Please register event handlers before calling render',
             );
+        }
+
+        if (messageType === EmbedEvent.GetVizConfigOverrides) {
+            this.hasVizConfigOverride = true;
         }
 
         const callbacks = this.eventHandlerMap.get(messageType) || [];

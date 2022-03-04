@@ -296,11 +296,26 @@ export enum EmbedEvent {
      */
     CustomAction = 'customAction',
     /**
+     * A click has been triggered on table/chart
+     * @return ContextMenuInputPoints - data point that is double clicked
+     * @version 1.10.0
+     */
+    VizPointClick = 'vizPointClick',
+
+    /**
      * A double click has been triggered on table/chart
      * @return ContextMenuInputPoints - data point that is double clicked
      * @version 1.5.0 or later
      */
     VizPointDoubleClick = 'vizPointDoubleClick',
+
+    /**
+     * Event troggered when rendering a chart, call the supplied
+     * callback with the config overrides.
+     * @version 1.10.0
+     */
+    GetVizConfigOverrides = 'getVizConfigOverrides',
+
     /**
      * An error has occurred.
      * @return error - An error object or message
@@ -409,6 +424,11 @@ export enum HostEvent {
      * @version 1.8.0 or later
      */
     UpdateRuntimeFilters = 'UpdateRuntimeFilters',
+    /**
+     * Highlight the point in the chart defined by the InputPoint passed.
+     * @verion 1.10.0
+     */
+    HighlightPoint = 'HighlightPoint',
 }
 
 /**
@@ -462,6 +482,7 @@ export enum Param {
     ViewPortWidth = 'viewPortWidth',
     VisibleActions = 'visibleAction',
     CustomCSSUrl = 'customCssUrl',
+    hasVizConfigOverride = 'hasVizConfigOverride',
 }
 
 /**
@@ -566,4 +587,11 @@ export enum OperationType {
 
 export interface AnswerServiceType {
     getAnswer?: (offset: number, batchSize: number) => any;
+}
+
+export interface Plugin {
+    name: string;
+    handlers: {
+        [key in EmbedEvent]?: (payload: any, cb: (data: any) => void) => void;
+    };
 }
