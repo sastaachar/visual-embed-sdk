@@ -140,6 +140,7 @@ export interface EmbedConfig {
 
     /**
      * Dynamic CSS Url to be injected in the loaded application.
+     * You would also need to set `style-src` in the CSP settings.
      * @version 1.6.0 or later
      * @default ''
      */
@@ -288,6 +289,12 @@ export enum EmbedEvent {
      */
     DataSourceSelected = 'dataSourceSelected',
     /**
+     * One or more data columns have been selected.
+     * @return columnIds - the list of columns
+     * @version SDK: 1.10.0 | ThoughtSpot: 8.2.0.cl
+     */
+    AddRemoveColumns = 'addRemoveColumns',
+    /**
      * A custom action has been triggered
      * @return actionId - The id of the custom action
      * @return data - The answer or Liveboard data
@@ -401,9 +408,10 @@ export enum HostEvent {
      */
     SetVisibleVizs = 'SetPinboardVisibleVizs',
     /**
-     * Update the runtime filters
+     * Update the runtime filters. The runtime filters passed here are extended
+     * on to the existing runtime filters if they exist.
      * @param - {@link RuntimeFilter}[] an array of {@link RuntimeFilter} Types.
-     * @version 1.8.0 or later
+     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl
      */
     UpdateRuntimeFilters = 'UpdateRuntimeFilters',
 }
@@ -513,10 +521,6 @@ export enum Action {
     PinboardInfo = 'pinboardInfo',
     LiveboardInfo = 'pinboardInfo',
     SendAnswerFeedback = 'sendFeedback',
-    /**
-     * @deprecated Will be removed in next version
-     */
-    CustomAction = 'customAction',
     DownloadEmbraceQueries = 'downloadEmbraceQueries',
     Pin = 'pin',
     AnalysisInfo = 'analysisInfo',
@@ -532,6 +536,26 @@ export enum Action {
     DrillDown = 'DRILL',
     RequestAccess = 'requestAccess',
     QueryDetailsButtons = 'queryDetailsButtons',
+    /**
+     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl
+     */
+    Monitor = 'createMonitor',
+    /**
+     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl
+     */
+    AnswerDelete = 'onDeleteAnswer',
+    /**
+     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl
+     */
+    AnswerChartSwitcher = 'answerChartSwitcher',
+    /**
+     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl
+     */
+    AddToFavorites = 'addToFavorites',
+    /**
+     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl
+     */
+    EditDetails = 'editDetails',
 }
 
 export interface SessionInterface {
