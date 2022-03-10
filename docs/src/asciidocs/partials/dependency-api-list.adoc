@@ -1,9 +1,8 @@
 
-[div boxDiv boxFullWidth]
 --
 `xref:dependency-apis.adoc#add-dependents[*POST* /tspublic/v1/dependency/listdependents]`  
 
-Creates a list of dependents for a given data object type.
+Gets a list of dependents for a given data object type.
 
 +++<p class="divider"> </p>+++
 
