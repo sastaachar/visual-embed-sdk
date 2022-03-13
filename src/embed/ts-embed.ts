@@ -325,7 +325,9 @@ export class TsEmbed {
         queryParams[Param.ViewPortWidth] = window.innerWidth;
         queryParams[Param.Version] = version;
         if (this.embedConfig.disableLoginRedirect === true) {
-            queryParams[Param.DisableLoginRedirect] = this.embedConfig.disableLoginRedirect;
+            queryParams[
+                Param.DisableLoginRedirect
+            ] = this.embedConfig.disableLoginRedirect;
         }
         if (this.embedConfig.customCssUrl) {
             queryParams[Param.CustomCSSUrl] = this.embedConfig.customCssUrl;
