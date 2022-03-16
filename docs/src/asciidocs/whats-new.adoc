@@ -416,7 +416,7 @@ The SDK EmbedEvent library includes the following events:
 * `QueryChanged`
 * `AuthExpire`
 
-For more information, see xref:embed-events.adoc[Subscribe to Events].
+For more information, see xref:embed-events.adoc[Interact with events].
 |====
 
 ====
