@@ -124,6 +124,14 @@ export interface EmbedConfig {
     autoLogin?: boolean;
 
     /**
+     * Disable redirection to the login page when the embedded session expires
+     * This flag is typically used alongside the combination of auth modes such as {@link AuthType.AuthServer} and auto login behavior {@link EmbedConfig.autoLogin}
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     * @default false
+     */
+     disableLoginRedirect?: boolean;
+
+    /**
      * Calls the prefetch method internally when set to true
      * @default false
      */
@@ -476,6 +484,7 @@ export enum Param {
     VisibleActions = 'visibleAction',
     CustomCSSUrl = 'customCssUrl',
     visibleVizs = 'pinboardVisibleVizs',
+    DisableLoginRedirect = 'disableLoginRedirect',
 }
 
 /**
