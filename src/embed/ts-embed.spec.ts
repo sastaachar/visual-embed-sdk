@@ -323,4 +323,49 @@ describe('Unit test case for ts embed', () => {
             );
         });
     });
+
+    describe('validate getThoughtSpotPostUrlParams', () => {
+        const { location } = window;
+
+        beforeAll(() => {
+            delete window.location;
+            (window as any).location = {
+                href: '',
+            };
+        });
+
+        beforeEach(() => {
+            jest.spyOn(config, 'getThoughtSpotHost').mockImplementation(
+                () => 'http://tshost',
+            );
+        });
+
+        afterAll((): void => {
+            window.location = location;
+        });
+
+        it('get post hash params', () => {
+            const tsEmbed = new tsEmbedInstance.TsEmbed(
+                getRootEl(),
+                defaultViewConfig,
+            );
+            const url =
+                'http://localhost:3000/#/analyze?ts-app=thoughtspot&ts-id=123&title=embed-sdk';
+            window.location.href = url;
+            const postHashParams = 'ts-app=thoughtspot&ts-id=123';
+            expect(tsEmbed.getThoughtSpotPostUrlParams()).toBe(postHashParams);
+        });
+
+        it('get post params', () => {
+            const tsEmbed = new tsEmbedInstance.TsEmbed(
+                getRootEl(),
+                defaultViewConfig,
+            );
+            const url =
+                'http://localhost:3000/analyze?ts-app=thoughtspot&ts-id=123&title=embed-sdk';
+            window.location.href = url;
+            const postHashParams = 'ts-app=thoughtspot&ts-id=123';
+            expect(tsEmbed.getThoughtSpotPostUrlParams()).toBe(postHashParams);
+        });
+    });
 });

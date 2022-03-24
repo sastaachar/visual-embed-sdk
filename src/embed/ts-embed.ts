@@ -38,6 +38,11 @@ import { getAuthPromise, getEmbedConfig, renderInQueue } from './base';
 const { version } = pkgInfo;
 
 /**
+ * Global prefix for all Thoughtspot postHash Params.
+ */
+export const THOUGHTSPOT_PARAM_PREFIX = 'ts-';
+
+/**
  * The event id map from v2 event names to v1 event id
  * v1 events are the classic embed events implemented in Blink v1
  * We cannot rename v1 event types to maintain backward compatibility
@@ -652,6 +657,28 @@ export class TsEmbed {
         this.isRendered = true;
 
         return this;
+    }
+
+    /**
+     * Get the Post Url Params for THOUGHTSPOT from the current
+     * host app URL.
+     * THOUGHTSPOT URL params starts with a prefix "ts-"
+     */
+    public getThoughtSpotPostUrlParams(): string {
+        const url = window.location.href;
+        const params = url.split('?');
+        const postURLParams = params[params.length - 1];
+        const urlParams = new URLSearchParams(postURLParams);
+        let tsParams = '';
+        urlParams.forEach((value: string, key: string): void => {
+            if (key.startsWith(THOUGHTSPOT_PARAM_PREFIX)) {
+                if (tsParams) {
+                    tsParams += '&';
+                }
+                tsParams += `${key}=${value}`;
+            }
+        });
+        return tsParams;
     }
 }
 
