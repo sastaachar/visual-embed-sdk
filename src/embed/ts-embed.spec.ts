@@ -352,7 +352,7 @@ describe('Unit test case for ts embed', () => {
             const url =
                 'http://localhost:3000/#/analyze?ts-app=thoughtspot&ts-id=123&title=embed-sdk';
             window.location.href = url;
-            const postHashParams = 'ts-app=thoughtspot&ts-id=123';
+            const postHashParams = '?ts-app=thoughtspot&ts-id=123';
             expect(tsEmbed.getThoughtSpotPostUrlParams()).toBe(postHashParams);
         });
 
@@ -364,7 +364,7 @@ describe('Unit test case for ts embed', () => {
             const url =
                 'http://localhost:3000/analyze?ts-app=thoughtspot&ts-id=123&title=embed-sdk';
             window.location.href = url;
-            const postHashParams = 'ts-app=thoughtspot&ts-id=123';
+            const postHashParams = '?ts-app=thoughtspot&ts-id=123';
             expect(tsEmbed.getThoughtSpotPostUrlParams()).toBe(postHashParams);
         });
     });

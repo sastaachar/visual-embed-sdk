@@ -130,9 +130,8 @@ export class AppEmbed extends V1Embed {
             true,
         )}/${pageId}`;
 
-        let tsParams = this.getThoughtSpotPostUrlParams();
-        tsParams = tsParams ? `?${tsParams}` : '';
-        url = `${url}${tsParams}`;
+        const tsPostHashParams = this.getThoughtSpotPostUrlParams();
+        url = `${url}${tsPostHashParams}`;
 
         return url;
     }

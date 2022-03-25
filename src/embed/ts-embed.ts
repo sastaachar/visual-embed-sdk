@@ -678,6 +678,8 @@ export class TsEmbed {
                 tsParams += `${key}=${value}`;
             }
         });
+
+        tsParams = tsParams ? `?${tsParams}` : '';
         return tsParams;
     }
 }
