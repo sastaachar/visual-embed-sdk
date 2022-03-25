@@ -330,7 +330,8 @@ describe('Unit test case for ts embed', () => {
         beforeAll(() => {
             delete window.location;
             (window as any).location = {
-                href: '',
+                hash: '',
+                search: '',
             };
         });
 
@@ -344,27 +345,30 @@ describe('Unit test case for ts embed', () => {
             window.location = location;
         });
 
-        it('get post hash params', () => {
+        it('get url params for TS', () => {
             const tsEmbed = new tsEmbedInstance.TsEmbed(
                 getRootEl(),
                 defaultViewConfig,
             );
-            const url =
-                'http://localhost:3000/#/analyze?ts-app=thoughtspot&ts-id=123&title=embed-sdk';
-            window.location.href = url;
+            const urlHash =
+                '#/analyze?ts-app=thoughtspot&ts-id=123&title=embed-sdk';
+            window.location.hash = urlHash;
             const postHashParams = '?ts-app=thoughtspot&ts-id=123';
             expect(tsEmbed.getThoughtSpotPostUrlParams()).toBe(postHashParams);
         });
 
-        it('get post params', () => {
+        it('validate query params and postHash params for TS', () => {
             const tsEmbed = new tsEmbedInstance.TsEmbed(
                 getRootEl(),
                 defaultViewConfig,
             );
-            const url =
-                'http://localhost:3000/analyze?ts-app=thoughtspot&ts-id=123&title=embed-sdk';
-            window.location.href = url;
-            const postHashParams = '?ts-app=thoughtspot&ts-id=123';
+            const urlHash =
+                '#/analyze?ts-app=thoughtspot&ts-id=123&title=embed-sdk';
+            window.location.hash = urlHash;
+            const urlSearch = '?ts-type=subscribe&search-title=abc';
+            window.location.search = urlSearch;
+            const postHashParams =
+                '?ts-type=subscribe&ts-app=thoughtspot&ts-id=123';
             expect(tsEmbed.getThoughtSpotPostUrlParams()).toBe(postHashParams);
         });
     });

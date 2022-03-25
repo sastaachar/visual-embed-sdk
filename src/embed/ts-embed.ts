@@ -665,21 +665,25 @@ export class TsEmbed {
      * THOUGHTSPOT URL params starts with a prefix "ts-"
      */
     public getThoughtSpotPostUrlParams(): string {
-        const url = window.location.href;
-        const params = url.split('?');
-        const postURLParams = params[params.length - 1];
-        const urlParams = new URLSearchParams(postURLParams);
-        let tsParams = '';
-        urlParams.forEach((value: string, key: string): void => {
-            if (key.startsWith(THOUGHTSPOT_PARAM_PREFIX)) {
-                if (tsParams) {
-                    tsParams += '&';
-                }
-                tsParams += `${key}=${value}`;
-            }
-        });
+        const urlHash = window.location.hash;
+        const queryParams = window.location.search;
+        const postHashParams = urlHash.split('?');
+        const postURLParams = postHashParams[postHashParams.length - 1];
+        const queryParamsObj = new URLSearchParams(queryParams);
+        const postURLParamsObj = new URLSearchParams(postURLParams);
+        const params = new URLSearchParams();
 
+        const addKeyValuePairCb = (value: string, key: string): void => {
+            if (key.startsWith(THOUGHTSPOT_PARAM_PREFIX)) {
+                params.append(key, value);
+            }
+        };
+        queryParamsObj.forEach(addKeyValuePairCb);
+        postURLParamsObj.forEach(addKeyValuePairCb);
+
+        let tsParams = params.toString();
         tsParams = tsParams ? `?${tsParams}` : '';
+
         return tsParams;
     }
 }
