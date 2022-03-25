@@ -158,8 +158,8 @@ export class LiveboardEmbed extends V1Embed {
             url = `${url}/${vizId}`;
         }
 
-        const tsParams = this.getThoughtSpotPostUrlParams();
-        url = `${url}${tsParams}`;
+        const tsPostHashParams = this.getThoughtSpotPostUrlParams();
+        url = `${url}${tsPostHashParams}`;
 
         return url;
     }
