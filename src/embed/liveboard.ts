@@ -76,7 +76,7 @@ export interface LiveboardViewConfig extends ViewConfig {
     preventPinboardFilterRemoval?: boolean;
     /**
      * Render embedded liveboards and visualizations using the new v2 rendering mode
-     * This is a transient flag which is meant for internal use primarily 
+     * This is a transient flag which is meant for internal use primarily
      * @default false
      * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
      * @hidden
@@ -109,7 +109,7 @@ export class LiveboardEmbed extends V1Embed {
             fullHeight,
             defaultHeight,
             visibleVizs,
-            liveboardV2 = false
+            liveboardV2 = false,
         } = this.viewConfig;
 
         const preventLiveboardFilterRemoval =
