@@ -133,8 +133,8 @@ export class LiveboardEmbed extends V1Embed {
         if (visibleVizs) {
             params[Param.visibleVizs] = visibleVizs;
         }
-        params[Param.LiveboardV2Enabled] = liveboardV2;
         params[Param.livedBoardEmbed] = true;
+        params[Param.LiveboardV2Enabled] = liveboardV2;
         const queryParams = getQueryParamString(params, true);
 
         return queryParams;
