@@ -135,3 +135,19 @@ export const getOffsetTop = (element: any) => {
     const rect = element.getBoundingClientRect();
     return rect.top + window.scrollY;
 };
+
+export const embedEventStatus = {
+    START: 'start',
+    END: 'end'
+}
+
+export const embedEventCallbackMethods = {
+    START: 'start',
+    END: 'end'
+}
+
+export const embedEventStatusToCallback = {
+    [embedEventStatus.START]: embedEventCallbackMethods.START,
+    [embedEventStatus.END]: embedEventCallbackMethods.END,
+}
+

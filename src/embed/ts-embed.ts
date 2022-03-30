@@ -11,6 +11,8 @@ import {
     getEncodedQueryParamsString,
     getCssDimension,
     getOffsetTop,
+    embedEventStatus,
+    embedEventStatusToCallback,
 } from '../utils';
 import {
     getThoughtSpotHost,
@@ -28,6 +30,7 @@ import {
     RuntimeFilter,
     Param,
     EmbedConfig,
+    MessagePayload,
 } from '../types';
 import { uploadMixpanelEvent, MIXPANEL_EVENT } from '../mixpanel-service';
 import { getProcessData } from '../utils/processData';
@@ -520,11 +523,11 @@ export class TsEmbed {
         eventPort?: MessagePort | void,
     ): void {
         const callbacks = this.eventHandlerMap.get(eventType) || [];
-        callbacks.forEach((callback) =>
-            callback(data, (payload) => {
+        callbacks.forEach((callback) => {
+          typeof callback === 'function' &&  callback(data, (payload) => {
                 this.triggerEventOnPort(eventPort, payload);
-            }),
-        );
+            })
+        })
     }
 
     /**
@@ -591,9 +594,9 @@ export class TsEmbed {
      * sends an event of a particular message type to the host application.
      *
      * @param messageType The message type
-     * @param callback A callback function
+     * @param callback A callback as a function or object
      */
-    public on(
+     public on(
         messageType: EmbedEvent,
         callback: MessageCallback,
     ): typeof TsEmbed.prototype {
@@ -602,9 +605,19 @@ export class TsEmbed {
                 'Please register event handlers before calling render',
             );
         }
-
+ 
+        function localCallback(_callback: MessageCallback ,params: MessagePayload) {          
+            if (typeof _callback === 'function' && params?.status === embedEventStatus.END) {
+                 _callback(params);  
+            }
+            if (typeof _callback === 'object') {
+                if(typeof _callback[embedEventStatusToCallback[params?.status]] === 'function') {
+                     _callback[embedEventStatusToCallback[params?.status]](params)
+                }
+            }
+        }
         const callbacks = this.eventHandlerMap.get(messageType) || [];
-        callbacks.push(callback);
+        callbacks.push(localCallback.bind(this, callback));
         this.eventHandlerMap.set(messageType, callbacks);
         return this;
     }
