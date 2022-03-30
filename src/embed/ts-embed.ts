@@ -11,6 +11,7 @@ import {
     getEncodedQueryParamsString,
     getCssDimension,
     getOffsetTop,
+    setAttributes,
 } from '../utils';
 import {
     getThoughtSpotHost,
@@ -38,6 +39,11 @@ import { getAuthPromise, getEmbedConfig, renderInQueue } from './base';
 const { version } = pkgInfo;
 
 /**
+ * Global prefix for all Thoughtspot postHash Params.
+ */
+export const THOUGHTSPOT_PARAM_PREFIX = 'ts-';
+
+/**
  * The event id map from v2 event names to v1 event id
  * v1 events are the classic embed events implemented in Blink v1
  * We cannot rename v1 event types to maintain backward compatibility
@@ -62,6 +68,11 @@ export interface FrameParams {
      * The height of the iFrame (unit is pixels if numeric).
      */
     height?: number | string;
+    /**
+     * This parameters will be passed on the iframe
+     * as is.
+     */
+    [key: string]: string | number | boolean;
 }
 
 /**
@@ -403,7 +414,7 @@ export class TsEmbed {
      * @param url
      * @param frameOptions
      */
-    protected renderIFrame(url: string, frameOptions: FrameParams): void {
+    protected renderIFrame(url: string, frameOptions: FrameParams = {}): void {
         if (this.isError) {
             return;
         }
@@ -445,12 +456,19 @@ export class TsEmbed {
                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore
                     this.iFrame.mozallowfullscreen = true;
+                    const {
+                        height: frameHeight,
+                        width: frameWidth,
+                        ...restParams
+                    } = frameOptions;
                     const width = getCssDimension(
-                        frameOptions?.width || DEFAULT_EMBED_WIDTH,
+                        frameWidth || DEFAULT_EMBED_WIDTH,
                     );
                     const height = getCssDimension(
-                        frameOptions?.height || DEFAULT_EMBED_HEIGHT,
+                        frameWidth || DEFAULT_EMBED_HEIGHT,
                     );
+                    setAttributes(this.iFrame, restParams);
+
                     this.iFrame.style.width = `${width}`;
                     this.iFrame.style.height = `${height}`;
                     this.iFrame.style.border = '0';
@@ -652,6 +670,34 @@ export class TsEmbed {
         this.isRendered = true;
 
         return this;
+    }
+
+    /**
+     * Get the Post Url Params for THOUGHTSPOT from the current
+     * host app URL.
+     * THOUGHTSPOT URL params starts with a prefix "ts-"
+     */
+    public getThoughtSpotPostUrlParams(): string {
+        const urlHash = window.location.hash;
+        const queryParams = window.location.search;
+        const postHashParams = urlHash.split('?');
+        const postURLParams = postHashParams[postHashParams.length - 1];
+        const queryParamsObj = new URLSearchParams(queryParams);
+        const postURLParamsObj = new URLSearchParams(postURLParams);
+        const params = new URLSearchParams();
+
+        const addKeyValuePairCb = (value: string, key: string): void => {
+            if (key.startsWith(THOUGHTSPOT_PARAM_PREFIX)) {
+                params.append(key, value);
+            }
+        };
+        queryParamsObj.forEach(addKeyValuePairCb);
+        postURLParamsObj.forEach(addKeyValuePairCb);
+
+        let tsParams = params.toString();
+        tsParams = tsParams ? `?${tsParams}` : '';
+
+        return tsParams;
     }
 }
 
