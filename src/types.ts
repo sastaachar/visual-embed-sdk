@@ -155,16 +155,15 @@ export interface EmbedConfig {
     customCssUrl?: string;
 }
 
-export type MessagePayload = { type: string; data: any, status?: string };
+export type MessagePayload = { type: string; data: any; status?: string };
 
 type messageCallbackObj = {
-    start?: (data: any) => void,
-    end?: (data: any) => void
-}
-export type MessageCallback =  ((
-    payload: MessagePayload,
-    responder?: (data: any) => void,
-) => void) | messageCallbackObj
+    start?: (data: any) => void;
+    end?: (data: any) => void;
+};
+export type MessageCallback =
+    | ((payload: MessagePayload, responder?: (data: any) => void) => void)
+    | messageCallbackObj;
 
 export type GenericCallbackFn = (...args: any[]) => any;
 
@@ -584,6 +583,7 @@ export enum Param {
     CustomCSSUrl = 'customCssUrl',
     DisableLoginRedirect = 'disableLoginRedirect',
     visibleVizs = 'pinboardVisibleVizs',
+    LiveboardV2Enabled = 'isPinboardV2Enabled',
 }
 
 /**

@@ -138,16 +138,24 @@ export const getOffsetTop = (element: any) => {
 
 export const embedEventStatus = {
     START: 'start',
-    END: 'end'
-}
+    END: 'end',
+};
 
 export const embedEventCallbackMethods = {
     START: 'start',
-    END: 'end'
-}
+    END: 'end',
+};
 
 export const embedEventStatusToCallback = {
     [embedEventStatus.START]: embedEventCallbackMethods.START,
     [embedEventStatus.END]: embedEventCallbackMethods.END,
-}
+};
 
+export const setAttributes = (
+    element: HTMLElement,
+    attributes: { [key: string]: string | number | boolean },
+): void => {
+    Object.keys(attributes).forEach((key) => {
+        element.setAttribute(key, attributes[key].toString());
+    });
+};

@@ -13,6 +13,7 @@ import {
     getOffsetTop,
     embedEventStatus,
     embedEventStatusToCallback,
+    setAttributes,
 } from '../utils';
 import {
     getThoughtSpotHost,
@@ -70,6 +71,11 @@ export interface FrameParams {
      * The height of the iFrame (unit is pixels if numeric).
      */
     height?: number | string;
+    /**
+     * This parameters will be passed on the iframe
+     * as is.
+     */
+    [key: string]: string | number | boolean;
 }
 
 /**
@@ -122,6 +128,9 @@ export interface ViewConfig {
      * This is an object (key/val) of override flags which will be applied
      * to the internal embedded object. This can be used to add any
      * URL flag.
+     * Warning: This option is for advanced use only and is used internally
+     * to control embed behavior in non-regular ways. We do not publish the
+     * list of supported keys and values associated with each.
      * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl
      */
     additionalFlags?: { [key: string]: string | number | boolean };
@@ -411,7 +420,7 @@ export class TsEmbed {
      * @param url
      * @param frameOptions
      */
-    protected renderIFrame(url: string, frameOptions: FrameParams): void {
+    protected renderIFrame(url: string, frameOptions: FrameParams = {}): void {
         if (this.isError) {
             return;
         }
@@ -453,12 +462,19 @@ export class TsEmbed {
                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore
                     this.iFrame.mozallowfullscreen = true;
+                    const {
+                        height: frameHeight,
+                        width: frameWidth,
+                        ...restParams
+                    } = frameOptions;
                     const width = getCssDimension(
-                        frameOptions?.width || DEFAULT_EMBED_WIDTH,
+                        frameWidth || DEFAULT_EMBED_WIDTH,
                     );
                     const height = getCssDimension(
-                        frameOptions?.height || DEFAULT_EMBED_HEIGHT,
+                        frameWidth || DEFAULT_EMBED_HEIGHT,
                     );
+                    setAttributes(this.iFrame, restParams);
+
                     this.iFrame.style.width = `${width}`;
                     this.iFrame.style.height = `${height}`;
                     this.iFrame.style.border = '0';
@@ -524,10 +540,12 @@ export class TsEmbed {
     ): void {
         const callbacks = this.eventHandlerMap.get(eventType) || [];
         callbacks.forEach((callback) => {
-          typeof callback === 'function' &&  callback(data, (payload) => {
-                this.triggerEventOnPort(eventPort, payload);
-            })
-        })
+            if (typeof callback === 'function') {
+                callback(data, (payload) => {
+                    this.triggerEventOnPort(eventPort, payload);
+                });
+            }
+        });
     }
 
     /**
@@ -596,7 +614,7 @@ export class TsEmbed {
      * @param messageType The message type
      * @param callback A callback as a function or object
      */
-     public on(
+    public on(
         messageType: EmbedEvent,
         callback: MessageCallback,
     ): typeof TsEmbed.prototype {
@@ -605,14 +623,26 @@ export class TsEmbed {
                 'Please register event handlers before calling render',
             );
         }
- 
-        function localCallback(_callback: MessageCallback ,params: MessagePayload) {          
-            if (typeof _callback === 'function' && params?.status === embedEventStatus.END) {
-                 _callback(params);  
+
+        function localCallback(
+            _callback: MessageCallback,
+            params: MessagePayload,
+        ) {
+            if (
+                typeof _callback === 'function' &&
+                params?.status === embedEventStatus.END
+            ) {
+                _callback(params);
             }
             if (typeof _callback === 'object') {
-                if(typeof _callback[embedEventStatusToCallback[params?.status]] === 'function') {
-                     _callback[embedEventStatusToCallback[params?.status]](params)
+                if (
+                    typeof _callback[
+                        embedEventStatusToCallback[params?.status]
+                    ] === 'function'
+                ) {
+                    _callback[embedEventStatusToCallback[params?.status]](
+                        params,
+                    );
                 }
             }
         }
