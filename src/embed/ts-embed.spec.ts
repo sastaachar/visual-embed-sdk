@@ -28,6 +28,7 @@ const pinboardId = 'eca215d4-0d2c-4a55-90e3-d81ef6848ae0';
 const liveboardId = 'eca215d4-0d2c-4a55-90e3-d81ef6848ae0';
 const thoughtSpotHost = 'tshost';
 const defaultParamsForPinboardEmbed = `hostAppUrl=local-host&viewPortHeight=768&viewPortWidth=1024&sdkVersion=${version}`;
+const defaultParamsPost = '&isPinboardV2Enabled=false';
 
 describe('Unit test case for ts embed', () => {
     const mockMixPanelEvent = jest.spyOn(
@@ -242,7 +243,7 @@ describe('Unit test case for ts embed', () => {
             await pinboardEmbed.render();
             // pinboardEmbed.navigateToPage(path);
             expect(getIFrameSrc()).toBe(
-                `http://${thoughtSpotHost}/?embedApp=true&${defaultParamsForPinboardEmbed}&isLiveboardEmbed=true&isPinboardV2Enabled=false#/embed/${path}`,
+                `http://${thoughtSpotHost}/?embedApp=true&${defaultParamsForPinboardEmbed}&isLiveboardEmbed=true${defaultParamsPost}#/embed/${path}`,
             );
         });
 
@@ -256,7 +257,7 @@ describe('Unit test case for ts embed', () => {
             await appEmbed.render();
             appEmbed.navigateToPage(path);
             expect(getIFrameSrc()).toBe(
-                `http://${thoughtSpotHost}/?embedApp=true&primaryNavHidden=true&profileAndHelpInNavBarHidden=false&${defaultParamsForPinboardEmbed}#/${path}`,
+                `http://${thoughtSpotHost}/?embedApp=true&primaryNavHidden=true&profileAndHelpInNavBarHidden=false&${defaultParamsForPinboardEmbed}${defaultParamsPost}#/${path}`,
             );
         });
 
@@ -275,7 +276,7 @@ describe('Unit test case for ts embed', () => {
             );
         });
     });
-    describe('Naviage to Page API - Pinboard', () => {
+    describe('Navigate to Page API - Pinboard', () => {
         const path = 'pinboard/e0836cad-4fdf-42d4-bd97-567a6b2a6058';
         beforeEach(() => {
             jest.spyOn(config, 'getThoughtSpotHost').mockImplementation(
@@ -293,7 +294,7 @@ describe('Unit test case for ts embed', () => {
             await appEmbed.render();
             appEmbed.navigateToPage(path);
             expect(getIFrameSrc()).toBe(
-                `http://${thoughtSpotHost}/?embedApp=true&primaryNavHidden=true&profileAndHelpInNavBarHidden=false&${defaultParamsForPinboardEmbed}#/${path}`,
+                `http://${thoughtSpotHost}/?embedApp=true&primaryNavHidden=true&profileAndHelpInNavBarHidden=false&${defaultParamsForPinboardEmbed}${defaultParamsPost}#/${path}`,
             );
         });
     });
@@ -319,7 +320,7 @@ describe('Unit test case for ts embed', () => {
             await appEmbed.render();
             expect(getIFrameSrc()).toBe(
                 `http://${thoughtSpotHost}/?embedApp=true&primaryNavHidden=true&profileAndHelpInNavBarHidden=false&${defaultParamsForPinboardEmbed}` +
-                    '&foo=bar&baz=1&bool=true#/home',
+                    `&foo=bar&baz=1&bool=true${defaultParamsPost}#/home`,
             );
         });
     });
