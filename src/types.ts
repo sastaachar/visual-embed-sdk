@@ -157,13 +157,18 @@ export interface EmbedConfig {
 
 export type MessagePayload = { type: string; data: any; status?: string };
 
-type messageCallbackObj = {
-    start?: (data: any) => void;
-    end?: (data: any) => void;
+export type MessageCallbackObj = {
+    options: MessageOptions;
+    callback: MessageCallback;
 };
-export type MessageCallback =
-    | ((payload: MessagePayload, responder?: (data: any) => void) => void)
-    | messageCallbackObj;
+export type MessageCallback = (
+    payload: MessagePayload,
+    responder?: (data: any) => void,
+) => void;
+
+export type MessageOptions = {
+    start?: boolean;
+};
 
 export type GenericCallbackFn = (...args: any[]) => any;
 

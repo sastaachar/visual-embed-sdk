@@ -141,16 +141,6 @@ export const embedEventStatus = {
     END: 'end',
 };
 
-export const embedEventCallbackMethods = {
-    START: 'start',
-    END: 'end',
-};
-
-export const embedEventStatusToCallback = {
-    [embedEventStatus.START]: embedEventCallbackMethods.START,
-    [embedEventStatus.END]: embedEventCallbackMethods.END,
-};
-
 export const setAttributes = (
     element: HTMLElement,
     attributes: { [key: string]: string | number | boolean },

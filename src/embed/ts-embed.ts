@@ -12,7 +12,6 @@ import {
     getCssDimension,
     getOffsetTop,
     embedEventStatus,
-    embedEventStatusToCallback,
     setAttributes,
 } from '../utils';
 import {
@@ -31,7 +30,8 @@ import {
     RuntimeFilter,
     Param,
     EmbedConfig,
-    MessagePayload,
+    MessageOptions,
+    MessageCallbackObj,
 } from '../types';
 import { uploadMixpanelEvent, MIXPANEL_EVENT } from '../mixpanel-service';
 import { getProcessData } from '../utils/processData';
@@ -172,7 +172,7 @@ export class TsEmbed {
      * by the embedded app; multiple event handlers can be registered
      * against a particular message type.
      */
-    private eventHandlerMap: Map<string, MessageCallback[]>;
+    private eventHandlerMap: Map<string, MessageCallbackObj[]>;
 
     /**
      * A flag that is set to true post render.
@@ -539,9 +539,14 @@ export class TsEmbed {
         eventPort?: MessagePort | void,
     ): void {
         const callbacks = this.eventHandlerMap.get(eventType) || [];
-        callbacks.forEach((callback) => {
-            if (typeof callback === 'function') {
-                callback(data, (payload) => {
+        callbacks.forEach((callbackObj) => {
+            if (
+                (callbackObj.options.start &&
+                    data.status === embedEventStatus.START) ||
+                (!callbackObj.options.start &&
+                    data.status === embedEventStatus.END)
+            ) {
+                callbackObj.callback(data, (payload) => {
                     this.triggerEventOnPort(eventPort, payload);
                 });
             }
@@ -612,42 +617,21 @@ export class TsEmbed {
      * sends an event of a particular message type to the host application.
      *
      * @param messageType The message type
-     * @param callback A callback as a function or object
+     * @param callback A callback as a function
+     * @param options The message options
      */
     public on(
         messageType: EmbedEvent,
         callback: MessageCallback,
+        options: MessageOptions = { start: false },
     ): typeof TsEmbed.prototype {
         if (this.isRendered) {
             this.handleError(
                 'Please register event handlers before calling render',
             );
         }
-
-        function localCallback(
-            _callback: MessageCallback,
-            params: MessagePayload,
-        ) {
-            if (
-                typeof _callback === 'function' &&
-                params?.status === embedEventStatus.END
-            ) {
-                _callback(params);
-            }
-            if (typeof _callback === 'object') {
-                if (
-                    typeof _callback[
-                        embedEventStatusToCallback[params?.status]
-                    ] === 'function'
-                ) {
-                    _callback[embedEventStatusToCallback[params?.status]](
-                        params,
-                    );
-                }
-            }
-        }
         const callbacks = this.eventHandlerMap.get(messageType) || [];
-        callbacks.push(localCallback.bind(this, callback));
+        callbacks.push({ options, callback });
         this.eventHandlerMap.set(messageType, callbacks);
         return this;
     }
