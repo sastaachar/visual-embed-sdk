@@ -539,12 +539,13 @@ export class TsEmbed {
         eventPort?: MessagePort | void,
     ): void {
         const callbacks = this.eventHandlerMap.get(eventType) || [];
+        const dataStatus = data?.status || embedEventStatus.END;
         callbacks.forEach((callbackObj) => {
             if (
                 (callbackObj.options.start &&
-                    data.status === embedEventStatus.START) ||
+                    dataStatus === embedEventStatus.START) || // When start status is true it trigger only start releated payload
                 (!callbackObj.options.start &&
-                    data.status === embedEventStatus.END)
+                    dataStatus === embedEventStatus.END) // When start status is false it trigger only end releated payload
             ) {
                 callbackObj.callback(data, (payload) => {
                     this.triggerEventOnPort(eventPort, payload);

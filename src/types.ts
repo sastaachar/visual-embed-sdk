@@ -155,19 +155,29 @@ export interface EmbedConfig {
     customCssUrl?: string;
 }
 
+/**
+ * MessagePayload: Embed event payload: message type, data and status (start/end)
+ */
 export type MessagePayload = { type: string; data: any; status?: string };
-
-export type MessageCallbackObj = {
-    options: MessageOptions;
-    callback: MessageCallback;
+/**
+ * MessageOptions: start, A boolean value indicating that start status events of this type will be dispatched
+ */
+export type MessageOptions = {
+    start?: boolean;
 };
+/**
+ * MessageCallback: Embed event message callback
+ */
 export type MessageCallback = (
     payload: MessagePayload,
     responder?: (data: any) => void,
 ) => void;
-
-export type MessageOptions = {
-    start?: boolean;
+/**
+ * MessageCallbackObj: It contains, message option: start true/false and callback
+ */
+export type MessageCallbackObj = {
+    options: MessageOptions;
+    callback: MessageCallback;
 };
 
 export type GenericCallbackFn = (...args: any[]) => any;

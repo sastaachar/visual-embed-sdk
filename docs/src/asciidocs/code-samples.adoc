@@ -135,26 +135,6 @@ searchEmbed.on(EmbedEvent.VizPointDoubleClick, (data) => {
 })
 ----
 
-== Embed Event trigger with START & END status
-
-The following example shows how to trigger an save event with start and end status from the embedded ThoughtSpot interface:
-
-[source,JAVASCRIPT]
-----
-Embed Event trigger with START status
-
-searchEmbed.on(.on(EmbedEvent.Save, async (payload) => {
-    console.log("triggered only on start", payload)
-}, { start : true })
-
-Embed Event trigger with END (default) status 
-
-searchEmbed.on(EmbedEvent.Save, async (payload) => {
-    console.log("triggered only on end", payload)
-})
-
-----
-
 == REST APIs
 
 The following examples show how to call REST APIs to query and import data using Javascript.
