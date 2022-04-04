@@ -4,7 +4,7 @@
 
 :page-title: Get Pinboard Data
 :page-pageid: pinboard-api
-:page-description: Pinboard Data API
+:page-description: The pinboard data API allows you to query a pinboard and its visualizations
 
 To retrieve data related to a pinboard or visualization from the ThoughtSpot system, you can use the pinboard data API.
 
@@ -13,11 +13,16 @@ Using this API, you can fetch the following information:
 * All the visualization objects on a pinboard.
 * A specific or a group of visualizations on a pinboard.
 
-=== Request URL
+[NOTE]
+====
+ThoughtSpot recommends using pinboard data API to embed ThoughtSpot content within a native mobile app.
+====
+
+== Request URL
 ----
 POST /tspublic/v1/pinboarddata
 ----
-=== Request Parameters
+== Request parameters
 
 [width="100%" cols="1,1,4"]
 [options='header']
@@ -32,15 +37,18 @@ POST /tspublic/v1/pinboarddata
 |`formattype`|string|Valid values are `COMPACT` or `FULL JSON`. The system default is `COMPACT`.
 |====
 
-=== Example requests
+== Example requests
 
-==== Pinboard data
+=== Pinboard data
 
 .CURL
 
 [source,cURL]
 ----
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'X-Requested-By: ThoughtSpot' 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/pinboarddata?id=f4533461-caa5-4efa-a189-13815ab86770&batchsize=-1&pagenumber=-1&offset=-1&formattype=COMPACT'
+curl -X POST \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'X-Requested-By: ThoughtSpot' \ 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/pinboarddata?id=f4533461-caa5-4efa-a189-13815ab86770&batchsize=-1&pagenumber=-1&offset=-1&formattype=COMPACT'
 ----
 
 .Request URL
@@ -48,13 +56,16 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/pinboarddata?id=f4533461-caa5-4efa-a189-13815ab86770&batchsize=-1&pagenumber=-1&offset=-1&formattype=COMPACT
 ----
 
-==== Visualization data
+=== Visualization data
 
 .CURL
 
 [source,cURL]
 ----
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'X-Requested-By: ThoughtSpot' 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/pinboarddata?id=bea79810-145f-4ad0-a02c-4177a6e7d861&vizid=%5B'fa934657-e347-4de7-b02d-3b46609233cc'%2C'62f98ad3-6ddd-4aed-8f13-58054295b7e3'%2C'eb77ba14-15de-4d4d-aac4-625ebd58b1c6'%5D&batchsize=-1&pagenumber=-1&offset=-1&formattype=COMPACT'
+curl -X POST \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'X-Requested-By: ThoughtSpot' \ 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/pinboarddata?id=bea79810-145f-4ad0-a02c-4177a6e7d861&vizid=%5B'fa934657-e347-4de7-b02d-3b46609233cc'%2C'62f98ad3-6ddd-4aed-8f13-58054295b7e3'%2C'eb77ba14-15de-4d4d-aac4-625ebd58b1c6'%5D&batchsize=-1&pagenumber=-1&offset=-1&formattype=COMPACT'
 ----
 
 .Request URL
@@ -64,7 +75,7 @@ https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/pinboarddata?id=f4533461-caa5
 https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/pinboarddata?id=bea79810-145f-4ad0-a02c-4177a6e7d861&vizid=%5B'fa934657-e347-4de7-b02d-3b46609233cc'%2C'62f98ad3-6ddd-4aed-8f13-58054295b7e3'%2C'eb77ba14-15de-4d4d-aac4-625ebd58b1c6'%5D&batchsize=-1&pagenumber=-1&offset=-1&formattype=COMPACT
 ----
 
-=== Example response
+== Example response
 Each data object returned in the API response contains four components:
 
 . The `columnNames` array that contains a list of all column headers.
@@ -75,7 +86,7 @@ Each data object returned in the API response contains four components:
 The sampling ratio tells you the percentage of total data returned.
 A sampling ratio of `1` indicates that all data in the visualization object was returned in the API response.
 
-==== Pinboard data
+=== Pinboard data
 
 [source,JSON]
 ----
@@ -107,7 +118,7 @@ A sampling ratio of `1` indicates that all data in the visualization object was 
   }
 }
 ----
-==== Visualization data
+=== Visualization data
 The returned JSON data includes one object for every visualization on the pinboard.
 If you make a call to obtain data for a specific visualization on a pinboard, The API returns data for only that visualization.
 
@@ -183,7 +194,99 @@ If you make a call to obtain data for a specific visualization on a pinboard, Th
 }
 ----
 
-=== Response codes
+=== Runtime filters
+
+You can modify the API's output by passing runtime filters as parameters in the resource URL.
+
+For example:
+
+----
+https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/pinboarddata?id=f4533461-caa5-4efa-a189-13815ab86770&batchsize=-1&col1=COL_NAME1&op1=OP_TYPE1&val1=VALUE1&coln=COL_NAMEn&opn=OP_TYPEn&valn=VALUEn
+----
+
+You can add more than one filter by specifying `col2`, `op2`, `val2`, and so on.
+[width="100%" cols="1,5"]
+[options='header']
+|===
+| Parameter | Definition
+
+| col<__n__>
+| Name of the column to filter on.
+
+| op<__n__>
+| {IN, EQ, NE, LT, LE...}
+
+| val<__n__>
+| Value of the column to filter on.
+|===
+
+[NOTE]
+These parameters are case-insensitive. For example, `EQ`, `eq`, and `eQ` have the same result.
+
+==== Runtime filter operators
+[width="100%" cols="1,2,1"]
+[options='header']
+|===
+| Operator | Description | Number of Values
+
+| `EQ`
+| equals
+| 1
+
+| `NE`
+| does not equal
+| 1
+
+| `LT`
+| less than
+| 1
+
+| `LE`
+| less than or equal to
+| 1
+
+| `GT`
+| greater than
+| 1
+
+| `GE`
+| greater than or equal to
+| 1
+
+| `CONTAINS`
+| contains
+| 1
+
+| `BEGINS_WITH`
+| begins with
+| 1
+
+| `ENDS_WITH`
+| ends with
+| 1
+
+| `BW_INC_MAX`
+| between inclusive of the higher value
+| 2
+
+| `BW_INC_MIN`
+| between inclusive of the lower value
+| 2
+
+| `BW_INC`
+| between inclusive
+| 2
+
+| `BW`
+| between non-inclusive
+| 2
+
+| `IN`
+| is included in this list of values
+| multiple
+|===
+
+== Response codes
 
 [options="header", cols="1,2"]
 |===

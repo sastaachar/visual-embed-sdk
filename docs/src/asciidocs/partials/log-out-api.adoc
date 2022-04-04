@@ -1,4 +1,4 @@
-To log a user out of the current session, use the `/tspublic/v1/session/logout` API.
+To log out of your current session programmatically, use the `/tspublic/v1/session/logout` API endpoint.
 
 
 === Resource URL
@@ -12,7 +12,11 @@ POST /tspublic/v1/session/logout
 [source, cURL]
 
 ----
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'X-Requested-By: ThoughtSpot' 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/session/logout'
+curl -X POST \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'X-Requested-By: ThoughtSpot' \
+'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/session/logout'
 ----
 
 .Request URL

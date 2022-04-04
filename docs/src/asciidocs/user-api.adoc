@@ -4,22 +4,23 @@
 
 :page-title: User APIs
 :page-pageid: user-api
-:page-description: User APIs
+:page-description: To create, update, and manage ThoughtSpot users programmatically, use the user API endpoints
 
-The User APIs allow you to programmatically manage ThoughtSpot users.
+The User API endpoints allow you to programmatically manage ThoughtSpot users.
 
 == Supported operations
+
 include::{path}/user-api-list.adoc[]
 
 [#create-user]
 == Create a user
 
-To programmatically create a user account in the ThoughtSpot system, send a POST request to `/tspublic/v1/user/` API endpoint. Using this API, you can create a user and assign a user to a group.
+To programmatically create a user account in the ThoughtSpot system, send a `POST` request to `/tspublic/v1/user/` API endpoint. Using this endpoint, you can create a user and assign a user to a group.
 
 [NOTE]
 ====
 * To create a user, you require admin user privileges.
-* All users created in the ThoughtSpot system are added to ALL_GROUP.
+* All users created in the ThoughtSpot system are added to `ALL` group.
 ====
 
 === Resource URL
@@ -36,18 +37,27 @@ POST /tspublic/v1/user/
 |`name` |__String__.  Name of the user. The username string must be unique.
 |`password`|__String__.Password for the user account.
 |`displayname`|__String__. A unique display name string for the user, usually their first and last name.
-|`properties` __Optional__|__String__. A JSON map of user properties fetched from external systems such as LDAP. If you are using Active Directory to authenticate users, and your LDAP configuration requires users to be created manually, you can upload the user properties as a JSON file.
-|`groups` __Optional__|__Array of strings__. A JSON array of the GUIDs of groups to which you want to assign the user. The user privileges are determined by the group to which you assign the user. For example, if you assign the user to a group that has the `ADMINISTRATION` privilege, the user will have admin privileges.
-|`usertype` __Optional__ a|__String__. Type of user. The default value is `LOCAL_USER`, which indicates that the user is created locally in the ThoughtSpot system.
-|`tenantid` __Optional__|__String__. GUID of the tenant for which the user is being created.
-|`visibility` __Optional__|__String__. Visibility of the user. The `visibility` attribute is set to `DEFAULT` when creating a user. The `DEFAULT` attribute makes a user visible to other users and user groups, and thus allows them to share objects.
+|`properties` +
+__Optional__|__String__. A JSON map of user properties fetched from external systems such as LDAP. If you are using Active Directory to authenticate users, and your LDAP configuration requires users to be created manually, you can upload the user properties as a JSON file.
+|`groups` +
+__Optional__|__Array of strings__. A JSON array of the GUIDs of groups to which you want to assign the user. The user privileges are determined by the group to which you assign the user. For example, if you assign the user to a group that has the `ADMINISTRATION` privilege, the user will have admin privileges.
+|`usertype` +
+__Optional__ a|__String__. Type of user. The default value is `LOCAL_USER`, which indicates that the user is created locally in the ThoughtSpot system.
+|`tenantid` +
+__Optional__|__String__. GUID of the tenant for which the user is being created.
+|`visibility` +
+__Optional__|__String__. Visibility of the user. The `visibility` attribute is set to `DEFAULT` when creating a user. The `DEFAULT` attribute makes a user visible to other users and user groups, and thus allows them to share objects.
 |===
 
 === Example request
 
 .cURL
 ----
-curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: application/json' --header 'X-Requested-By: ThoughtSpot' -d 'name=TS%20User&password=testy1%4022&displayname=TS%20User&usertype=LOCAL_USER&visibility=DEFAULT' 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/'
+curl -X POST \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--header 'Accept: application/json' \
+--header 'X-Requested-By: ThoughtSpot' \
+-d 'name=TS%20User&password=testy1%4022&displayname=TS%20User&usertype=LOCAL_USER&visibility=DEFAULT' 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/'
 ----
 
 .Request URL
@@ -122,7 +132,7 @@ If the user is successfully created in ThoughtSpot, the API returns the user GUI
 
 == Update user details
 
-If you have admin user privileges, you can use the `/tspublic/v1/user/{userid}` API to programmatically modify the attributes of an existing user account.
+To modify the attributes of a ThoughtSpot user account, send a `PUT` request to the  `/tspublic/v1/user/{userid}` endpoint.  
 
 This API allows the following modifications to a user profile:
 
@@ -253,7 +263,7 @@ To get the details of a specific user account or  all users in the ThoughtSpot s
 
 [NOTE]
 ====
-If you want to get a list of object headers associated with a user or user group, you can use the `xref:metadata-api.adoc#object-header[GET /tspublic/v1/metadata/listobjectheaders]` API.
+If you want to get a list of object headers associated with a user or user group, you can use the `xref:metadata-api.adoc#object-header[GET /tspublic/v1/metadata/listobjectheaders]` endpoint.
 ====
 
 === Resource URL
@@ -266,12 +276,14 @@ GET /tspublic/v1/user/
 [options='header']
 |===
 |Query Parameter|Description
-|`userid` __Optional__|__String__. The GUID of the user account to query.
-|`name` __Optional__|__String__. Username of the user that you want to query.
+|`userid` +
+__Optional__|__String__. The GUID of the user account to query.
+|`name` +
+__Optional__|__String__. Username of the user that you want to query.
 |===
 [NOTE]
 ====
-You can use either `userid` or `name` to query data for a specific user. If using both, make sure the values for these parameters point to the same user account. If neither of these parameters is defined, the API returns metadata for all users in the ThoughtSpot system.
+You can use either `userid` or `name` to query data for a specific user. If using both, make sure the values you specify for these attributes point to the same user account. If neither of these parameters is defined, the API returns metadata for all users in the ThoughtSpot system.
 ====
 
 === Example request
@@ -279,7 +291,9 @@ You can use either `userid` or `name` to query data for a specific user. If usin
 .cURL
 
 ----
-curl -X GET --header 'Accept: application/json' --header 'X-Requested-By: ThoughtSpot' 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/?userid=b995e481-d0a7-4820-b1e8-54051ede77a2'
+curl -X GET \
+--header 'Accept: application/json' \
+--header 'X-Requested-By: ThoughtSpot' \ 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/?userid=b995e481-d0a7-4820-b1e8-54051ede77a2'
 ----
 .Request URL
 
@@ -381,7 +395,9 @@ DELETE /tspublic/v1/user/{userid}
 
 .cURL
 ----
-curl -X DELETE --header 'Accept: application/json' --header 'X-Requested-By: ThoughtSpot' 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/ee74b737-da39-4667-95ad-cc06c81ab13d'
+curl -X DELETE \
+--header 'Accept: application/json' \
+--header 'X-Requested-By: ThoughtSpot' \ 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/ee74b737-da39-4667-95ad-cc06c81ab13d'
 ----
 
 .Request URL
@@ -420,7 +436,9 @@ GET /tspublic/v1/user/list
 
 .cURL
 ----
-curl -X GET --header 'Accept: application/json' 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/list'
+curl -X GET \
+--header 'Accept: application/json' \
+'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/list'
 ----
 
 .Request URL
@@ -520,27 +538,33 @@ If the user is visible to the other ThoughtSpot users or user groups who might w
 
 [#change-pwd]
 == Change password
-To change the password of a ThoughtSpot user account, use the `/tspublic/v1/user/updatepassword` API.
+To change the password of a ThoughtSpot user account, use the `/tspublic/v1/user/updatepassword` API endpoint.
 
 === Resource URL
 ----
 POST /tspublic/v1/user/updatepassword
 ----
+
 === Request parameters
 
 [width="100%" cols="1,3"]
 [options='header']
 |====
 |Form Parameter|Description
-|`name` |__String__. Name of the user.
-|`currentpassword`|__String__. The current password of the user.
-|`password`|__String__. A new password for the user.
+|`name` |__String__. Name of the user account.
+|`currentpassword`|__String__. The password of the currently logged-in user. Note that only users with admin privileges can change the password of a user account.
+|`password`|__String__.  A new password for the user specified in the name attribute.
 |====
+
 === Example request
 
 .cURL
 ----
-curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: application/json' --header 'X-Requested-By: ThoughtSpot' -d 'name=guest&currentpassword=test&password=foobarfoobar' 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/updatepassword'
+curl -X POST \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--header 'Accept: application/json' \
+--header 'X-Requested-By: ThoughtSpot' \
+-d 'name=guest&currentpassword=test&password=User1234!' \ 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/updatepassword'
 ----
 
 .Request URL
@@ -597,16 +621,18 @@ POST /tspublic/v1/user/updatepreference
 [options="header"]
 |===
 |Form Parameter|Description
-|`userid`
+|`userid` +
  __Optional__
 |__String__. The GUID of the user.
-|`username` __Optional__|__String__. Username of the user.
+|`username` +
+__Optional__|__String__. Username of the user.
 |`preferences` a|__String__. The JSON map of user preferences. In the JSON map, you can define the attributes to set the following preferences for a user:
 
 * change the display language of the ThoughtSpot UI
 * receive email notifications when another user shares an answer or pinboard
 * enable the onboarding experience
-|`preferencesProto` __Optional__|__String__. A 64-bit encoded string for setting user preferences in a secure manner. For example, `CgoKCAgBEAEYASAB`.
+|`preferencesProto` +
+__Optional__|__String__. A 64-bit encoded string for setting user preferences in a secure manner. For example, `CgoKCAgBEAEYASAB`.
 |===
 
 [NOTE]
@@ -619,7 +645,11 @@ If your browser or OS locale is set to a xref:user-api.adoc#locale-setting[Thoug
 .cURL
 [source, cURL]
 ----
-curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: application/json' --header 'X-Requested-By: ThoughtSpot' -d 'userid=59481331-ee53-42be-a548-bd87be6ddd4a&preferences=%7B%22showWalkMe%22%3Atrue%2C%22notifyOnShare%22%3Atrue%2C%22analystOnboardingComplete%22%3Afalse%2C%22preferredLocale%22%3A%22en-IN%22%7D' 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/updatepreference'
+curl -X POST \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--header 'Accept: application/json' \
+--header 'X-Requested-By: ThoughtSpot' \
+-d 'userid=59481331-ee53-42be-a548-bd87be6ddd4a&preferences={"showWalkMe":true,"notifyOnShare":true,"analystOnboardingComplete":false,"preferredLocale":"en-IN"}' \ 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/updatepreference''
 ----
 
 .Request URL
@@ -718,7 +748,10 @@ POST /tspublic/v1/user/transfer/ownership
 
 .cURL
 ----
-curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'X-Requested-By: ThoughtSpot' 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/transfer/ownership?fromUserName=guest&toUserName=guest1'
+curl -X POST \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'X-Requested-By: ThoughtSpot' \ 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/transfer/ownership?fromUserName=guest&toUserName=guest1'
 ----
 
 .Request URL
@@ -769,14 +802,11 @@ Make sure you use a JSON file encoded as `application/json` or `text/json` for t
 
 |`principals`|__String__. Specifies a list of principal objects. This is a JSON file containing all users and groups present in the external database.
 
-|`applyChanges`|
-__Boolean__.
-Specifies whether to sync the users and groups to the system and apply the difference evaluated.
- By default, this attribute is set to `false`.
+|`applyChanges`|__Boolean__. Specifies whether to sync the users and groups to the system and apply the difference evaluated.
+By default, this attribute is set to `false`.
 
 |`removeDeleted`|
-__Boolean__.
-Specifies whether to remove the deleted users and user groups. By default, this attribute is set to `false`. To remove deleted users or user groups, set this attribute to `true`.
+__Boolean__. Specifies whether to remove the deleted users and user groups. By default, this attribute is set to `false`. To remove deleted users or user groups, set this attribute to `true`.
 
 |`password`
 |__String__. The password of the admin user.
@@ -857,6 +887,7 @@ Use the example format for the JSON requests:
     "visibility": "DEFAULT" }
 ]
 ----
+
 [IMPORTANT]
 ====
 The above example covers user objects (with emails), group objects, and their relationships.

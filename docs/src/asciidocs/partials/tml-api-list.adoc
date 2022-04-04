@@ -1,13 +1,13 @@
 
-[div boxDiv boxFullWidth]
---
-`xref:tml-api.adoc#import[**POST** /tspublic/v1/metadata/tml/import]`
+[width="100%", cols="2,2"]
+[options='header']
+|====
+|API endpoint|Description
+|`xref:tml-api.adoc#import[**POST** /tspublic/v1/metadata/tml/import]`
 
-Imports scriptable in TML that represents objects in an editable and reusable format.
+|Imports scriptable in TML that represents objects in an editable and reusable format.
 
-+++<p class="divider"> </p>+++
+|`xref:tml-api.adoc#export[**POST** /tspublic/v1/metadata/tml/export]`
 
-`xref:tml-api.adoc#export[**POST** /tspublic/v1/metadata/tml/export]`
-
-Exports ThoughtSpot objects represented in ThoughtSpot Modeling Language (TML).
---
+|Exports ThoughtSpot objects represented in ThoughtSpot Modeling Language (TML).
+|====

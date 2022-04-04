@@ -4,7 +4,7 @@
 
 :page-title: Admin APIs
 :page-pageid: admin-api
-:page-description: Admin API services for configuration management
+:page-description: The admin API endpoints allow you to view, edit, and manage your cluster configuration
 
 The admin API service allows you to query and update configuration information for a ThoughtSpot cluster. You can also use these APIs to migrate data from one cluster to another.
 
@@ -34,7 +34,10 @@ Make sure the API request has the following headers:
 .cURL
 [source,cURL]
 ----
-curl -X GET --header 'Accept: application/json' --header 'X-Requested-By: ThoughtSpot' 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/admin/configinfo'
+curl -X GET \
+--header 'Accept: application/json' \
+--header 'X-Requested-By: ThoughtSpot' \
+'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/admin/configinfo'
 ----
 
 .Request URL
@@ -294,7 +297,9 @@ Make sure the API request has the following headers:
 
 [source,curl]
 ----
-curl -X GET --header 'Accept: application/json' --header 'X-Requested-By: ThoughtSpot' 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/admin/configinfo/overrides'
+curl -X GET \
+--header 'Accept: application/json' \
+--header 'X-Requested-By: ThoughtSpot' \ 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/admin/configinfo/overrides'
 ----
 
 .Request URL
@@ -599,6 +604,8 @@ Response Code
 |**204** |Successful update of the configuration information
 |**401** |Unauthorized request
 |===
+
+////
 
 [#get-embed-actions]
 == Get details of the embed actions
@@ -1224,3 +1231,5 @@ After the custom action association is removed, the API returns a response body 
 |**401** |Unauthorized request
 |**404** |Invalid action ID
 |===
+
+////

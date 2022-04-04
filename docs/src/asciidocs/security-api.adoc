@@ -4,7 +4,7 @@
 
 :page-title: Security API
 :page-pageid: security-api
-:page-description: security API
+:page-description: To share objects and view permission settings, use the security API endpoints
 
 The Security APIs allow you to share ThoughtSpot objects, such as pinboards and visualizations, with another user or a user group. Any ThoughtSpot user can share objects with another user or user group. 
 
@@ -45,6 +45,7 @@ The following example shows how to set the permission string to provide read-onl
 
 `{"permissions": {"e7040a64-7ff1-4ab9-a1b0-f1acac596866": {"shareMode": "READ_ONLY"}, "f7b8f511-317c-485d-8131-26cf084ef47b": {"shareMode": "READ_ONLY"}}}`
 
+
 [IMPORTANT]
 ====
 To remove a user or user group's access to a shared object, you can set the `shareMode` in the permission string to `NO_ACCESS`. For example, if you send a POST request with the permission string as  `{"permissions":{"7a9a6715-e154-431b-baaf-7b58246c13dd":{"shareMode":"NO_ACCESS"}}}`, the user with a GUID of `7a9a6715-e154-431b-baaf-7b58246c13dd` cannot access the shared object.
@@ -62,7 +63,11 @@ To remove a user or user group's access to a shared object, you can set the `sha
 
 [source, cURL]
 ----
-curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: application/json' --header 'X-Requested-By: ThoughtSpot' -d 'type=PINBOARD_ANSWER_BOOK&id=%5B%22237921cc-ebf5-445a-8b7b-15c301f8456e%22%5D&permission=%7B%E2%80%9Cpermissions%E2%80%9D%3A%7B%E2%80%9C237921cc-ebf5-445a-8b7b-15c301f8456e%E2%80%9D%3A%7B%E2%80%9CshareMode%E2%80%9D%3A%E2%80%9DREAD_ONLY%E2%80%9D%7D%7D%7D&emailshares=%5B%22tsuser%40thoughtspot.com%22%5D&notify=false&useCustomEmbedUrls=true' 'https://<ThoughtSpot-host/callosum/v1/tspublic/v1/security/share'
+curl -X POST \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--header 'Accept: application/json' \
+--header 'X-Requested-By: ThoughtSpot' \
+-d 'type=PINBOARD_ANSWER_BOOK&id=["237921cc-ebf5-445a-8b7b-15c301f8456e"]&permission={“permissions”:{“237921cc-ebf5-445a-8b7b-15c301f8456e”:{“shareMode”:”READ_ONLY”}}}&emailshares=["tsuser@thoughtspot.com"]&notify=false&useCustomEmbedUrls=true' 'https://<ThoughtSpot-host/callosum/v1/tspublic/v1/security/share'
 
 ----
 
@@ -71,7 +76,7 @@ curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header
 https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/security/share
 ----
 
-== Example response
+=== Example response
 ----
 Response code
 
@@ -117,7 +122,12 @@ POST /tspublic/v1/security/shareviz
 .cURL
 [source, cURL]
 ----
-curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: application/json' --header 'X-Requested-By: ThoughtSpot' -d 'type=PINBOARD_ANSWER_BOOK&pinboardId=7a9a6715-e154-431b-baaf-7b58246c13dd&principalids=%5B%2259481331-ee53-42be-a548-bd87be6ddd4a%22%5D&vizid=e9753523-5de5-41ef-8d8c-b840f0260ea0&emailshares=%5Btsuser%40thoughtspot.com%5D&notify=true&useCustomEmbedUrls=false' 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/security/shareviz'
+curl -X POST \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--header 'Accept: application/json' \
+--header 'X-Requested-By: ThoughtSpot' \
+-d 'type=PINBOARD_ANSWER_BOOK&pinboardId=7a9a6715-e154-431b-baaf-7b58246c13dd&principalids=["59481331-ee53-42be-a548-bd87be6ddd4a"]&vizid=e9753523-5de5-41ef-8d8c-b840f0260ea0&emailshares=[tsuser@thoughtspot.com]&notify=true&useCustomEmbedUrls=false' \
+'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/security/shareviz'
 ----
 
 .Request URL
@@ -125,7 +135,7 @@ curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header
 https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/security/shareviz
 ----
 
-== Example response
+=== Example response
 ----
 Response code
 

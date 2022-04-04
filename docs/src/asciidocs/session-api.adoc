@@ -4,7 +4,7 @@
 
 :page-title: Session API
 :page-pageid: session-api
-:page-description: Session API
+:page-description: To log in to ThoughtSpot and create user sessions, use the session API endpoints
 
 The Session APIs allow ThoughtSpot users to authenticate and manage their sessions.
 
@@ -38,19 +38,24 @@ To set a pinboard as a home pinboard for a user account, send a `POST` request t
 POST /tspublic/v1/session/homepinboard
 ----
 === Request parameters
-[width="100%" cols="1,1,4"]
+[width="100%" cols="1,4"]
 [options='header']
 |===
-|Form Parameter|Data Type|Description
-|`id`|string|GUID of the pinboard to be set as a home pinboard.
-|`userid` __Optional__|string|GUID of the user account for which you want to set the home pinboard. If the `userid` attribute is not defined, ThoughtSpot sets the home pinboard of the current logged-in user.
+|Form Parameter|Description
+|`id`|__String__. GUID of the pinboard to be set as a home pinboard.
+|`userid` +
+__Optional__|__String__. GUID of the user account for which you want to set the home pinboard. If the `userid` attribute is not defined, ThoughtSpot sets the home pinboard of the current logged-in user.
 |===
 === Example request
 
 .cURL
 [source, cURL]
 ----
-curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: application/json' --header 'X-Requested-By: ThoughtSpot' -d 'id=7a9a6715-e154-431b-baaf-7b58246c13dd&userid=59481331-ee53-42be-a548-bd87be6ddd4a' 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/session/homepinboard'
+curl -X POST \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--header 'Accept: application/json' \
+--header 'X-Requested-By: ThoughtSpot' \
+-d 'id=7a9a6715-e154-431b-baaf-7b58246c13dd&userid=59481331-ee53-42be-a548-bd87be6ddd4a' \ 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/session/homepinboard'
 ----
 
 .Request URL
@@ -62,7 +67,6 @@ https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/session/homepinboard
 [options="header", cols="1,4"]
 |===
 |HTTP status code|Description
-|**200**|Successful operation.
 |**204**|The specified pinboard is set as a home pinboard. 
 |**403**|The pinboard with the given ID is not accessible.
 |**401**|Unauthorized request or invalid token.
@@ -83,7 +87,10 @@ GET /tspublic/v1/session/homepinboard
 .cURL
 [source, cURL]
 ----
-curl -X GET --header 'Accept: text/plain' --header 'X-Requested-By: ThoughtSpot' 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/session/homepinboard'
+curl -X GET \
+--header 'Accept: text/plain' \
+--header 'X-Requested-By: ThoughtSpot' \ 
+'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/session/homepinboard'
 ----
 
 .Request URL
@@ -107,7 +114,7 @@ If the home pinboard is set in the current logged-in user's account, the API ret
 
 [#del-home-pinboard]
 == Remove a home pinboard
-To remove the home pinboard setting from current logged-in user's account, send a DELETE request to the `/tspublic/v1/session/homepinboard` API endpoint.
+To remove the home pinboard setting from current logged-in user's account, send a `DELETE` request to the `/tspublic/v1/session/homepinboard` API endpoint.
 
 === Resource URL
 ----
@@ -119,7 +126,10 @@ DELETE /tspublic/v1/session/homepinboard
 .cURL
 [source, cURL]
 ----
-curl -X DELETE --header 'Accept: application/json' --header 'X-Requested-By: ThoughtSpot' 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/session/homepinboard'
+curl -X DELETE \
+--header 'Accept: application/json' \
+--header 'X-Requested-By: ThoughtSpot' \
+'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/session/homepinboard'
 ----
 
 .Request URL
@@ -138,5 +148,5 @@ Response Code
 [options="header", cols="1,4"]
 |===
 |HTTP status code|Description
-|**200**|Successful operation.
+|**200**|Successful operation
 |===
