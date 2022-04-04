@@ -1,0 +1,222 @@
+= Pinboard export API
+:toc: true
+:toclevels: 1
+
+:page-title: Export Pinboard as PDF
+:page-pageid: pinboard-export-api
+:page-description: The pinboard export API endpoint allows you to download a pinboard or its visualizations in the PDF format
+
+To programmatically download a pinboard or specific visualizations from a pinboard as a PDF file, use the `/tspublic/v1/export/pinboard/pdf`.
+
+[NOTE]
+====
+To remove ThoughtSpot logos from the exported PDFs, contact your ThoughtSpot team.
+====
+
+== Resource URL
+
+----
+POST /tspublic/v1/export/pinboard/pdf
+----
+
+== Request parameters
+
+[width="100%" cols="1,1,3,1"]
+[options='header']
+|====
+|Form Parameter|Data Type|Description|Default
+|`id`|string|GUID of the Pinboard to download|none
+|`visualization_ids`|string|GUIDs of the visualizations to include in the PDF in the JSON array format. For example, `['aab9eb75-d295-4a79-ac37-4a37c1cce0b3', '039943a7-77cb-4fa1-a8a2-785a2b5ebe28']`. If you have specified the visualization IDs, make sure you set the `layout_type` parameter to `VISUALIZATION`. |none
+|`transient_pinboard_content`|string|If the Pinboard has unsaved changes, pass this parameter in the xref:pinboard-export-api.adoc#transient-content[browser fetch request].|none
+|`layout_type`|string|Layout type for the PDF. Valid values are `PINBOARD` and  `VISUALIZATION`. For `PINBOARD`, the PDF uses the same layout as the pinboard UI. For `VISUALIZATION`, the PDF has one visualization for each page.|`PINBOARD`
+|`orientation`|string|Page orientation for the PDF. Valid values are `PORTRAIT` and `LANDSCAPE`.|`LANDSCAPE`
+|`truncate_tables`|boolean|When set to true, only the first page of the tables is displayed in the PDF. This setting is applicable  only if the `layout_type` parameters is set to `VISUALIZATION`|`false`
+|`include_logo`|boolean|Include customized wide logo if available in the footer|`true`
+|`footer_text` _Optional_|string|Footer text to include in the footer of each page of the PDF.|none
+|`include_page_number`|boolean|When set to `true`, the page number is included in the footer of each page.|`true`
+|`include_cover_page`|boolean|When set to `true`, a cover page with the Pinboard title is added in the PDF.|`true`
+|`include_filter_page`|boolean|When set to `true`, a second page with a list of all applied filters is added in the PDF|`true`
+|====
+
+== Example request
+
+Make sure the API request has the following headers:
+
+* The `Accept` header is set as `Accept: application/octet-stream`
+* The `Content-type` header set as `Content-type: multipart/form-data`
+* The `X-requested-by` header set as `X-Requested-By: ThoughtSpot`
+
+.cURL
+[source,curl]
+----
+ curl --location --request POST 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/export/pinboard/pdf' \
+--header 'Content-Type: multipart/form-data \
+--header 'Accept: application/octet-stream' \
+--header 'X-Requested-By: ThoughtSpot' \
+--header 'Cookie: JSESSIONID=71cc2672-7ead-4480-be7d-b6ad52023e98; userGUID=59481331-ee53-42be-a548-bd87be6ddd4a; Callosum-Download-Initiated=false' \
+--form 'id="061457a2-27bc-43a9-9754-0cd873691bf0"' \
+--form 'layout_type="PINBOARD"' \
+--form 'orientation="LANDSCAPE"' \
+--form 'truncate_tables="false"' \
+--form 'include_logo="true"' \
+--form 'include_page_number="true"' \
+--form 'include_filter_page="true"' \
+--form 'include_cover_page="true"'
+----
+
+.Request URL
+
+[source,html]
+----
+https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/export/pinboard/pdf
+----
+
+== Example response
+
+The response appears in the form of a raw pdf file. The response type is `application/octet-stream`.
+
+== Runtime filters
+
+You can modify the API's output by passing runtime filters as parameters in the  resource URL.
+
+For example:
+
+----
+https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/export/pinboard/pdf?col1=COL_NAME1&op1=OP_TYPE1&val1=VALUE1&coln=COL_NAMEn&opn=OP_TYPEn&valn=VALUEn
+----
+
+You can add more than one filter by specifying `col2`, `op2`, `val2`, and so on.
+[width="100%" cols="1,5"]
+[options='header']
+|===
+| Parameter | Definition
+
+| col<__n__>
+| Name of the column to filter on.
+
+| op<__n__>
+| {IN, EQ, NE, LT, LE...}
+
+| val<__n__>
+| Value of the column to filter on.
+|===
+
+[NOTE]
+These parameters are case-insensitive. For example, `EQ`, `eq`, and `eQ` have the same result.
+
+=== Runtime filter operators
+[width="100%" cols="1,2,1"]
+[options='header']
+|===
+| Operator | Description | Number of Values
+
+| `EQ`
+| equals
+| 1
+
+| `NE`
+| does not equal
+| 1
+
+| `LT`
+| less than
+| 1
+
+| `LE`
+| less than or equal to
+| 1
+
+| `GT`
+| greater than
+| 1
+
+| `GE`
+| greater than or equal to
+| 1
+
+| `CONTAINS`
+| contains
+| 1
+
+| `BEGINS_WITH`
+| begins with
+| 1
+
+| `ENDS_WITH`
+| ends with
+| 1
+
+| `BW_INC_MAX`
+| between inclusive of the higher value
+| 2
+
+| `BW_INC_MIN`
+| between inclusive of the lower value
+| 2
+
+| `BW_INC`
+| between inclusive
+| 2
+
+| `BW`
+| between non-inclusive
+| 2
+
+| `IN`
+| is included in this list of values
+| multiple
+|===
+
+[#transient-content]
+== Embedded Pinboard with unsaved changes
+
+If you have embedded ThoughtSpot in your host application, and you want to download Pinboards with unsaved changes as PDFs, pass the `transient_pinboard_content` parameter in the browser fetch request, using the `getExportRequestForCurrentPinboard` method.
+
+[source,javascript]
+----
+function getExportRequestForCurrentPinboard(frame: HTMLIframeElement): Promise<string>;
+----
+
+The promise returned resolves to  a string that contains the transient pinboard content, which is encoded as JSON and is sent to the `/tspublic/v1/export/pinboard/pdf` endpoint with the `transient_pinboard_content` key. This content resembles the current Pinboard as is, including the unsaved changes.
+
+=== Sample browser fetch request
+[source,javascript]
+----
+<iframe src="http://ts_host:port/" id="ts-embed"></iframe>
+<script src="/path/to/ts-api.js"></script>
+<script>
+const tsFrame = document.getElementById("ts-embed");
+async function downloadPDF() {
+  const transientPinboardContent = await thoughtspot.getExportRequestForCurrentPinboard(tsFrame);
+  const pdfResponse = await fetch("http://ts_host:port/callosum/v1/tspublic/v1/export/pinboard/pdf", {
+    method: "POST",
+    body: createFormDataObjectWith({
+      "layout_type": "PINBOARD",
+      "transient_pinboard_content": transientPinboardContent,
+    }),
+  });
+  // Do something with pdfResponse.blob()
+}
+</script>
+----
+
+
+== Response codes
+
+[width="100%" cols="1,5"]
+[options='header']
+|===
+| HTTP status code | Description
+
+| **200**
+| Streaming output for pinboard pdf
+
+| **400**
+| Invalid parameter values
+
+| **403**
+| No read access for pinboard
+
+| **404**
+| Object not found
+|===

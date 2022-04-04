@@ -1,0 +1,69 @@
+= REST API Reference
+:toc: true
+
+:page-title: REST API Reference Guide
+:page-pageid: rest-api-reference
+:page-description: REST API Reference
+
+
+== User management
+
+include::partial$user-api-list.adoc[]
+
+== User group management
+
+include::partial$group-api-list.adoc[]
+
+== Session management
+
+include::partial$session-api-list.adoc[]
+
+== Metadata management
+
+include::partial$metadata-api-list.adoc[]
+
+== Configuration management
+
+include::partial$admin-api-list.adoc[]
+
+
+== Materialization service
+
+[width="100%", cols="2,2"]
+[%noheader]
+|====
+|`xref:materialization-api.adoc[*POST* /tspublic/v1/materialization/refreshview/{id}]`
+
+|Allows you refresh a materialized view.
+|====
+
+== TML objects
+
+include::partial$tml-api-list.adoc[]
+
+== Pinboard data
+
+include::partial$pinboard-api-list.adoc[]
+
+== Search data
+
+[width="100%", cols="2,2"]
+[%noheader]
+|====
+|`xref:search-data-api.adoc[**POST** /tspublic/v1/searchdata]`
+|Allows searching for data from a specific data source in the ThoughtSpot application.
+|====
+
+== Dependent objects
+
+include::partial$dependency-api-list.adoc[]
+
+== Security
+
+include::partial$security-api-list.adoc[]
+
+== Database and schema
+
+include::partial$database-api-list.adoc[]
+
+ 

@@ -1,0 +1,152 @@
+= Session APIs
+:toc: true
+:toclevels: 1
+
+:page-title: Session API
+:page-pageid: session-api
+:page-description: To log in to ThoughtSpot and create user sessions, use the session API endpoints
+
+The Session APIs allow ThoughtSpot users to authenticate and manage their sessions.
+
+include::partial$session-api-list.adoc[]
+
+[#session-login]
+== Sign in as a ThoughtSpot user
+
+include::partial$log-in-api.adoc[]
+
+[#session-logout]
+== Log out of a user session
+
+include::partial$log-out-api.adoc[]
+
+[#session-authToken]
+== Obtain an authentication token
+
+include::partial$auth-token-api.adoc[]
+
+[#session-loginToken]
+== Authenticate and log in a user 
+include::partial$login-token-api.adoc[]
+
+[#set-home-pinboard]
+== Set a pinboard as a home pinboard
+To set a pinboard as a home pinboard for a user account, send a `POST` request to the `/tspublic/v1/session/homepinboard` API endpoint. If a home pinboard is configured for a user account, ThoughtSpot displays it as the default home page when the user logs in.  
+
+=== Resource URL
+----
+POST /tspublic/v1/session/homepinboard
+----
+=== Request parameters
+[width="100%" cols="1,4"]
+[options='header']
+|===
+|Form Parameter|Description
+|`id`|__String__. GUID of the pinboard to be set as a home pinboard.
+|`userid` +
+__Optional__|__String__. GUID of the user account for which you want to set the home pinboard. If the `userid` attribute is not defined, ThoughtSpot sets the home pinboard of the current logged-in user.
+|===
+=== Example request
+
+.cURL
+[source, cURL]
+----
+curl -X POST \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--header 'Accept: application/json' \
+--header 'X-Requested-By: ThoughtSpot' \
+-d 'id=7a9a6715-e154-431b-baaf-7b58246c13dd&userid=59481331-ee53-42be-a548-bd87be6ddd4a' \ 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/session/homepinboard'
+----
+
+.Request URL
+----
+https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/session/homepinboard
+----
+
+=== Response codes
+[options="header", cols="1,4"]
+|===
+|HTTP status code|Description
+|**204**|The specified pinboard is set as a home pinboard. 
+|**403**|The pinboard with the given ID is not accessible.
+|**401**|Unauthorized request or invalid token.
+|**404**|The specified pinboard was not found.
+|===
+
+[#get-home-pinboard]
+== Get details of the home pinboard
+To get the pinboard GUID that is set as home pinboard in the current logged in user account, send a GET request to the `/tspublic/v1/session/homepinboard` API endpoint.
+
+=== Resource URL
+----
+GET /tspublic/v1/session/homepinboard
+----
+
+=== Example request
+
+.cURL
+[source, cURL]
+----
+curl -X GET \
+--header 'Accept: text/plain' \
+--header 'X-Requested-By: ThoughtSpot' \ 
+'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/session/homepinboard'
+----
+
+.Request URL
+----
+https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/session/homepinboard
+----
+
+=== Example response
+If the home pinboard is set in the current logged-in user's account, the API returns the GUID of the pinboard set as a home pinboard:
+
+----
+7a9a6715-e154-431b-baaf-7b58246c13dd
+----
+
+=== Response codes
+[options="header", cols="1,4"]
+|===
+|HTTP status code|Description
+|**200**|Successful operation.
+|===
+
+[#del-home-pinboard]
+== Remove a home pinboard
+To remove the home pinboard setting from current logged-in user's account, send a `DELETE` request to the `/tspublic/v1/session/homepinboard` API endpoint.
+
+=== Resource URL
+----
+DELETE /tspublic/v1/session/homepinboard
+----
+
+=== Example request
+
+.cURL
+[source, cURL]
+----
+curl -X DELETE \
+--header 'Accept: application/json' \
+--header 'X-Requested-By: ThoughtSpot' \
+'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/session/homepinboard'
+----
+
+.Request URL
+----
+https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/session/homepinboard
+----
+
+=== Example response
+If the home pinboard is set in the current logged-in user's account, the API returns the following response:
+
+----
+Response Code
+200
+----
+=== Response codes
+[options="header", cols="1,4"]
+|===
+|HTTP status code|Description
+|**200**|Successful operation
+|===

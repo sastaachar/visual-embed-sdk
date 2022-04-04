@@ -1,0 +1,55 @@
+ThoughtSpot supports the trusted authentication method, which is also known as token-based authentication. In the trusted authentication method, ThoughtSpot users are authenticated by an external authentication server.
+When ThoughtSpot receives a request from a trusted authentication service, it returns an authentication token to allow authenticated users to access ThoughtSpot content.
+If you have enabled xref:trusted-authentication.adoc[trusted authentication] on ThoughtSpot and obtained a secret key, you can use the `/tspublic/v1/session/auth/token` API to get an authentication token for a ThoughtSpot user.
+
+=== Resource URL
+----
+POST /tspublic/v1/session/auth/token
+----
+=== Request parameters
+
+[width="100%" cols="1,4"]
+[options='header']
+|====
+|Form Parameter|Description
+|`secret_key`|__String__. The secret key string provided by the ThoughtSpot application server. ThoughtSpot generates this secret key when you enable trusted authentication.
+|`username` |__String__. The username of the user configured in ThoughtSpot.
+|`access_level` a|__String__. User access privilege. Valid values are:
+
+* `FULL` - Creates a session with full access.
+* `REPORT_BOOK_VIEW` - Allow view access to the specified visualizations.
+|`id`|string|GUID of the ThoughtSpot object. If you have set the `access_level` attribute to `REPORT_BOOK_VIEW`, specify the GUID of the pinboard or visualization object.
+|====
+
+=== Example request
+
+.cURL
+[source, cURL]
+----
+curl -X POST \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--header 'Accept: application/json' \
+--header 'X-Requested-By: ThoughtSpot' \
+'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/session/auth/token'
+----
+
+.Request URL
+----
+https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/session/auth/token
+----
+
+=== Example response
+The API returns an authentication token for the user:
+
+----
+JHNoaXJvMSRTSEEtMjU2JDUwMDAwMCRPMFA2S0ZlNm51Qlo4NFBlZUppdzZ3PT0kMnJKaSswSHN6Yy96ZGxqdXUwd1dXZkovNVlHUW40d3FLMVdBT3hYVVgxaz0
+----
+=== Response codes
+
+[options="header", cols="1,4"]
+|===
+|HTTP status code|Description
+|**200**|The authentication token is generated successfully.
+|**401**|Unauthorized request or invalid token.
+|**500**|Token-based trusted authentication is not enabled on ThoughtSpot.
+|===
