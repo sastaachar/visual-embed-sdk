@@ -1,0 +1,70 @@
+= ThoughtSpot Developer portal
+:toc: true
+
+:page-title: ThoughtSpot Developer Portal
+:page-pageid: spotdev-portal
+:page-description: Using ThoughtSpot Developer Portal
+
+
+[IMPORTANT]
+====
+Important notes go here
+====
+
+[NOTE]
+====
+Note text goes here
+====
+
+[TIP]
+====
+Tips and tricks 
+====
+
+[WARNING]
+====
+Here is a warning
+====
+
+[CAUTION]
+====
+Here is a caution
+====
+
+== URL prefixes and variables
+
+* `{{previewPrefix}}` 
++
+This variable points to the host URL from which docs are accessed (in-app docs). On dev docs public site, this variable points to `https://try-everywhere.thoughtspot.cloud/v2`
+
++
+++++
+<a href="{{previewPrefix}}/playground/search" id="preview-in-playground" target="_blank">Visit the  Playground</a>
+++++
+
+
+* `{{tshost}}` 
++
+When the doc page accessed from the UI, this variable points to the host URL that the user is on. On the dev docs public site, it goes to `\https://try-everywhere.thoughtspot.cloud`.
+
++
+++++
+<a href="{{tshost}}/external/swagger" id="preview-in-playground" target="_blank">Go to Swagger Portal</a>
+++++
+
+
+* `{{visualEmbedSDKPrefix}}`
++
+This variable is used for SDK reference docs and points to typedoc path in the branch. For example, the cloud version of dev docs uses the html files in the `\https://github.com/thoughtspot/visual-embed-sdk/tree/release/static/typedoc` directory and shows the URL as `https://developers.thoughtspot.com/docs/typedoc/<filename>.html`
+ 
+Example: link:{{visualEmbedSDKPrefix}}/modules.html[SDK Reference Guide, window=_blank]
+
+
+== Partials
+
+For partials, dev docs uses `include::{path}/`. 
+
+Example:
+
+include::{path}/log-in-api.adoc[]
+include::{path}/login-token-api.adoc[]
