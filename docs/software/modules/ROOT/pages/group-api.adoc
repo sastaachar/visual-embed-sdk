@@ -433,7 +433,7 @@ curl -X POST \
 --header 'Accept: application/json' \
 -F 'privilege=DATADOWNLOADING' \
 -F 'groupNames=%5B%22TS%20Group%22%2C%20%22ALL%22%5D;type=application/json' \
-https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/group/removeprivilege
+'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/group/removeprivilege'
 ----
 
 .Request URL
@@ -479,7 +479,8 @@ POST /tspublic/v1/group/{groupid}/user/{userid}
 curl -X POST \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
---header 'X-Requested-By: ThoughtSpot' \ 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/group/1f58ba19-83a8-48ee-86e7-9c16f61157e3/user/80560f25-f24e-4c2a-b015-10b9770287c6'
+--header 'X-Requested-By: ThoughtSpot' \ 
+'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/group/1f58ba19-83a8-48ee-86e7-9c16f61157e3/user/80560f25-f24e-4c2a-b015-10b9770287c6'
 ----
 
 .Request URL
