@@ -329,7 +329,10 @@ export class TsEmbed {
         queryParams[Param.ViewPortHeight] = window.innerHeight;
         queryParams[Param.ViewPortWidth] = window.innerWidth;
         queryParams[Param.Version] = version;
-        if (this.embedConfig.disableLoginRedirect === true) {
+        if (
+            this.embedConfig.disableLoginRedirect === true ||
+            this.embedConfig.autoLogin === true
+        ) {
             queryParams[
                 Param.DisableLoginRedirect
             ] = this.embedConfig.disableLoginRedirect;
