@@ -333,9 +333,7 @@ export class TsEmbed {
             this.embedConfig.disableLoginRedirect === true ||
             this.embedConfig.autoLogin === true
         ) {
-            queryParams[
-                Param.DisableLoginRedirect
-            ] = this.embedConfig.disableLoginRedirect;
+            queryParams[Param.DisableLoginRedirect] = true;
         }
         if (this.embedConfig.customCssUrl) {
             queryParams[Param.CustomCSSUrl] = this.embedConfig.customCssUrl;
