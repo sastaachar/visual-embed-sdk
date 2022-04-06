@@ -112,7 +112,7 @@ export interface ViewConfig {
     runtimeFilters?: RuntimeFilter[];
     /**
      * The locale/language to use for the embedded view.
-     * @version 1.9.4 or later
+     * @version 1.9.5 or later
      */
     locale?: string;
     /**
