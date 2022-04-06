@@ -919,15 +919,6 @@ The above example covers user objects (with emails), group objects, and their re
 ====
 
 
-=== Example response
-
-If the operation is successful, the API returns the following response:
-
-----
-Response Code
-204
-----
-
 === Response codes
 [width="100%" cols="2,4"]
 [options='header']
