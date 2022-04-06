@@ -15,12 +15,12 @@ include::{path}/user-api-list.adoc[]
 [#create-user]
 == Create a user
 
-To programmatically create a user account in the ThoughtSpot system, send a `POST` request to `/tspublic/v1/user/` API endpoint. Using this endpoint, you can create a user and assign a user to a group.
+To programmatically create a user account in the ThoughtSpot system, send a `POST` request to `/tspublic/v1/user/` API endpoint.
 
 [NOTE]
 ====
 * To create a user, you require admin user privileges.
-* All users created in the ThoughtSpot system are added to `ALL` group.
+* All users created in the ThoughtSpot system are added to `All` group.
 ====
 
 === Resource URL
@@ -57,7 +57,8 @@ curl -X POST \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --header 'Accept: application/json' \
 --header 'X-Requested-By: ThoughtSpot' \
--d 'name=TS%20User&password=testy1%4022&displayname=TS%20User&usertype=LOCAL_USER&visibility=DEFAULT' 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/'
+-d 'name=TS%20User&password=testy1%4022&displayname=TS%20User&usertype=LOCAL_USER&visibility=DEFAULT' \
+'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/'
 ----
 
 .Request URL
@@ -132,7 +133,7 @@ If the user is successfully created in ThoughtSpot, the API returns the user GUI
 
 == Update user details
 
-To modify the attributes of a ThoughtSpot user account, send a `PUT` request to the  `/tspublic/v1/user/{userid}` endpoint.  
+To modify the attributes of a ThoughtSpot user account, send a `PUT` request to the  `/tspublic/v1/user/{userid}` endpoint.
 
 This API allows the following modifications to a user profile:
 
@@ -293,7 +294,8 @@ You can use either `userid` or `name` to query data for a specific user. If usin
 ----
 curl -X GET \
 --header 'Accept: application/json' \
---header 'X-Requested-By: ThoughtSpot' \ 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/?userid=b995e481-d0a7-4820-b1e8-54051ede77a2'
+--header 'X-Requested-By: ThoughtSpot' \
+'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/?userid=b995e481-d0a7-4820-b1e8-54051ede77a2'
 ----
 .Request URL
 
@@ -397,7 +399,8 @@ DELETE /tspublic/v1/user/{userid}
 ----
 curl -X DELETE \
 --header 'Accept: application/json' \
---header 'X-Requested-By: ThoughtSpot' \ 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/ee74b737-da39-4667-95ad-cc06c81ab13d'
+--header 'X-Requested-By: ThoughtSpot' \
+'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/ee74b737-da39-4667-95ad-cc06c81ab13d'
 ----
 
 .Request URL
@@ -425,7 +428,7 @@ Response Code
 
 [#user-list]
 == Get a list of users and groups
-To get a list of all users, groups, and their inter-dependencies in the form of principal objects, use the  `/tspublic/v1/user/list` API.
+To get a list of all users, groups, and their inter-dependencies in the form of principal objects, use the  `/tspublic/v1/user/list` API endpoint.
 
 === Resource URL
 ----
@@ -435,6 +438,8 @@ GET /tspublic/v1/user/list
 === Example request
 
 .cURL
+
+[source,cURL]
 ----
 curl -X GET \
 --header 'Accept: application/json' \
@@ -507,8 +512,8 @@ The email address of the user. This field is populated only for the user objects
 Type of the user created in the ThoughtSpot system.
 Valid values are:
 
-** `LOCAL_USER`
-** `LOCAL_GROUP`
+** `LOCAL_USER` for users that are created and authenticated locally in the ThoughtSpot system.
+** `LOCAL_GROUP` for groups that are saved in the local database of the ThoughtSpot system.
 
 * `password`
 +
@@ -522,7 +527,7 @@ Password is only required:
 
 * `groupNames`
 +
-Name of the groups to which a principal belongs. For example, `Administrator`, `ALL_GROUP`, and so on. Users can belong to multiple groups.
+Name of the groups to which a principal belongs. For example, `Administrator`, `All`, and so on. Users can belong to multiple groups.
 
 * `visibility`
 +
@@ -564,7 +569,8 @@ curl -X POST \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --header 'Accept: application/json' \
 --header 'X-Requested-By: ThoughtSpot' \
--d 'name=guest&currentpassword=test&password=User1234!' \ 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/updatepassword'
+-d 'name=guest&currentpassword=test&password=User1234!' \
+'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/updatepassword'
 ----
 
 .Request URL
@@ -572,12 +578,21 @@ curl -X POST \
 https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/updatepassword
 ----
 
+=== Example response
+
+If the operation is successful, the API returns the following response:
+
+----
+Response Code
+204
+----
+
 === Response codes
 [width="100%" cols="2,4"]
 [options='header']
 |===
 |HTTP status code|Description
-|**200**|Password update is successful.
+|**204**|Password update is successful.
 |===
 
 [#updatepreference-api]
@@ -649,7 +664,8 @@ curl -X POST \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --header 'Accept: application/json' \
 --header 'X-Requested-By: ThoughtSpot' \
--d 'userid=59481331-ee53-42be-a548-bd87be6ddd4a&preferences={"showWalkMe":true,"notifyOnShare":true,"analystOnboardingComplete":false,"preferredLocale":"en-IN"}' \ 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/updatepreference''
+-d 'userid=59481331-ee53-42be-a548-bd87be6ddd4a&preferences={"showWalkMe":true,"notifyOnShare":true,"analystOnboardingComplete":false,"preferredLocale":"en-IN"}' \
+'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/updatepreference''
 ----
 
 .Request URL
@@ -720,7 +736,7 @@ The allowed values are:
 [options='header']
 |===
 |HTTP status code|Description
-|**200**| Successful update of a user profile
+|**204**| Successful update of a user profile
 |**400**| Invalid user ID
 |===
 
@@ -751,7 +767,8 @@ POST /tspublic/v1/user/transfer/ownership
 curl -X POST \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
---header 'X-Requested-By: ThoughtSpot' \ 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/transfer/ownership?fromUserName=guest&toUserName=guest1'
+--header 'X-Requested-By: ThoughtSpot' \
+'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/transfer/ownership?fromUserName=guest&toUserName=guest1'
 ----
 
 .Request URL
@@ -764,7 +781,7 @@ https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/transfer/ownership?fromU
 [options='header']
 |===
 |HTTP Code|Description
-|**200**|The ownership of objects is successfully transferred.
+|**204**|The ownership of objects is successfully transferred.
 |**400**|Invalid `fromName` or `toName`, or no user in the ThoughtSpot that matches the specified username.
 |===
 
@@ -800,13 +817,13 @@ Make sure you use a JSON file encoded as `application/json` or `text/json` for t
 |===
 |Form Parameter|Description
 
-|`principals`|__String__. Specifies a list of principal objects. This is a JSON file containing all users and groups present in the external database.
+|`principals`|__String__. Specify a list of principal objects in xref:user-api.adoc#principalJson[the JSON file format]. The JSON file can contain all users and groups present in the external database.
 
-|`applyChanges`|__Boolean__. Specifies whether to sync the users and groups to the system and apply the difference evaluated.
-By default, this attribute is set to `false`.
+|`applyChanges`|__Boolean__. Specify whether to sync the users and groups to the system and apply the difference evaluated.
+ By default, this attribute is set to `false`.
 
 |`removeDeleted`|
-__Boolean__. Specifies whether to remove the deleted users and user groups. By default, this attribute is set to `false`. To remove deleted users or user groups, set this attribute to `true`.
+__Boolean__. Specify whether to remove the deleted users and user groups. By default, this attribute is set to `true`. If you do not want to remove deleted users or user groups, make sure to set `removeDeleted` to `false`.
 
 |`password`
 |__String__. The password of the admin user.
@@ -822,7 +839,7 @@ curl -X POST \
 --header 'Cookie : JSESSIONID=0f534ede-f096-44d0-966a-f02be91dcb68; clientId=5ea75049-cbc9-4443-b083-2d148059c235; userGUID=a0d4311a-d123-48e5-806b-8bdc35e3e835' \
 --header 'Accept: application/json' \
 -F 'applyChanges=false' \
--F 'removeDeleted=false'
+-F 'removeDeleted=false' \
 -F 'principals=@principals.json;type=application/json' \
 https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/sync
 ----
@@ -832,6 +849,7 @@ https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/sync
 https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/sync
 ----
 
+[#principalJson]
 ==== JSON request
 
 The `principals.json` file contains the JSON request to be sent for synchronizing users. Make sure the JSON file is encoded as `application/json` in the API request.
@@ -900,10 +918,21 @@ The above example covers user objects (with emails), group objects, and their re
 * Set `visibility` to `NON_SHARABLE` if you do not want users to share ThoughtSpot objects with other users in this group.
 ====
 
+
+=== Example response
+
+If the operation is successful, the API returns the following response:
+
+----
+Response Code
+204
+----
+
 === Response codes
 [width="100%" cols="2,4"]
 [options='header']
 |===
 |HTTP status code|Description
-|**200**| The user sync operation is successful.
+|**200**| The user sync operation is successful
+|**500**| Invalid request
 |===
