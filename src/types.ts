@@ -129,7 +129,7 @@ export interface EmbedConfig {
      * @version SDK: 1.9.3 | ThoughtSpot: 8.1.0.cl
      * @default false
      */
-     disableLoginRedirect?: boolean;
+    disableLoginRedirect?: boolean;
 
     /**
      * Calls the prefetch method internally when set to true
@@ -485,6 +485,7 @@ export enum Param {
     CustomCSSUrl = 'customCssUrl',
     visibleVizs = 'pinboardVisibleVizs',
     DisableLoginRedirect = 'disableLoginRedirect',
+    Locale = 'locale',
 }
 
 /**

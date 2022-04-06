@@ -111,6 +111,11 @@ export interface ViewConfig {
      */
     runtimeFilters?: RuntimeFilter[];
     /**
+     * The locale/language to use for the embedded view.
+     * @version 1.9.4 or later
+     */
+    locale?: string;
+    /**
      * This is an object (key/val) of override flags which will be applied
      * to the internal embedded object. This can be used to add any
      * URL flag.
@@ -339,6 +344,7 @@ export class TsEmbed {
             hiddenActions,
             visibleActions,
             additionalFlags,
+            locale,
         } = this.viewConfig;
 
         if (Array.isArray(visibleActions) && Array.isArray(hiddenActions)) {
@@ -359,6 +365,9 @@ export class TsEmbed {
         }
         if (Array.isArray(visibleActions)) {
             queryParams[Param.VisibleActions] = visibleActions;
+        }
+        if (locale !== undefined) {
+            queryParams[Param.Locale] = locale;
         }
         if (additionalFlags && additionalFlags.constructor.name === 'Object') {
             Object.assign(queryParams, additionalFlags);
