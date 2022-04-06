@@ -1,6 +1,5 @@
 = Admin APIs
-:toc: true
-:toclevels: 1
+
 
 :page-title: Admin APIs
 :page-pageid: admin-api
