@@ -1,6 +1,7 @@
-
-[width="100%"]
+[width="100%", cols="2,2"]
+[options='header']
 |====
+|API endpoint|Description
 |`xref:admin-api.adoc#get-configInfo[*GET* /tspublic/v1/admin/configinfo]`
 
 |Gets details of the current configuration of a ThoughtSpot cluster.

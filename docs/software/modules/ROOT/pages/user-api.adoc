@@ -10,7 +10,7 @@ The User API endpoints allow you to programmatically manage ThoughtSpot users.
 
 == Supported operations
 
-include::partial$user-api-list.adoc[]
+include::partial$metadata-api-list.adoc[]
 
 [#create-user]
 == Create a user
