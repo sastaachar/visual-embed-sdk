@@ -54,8 +54,8 @@ Make sure the {object-id} and {sub-object-id} variables are used only for Though
 
 To customize the link format, follow these steps:
 
-. Go to *Develop* > *Customizations* > *Links*.
-. In the *Links* page, specify the link format.
+. Go to *Develop* > *Customizations* > *Links settings*.
+. In the *Links Settings* page, specify the link format.
 +
 
 Pinboard sharing URL::
@@ -89,7 +89,7 @@ https://www.mysite.com/pinboard/{object-id}/{sub-object-id}
 https://www.mysite.com/?pinboard={object-id}/viz={sub-object-id}
 ----
 Answer sharing URL::
-This URL provides a link to an answer that is shared.
+This URL provides a link to a shared answer from a search query.
 The default link format is `\https://<ThoughtSpot-Host>/#/saved-answer/{object-id}`. If your host application is `www.mysite.com`, you can configure this link format as shown here:
 
 +

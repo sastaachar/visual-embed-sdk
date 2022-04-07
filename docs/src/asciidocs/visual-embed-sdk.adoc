@@ -10,7 +10,7 @@ The Visual Embed SDK provides a Javascript library to embed ThoughtSpot elements
 You can use the Visual Embed SDK for the following purposes:
 
 * Embed specific components of the ThoughtSpot application; for example, search, pinboards, and visualizations.
-* Render full ThoughtSpot application within the context of your host application.
+* Render full ThoughtSpot application within a host application.
 
 Follow the steps described in the sections below to embed ThoughtSpot features in your application.
 
@@ -41,7 +41,7 @@ Download the Visual Embed SDK package, set up your application environment, and 
 --
 +++<h5>Configure authentication method</h5>+++
 
-Learn how to set up xref:configure-saml.adoc[SAML SSO] or xref:trusted-authentication.adoc[trusted authentication service], and xref:embed-authentication.adoc[configure authentication methods in SDK] to authenticate your  application users.
+Learn how to set up xref:configure-saml.adoc[SAML SSO] or xref:trusted-authentication.adoc[trusted authentication service], and xref:embed-authentication.adoc[configure authentication methods in SDK] to authenticate your  application users. 
 
 --
 
@@ -49,7 +49,7 @@ Learn how to set up xref:configure-saml.adoc[SAML SSO] or xref:trusted-authentic
 --
 +++<h5>Embed search</h5>+++
 
-Learn xref:embed-search.adoc[how to embed ThoughtSpot search] in your application.
+Learn xref:embed-search.adoc[how to embed ThoughtSpot search] in your application. 
 --
 
 [div boxDiv boxFullWidth]
@@ -80,8 +80,8 @@ Learn how to xref:full-embed.adoc[embed full ThoughtSpot experience] in your app
 [div boxDiv boxFullWidth]
 --
 
-* link:{{visualEmbedSDKPrefix}}/modules.html[Visual Embed SDK Reference Guide, window=_blank]
-* link:https://github.com/thoughtspot/visual-embed-sdk#readme[ReadMe, window=_blank]
-* link:https://github.com/thoughtspot/visual-embed-sdk[Visual Embed SDK GitHub repository, window=_blank]
+* link:{{visualEmbedSDKPrefix}}/modules.html[Visual Embed SDK Reference Guide, window=_blank] 
 * link:https://developers.thoughtspot.com/guides[Visual Embed Tutorials]
+* link:https://github.com/thoughtspot/visual-embed-sdk[Visual Embed SDK GitHub repository, window=_blank]
+* link:https://github.com/thoughtspot/ts_everywhere_resources[ThoughtSpot Everywhere Resources on GitHub, window=_blank]
 --

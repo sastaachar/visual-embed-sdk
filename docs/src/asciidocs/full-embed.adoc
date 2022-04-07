@@ -1,21 +1,19 @@
 = Embed full application
 :toc: true
 
-:page-title: Embed full application
+:page-title: Embed Full Application
 :page-pageid: full-embed
-:page-description: You can embed full ThoughtSpot experience in your application and allow your users to create content for live analytics.
+:page-description: You can embed full ThoughtSpot experience in your application and allow your users to create content for live analytics
 
-To integrate full ThoughtSpot experience in your application, you can use the full app embedding method. 
+To integrate full ThoughtSpot experience in your application, you can use the full app embedding method.
 
 The full app embedding allows you to integrate many features and pages of the ThoughtSpot application, and provide your users the ability to perform the following tasks:
-
 * create answers and pinboards
 * share objects with other users
-* upload data 
+* upload data, and refresh uploaded data
 * relate uploaded data to existing worksheets
 * use saved answers
 * use SpotIQ
-
 However, your application users will not have access to the following features in the embedded ThoughtSpot instance:
 
 * create worksheets
@@ -23,210 +21,250 @@ However, your application users will not have access to the following features i
 * modify profiles
 * view the Help Center
 
-To embed the full ThoughtSpot application in your app, website, or product, complete the steps described in the following sections.  
+To embed the full ThoughtSpot application in your app, website, or product, complete the steps described in the following sections.
 
-=== Import the AppEmbed package
+
+== Import the AppEmbed package
 Import the AppEmbed SDK library to your application environment:
+
+**npm**
+[source,javascript]
+----
+import {
+    AppEmbed,
+    Page,
+    AuthType,
+    init,
+    prefetch,
+    EmbedEvent
+}
+from '@thoughtspot/visual-embed-sdk';
+----
+
+**ES6**
+[source,javascript]
+----
+<script type = 'module'>
+    import {
+        AppEmbed,
+        Page,
+        AuthType,
+        init,
+        prefetch,
+        EmbedEvent
+    }
+from 'https://cdn.jsdelivr.net/npm/@thoughtspot/visual-embed-sdk/dist/tsembed.es.js';
+----
+
+== Initialize the SDK
+
+Specify the hostname or IP address of your ThoughtSpot application instance and the authentication type.
 
 [source,javascript]
 ----
-import { AppEmbed, Page, AuthType, init } from '@thoughtspot/visual-embed-sdk';
+init({
+    thoughtSpotHost: "https://<hostname>:<port>",
+    authType: AuthType.SSO,
+});
 ----
-
-=== Add the embed domain
-
-To allow your client application to connect to ThoughtSpot:
-
-. Configure the URL with ThoughtSpot hostname or IP address.
-. Specify the authentication method to use for authenticating application users.
+thoughtSpotHost::
+_String_. Hostname or IP address of the ThoughtSpot application.
 
 include::{path}/embed-auth-config.adoc[]
 
-For more information, see xref:embed-authentication.adoc[Embed user authentication].
+== Prefetch static resources (Optional)
 
-=== Create an instance of the AppEmbed object
+To prefetch static resources and load your application fast, set the `callPrefetch` attribute to `true`.
 
-Create an instance of the AppEmbed object and pass parameters to set a page view.
+For more information, see xref:prefetch-and-cache.adoc[Prefetch static resources].
+
+== Create an instance of the AppEmbed object
+Create an instance of the AppEmbed object and pass the parameters for the application page view.
 
 [source,javascript]
 ----
 const appEmbed = new AppEmbed(document.getElementById('ts-embed'), {
-	frameParams: {
-		width: '100%',
-		height: '100%',
-	},
-	disabledActions: [],
-	disabledActionReason: '<reason for disabling>'
-	hiddenActions: [],
-	showPrimaryNavbar: true,
-	pageId: Page.Data,
-	path: '<url-string>',
-	runtimeFilters: [],
-},
+    frameParams: {
+        width: '100%',
+        height: '100%',
+    },
+    disabledActions: [],
+    disabledActionReason: '<reason for disabling>',
+    disableHelpAndProfile: false,
+    hideObjects: ['<object-id>'],
+    hiddenActions: [],
+    showPrimaryNavbar: true,
+    pageId: Page.Data,
+    path: '<url-string>',
+    runtimeFilters: [],
+    tag: '<tag-name>',
 });
 ----
-frameParams:: Sets the `width` and `height` dimensions to render the pages in the web application. You can set the `width` and `height` attribute values in pixels or as a percentage. 
+frameParams:: Sets the `width` and `height` dimensions to render the pages in the web application. You can set the `width` and `height` attribute values in pixels or as a percentage.
 
-disabledActions _optional_::
-_Array of strings_. The actions that you want to show as disabled in the embedded ThoughtSpot UI.
+disabledActions::
+_Array of strings_. Disables the specified actions. You can use this attribute to restrict user access to certain features.
 +
+For example, to disable the *Show underlying data* action in the *More* menu image:./images/icon-more-10px.png[the more options menu], specify `Action.ShowUnderlyingData` in the `disabledActions` attribute.
++
+[source,JavaScript]
+----
+disabledActions: [Action.ShowUnderlyingData]
+----
++
+++++
+<a href="{{previewPrefix}}/playground/fullApp?modifyActions=true" id="preview-in-playground" target="_blank">Try it out</a>
+++++
 
-For example, to disable the *download* action from the *More* (*...*) menu on the pinboard or visualization page, specify `Action.Download` in the `disabledActions` attribute.
+disabledActionReason::
+_String_. Reason for disabling an action on a pinboard or visualization page. To display a tooltip for the disabled menu item, specify the reason for disabling the menu item in the `disabledActionReason` attribute.
+
+hiddenActions::
+_Array of strings_.Hides the specified actions from the list of available actions in the embedded ThoughtSpot UI. You can use this attribute to remove the actions that are not relevant to your application context. Use this attribute only if `visibleActions` are not defined.
+
++
+For example, to hide the *Share* action, specify `Action.Share` in the `hiddenActions` attribute.
+
++
+----
+hiddenActions: [Action.Share]
+----
+
++
+++++
+<a href="{{previewPrefix}}/playground/fullApp?modifyActions=true" id="preview-in-playground" target="_blank">Try it out</a>
+++++
+
+For a complete list of action menu items and the corresponding strings to use for disabling or hiding menu items, see xref:embed-actions.adoc[Disable or hide UI actions].
+
+[NOTE]
+====
+ThoughtSpot automatically creates a modifiable action ID based on the name you assign to a custom action. For example, if you set the name of a custom action as `Send Email`, ThoughtSpot sets the ID for this action as `send-email` by default. To disable, hide, or show a custom action in the embedded UI, you must specify the ID of the custom action as the action string in the `disabledActions`, and `hiddenActions` attributes.
+====
+
++
+disableProfileAndHelp::
+_Boolean_. When set to `true`, the help and user profile buttons are hidden on the top navigation bar. You can use this attribute to hide these icons if the `showPrimaryNavbar` attribute is set to `true`.
+
+++++
+<a href="{{previewPrefix}}/playground/fullApp?disableProfileAndHelp=true" id="preview-in-playground" target="_blank">Try it out</a>
+++++
+
+hideObjects _optional_::
+__Array of Strings__. Hides the specified objects. For example, if you do not want your application users to view certain pinboards, you can specify the GUIDs of the pinboards in the `hideObjects` attribute.
 
 +
 [source,JavaScript]
 ----
-disabledActions: [Action.Download]
+hideObjects: ['11f5d5e8-2328-4817-a106-9eff17531e77','e2f49cdd-4d54-466a-841a-e7ecbd9b4400']
 ----
 
-////
+showPrimaryNavbar::
+_Boolean_. Shows or hides the ThoughtSpot navigation bar.
+
 +
 ++++
-<a href="{{previewPrefix}}/playground/fullApp?modifyActions=true" id="preview-in-playground" target="_blank">Try it in Playground</a>
+<a href="{{previewPrefix}}/playground/fullApp?showNavBar=true" id="preview-in-playground" target="_blank">Try it out</a>
 ++++
 
-+
-////
 
-For a complete list of action menu items and the corresponding strings, see link:{{visualEmbedSDKPrefix}}/enums/action.html[Action, window=_blank].
-
-
-[NOTE]
-====
-If you want to disable a xref:customize-actions-menu.adoc[custom action], make sure you specify the ID of the custom action in the `disabledActions` attribute.
-
-For example, if the custom action ID is set as *send-email*, use `send-email` in the `disabledActions` attribute to disable this action on a pinboard or answer page.
-====
-
-disabledActionReason _optional_::
-_String_. The text to show for disabled actions. The text string specified in `disabledActionReason` shows as a tooltip when a user hovers over a disabled action in the embedded UI. For example, if you have disabled the `Download` action and you intend to enable this action for only authorized users, you can specify `disabledActionReason` as `Contact your administrator to enable this feature`.
-
-hiddenActions _optional_::
-_Array of strings_. The action menu items to hide on a pinboard or visualization page.
-+
-
-For example, to hide the *Download* action from the *More* menu image:./images/icon-more-10px.png[the more options menu], specify `Action.Download` in the `hiddenActions` attribute.
-
-+
-[source,JavaScript]
-+
-----
-hiddenActions: [Action.Download]
-----
-
-////
-+
-++++
-<a href="{{previewPrefix}}/playground/fullApp?modifyActions=true" id="preview-in-playground" target="_blank">Try it in Playground</a>
-++++
-
-+
-////
-For a complete list of action menu items and the corresponding strings, see link:{{visualEmbedSDKPrefix}}/enums/action.html[Action, window=_blank].
-
-[NOTE]
-====
-If you want to hide a xref:customize-actions-menu.adoc[custom action], make sure you specify the ID of the custom action in the `hiddenActions` attribute.
-
-For example, if the custom action ID is set as *send-email*, use `send-email` in the `hiddenActions` attribute to hide this action on a pinboard or answer page.
-====
-
-showPrimaryNavbar  [small]_optional_::   
-_Boolean_. Shows or hides the ThoughtSpot navigation bar. By default, the navigation bar is hidden.
-////
-+
-++++
-<a href="{{previewPrefix}}/playground/fullApp?showNavBar=true" id="preview-in-playground" target="_blank">Preview in Playground</a>
-++++
-////
 path::
-_String_. The URL path of the ThoughtSpot application page to embed. 
+_String_. The URL path of the ThoughtSpot application page to embed.
 
++
 [NOTE]
 If both `path` and `pageId` attributes are defined, the path definition takes precedence.
 
 pageId::
 The unique identifier for the ThoughtSpot application page. The value specified in the `pageId` attribute will be set as the active tab, which is displayed by default when the embedded ThoughtSpot UI loads. Valid values are:
 
-`*Page.Search*`;;
-
+* `*Page.Search*`
++
 Displays the page showing ThoughtSpot search bar
 
-`*Page.Answers*`;;
+* `*Page.Answers*`
++
+Displays the saved answers (*Answers*) page
 
-Displays the saved search answers (*Answers*) page
-
-`*Page.Pinboards*`;;
-
+* `*Page.Pinboards*`
++
 Displays the *Pinboards* page
 
-`*Page.Data*`;;
- 
+* `*Page.Data*`
++
 Displays the *Data* page
 
-`*Page.Home*`;;
-
+* `*Page.Home*`
++
 Displays the *Home* page
-////
+
+
 +
 ++++
-<a href="{{previewPrefix}}/playground/fullApp?pageId=search" id="preview-in-playground" target="_blank">Preview in Playground</a>
+<a href="{{previewPrefix}}/playground/fullApp?pageId=search" id="preview-in-playground" target="_blank">Try it out</a>
 ++++
-////
+
+
 runtimeFilters [small]_optional_::
-Runtime filters to apply when the pinboard or visualization page loads.
-Runtime filters provide the ability to pass filter specifications in the URL query parameters and filter data at the time of retrieval.  
+Runtime filters to be applied when the pinboard or visualization page loads.
+Runtime filters provide the ability to pass filter specifications in the URL query parameters and filter data at the time of retrieval.
 +
 For example, to sort values equal to `100000` in the `Revenue` column for a visualization in a pinboard, you can pass the runtime filter in the URL query parameters as shown here:
 +
 [source,javascript]
 ----
 runtimeFilters: [{
-	columnName: 'Revenue',
-	operator: 'EQ',
-	values: [100000]
-}, ]
+    columnName: 'Revenue',
+    operator: 'EQ',
+    values: [100000]
+}]
 ----
 
-////
+
 ++++
-<a href="{{previewPrefix}}/playground/fullApp?runtimeFilters=true" id="preview-in-playground" target="_blank">Try it in Playground</a>
+<a href="{{previewPrefix}}/playground/fullApp?runtimeFilters=true" id="preview-in-playground" target="_blank">Try it out</a>
 ++++
-////
 
 include::{path}/runtime-filter.adoc[]
 
 For more information about the supported data types and how to use runtime filters, see xref:runtime-filters.adoc[Runtime filters].
 
+tag [small]_optional_::
+__String__. Filters objects by the specified tag. If the pinboards and answers in your application are tagged as `Sales`, you can specify the tag string as `Sales` to show only those objects that have the `Sales` tag assigned.
++
+This attribute applies the tag filter at the application level. All metadata objects in the application, such as pinboards and answers, would be filtered by the tag.
 
-=== Define a method to process callback custom actions payload
++
+[source, javascript]
+----
+tag: 'sales'
+----
+
+== Define a method to process callback custom actions payload
 
 include::{path}/callback-payload.adoc[]
 
-=== Subscribe to events
+== Subscribe to events
 
 Register event listeners.
-
 [source, javascript]
 ----
 appEmbed.on(EmbedEvent.init, showLoader)
 appEmbed.on(EmbedEvent.load, hideLoader)
-appEmbed.on(EmbedEvent.Error)
 ----
 
-For a complete list of event types that you can register, see  link:{{visualEmbedSDKPrefix}}/enums/embedevent.html[EmbedEvent, window=_blank].
+For more information, see xref:embed-events.adoc[Event subscription and handling].
 
-=== Render the embedded application
-
+== Render the embedded application
 Render the embedded content.
 [source, javascript]
 ----
 appEmbed.render();
 ----
 
-=== Test your embedding
+== Test the embedded workflow
 
-To verify the ThoughtSpot application integration, perform the following tests:
+To verify the ThoughtSpot application integration, perform the following tasks:
 
 * Load your application.
 * Verify if the page you set as the active tab opens when you load the application.

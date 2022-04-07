@@ -9,11 +9,11 @@ The examples in this section show the contents of the payload sent from ThoughtS
 
 == Sample response payload for callback custom actions
 
-[#search-answer-payload]
+[#search-data-payload]
 === Search data payload
 
 The following example shows the visualization data payload passed in a callback custom action for search:
-////
+
 [source, JSON]
 ----
 {
@@ -226,40 +226,6 @@ The following example shows the visualization data payload passed in a callback 
   }
 }
 ----
-////
-[source, JSON]
-----
-{
-  "__typename": "TableViz",
-  "id": "f2524330-7c21-4b23-8cd9-10d74bb75b53",
-  "columns": [
-    {
-      "__typename": "VizColumn",
-      "column": {
-        "__typename": "AnswerColumn",
-        "id": "f70df70d-b37f-4cfc-b3b6-28af82183d2d",
-        "name": "Account Balance",
-        "type": "MEASURE"
-      }
-    }
-  ],
-  "data": {
-    "columnDataLite": [
-      {
-        "columnId": "f70df70d-b37f-4cfc-b3b6-28af82183d2d",
-        "columnDataType": "DOUBLE",
-        "dataValue": [
-          8542.212710650001
-        ]
-      }
-    ],
-    "completionRatio": 1,
-    "samplingRatio": 1,
-    "totalRowCount": "1"
-  },
-}
-----
-
 
 The following example shows the cell-level data payload for a callback custom action set as a context menu for a search result:
 

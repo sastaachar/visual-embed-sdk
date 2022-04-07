@@ -8,14 +8,14 @@
 You will require a user account with `Developer` privilege to perform the following tasks in ThoughtSpot:
 
 * Access the *Develop* tab in ThoughtSpot application.
-* Customize and rebrand the look and feel of the ThoughtSpot UI.
-* Add custom actions to a pinboard or visualization.
-* Customize the format of links used in system-generated emails and notifications.
+* Customize and rebrand the look and feel of ThoughtSpot UI.
+* Add custom actions to a pinboard or visualization. 
+* Customize the format of links used in system-generated emails and notifications. 
 * Configure visual embed hosts for CORS and CSP.
+ 
+ThoughtSpot administrators can create a user group with `Developer` privilege enabled and assign users to this group. Administrators can configure developer access either using the *Admin* tab in the UI or the Group REST APIs. 
 
-ThoughtSpot administrators can create a user group with `Developer` privilege enabled and assign users to this group. Administrators can configure developer access either using the *Admin* tab in the UI or the Group REST APIs.
-
-The following sections describe how to configure developer access using the *Admin* tab in the UI.
+The following sections describe how to configure developer access using the *Admin* tab in the UI. 
 For information about managing users and groups using REST APIs, see xref:group-api.adoc[Group APIs] and xref:user-api.adoc[User APIs].
 
 == Add a user group for developers
@@ -24,7 +24,7 @@ To add a user group with developer privileges:
 . Log in to ThoughtSpot as an admin user.
 . Go to *Admin* > *User management* > *Groups*.
 
-+
++ 
 The group configuration page appears.
 
 . Click *+ Add Group*.
@@ -46,7 +46,7 @@ Select the *Has Developer privilege* checkbox.
 
 To assign a user to a developer group:
 
-. Log in to ThoughtSpot.
+. Log in to ThoughtSpot. 
 . Go to *Admin* > *Users management* > *Users*.
 +
 The user configuration page appears.
@@ -61,7 +61,7 @@ A unique name for the user. For example, the first and last name of the user.
 Sharing visibility::
 Specify if other users can share objects with this user. When set to *SHAREABLE*, this user is visible in the *Share* dialog when another user tries to share an object.
 Change password::
-A password for the user account.
+A password for the user account. 
 Confirm password::
 Enter the password again.
 Email::

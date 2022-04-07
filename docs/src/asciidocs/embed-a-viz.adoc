@@ -3,112 +3,134 @@
 
 :page-title: Embed visualizations
 :page-pageid: embed-a-viz
-:page-description: Embed charts and tables
+:page-description: You can use the PinboardEmbed SDK library to embed visualizations on a pinboard and view them in your application context.
 
-This article explains how to embed a single ThoughtSpot visualization in your Web page, portal, or application. 
+This article explains how to embed a single ThoughtSpot visualization in your Web page, portal, or application.
 
-A visualization is a single answer pinned to a pinboard. Pinned visualizations appear without the search bar or the other options to change the visualization.
+A visualization is a single answer pinned to a pinboard. Pinned visualizations appear without the search bar or other options to change the visualization.
 
-You cannot embed a saved answer as an individual visualization. Saved answers can be used in the *SearchEmbed* component, where they will load with the search bar and other options available with ThoughtSpot search. Any visualization you want to embed using  *PinboardEmbed* must exist on a pinboard object in ThoughtSpot.
+You cannot embed a saved answer as an individual visualization. Saved answers can be used in the *SearchEmbed* component, where they will load with the search bar and other options available with ThoughtSpot search. Any visualization you want to embed using *PinboardEmbed* must exist on a pinboard object in ThoughtSpot.
 
 [NOTE]
 ====
-If you want to display multiple charts or tables that have been saved in a pinboard, try to embed a single pinboard rather than multiple individual visualizations. This helps in improving your application performance.
+* If you want to display multiple charts or tables that have been saved in a pinboard, try to embed a single pinboard rather than multiple individual visualizations. This helps in improving your application performance.
+* If you must embed multiple visualizations, xref:prefetch-and-cache.adoc[prefetch the static resources] before loading the page. We recommend that you limit the page to display not more than four visualizations at a time.
 ====
 
-To embed a ThoughtSpot visualization in your app, complete the steps described in the following sections.  
-
 == Import the PinboardEmbed package
-
 Import the visualization SDK library to your application environment:
+
+**npm**
+[source,javascript]
+----
+import {
+    PinboardEmbed,
+    AuthType,
+    init,
+    prefetch,
+    EmbedEvent
+}
+from '@thoughtspot/visual-embed-sdk';
+----
+
+**ES6**
+[source,javascript]
+----
+<script type = 'module'>
+    import {
+        PinboardEmbed,
+        AuthType,
+        init,
+        prefetch
+    }
+from 'https://cdn.jsdelivr.net/npm/@thoughtspot/visual-embed-sdk/dist/tsembed.es.js';
+----
+
+== Initialize the SDK
+
+Specify the hostname or IP address of your ThoughtSpot application instance and the authentication type.
 
 [source,javascript]
 ----
-import { PinboardEmbed, AuthType, init } from '@thoughtspot/visual-embed-sdk';
+init({
+    thoughtSpotHost: "https://<hostname>:<port>",
+    authType: AuthType.SSO,
+});
 ----
-
-== Add the embed domain
-
-To allow your client application to connect to ThoughtSpot:
-
-. Configure the URL with ThoughtSpot hostname or IP address.
-. Specify the authentication method to use for authenticating application users.
+thoughtSpotHost::
+_String_. Hostname or IP address of the ThoughtSpot application.
 
 include::{path}/embed-auth-config.adoc[]
 
-For more information, see xref:embed-authentication.adoc[Embed user authentication].
+== Prefetch static resources (Optional)
+
+To prefetch static resources and load your application fast, set the `callPrefetch` attribute to `true`.
+
+For more information, see xref:prefetch-and-cache.adoc[Prefetch static resources].
+
+== Configure security and login parameters (Optional)
+
+include::{path}/embed-config.adoc[]
 
 == Construct the embed content
-[source,JavaScript]
+[source,javaScript]
 ----
-const pinboardEmbed = new PinboardEmbed(document.getElementById('ts-embed'), {
-	frameParams: {
-		width: '100%',
-		height: '100%',
-	},
-	disabledActions: [],
-	disabledActionReason: '<reason for disabling>',
-	hiddenActions: [],
-	pinboardId: '<%=pinboardGUID%>',
-	vizId: '<%=vizGUID%>',
-	runtimeFilters: [],
-},
+const PinboardEmbed = new PinboardEmbed(document.getElementById('ts-embed'), {
+    frameParams: {
+        width: '100%',
+        height: '100%',
+    },
+    disabledActions: [],
+    disabledActionReason: '<reason for disabling>',
+    hiddenActions: [],
+    pinboardId: '<%=pinboardGUID%>',
+    vizId: '<%=vizGUID%>',
+    enableVizTransformations: true,
+    preventPinboardFilterRemoval: true,
+    runtimeFilters: [],
 });
 ----
-frameParams:: Sets the `width` and `height` dimensions to render the iframe containing the visualization. You can set the `width` and `height` attribute values in pixels or as a percentage.
+frameParams:: Sets the `width` and `height` dimensions to render the visualization object. You can set the `width` and `height` attribute values in pixels or as a percentage.
 
-disabledActions [small]_optional_::
-_Array of strings_. Disables the specified action menu items in the *More* menu image:./images/icon-more-10px.png[the more options menu] on the visualization page.
+disabledActions __Optional__::
+_Array of strings_. Disables the specified actions. You can use this attribute to restrict user access to certain features.
 +
-
-For example, to disable the *Change Title* action in the *More* menu image:./images/icon-more-10px.png[the more options menu], specify `Action.EditTitle` in the `disabledActions` attribute.
+For example, to disable the *Present* action from the *More* menu image:./images/icon-more-10px.png[the more options menu], specify `Action.Present` in the `disabledActions` attribute.
 
 +
 ----
-disabledActions: [Action.EditTitle]
+disabledActions: [Action.Present]
 ----
-////
 +
 ++++
-<a href="{{previewPrefix}}/playground/answer?modifyActions=true" id="preview-in-playground" target="_blank">Try it in Playground</a>
+<a href="{{previewPrefix}}/playground/answer?modifyActions=true" id="preview-in-playground" target="_blank">Try it out</a>
 ++++
-+
-////
-For a complete list of action menu items and the corresponding strings, see link:{{visualEmbedSDKPrefix}}/enums/action.html[Action, window=_blank].
 
+disabledActionReason __Optional__::
+_String_. The text to show for disabled actions. The text string specified in `disabledActionReason` shows as a tooltip when a user hovers over a disabled action in the embedded UI. For example, if you have disabled the `Download` action and you intend to enable this action for only authorized users, you can specify `disabledActionReason` as `Contact your administrator to enable this feature`.
+
+
+hiddenActions __Optional__::
+_Array of strings_. Hides specified actions from the list of available actions on the embedded visualization. You can use this attribute to remove the actions that are not relevant to your application context. Do not use this attribute if `visibleActions` are defined.
+
++
+For example, to hide *Download* action from the *More* menu image:./images/icon-more-10px.png[the more options menu], specify `Action.Download` in the `hiddenActions` attribute.
+
++
+----
+hiddenActions: [Action.Download]
+----
++
+++++
+<a href="{{previewPrefix}}/playground/answer?modifyActions=true" id="preview-in-playground" target="_blank">Try it out</a>
+++++
+
+For a complete list of action menu items and the corresponding strings to use for disabling or hiding menu items, see xref:embed-actions.adoc[Disable or hide UI actions].
 
 [NOTE]
-If you have xref:customize-actions-menu.adoc[added a custom action] and you want to disable this custom action, make sure you specify the ID of the custom action in the `disabledActions` attribute. For example, if a custom action is created with the *Send Email* label and the ID is set as *send-email*, use `send-email` in the `disabledActions` attribute to disable this action on the visualization page.
-
-
-hiddenActions [small]_optional_::
-_Array of strings_. Hides the menu items from the *More* menu image:./images/icon-more-10px.png[the more options menu] on the visualization page.
-+
-
-For example, to hide *Download As PDF* action in the *More* menu image:./images/icon-more-10px.png[the more options menu], specify `Action.DownloadAsPdf` in the `hiddenActions` attribute.
-
-+
-[source,JavaScript]
-----
-hiddenActions: [Action.DownloadAsPdf]
-----
-
-////
-+
-++++
-<a href="{{previewPrefix}}/playground/answer?modifyActions=true" id="preview-in-playground" target="_blank">Try it in Playground</a>
-++++
-////
-
-For a complete list of action menu items and the corresponding strings, see link:{{visualEmbedSDKPrefix}}/enums/action.html[Action, window=_blank].
-
-
-[NOTE]
-_String_. The text to show for disabled actions. The text string specified in `disabledActionReason` shows as a tooltip when a user hovers over a disabled action in the embedded UI. For example, if you have disabled the `Download` action and you intend to enable this action for only authorized users, you can specify `disabledActionReason` as `Contact your administrator to enable this feature`. 
-
-
-disabledActionReason [small]_optional_::
-_String_. Reason for disabling an action on the visualizations page.
+====
+ThoughtSpot automatically creates a modifiable action ID based on the name you assign to a custom action. For example, if you set the name of a custom action as `Send Email`, ThoughtSpot sets the ID for this action as `send-email` by default. To disable, hide, or show a custom action in the embedded UI, you must specify the ID of the custom action as the action string in the `disabledActions` and `hiddenActions` attributes.
+====
 
 vizId::
 _String_. The Global Unique Identifier (GUID) of the visualization.
@@ -116,68 +138,76 @@ _String_. The Global Unique Identifier (GUID) of the visualization.
 pinboardId::
 _String_. The GUID of the pinboard to which the visualization is pinned.
 
+enableVizTransformations::
+_Boolean_. When set to `true`, it displays the contextual menu for visualizations. The contextual menu allows users to drill down a visualization, apply filters, and view detailed insights.
+
+preventPinboardFilterRemoval::
+_Boolean_. When set to true, it disables the filter removal action and thus prevents users from removing the filters applied to a pinboard visualization.
+
 runtimeFilters [small]_optional_::
-Runtime filters to apply when the embedded visualization loads.
+Runtime filters to be applied when the embedded visualization loads.
 +
 Runtime filters provide the ability to filter data at the time of retrieval. Runtime filters allow you to apply a filter to a visualization by passing filter specifications as URL query parameters.
-
 +
-For example, to sort values equal to `red` in the `Color` column for a visualization, you can pass the runtime filter in the URL query parameters as shown here:
+For example, to sort values equal to `red` in the `Color` column for a visualization, you can pass the runtime filters as shown here:
 +
 [source,javascript]
 ----
 runtimeFilters: [{
-	columnName: 'color',
-	operator: RuntimeFilterOp.EQ,
-	values: ['red']
+    columnName: 'Product Type',
+    operator: RuntimeFilterOp.EQ,
+    values: ['Jackets']
 }]
 ----
-////
 
+columnName;;
+__String__. Name of the column to filter by.
+
+operator;;
+__String__. The runtime filter operator. For more information about the runtime filter operators, see xref:runtime-filters.adoc#runtimeFilterOp[Runtime filters].
+
+values;;
+__String, Integer, or Boolean__. The list of operands. Operators like EQ, LE accept a single operand, whereas other operators like BW and IN accept multiple operands.
+
++
 ++++
 <a href="{{previewPrefix}}/playground/answer?runtimeFilters=true" id="preview-in-playground" target="_blank">Try it in Playground</a>
 ++++
-////
-include::{path}/runtime-filter.adoc[]
 
 For more information about the supported data types and how to use runtime filters, see xref:runtime-filters.adoc[Runtime filters].
-
 
 == Define a method to process callback custom actions payload
 
 include::{path}/callback-payload.adoc[]
 
 == Subscribe to events
-Register event handlers to subscribe to events triggered by the embedded visualizations:
+
+Register event listeners:
 
 [source,javascript]
 ----
 pinboardEmbed.on(EmbedEvent.init, showLoader)
 pinboardEmbed.on(EmbedEvent.load, hideLoader)
-pinboardEmbed.on(EmbedEvent.Error)
 ----
 
-For a complete list of event types that you can register, see  link:{{visualEmbedSDKPrefix}}/enums/embedevent.html[EmbedEvent, window=_blank].
-
+For more information, see xref:embed-events.adoc[Event subscription and handling].
 
 == Render the embedded visualization
-
-Render the embedded visualization.
+Construct the URL for the embedded visualization and render the embedded content:
 
 [source,javaScript]
 ----
 pinboardEmbed.render();
 ----
 
-== Test your embedding
-
-Perform the following tests:
+== Test the embedded workflow
 
 * Load the client application.
 * Try accessing a visualization embedded in your application.
-* Verify if the embedded content renders correctly on your application page. 
+* Verify if the embedded content renders correctly on your application page.
 * If you have disabled an action, verify if the action appears as disabled.
 * If runtime filters are configured, verify if the filters are applied to the visualizations on the pinboard.
+
 
 == Additional resources
 

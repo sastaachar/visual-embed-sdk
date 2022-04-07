@@ -16,7 +16,7 @@ This section lists the tasks you need to complete before embedding ThoughtSpot c
 ThoughtSpot supports xref:configure-saml.adoc[SAML SSO] and xref:trusted-authentication.adoc[trusted authentication] services.
 
 * Verify if your host application domain is xref:security-settings.adoc[whitelisted for CORS and CSP].
-* If you want to rebrand and white-label the embedded content or add custom actions to the embedded visualizations, you will require access to the ThoughtSpot Developer portal. Make sure you have xref:user-roles.adoc[developer  privileges] to access the *Customizations* menu in the *Develop* tab.
+* If you want to rebrand and white-label the embedded content or add custom actions to the embedded visualizations, you will require access to the ThoughtSpot Developer portal. Make sure you have administrator or developer  privileges to access the *Customizations* menu in the *Develop* tab.
 
 == Prepare your project environment
 The Visual Embed SDK is available for installation as a Node Package Manager (NPM) package. Make sure the link:https://www.npmjs.com/get-npm[NPM is installed, window=_blank] in your environment.
@@ -25,11 +25,6 @@ You can also access Visual Embed SDK, including information about how to install
 
 == Install the Visual Embed SDK
 The latest version of the Visual Embed SDK is available at link:https://www.npmjs.com/package/@thoughtspot/visual-embed-sdk[https://www.npmjs.com/package/@thoughtspot/visual-embed-sdk, window=_blank].
-
-[NOTE]
-====
-If your cluster is running ThoughtSpot Software version 7.1.0, make sure you install the NPM package for Visual Embed SDK version 1.2.0. 
-====
 
 To install the SDK, run the following command at the command line:
 [source,console]
