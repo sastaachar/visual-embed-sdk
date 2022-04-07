@@ -23,11 +23,12 @@ To get details of the current configuration of a ThoughtSpot cluster, send a `GE
 POST /tspublic/v1/admin/configinfo
 ----
 
-=== Request parameters
-
-None
-
 === Example request
+
+Make sure the API request has the following headers:
+
+* the `Accept` header is set as `Accept: application/json`
+* the `X-requested-by` header is set as `X-Requested-By: ThoughtSpot`
 
 .cURL
 [source,cURL]
@@ -42,7 +43,9 @@ curl -X GET \
 ----
 https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/admin/configinfo
 ----
+=== Request parameters
 
+None
 
 === Example response
 
@@ -295,8 +298,7 @@ Make sure the API request has the following headers:
 ----
 curl -X GET \
 --header 'Accept: application/json' \
---header 'X-Requested-By: ThoughtSpot' \ 
-'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/admin/configinfo/overrides'
+--header 'X-Requested-By: ThoughtSpot' \ 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/admin/configinfo/overrides'
 ----
 
 .Request URL
@@ -538,8 +540,10 @@ If the request is successful, the API returns the details of the configuration o
 |===
 |HTTP status code | Description
 
-| **200**| Successful retrieval of the configuration information
-| **401**| Unauthorized request
+| **200**
+| Successful retrieval of the configuration information
+| **401**
+| Unauthorized request
 |===
 
 [#configinfo-update]
@@ -573,9 +577,11 @@ Make sure the API request has the following headers:
 [source,curl]
 ----
 curl -X POST \
---header 'Content-Type: application/x-www-form-urlencoded' 
+--header 'Content-Type: application/x-www-form-urlencoded' \
 --header 'Accept: application/json' \
---header 'X-Requested-By: ThoughtSpot' -d 'configchanges=@import-embed-objects-b.json' \ 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/admin/configinfo/update'
+--header 'X-Requested-By: ThoughtSpot' \
+-d 'configchanges=@import-embed-objects-b.json' \
+'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/admin/configinfo/update'
 ----
 
 .Request URL
@@ -602,3 +608,4 @@ Response Code
 |**204** |Successful update of the configuration information
 |**401** |Unauthorized request
 |===
+
