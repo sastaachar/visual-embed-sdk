@@ -1,8 +1,7 @@
 
 [width="100%", cols="2,2"]
-[options='header']
+[%noheader]
 |====
-|API endpoint|Description
 |`xref:tml-api.adoc#import[**POST** /tspublic/v1/metadata/tml/import]`
 
 |Imports scriptable in TML that represents objects in an editable and reusable format.

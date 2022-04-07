@@ -1,7 +1,6 @@
 [width="100%", cols="2,2"]
-[options='header']
+[%noheader]
 |====
-|API endpoint|Description
 |`xref:user-api.adoc#create-user[*POST* /tspublic/v1/user/]` 
 |Creates a user account.
 

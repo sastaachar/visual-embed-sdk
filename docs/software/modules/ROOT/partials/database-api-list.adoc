@@ -1,8 +1,7 @@
 
 [width="100%", cols="2,2"]
-[options='header']
+[%noheader]
 |====
-|API endpoint|Description
 |`xref:database-api.adoc#list-tables[**GET** /tspublic/v1/database/tables]` 
 
 |Gets a list of all tables in a database and schema in Falcon.

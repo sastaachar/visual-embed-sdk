@@ -1,6 +1,5 @@
 = Get started
-:toc: true
-:toclevels: 2
+:page-toclevels: 1
 
 :page-title: Getting started with REST APIs
 :page-pageid: rest-api-getstarted

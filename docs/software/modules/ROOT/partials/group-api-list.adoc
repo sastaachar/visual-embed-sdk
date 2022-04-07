@@ -1,8 +1,7 @@
 
 [width="100%", cols="2,2"]
-[options='header']
+[%noheader]
 |====
-|API endpoint|Description
 |`xref:group-api.adoc#create-group[*POST* /tspublic/v1/group/]`
 
 |Creates a user group.

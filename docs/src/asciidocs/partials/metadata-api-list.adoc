@@ -1,8 +1,7 @@
 
 [width="100%", cols="2,2"]
-[options='header']
+[%noheader]
 |====
-|API endpoint|Description
 |`xref:metadata-api.adoc#assign-tag[*POST* /tspublic/v1/metadata/assigntag]`
 
 |Assigns tags to a metadata object, such as a pinboard, search answer, table, worksheet, or view.

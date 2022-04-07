@@ -1,6 +1,5 @@
 = Security APIs
-:toc: true
-:toclevels: 1
+:page-toclevels: 1
 
 :page-title: Security API
 :page-pageid: security-api

@@ -1,8 +1,7 @@
 
 [width="100%", cols="2,2"]
-[options='header']
+[%noheader]
 |====
-|API endpoint|Description
 |`xref:session-api.adoc#session-authToken[*POST* /tspublic/v1/session/auth/token]`
 
 |Authenticates and logs in a user.

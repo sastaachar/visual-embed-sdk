@@ -1,6 +1,5 @@
 = Search data API
-:toc: true
-:toclevels: 1
+:page-toclevels: 1
 
 :page-title: Search Data API
 :page-pageid: search-data-api

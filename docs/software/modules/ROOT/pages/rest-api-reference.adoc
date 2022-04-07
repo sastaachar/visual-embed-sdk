@@ -1,5 +1,5 @@
 = REST API Reference
-:toc: true
+:page-toclevels: 1
 
 :page-title: REST API Reference Guide
 :page-pageid: rest-api-reference

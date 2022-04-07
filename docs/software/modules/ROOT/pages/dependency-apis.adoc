@@ -1,6 +1,5 @@
 = Dependent objects APIs
-:toc: true
-:toclevels: 1
+:page-toclevels: 1
 
 :page-title: Get details of dependent objects
 :page-pageid: dependent-objects-api

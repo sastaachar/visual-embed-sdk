@@ -1,8 +1,7 @@
 
 [width="100%", cols="2,2"]
-[options='header']
+[%noheader]
 |====
-|API endpoint|Description
 |`xref:dependency-apis.adoc#add-dependents[*POST* /tspublic/v1/dependency/listdependents]`  
 |Gets a list of dependents for a given data object type.
 |====

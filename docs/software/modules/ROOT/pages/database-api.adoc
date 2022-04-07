@@ -1,6 +1,5 @@
 = Database APIs
-:toc: true
-:toclevels: 1
+:page-toclevels: 1
 
 :page-title: Database APIs
 :page-pageid: database-api

@@ -1,5 +1,5 @@
 = ThoughtSpot Developer portal
-:toc: true
+:page-toclevels: 1
 
 :page-title: ThoughtSpot Developer Portal
 :page-pageid: spotdev-portal

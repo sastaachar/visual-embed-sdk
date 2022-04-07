@@ -1,6 +1,5 @@
 = Pinboard export API
-:toc: true
-:toclevels: 1
+:page-toclevels: 1
 
 :page-title: Export Pinboard as PDF
 :page-pageid: pinboard-export-api

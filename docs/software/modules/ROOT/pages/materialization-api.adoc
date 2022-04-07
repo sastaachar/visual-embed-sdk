@@ -1,6 +1,5 @@
 = Materialization API
-:toc: true
-:toclevels: 1
+:page-toclevels: 1
 
 :page-title: Materialization API
 :page-pageid: materialization-api
