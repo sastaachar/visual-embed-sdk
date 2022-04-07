@@ -1,6 +1,6 @@
 = ThoughtSpot Developer portal
-:page-toclevels: 1
 
+:page-toclevels: 1
 :page-title: ThoughtSpot Developer Portal
 :page-pageid: spotdev-portal
 :page-description: Using ThoughtSpot Developer Portal

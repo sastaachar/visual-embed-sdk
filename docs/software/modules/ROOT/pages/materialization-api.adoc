@@ -1,6 +1,6 @@
 = Materialization API
-:page-toclevels: 1
 
+:page-toclevels: 1
 :page-title: Materialization API
 :page-pageid: materialization-api
 :page-description: Materialization API allows you to refresh a materialized view

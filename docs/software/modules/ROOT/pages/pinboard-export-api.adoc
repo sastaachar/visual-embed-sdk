@@ -1,6 +1,6 @@
 = Pinboard export API
-:page-toclevels: 1
 
+:page-toclevels: 1
 :page-title: Export Pinboard as PDF
 :page-pageid: pinboard-export-api
 :page-description: The pinboard export API endpoint allows you to download a pinboard or its visualizations in the PDF format

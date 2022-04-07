@@ -1,6 +1,6 @@
 = Dependent objects APIs
-:page-toclevels: 1
 
+:page-toclevels: 1
 :page-title: Get details of dependent objects
 :page-pageid: dependent-objects-api
 :page-description: The dependency API endpoints allow you to get details of the dependents for a metadata object

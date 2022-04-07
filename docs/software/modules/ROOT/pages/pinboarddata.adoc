@@ -1,6 +1,6 @@
 = Pinboard data API
-:page-toclevels: 1
 
+:page-toclevels: 1
 :page-title: Get Pinboard Data
 :page-pageid: pinboard-api
 :page-description: The pinboard data API allows you to query a pinboard and its visualizations

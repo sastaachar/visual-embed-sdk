@@ -1,6 +1,6 @@
 = Admin APIs
-:page-toclevels:1
 
+:page-toclevels: 1
 :page-title: Admin APIs
 :page-pageid: admin-api
 :page-description: The admin API endpoints allow you to view, edit, and manage your cluster configuration

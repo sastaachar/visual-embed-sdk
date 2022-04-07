@@ -1,8 +1,7 @@
 = Metadata APIs
-:toc: true
-:linkattrs:
-:toclevels: 1
 
+:linkattrs:
+:page-toclevels: 1
 :page-title: Get metadata
 :page-pageid: metadata-api
 :page-description: The metadata API endpoints allow you to query ThoughtSpot objects and get metadata
