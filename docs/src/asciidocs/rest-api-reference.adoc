@@ -1,6 +1,8 @@
 = REST API Reference
 :toc: true
+:toclevels: 1
 
+:page-toclevels: 1
 :page-title: REST API Reference Guide
 :page-pageid: rest-api-reference
 :page-description: REST API Reference
@@ -26,14 +28,17 @@ include::{path}/metadata-api-list.adoc[]
 
 include::{path}/admin-api-list.adoc[]
 
+== Data connections
+
+include::{path}/admin-api-list.adoc[]
+
 == Materialization service
 
-[width="100%", cols="2,2"]
+[width="100%"]
 [%noheader]
 |====
-|`xref:materialization-api.adoc[*POST* /tspublic/v1/materialization/refreshview/{id}]`
-
-|Allows you to refresh a materialized view.
+|`xref:materialization-api.adoc[*POST* /tspublic/v1/materialization/refreshview/{id}]` +
+ Allows you refresh a materialized view.
 |====
 
 == TML objects
@@ -46,11 +51,11 @@ include::{path}/pinboard-api-list.adoc[]
 
 == Search data
 
-[width="100%", cols="2,2"]
+[width="100%"]
 [%noheader]
 |====
-|`xref:search-data-api.adoc[**POST** /tspublic/v1/searchdata]`
-|Allows searching for data from a specific data source in the ThoughtSpot application.
+|`xref:search-data-api.adoc[**POST** /tspublic/v1/searchdata]` +
+Allows searching for data from a specific data source in the ThoughtSpot application.
 |====
 
 == Dependent objects

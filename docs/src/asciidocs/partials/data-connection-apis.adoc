@@ -1,0 +1,22 @@
+
+[width="100%"]
+[%noheader]
+|====
+|`xref:connections-api.adoc#cre-connection[**POST**  /tspublic/v1/connection/create]` +
+Creates a data connection.
+
+|`xref:connections-api.adoc#edit-connection[**POST** /tspublic/v1/connection/update]` +
+Modifies a data connection.
+
+|`xref:connections-api.adoc#connection-types[*GET* /tspublic/v1/connection/types]` +
+Gets a list of data connections that are currently operational on the ThoughtSpot cluster. 
+
+|`xref:connections-api.adoc#live-query-connections[*GET*  /tspublic/v1/connection/list]` +
+Gets a list of data connections set up for a live query service on the ThoughtSpot cluster.
+
+|`xref:connections-api.adoc#export-connections[**GET** /tspublic/v1/connection/export]` +
+Exports a data connection map.
+
+|`xref:connections-api.adoc#del-connection[**POST** /tspublic/v1/connection/delete]` +
+Deletes the specified data connections.
+|====

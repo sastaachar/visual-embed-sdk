@@ -1,0 +1,277 @@
+= TML APIs
+
+:page-toclevels: 1
+:page-title: TML Export and Import API
+:page-pageid: tml-api
+:page-description: The TML API endpoints allow you to export and import TML files
+
+The TML APIs enable you to programmatically export, validate, and import scriptable link:https://docs.thoughtspot.com/software/7.1/tml[ThoughtSpot Modeling Language (TML), window=_blank] files. You can use these APIs to automate the change management and deployment processes between your development and production environments. With these APIs, you can easily migrate your ThoughtSpot content from one environment to another by automating the entire change management process and thereby reducing the risk of human error.
+
+== Supported operations
+
+include::partial$tml-api-list.adoc[]
+
+[#import]
+== Import API
+To validate and import the TML objects, use the `/tspublic/v1/metadata/tml/import` API.
+
+[NOTE]
+====
+You can import single or multiple objects using the `tml/import` API. If you import only a worksheet object, it may take some time for the worksheet to become available in the ThoughtSpot system. You may need to wait for a few seconds to create answers and pinboards.
+
+However, if you import a worksheet along with pinboards, answers, and other dependent objects in a single API call, the imported objects will be immediately available for use.
+====
+
+=== Resource URL
+----
+POST /tspublic/v1/metadata/tml/import
+----
+
+=== Request parameters
+[width="100%" cols="2,4,1"]
+[options='header']
+|====
+|Form parameter|Description|Default
+|`import_objects` a|__Array of strings__. An `x-www-form-urlencoded` string containing a JSON array of TML objects to upload, in YAML or JSON format.
+
+If in YAML format within the JSON array, use escape characters for YAML quotes, and new line characters when there is a new line.
+
+For example:
+
+* To import a single object, `["guid: 3729c085-8659-48fd-9479-a67bd7307496\npinboard:\n  name: …"]`
+* To import multiple objects, `["guid: 3729c085-8659-48fd-9479-a67bd7307496\npinboard:\n  name: …“, "guid: 5739d025-8659-48fd-9479-a67bd7704212\npinboard:\n  name: …”]`
+|None
+|`import_policy` a|__String__. Policy to follow during import. The allowed values are:
+
+* `PARTIAL`
+Imports all objects that validate successfully, and ignores objects that do not validate successfully.
+* `ALL_OR_NONE`
+Imports the objects that validate successfully.
+* `VALIDATE_ONLY`
+Validates the objects but does not import them.|`PARTIAL`
+
+|`force_create`|__Boolean__. Specifies if you are updating or creating objects. To create new objects, specify `true`.
+
+By default, ThoughtSpot updates existing objects that have the same GUID as the objects you are importing. When set to `true`, the GUID property in the imported TML is replaced on the server, and the response headers will include the `id_guid` property with the GUID of the new object.
+
+The new object will be assigned a new GUID, even if the imported TML file included a `guid` value. Thus, there is no need to include the `guid` in the TML file if you are using `force_create=true`. |`false`|
+|====
+
+=== Example request
+
+Make sure the API request has the following headers:
+
+* The `Accept` header is set as `Accept: text/plain`
+* The `X-requested-by` header set as `X-Requested-By: ThoughtSpot`
+
+.cURL
+[source,cURL]
+----
+curl - X POST \
+--header 'Accept: text/plain' \
+--header 'X-Requested-By: ThoughtSpot'\
+--data - urlencode 'import_objects=[{
+"guid": "12289fad-f230-485e-8c65-e36082eebf44",
+"answer": {
+    "name": "Basic Answer 1",
+    "description": "This is basic answer with table and headline visualizations.",
+    "tables": [{
+        "id": "LINEORDER",
+        "name": "LINEORDER",
+        "fqn": "2445fe81-30d6-46fa-9f42-f6b1b4e01623"
+    }, {
+        "id": "PART",
+        "name": "PART",
+        "fqn": "a7fc012e-bdb3-4e75-9ce4-b3f731d90136"
+    }],
+    "search_query": "[LINEORDER_1::Revenue] [PART_1::Color]",
+    "answer_columns": [{
+        "name": "Total Revenue"
+    }, {
+        "name": "Color"
+    }],
+    "table": {
+        "table_columns": [{
+            "column_id": "Color",
+            "headline_aggregation": "COUNT_DISTINCT"
+        }, {
+            "column_id": "Total Revenue",
+            "headline_aggregation": "SUM"
+        }],
+        "ordered_column_ids": ["Color", "Total Revenue"]
+    },
+    "chart": {
+        "type": "COLUMN",
+        "chart_columns": [{
+            "column_id": "Total Revenue"
+        }, {
+            "column_id": "Color"
+        }],
+        "axis_configs": [{
+            "x": ["Color"],
+            "y": ["Total Revenue"]
+        }]
+    },
+    "display_mode": "TABLE_MODE"
+}
+}]
+'
+--data-urlencode 'import_policy=PARTIAL'
+--data-urlencode 'force_create=true' 'http://<ThoughtSpot-host>/callosum/v1/tspublic/v1/metadata/tml/import'
+
+----
+
+.Request URL
+----
+https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/metadata/tml/import
+----
+
+=== Example response
+
+[source,JSON]
+----
+{
+  "object": [
+    {
+      "response": {
+        "status": {
+          "status_code": "OK"
+        },
+        "header": {
+          "id_guid": "a09a3787-e546-42cb-888f-c17260dd1229",
+          "name": "Basic Answer 1",
+          "description": "This is basic answer with table and headline visualizations.",
+          "author_guid": "59481331-ee53-42be-a548-bd87be6ddd4a",
+          "owner_guid": "a09a3787-e546-42cb-888f-c17260dd1229",
+          "metadata_type": "QUESTION_ANSWER_BOOK"
+        }
+      }
+    }
+  ]
+}
+----
+
+=== Response codes
+
+[width="100%" cols="1,3"]
+[options='header']
+|===
+|HTTP status code | Description
+
+| **200**
+| ImportEPackResponse proto serialized as JSON string.
+
+| **400**
+| Bad request
+
+| **401**
+| Unauthorized or wrong credentials
+
+| **403**
+| Forbidden - incorrect permissions
+
+| **404**
+| Not found
+
+| **500**
+| Internal server error
+|===
+
+[#export]
+== Export API
+
+To export TML objects, use the `/tspublic/v1/metadata/tml/export` API.
+
+=== Resource URL
+----
+POST /tspublic/v1/metadata/tml/export
+----
+
+=== Request parameters
+
+[width="100%" cols="1,2,1"]
+[options='header']
+|====
+|Form parameter|Description|Default
+|`export_ids` a|__String__. JSON array of the IDs of objects to export. An `x-www-form-urlencoded` string containing a JSON array of ids of objects to export. You receive results in the order you request them.
+
+For example:
+
+* To export a single object, `["226abd2843-afef-4c2f-bf2f-8fba065330e"]`
+* To export multiple objects, `["226abd2843-afef-4c2f-bf2f-8fba065330e", ”22d305bc51-688b-414f-badc-94579d48308c”]`|None
+|`formattype`|__String__. The format in which to export the objects. Valid values are `JSON` and `YAML`.|None
+|`export_associated`|__Boolean__. Specifies if you would like to export the associated objects. To export the objects associated with the objects specified in `export_ids`, set the value to `true`. When set to `true`, the API exports any underlying worksheets, tables, or views for a given object. By default, the API does not export these underlying objects. |false
+|====
+
+=== Example request
+
+Make sure the API request has the following headers:
+
+* The `Accept` header is set as `Accept: text/plain`
+* The `X-requested-by` header must be `X-Requested-By: ThoughtSpot`
+
+.cURL
+
+[source,curl]
+----
+curl -X POST
+--header 'Accept: text/plain' \
+--header 'X-Requested-By: ThoughtSpot' \
+--data-urlencode 'export_ids=["12289fad-f230-485e-8c65-e36082eebf44"]' \
+--data-urlencode 'formattype=YAML' \
+--data-urlencode 'export_associated=false' \
+'http://<ThoughtSpot-host>/callosum/v1/tspublic/v1/metadata/tml/export'
+----
+
+.Request URL
+----
+https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/metadata/tml/export
+----
+
+=== Example response
+
+[source,JSON]
+----
+{
+  "object": [
+    {
+      "info": {
+        "name": "Basic Answer 1",
+        "filename": "Basic Answer 1.answer.tml",
+        "status": {
+          "status_code": "OK"
+        },
+        "type": "answer",
+        "id": "12289fad-f230-485e-8c65-e36082eebf44"
+      },
+      "edoc": "guid: 12289fad-f230-485e-8c65-e36082eebf44\nanswer:\n  name: Basic Answer 1\n  description: This is the basic answer with table and headline visualizations.\n  tables:\n  - id: LINEORDER\n    name: LINEORDER\n    fqn: 2445fe81-30d6-46fa-9f42-f6b1b4e01623\n  - id: PART\n    name: PART\n    fqn: a7fc012e-bdb3-4e75-9ce4-b3f731d90136\n  joins:\n  - id: Lineorder PartKey - Part PartKey\n    name: Lineorder PartKey - Part PartKey\n    source: LINEORDER\n    destination: PART\n  table_paths:\n  - id: LINEORDER_1\n    table: LINEORDER\n    join_path:\n    - {}\n  - id: PART_1\n    table: PART\n    join_path:\n    - join:\n      - Lineorder PartKey - Part PartKey\n  formulas:\n  - id: f1\n    name: f1\n    expr: \"if ( [Revenue(1992)] > [Revenue(1995)] ) then \\\"l\\\" else \\\"h\\\"\"\n  search_query: \"[LINEORDER_1::Revenue] [LINEORDER_1::Commit Date].1992 vs [LINEORDER_1::Commit Date].1995 [PART_1::Color] [f1]\"\n  answer_columns:\n  - name: FiscalYearNumber(Commit Date) = 1992 OR FiscalYearNumber(Commit Date) = 1995\n  - name: f1\n  - name: Revenue(1992)\n  - name: Revenue(1995)\n  - name: Color\n  table:\n    table_columns:\n    - column_id: f1\n      headline_aggregation: COUNT_DISTINCT\n    - column_id: Color\n      headline_aggregation: COUNT_DISTINCT\n    - column_id: Revenue(1995)\n      headline_aggregation: TABLE_AGGR\n    - column_id: Revenue(1992)\n      headline_aggregation: TABLE_AGGR\n    ordered_column_ids:\n    - Color\n    - f1\n    - Revenue(1992)\n    - Revenue(1995)\n    client_state: \"{\\\"widthState\\\":{},\\\"wrapTableHeader\\\":true}\"\n    client_state_v2: \"{\\\"tableVizPropVersion\\\": \\\"V1\\\",\\\"wrapTableHeader\\\": true,\\\"columnProperties\\\": [{\\\"columnId\\\": \\\"6204abeb-31a5-4789-a5a5-6124caf32d67\\\",\\\"columnProperty\\\": {}},{\\\"columnId\\\": \\\"f30157ce-7da4-4cd3-a11b-346b9ec5b398\\\",\\\"columnProperty\\\": {}}]}\"\n  chart:\n    type: COLUMN\n    chart_columns:\n    - column_id: f1\n    - column_id: Revenue(1992)\n    - column_id: Revenue(1995)\n    axis_configs:\n    - x:\n      - f1\n      y:\n      - Revenue(1992)\n      - Revenue(1995)\n    client_state: \"\"\n    client_state_v2: \"{\\\"version\\\": \\\"V4\\\",\\\"chartProperties\\\": {\\\"chartSpecific\\\": {}},\\\"axisProperties\\\": [{\\\"id\\\": \\\"b53fcf8a-fd80-4e34-9ec0-7da8acd90cf4\\\",\\\"properties\\\": {\\\"axisType\\\": \\\"Y\\\",\\\"linkedColumns\\\": [\\\"Revenue(1992)\\\"],\\\"isOpposite\\\": false}},{\\\"id\\\": \\\"7f5859b1-88ea-4cf7-a2fd-3e1524de2ffa\\\",\\\"properties\\\": {\\\"axisType\\\": \\\"Y\\\",\\\"linkedColumns\\\": [\\\"Revenue(1995)\\\"],\\\"isOpposite\\\": true}},{\\\"id\\\": \\\"a790945d-124e-44bf-bfc1-998b5924621d\\\",\\\"properties\\\": {\\\"axisType\\\": \\\"X\\\",\\\"linkedColumns\\\": [\\\"f1\\\"]}}]}\"\n  display_mode: TABLE_MODE\n"
+    }
+  ]
+}
+----
+
+=== Response codes
+
+[width="100%" cols="1,5"]
+[options='header']
+|===
+|HTTP status code| Description
+
+| **200**
+| Returned EDoc (TML) representation of metadata
+
+| **400**
+| Bad request
+
+| **401**
+| Unauthorized - wrong credentials
+
+| **403**
+| Forbidden - incorrect permissions
+
+| **404**
+| Not found
+
+| **500**
+| Internal server error
+|===
