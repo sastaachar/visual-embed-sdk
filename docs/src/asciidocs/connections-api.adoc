@@ -148,7 +148,7 @@ GET /tspublic/v1/connection/list
 [width="100%" cols="1,4"]
 [options='header']
 |====
-|Query Parameter|Description
+|Query parameter|Description
 |`category` __Optional__ a|__String__. Type of the live query object. Valid values are:
 
 * `ALL`

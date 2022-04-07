@@ -23,17 +23,17 @@ POST /tspublic/v1/pinboarddata
 ----
 == Request parameters
 
-[width="100%" cols="1,1,4"]
+[width="100%" cols="1,4"]
 [options='header']
 |====
-|Query Parameter|Data Type|Description
-|`id`|string|GUID of pinboard.
-|`vizid` __Optional__|string|A JSON array of GUIDs of the visualizations. 
-|`batchsize`|integer|The batch size for loading pinboard objects. The system default is -1.
-|`pagenumber`|integer|The system default is -1.
-|`offset`|integer|The system default is -1. Alternately, set the offset using the following code:
+|Query parameter|Description
+|`id`|__String__. GUID of pinboard.
+|`vizid` __Optional__|__String__. A JSON array of GUIDs of the visualizations. 
+|`batchsize`|__Integer__. The batch size for loading pinboard objects. The system default is -1.
+|`pagenumber`|__Integer__. The system default is -1.
+|`offset`|__Integer__. The system default is -1. Alternately, set the offset using the following code:
          `1-based indexingOffset = (pageNumber - 1)` * batchSize
-|`formattype`|string|Valid values are `COMPACT` or `FULL JSON`. The system default is `COMPACT`.
+|`formattype`|__String__. Valid values are `COMPACT` or `FULL JSON`. The system default is `COMPACT`.
 |====
 
 == Example requests

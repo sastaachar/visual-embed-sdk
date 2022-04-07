@@ -10,7 +10,7 @@ GET /tspublic/v1/session/login/token
 [width="100%" cols="1,4"]
 [options='header']
 |====
-|Query Parameter|Description
+|Query parameter|Description
 |`username` |__String__. The username of the user who requested access to ThoughtSpot.
 |`auth_token`|__String__.The login token obtained from ThoughtSpot.
 |`redirect_url`|__String__.The URL to which you want to redirect the user after a successful login. This URL is fully encoded and includes the authentication token obtained for the user.

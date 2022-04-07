@@ -71,7 +71,7 @@ POST /tspublic/v1/dependency/listdependents
 [width="100%" cols="1,4"]
 [options='header']
 |====
-|Form Parameter|Description
+|Form parameter|Description
 |`type` a|_String_. Type of the data object. Valid values are:
 
 * `LOGICAL_TABLE` for data objects such as tables, worksheets, or views.
@@ -163,7 +163,7 @@ GET /tspublic/v1/dependency/logicalcolumn
 [width="100%" cols="1,4"]
 [options='header']
 |====
-|Query Parameter|Description
+|Query parameter|Description
 |`id`|__Array of strings__. A JSON array of GUIDs of the columns of a table, worksheet, or view.
 |====
 
@@ -312,7 +312,7 @@ GET /tspublic/v1/dependency/logicaltable
 [width="100%" cols="1,4"]
 [options='header']
 |====
-|Query Parameter| Description
+|Query parameter| Description
 |`id`|__Array of strings__. The GUIDs of data objects such as a worksheet, tables, or views.
 |====
 
@@ -439,7 +439,7 @@ GET /tspublic/v1/dependency/logicalrelationship
 [width="100%" cols="1,4"]
 [options='header']
 |====
-|Query Parameter|Description
+|Query parameter|Description
 |`id`|__Array of strings__. A JSON array of the GUIDs of table joins.
 |====
 
@@ -517,7 +517,7 @@ GET /tspublic/v1/dependency/physicalcolumn
 [width="100%" cols="1,4"]
 [options='header']
 |====
-|Query Parameter|Description
+|Query parameter|Description
 |`id`|__Array of strings__. A JSON array of GUIDs of the physical columns.
 |====
 
@@ -636,7 +636,7 @@ GET /tspublic/v1/dependency/physicaltable
 [width="100%" cols="1,1,4"]
 [options='header']
 |====
-|Query Parameter|Description
+|Query parameter|Description
 |`id`|__Array of strings__. A JSON array of the GUIDs of the physical table.
 |====
 === Example request
@@ -732,7 +732,7 @@ GET /tspublic/v1/dependency/pinboard
 [width="100%" cols="1,4"]
 [options='header']
 |====
-|Query Parameter|Description
+|Query parameter|Description
 |`id`|__Array of strings__. A JSON array of the GUIDs of the pinboard.
 |====
 

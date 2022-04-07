@@ -11,7 +11,7 @@ POST /tspublic/v1/session/auth/token
 [width="100%" cols="1,4"]
 [options='header']
 |====
-|Form Parameter|Description
+|Form parameter|Description
 |`secret_key`|__String__. The secret key string provided by the ThoughtSpot application server. ThoughtSpot generates this secret key when you enable trusted authentication.
 |`username` |__String__. The username of the user configured in ThoughtSpot.
 |`access_level` a|__String__. User access privilege. Valid values are:

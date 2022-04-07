@@ -561,7 +561,7 @@ POST /tspublic/v1/admin/configinfo/update
 [width="100%" cols="1,1,3"]
 [options='header']
 |====
-|Form Parameter|Description
+|Form parameter|Description
 |`configchanges`|__String__. A JSON file with the key-value pair of configuration attributes.
 |====
 

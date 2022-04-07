@@ -92,7 +92,7 @@ GET /tspublic/v1/database/schemas
 [width="100%" cols="1,4"]
 [options='header']
 |====
-| Query Parameter | Description
+| Query parameter | Description
 | `database` | _String_. Name or GUID of the database for which you want to fetch the schemas.
 |====
 
@@ -214,7 +214,7 @@ GET /tspublic/v1/database/getTableDetail
 [width="100%" cols="1,4"]
 [options='header']
 |====
-| Query Parameter | Description
+| Query parameter | Description
 | `database` | _String_. Name or GUID of the database.
 | `schema` | _String_. Name of the schema.
 | `table` | _String_. Name of the table.
@@ -381,7 +381,7 @@ POST /tspublic/v1/database/createtable/
 [width="100%" cols="1,4"]
 [options='header']
 |====
-|Form Parameter | Description
+|Form parameter | Description
 | `createdb` | _Boolean_. Set this flag to `true` to create tables with a database and schema. If you are adding a table to an existing database and schema, you can set `createdb` to false.
 | `ddl_schema` | _String_. The schema of the request that needs to be generated.
 |====
@@ -516,7 +516,7 @@ POST /tspublic/v1/database/run
 [width="100%" cols="1,4"]
 [options='header']
 |====
-|Form Parameter | Description
+|Form parameter | Description
 | `sqlstatements` | _String_. A JSON array of SQL statements separated by a semicolon (;).
 |====
 

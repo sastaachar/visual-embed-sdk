@@ -22,18 +22,18 @@ POST /tspublic/v1/security/share
 ----
 
 === Request parameters
-[width="100%" cols="1,1,4"]
+[width="100%" cols="1,4"]
 [options='header']
 |====
-|Form Parameter|Data Type|Description
-|`type`|string a|Type of metadata object. Specify one of the following values as a metadata object type:
+|Form parameter|Description
+|`type`  a|__String__. Type of metadata object. Specify one of the following values as a metadata object type:
 
 * `QUESTION_ANSWER_BOOK` to share search answers.
 * `PINBOARD_ANSWER_BOOK` to share pinboards.
 * `LOGICAL_COLUMN` to share a column of any data object such as tables, worksheets, or views.
 * `LOGICAL_TABLE` to share a data object such as a table, worksheet, or view.
-|`id`|string|A JSON array of the GUIDs of the objects to be shared.
-|`permission`|string a|A string with the GUIDs of the user or user group, and the type of access privilege.
+|`id`|__String__. A JSON array of the GUIDs of the objects to be shared.
+|`permission` a|__String__. A string with the GUIDs of the user or user group, and the type of access privilege.
 
 * The format of the permission string is `{"permissions":{"<GUID of the user or user group>":{"shareMode":"<type-of-access>"}}}`.
 * You can provide `READ_ONLY` or `MODIFY` access to the objects. With `READ_ONLY` access, the user or user group can view the shared object, whereas `MODIFY` access enables users to modify the object. 
@@ -50,10 +50,12 @@ The following example shows how to set the permission string to provide read-onl
 To remove a user or user group's access to a shared object, you can set the `shareMode` in the permission string to `NO_ACCESS`. For example, if you send a POST request with the permission string as  `{"permissions":{"7a9a6715-e154-431b-baaf-7b58246c13dd":{"shareMode":"NO_ACCESS"}}}`, the user with a GUID of `7a9a6715-e154-431b-baaf-7b58246c13dd` cannot access the shared object.
 ====
 
-|`emailshares`|string|The email address of the user accounts with whom you want to share the objects. 
-|`notify` __Optional__|boolean|When set to `true`, a notification is sent to the users after an object is shared.
-|`message` __Optional__|string|The message text to send in the notification email.
-|`useCustomEmbedUrls`|boolean|When set to `true`, ThoughtSpot sends a link with the host application context to allow users to access the shared object from their ThoughtSpot embedded instance.
+|`emailshares`|__String__. The email address of the user accounts with whom you want to share the objects. 
+|`notify` +
+__Optional__|__Boolean__. When set to `true`, a notification is sent to the users after an object is shared.
+|`message` +
+__Optional__|__String__. The message text to send in the notification email.
+|`useCustomEmbedUrls`|__Boolean__. When set to `true`, ThoughtSpot sends a link with the host application context to allow users to access the shared object from their ThoughtSpot embedded instance.
 |====
 
 === Example request
@@ -102,18 +104,18 @@ POST /tspublic/v1/security/shareviz
 ----
 === Request parameters
 
-[width="100%" cols="1,1,4"]
+[width="100%" cols="1,4"]
 [options='header']
 |====
-|Form Parameter|Data Type|Description
-|`type`|string|Type of the metadata object. The valid value is `PINBOARD_ANSWER_BOOK`.
-|`pinboardId`|string|The GUID of the pinboard to which the visualization belongs.
-|`principalids`|string|The GUID of the users with whom you want to share the visualization.
-|`vizid`|string|The GUID of visualization.
-|`emailshares`|string|The email address of the user account with whom you want to share the visualization. If no email address is specified, the visualization is shared only with the user IDs specified in `principalids`.
-|`notify` __Optional__|boolean|When set to `true`, a notification is sent to the user after the visualization is shared.
-|`message` __Optional__|string|The message text to send in the notification email.
-|`useCustomEmbedUrls`|boolean|When set to `true`, ThoughtSpot sends a link with the host application context to allow users to access the shared object from their ThoughtSpot embedded instance.
+|Form parameter|Description
+|`type`|__String__. Type of the metadata object. The valid value is `PINBOARD_ANSWER_BOOK`.
+|`pinboardId`|__String__. The GUID of the pinboard to which the visualization belongs.
+|`principalids`|__Array of strings__. A JSON array of the GUID of the users with whom you want to share the visualization.
+|`vizid`|__String__. The GUID of visualization.
+|`emailshares`|__String__. The email address of the user account with whom you want to share the visualization. If no email address is specified, the visualization is shared only with the user IDs specified in `principalids`.
+|`notify` __Optional__|__Boolean__. When set to `true`, a notification is sent to the user after the visualization is shared.
+|`message` __Optional__|__String__. The message text to send in the notification email.
+|`useCustomEmbedUrls`|__Boolean__. When set to `true`, ThoughtSpot sends a link with the host application context to allow users to access the shared object from their ThoughtSpot embedded instance.
 |====
 
 === Example request

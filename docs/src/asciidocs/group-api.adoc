@@ -37,7 +37,7 @@ POST /tspublic/v1/group/
 [width="100%" cols="1,4"]
 [options='header']
 |===
-|Form Parameter|Description
+|Form parameter|Description
 |`name` |__String__.  Name of the user group. The group name string must be unique.  
 |`displayname`|__String__. A unique display name string for the user group, for example, `Developer group`. 
 |`description`|__String__. Description text for the group.
@@ -146,7 +146,7 @@ PUT /tspublic/v1/group/{groupid}
 [width="100%" cols="1,4"]
 [options='header']
 |===
-|Form Parameter|Description
+|Form parameter|Description
 |`groupid`|__String__. The GUID of the user group.
 |`content`|__String__. A JSON map of group properties.
 |===
@@ -242,7 +242,7 @@ GET /tspublic/v1/group/
 [width="100%" cols="1,4"]
 [options='header']
 |===
-|Query Parameter|Description
+|Query parameter|Description
 |`groupid` __Optional__|__String__. The GUID of the user group to query.
 |`name` __Optional__|__String__. Name of the user group that you want to query.
 |===
@@ -340,7 +340,7 @@ This API uses `multipart/form-data` content-type.
 [width="100%" cols="2,4"] 
 [options='header']
 |====
-|Form Parameter|Description
+|Form parameter|Description
 |`privilege` a|__String__. The xref:group-api.adoc#group-privilege[type of privilege] to add. Valid values for the `privileges` string are:
 
 * `ADMINISTRATION`   
@@ -402,7 +402,7 @@ POST /tspublic/v1/group/removeprivilege
 [width="100%" cols="1,4"]
 [options='header']
 |====
-|Form Parameter|Description
+|Form parameter|Description
 |`privilege` a|__String__. The xref:group-api.adoc#group-privilege[currently assigned group privilege] to delete. Valid values are: 
 
 * `ADMINISTRATION`   
