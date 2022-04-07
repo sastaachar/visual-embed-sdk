@@ -1,7 +1,7 @@
 [width="100%"]
 [%noheader]
 |====
-|`xref:user-api.adoc#create-user[*POST* /tspublic/v1/user/]` +
+|`xref:user-api.adoc#create-user[*POST* /tspublic/v1/user/]` +
 Creates a user account.
 
 |`xref:user-api.adoc#update-user[*PUT* /tspublic/v1/user/{userid}]` +

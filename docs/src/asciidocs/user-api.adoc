@@ -20,7 +20,7 @@ To programmatically create a user account in the ThoughtSpot system, send a `POS
 [NOTE]
 ====
 * To create a user, you require admin user privileges.
-* All users created in the ThoughtSpot system are added to `All` group.
+* By default, all users in the ThoughtSpot system are added to the `All` group.
 ====
 
 === Resource URL

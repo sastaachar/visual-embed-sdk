@@ -23,7 +23,7 @@ To programmatically create a user group, send a `POST` request to the `/tspublic
 
 [NOTE]
 ====
-ThoughtSpot also has a default group called `ALL` group. When you create new users in ThoughtSpot, they are automatically added to `ALL`. You cannot delete the `ALL` group or remove members from it.
+ThoughtSpot also has a default group called `All` group. When you create new users in ThoughtSpot, they are automatically added to `All`. You cannot delete the `All` group or remove members from it.
 ====
 
 === Resource URL
@@ -58,7 +58,7 @@ __Optional__ a|__String__. Type of user group. Default value is `LOCAL_GROUP`, w
 |`tenantid` +
 __Optional__|__String__. GUID of the tenant for which the user group is being created.
 |`visibility` +
-__Optional__|__String__. Visibility of the user group. The `visibility` attribute is set to `DEFAULT`. The `DEFAULT` attribute makes the user group visible for other user groups and allows them to share  objects.  
+__Optional__|__String__. Visibility of the user group. The `visibility` attribute is set to `DEFAULT`. The `DEFAULT` attribute makes the group visible to other user groups and allows them to share  objects.  
 |===
 
 === Example request
@@ -231,7 +231,7 @@ Response Code
 
 == Get details of a user group
 
-To get the details of a specific user group or all user groups in the ThoughtSpot system, send a `GET` request to `/tspublic/v1/group/` API endpoint.
+To get the details of a specific user group or all user groups in the ThoughtSpot system, send a `GET` request to the `/tspublic/v1/group/` API endpoint.
 
 === Resource URL
 ----
@@ -327,7 +327,7 @@ If you have admin user credentials, you can programmatically assign a privilege 
 
 [NOTE]
 ====
-ThoughtSpot also has a default group called `ALL`. When you create new users in ThoughtSpot, they are automatically assigned to the `ALL` group. By default, the members of `ALL` do not have permissions to download or upload data. You can use this API to add these privileges to the `ALL` group.
+ThoughtSpot also has a default group called `All`. When you create new users in ThoughtSpot, they are automatically assigned to the `All` group. By default, the members of `All` do not have permission to download or upload data. You can use this API to add these privileges to the `All` group.
 ====
 
 === Resource URL
@@ -355,7 +355,7 @@ This API uses `multipart/form-data` content-type.
 * `RANALYSIS`
 * `A3ANALYSIS`
 * `BYPASSRLS`
-|`groupNames`|__String__. A JSON array of group names to which you want to add the privilege. To add a privilege to `ALL` group, specify `ALL`.
+|`groupNames`|__String__. A JSON array of group names to which you want to add the privilege. To add a privilege to `All` group, specify `All`.
 |====
 
 === Example request
@@ -369,7 +369,7 @@ curl -X POST \
 --header 'Cookie : JSESSIONID=0f534ede-f096-44d0-966a-f02be91dcb68; clientId=5ea75049-cbc9-4443-b083-2d148059c235; userGUID=a0d4311a-d123-48e5-806b-8bdc35e3e835' \
 --header 'Accept: application/json' \
 -F 'privilege=DATADOWNLOADING' \
--F 'groupNames=%5B%22TS%20Group%22%2C%20%22ALL%22%5D;type=application/json' \
+-F 'groupNames=%5B%22TS%20Group%22%2C%20%22All%22%5D;type=application/json' \
 https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/group/addprivilege
 ----
 
@@ -418,7 +418,7 @@ POST /tspublic/v1/group/removeprivilege
 * `A3ANALYSIS`
 * `BYPASSRLS`
 
-|`groupNames`|__String__. A JSON array of group names from which you want to remove the privilege. To remove a privilege from `ALL`, specify `ALL`.
+|`groupNames`|__String__. A JSON array of group names from which you want to remove the privilege. To remove a privilege from `All`, specify `All`.
 |====
 
 === Example request
@@ -431,7 +431,7 @@ curl -X POST \
 --header 'Cookie : JSESSIONID=0f534ede-f096-44d0-966a-f02be91dcb68; clientId=5ea75049-cbc9-4443-b083-2d148059c235; userGUID=a0d4311a-d123-48e5-806b-8bdc35e3e835' \
 --header 'Accept: application/json' \
 -F 'privilege=DATADOWNLOADING' \
--F 'groupNames=%5B%22TS%20Group%22%2C%20%22ALL%22%5D;type=application/json' \
+-F 'groupNames=%5B%22TS%20Group%22%2C%20%22All%22%5D;type=application/json' \
 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/group/removeprivilege'
 ----
 

@@ -37,7 +37,7 @@ POST /tspublic/v1/metadata/assigntag
 |====
 |Form parameter|Description
 |`id`|__String__. A JSON array of the metadata object GUIDs. For example, a pinboard or answer.
-|`type` __Optional__  a|__String__. Type of the metadata object. Specify any of following values as a metadata object type: +
+|`type` __Optional__  a|__String__. Type of the metadata object. Specify any of the following values as a metadata object type: +
 
 * `QUESTION_ANSWER_BOOK` for answers.
 * `PINBOARD_ANSWER_BOOK` for pinboards.
