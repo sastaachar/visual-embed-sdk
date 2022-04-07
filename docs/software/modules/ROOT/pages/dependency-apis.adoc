@@ -12,7 +12,7 @@ Dependency in ThoughtSpot is defined as a relation between the referenced and re
 Consider a worksheet (`Worksheet1`) that has a derived logical column (`Column1`), which in turn has a reference to a base logical column (`Column2`).
 
 [.widthAuto]
-image::./images/dependency.png[Dependent objects, width=auto]
+image::dependency.png[Dependent objects, width=auto]
 
 In the above example, `Worksheet1` has a dependency on `Column2`, which means that `Worksheet1` is a referencing object and `Column2` is a referenced object. ThoughtSpot does not allow you to delete `Column2` if you have not deleted `Worksheet1`, because the deletion of `Column2` will be prevented by the relationship between `Worksheet1’s` `Column1` and `Column2`. Similarly, `Column1` has a dependency on `Column2`; that is, `Column1` is a referencing object and `Column2` is a referenced object. You cannot delete `Column2` without first deleting `Column1`.
 
