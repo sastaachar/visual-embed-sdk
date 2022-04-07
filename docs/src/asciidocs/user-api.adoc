@@ -20,7 +20,7 @@ To programmatically create a user account in the ThoughtSpot system, send a `POS
 [NOTE]
 ====
 * To create a user, you require admin user privileges.
-* By default, all users in the ThoughtSpot system are added to the `All` group.
+* All users created in the ThoughtSpot system are added to `All` group.
 ====
 
 === Resource URL
@@ -781,7 +781,7 @@ https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/transfer/ownership?fromU
 [width="100%" cols="1,4"]
 [options='header']
 |===
-|HTTP code|Description
+|HTTP status code|Description
 |**204**|The ownership of objects is successfully transferred.
 |**400**|Invalid `fromName` or `toName`, or no user in the ThoughtSpot that matches the specified username.
 |===

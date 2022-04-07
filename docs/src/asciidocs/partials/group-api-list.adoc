@@ -1,40 +1,31 @@
 
-[width="100%", cols="2,2"]
+[width="100%"]
 [%noheader]
 |====
-|`xref:group-api.adoc#create-group[*POST* /tspublic/v1/group/]`
+|`xref:group-api.adoc#create-group[*POST* /tspublic/v1/group/]` +
+Creates a user group.
 
-|Creates a user group.
+|`xref:group-api.adoc#update-group[*PUT* /tspublic/v1/group/{groupid}]` +
+Modifies a user group.
 
-|`xref:group-api.adoc#update-group[*PUT* /tspublic/v1/group/{groupid}]`
+|`xref:group-api.adoc#get-ug-details[*GET* /tspublic/v1/group/]` +
+Gets details of a user group.
 
-|Modifies a user group.
+|`xref:group-api.adoc#add-user-to-group[*POST* /tspublic/v1/group/{groupid}/user/{userid}]` +
+Assigns user to a group.
 
-|`xref:group-api.adoc#get-ug-details[*GET* /tspublic/v1/group/]`
+|`xref:group-api.adoc#get-users-group[*GET* /tspublic/v1/group/listuser/{groupid}]` +
+Gets a list of users assigned to a group.
 
-|Gets details of a user group.
+|`xref:group-api.adoc#add-privilege[**POST** /tspublic/v1/group/addprivilege]` +
+Assigns a privilege to a user group.
 
-|`xref:group-api.adoc#add-user-to-group[*POST* /tspublic/v1/group/{groupid}/user/{userid}]`
+|`xref:group-api.adoc#remove-privilege[**POST** /tspublic/v1/group/removeprivilege]` +
+Removes the privilege assigned to a group.
 
-|Assigns user to a group.
+|`xref:group-api.adoc#delete-user-assoc[*DELETE* /tspublic/v1/group/{groupid}/user/{userid}]` +
+Removes a user from a user group.
 
-|`xref:group-api.adoc#get-users-group[*GET* /tspublic/v1/group/listuser/{groupid}]`
-
-|Gets a list of users assigned to a group.
-
-|`xref:group-api.adoc#add-privilege[**POST** /tspublic/v1/group/addprivilege]`
-
-|Assigns a privilege to a user group.
-
-|`xref:group-api.adoc#remove-privilege[**POST** /tspublic/v1/group/removeprivilege]`
-
-|Removes the privilege assigned to a group.
-
-|`xref:group-api.adoc#delete-user-assoc[*DELETE* /tspublic/v1/group/{groupid}/user/{userid}]`
-
-|Removes a user from a user group.
-
-|`xref:group-api.adoc#delete-group[*DELETE* /tspublic/v1/group/{groupid}]`
-
-|Deletes a user group.
+|`xref:group-api.adoc#delete-group[*DELETE* /tspublic/v1/group/{groupid}]` +
+Deletes a user group.
 |====

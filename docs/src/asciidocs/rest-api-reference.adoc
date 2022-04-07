@@ -10,7 +10,7 @@
 
 include::{path}/user-api-list.adoc[]
 
-== User group management
+== Group management
 
 include::{path}/group-api-list.adoc[]
 
@@ -33,7 +33,7 @@ include::{path}/admin-api-list.adoc[]
 |====
 |`xref:materialization-api.adoc[*POST* /tspublic/v1/materialization/refreshview/{id}]`
 
-|Allows you refresh a materialized view.
+|Allows you to refresh a materialized view.
 |====
 
 == TML objects

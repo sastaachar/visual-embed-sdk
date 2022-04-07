@@ -10,7 +10,7 @@
 
 include::partial$user-api-list.adoc[]
 
-== User group management
+== Group management
 
 include::partial$group-api-list.adoc[]
 
@@ -26,19 +26,17 @@ include::partial$metadata-api-list.adoc[]
 
 include::partial$admin-api-list.adoc[]
 
-
 == Materialization service
 
 [width="100%", cols="2,2"]
 [%noheader]
-|====
+|=====
 |`xref:materialization-api.adoc[*POST* /tspublic/v1/materialization/refreshview/{id}]`
 
-|Allows you refresh a materialized view.
-|====
+|Allows you to refresh a materialized view.
+|=====
 
 == TML objects
-
 include::partial$tml-api-list.adoc[]
 
 == Pinboard data
@@ -54,11 +52,11 @@ include::partial$pinboard-api-list.adoc[]
 |Allows searching for data from a specific data source in the ThoughtSpot application.
 |====
 
-== Dependent objects
+== Dependent objects API 
 
 include::partial$dependency-api-list.adoc[]
 
-== Security
+== Security API endpoints
 
 include::partial$security-api-list.adoc[]
 

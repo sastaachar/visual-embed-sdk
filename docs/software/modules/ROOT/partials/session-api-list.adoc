@@ -1,32 +1,25 @@
 
-[width="100%", cols="2,2"]
+[width="100%"]
 [%noheader]
 |====
-|`xref:session-api.adoc#session-authToken[*POST* /tspublic/v1/session/auth/token]`
+|`xref:session-api.adoc#session-authToken[*POST* /tspublic/v1/session/auth/token]` +
+Authenticates and logs in a user.
 
-|Authenticates and logs in a user.
+|`xref:session-api.adoc#session-login[*POST* /tspublic/v1/session/login]` +
+Obtains an authentication token for a user.
 
-|`xref:session-api.adoc#session-login[*POST* /tspublic/v1/session/login]`
+|`xref:session-api.adoc#session-loginToken[*GET* /tspublic/v1/session/login/token]` +
+Gets a  log in session for authenticated users  when trusted authentication is enabled.
 
-|Obtains an authentication token for a user.
+|`xref:session-api.adoc#session-logout[*POST* /tspublic/v1/session/logout]` +
+Logs out a user from an existing session.
 
-|`xref:session-api.adoc#session-loginToken[*GET* /tspublic/v1/session/login/token]`
+|`xref:session-api.adoc#set-home-pinboard[**POST** /tspublic/v1/session/homepinboard]` +
+Sets a specific pinboard as a home pinboard.
 
-|Gets a  log in session for authenticated users  when trusted authentication is enabled.
+|`xref:session-api.adoc#get-home-pinboard[**GET** /tspublic/v1/session/homepinboard]`  +
+Returns the GUID of the pinboard that is set as a home pinboard for the current logged-in user.
 
-|`xref:session-api.adoc#session-logout[*POST* /tspublic/v1/session/logout]`
-
-|Logs out a user from an existing session.
-
-|`xref:session-api.adoc#set-home-pinboard[**POST** /tspublic/v1/session/homepinboard]`
-
-|Sets a specific pinboard as a home pinboard.
-
-|`xref:session-api.adoc#get-home-pinboard[**GET** /tspublic/v1/session/homepinboard]`
-
-|Returns the GUID of the pinboard that is set as a home pinboard for the current logged-in user.
-
-|`xref:session-api.adoc#del-home-pinboard[**DELETE** /tspublic/v1/session/homepinboard]`
-
+|`xref:session-api.adoc#del-home-pinboard[**DELETE** /tspublic/v1/session/homepinboard]` +
 Removes the home pinboard settings for the current logged-in user.
 |====

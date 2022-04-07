@@ -1,11 +1,9 @@
-[width="100%", cols="2,2"]
+[width="100%"]
 [%noheader]
 |====
-|`xref:security-api.adoc#share-object[**POST** /tspublic/v1/security/share]`
+|`xref:security-api.adoc#share-object[**POST** /tspublic/v1/security/share]` +
+Shares ThoughtSpot objects with another user or user group.
 
-|Shares ThoughtSpot objects with another user or user group.
-
-|`xref:security-api.adoc#shareviz[**POST** /tspublic/v1/security/shareviz]`
-
-|Shares a specific visualization with another user or user group.
+|`xref:security-api.adoc#shareviz[**POST** /tspublic/v1/security/shareviz]` +
+Shares a specific visualization with another user or user group.
 |====

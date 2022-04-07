@@ -1,7 +1,7 @@
 
-[width="100%", cols="2,2"]
+[width="100%"]
 [%noheader]
-|====
-|`xref:dependency-apis.adoc#add-dependents[*POST* /tspublic/v1/dependency/listdependents]`  
-|Gets a list of dependents for a given data object type.
-|====
+|======
+|`xref:dependency-apis.adoc#add-dependents[*POST* /tspublic/v1/dependency/listdependents]`  +
+Gets a list of dependents for a given data object type.
+|======
