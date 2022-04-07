@@ -16,7 +16,7 @@ This request method sends authentication attributes as query string parameters i
 |`xref:session-api.adoc#session-loginToken[*POST* /tspublic/v1/session/login/token]`  +
 Authenticates and logs in a user to ThoughtSpot. 
 
-This request method sends authentication attributes in the request body as `formData` parameters. For a secure exchange of authentication information, ThoughtSpot recommends using the `POST`request method.
+This request method sends authentication attributes in the request body as `formData` parameters. For a secure exchange of authentication information, ThoughtSpot recommends using the `POST` request method.
 
 |`xref:session-api.adoc#session-logout[*POST* /tspublic/v1/session/logout]` +
 Logs out a user from an existing session.

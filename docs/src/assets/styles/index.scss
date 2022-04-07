@@ -29,6 +29,7 @@ body {
     font-size: $font-size-normal;
 }
 
+
 main {
     display: flow-root;
     background-color: var(--body-background-color);
@@ -55,6 +56,7 @@ a {
 .containerWrapper {
     padding: 10px 25px;
 }
+
 
 .d-inline-block {
     display: inline-block;
@@ -85,10 +87,6 @@ a {
 
 /*end visited class*/
 
-.documentBody {
-    padding-left: 6px;
-}
-
 .introWrapper {
     display: flex;
     margin-top: $document-margin-top;
@@ -102,7 +100,12 @@ button {
     width: auto;
     img {
         width: auto;
+        max-width: 100%;
     }
+}
+
+.bordered img {
+  border: 1px solid var(--border-color);
 }
 
 .displayNone {
@@ -124,7 +127,19 @@ button {
     line-height: $tag-line-height !important;
     margin-right: $tag-margin-right;
     text-align: center;
-    text-transform: uppercase;
+    min-width: $tag-width;
+    padding: $tag-padding;
+    color: $tag-font-color;
+}
+
+.beta {
+    border-radius: $tag-border-radius;
+    display: inline-block;
+    font-size: $font-size-small;
+    font-weight: $font-weight-normal;
+    height: 25px;
+    line-height: $line-height-doc;
+    text-align: center;
     min-width: $tag-width;
     padding: $tag-padding;
     color: $tag-font-color;
@@ -146,6 +161,10 @@ button {
     background-color: $tip-color;
 }
 
+.greyBackground {
+    background-color: $disabledcolor;
+}
+
 .orangeBackground {
     background-color: $warning-color;
 }
@@ -159,7 +178,7 @@ button {
 /* Div box style start */
 
 .boxDiv {
-    padding: 10px;
+    padding: 15px;
     display: inline-block;
     margin: 10px;
     box-shadow: var(--box-shadow);
@@ -170,12 +189,26 @@ button {
 }
 
 .boxHalfWidth {
-    width: 48%;
     display: inline-block;
+    padding: 15px;
+    height: 225px;
+    max-height: 500px;
+    width: 475px;
+    max-width: 500px;
+    margin: 10px;
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
+    &:hover {
+        box-shadow: var(--box-shadow-hover);
+    }
 }
 
 .boxFullWidth {
     width: 100%;
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-color);
+    margin: 10px;
+    padding: 15px;
 }
 
 .divider {
@@ -191,6 +224,44 @@ button {
     line-height: $line-height-doc;
     color: var(--primary-color);
 
+}
+
+summary.title  {
+    font-size: $font-size-summ-title;
+    margin-top: $margin-sm;
+    margin-left: 3px;
+    font-weight: $font-weight-normal;
+    line-height: $line-height-doc;
+    color: var(--primary-color);
+
+}
+
+.cardHead {
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+    color: var(--primary-color);
+    font-size: $font-size-h5;
+    margin: auto;
+    padding: 10px;
+    font-weight: $font-weight-bold;
+
+}
+
+
+.introCard     {
+    padding: 15px;
+    display: inline-block;
+    position: relative;
+    height: 225px;
+    max-height: 500px;
+    width: 300px;
+    max-width:400px;
+    margin: 10px;
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
+    &:hover {
+        box-shadow: var(--box-shadow-hover);
+    }
 }
 
 
@@ -234,6 +305,10 @@ button {
         padding-left: 0;
     }
 
+   .introCard {
+        width: 100%;
+    }
+    
     .boxDiv {
         width: 100%;
     }
@@ -247,4 +322,9 @@ button {
     main.withHeaderFooter {
         flex-direction: column;
     }
+}
+
+
+.searchResultHighlightColor {
+    color: var(--secondary-color);
 }

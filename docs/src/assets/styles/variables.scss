@@ -11,15 +11,17 @@ $text-container-background: rgba(192, 198, 207, 0.12);
 $disabledcolor: #a5acb9;
 $result-container-max-height: 320px;
 $result-height: 64px;
-$highlight-grey: #998;
+$highlight-grey: #6e7781;
 $highlight-darkgrey: #333;
+$highlight-green: #188038;
 $highlight-red: #d14;
 $highlight-darkred: #900;
-$highlight-blue: #458;
+$highlight-blue: #0550ae;
 $highlight-lightgreen: #009926;
 $highlight-lightgrey: #999;
 $highlight-peach: #fdd;
 $highlight-fadedgreen: #dfd;
+$highlight-yellow:#e18114;
 
 $header-zIndex: 99;
 $header-logo-width: 158px;
@@ -32,22 +34,28 @@ $line-height-doc: 1.6rem;
 $line-height-result-title: 20px;
 $line-height-result-footer: 18px;
 $font-size-small: 12px;
+$font-size-home: 13px;
 $font-size-normal: 14px;
-$font-size-table: 15px;
-$font-size-doc: 15px;
+$font-size-table: 14px;
+$font-size-doc: 14px;
+$font-size-code: 13.5px;
+$line-height-code: 1.4rem;
 $font-size-large: 18px;
 $font-size-404: 1.25rem;
 $padding-md: 24px;
 $margin-lg: 35px;
 $margin-md: 24px;
+$margin-sm: 16px;
 $margin-xs: 5px;
 $padding-xs: 5px;
 $padding-sm: 10px;
+$padding-lg: 28px;
 $document-margin-top: 88px;
+$document-padding: 20px;
 $padding-nested-ul: 12px;
 $margin-links: 16px;
-$docmap-width-desktop: 300px;
-$docmap-width-tablet: 210px;
+$docmap-width-desktop: 270px;
+$docmap-width-tablet: 180px;
 $docmap-width-mobile: 100%;
 $tablet-resolution-min: 767px;
 $tablet-resolution-max: 1024px;
@@ -59,11 +67,12 @@ $width-search-icon: 16px;
 $height-search-input: 32px;
 $margin-search-result: 16px;
 $padding-left-search-input: 36px;
-$font-family-code: Consolas, Monaco, monospace;
+$font-family-code: Roboto,Consolas,Monaco,monospace;
 $font-family-doc: Optimo-Plain;
 $font-family-back-button: Optimo-Plain;
 $width-back-button: 32px;
 $height-back-button: 32px;
+$font-color-back-button: #777e8b;
 $margin-top-mobile: 58px;
 $menu-icon-width: 43px;
 $z-index-search: 1;
@@ -72,12 +81,16 @@ $arrow-icon-width: 12px;
 $title-margin: 10px;
 $sub-title-margin: 30px;
 $sub-title-margin-h5: 10px;
-$font-size-h3: 22px;
+$font-size-h2: 26px;
+$font-size-h3: 23px;
 $font-size-h4: 20px;
 $font-size-h5: 18px;
+$font-size-summ-title: 17px;
 $font-size-breadcrums: 13px;
 $icon-width: 16px;
 $icon-height: 16px;
+$arrow-icon-width: 20px;
+$arrow-icon-height: 20px;
 
 /* Preview link variables */
 
@@ -128,7 +141,7 @@ $admonition-font-factor-pre: 15;
 /*Tag variables*/
 
 $tag-border-radius: 14px;
-$tag-font-size: 14px;
+$tag-font-size: 13px;
 $tag-font-weight: 400;
 $tag-height: 28px;
 $tag-line-height: 28px;
@@ -142,16 +155,18 @@ $tag-color-yellow: #ffbc00;
     --body-background-color: #fff;
     --primary-color: #1d232f;
     --breadcrums-font-color: #5f6368;
-    --admonition-background: #fafafa;
+    --admonition-background: #fff;
     --code-block-color: #f6f8fa;
     --text-color-code-lang: #999;
     --icon-color: #999;
-    --back-button-background: #e6e6e6;
+    --back-button-background: #eaedf2;
     --border-color: #c0c6cf;
+    --border-color-tr: #e6e6e6;
     --scrollbar-color: #a5acb9;
-    --color-jet-70: #222;
-    --highlight-purple: #0000cd;
-    --highlight-green: #008080;
+    --color-jet-70: #d14;
+    --highlight-purple: #9334e6;
+    --highlight-green: #188038;
+    --highlight-lightgreen:#009926;
     --highlight-lightblue: #0086b3;
     --highlight-darkblue: #000080;
     --highlight-blue: #458;
@@ -159,13 +174,13 @@ $tag-color-yellow: #ffbc00;
     --highlight-violet: #990073;
     --secondary-color: #2770ef;
     --box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 12%), 0 0px 6px 0 rgba(0, 0, 0, 11%);
-    --box-shadow-hover: 0 4px 8px 0 rgba(0, 0, 0, 6%),
-        0 6px 20px 0 rgba(0, 0, 0, 0.06);
+    --box-shadow-hover: 0 16px 20px 0 rgba(0, 0, 0, 12%),
+        0 16px 20px 0 rgba(0, 0, 0, 12%);
 }
 
 #wrapper[data-theme='dark'] {
     --body-background-color: #21252c;
-    --primary-color: #fff;
+    --primary-color: #E8EAED;
     --breadcrums-font-color: #a5acb9;
     --admonition-background: #3c4356;
     --code-block-color: #3c4356;
@@ -173,10 +188,12 @@ $tag-color-yellow: #ffbc00;
     --icon-color: #fff;
     --back-button-background: #a4abb8;
     --border-color: #3c4356;
+    --border-color-tr:#3c4356;
     --scrollbar-color: #3c4356;
-    --color-jet-70: #bdbdbd;
+    --color-jet-70: #e18114;
     --highlight-purple: #40c4ff;
     --highlight-green: aquamarine;
+    --highlight-lightgreen:#009926;
     --highlight-lightblue: #90caf9;
     --highlight-darkblue: #9fa8da;
     --highlight-blue: #c5cae9;
@@ -185,6 +202,6 @@ $tag-color-yellow: #ffbc00;
     --secondary-color: #8388fe;
     --box-shadow: 0 2px 2px 0 rgba(255, 255, 255, 12%),
         0 0px 6px 0 rgba(255, 255, 255, 11%);
-    --box-shadow-hover: 0 4px 8px 0 rgb(255 255 255 / 6%),
-        0 6px 20px 0 rgb(255 255 255 / 6%);
+    --box-shadow-hover: 0 16px 20px 0 rgb(255 255 255 / 6%),
+        0 16px 20px 0 rgb(255 255 255 / 6%);
 }
