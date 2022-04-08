@@ -264,7 +264,7 @@ __String__. The database associated with the account.
 
 == Supported operations
 
-include::partial$connection-apis.adoc[]
+include::partial$data-connection-apis.adoc[]
 
 
 [#cre-connection]
