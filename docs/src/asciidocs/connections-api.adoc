@@ -28,7 +28,7 @@ To create or modify data connections through REST APIs, you need to provide a ma
 
 Here is an example of the metadata JSON file:
 
-image::connection_metadata_json.png[Connection metadata]
+image::./images/connection_metadata_json.png[Connection metadata]
 
 [#connection-attr]
 === Configuration attributes in connection metadata
