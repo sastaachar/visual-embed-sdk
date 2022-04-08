@@ -44,6 +44,7 @@ export enum Page {
     Data = 'data',
     /**
      * SpotIQ listing page
+     * @version 1.9.8
      */
     SpotIQ = 'spotiq',
 }
