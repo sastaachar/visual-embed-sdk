@@ -1,6 +1,6 @@
 = REST API Reference
-
 :page-toclevels: 1
+
 :page-title: REST API Reference Guide
 :page-pageid: rest-api-reference
 :page-description: REST API Reference
@@ -24,7 +24,7 @@ include::partial$metadata-api-list.adoc[]
 
 == Configuration management
 
-include::partial$admin-api-list.adoc[]
+include::partial$data-connection-apis.adoc[]
 
 == Data connections
 
