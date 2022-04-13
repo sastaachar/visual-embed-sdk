@@ -86,7 +86,7 @@ Response code
 
 === Response codes
 
-[options="header", cols=".^2a,.^14a"]
+[options="header", cols="1,4"]
 |===
 |HTTP status code|Description
 |**204**|Successful operation
@@ -145,7 +145,7 @@ Response code
 
 === Response codes
 
-[options="header", cols=".^2a,.^14a"]
+[options="header", cols="1,4"]
 |===
 |HTTP status code|Description
 |**204**|Successful operation
