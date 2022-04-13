@@ -74,7 +74,7 @@ https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/session/homepinboard
 
 [#get-home-pinboard]
 == Get details of the home pinboard
-To get the pinboard GUID that is set as home pinboard in the current logged in user account, send a GET request to the `/tspublic/v1/session/homepinboard` API endpoint.
+To get the GUID of pinboard that is currently set as a home pinboard, send a `GET` request to the `/tspublic/v1/session/homepinboard` API endpoint.
 
 === Resource URL
 ----
