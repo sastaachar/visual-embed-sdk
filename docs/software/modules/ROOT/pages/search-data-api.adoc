@@ -5,7 +5,7 @@
 :page-pageid: search-data-api
 :page-description: Use the search data API endpoint to query for an answer
 
-To programmatically construct a search query string and retrieve data from ThoughtSpot, use the `/tspublic/v1/searchdata` REST API.
+To construct a search query string and retrieve data from ThoughtSpot programmatically, use the `/tspublic/v1/searchdata` REST API.
 
 == Search query
 
