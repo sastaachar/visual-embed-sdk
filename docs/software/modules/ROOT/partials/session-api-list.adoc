@@ -9,7 +9,7 @@ Authenticates and logs in a user.
 Obtains an authentication token for a user.
 
 |`xref:session-api.adoc#session-loginToken[*GET* /tspublic/v1/session/login/token]` +
-Gets a  log in session for authenticated users  when trusted authentication is enabled.
+Authenticates and logs in a user to ThoughtSpot.
 
 |`xref:session-api.adoc#session-logout[*POST* /tspublic/v1/session/logout]` +
 Logs out a user from an existing session.
