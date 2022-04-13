@@ -9,8 +9,8 @@ To retrieve data related to a pinboard or visualization from the ThoughtSpot sys
 
 Using this API, you can fetch the following information:
 
-* All the visualization objects on a pinboard.
-* A specific or a group of visualizations on a pinboard.
+* All the visualization objects on a pinboard
+* A specific or a group of visualizations on a pinboard
 
 [NOTE]
 ====
