@@ -1,3 +1,7 @@
 name: software
 title: Software
 version: '7.1'
+asciidoc:
+  attributes:
+    toc: ~
+    page-toclevels: 1
