@@ -26,5 +26,5 @@ Transfers the ownership of objects from one user to another.
 Changes the password of a user account.
 
 |`xref:user-api.adoc#user-sync[**POST** /tspublic/v1/user/sync]` +
-Synchronizes user details and attributes from an external database with the user data in the ThoughtSpot system.
+Synchronizes user and group properties from an external database with the user data on ThoughtSpot.
 |====
