@@ -30,7 +30,7 @@ include::partial$admin-api-list.adoc[]
 [width="100%"]
 [%noheader]
 |=====
-|`xref:materialization-api.adoc[*POST* /tspublic/v1/materialization/refreshview/{id}]`
+|`xref:materialization-api.adoc[*POST* /tspublic/v1/materialization/refreshview/{id}]` +
 Allows you to refresh a materialized view.
 |=====
 
@@ -46,7 +46,7 @@ include::partial$pinboard-api-list.adoc[]
 [width="100%"]
 [%noheader]
 |====
-|`xref:search-data-api.adoc[**POST** /tspublic/v1/searchdata]`
+|`xref:search-data-api.adoc[**POST** /tspublic/v1/searchdata]` +
 Allows searching for data from a specific data source in the ThoughtSpot application.
 |====
 
