@@ -139,7 +139,7 @@ button {
     font-weight: $font-weight-normal;
     height: 25px;
     line-height: $line-height-doc;
-    margin-right: $tag-margin-right;
+    margin-right: 3px;
     text-align: center;
     min-width: $tag-width;
     padding: $tag-padding;
@@ -227,7 +227,7 @@ button {
 
 }
 
- 
+
 summary.title  {
     font-size: $font-size-summ-title;
     margin-top: $margin-sm;
@@ -309,7 +309,7 @@ summary.title  {
    .introCard {
         width: 100%;
     }
-    
+
     .boxDiv {
         width: 100%;
     }
