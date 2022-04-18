@@ -1,6 +1,5 @@
 = Session APIs
 
-:page-toclevels: 1
 :page-title: Session API
 :page-pageid: session-api
 :page-description: To log in to ThoughtSpot and create user sessions, use the session API endpoints
