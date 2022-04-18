@@ -54,7 +54,8 @@ curl -X POST \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --header 'Accept: application/json' \
 --header 'X-Requested-By: ThoughtSpot' \
--d 'id=7a9a6715-e154-431b-baaf-7b58246c13dd&userid=59481331-ee53-42be-a548-bd87be6ddd4a' \ 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/session/homepinboard'
+-d 'id=7a9a6715-e154-431b-baaf-7b58246c13dd&userid=59481331-ee53-42be-a548-bd87be6ddd4a' \ 
+'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/session/homepinboard'
 ----
 
 .Request URL
