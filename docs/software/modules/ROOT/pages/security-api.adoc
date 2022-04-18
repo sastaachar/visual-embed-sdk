@@ -7,6 +7,7 @@
 
 The Security APIs allow you to share ThoughtSpot objects, such as pinboards and visualizations, with another user or a user group. Any ThoughtSpot user can share objects with another user or user group. 
 
+== Supported operations
 include::partial$security-api-list.adoc[]
 
 [#share-object]
