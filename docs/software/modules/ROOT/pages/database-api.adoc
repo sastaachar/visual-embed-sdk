@@ -5,9 +5,9 @@
 :page-pageid: database-api
 :page-description: Use the database REST API endpoints to fetch table, schema, and database details, and create tables and run TQL commands
 
-The Database API endpoints allow you to get details of your databases and their schemas, create tables within a database, and run TQL commands in Falcon-based ThoughtSpot deployments. 
+The Database API endpoints allow you to get details of your databases and their schemas, create tables within a database, and run TQL commands in Falcon-based ThoughtSpot deployments.
 
-To modify the schema of a database or add a new table to a database, you must have admin access to the database and its objects. 
+To modify the schema of a database or add a new table to a database, you must have admin access to the database and its objects.
 
 == Supported operations
 
@@ -141,7 +141,7 @@ To get a list of all databases associated with your ThoughtSpot application inst
 === Resource URL
 
 ----
-GET /tspublic/v1/database/databases 
+GET /tspublic/v1/database/databases
 ----
 
 === Request parameters
@@ -394,7 +394,7 @@ POST /tspublic/v1/database/createtable/
 ----
 curl -X POST \
 --header 'Content-Type: application/x-www-form-urlencoded' \
---header 'Accept: application/json' --header 'X-Requested-By: ThoughtSpot' -d 'create_db=true&ddl_schema={"database":{"name":"DataFlow_DB"},"schema":{"name":"falcon_default_schema"},"table":{"id":{"name":"test_table1"},"primary_key":[{"name":"test_pk"}],"column":[{"id":{"name":"test_pk"},"size":0,"data_type":"TYPE_INT32"},{"id":{"name":"test_col1"},"size":0,"data_type":"TYPE_FLOAT"},{"id":{"name":"test_col2"},"data_type":"TYPE_INT64","datetime":"TYPE_DATE"}{"id":{"name":"test_col3"},"size":10,"data_type":"TYPE_VAR_CHAR"}]}}' 
+--header 'Accept: application/json' --header 'X-Requested-By: ThoughtSpot' -d 'create_db=true&ddl_schema={"database":{"name":"DataFlow_DB"},"schema":{"name":"falcon_default_schema"},"table":{"id":{"name":"test_table1"},"primary_key":[{"name":"test_pk"}],"column":[{"id":{"name":"test_pk"},"size":0,"data_type":"TYPE_INT32"},{"id":{"name":"test_col1"},"size":0,"data_type":"TYPE_FLOAT"},{"id":{"name":"test_col2"},"data_type":"TYPE_INT64","datetime":"TYPE_DATE"}{"id":{"name":"test_col3"},"size":10,"data_type":"TYPE_VAR_CHAR"}]}}'
 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/database/createtable'
 ----
 

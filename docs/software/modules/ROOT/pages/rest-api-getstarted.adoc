@@ -1,6 +1,5 @@
 = Get started
 
-:page-toclevels: 1
 :page-title: Getting started with REST APIs
 :page-pageid: rest-api-getstarted
 :page-description: Getting started with REST API
@@ -40,11 +39,11 @@ To call a REST API, send a request to the endpoint URL with the attributes requi
 
 === Request method
 
-Specify the HTTP request method in your API request. 
+Specify the HTTP request method in your API request.
 
 * `GET` to query information, such as getting a list of users or groups.
 * `POST` to create and add new properties to a resource, such as a user, group, answer, worksheet, or a data object.
-* `PUT` to update the properties of an existing resource, such as modifying the properties of a user or user group. 
+* `PUT` to update the properties of an existing resource, such as modifying the properties of a user or user group.
 * `DELETE` to remove an object or object association.
 
 [NOTE]
@@ -59,12 +58,12 @@ A query string consists of additional parameters that are passed in the URL. For
 
 [width="100%" cols="1,4"]
 |===
-|`X-Requested-By`| Make sure you include the `'X-Requested-By: ThoughtSpot'` header in all API requests. 
-|`User-Agent`|The `User-Agent` header is required for all requests.  Most clients will add the `User-Agent` header automatically. However, when making API calls from code, especially `.NET`, you need to add the `User-Agent` header. 
+|`X-Requested-By`| Make sure you include the `'X-Requested-By: ThoughtSpot'` header in all API requests.
+|`User-Agent`|The `User-Agent` header is required for all requests.  Most clients will add the `User-Agent` header automatically. However, when making API calls from code, especially `.NET`, you need to add the `User-Agent` header.
 
 The `User-Agent` can be any string; for example, you can set the header as `'User-Agent: <browser>/<browser-version><os/platform>'`.
 |`Accept`| Use this header to specify the content type for the API responses. You can set it to `'Accept: application/json'` for JSON and `'Accept: text/plain'` for plain text responses.
-|`Content-Type` a| Use this header to indicate the content type to use in the request body. Set this header as `'Content-Type: application/json'`. 
+|`Content-Type` a| Use this header to indicate the content type to use in the request body. Set this header as `'Content-Type: application/json'`.
 
 * Some `POST` operations, such as sharing an object with another user, require the URL-encoded objects to be passed as parameters in the URL. For such API requests, set the header as `'Content-Type: application/x-www-form-urlencoded'`.
 
@@ -131,4 +130,3 @@ Indicates an unauthorized request. Check if you have the required credentials an
 Indicates an unsupported media type. Check the media type specified in the `Content-Type` header.
 * *500* +
 Indicates an internal server error. Make sure the data format of the request is correct and check if the server is available and can process your request.
-

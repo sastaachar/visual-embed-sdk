@@ -1,6 +1,5 @@
 = Search data API
 
-:page-toclevels: 1
 :page-title: Search Data API
 :page-pageid: search-data-api
 :page-description: Use the search data API endpoint to query for an answer

@@ -1,5 +1,4 @@
 = User APIs
-:toclevels: 1
 
 :page-title: User APIs
 :page-pageid: user-api

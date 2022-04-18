@@ -1,6 +1,5 @@
 = Group APIs
 
-:page-toclevels: 1
 :page-title: Group API
 :page-pageid: group-api
 :page-description: The group API endpoints allow you to define group privileges and user access to ThoughtSpot objects and data

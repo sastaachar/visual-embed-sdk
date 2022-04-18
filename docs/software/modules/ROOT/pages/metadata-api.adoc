@@ -1,6 +1,5 @@
 = Metadata APIs
 
-:page-toclevels: 1
 :linkattrs:
 :page-title: Get metadata
 :page-pageid: metadata-api

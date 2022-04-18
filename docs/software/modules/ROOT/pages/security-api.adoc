@@ -1,6 +1,5 @@
 = Security APIs
 
-:page-toclevels: 1
 :page-title: Security API
 :page-pageid: security-api
 :page-description: To share objects and view permission settings, use the security API endpoints

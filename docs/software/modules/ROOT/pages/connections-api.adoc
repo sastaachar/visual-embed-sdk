@@ -1,6 +1,5 @@
 = Data connection APIs
 
-:page-toclevels: 1
 :page-title: Data connection APIs
 :page-pageid: connections-api
 :page-description: The connection API endpoints allow you to query data connections used for live query services on a ThoughtSpot instance
