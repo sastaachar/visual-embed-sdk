@@ -67,5 +67,3 @@ include::partial$security-api-list.adoc[]
 == Database and schema
 
 include::partial$database-api-list.adoc[]
-
- 

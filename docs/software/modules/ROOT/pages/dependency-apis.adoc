@@ -5,7 +5,7 @@
 :page-pageid: dependent-objects-api
 :page-description: The dependency API endpoints allow you to get details of the dependents for a metadata object
 
-The `tspublic/v1/dependency` endpoints allow you to query ThoughtSpot objects to get dependency data and associate objects as dependents.
+The `tspublic/v1/dependency` endpoints allow you to query dependent objects for a metadata object type or ID.
 
 Dependency in ThoughtSpot is defined as a relation between the referenced and referencing objects. If the referenced object cannot be deleted without first deleting the referencing object, the referenced object is considered as a dependent object.
 
@@ -18,9 +18,9 @@ In the above example, `Worksheet1` has a dependency on `Column2`, which means th
 
 Before deleting a data object such as a worksheet, table, or column, you must check if it has any dependent objects, and remove its associations.
 
-== Data object types
+== Types of data objects
 
-The `tspublic/v1/dependency` endpoint allows you to query and edit dependency for the following data object types:
+The `tspublic/v1/dependency` endpoint allows you to query dependency details for the following data object types:
 
 * `LOGICAL_TABLE` for data objects such as tables, worksheets, or views.
 
@@ -56,8 +56,8 @@ Make sure your API request has the following headers:
 
 
 [#add-dependents]
-== Create dependent objects
-To add a list of dependents to a metadata object, send a `POST` request to the `POST /tspublic/v1/dependency/listdependents` API endpoint.
+== Get dependent objects for metadata type
+To get a list of dependents for a specific metadata object type, send a `POST` request to the `/tspublic/v1/dependency/listdependents` endpoint.
 
 === Resource URL
 ----
@@ -90,7 +90,8 @@ curl -X POST \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --header 'Accept: application/json' \
 --header 'X-Requested-By: ThoughtSpot' \
--d 'id=%5B%22cd252e5c-b552-49a8-821d-3eadaa049cca%22%2C%20%2269428b60-58fd-42d7-b645-16ea3d524a06%22%5D&batchsize=1' 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/dependency/listdependents'
+-d 'id=%5B%22cd252e5c-b552-49a8-821d-3eadaa049cca%22%2C%20%2269428b60-58fd-42d7-b645-16ea3d524a06%22%5D&batchsize=1' \
+'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/dependency/listdependents'
 ----
 
 .Request URL
@@ -137,10 +138,10 @@ If the `POST` operation is successful, the API returns a response body with depe
 ----
 === Response codes
 
-[options="header", cols=".^2a,.^14a"]
+[options="header", cols="1,4"]
 |===
-|HTTP code|Description
-|**200**|Successful addition of dependent objects
+|HTTP status code|Description
+|**200**|Successful retrieval of dependent objects
 |**400**|Invalid object ID
 |**500**|Null object ID
 |===
@@ -291,9 +292,9 @@ If the GET operation is successful, the API returns a list of dependent objects 
 
 === Response codes
 
-[options="header", cols=".^2a,.^14a"]
+[options="header", cols="1,4"]
 |===
-|HTTP code|Description
+|HTTP status code|Description
 |**200**|Successful retrieval of dependent objects
 |**400**|Invalid object ID
 |===
@@ -420,9 +421,9 @@ If the `GET` operation is success, the API returns a list of dependent objects:
 ----
 === Response codes
 
-[options="header", cols=".^2a,.^14a"]
+[options="header", cols="1,4"]
 |===
-|HTTP code|Description
+|HTTP status code|Description
 |**200**|Successful retrieval of dependent objects
 |**400**|Invalid object ID
 |===
@@ -500,9 +501,9 @@ If the GET operation is successful, the API returns the following response:
 
 === Response codes
 
-[options="header", cols=".^2a,.^14a"]
+[options="header", cols="1,4"]
 |===
-|HTTP code|Description
+|HTTP status code|Description
 |**200**|Successful retrieval of dependent objects
 |**400**|Invalid object ID
 |===
@@ -622,9 +623,9 @@ https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/dependency/physicalcolumn?id=
 ----
 === Response codes
 
-[options="header", cols=".^2a,.^14a"]
+[options="header", cols="1,4"]
 |===
-|HTTP code|Description
+|HTTP status code|Description
 |**200**|Successful retrieval of dependent objects
 |**400**|Invalid object ID
 |===
@@ -721,9 +722,9 @@ https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/dependency/physicaltable?id=%
 
 === Response codes
 
-[options="header", cols=".^2a,.^14a"]
+[options="header", cols="1,4"]
 |===
-|HTTP code|Description
+|HTTP status code|Description
 |**200**|Successful retrieval of dependent objects
 |**400**|Invalid object ID
 |===
@@ -795,9 +796,9 @@ https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/dependency/pinboard?ids=%5B%2
 
 === Response codes
 
-[options="header", cols=".^2a,.^14a"]
+[options="header", cols="1,4"]
 |===
-|HTTP code|Description
+|HTTP status code|Description
 |**200**|Successful retrieval of dependent objects
 |**400**|Invalid object ID
 |===
@@ -862,9 +863,9 @@ If the cluster has objects with incomplete metadata details, the API returns the
 ----
 === Response codes
 
-[options="header", cols=".^2a,.^14a"]
+[options="header", cols="1,4"]
 |===
-|HTTP code|Description
+|HTTP status code|Description
 |**200**|Successful retrieval of dependent objects
 |**400**|Invalid object ID
 |===

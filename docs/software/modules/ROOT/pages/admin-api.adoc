@@ -23,6 +23,9 @@ To get details of the current configuration of a ThoughtSpot cluster, send a `GE
 POST /tspublic/v1/admin/configinfo
 ----
 
+=== Request parameters
+
+None
 === Example request
 
 Make sure the API request has the following headers:
@@ -43,9 +46,6 @@ curl -X GET \
 ----
 https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/admin/configinfo
 ----
-=== Request parameters
-
-None
 
 === Example response
 
@@ -608,4 +608,3 @@ Response Code
 |**204** |Successful update of the configuration information
 |**401** |Unauthorized request
 |===
-

@@ -36,7 +36,7 @@ POST /tspublic/v1/metadata/assigntag
 |====
 |Form parameter|Description
 |`id`|__String__. A JSON array of the metadata object GUIDs. For example, a pinboard or answer.
-|`type` __Optional__  a|__String__. Type of the metadata object. Specify any of following values as a metadata object type: +
+|`type` __Optional__  a|__String__. Type of the metadata object. Specify any of the following values as a metadata object type: +
 
 * `QUESTION_ANSWER_BOOK` for answers.
 * `PINBOARD_ANSWER_BOOK` for pinboards.
@@ -76,9 +76,9 @@ Response code
 
 === Response codes
 
-[options="header", cols=".^2a,.^14a"]
+[options="header", cols="1,4"]
 |===
-|HTTP code|Description
+|HTTP status code|Description
 |**204**|Successful application of tag to a metadata object
 |**400**|Invalid parameter value
 |**500**|Invalid metadata object ID
@@ -143,7 +143,7 @@ Response code
 
 === Response codes
 
-[options="header", cols=".^2a,.^14a"]
+[options="header", cols="1,4"]
 |===
 |HTTP status code|Description
 |**204**|Successful application of tag to a metadata object
@@ -502,7 +502,7 @@ The following example shows the metadata details of a pinboard object:
 
 === Response codes
 
-[options="header", cols=".^2a,.^14a"]
+[options="header", cols="1,4"]
 |===
 |HTTP status code|Description
 |**200**|Successful retrieval of metadata details
@@ -730,7 +730,7 @@ https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/metadata/list?type=PINBOARD_A
 ----
 === Response codes
 
-[options="header", cols=".^2a,.^14a"]
+[options="header", cols="1,4"]
 |===
 |HTTP status code|Description
 |**200**
@@ -965,7 +965,7 @@ The following example shows the headers returned for a user:
 
 === Response codes
 
-[options="header", cols=".^2a,.^14a"]
+[options="header", cols="1,4"]
 |===
 |HTTP status Code|Description
 |**200**|Successful retrieval of the metadata headers
@@ -1223,7 +1223,7 @@ https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/metadata/listobjectheaders?ty
 ----
 === Response codes
 
-[options="header", cols=".^2a,.^14a"]
+[options="header", cols="1,4"]
 |===
 |HTTP status code|Description
 |**200**|Successful retrieval of metadata headers
@@ -1337,7 +1337,7 @@ https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/metadata/listvizheaders?id=97
 
 === Response codes
 
-[options="header", cols=".^2a,.^14a"]
+[options="header", cols="1,4"]
 |===
 |HTTP status code|Description
 |**200**|Successful retrieval of the visualization headers list
@@ -1392,7 +1392,7 @@ Response Code
 ----
 === Response codes
 [width="100%"]
-[options="header", cols=".^2a,.^14a"]
+[options="header", cols="1,4"]
 |===
 |HTTP status code|Description
 |*204*|The object is successfully added to favorites

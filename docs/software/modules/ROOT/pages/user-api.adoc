@@ -136,7 +136,7 @@ To modify the attributes of a ThoughtSpot user account, send a `PUT` request to 
 
 This API allows the following modifications to a user profile:
 
-* Username modifications
+* User name modifications
 * Password reset
 * Group assignment
 * User visibility for sharing objects
@@ -158,7 +158,8 @@ PUT /tspublic/v1/user/{userid}
 |Form parameter|Description
 |`userid`|__String__. GUID of the user.
 |`content`|__String__. A JSON map of strings with the user profile attributes.
-|`password` __Optional__|__String__. Password string for the user account. Use this attribute to change the password of the user account.
+|`password` +
+__Optional__|__String__. Password string for the user account. Use this attribute to change the password of the user account.
 |===
 
 === Example request
@@ -838,7 +839,7 @@ Indicates if the user or user group needs to be activated. If the user or user g
 [width="100%" cols="2,4"]
 [options='header']
 |===
-|HTTP Code|Description
+|HTTP status code|Description
 |**200**|Successful operation.
 |===
 
@@ -1101,7 +1102,7 @@ The allowed values are:
 [#transfer-ownership]
 == Transfer ownership
 
-When a user is removed from the ThoughtSpot application, you may want to transfer objects from the deleted user account to another account. If you are an admin user, you can programmatically transfer the ownership of one or several objects from one ThoughtSpot user account to another, using the `/tspublic/v1/user/transfer/ownership` API endpoint.
+When a user is removed from the ThoughtSpot application, you may want to transfer objects from the deleted user account to another account. If you are an admin user, you can programmatically transfer the ownership of one or several objects from one ThoughtSpot user account to another, use the `/tspublic/v1/user/transfer/ownership` API endpoint.
 
 === Resource URL
 ----
@@ -1124,7 +1125,8 @@ POST /tspublic/v1/user/transfer/ownership
 curl -X POST \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
---header 'X-Requested-By: ThoughtSpot' \ 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/transfer/ownership?fromUserName=guest&toUserName=guest1'
+--header 'X-Requested-By: ThoughtSpot' \
+ 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/transfer/ownership?fromUserName=guest&toUserName=guest1'
 ----
 
 .Request URL
@@ -1145,7 +1147,7 @@ Response Code
 [width="100%" cols="2,4"]
 [options='header']
 |===
-|HTTP Code|Description
+|HTTP status code|Description
 |**204**|The ownership of objects is successfully transferred.
 |**400**|Invalid `fromName` or `toName`, or no user in the ThoughtSpot that matches the specified username.
 |===
@@ -1204,7 +1206,7 @@ curl -X POST \
 --header 'Cookie : JSESSIONID=0f534ede-f096-44d0-966a-f02be91dcb68; clientId=5ea75049-cbc9-4443-b083-2d148059c235; userGUID=a0d4311a-d123-48e5-806b-8bdc35e3e835' \
 --header 'Accept: application/json' \
 -F 'applyChanges=false' \
--F 'removeDeleted=false'
+-F 'removeDeleted=false' \
 -F 'principals=@principals.json;type=application/json' \
 https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/sync
 ----

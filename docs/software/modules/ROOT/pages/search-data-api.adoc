@@ -333,7 +333,7 @@ A sampling ratio of `1` indicates that all the data in the answer object was ret
 
 [options="header", cols="1,2"]
 |===
-|HTTP Code|Description
+|HTTP status code|Description
 |**200**|Successful retrieval of data from the data source
 |**400**|Invalid query/data source
 |===

@@ -382,7 +382,7 @@ If the privilege assignment is successful, the API returns the group metadata wi
 [width="100%" cols="2,4"]
 [options='header']
 |===
-|HTTP Code|Description
+|HTTP status code|Description
 |**200**|Successful operation
 |**415**|Invalid content type
 |**401**|Unauthorized request
@@ -446,7 +446,7 @@ https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/group/removeprivilege
 [width="100%" cols="2,4"]
 [options='header']
 |===
-|HTTP Code|Description
+|HTTP status code|Description
 | **204**|Successful operation
 |**400**|Invalid parameter type
 |**415**|Invalid content type
