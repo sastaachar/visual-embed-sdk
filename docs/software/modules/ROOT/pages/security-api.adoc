@@ -13,7 +13,7 @@ include::partial$security-api-list.adoc[]
 [#share-object]
 == Share objects with another user
 
-To programmatically share ThoughtSpot objects with another user or user group, use the `/tspublic/v1/security/share` API. 
+To programmatically share ThoughtSpot objects with another user or user group, use the `/tspublic/v1/security/share` API endpoint. 
 
 When you share an object like a pinboard or visualization, a notification with a live link is sent to the user. When the users access this object, they can view the last saved version of the object.
 
@@ -69,7 +69,8 @@ curl -X POST \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --header 'Accept: application/json' \
 --header 'X-Requested-By: ThoughtSpot' \
--d 'type=PINBOARD_ANSWER_BOOK&id=["237921cc-ebf5-445a-8b7b-15c301f8456e"]&permission={“permissions”:{“237921cc-ebf5-445a-8b7b-15c301f8456e”:{“shareMode”:”READ_ONLY”}}}&emailshares=["tsuser@thoughtspot.com"]&notify=false&useCustomEmbedUrls=true' 'https://<ThoughtSpot-host/callosum/v1/tspublic/v1/security/share'
+-d 'type=PINBOARD_ANSWER_BOOK&id=["237921cc-ebf5-445a-8b7b-15c301f8456e"]&permission={“permissions”:{“237921cc-ebf5-445a-8b7b-15c301f8456e”:{“shareMode”:”READ_ONLY”}}}&emailshares=["tsuser@thoughtspot.com"]&notify=false&useCustomEmbedUrls=true'\
+'https://<ThoughtSpot-host/callosum/v1/tspublic/v1/security/share'
 
 ----
 
