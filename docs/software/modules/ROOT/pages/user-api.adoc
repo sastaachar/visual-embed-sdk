@@ -1,5 +1,4 @@
 = User APIs
-:toc: ~
 :page-toclevels: 1
 
 :page-title: User APIs
