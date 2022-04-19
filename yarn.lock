@@ -2756,6 +2756,13 @@
   "resolved" "https://registry.npmjs.org/anchor-js/-/anchor-js-4.3.1.tgz"
   "version" "4.3.1"
 
+"anchor.js@^1.0.6":
+  "integrity" "sha1-DXLOmT4ZVRtamWKCvNFHqRTTwKI="
+  "resolved" "https://registry.npmjs.org/anchor.js/-/anchor.js-1.0.6.tgz"
+  "version" "1.0.6"
+  dependencies:
+    "jquery" ">=1.5.0"
+
 "anser@^2.0.1":
   "integrity" "sha512-4g5Np4CVD3c5c/36Mj0jllEA5bQcuXF0dqakZcuHGeubBzw93EAhwRuQCzgFm4/ZwvyBMzFdtn9BcihOjnxIdQ=="
   "resolved" "https://registry.npmjs.org/anser/-/anser-2.0.1.tgz"
@@ -9489,6 +9496,11 @@
     "@sideway/address" "^4.1.0"
     "@sideway/formula" "^3.0.0"
     "@sideway/pinpoint" "^2.0.0"
+
+"jquery@>=1.5.0":
+  "integrity" "sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw=="
+  "resolved" "https://registry.npmjs.org/jquery/-/jquery-3.6.0.tgz"
+  "version" "3.6.0"
 
 "js-base64@^2.1.8":
   "integrity" "sha512-pZe//GGmwJndub7ZghVHz7vjb2LgC1m8B07Au3eYqeqv9emhESByMXxaEgkUkEqJe87oBbSniGYoQNIBklc7IQ=="
