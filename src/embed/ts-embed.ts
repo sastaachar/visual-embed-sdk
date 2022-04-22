@@ -11,6 +11,8 @@ import {
     getEncodedQueryParamsString,
     getCssDimension,
     getOffsetTop,
+    embedEventStatus,
+    setAttributes,
 } from '../utils';
 import {
     getThoughtSpotHost,
@@ -28,6 +30,8 @@ import {
     RuntimeFilter,
     Param,
     EmbedConfig,
+    MessageOptions,
+    MessageCallbackObj,
 } from '../types';
 import { uploadMixpanelEvent, MIXPANEL_EVENT } from '../mixpanel-service';
 import { getProcessData } from '../utils/processData';
@@ -36,6 +40,11 @@ import pkgInfo from '../../package.json';
 import { getAuthPromise, getEmbedConfig, renderInQueue } from './base';
 
 const { version } = pkgInfo;
+
+/**
+ * Global prefix for all Thoughtspot postHash Params.
+ */
+export const THOUGHTSPOT_PARAM_PREFIX = 'ts-';
 
 /**
  * The event id map from v2 event names to v1 event id
@@ -62,6 +71,11 @@ export interface FrameParams {
      * The height of the iFrame (unit is pixels if numeric).
      */
     height?: number | string;
+    /**
+     * This parameters will be passed on the iframe
+     * as is.
+     */
+    [key: string]: string | number | boolean;
 }
 
 /**
@@ -106,19 +120,27 @@ export interface ViewConfig {
      */
     visibleActions?: Action[];
     /**
+     * Show alert messages and toast messages in the embedded view.
+     * @version 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    showAlerts?: boolean;
+    /**
      * The list of runtime filters to apply to a search answer,
      * visualization, or Liveboard.
      */
     runtimeFilters?: RuntimeFilter[];
     /**
      * The locale/language to use for the embedded view.
-     * @version 1.9.5 or later
+     * @version 1.9.4 or later
      */
     locale?: string;
     /**
      * This is an object (key/val) of override flags which will be applied
      * to the internal embedded object. This can be used to add any
      * URL flag.
+     * Warning: This option is for advanced use only and is used internally
+     * to control embed behavior in non-regular ways. We do not publish the
+     * list of supported keys and values associated with each.
      * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl
      */
     additionalFlags?: { [key: string]: string | number | boolean };
@@ -160,7 +182,7 @@ export class TsEmbed {
      * by the embedded app; multiple event handlers can be registered
      * against a particular message type.
      */
-    private eventHandlerMap: Map<string, MessageCallback[]>;
+    private eventHandlerMap: Map<string, MessageCallbackObj[]>;
 
     /**
      * A flag that is set to true post render.
@@ -257,9 +279,10 @@ export class TsEmbed {
      * will be removed for ts7.oct.cl
      * @hidden
      */
-    private formatEventData(event: MessageEvent) {
+    private formatEventData(event: MessageEvent, eventType: string) {
         const eventData = {
             ...event.data,
+            type: eventType,
         };
         if (!eventData.data) {
             eventData.data = event.data.payload;
@@ -277,7 +300,7 @@ export class TsEmbed {
         window.addEventListener('message', (event) => {
             const eventType = this.getEventType(event);
             const eventPort = this.getEventPort(event);
-            const eventData = this.formatEventData(event);
+            const eventData = this.formatEventData(event, eventType);
             if (event.source === this.iFrame.contentWindow) {
                 this.executeCallbacks(
                     eventType,
@@ -344,6 +367,7 @@ export class TsEmbed {
             disabledActionReason,
             hiddenActions,
             visibleActions,
+            showAlerts,
             additionalFlags,
             locale,
         } = this.viewConfig;
@@ -366,6 +390,9 @@ export class TsEmbed {
         }
         if (Array.isArray(visibleActions)) {
             queryParams[Param.VisibleActions] = visibleActions;
+        }
+        if (showAlerts !== undefined) {
+            queryParams[Param.ShowAlerts] = showAlerts;
         }
         if (locale !== undefined) {
             queryParams[Param.Locale] = locale;
@@ -413,7 +440,7 @@ export class TsEmbed {
      * @param url
      * @param frameOptions
      */
-    protected renderIFrame(url: string, frameOptions: FrameParams): void {
+    protected renderIFrame(url: string, frameOptions: FrameParams = {}): void {
         if (this.isError) {
             return;
         }
@@ -431,6 +458,7 @@ export class TsEmbed {
                 data: {
                     timestamp: initTimestamp,
                 },
+                type: EmbedEvent.Init,
             });
 
             uploadMixpanelEvent(MIXPANEL_EVENT.VISUAL_SDK_RENDER_START);
@@ -455,12 +483,19 @@ export class TsEmbed {
                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore
                     this.iFrame.mozallowfullscreen = true;
+                    const {
+                        height: frameHeight,
+                        width: frameWidth,
+                        ...restParams
+                    } = frameOptions;
                     const width = getCssDimension(
-                        frameOptions?.width || DEFAULT_EMBED_WIDTH,
+                        frameWidth || DEFAULT_EMBED_WIDTH,
                     );
                     const height = getCssDimension(
-                        frameOptions?.height || DEFAULT_EMBED_HEIGHT,
+                        frameWidth || DEFAULT_EMBED_HEIGHT,
                     );
+                    setAttributes(this.iFrame, restParams);
+
                     this.iFrame.style.width = `${width}`;
                     this.iFrame.style.height = `${height}`;
                     this.iFrame.style.border = '0';
@@ -472,6 +507,7 @@ export class TsEmbed {
                             data: {
                                 timestamp: loadTimestamp,
                             },
+                            type: EmbedEvent.Load,
                         });
                         uploadMixpanelEvent(
                             MIXPANEL_EVENT.VISUAL_SDK_IFRAME_LOAD_PERFORMANCE,
@@ -525,11 +561,21 @@ export class TsEmbed {
         eventPort?: MessagePort | void,
     ): void {
         const callbacks = this.eventHandlerMap.get(eventType) || [];
-        callbacks.forEach((callback) =>
-            callback(data, (payload) => {
-                this.triggerEventOnPort(eventPort, payload);
-            }),
-        );
+        const allHandlers = this.eventHandlerMap.get(EmbedEvent.ALL) || [];
+        callbacks.push(...allHandlers);
+        const dataStatus = data?.status || embedEventStatus.END;
+        callbacks.forEach((callbackObj) => {
+            if (
+                (callbackObj.options.start &&
+                    dataStatus === embedEventStatus.START) || // When start status is true it trigger only start releated payload
+                (!callbackObj.options.start &&
+                    dataStatus === embedEventStatus.END) // When start status is false it trigger only end releated payload
+            ) {
+                callbackObj.callback(data, (payload) => {
+                    this.triggerEventOnPort(eventPort, payload);
+                });
+            }
+        });
     }
 
     /**
@@ -596,20 +642,21 @@ export class TsEmbed {
      * sends an event of a particular message type to the host application.
      *
      * @param messageType The message type
-     * @param callback A callback function
+     * @param callback A callback as a function
+     * @param options The message options
      */
     public on(
         messageType: EmbedEvent,
         callback: MessageCallback,
+        options: MessageOptions = { start: false },
     ): typeof TsEmbed.prototype {
         if (this.isRendered) {
             this.handleError(
                 'Please register event handlers before calling render',
             );
         }
-
         const callbacks = this.eventHandlerMap.get(messageType) || [];
-        callbacks.push(callback);
+        callbacks.push({ options, callback });
         this.eventHandlerMap.set(messageType, callbacks);
         return this;
     }
@@ -663,6 +710,34 @@ export class TsEmbed {
 
         return this;
     }
+
+    /**
+     * Get the Post Url Params for THOUGHTSPOT from the current
+     * host app URL.
+     * THOUGHTSPOT URL params starts with a prefix "ts-"
+     */
+    public getThoughtSpotPostUrlParams(): string {
+        const urlHash = window.location.hash;
+        const queryParams = window.location.search;
+        const postHashParams = urlHash.split('?');
+        const postURLParams = postHashParams[postHashParams.length - 1];
+        const queryParamsObj = new URLSearchParams(queryParams);
+        const postURLParamsObj = new URLSearchParams(postURLParams);
+        const params = new URLSearchParams();
+
+        const addKeyValuePairCb = (value: string, key: string): void => {
+            if (key.startsWith(THOUGHTSPOT_PARAM_PREFIX)) {
+                params.append(key, value);
+            }
+        };
+        queryParamsObj.forEach(addKeyValuePairCb);
+        postURLParamsObj.forEach(addKeyValuePairCb);
+
+        let tsParams = params.toString();
+        tsParams = tsParams ? `?${tsParams}` : '';
+
+        return tsParams;
+    }
 }
 
 /**
@@ -690,9 +765,10 @@ export class V1Embed extends TsEmbed {
     public on(
         messageType: EmbedEvent,
         callback: MessageCallback,
+        options: MessageOptions = { start: false },
     ): typeof TsEmbed.prototype {
         const eventType = this.getCompatibleEventType(messageType);
 
-        return super.on(eventType, callback);
+        return super.on(eventType, callback, options);
     }
 }

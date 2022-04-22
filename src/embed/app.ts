@@ -10,7 +10,7 @@
  */
 
 import { getFilterQuery, getQueryParamString } from '../utils';
-import { Param, RuntimeFilter, DOMSelector } from '../types';
+import { Param, RuntimeFilter, DOMSelector, HostEvent } from '../types';
 import { V1Embed, ViewConfig } from './ts-embed';
 
 /**
@@ -44,7 +44,6 @@ export enum Page {
     Data = 'data',
     /**
      * SpotIQ listing page
-     * @version 1.9.8
      */
     SpotIQ = 'spotiq',
 }
@@ -84,6 +83,14 @@ export interface AppViewConfig extends ViewConfig {
      * The array of GUIDs to be hidden
      */
     hideObjects?: string[];
+    /**
+     * Render liveboards using the new v2 rendering mode
+     * This is a transient flag which is primarily meant for internal use
+     * @default false
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     * @hidden
+     */
+    liveboardV2?: boolean;
 }
 
 /**
@@ -104,7 +111,7 @@ export class AppEmbed extends V1Embed {
      */
     private getEmbedParams() {
         const params = this.getBaseQueryParams();
-        const { tag, hideObjects } = this.viewConfig;
+        const { tag, hideObjects, liveboardV2 = false } = this.viewConfig;
 
         if (tag) {
             params[Param.Tag] = tag;
@@ -113,6 +120,7 @@ export class AppEmbed extends V1Embed {
             params[Param.HideObjects] = JSON.stringify(hideObjects);
         }
 
+        params[Param.LiveboardV2Enabled] = liveboardV2;
         const queryParams = getQueryParamString(params, true);
 
         return queryParams;
@@ -128,12 +136,15 @@ export class AppEmbed extends V1Embed {
         const queryString = [filterQuery, queryParams]
             .filter(Boolean)
             .join('&');
-        const url = `${this.getV1EmbedBasePath(
+        let url = `${this.getV1EmbedBasePath(
             queryString,
             this.viewConfig.showPrimaryNavbar,
             this.viewConfig.disableProfileAndHelp,
             true,
         )}/${pageId}`;
+
+        const tsPostHashParams = this.getThoughtSpotPostUrlParams();
+        url = `${url}${tsPostHashParams}`;
 
         return url;
     }
@@ -183,19 +194,31 @@ export class AppEmbed extends V1Embed {
     /**
      * Navigate to particular page for app embed. eg:answers/pinboards/home
      * This is used for embedding answers, pinboards, visualizations and full application only.
-     * @param path The string, set to iframe src and navigate to new page
+     * @param path string | number The string, set to iframe src and navigate to new page
      * eg: appEmbed.navigateToPage('pinboards')
+     * When used with `noReload` this can also be a number like 1/-1 to go forward/back.
+     * @param noReload boolean Trigger the navigation without reloading the page (version: 1.12.0 | 8.4.0.cl)
      */
-    public navigateToPage(path: string): void {
-        if (this.iFrame) {
+    public navigateToPage(path: string | number, noReload = false): void {
+        if (!this.iFrame) {
+            console.log('Please call render before invoking this method');
+            return;
+        }
+        if (noReload) {
+            this.trigger(HostEvent.Navigate, path);
+        } else {
+            if (typeof path !== 'string') {
+                console.warn(
+                    'Path can only by a string when triggered without noReload',
+                );
+                return;
+            }
             const iframeSrc = this.iFrame.src;
             const embedPath = '#/embed';
             const currentPath = iframeSrc.includes(embedPath) ? embedPath : '#';
             this.iFrame.src = `${
                 iframeSrc.split(currentPath)[0]
             }${currentPath}/${path.replace(/^\/?#?\//, '')}`;
-        } else {
-            console.log('Please call render before invoking this method');
         }
     }
 

@@ -155,11 +155,42 @@ export interface EmbedConfig {
     customCssUrl?: string;
 }
 
-export type MessagePayload = { type: string; data: any };
+/**
+ * MessagePayload: Embed event payload: message type, data and status (start/end)
+ */
+export type MessagePayload = {
+    /* type: message type eg: 'save' */
+    type: string;
+    /* data: message payload data eg: { answerId: '123' } */
+    data: any;
+    /* status: message payload status - start or end */
+    status?: string;
+};
+/**
+ * MessageOptions: By Providing options, getting specific event start / end based on option
+ */
+export type MessageOptions = {
+    /* A boolean value indicating that start status events of this type will be dispatched */
+    start?: boolean;
+};
+/**
+ * MessageCallback: Embed event message callback
+ */
 export type MessageCallback = (
+    /* payload: Message payload contain type, data and status */
     payload: MessagePayload,
+    /* responder: Messsage callback function triggered when embed event initiated */
     responder?: (data: any) => void,
 ) => void;
+/**
+ * MessageCallbackObj: contains message options & callback function
+ */
+export type MessageCallbackObj = {
+    /* options: It contains start, A boolean value indicating that start status events of this type will be dispatched */
+    /* callback: Embed event message callback */
+    options: MessageOptions;
+    callback: MessageCallback;
+};
 
 export type GenericCallbackFn = (...args: any[]) => any;
 
@@ -315,6 +346,12 @@ export enum EmbedEvent {
      */
     VizPointDoubleClick = 'vizPointDoubleClick',
     /**
+     * A click has been triggered on table/chart
+     * @return ContextMenuInputPoints - data point that is clicked
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    VizPointClick = 'vizPointClick',
+    /**
      * An error has occurred.
      * @return error - An error object or message
      */
@@ -379,6 +416,107 @@ export enum EmbedEvent {
      * @version 1.9.1 or later
      */
     LiveboardRendered = 'PinboardRendered',
+    /**
+     * This can be used to register an event listener which
+     * is triggered on all events.
+     * @version SDK: 1.10.0 | ThoughtSpot: any
+     */
+    ALL = '*',
+    /**
+     * Emitted when answer is saved in the app
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    Save = 'save',
+    /**
+     * Emitted when the download action is triggered on an answer
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    Download = 'download',
+    /**
+     * Emitted when the Download as PDF action is triggered on an answer
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    DownloadAsPdf = 'downloadAsPdf',
+    /**
+     * Emitted when the Download as CSV action is triggered on an answer
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    DownloadAsCsv = 'downloadAsCsv',
+    /**
+     * Emitted when the Download as XLSX action is triggered on an answer
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    DownloadAsXlsx = 'downloadAsXlsx',
+    /**
+     * Emitted when an answer is deleted in the app
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    AnswerDelete = 'answerDelete',
+    /**
+     * Emitted when an answer is pinned to a Liveboard
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    Pin = 'pin',
+    /**
+     * Emitted when SpotIQ analysis is triggered
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    SpotIQAnalyze = 'spotIQAnalyze',
+    /**
+     * Emitted when a user shares an object with another user or group
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    Share = 'share',
+    /**
+     * Emitted when a user clicks the Include action to include a specific value or data on a chart or table
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    DrillInclude = 'context-menu-item-include',
+    /**
+     * Emitted when a user clicks the Exclude action to exclude a specific value or data on a chart or table
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    DrillExclude = 'context-menu-item-exclude',
+    /**
+     * Emitted when copied column value on the app
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    CopyToClipboard = 'context-menu-item-copy-to-clipboard',
+    /**
+     * Emitted when a user clicks the Update TML action
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    UpdateTML = 'updateTSL',
+    /**
+     * Emitted when a user clicks the Edit TML action
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    EditTML = 'editTSL',
+    /**
+     * Emitted when ExportTML trigger in answer on the app
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    ExportTML = 'exportTSL',
+    /**
+     * Emitted when an answer is saved as a view
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    SaveAsView = 'saveAsView',
+    /**
+     * Emitted when copy of existing answer on the app
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    CopyAEdit = 'copyAEdit',
+    /**
+     * Emitted when a user clicks Show underlying data on an answe
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    ShowUnderlyingData = 'showUnderlyingData',
+    /**
+     * Emitted when an answer is switched to a chart or table view
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    AnswerChartSwitcher = 'answerChartSwitcher',
 }
 
 /**
@@ -429,6 +567,13 @@ export enum HostEvent {
      * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl
      */
     UpdateRuntimeFilters = 'UpdateRuntimeFilters',
+    /**
+     * Navigate to a specific page in App embed without any reload.
+     * This is the same as calling `appEmbed.navigateToPage(path, true)`
+     * @param path - the path to navigate to (can be a number[1/-1] to go forward/back)
+     * @version SDK: 1.12.0 | ThoughtSpot: 8.4.0.cl
+     */
+    Navigate = 'Navigate',
 }
 
 /**
@@ -459,7 +604,6 @@ export enum DataSourceVisualMode {
 export enum Param {
     DataSources = 'dataSources',
     DataSourceMode = 'dataSourceMode',
-    ExpandAllDataSource = 'expandAllDataSource',
     DisableActions = 'disableAction',
     DisableActionReason = 'disableHint',
     ForceTable = 'forceTable',
@@ -483,8 +627,10 @@ export enum Param {
     ViewPortWidth = 'viewPortWidth',
     VisibleActions = 'visibleAction',
     CustomCSSUrl = 'customCssUrl',
-    visibleVizs = 'pinboardVisibleVizs',
     DisableLoginRedirect = 'disableLoginRedirect',
+    visibleVizs = 'pinboardVisibleVizs',
+    LiveboardV2Enabled = 'isPinboardV2Enabled',
+    ShowAlerts = 'showAlerts',
     Locale = 'locale',
 }
 
@@ -495,30 +641,57 @@ export enum Param {
 // eslint-disable-next-line no-shadow
 export enum Action {
     Save = 'save',
+    /**
+     * @hidden
+     */
     Update = 'update',
+    /**
+     * @hidden
+     */
     SaveUntitled = 'saveUntitled',
     SaveAsView = 'saveAsView',
     MakeACopy = 'makeACopy',
     EditACopy = 'editACopy',
     CopyLink = 'embedDocument',
+    /**
+     * @hidden
+     */
     ResetLayout = 'resetLayout',
     Schedule = 'subscription',
     SchedulesList = 'schedule-list',
     Share = 'share',
     AddFilter = 'addFilter',
     ConfigureFilter = 'configureFilter',
+    /**
+     * @hidden
+     */
     AddFormula = 'addFormula',
+    /**
+     * @hidden
+     */
     SearchOnTop = 'searchOnTop',
     SpotIQAnalyze = 'spotIQAnalyze',
+    /**
+     * @hidden
+     */
     ExplainInsight = 'explainInsight',
+    /**
+     * @hidden
+     */
     SpotIQFollow = 'spotIQFollow',
     ShareViz = 'shareViz',
+    /**
+     * @hidden
+     */
     ReplaySearch = 'replaySearch',
     ShowUnderlyingData = 'showUnderlyingData',
     Download = 'download',
     DownloadAsPdf = 'downloadAsPdf',
     DownloadAsCsv = 'downloadAsCSV',
     DownloadAsXlsx = 'downloadAsXLSX',
+    /**
+     * @hidden
+     */
     DownloadTrace = 'downloadTrace',
     ExportTML = 'exportTSL',
     ImportTML = 'importTSL',
@@ -529,18 +702,39 @@ export enum Action {
     Edit = 'edit',
     EditTitle = 'editTitle',
     Remove = 'delete',
+    /**
+     * @hidden
+     */
     Ungroup = 'ungroup',
+    /**
+     * @hidden
+     */
     Describe = 'describe',
+    /**
+     * @hidden
+     */
     Relate = 'relate',
+    /**
+     * @hidden
+     */
     CustomizeHeadlines = 'customizeHeadlines',
     /**
      * @hidden
      */
     PinboardInfo = 'pinboardInfo',
     LiveboardInfo = 'pinboardInfo',
+    /**
+     * @hidden
+     */
     SendAnswerFeedback = 'sendFeedback',
+    /**
+     * @hidden
+     */
     DownloadEmbraceQueries = 'downloadEmbraceQueries',
     Pin = 'pin',
+    /**
+     * @hidden
+     */
     AnalysisInfo = 'analysisInfo',
     Subscription = 'subscription',
     Explore = 'explore',
@@ -548,16 +742,18 @@ export enum Action {
     DrillExclude = 'context-menu-item-exclude',
     CopyToClipboard = 'context-menu-item-copy-to-clipboard',
     CopyAndEdit = 'context-menu-item-copy-and-edit',
+    /**
+     * @hidden
+     */
     DrillEdit = 'context-menu-item-edit',
     EditMeasure = 'context-menu-item-edit-measure',
     Separator = 'context-menu-item-separator',
+    /**
+     * @hidden
+     */
     DrillDown = 'DRILL',
     RequestAccess = 'requestAccess',
     QueryDetailsButtons = 'queryDetailsButtons',
-    /**
-     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl
-     */
-    Monitor = 'createMonitor',
     /**
      * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl
      */
@@ -574,6 +770,10 @@ export enum Action {
      * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl
      */
     EditDetails = 'editDetails',
+    /**
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    CreateMonitor = 'createMonitor',
 }
 
 export interface SessionInterface {
