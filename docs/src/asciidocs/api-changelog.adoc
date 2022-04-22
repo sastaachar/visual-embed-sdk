@@ -54,9 +54,11 @@ For more information, see xref:embed-authentication.adoc#trusted-auth-embed[Auth
 == Version 1.9.2, March 2022
 [width="100%" cols="1,4"]
 |====
-|[tag greenBackground]#NEW FEATURE#| You can now trigger events on React components using the `useEmbedRef` hook.
+|[tag greenBackground]#NEW FEATURE# a| You can now trigger events on React components using the `useEmbedRef` hook.
 
+////
 For more information, see xref:embed-ts-react-app.adoc[Embed ThoughtSpot in a React app].
+////
 |====
 
 == Version 1.9.1, March 2022
