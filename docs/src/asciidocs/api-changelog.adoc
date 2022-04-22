@@ -8,18 +8,13 @@
 
 This changelog lists only the changes introduced in the Visual Embed SDK. For a complete list of ThoughtSpot Everywhere features and enhancements, see xref:whats-new.adoc[What's New].
 
-== Version 1.10.0 (Coming soon)
+== Version 1.10.0, April 2022
 
 [width="100%" cols="1,4"]
 |====
-|[tag greenBackground]#NEW FEATURE#  a| The `AddRemoveColumns` event is now available as `EmbedEvent` in in the SDK. This event is triggered when a column is selected.  
-
-////
-For more information, see xref:embed-events.adoc#embed-events[Interact with events].
-////
+|[tag greenBackground]#NEW FEATURE#  a| The `AddRemoveColumns` event is now available in the SDK. For more information, see xref:embed-events.adoc#embed-events[Interact with events].
 |====
 
-////
 == Version 1.9.8, April 2022
 
 [width="100%" cols="1,4"]
@@ -27,14 +22,17 @@ For more information, see xref:embed-events.adoc#embed-events[Interact with even
 |[tag greenBackground]#NEW FEATURE#|The `pageId` attribute now allows you to set the **SpotIQ** page as the home tab of your embedded ThoughtSpot app. 
 
 For more information, see xref:full-embed.adoc[Embed full application].
-
 |====
-////
+
+== Version 1.9.6 and 1.9.7, April 2022
+
+Bug fixes and improvements
+
+
 == Version 1.9.5, April 2022
 [width="100%" cols="1,4"]
 |====
-|[tag greenBackground]#NEW FEATURE# a|The `locale` attribute is now available in embed packages. You can use this attribute to set the locale or language of your embedded application view. 
-
+|[tag greenBackground]#NEW FEATURE#|The `locale` attribute is now available in embed packages. You can use this attribute to set the locale or language of your embedded application view. 
 For more information, see xref:locale-setting.adoc[Set locale and display language].
 |====
 
@@ -56,7 +54,7 @@ For more information, see xref:embed-authentication.adoc#trusted-auth-embed[Auth
 == Version 1.9.2, March 2022
 [width="100%" cols="1,4"]
 |====
-|[tag greenBackground]#NEW FEATURE# a| The Visual Embed React library now includes the `useEmbedRef` hook, using which you can trigger events on ThoughtSpot components embedded in a React app. 
+|[tag greenBackground]#NEW FEATURE# a| You can now trigger events on React components using the `useEmbedRef` hook.
 ////
 For more information, see xref:embed-ts-react-app.adoc[Embed ThoughtSpot in a React app].
 ////

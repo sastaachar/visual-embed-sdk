@@ -268,10 +268,11 @@ Applies filters to a visualization in a Liveboard.
 Allows sharing a Liveboard with another user or user group. 
 
 |`Action.Schedule` +
+
 `Action.Subscription`| `AppEmbed` |**Schedule** 
 
 Allows scheduling Liveboard notifications.
- 
+
 |`Action.Remove` | `AppEmbed`| *Delete*
 Deletes a Liveboard.
 |`Action.MakeACopy` | `LiveboardEmbed`
@@ -317,8 +318,7 @@ Allows importing the TML representation of a Liveboard object to ThoughtSpot.
 |`Action.ExportTML`|`AppEmbed` | *Export TML*
 
 Exports the TML representation of a Liveboard object from ThoughtSpot. 
-|`Action.UpdateTML`|`AppEmbed` | *Update TML*  
-
+|`Action.UpdateTML`|`AppEmbed` | *Update TML*
 Publishes the modified TML representation of a Liveboard object.
 
 |`Action.RequestAcess`| `LiveboardEmbed`
@@ -329,15 +329,6 @@ Publishes the modified TML representation of a Liveboard object.
 Allows you to request access to edit a Liveboard. The **Liveboards **page shows a locked icon if a user does not have edit access to a Liveboard. A user can request edit access to a Liveboard by clicking the locked icon. 
 
 |====
-
-////
-
-[IMPORTANT]
-====
-The *Follow* action is deprecated in the ThoughtSpot 8.0.0.cl release. The corresponding action string, `Action.Subscription` is also deprecated in Visual Embed SDK version 1.6.0.
-====
-
-////
 
 [#viz-actions]
 === For visualizations on a Liveboard
@@ -544,7 +535,6 @@ Allows importing the TML representation of an answer into ThoughtSpot.
 
 Exports the TML representation of an answer from ThoughtSpot. 
 |`Action.UpdateTML`|`AppEmbed` | *Update TML*
-
 Publishes the modified TML representation of an answer.
 |===
 

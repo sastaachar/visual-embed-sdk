@@ -103,4 +103,3 @@ To delete a custom action association:
 . In the **Custom actions **panel, click the delete icon next to that action that you want to remove. 
 
 For information about deleting a custom action assigned at the worksheet level, see xref:custom-actions-worksheet.adoc[Add custom actions to a worksheet].
-
