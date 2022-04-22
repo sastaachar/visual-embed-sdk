@@ -8,16 +8,14 @@
 
 The Security APIs allow you to share ThoughtSpot objects, such as Liveboards and visualizations, with another user or a user group. Any ThoughtSpot user can share objects with another user or user group.
 
-== Required permissions
-
-* To query object permissions, you must have administrator access.
-* To share an object or visualization with another user, you must have edit access to the object.
-
 == Supported operations
 
 include::{path}/security-api-list.adoc[]
 
+=== Required permissions
 
+* To query object permissions, you must have administrator access.
+* To share an object or visualization with another user, you must have edit access to the object.
 
 [#share-object]
 == Share objects with another user
@@ -35,7 +33,7 @@ POST /tspublic/v1/security/share
 [width="100%" cols="1,4"]
 [options='header']
 |====
-|Form Parameter|Description
+|Form parameter|Description
 |`type` a|__String__. Type of metadata object. Specify one of the following values as a metadata object type:
 
 * `QUESTION_ANSWER_BOOK` to share answers.
@@ -79,9 +77,8 @@ To remove a user or user group's access to a shared object, you can set the `sha
 ----
 curl -X POST  \
 --header 'Content-Type: application/x-www-form-urlencoded'  \
---header 'Accept: application/json' \
---header 'X-Requested-By: ThoughtSpot' \
--d 'type=PINBOARD_ANSWER_BOOK&id=%5B%22237921cc-ebf5-445a-8b7b-15c301f8456e%22%5D&permission=%7B%E2%80%9Cpermissions%E2%80%9D%3A%7B%E2%80%9C237921cc-ebf5-445a-8b7b-15c301f8456e%E2%80%9D%3A%7B%E2%80%9CshareMode%E2%80%9D%3A%E2%80%9DREAD_ONLY%E2%80%9D%7D%7D%7D&emailshares=%5B%22tsuser%40thoughtspot.com%22%5D&notify=false&useCustomEmbedUrls=true' \
+--header 'Accept: application/json' --header 'X-Requested-By: ThoughtSpot' \
+-d 'type=PINBOARD_ANSWER_BOOK&id=["237921cc-ebf5-445a-8b7b-15c301f8456e"]&permission={"permissions":{"237921cc-ebf5-445a-8b7b-15c301f8456e":{"shareMode":"READ_ONLY"}}}&emailshares=["tsuser@thoughtspot.com"]&notify=false&useCustomEmbedUrls=true' \
 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/security/share'
 
 ----
@@ -121,7 +118,7 @@ POST /tspublic/v1/security/shareviz
 [width="100%" cols="1,4"]
 [options='header']
 |====
-|Form Parameter|Description
+|Form parameter|Description
 |`type`|__String__. Type of the metadata object. The valid value is `PINBOARD_ANSWER_BOOK`.
 |`pinboardId`|__String__.The GUID of the Liveboard to which the visualization belongs.
 |`principalids`|__String__.The GUID of the users with whom you want to share the visualization.
@@ -140,8 +137,7 @@ POST /tspublic/v1/security/shareviz
 curl -X POST \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --header 'Accept: application/json' --header 'X-Requested-By: ThoughtSpot' \
--d 'type=PINBOARD_ANSWER_BOOK&pinboardId=7a9a6715-e154-431b-baaf-7b58246c13dd&principalids=%5B%2259481331-ee53-42be-a548-bd87be6ddd4a%22%5D&vizid=e9753523-5de5-41ef-8d8c-b840f0260ea0&emailshares=%5Btsuser%40thoughtspot.com%5D&notify=true&useCustomEmbedUrls=false' \
-'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/security/shareviz'
+-d 'type=PINBOARD_ANSWER_BOOK&pinboardId=7a9a6715-e154-431b-baaf-7b58246c13dd&principalids=%5B%2259481331-ee53-42be-a548-bd87be6ddd4a%22%5D&vizid=e9753523-5de5-41ef-8d8c-b840f0260ea0&emailshares=%5Btsuser%40thoughtspot.com%5D&notify=true&useCustomEmbedUrls=false' 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/security/shareviz'
 ----
 
 .Request URL
@@ -226,9 +222,8 @@ If the `GET` operation is successful, the API returns a response with the permis
 ** `READ_ONLY` indicates view permissions to an object
 ** `MODIFY` indicates edit permissions to an object
 
-* If you don't have access to the specified objects, the API returns a `403 unauthorized` error. 
-* If you don't have access to one of the specified objects, the API returns only those objects to which a user has `READ_ONLY` or `MODIFY` permissions.
-
+* If the user doesn't have access to the specified objects, the API returns a `403 unauthorized` error. 
+* If the user doesn't have access to one of the specified objects, the API returns only those objects to which a user has `READ_ONLY` or `MODIFY` permissions.
 
 [source, JSON]
 ----
@@ -305,7 +300,7 @@ If the `GET` operation is successful, the API returns a response with the permis
 [#obj-permission-id]
 == Get permission details for a specific object ID
 
-To get permission details for a specific object, send a `GET` request to the `/tspublic/v1/security/metadata/{id}/permissions` endpoint.
+To get permission details for a specific object, send a `GET` request to the `/tspublic/v1/security/metadata/permissions` endpoint.
 
 === Resource URL
 ----
@@ -316,7 +311,7 @@ GET /tspublic/v1/security/metadata/{id}/permissions
 [width="100%" cols="1,1,4"]
 [options='header']
 |====
-|Parameter|Parameter|Description
+|Parameter Name|Parameter Type|Description
 |`type`|Query parameter  a|__String__. Type of the object. Valid values are:
 
 * `QUESTION_ANSWER_BOOK` for answers.
@@ -351,14 +346,15 @@ https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/security/metadata/d084c256-e2
 
 === Example response
 
-If the `GET` operation is successful, the API returns a response with the permission details for a given object.
+If the `GET` operation is successful, the API returns a response with the permission details for the specified object.
 
 * Note that the `shareMode` property indicates the object-level permission assigned to a given user. 
 
 ** `READ_ONLY` indicates view permissions to an object
 ** `MODIFY` indicates edit permissions to an object
 
-* If you don't have access to the specified object, the API returns a `403 unauthorized` error. 
+* If the user doesn't have access to the specified object, the API returns a `403 unauthorized` error. 
+
 
 [source, JSON]
 ----
@@ -472,8 +468,9 @@ If the data query operation is successful, the API returns the object permission
 ** `READ_ONLY` indicates view permissions to an object
 ** `MODIFY` indicates edit permissions to an object
 
-* If you don't have access to the specified objects, the API returns a `403 unauthorized` error. 
-* If you don't have access to one of the specified objects, the API returns only those objects to which a user has `READ_ONLY` or `MODIFY` permissions.
+* If the user doesn't have access to the specified objects, the API returns a `403 unauthorized` error. 
+* If the user doesn't have access to one of the specified objects, the API returns only those objects to which a user has `READ_ONLY` or `MODIFY` permissions.
+
 
 [source, JSON]
 ----
@@ -553,5 +550,4 @@ If the data query operation is successful, the API returns the object permission
 |**400**|Invalid parameter value
 |**403**|Unauthorized request
 |===
-
 
