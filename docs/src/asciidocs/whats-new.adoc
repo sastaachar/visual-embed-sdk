@@ -8,6 +8,16 @@
 
 This page provides information about new features, enhancements, and deprecated functionality in ThoughtSpot Everywhere.
 
+== Coming soon
+
+==== Visual Embed SDK 1.11.0
+
+The Visual Embed SDK version 1.11.0 several new events for embedded components. For more information, see xref:api-changelog.adoc[Visual Embed changelog].
+
+==== REST API v2 [beta orangeBackground]^BETA^
+
+
+
 
 == Version 8.2.0.cl
 
@@ -27,8 +37,8 @@ For more information, see xref:app-actions.adoc[App actions] and xref:push-data-
 ////
 
 ==== Visual Embed SDK 1.10.0
-The Visual Embed SDK version 1.10.0 with the `AddRemoveColumns` event is now available. For more information, see xref:api-changelog.adoc[Visual Embed changelog].
 
+The Visual Embed SDK version 1.10.0 with the `AddRemoveColumns` event is now available. For more information, see xref:api-changelog.adoc[Visual Embed changelog].
 
 ==== REST API v1
 
@@ -39,6 +49,9 @@ New endpoints for data connection queries. For more information, see xref:rest-a
 Starting from 8.2.0.cl release, the xref:rest-api-v2.adoc[REST API Playground and SDK] [beta orangeBackground]^BETA^ feature is enabled by default on ThoughtSpot instances.
 
 The 8.2.0.cl release also introduces the following features:
+
+Endpoint URL path::
+The REST v2 API endpoint URL path is changed from `/api/rest/v2` to `/tspublic/rest/v2/`. For example, the `GET /api/rest/v2/connection` endpoint is now available as `GET /tspublic/rest/v2/connection`. 
 
 Trusted authentication::
 If trusted authentication is enabled on your instance, you can now obtain a login token to authenticate to ThoughtSpot and authorize your API requests.
@@ -68,12 +81,15 @@ For more information, see xref:rest-api-v2-reference.adoc[REST API v2 Reference]
 
 == Version 8.1.0.cl
 
-==== Visual Embed SDK version 1.9.x
-
+.Visual Embed SDK version 1.9.x
+[%collapsible] 
+====
 The Visual Embed SDK version 1.9.x introduces new action enumerations, events, and attributes. For more information, see xref:api-changelog.adoc[Visual Embed Changelog].
+====
 
-==== REST API v2 [beta orangeBackground]^BETA^
-
+.REST API v2 [beta orangeBackground]^BETA^
+[%collapsible] 
+====
 The following REST API v2 endpoints are now available on instances on which the REST API v2 Playground and SDK feature is enabled.
 
 * `GET /api/rest/v2/connection`
@@ -89,6 +105,8 @@ The following REST API v2 endpoints are now available on instances on which the 
 The REST API v2 Playground and SDK is a limited availability feature and is in beta.
 
 For more information, see xref:rest-api-v2.adoc[REST API v2] and xref:rest-api-v2-reference.adoc[REST API v2 Reference].
+====
+
 
 == Version 8.0.0.cl
 
