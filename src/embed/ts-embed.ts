@@ -569,7 +569,13 @@ export class TsEmbed {
                 (callbackObj.options.start &&
                     dataStatus === embedEventStatus.START) || // When start status is true it trigger only start releated payload
                 (!callbackObj.options.start &&
-                    dataStatus === embedEventStatus.END) // When start status is false it trigger only end releated payload
+                    dataStatus === embedEventStatus.END) || // When start status is false it trigger only end releated payload
+                (allHandlers.length &&
+                    callbackObj.options.start &&
+                    dataStatus === embedEventStatus.START) || // When EmbedEvent.ALL is present and status is start
+                (allHandlers.length &&
+                    !callbackObj.options.start &&
+                    dataStatus === embedEventStatus.END) // When EmbedEvent.ALL is present and status is end
             ) {
                 callbackObj.callback(data, (payload) => {
                     this.triggerEventOnPort(eventPort, payload);
