@@ -132,6 +132,22 @@ button {
     color: $tag-font-color;
 }
 
+.version {
+    display: inline-block;
+    font-size: $font-size-small;
+    font-weight: $font-weight-bold;
+    height: 25px;
+    line-height: $line-height-doc;
+    text-align: center;
+    min-width: $tag-width;
+    margin: 2px;
+    padding: $tag-padding;
+    color: var(--primary-color);
+    border: solid 1px;
+    border-color: $tip-color; 
+}
+
+
 .beta {
     border-radius: $tag-border-radius;
     display: inline-block;
@@ -171,6 +187,14 @@ button {
 
 .yellowBackground {
     background-color: $tag-color-yellow;
+}
+
+.noBackground {
+    background-color: $tag-color-white;
+}
+
+.lightBackground {
+    background-color: $tag-color-light;
 }
 
 /*Tags style end*/

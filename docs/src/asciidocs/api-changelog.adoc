@@ -15,28 +15,34 @@ This changelog lists only the changes introduced in the Visual Embed SDK. For a 
 |[tag greenBackground]#NEW FEATURE#  a| The upcoming version of SDK will include the following new events
 
 * `ALL`
-* `VizPointClick`
-* `Save`
+* `AnswerChartSwitcher`
+* `AnswerDelete`
+* `CopyAEdit`
+* `CopyToClipboard`
 * `Download` 
 * `DownloadAsPdf`
 * `DownloadAsCsv`
 * `DownloadAsXlsx`
-* `AnswerDelete`
-* `Pin`
-* `SpotIQAnalyze`
-* `Share`
 * `DrillInclude` 
 * `DrillExclude` 
-* `CopyToClipboard`
-* `UpdateTML`
-* `EditTML`
 * `EditTML`
 * `ExportTML`
+* `Monitor`
+* `Pin`
+* `Save`
 * `SaveAsView`
-* `CopyAEdit`
+* `Share`
 * `ShowUnderlyingData`
-* `AnswerChartSwitcher`
+* `SpotIQAnalyze`
+* `UpdateTML`
+* `VizPointClick`
+
+For more information, see xref:embed-events.adoc[Interact with events]
 |[tag greenBackground]#NEW FEATURE#  a| The new version of SDK will include the `showAlerts` attribute, using which you can show or hide alerts and error messages in the embedded view.
+
+|[tag greenBackground]#NEW FEATURE# a| The `Action.CreateMonitor` enumeration will be available in the SDK for emebedded ThoughtSpot environments on which the Monitor feature is enabled.  
+
+For more information, see xref:embed-actions.adoc[Show or hide UI actions].
 |====
 
 == Version 1.10.0, April 2022

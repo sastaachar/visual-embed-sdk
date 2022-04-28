@@ -51,13 +51,13 @@
     pre {
         white-space: pre-wrap;
         background: var(--code-block-color);
-        padding: 20px 10px;
+        padding: 20px;
         display: flex;
         font-family: $font-family-code;
         justify-content: space-between;
         overflow: auto;
         font-size: $font-size-code;
-        max-height: 600px;
+        max-height: 700px;
         line-height: $line-height-code;
         box-shadow: var(--box-shadow);
 
@@ -74,17 +74,19 @@
         code {
             max-width: 100%;
             font-family: $font-family-code;
+            padding-top: 10px;
         }
 
         .wrapperContainer {
             max-width: 15%;
             position: relative;
             visibility: hidden;
-            padding: 20px;
+            padding: 25px;
 
             .lang {
                 position: absolute;
-                top: -15px;
+                top: -20px;
+                padding: 5px;
                 right: 36px;
                 text-transform: uppercase;
                 color: var(--text-color-code-lang);
@@ -93,6 +95,7 @@
             .copyButton {
                 position: absolute;
                 top: -15px;
+                padding: 5px;
                 right: 0px;
                 border: 0;
                 background: transparent;
