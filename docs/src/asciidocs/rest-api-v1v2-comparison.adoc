@@ -50,17 +50,15 @@ a| [tag greenBackground]#✓# Basic authentication +
 
 a| * Session
 * User 
-* Connection
-* Custom actions
 * Group
+* Connection
 * Metadata
 * Data 
-* Logs
 * Report
-* Admin
+* Logs
 * Security
-* Session
-
+* Admin
+* Custom actions
 
 |API services a|[tag greenBackground]#✓# User APIs 
 
