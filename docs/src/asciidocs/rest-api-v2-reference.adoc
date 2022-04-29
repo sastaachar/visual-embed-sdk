@@ -684,7 +684,7 @@ Downloads a given Liveboard and its visualizations as a PDF, CSV, XLSX, or PNF f
 ++++
 --
 
-== Security [tag greenBackground]#NEW in 8.3.0.cl#
+== Security
 
 `*POST* /tspublic/rest/v2/security/share/tsobject` [tag greenBackground]#NEW in 8.3.0.cl#
 
@@ -745,7 +745,7 @@ Gets a list objects to which a user or group has `read-only` or `modify` permiss
 ++++
 
 
-== Custom actions [tag greenBackground]#NEW in 8.3.0.cl#
+== Custom actions 
 
 `*GET* /tspublic/rest/v2/customaction` [tag greenBackground]#NEW in 8.3.0.cl#
 
