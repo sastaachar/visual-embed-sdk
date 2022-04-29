@@ -129,10 +129,9 @@
 
     table {
         border-spacing: 0;
-        border-collapse: collapse;
-        border: 1px solid var(--border-color);
+        border-collapse: separate;
         width: 100%;
-       
+
 
         th {
             border-bottom: 1px solid var(--border-color);
@@ -142,6 +141,7 @@
             background-color: var(--table-header-color);
             position: sticky;
             top: 0;
+            
             
         }
 

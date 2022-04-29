@@ -242,8 +242,6 @@ button {
     margin: 0 auto;
 }
 
-
-
 .boxBody {
     font-weight: $font-size-doc;
     font-size: $font-size-normal;
@@ -254,12 +252,11 @@ button {
 
 
 .tableContainer {
-    border-bottom: 1px solid $disabledcolor;
-    border-top: 0.5px solid $disabledcolor;
+    border: 0.5px solid $disabledcolor;
 	height: 750px;
 	overflow-y: scroll;
 	width: 1080px;
-	padding: 0;
+	padding: 0 0 0 2px;
 }
 
 summary.title  {
