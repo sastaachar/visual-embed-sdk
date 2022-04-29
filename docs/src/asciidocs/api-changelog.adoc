@@ -23,8 +23,8 @@ This changelog lists only the changes introduced in the Visual Embed SDK. For a 
 * `DownloadAsPdf`
 * `DownloadAsCsv`
 * `DownloadAsXlsx`
+* `DrillExclude`
 * `DrillInclude` 
-* `DrillExclude` 
 * `EditTML`
 * `ExportTML`
 * `Monitor`

@@ -19,7 +19,7 @@ The Visual Embed SDK version 1.11.0 introduces several new events for embedded c
 [width="100%" cols="1,4"]
 |====
 ||
-|[tag greenBackground]#NEW ENDPOINTS#  a| The following REST API v2[beta orangeBackground]^BETA^ endpoints will be available soon:
+|[tag greenBackground]#NEW ENDPOINTS#  a| The following REST API v2[beta orangeBackground]^BETA^ endpoints will be available soon on your instance:
 
 * `GET /tspublic/rest/v2/connection/database` +
 * `POST /tspublic/rest/v2/connection/table` +
@@ -41,7 +41,7 @@ The Visual Embed SDK version 1.11.0 introduces several new events for embedded c
 
 |[tag redBackground]#BREAKING CHANGES# a|
 
-* The HTTP request method for the following REST v2 API [beta orangeBackground]^BETA^ endpoints will be changed `PUT`.
+* The HTTP request method for the following REST v2 API [beta orangeBackground]^BETA^ endpoints will be changed to `PUT`.
 ** `/tspublic/rest/v2/metadata/favorite/assign` +
 ** `/tspublic/rest/v2/metadata/tag/assign` +
 ** `/tspublic/rest/v2/metadata/homeliveboard/assign` +
