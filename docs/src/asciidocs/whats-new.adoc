@@ -14,12 +14,12 @@ This page provides information about new features, enhancements, and deprecated 
 
 The Visual Embed SDK version 1.11.0 introduces several new events for embedded components. For more information, see xref:api-changelog.adoc[Visual Embed changelog].
 
-==== REST API v2 [beta orangeBackground]^BETA^
+==== REST API v2 [beta blueBackground]^BETA^
 
 [width="100%" cols="1,4"]
 |====
 ||
-|[tag greenBackground]#NEW ENDPOINTS#  a| The following REST API v2[beta orangeBackground]^BETA^ endpoints will be available soon on your instance:
+|[tag greenBackground]#NEW ENDPOINTS#  a| The following REST API v2[beta blueBackground]^BETA^ endpoints will be available soon on your instance:
 
 * `GET /tspublic/rest/v2/connection/database` +
 * `POST /tspublic/rest/v2/connection/table` +
@@ -41,15 +41,15 @@ The Visual Embed SDK version 1.11.0 introduces several new events for embedded c
 
 |[tag redBackground]#BREAKING CHANGES# a|
 
-* Note the change in HTTP request method for the following REST API v2 [beta orangeBackground]^BETA^ endpoints :
+* Note the change in HTTP request method for the following REST API v2 [beta blueBackground]^BETA^ endpoints :
 ** `**PUT** /tspublic/rest/v2/metadata/favorite/assign` +
 ** `**PUT** /tspublic/rest/v2/metadata/homeliveboard/assign` +
 ** `**PUT** /tspublic/rest/v2/metadata/favorite/unassign` +
 ** `**PUT** /tspublic/rest/v2/metadata/homeliveboard/unassign` +
-* In the REST API SDK [beta orangeBackground]^BETA^, the string fields with enumerations, such as the `type` field in metadata API, are changed to class names. If you are using the REST API SDK in your environments, make sure the class names are updated. 
+* In the REST API SDK [beta blueBackground]^BETA^, the string fields with enumerations, such as the `type` field in metadata API, are changed to class names. If you are using the REST API SDK in your environments, make sure the class names are updated.
 |[tag redBackground]#REMOVED# a| The `ownedBy` attribute will be removed from the `/tspublic/rest/v2/metadata/header/search` API endpoint.
 |[tag orangeBackground]#MODIFIED# a|
-* The `x-requested-by` header is not mandatory in REST v2 [beta orangeBackground]^BETA^ API calls.
+* The `x-requested-by` header is not mandatory in REST v2 [beta blueBackground]^BETA^ API calls.
 * The `createdBy` attribute in the `/tspublic/rest/v2/metadata/header/search` API will be renamed to `author`.
 * Some attributes with the `boolean` data type in the API endpoints will be changed to `string` data type. However, the existing values assigned to these attributes will persist after an upgrade.
 |====
@@ -63,9 +63,9 @@ The Visual Embed SDK version 1.11.0 introduces several new events for embedded c
 ||
 |[tag greenBackground]#NEW FEATURE# a| +++<h5>App actions for Slack integration</h5>+++
 
-ThoughtSpot introduces app actions[beta orangeBackground]^BETA^ to support seamless integration with third-party business apps such as Slack. Your application users can now connect ThoughtSpot with their Slack workspaces and deliver insights directly to Slack channels.
+ThoughtSpot introduces app actions[beta blueBackground]^BETA^ to support seamless integration with third-party business apps such as Slack. Your application users can now connect ThoughtSpot with their Slack workspaces and deliver insights directly to Slack channels.
 
-Users with developer or admin privileges can create an app action for Slack[beta orangeBackground]^BETA^ in the Developer portal and add it as a menu action on visualizations and saved answers. On clicking this action, ThoughtSpot users can initiate the Slack integration workflow and send data to their Slack channels without leaving the ThoughtSpot UI.
+Users with developer or admin privileges can create an app action for Slack[beta blueBackground]^BETA^ in the Developer portal and add it as a menu action on visualizations and saved answers. On clicking this action, ThoughtSpot users can initiate the Slack integration workflow and send data to their Slack channels without leaving the ThoughtSpot UI.
 
 For more information, see xref:app-actions.adoc[App actions] and xref:push-data-to-slack.adoc[Push data to a Slack workspace].
 |====
@@ -79,9 +79,9 @@ The Visual Embed SDK version 1.10.0 with the `AddRemoveColumns` event is now ava
 
 New endpoints for data connection queries. For more information, see xref:rest-apiv1-changelog.adoc[REST API V1 changelog].
 
-==== REST API v2 [beta orangeBackground]^BETA^
+==== REST API v2 [beta blueBackground]^BETA^
 
-Starting from 8.2.0.cl release, the xref:rest-api-v2.adoc[REST API Playground and SDK] [beta orangeBackground]^BETA^ feature is enabled by default on ThoughtSpot instances.
+Starting from 8.2.0.cl release, the xref:rest-api-v2.adoc[REST API Playground and SDK] [beta blueBackground]^BETA^ feature is enabled by default on ThoughtSpot instances.
 
 The 8.2.0.cl release also introduces the following features:
 
@@ -122,7 +122,7 @@ For more information, see xref:rest-api-v2-reference.adoc[REST API v2 Reference]
 The Visual Embed SDK version 1.9.x introduces new action enumerations, events, and attributes. For more information, see xref:api-changelog.adoc[Visual Embed Changelog].
 ====
 
-.REST API v2 [beta orangeBackground]^BETA^
+.REST API v2 [beta blueBackground]^BETA^
 [%collapsible] 
 ====
 The following REST API v2 endpoints are now available on instances on which the REST API v2 Playground and SDK feature is enabled.
@@ -205,7 +205,7 @@ For more information, see xref:embed-events.adoc[Interact with events].
 |====
 ====
 
-.REST API Playground and SDK [beta orangeBackground]^BETA^
+.REST API Playground and SDK [beta blueBackground]^BETA^
 
 [%collapsible] 
 ====

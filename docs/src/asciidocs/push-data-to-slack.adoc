@@ -1,4 +1,4 @@
-= Push data to a Slack workspace[beta orangeBackground]^BETA^
+= Push data to a Slack workspace[beta blueBackground]^BETA^
 :toc: true
 
 :page-title: Integrate ThoughtSpot with Slack app

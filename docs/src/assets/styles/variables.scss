@@ -138,9 +138,11 @@ $admonition-font-factor-p: 16;
 $admonition-content-line-height: 24px;
 $admonition-font-factor-pre: 15;
 
-/*Tag variables*/
 
-$tag-border-radius: 14px;
+/*Tag variables*/
+$beta-border-radius: 5px;
+$beta-padding: 0 5px;
+$tag-border-radius: 10px;
 $tag-font-size: 13px;
 $tag-font-weight: 400;
 $tag-height: 28px;
