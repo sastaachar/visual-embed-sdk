@@ -191,7 +191,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/b36d8616/src/embed/base.ts#L103">embed/base.ts:103</a></li>
+									<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/a47421a8/src/embed/base.ts#L106">embed/base.ts:106</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -207,11 +207,13 @@
 									<div class="tsd-comment tsd-typography">
 										<p>The configuration object containing ThoughtSpot host,
 										authentication mechanism and so on.</p>
+										<p>eg: authStatus = init(config);
+										authStatus.on(AuthStatus.FAILURE, (reason) =&gt; { // do something here });</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>authPromise Promise which resolves when authentication is complete.</p>
+							<p>event emitter which emits events on authentication success, failure and logout. <a href="enums/AuthStatus.html">AuthStatus</a></p>
 						</li>
 					</ul>
 				</section>
@@ -225,16 +227,33 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/b36d8616/src/embed/base.ts#L127">embed/base.ts:127</a></li>
+									<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/a47421a8/src/embed/base.ts#L141">embed/base.ts:141</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Logout from ThoughtSpot. This also sets the autoLogin flag to false, to prevent
+									the SDK from automatically logging in again.</p>
+								</div>
+								<p>You can call the <code>init</code> method again to re login, if autoLogin is set to true in this
+								second call it will be honored.</p>
+								<dl class="tsd-comment-tags">
+									<dt class="version">version</dt>
+									<dd><p>SDK: 1.10.1 | ThoughtSpot: *</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>doNotDisableAutoLogin: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>This flag when passed will not disable autoLogin</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>Promise which resolves when logout completes.</p>
 						</li>
 					</ul>
 				</section>
@@ -248,7 +267,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/b36d8616/src/embed/base.ts#L80">embed/base.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/a47421a8/src/embed/base.ts#L80">embed/base.ts:80</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
