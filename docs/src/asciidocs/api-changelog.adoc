@@ -59,7 +59,7 @@ For more information, see xref:embed-actions.adoc[Show or hide UI actions].
 [width="100%" cols="1,4"]
 |====
 |[tag greenBackground]#NEW FEATURE#|You can now use the `logout` method to log out embed users.
-|[tag orangeBackground]#MODIFIED#  a|
+|[tag orangeBackground]#MODIFIED# a| Note the following changes:
 * You can now use the `loginFailedMessage` property on init to display the `Not logged in message` when a user login fails. You can customize this message by defining a custom text string in the `loginFailedMessage` attribute. 
 * The `init` method now returns an event emitter which can be used to listen to `AuthStatus` events such as login failure or success.
 |====
