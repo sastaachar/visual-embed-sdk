@@ -46,12 +46,12 @@ The Visual Embed SDK version 1.11.0 introduces several new events for embedded c
 ** `**PUT** /tspublic/rest/v2/metadata/homeliveboard/assign` +
 ** `**PUT** /tspublic/rest/v2/metadata/favorite/unassign` +
 ** `**PUT** /tspublic/rest/v2/metadata/homeliveboard/unassign` +
-* In the REST API SDK [beta blueBackground]^BETA^, the string fields with enumerations, such as the `type` field in metadata API, are changed to class names. If you are using the REST API SDK in your environments, make sure the class names are updated.
+* In the REST API SDK [beta blueBackground]^BETA^, the classes corresponding to enumerations used for string fields, such as the `type` field in metadata API, have been renamed. If you are using the REST API SDK in your environments, make sure the class names are updated. 
 |[tag redBackground]#REMOVED# a| The `ownedBy` attribute will be removed from the `/tspublic/rest/v2/metadata/header/search` API endpoint.
 |[tag orangeBackground]#MODIFIED# a|
 * The `x-requested-by` header is not mandatory in REST v2 [beta blueBackground]^BETA^ API calls.
 * The `createdBy` attribute in the `/tspublic/rest/v2/metadata/header/search` API will be renamed to `author`.
-* Some attributes with the `boolean` data type in the API endpoints will be changed to `string` data type. However, the existing values assigned to these attributes will persist after an upgrade.
+* The attributes with the `boolean` data type in the API endpoints will be changed to `string` data type. If a boolean attribute was set as `true` in your existing setup, the value will be changed to `"true"`. 
 |====
 
 == Version 8.2.0.cl
