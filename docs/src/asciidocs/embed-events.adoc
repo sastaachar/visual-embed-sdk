@@ -48,7 +48,7 @@ Host events use the `.trigger()` method to send the event message to embedded Th
 [width="100%" cols="1,2,2,5"]
 [options='header']
 |======
-|Event| Available from|Embed package| Description
+|Event| Available from|SDK package| Description
 |`DrillDown`| [version noBackground]#V1.5.0# | `SearchEmbed` +
 `LiveboardEmbed` +
 `AppEmbed`
