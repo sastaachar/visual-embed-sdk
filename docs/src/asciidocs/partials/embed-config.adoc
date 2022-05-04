@@ -25,6 +25,10 @@ loginFailedMessage::
 
 __String__. Allows defining a custom login failure message, which is displayed in the embedded ThoughtSpot app when a user login fails. 
 
+----
+loginFailedMessage: "Authentication failed! Please try again."  
+----
+
 
 shouldEncodeUrlQueryParams  __Optional__::
 
