@@ -385,7 +385,7 @@ Deletes the specified tag.
 
 +++<p class="divider"> </p>+++
 
-`**POST** /api/rest/v2/metadata/favorite/assign`
+`**PUT** /api/rest/v2/metadata/favorite/assign` [tag orangeBackground]#Modified in 8.2.0.cl# 
 
 Adds an object such as Liveboards and answers to a user's favorites list.
 
@@ -395,7 +395,7 @@ Adds an object such as Liveboards and answers to a user's favorites list.
 
 +++<p class="divider"> </p>+++
 
-`**POST ** /api/rest/v2/metadata/favorite/unassign`
+`**PUT ** /api/rest/v2/metadata/favorite/unassign` [tag orangeBackground]#Modified in 8.2.0.cl# 
 
 Removes the specified object from the user's favorites list.  
 
@@ -415,7 +415,7 @@ Gets the details of the Liveboard that is set as a default Liveboard for the Tho
 
 +++<p class="divider"> </p>+++
  
-`**POST** /api/rest/v2/metadata/homeliveboard/assign`
+`**PUT** /api/rest/v2/metadata/homeliveboard/assign` [tag orangeBackground]#Modified in 8.2.0.cl# 
 
 Assigns a Liveboard as a default Liveboard for a ThoughtSpot user.
 
@@ -425,7 +425,7 @@ Assigns a Liveboard as a default Liveboard for a ThoughtSpot user.
 
 +++<p class="divider"> </p>+++
 
-`*POST* /api/rest/v2/metadata/homeliveboard/unassign`
+`*PUT* /api/rest/v2/metadata/homeliveboard/unassign` [tag orangeBackground]#Modified in 8.2.0.cl# 
 
 Removes the default home Liveboard setting for a ThoughtSpot user.
 
