@@ -142,7 +142,6 @@ Gets a list of users available in the ThoughtSpot system. To filter your query, 
 <a href="{{previewPrefix}}/api/rest/playgroundV2" id="preview-in-playground" target="_blank">View in Playground</a>
 ++++
 
-
 --
 
 == Groups
@@ -325,7 +324,6 @@ Transfers the ownership of objects from one user to another.
 
 == Metadata
 
-
 --
 `*GET* /tspublic/rest/v2/metadata/tag`
 
@@ -357,7 +355,7 @@ Modifies the properties of a tag object.
 
 +++<p class="divider"> </p>+++
 
-`*POST* /tspublic/rest/v2/metadata/tag/assign`
+`*PUT* /tspublic/rest/v2/metadata/tag/assign` [tag orangeBackground]#Modified in 8.2.0.cl# 
 
 Assigns a tag to one or several metadata objects. You can assign a tag to a Liveboard, answer, data object, and data connection objects.
 
@@ -367,7 +365,7 @@ Assigns a tag to one or several metadata objects. You can assign a tag to a Live
 
 +++<p class="divider"> </p>+++
 
-`*POST* /tspublic/rest/v2/metadata/tag/unassign`
+`*PUT* /tspublic/rest/v2/metadata/tag/unassign` [tag orangeBackground]#Modified in 8.2.0.cl# 
 
 Removes the tag assigned to an object.
 

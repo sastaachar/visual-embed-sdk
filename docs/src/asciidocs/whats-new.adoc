@@ -21,38 +21,45 @@ The Visual Embed SDK version 1.11.0 introduces several new events for embedded c
 ||
 |[tag greenBackground]#NEW ENDPOINTS#  a| The following REST API v2[beta blueBackground]^BETA^ endpoints will be available soon on your instance:
 
-* `GET /tspublic/rest/v2/connection/database` +
-* `POST /tspublic/rest/v2/connection/table` +
-* `POST /tspublic/rest/v2/connection/tablecoloumn` +
-* `POST /tspublic/rest/v2/report/liveboard` +
-* `POST /tspublic/rest/v2/security/share/tsobject` +
-* `POST /tspublic/rest/v2/security/share/visualization` +
-* `GET /tspublic/rest/v2/security/permission/tsobject` +
-* `GET /tspublic/rest/v2/security/permission/principal` +
-* `POST /tspublic/rest/v2/security/permission/tsobject/search` +
-* `POST /tspublic/rest/v2/security/permission/principal/search` +
-* `GET /tspublic/rest/v2/customaction` +
-* `POST /tspublic/rest/v2/customaction/create` +
-* `PUT /tspublic/rest/v2/customaction/update` +
-* `DELETE /tspublic/rest/v2/customaction/delete` +
-* `POST /tspublic/rest/v2/customaction/search` +
-* `GET /tspublic/rest/v2/customaction/association` +
-* `DELETE /tspublic/rest/v2/customactions/association/delete`
+* Connection endpoints +
+** `GET /tspublic/rest/v2/connection/database` +
+** `POST /tspublic/rest/v2/connection/table` +
+** `POST /tspublic/rest/v2/connection/tablecoloumn` +
+* Report endpoint +
+** `POST /tspublic/rest/v2/report/liveboard` +
+* Security endpoints +
+** `POST /tspublic/rest/v2/security/share/tsobject` +
+** `POST /tspublic/rest/v2/security/share/visualization` +
+** `GET /tspublic/rest/v2/security/permission/tsobject` +
+** `GET /tspublic/rest/v2/security/permission/principal` +
+** `POST /tspublic/rest/v2/security/permission/tsobject/search` +
+** `POST /tspublic/rest/v2/security/permission/principal/search` +
+* Custom action endpoints +
+** `GET /tspublic/rest/v2/customaction` +
+** `POST /tspublic/rest/v2/customaction/create` +
+** `PUT /tspublic/rest/v2/customaction/update` +
+** `DELETE /tspublic/rest/v2/customaction/delete` +
+** `POST /tspublic/rest/v2/customaction/search` +
+** `GET /tspublic/rest/v2/customaction/association` +
+** `DELETE /tspublic/rest/v2/customactions/association/delete`
 
-|[tag redBackground]#BREAKING CHANGES# a|
-
-* Note the change in HTTP request method for the following REST API v2 [beta blueBackground]^BETA^ endpoints :
-** `**PUT** /tspublic/rest/v2/metadata/favorite/assign` +
-** `**PUT** /tspublic/rest/v2/metadata/homeliveboard/assign` +
-** `**PUT** /tspublic/rest/v2/metadata/favorite/unassign` +
-** `**PUT** /tspublic/rest/v2/metadata/homeliveboard/unassign` +
-* In the REST API SDK [beta blueBackground]^BETA^, the classes corresponding to enumerations used for string fields, such as the `type` field in metadata API, have been renamed. If you are using the REST API SDK in your environments, make sure the class names are updated. 
-|[tag redBackground]#REMOVED# a| The `ownedBy` attribute will be removed from the `/tspublic/rest/v2/metadata/header/search` API endpoint.
 |[tag orangeBackground]#MODIFIED# a|
 * The `x-requested-by` header is not mandatory in REST v2 [beta blueBackground]^BETA^ API calls.
 * The `createdBy` attribute in the `/tspublic/rest/v2/metadata/header/search` API will be renamed to `author`.
-* The attributes with the `boolean` data type in the API endpoints will be changed to `string` data type. If a boolean attribute was set as `true` in your existing setup, the value will be changed to `"true"`. 
+* The attributes with the `boolean` data type in the API endpoints will be changed to `string` data type. If a boolean attribute was set as `true` in your existing setup, the value will be changed to `"true"`.
+|[tag redBackground]#BREAKING CHANGES# a|
+
+* Note the change in HTTP request method for the following REST API v2 [beta blueBackground]^BETA^ endpoints: +
+** `**PUT** /tspublic/rest/v2/metadata/tag/assign` +
+** `**PUT** /tspublic/rest/v2/metadata/tag/unassign` +
+** `**PUT** /tspublic/rest/v2/metadata/favorite/assign` +
+** `**PUT** /tspublic/rest/v2/metadata/favorite/unassign` +
+** `**PUT** /tspublic/rest/v2/metadata/homeliveboard/assign` +
+** `**PUT** /tspublic/rest/v2/metadata/homeliveboard/unassign` +
+* In the REST API SDK [beta blueBackground]^BETA^, the classes corresponding to enumerations used for string fields, such as the `type` field in metadata API, have been renamed. If you are using the REST API SDK in your environments, make sure the class names are updated. 
+|[tag redBackground]#REMOVED# a| The `ownedBy` attribute will be removed from the `/tspublic/rest/v2/metadata/header/search` API endpoint.
 |====
+
 
 == Version 8.2.0.cl
 
