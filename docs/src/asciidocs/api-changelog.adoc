@@ -44,6 +44,10 @@ For more information, see xref:embed-events.adoc[Interact with events]
 For more information, see xref:embed-actions.adoc[Show or hide UI actions].
 |====
 
+== Version 1.10.3, May 2022
+
+Bug fix and improvements to the `logout` method.
+
 == Version 1.10.2, May 2022
 [width="100%" cols="1,4"]
 |====
@@ -80,7 +84,6 @@ For more information, see xref:full-embed.adoc[Embed full application].
 == Version 1.9.6 and 1.9.7, April 2022
 
 Bug fixes and improvements
-
 
 == Version 1.9.5, April 2022
 [width="100%" cols="1,4"]
