@@ -40,10 +40,15 @@ This changelog lists only the changes introduced in the Visual Embed SDK. For a 
 For more information, see xref:embed-events.adoc[Interact with events]
 |[tag greenBackground]#NEW FEATURE#  a| The new version of SDK will include the `showAlerts` attribute, using which you can show or hide alerts and error messages in the embedded view.
 
-|[tag greenBackground]#NEW FEATURE# a| The `Action.CreateMonitor` enumeration will be available in the SDK for emebedded ThoughtSpot environments on which the Monitor feature is enabled.  
+|[tag greenBackground]#NEW FEATURE# a| The `Action.CreateMonitor` enumeration will be available in the SDK for embedded ThoughtSpot environments on which the Monitor feature is enabled.
 For more information, see xref:embed-actions.adoc[Show or hide UI actions].
 |====
 
+== Version 1.10.4, May 2022
+[width="100%" cols="1,4"]
+|====
+|[tag greenBackground]#NEW FEATURE#|The `detectCookieAccessSlow` parameter in the SDK allows your app to check if third-party cookies are enabled on the browser. This parameter is available only for `AuthServer` and `Basic` authentication types.
+|====
 == Version 1.10.3, May 2022
 
 Bug fix and improvements to the `logout` method.
@@ -51,7 +56,7 @@ Bug fix and improvements to the `logout` method.
 == Version 1.10.2, May 2022
 [width="100%" cols="1,4"]
 |====
-|[tag greenBackground]#NEW FEATURE#|Ability to configure `redirectPath` on the origin when using the SAML SSO.  `authType`.
+|[tag greenBackground]#NEW FEATURE#|Ability to configure `redirectPath` on the origin when using the SAML SSO `authType`.
 |====
 
 == Version 1.10.1, May 2022
