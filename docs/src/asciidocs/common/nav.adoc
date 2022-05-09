@@ -48,12 +48,6 @@
 ** link:{{navprefix}}=react-app-embed[Embed ThoughtSpot in React app]
 ** link:{{navprefix}}=js-reference[Visual Embed SDK Reference]
 *  link:{{navprefix}}=embed-without-sdk[Embed without SDK]
-////
-** link:{{navprefix}}=embed-without-sdk[Salesforce]
-** link:{{navprefix}}=embed-without-sdk[SharePoint]
-////
-
-
 
 * link:{{navprefix}}=custom-action-intro[Custom actions]
 ** link:{{navprefix}}=customize-actions[Create and administer actions]
