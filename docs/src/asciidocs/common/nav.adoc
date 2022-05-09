@@ -105,7 +105,3 @@
 ** link:https://community.thoughtspot.com/customers/s/[Community, window=_blank]
 ** link:https://cloud-docs.thoughtspot.com[Product Documentation, window=_blank]
 
-//// to add under custom actions
-** link:{{navprefix}}=app-actions[App actions]
-** link:{{navprefix}}=slack-integration[Push data to a Slack workspace]
-////
