@@ -37,7 +37,7 @@ This changelog lists only the changes introduced in the Visual Embed SDK. For a 
 * `UpdateTML`
 * `VizPointClick`
 
-For more information, see xref:embed-events.adoc[Interact with events]
+For more information, see xref:embed-events.adoc[Interact with events].
 |[tag greenBackground]#NEW FEATURE#  a| The new version of SDK will include the `showAlerts` attribute, using which you can show or hide alerts and error messages in the embedded view.
 
 |[tag greenBackground]#NEW FEATURE# a| The `Action.CreateMonitor` enumeration will be available in the SDK for embedded ThoughtSpot environments on which the Monitor feature is enabled.
