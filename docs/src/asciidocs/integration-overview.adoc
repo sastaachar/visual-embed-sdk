@@ -15,10 +15,6 @@ In addition to the Visual Embed SDK, ThoughtSpot provides REST APIs to query dat
 
 Irrespective of the method you use for embedding, make sure you define your application workflows and authentication criteria to enable seamless navigation between the host and embedded interfaces.
 
-== Determine the hosting domain
-
-When you embed ThoughtSpot into your app, the application URL will be set as `<your-company-name>.thoughtspot.cloud` by default. Most web browsers, including Safari and Firefox, block third-party cookies by default. To ensure that embedding works on browsers that don’t allow third-party cookies and cross-domain requests, you can customize the domain name of the embedded ThoughtSpot instance. For more information, see xref:custom-domain-configuration.adoc[Custom domain configuration].
-
 [NOTE]
 ====
 If your deployment requires both ThoughtSpot standalone application and the embedded ThoughtSpot instance, we recommend that you host these instances on separate domains or non-overlapping sub-domains.
@@ -53,7 +49,7 @@ To use SSO authentication for an embedded instance, you must add the identity pr
 For more information, see xref:configure-saml.adoc[SAML SSO authentication].
 
 Trusted Authentication::
-Trusted authentication is a token-based authentication method in which ThoughtSpot provides the authentication server with a token for a given ThoughtSpot user. This token is used for obtaining trust from the client applications before granting access to ThoughtSpot content.
+In the Trusted authentication method, ThoughtSpot provides a token for users to authenticate and log in. This token is used for obtaining trust from the client applications before granting access to ThoughtSpot content.
 +
 ThoughtSpot users with administrator privileges can generate a trusted authentication token in the *Security Settings* page of the Developer portal.
 +
