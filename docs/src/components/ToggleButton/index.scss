@@ -5,6 +5,7 @@
     display: inline-block;
     width: $switch-width;
     height: $switch-height;
+    padding-left: $padding-md;
 }
 
 .switch input {
@@ -64,3 +65,4 @@ input:checked + .slider:after {
     color: var(--primary-color);
     left: 40%;
 }
+

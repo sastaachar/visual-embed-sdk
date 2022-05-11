@@ -1,9 +1,9 @@
-= Custom action response payload
+= Callback response payload
 :toc: true
 
-:page-title: Push data to an external app
+:page-title: Sample response payload for callback actions
 :page-pageid: custom-action-payload
-:page-description: Callback custom action payload
+:page-description: View examples of the answer or visualization data payload for callback actions
 
 The examples in this section show the contents of the payload sent from ThoughtSpot for the custom action workflows.
 
@@ -360,9 +360,9 @@ The following example shows the cell-level data payload for a callback custom ac
 }
 ----
 
-=== Pinboard payload
+=== Liveboard payload
 
-The following example shows the pinboard data payload for a callback custom action in a pinboard visualization page:
+The following example shows the Liveboard data payload for a callback custom action in a Liveboard visualization page:
 
 [source, JSON]
 ----
@@ -868,7 +868,7 @@ The following example shows the pinboard data payload for a callback custom acti
 
 ----
 
-The following example shows the pinboard data payload for a callback custom action set as a context menu in a pinboard visualization page:
+The following example shows the Liveboard data payload for a callback custom action set as a context menu in a Liveboard visualization page:
 
 
 [source, JSON]

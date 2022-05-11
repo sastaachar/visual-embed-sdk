@@ -97,10 +97,16 @@
 								<a href="HostEvent.html#DrillDown" class="tsd-kind-icon">Drill<wbr>Down</a>
 							</li>
 							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="HostEvent.html#Navigate" class="tsd-kind-icon">Navigate</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
 								<a href="HostEvent.html#Search" class="tsd-kind-icon">Search</a>
 							</li>
 							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
 								<a href="HostEvent.html#SetVisibleVizs" class="tsd-kind-icon">Set<wbr>Visible<wbr>Vizs</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="HostEvent.html#UpdateRuntimeFilters" class="tsd-kind-icon">Update<wbr>Runtime<wbr>Filters</a>
 							</li>
 						</ul>
 					</li>
@@ -116,7 +122,7 @@
 						<a href="../classes/AppEmbed.html" class="tsd-kind-icon">App<wbr>Embed</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="../classes/PinboardEmbed.html" class="tsd-kind-icon">Pinboard<wbr>Embed</a>
+						<a href="../classes/LiveboardEmbed.html" class="tsd-kind-icon">Liveboard<wbr>Embed</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="../classes/SearchEmbed.html" class="tsd-kind-icon">Search<wbr>Embed</a>
@@ -128,7 +134,7 @@
 						<a href="../interfaces/EmbedConfig.html" class="tsd-kind-icon">Embed<wbr>Config</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/PinboardViewConfig.html" class="tsd-kind-icon">Pinboard<wbr>View<wbr>Config</a>
+						<a href="../interfaces/LiveboardViewConfig.html" class="tsd-kind-icon">Liveboard<wbr>View<wbr>Config</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/RuntimeFilter.html" class="tsd-kind-icon">Runtime<wbr>Filter</a>
@@ -152,6 +158,8 @@
 						<p>Event types that can be triggered by the host application
 						to the embedded ThoughtSpot app</p>
 					</div>
+					<p>To trigger an event use the corresponding
+					<a href="../classes/LiveboardEmbed.html#trigger">LiveboardEmbed.trigger</a> or <a href="../classes/AppEmbed.html#trigger">AppEmbed.trigger</a> or <a href="../classes/SearchEmbed.html#trigger">SearchEmbed.trigger</a> method.</p>
 				</div>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -162,8 +170,10 @@
 							<h3>Enumeration members</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="HostEvent.html#DrillDown" class="tsd-kind-icon">Drill<wbr>Down</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="HostEvent.html#Navigate" class="tsd-kind-icon">Navigate</a></li>
 								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="HostEvent.html#Search" class="tsd-kind-icon">Search</a></li>
 								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="HostEvent.html#SetVisibleVizs" class="tsd-kind-icon">Set<wbr>Visible<wbr>Vizs</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="HostEvent.html#UpdateRuntimeFilters" class="tsd-kind-icon">Update<wbr>Runtime<wbr>Filters</a></li>
 							</ul>
 						</section>
 					</div>
@@ -177,7 +187,7 @@
 					<div class="tsd-signature tsd-kind-icon">Drill<wbr>Down<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;triggerDrillDown&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/db64314/src/types.ts#L373">types.ts:373</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/dcea262f/src/types.ts#L545">types.ts:545</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -192,9 +202,33 @@
 							<dt class="param">param</dt>
 							<dd><p>a string guid of the column to drill by. This is optional,
 								if not provided it will auto drill by the configured column. \</p>
-								<ul>
-									<li><em>since: 1.5.0</em></li>
-								</ul>
+							</dd>
+							<dt class="version">version</dt>
+							<dd><p>1.5.0 or later</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="Navigate" class="tsd-anchor"></a>
+					<h3>Navigate</h3>
+					<div class="tsd-signature tsd-kind-icon">Navigate<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;Navigate&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/dcea262f/src/types.ts#L576">types.ts:576</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Navigate to a specific page in App embed without any reload.
+							This is the same as calling <code>appEmbed.navigateToPage(path, true)</code></p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt class="param">param</dt>
+							<dd><p>the path to navigate to (can be a number[1/-1] to go forward/back)</p>
+							</dd>
+							<dt class="version">version</dt>
+							<dd><p>SDK: 1.12.0 | ThoughtSpot: 8.4.0.cl</p>
 							</dd>
 						</dl>
 					</div>
@@ -205,7 +239,7 @@
 					<div class="tsd-signature tsd-kind-icon">Search<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;search&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/db64314/src/types.ts#L364">types.ts:364</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/dcea262f/src/types.ts#L536">types.ts:536</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -228,18 +262,44 @@
 					<div class="tsd-signature tsd-kind-icon">Set<wbr>Visible<wbr>Vizs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;SetPinboardVisibleVizs&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/db64314/src/types.ts#L390">types.ts:390</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/dcea262f/src/types.ts#L562">types.ts:562</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Set the visible Vizs on a pinboard/liveboard.</p>
+							<p>Set the visible visualizations on a Liveboard.</p>
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt class="param">param</dt>
-							<dd><p>an array of ids of vizs to show, the ids not passed
-									will be hidden.
-								<em>since: 1.6.0</em></p>
+							<dd><p>an array of ids of visualizations to show, the ids not passed
+								will be hidden.</p>
+							</dd>
+							<dt class="version">version</dt>
+							<dd><p>1.6.0 or later</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="UpdateRuntimeFilters" class="tsd-anchor"></a>
+					<h3>Update<wbr>Runtime<wbr>Filters</h3>
+					<div class="tsd-signature tsd-kind-icon">Update<wbr>Runtime<wbr>Filters<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;UpdateRuntimeFilters&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/dcea262f/src/types.ts#L569">types.ts:569</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Update the runtime filters. The runtime filters passed here are extended
+							on to the existing runtime filters if they exist.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt class="param">param</dt>
+							<dd><p><a href="../interfaces/RuntimeFilter.html">RuntimeFilter</a>[] an array of <a href="../interfaces/RuntimeFilter.html">RuntimeFilter</a> Types.</p>
+							</dd>
+							<dt class="version">version</dt>
+							<dd><p>SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl</p>
 							</dd>
 						</dl>
 					</div>

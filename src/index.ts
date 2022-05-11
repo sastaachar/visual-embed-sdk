@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020
+ * Copyright (c) 2022
  *
  * ThoughtSpot Visual Embed SDK for embedding ThoughtSpot analytics
  * in other web applications.
@@ -9,9 +9,14 @@
  */
 
 import { AppEmbed, Page, AppViewConfig } from './embed/app';
-import { init, prefetch } from './embed/base';
-import { PinboardEmbed, PinboardViewConfig } from './embed/pinboard';
+import { init, prefetch, logout } from './embed/base';
+import {
+    PinboardEmbed,
+    LiveboardViewConfig,
+    LiveboardEmbed,
+} from './embed/liveboard';
 import { SearchEmbed, SearchViewConfig } from './embed/search';
+import { AuthFailureType, AuthStatus } from './auth';
 import {
     AuthType,
     RuntimeFilter,
@@ -25,10 +30,14 @@ import {
 
 export {
     init,
+    logout,
     prefetch,
     SearchEmbed,
     PinboardEmbed,
+    LiveboardEmbed,
     AppEmbed,
+    AuthFailureType,
+    AuthStatus,
     // types
     Page,
     AuthType,
@@ -40,6 +49,6 @@ export {
     Action,
     EmbedConfig,
     SearchViewConfig,
-    PinboardViewConfig,
+    LiveboardViewConfig,
     AppViewConfig,
 };

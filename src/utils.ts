@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020
+ * Copyright (c) 2022
  *
  * Common utility functions for ThoughtSpot Visual Embed SDK
  *
@@ -134,4 +134,18 @@ export const getEncodedQueryParamsString = (queryString: string) => {
 export const getOffsetTop = (element: any) => {
     const rect = element.getBoundingClientRect();
     return rect.top + window.scrollY;
+};
+
+export const embedEventStatus = {
+    START: 'start',
+    END: 'end',
+};
+
+export const setAttributes = (
+    element: HTMLElement,
+    attributes: { [key: string]: string | number | boolean },
+): void => {
+    Object.keys(attributes).forEach((key) => {
+        element.setAttribute(key, attributes[key].toString());
+    });
 };

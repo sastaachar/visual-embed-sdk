@@ -1,13 +1,15 @@
 import { AppEmbed, AppViewConfig, Page } from './app';
 import { init } from '../index';
-import { Action, AuthType, RuntimeFilterOp } from '../types';
+import { Action, AuthType, HostEvent, RuntimeFilterOp } from '../types';
 import {
     executeAfterWait,
     getDocumentBody,
     getIFrameSrc,
     getRootEl,
+    getIFrameEl,
 } from '../test/test-utils';
 import { version } from '../../package.json';
+import * as config from '../config';
 
 const defaultViewConfig = {
     frameParams: {
@@ -17,6 +19,8 @@ const defaultViewConfig = {
 };
 const thoughtSpotHost = 'tshost';
 const defaultParams = `&hostAppUrl=local-host&viewPortHeight=768&viewPortWidth=1024&sdkVersion=${version}`;
+const defaultParamsForPinboardEmbed = `hostAppUrl=local-host&viewPortHeight=768&viewPortWidth=1024&sdkVersion=${version}`;
+const defaultParamsPost = '&isPinboardV2Enabled=false';
 
 beforeAll(() => {
     init({
@@ -39,7 +43,7 @@ describe('App embed tests', () => {
         appEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
-                `http://${thoughtSpotHost}/?embedApp=true&primaryNavHidden=true&profileAndHelpInNavBarHidden=false${defaultParams}#/home`,
+                `http://${thoughtSpotHost}/?embedApp=true&primaryNavHidden=true&profileAndHelpInNavBarHidden=false${defaultParams}${defaultParamsPost}#/home`,
             );
         });
     });
@@ -52,7 +56,7 @@ describe('App embed tests', () => {
         appEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
-                `http://${thoughtSpotHost}/?embedApp=true&primaryNavHidden=false&profileAndHelpInNavBarHidden=false${defaultParams}#/home`,
+                `http://${thoughtSpotHost}/?embedApp=true&primaryNavHidden=false&profileAndHelpInNavBarHidden=false${defaultParams}${defaultParamsPost}#/home`,
             );
         });
     });
@@ -65,7 +69,7 @@ describe('App embed tests', () => {
         appEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
-                `http://${thoughtSpotHost}/?embedApp=true&primaryNavHidden=true&profileAndHelpInNavBarHidden=true${defaultParams}#/home`,
+                `http://${thoughtSpotHost}/?embedApp=true&primaryNavHidden=true&profileAndHelpInNavBarHidden=true${defaultParams}${defaultParamsPost}#/home`,
             );
         });
     });
@@ -76,8 +80,10 @@ describe('App embed tests', () => {
             [Page.Search]: 'answer',
             [Page.Answers]: 'answers',
             [Page.Pinboards]: 'pinboards',
+            [Page.Liveboards]: 'pinboards',
             [Page.Data]: 'data/tables',
             [Page.Home]: 'home',
+            [Page.SpotIQ]: 'insights/results',
         };
 
         const pageIds = Object.keys(pageRouteMap);
@@ -94,7 +100,7 @@ describe('App embed tests', () => {
 
                 await executeAfterWait(() => {
                     expect(getIFrameSrc()).toBe(
-                        `http://${thoughtSpotHost}/?embedApp=true&primaryNavHidden=true&profileAndHelpInNavBarHidden=false${defaultParams}#/${route}`,
+                        `http://${thoughtSpotHost}/?embedApp=true&primaryNavHidden=true&profileAndHelpInNavBarHidden=false${defaultParams}${defaultParamsPost}#/${route}`,
                     );
                     cleanUp();
                 });
@@ -110,7 +116,7 @@ describe('App embed tests', () => {
         appEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
-                `http://${thoughtSpotHost}/?embedApp=true&primaryNavHidden=true&profileAndHelpInNavBarHidden=false${defaultParams}#/foo/bar`,
+                `http://${thoughtSpotHost}/?embedApp=true&primaryNavHidden=true&profileAndHelpInNavBarHidden=false${defaultParams}${defaultParamsPost}#/foo/bar`,
             );
         });
     });
@@ -131,7 +137,7 @@ describe('App embed tests', () => {
         appEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
-                `http://${thoughtSpotHost}/?embedApp=true&primaryNavHidden=false&profileAndHelpInNavBarHidden=false&col1=sales&op1=EQ&val1=1000${defaultParams}#/home`,
+                `http://${thoughtSpotHost}/?embedApp=true&primaryNavHidden=false&profileAndHelpInNavBarHidden=false&col1=sales&op1=EQ&val1=1000${defaultParams}${defaultParamsPost}#/home`,
             );
         });
     });
@@ -148,7 +154,7 @@ describe('App embed tests', () => {
         appEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
-                `http://${thoughtSpotHost}/?embedApp=true&primaryNavHidden=false&profileAndHelpInNavBarHidden=false${defaultParams}&disableAction=[%22save%22,%22update%22]&disableHint=Access%20denied&hideAction=[%22download%22]#/home`,
+                `http://${thoughtSpotHost}/?embedApp=true&primaryNavHidden=false&profileAndHelpInNavBarHidden=false${defaultParams}&disableAction=[%22save%22,%22update%22]&disableHint=Access%20denied&hideAction=[%22download%22]${defaultParamsPost}#/home`,
             );
         });
     });
@@ -163,7 +169,91 @@ describe('App embed tests', () => {
         appEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
-                `http://${thoughtSpotHost}/?embedApp=true&primaryNavHidden=true&profileAndHelpInNavBarHidden=false${defaultParams}&tag=Finance#/home`,
+                `http://${thoughtSpotHost}/?embedApp=true&primaryNavHidden=true&profileAndHelpInNavBarHidden=false${defaultParams}&tag=Finance${defaultParamsPost}#/home`,
+            );
+        });
+    });
+
+    describe('Navigate to Page API', () => {
+        const path = 'pinboard/e0836cad-4fdf-42d4-bd97-567a6b2a6058';
+        beforeEach(() => {
+            jest.spyOn(config, 'getThoughtSpotHost').mockImplementation(
+                () => 'http://tshost',
+            );
+        });
+
+        test('when app is AppEmbed after navigateToPage function call, new path should be set to iframe', async () => {
+            const appEmbed = new AppEmbed(getRootEl(), {
+                frameParams: {
+                    width: '100%',
+                    height: '100%',
+                },
+            });
+            await appEmbed.render();
+            appEmbed.navigateToPage(path);
+            expect(getIFrameSrc()).toBe(
+                `http://${thoughtSpotHost}/?embedApp=true&primaryNavHidden=true&profileAndHelpInNavBarHidden=false&${defaultParamsForPinboardEmbed}${defaultParamsPost}#/${path}`,
+            );
+        });
+
+        test('navigateToPage with noReload should trigger the appropriate event', async () => {
+            const appEmbed = new AppEmbed(getRootEl(), {
+                frameParams: {
+                    width: '100%',
+                    height: '100%',
+                },
+            });
+            await appEmbed.render();
+
+            const iframe = getIFrameEl();
+            iframe.contentWindow.postMessage = jest.fn();
+            appEmbed.navigateToPage(path, true);
+
+            expect(iframe.contentWindow.postMessage).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    type: HostEvent.Navigate,
+                    data: path,
+                }),
+                `http://${thoughtSpotHost}`,
+            );
+
+            appEmbed.navigateToPage(-1, true);
+            expect(iframe.contentWindow.postMessage).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    type: HostEvent.Navigate,
+                    data: -1,
+                }),
+                `http://${thoughtSpotHost}`,
+            );
+        });
+
+        test('Do not allow number path without noReload in navigateToPage', async () => {
+            const appEmbed = new AppEmbed(getRootEl(), {
+                frameParams: {
+                    width: '100%',
+                    height: '100%',
+                },
+            });
+            await appEmbed.render();
+            spyOn(console, 'warn');
+            appEmbed.navigateToPage(-1);
+            expect(console.warn).toHaveBeenCalledWith(
+                'Path can only by a string when triggered without noReload',
+            );
+        });
+
+        test('navigateToPage function use before render', async () => {
+            spyOn(console, 'log');
+            const appEmbed = new AppEmbed(getRootEl(), {
+                frameParams: {
+                    width: '100%',
+                    height: '100%',
+                },
+            });
+            appEmbed.navigateToPage(path);
+            await appEmbed.render();
+            expect(console.log).toHaveBeenCalledWith(
+                'Please call render before invoking this method',
             );
         });
     });

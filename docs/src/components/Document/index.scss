@@ -9,6 +9,7 @@
     color: var(--primary-color);
     padding-left: $document-padding;
 
+
     .documentView {
         min-height: 75vh;
         padding: $padding-md $padding-md 0;
@@ -43,19 +44,27 @@
 
     img {
         width: 100%;
+
+
     }
 
     pre {
         white-space: pre-wrap;
         background: var(--code-block-color);
-        padding: 20px 10px;
+        padding: 20px;
         display: flex;
         font-family: $font-family-code;
         justify-content: space-between;
         overflow: auto;
         font-size: $font-size-code;
+<<<<<<< HEAD
         line-height: $line-height-code;
-        
+
+=======
+        max-height: 700px;
+        line-height: $line-height-code;
+        box-shadow: var(--box-shadow);
+>>>>>>> 8-3-0-cl-docs
 
     }
 
@@ -63,24 +72,30 @@
         &:hover {
             .wrapperContainer {
                 visibility: visible;
-               
+
             }
         }
 
         code {
             max-width: 100%;
             font-family: $font-family-code;
+            padding-top: 10px;
         }
 
         .wrapperContainer {
             max-width: 15%;
             position: relative;
             visibility: hidden;
+<<<<<<< HEAD
             padding: 20px;
+=======
+            padding: 25px;
+>>>>>>> 8-3-0-cl-docs
 
             .lang {
                 position: absolute;
-                top: -15px;
+                top: -20px;
+                padding: 5px;
                 right: 36px;
                 text-transform: uppercase;
                 color: var(--text-color-code-lang);
@@ -89,6 +104,7 @@
             .copyButton {
                 position: absolute;
                 top: -15px;
+                padding: 5px;
                 right: 0px;
                 border: 0;
                 background: transparent;
@@ -122,21 +138,28 @@
 
     table {
         border-spacing: 0;
-        border-collapse: collapse;
+        border-collapse: separate;
+        width: 100%;
+
 
         th {
-            border-bottom: 3px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
             font-size: $font-size-doc;
-            padding: $padding-sm;
             text-align: left;
+            padding: 20px $padding-sm 20px $padding-sm;
+            background-color: var(--table-header-color);
+            position: sticky;
+            top: 0;
+
+
         }
 
         td {
             font-size: $font-size-table;
             border-bottom: 1px solid var(--border-color-tr);
-            padding: $padding-sm;
-            text-align: left;
+            padding: 5px $padding-md $padding-sm $padding-sm;
             font-weight: $font-weight-normal;
+            vertical-align: top;
 
             p {
                 font-size: $font-size-table;
@@ -147,6 +170,7 @@
             border-bottom: 1px solid var(--border-color-tr);
         }
     }
+
 
     h2 {
         margin-top: $margin-lg;
@@ -175,16 +199,29 @@
         font-weight: $font-weight-bold;
         color: var(--primary-color);
     }
-    
+
     ol > li {
         &::marker {
             font-weight: $font-weight-normal;
+
         }
 
         & > p {
-            margin-left: 3px;
+            margin-left: 5px;
         }
     }
+
+    ul > li {
+        &::marker {
+            font-weight: $font-weight-normal;
+
+        }
+
+        & > p {
+            margin-left: 5px;
+        }
+    }
+
 
     .hdlist {
         tr,
@@ -224,6 +261,15 @@
         }
     }
 
+    .ulist {
+        ul {
+            padding-inline-start: $padding-md;
+
+
+        }
+    }
+
+
     .admonitionblock {
         code {
             font-family: $font-family-code;
@@ -249,6 +295,7 @@ pre {
     white-space: pre-wrap;
 }
 
+
 @media screen and (min-width: $tablet-resolution-min) and (max-width: $tablet-resolution-max) {
     .documentWrapper {
         width: calc(100% - #{$docmap-width-tablet});
@@ -259,6 +306,8 @@ pre {
     .documentWrapper {
         width: 100%;
         overflow-x: auto;
+        padding: 5px;
+        margin: 5px;
 
         pre {
             overflow-x: auto;

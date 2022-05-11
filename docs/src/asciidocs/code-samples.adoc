@@ -3,7 +3,7 @@
 
 :page-title: Code samples
 :page-pageid: code-samples
-:page-description: Code samples
+:page-description: Code samples for embedding ThoughtSpot features in an external application, product, or web portal.
 
 This page contains code samples to help you embed ThoughtSpot features and data and build your applications.
 
@@ -37,13 +37,12 @@ const searchEmbed = new SearchEmbed(document.getElementById('ts-embed'), {
 searchEmbed.render();
 ----
 
-
 === Embed charts and tables
 
 [source,javascript]
 ----
 import {
-    PinboardEmbed,
+    LiveboardEmbed,
     AuthType,
     init
 }
@@ -54,23 +53,23 @@ init({
     thoughtSpotHost: '<%=tshost%>',
     authType: AuthType.SSO,
 });
-const pinboardEmbed= new PinboardEmbed(document.getElementById('ts-embed'), {
+const liveboardEmbed = new LiveboardEmbed(document.getElementById('ts-embed'), {
     frameParams: {
         width: '100%',
         height: '100%',
     },
-    pinboardId: '6294b4fc-c289-412a-b458-073fcf6e4516',
+    liveboardId: '6294b4fc-c289-412a-b458-073fcf6e4516',
     vizId: '28b73b4a-1341-4535-ab71-f76b6fe7bf92',
 });
-pinboardEmbed.render();
+liveboardEmbed.render();
 ----
 
-=== Embed a pinboard
+=== Embed a Liveboard
 
 [source,javascript]
 ----
 import {
-    PinboardEmbed,
+    LiveboardEmbed,
     AuthType,
     init
 }
@@ -81,14 +80,14 @@ init({
     thoughtSpotHost: '<%=tshost%>',
     authType: AuthType.SSO,
 });
-const pinboardEmbed = new PinboardEmbed(document.getElementById('ts-embed'), {
+const liveboardEmbed = new LiveboardEmbed(document.getElementById('ts-embed'), {
     frameParams: {
         width: '100%',
         height: '100%',
     },
-    pinboardId: 'f4a4e205-3b43-4b77-8ec0-8723da49ce1d',
+    liveboardId: 'f4a4e205-3b43-4b77-8ec0-8723da49ce1d',
 });
-pinboardEmbed.render();
+liveboardEmbed.render();
 ----
 
 === Embed full application
@@ -136,13 +135,27 @@ searchEmbed.on(EmbedEvent.VizPointDoubleClick, (data) => {
 })
 ----
 
-The following example shows how to register the `RouteChange`, which is triggered when a user navigates to another page within the embedded ThoughtSpot interface.
+== Event trigger on React components
 
 [source,JAVASCRIPT]
 ----
-appEmbed.on(EmbedEvent.RouteChange, (data) => {
-    console.log('Route', data)
-})
+import { HostEvent } from '@thoughtspot/visual-embed-sdk';
+import { LiveboardEmbed, useEmbedRef } from '@thoughtspot/visual-embed-sdk/react';
+
+const MyComponent = () => {
+    const embedRef = useEmbedRef();
+    const onLiveboardRendered = () => {
+        embedRef.current.trigger(HostEvent.SetVisibleVizs, ['viz1', 'viz2']);
+    };
+
+    return (
+        <LiveboardEmbed
+            ref={embedRef}
+            liveboardId="<liveboard-guid>"
+            onLiveboardRendered={onLiveboardRendered}
+        />
+    );
+};
 ----
 
 == REST APIs
@@ -172,14 +185,14 @@ export const getSearchData = async (worksheetId, search) => {
 }
 
 ----
-=== Embed visualization data from a pinboard
+=== Embed visualization data from a Liveboard
 
 [source,javascript]
 ----
-export const getPinboardData = async (pinboardId, vizIds) => {
+export const getLiveboardData = async (liveboardId, vizIds) => {
     // Returns visualization data
-    console.log(`Getting data from pinboard ${pinboardId} and visualization(s) ${vizIds}`)
-    let getPinboardDataURL = `${store_state.<ThoughtSpot-Host>}/callosum/v1/tspublic/v1/pinboarddata?batchSize=-1&id=${pinboardId}`;
+    console.log(`Getting data from Liveboard ${liveboardId} and visualization(s) ${vizIds}`)
+    let getLiveboardDataURL = `${store_state.<ThoughtSpot-Host>}/callosum/v1/tspublic/v1/pinboarddata?batchSize=-1&id=${liveboardId}`;
     if (vizIds) { // if vizIds were specified, they are optional
         if (!(Array.isArray(vizIds))) {
             vizIds = [vizIds];
@@ -187,9 +200,9 @@ export const getPinboardData = async (pinboardId, vizIds) => {
         // Supports only string and array
         // Handle invalid types
         const formattedVizIds = `["${vizIds.join('","')}"]`;
-        getPinboardDataURL += '&vizid=' + formattedVizIds;
+        getLiveboardDataURL += '&vizid=' + formattedVizIds;
     }
-    return await fetch(encodeURI(getPinboardDataURL), {
+    return await fetch(encodeURI(getLiveboardDataURL), {
         method: 'POST',
         headers: {
             "Accept": "application/json",
@@ -197,20 +210,18 @@ export const getPinboardData = async (pinboardId, vizIds) => {
         },
         credentials: "include"
     }).then(response => response.json()).then(data => data).catch(error => {
-        console.error(`Unable to get the visualization list for pinboard ${pinboardId}: ${error}`);
+        console.error(`Unable to get the visualization list for Liveboard ${liveboardId}: ${error}`);
     });
 }
 
 ----
-
-
-=== Get a list of visualizations on a pinboard
+=== Get a list of visualizations on a Liveboard
 
 [source,javascript]
 ----
-export const getVisualizationList = async (pinboardId) => {
-    // Returns a list of visualizations pinned on a pinboard
-    const vizMetadataListURL = store_state.<ThoughtSpot-Host> + "/callosum/v1/tspublic/v1/metadata/listvizheaders?id=" + pinboardId;
+export const getVisualizationList = async (liveboardId) => {
+    // Returns a list of visualizations pinned on a Liveboard
+    const vizMetadataListURL = store_state.<ThoughtSpot-Host> + "/callosum/v1/tspublic/v1/metadata/listvizheaders?id=" + liveboardId;
     return await fetch(vizMetadataListURL, {
         method: 'GET',
         headers: {
@@ -219,20 +230,19 @@ export const getVisualizationList = async (pinboardId) => {
         },
         credentials: "include"
     }).then(response => response.json()).then(data => data).catch(error => {
-        console.error("Unable to get the visualization list for pinboard " + pinboardId + ": " + error)
+        console.error("Unable to get the visualization list for Liveboard " + liveboardId + ": " + error)
     });
 }
 ----
 
-
-=== Get a list of pinboards for a user
+=== Get a list of Liveboards for a user
 
 [source,javascript]
 ----
-export const getPinboardList= async () => {
-    // Returns a list of pinboards
-    const pinboardMetadataListURL = store_state.<ThoughtSpot-Host> + "/callosum/v1/tspublic/v1/metadata/listobjectheaders?" + "type=PINBOARD_ANSWER_BOOK" + "&batchsize=-1";
-    return await fetch(pinboardMetadataListURL, {
+export const getLiveboardList = async () => {
+    // Returns a list of Liveboards
+    const liveboardMetadataListURL = store_state.<ThoughtSpot-Host> + "/callosum/v1/tspublic/v1/metadata/listobjectheaders?" + "type=PINBOARD_ANSWER_BOOK" + "&batchsize=-1";
+    return await fetch(liveboardMetadataListURL, {
         method: 'GET',
         headers: {
             "Accept": "application/json",
@@ -240,31 +250,27 @@ export const getPinboardList= async () => {
         },
         credentials: "include"
     }).then(response => response.json()).then(data => data).catch(error => {
-        console.error("Unable to get the pinboard list: " + error)
+        console.error("Unable to get the Liveboard list: " + error)
     });
 }
 ----
 
+For more REST API examples, go to link:https://github.com/thoughtspot/ts_rest_api_and_tml_tools[REST API and TML Python library and examples, window=_blank].
+
 == Custom actions
 
-See the following articles:
+See the following pages:
 
-* xref:push-data-to-external-app.adoc[Callback custom action workflow]
+* xref:push-data-to-external-app.adoc[Callback custom action workflow] +
+* xref:callback-response-payload.adoc[Custom action response payload] +
 
-* xref:callback-response-payload.adoc[Custom action response payload]
 
 == Additional resources
 
-* xref:home.adoc[Developer documentation]
-
-* xref:rest-api-reference.adoc[REST API Reference Guide]
-
-* link:{{visualEmbedSDKPrefix}}/modules.html[Visual Embed SDK Reference Guide, window=_blank]
-
-* link:https://developers.thoughtspot.com/guides[Tutorials, window=_blank]
-
-* link:https://github.com/thoughtspot/visual-embed-sdk[SDK and developer toolkit, window=_blank]
-
-* link:https://github.com/thoughtspot/ts_rest_api_and_tml_tools[REST API and TML Python library and examples, window=_blank]
-
-* link:https://github.com/thoughtspot/ts_everywhere_resources[Visual Embed SDK examples, window=_blank]
+* xref:home.adoc[Developer documentation] +
+* xref:rest-api-reference.adoc[REST API Reference Guide] +
+* link:https://developers.thoughtspot.com/guides[Tutorials, window=_blank] +
+* link:{{visualEmbedSDKPrefix}}/modules.html[Visual Embed SDK Reference Guide, window=_blank] +
+* link:https://github.com/thoughtspot/visual-embed-sdk/blob/main/README.md[Visual Embed SDK GitHub respository, window=_blank] +
+* link:https://github.com/thoughtspot/ts_rest_api_and_tml_tools[REST API and TML Python library and examples, window=_blank] +
+* link:https://github.com/thoughtspot/ts_everywhere_resources[Visual Embed SDK examples, window=_blank] +

@@ -1,50 +1,34 @@
 
-[div boxDiv boxFullWidth]
 --
 `xref:dependency-apis.adoc#add-dependents[*POST* /tspublic/v1/dependency/listdependents]`  
 
-Creates a list of dependents for a given data object type.
-
-+++<p class="divider"> </p>+++
++++<p class="divider">Gets a list of dependents for a given data object type. </p>+++
 
 `xref:dependency-apis.adoc#get-column-dependents[*GET* /tspublic/v1/dependency/logicalcolumn]`  
 
-Gets a list of dependent objects for a logical column.
-
-+++<p class="divider"> </p>+++
++++<p class="divider">Gets a list of dependent objects for a logical column. </p>+++
 
 `xref:dependency-apis.adoc#get-table-dependents[*GET* /tspublic/v1/dependency/logicaltable]`  
 
-Gets a list of dependent objects for data objects such as worksheets, tables, or views.
-
-+++<p class="divider"> </p>+++
++++<p class="divider">Gets a list of dependent objects for data objects such as worksheets, tables, or views. </p>+++
 
 `xref:dependency-apis.adoc#get-dependents-joins[*GET* /tspublic/v1/dependency/logicalrelationship]`   
 
-Gets a list of dependent objects for table joins.
-
-+++<p class="divider"> </p>+++ 
++++<p class="divider">Gets a list of dependent objects for table joins. </p>+++
 
 `xref:dependency-apis.adoc#get-dependents-phycolumn[*GET* /tspublic/v1/dependency/physicalcolumn]`   
 
-Gets a list of dependent objects for a physical column.
-
-+++<p class="divider"> </p>+++
++++<p class="divider">Gets a list of dependent objects for a physical column. </p>+++
 
 `xref:dependency-apis.adoc#get-dependents-phytable[*GET* /tspublic/v1/dependency/physicaltable]`   
 
-Gets a list of dependent objects for a physical table.
++++<p class="divider">Gets a list of dependent objects for a physical table.</p>+++
 
-+++<p class="divider"> </p>+++
+`xref:dependency-apis.adoc#get-dependent-liveboard[*GET* /tspublic/v1/dependency/pinboard]`
 
-`xref:dependency-apis.adoc#get-dependents-pinboard[*GET* /tspublic/v1/dependency/pinboard]`   
++++<p class="divider">Gets a list of dependent object headers for a Liveboard. </p>+++
 
-Gets a list of dependent object headers for a pinboard.
+`xref:dependency-apis.adoc#get-incomplete-objects[*GET* /tspublic/v1/dependency/listincomplete]`
 
-+++<p class="divider"> </p>+++
-
-`xref:admin-api.adoc#get-incomplete-objects[*GET* /tspublic/v1/dependency/listincomplete]`   
-
-Gets a list of objects with incomplete metadata.
-
++++<p class="divider">Gets a list of objects with incomplete metadata.</p>+++
 --

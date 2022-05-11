@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020
+ * Copyright (c) 2022
  *
  * TypeScript type definitions for ThoughtSpot Visual Embed SDK
  *
@@ -21,6 +21,10 @@ export enum AuthType {
      * SSO using SAML
      */
     SSO = 'SSO_SAML',
+    /**
+     * SSO using OIDC
+     */
+    OIDC = 'SSO_OIDC',
     /**
      * Trusted authentication server
      */
@@ -64,6 +68,11 @@ export interface EmbedConfig {
      * and returns a Promise that resolves to the `auth token` string.
      * For trusted authentication, the `authEndpoint` or `getAuthToken`
      * attribute is required.
+     *
+     * It is advisable to fetch a new token inside this method and not
+     * reuse and older issued token, as because when auth expires this is
+     * called again and if it is called with an older token the authentication
+     * will not succeed.
      */
     getAuthToken?: () => Promise<string>;
     /**
@@ -110,9 +119,23 @@ export interface EmbedConfig {
 
     /**
      * Re-login when session expires with the previous login options
-     * @default true
+     * @default false
      */
     autoLogin?: boolean;
+
+    /**
+     * Disable redirection to the login page when the embedded session expires
+     * This flag is typically used alongside the combination of auth modes such as {@link AuthType.AuthServer} and auto login behavior {@link EmbedConfig.autoLogin}
+     * @version SDK: 1.9.3 | ThoughtSpot: 8.1.0.cl
+     * @default false
+     */
+    disableLoginRedirect?: boolean;
+
+    /**
+     * This message is displayed on the embed view when the login fails.
+     * @version 1.10.1 | ThoughtSpot: *
+     */
+    loginFailedMessage?: string;
 
     /**
      * Calls the prefetch method internally when set to true
@@ -124,23 +147,56 @@ export interface EmbedConfig {
      * When there are multiple embeds, queue the render of embed to start
      *  after the previous embed's render is complete. This helps in the load performance
      *  by decreasing the load on the browser.
+     * @version 1.5.0 or later
      * @default false
      */
     queueMultiRenders?: boolean;
 
     /**
      * Dynamic CSS Url to be injected in the loaded application.
-     * _Since: 1.6.0_
+     * You would also need to set `style-src` in the CSP settings.
+     * @version 1.6.0 or later
      * @default ''
      */
     customCssUrl?: string;
 }
 
-export type MessagePayload = { type: string; data: any };
+/**
+ * MessagePayload: Embed event payload: message type, data and status (start/end)
+ */
+export type MessagePayload = {
+    /* type: message type eg: 'save' */
+    type: string;
+    /* data: message payload data eg: { answerId: '123' } */
+    data: any;
+    /* status: message payload status - start or end */
+    status?: string;
+};
+/**
+ * MessageOptions: By Providing options, getting specific event start / end based on option
+ */
+export type MessageOptions = {
+    /* A boolean value indicating that start status events of this type will be dispatched */
+    start?: boolean;
+};
+/**
+ * MessageCallback: Embed event message callback
+ */
 export type MessageCallback = (
+    /* payload: Message payload contain type, data and status */
     payload: MessagePayload,
+    /* responder: Messsage callback function triggered when embed event initiated */
     responder?: (data: any) => void,
 ) => void;
+/**
+ * MessageCallbackObj: contains message options & callback function
+ */
+export type MessageCallbackObj = {
+    /* options: It contains start, A boolean value indicating that start status events of this type will be dispatched */
+    /* callback: Embed event message callback */
+    options: MessageOptions;
+    callback: MessageCallback;
+};
 
 export type GenericCallbackFn = (...args: any[]) => any;
 
@@ -212,7 +268,7 @@ export enum RuntimeFilterOp {
 }
 
 /**
- * A filter that can be applied to ThoughtSpot answers, pinboards, or
+ * A filter that can be applied to ThoughtSpot answers, Liveboards, or
  * visualizations at runtime.
  */
 export interface RuntimeFilter {
@@ -252,12 +308,12 @@ export enum EmbedEvent {
      */
     Load = 'load',
     /**
-     * Data pertaining to answer or pinboard is received
-     * @return data - The answer or pinboard data
+     * Data pertaining to answer or Liveboard is received
+     * @return data - The answer or Liveboard data
      */
     Data = 'data',
     /**
-     * Search/answer/pinboard filters have been applied/updated
+     * Search/answer/Liveboard filters have been applied/updated
      * @hidden
      */
     FiltersChanged = 'filtersChanged',
@@ -278,17 +334,29 @@ export enum EmbedEvent {
      */
     DataSourceSelected = 'dataSourceSelected',
     /**
+     * One or more data columns have been selected.
+     * @return columnIds - the list of columns
+     * @version SDK: 1.10.0 | ThoughtSpot: 8.2.0.cl
+     */
+    AddRemoveColumns = 'addRemoveColumns',
+    /**
      * A custom action has been triggered
      * @return actionId - The id of the custom action
-     * @return data - The answer or pinboard data
+     * @return data - The answer or Liveboard data
      */
     CustomAction = 'customAction',
     /**
      * A double click has been triggered on table/chart
      * @return ContextMenuInputPoints - data point that is double clicked
-     * * _since: 1.5.0_
+     * @version 1.5.0 or later
      */
     VizPointDoubleClick = 'vizPointDoubleClick',
+    /**
+     * A click has been triggered on table/chart
+     * @return ContextMenuInputPoints - data point that is clicked
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    VizPointClick = 'vizPointClick',
     /**
      * An error has occurred.
      * @return error - An error object or message
@@ -304,8 +372,18 @@ export enum EmbedEvent {
      */
     AuthExpire = 'ThoughtspotAuthExpired',
     /**
-     * The height of the embedded pinboard or visualization has been computed.
-     * @return data - The height of the embedded pinboard or visualization
+     * ThoughtSpot failed to validate the auth session.
+     * @hidden
+     */
+    AuthFailure = 'ThoughtspotAuthFailure',
+    /**
+     * ThoughtSpot failed to validate the auth session.
+     * @hidden
+     */
+    AuthLogout = 'ThoughtspotAuthLogout',
+    /**
+     * The height of the embedded Liveboard or visualization has been computed.
+     * @return data - The height of the embedded Liveboard or visualization
      * @hidden
      */
     EmbedHeight = 'EMBED_HEIGHT',
@@ -317,7 +395,6 @@ export enum EmbedEvent {
     EmbedIframeCenter = 'EmbedIframeCenter',
     /**
      * Detects the route change.
-     * @hidden
      */
     RouteChange = 'ROUTE_CHANGE',
     /**
@@ -329,7 +406,7 @@ export enum EmbedEvent {
      * Emitted when the embed does not have cookie access. This
      * happens on Safari where third-party cookies are blocked by default.
      *
-     * @version 1.1.0
+     * @version 1.1.0 or later
      */
     NoCookieAccess = 'noCookieAccess',
     /**
@@ -340,19 +417,130 @@ export enum EmbedEvent {
     SAMLComplete = 'samlComplete',
     /**
      * Emitted when any modal is opened in the app
-     * * _since: 1.6.0_
+     * @version 1.6.0 or later
      */
     DialogOpen = 'dialog-open',
     /**
      * Emitted when any modal is closed in the app
-     * * _since: 1.6.0_
+     * @version 1.6.0 or later
      */
     DialogClose = 'dialog-close',
+    /**
+     * Emitted when a liveboard has completed rendering,
+     * this event can be used as a hook to trigger events on the
+     * rendered liveboard
+     * @version 1.9.1 or later
+     */
+    LiveboardRendered = 'PinboardRendered',
+    /**
+     * This can be used to register an event listener which
+     * is triggered on all events.
+     * @version SDK: 1.10.0 | ThoughtSpot: any
+     */
+    ALL = '*',
+    /**
+     * Emitted when answer is saved in the app
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    Save = 'save',
+    /**
+     * Emitted when the download action is triggered on an answer
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    Download = 'download',
+    /**
+     * Emitted when the Download as PDF action is triggered on an answer
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    DownloadAsPdf = 'downloadAsPdf',
+    /**
+     * Emitted when the Download as CSV action is triggered on an answer
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    DownloadAsCsv = 'downloadAsCsv',
+    /**
+     * Emitted when the Download as XLSX action is triggered on an answer
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    DownloadAsXlsx = 'downloadAsXlsx',
+    /**
+     * Emitted when an answer is deleted in the app
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    AnswerDelete = 'answerDelete',
+    /**
+     * Emitted when an answer is pinned to a Liveboard
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    Pin = 'pin',
+    /**
+     * Emitted when SpotIQ analysis is triggered
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    SpotIQAnalyze = 'spotIQAnalyze',
+    /**
+     * Emitted when a user shares an object with another user or group
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    Share = 'share',
+    /**
+     * Emitted when a user clicks the Include action to include a specific value or data on a chart or table
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    DrillInclude = 'context-menu-item-include',
+    /**
+     * Emitted when a user clicks the Exclude action to exclude a specific value or data on a chart or table
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    DrillExclude = 'context-menu-item-exclude',
+    /**
+     * Emitted when copied column value on the app
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    CopyToClipboard = 'context-menu-item-copy-to-clipboard',
+    /**
+     * Emitted when a user clicks the Update TML action
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    UpdateTML = 'updateTSL',
+    /**
+     * Emitted when a user clicks the Edit TML action
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    EditTML = 'editTSL',
+    /**
+     * Emitted when ExportTML trigger in answer on the app
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    ExportTML = 'exportTSL',
+    /**
+     * Emitted when an answer is saved as a view
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    SaveAsView = 'saveAsView',
+    /**
+     * Emitted when copy of existing answer on the app
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    CopyAEdit = 'copyAEdit',
+    /**
+     * Emitted when a user clicks Show underlying data on an answe
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    ShowUnderlyingData = 'showUnderlyingData',
+    /**
+     * Emitted when an answer is switched to a chart or table view
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    AnswerChartSwitcher = 'answerChartSwitcher',
 }
 
 /**
  * Event types that can be triggered by the host application
  * to the embedded ThoughtSpot app
+ *
+ * To trigger an event use the corresponding
+ * {@link LiveboardEmbed.trigger} or {@link AppEmbed.trigger} or {@link SearchEmbed.trigger} method.
  */
 // eslint-disable-next-line no-shadow
 export enum HostEvent {
@@ -368,7 +556,7 @@ export enum HostEvent {
      *              eg. { selectedPoints: []}
      * @param columnGuid - a string guid of the column to drill by. This is optional,
      *                     if not provided it will auto drill by the configured column. \
-     * * _since: 1.5.0_
+     * @version 1.5.0 or later
      */
     DrillDown = 'triggerDrillDown',
     /**
@@ -382,12 +570,26 @@ export enum HostEvent {
      */
     Reload = 'reload',
     /**
-     * Set the visible Vizs on a pinboard/liveboard.
-     * @param - an array of ids of vizs to show, the ids not passed
+     * Set the visible visualizations on a Liveboard.
+     * @param - an array of ids of visualizations to show, the ids not passed
      *          will be hidden.
-     * _since: 1.6.0_
+     * @version 1.6.0 or later
      */
     SetVisibleVizs = 'SetPinboardVisibleVizs',
+    /**
+     * Update the runtime filters. The runtime filters passed here are extended
+     * on to the existing runtime filters if they exist.
+     * @param - {@link RuntimeFilter}[] an array of {@link RuntimeFilter} Types.
+     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl
+     */
+    UpdateRuntimeFilters = 'UpdateRuntimeFilters',
+    /**
+     * Navigate to a specific page in App embed without any reload.
+     * This is the same as calling `appEmbed.navigateToPage(path, true)`
+     * @param path - the path to navigate to (can be a number[1/-1] to go forward/back)
+     * @version SDK: 1.12.0 | ThoughtSpot: 8.4.0.cl
+     */
+    Navigate = 'Navigate',
 }
 
 /**
@@ -422,7 +624,7 @@ export enum Param {
     DisableActions = 'disableAction',
     DisableActionReason = 'disableHint',
     ForceTable = 'forceTable',
-    preventPinboardFilterRemoval = 'preventPinboardFilterRemoval',
+    preventLiveboardFilterRemoval = 'preventPinboardFilterRemoval', // update-TSCB
     SearchQuery = 'searchQuery',
     HideActions = 'hideAction',
     HideObjects = 'hideObjects',
@@ -436,45 +638,77 @@ export enum Param {
     executeSearch = 'executeSearch',
     fullHeight = 'isFullHeightPinboard',
     livedBoardEmbed = 'isLiveboardEmbed',
+    searchEmbed = 'isSearchEmbed',
     Version = 'sdkVersion',
     ViewPortHeight = 'viewPortHeight',
     ViewPortWidth = 'viewPortWidth',
     VisibleActions = 'visibleAction',
     CustomCSSUrl = 'customCssUrl',
+    DisableLoginRedirect = 'disableLoginRedirect',
+    visibleVizs = 'pinboardVisibleVizs',
+    LiveboardV2Enabled = 'isPinboardV2Enabled',
+    ShowAlerts = 'showAlerts',
+    Locale = 'locale',
 }
 
 /**
  * The list of actions that can be performed on visual ThoughtSpot
- * entities, such as answers and pinboards.
+ * entities, such as answers and Liveboards.
  */
 // eslint-disable-next-line no-shadow
 export enum Action {
     Save = 'save',
+    /**
+     * @hidden
+     */
     Update = 'update',
+    /**
+     * @hidden
+     */
     SaveUntitled = 'saveUntitled',
     SaveAsView = 'saveAsView',
     MakeACopy = 'makeACopy',
     EditACopy = 'editACopy',
     CopyLink = 'embedDocument',
-    PinboardSnapshot = 'pinboardSnapshot',
+    /**
+     * @hidden
+     */
     ResetLayout = 'resetLayout',
-    Schedule = 'schedule',
+    Schedule = 'subscription',
     SchedulesList = 'schedule-list',
     Share = 'share',
     AddFilter = 'addFilter',
     ConfigureFilter = 'configureFilter',
+    /**
+     * @hidden
+     */
     AddFormula = 'addFormula',
+    /**
+     * @hidden
+     */
     SearchOnTop = 'searchOnTop',
     SpotIQAnalyze = 'spotIQAnalyze',
+    /**
+     * @hidden
+     */
     ExplainInsight = 'explainInsight',
+    /**
+     * @hidden
+     */
     SpotIQFollow = 'spotIQFollow',
     ShareViz = 'shareViz',
+    /**
+     * @hidden
+     */
     ReplaySearch = 'replaySearch',
     ShowUnderlyingData = 'showUnderlyingData',
     Download = 'download',
     DownloadAsPdf = 'downloadAsPdf',
     DownloadAsCsv = 'downloadAsCSV',
     DownloadAsXlsx = 'downloadAsXLSX',
+    /**
+     * @hidden
+     */
     DownloadTrace = 'downloadTrace',
     ExportTML = 'exportTSL',
     ImportTML = 'importTSL',
@@ -485,30 +719,78 @@ export enum Action {
     Edit = 'edit',
     EditTitle = 'editTitle',
     Remove = 'delete',
+    /**
+     * @hidden
+     */
     Ungroup = 'ungroup',
+    /**
+     * @hidden
+     */
     Describe = 'describe',
+    /**
+     * @hidden
+     */
     Relate = 'relate',
+    /**
+     * @hidden
+     */
     CustomizeHeadlines = 'customizeHeadlines',
+    /**
+     * @hidden
+     */
     PinboardInfo = 'pinboardInfo',
+    LiveboardInfo = 'pinboardInfo',
+    /**
+     * @hidden
+     */
     SendAnswerFeedback = 'sendFeedback',
     /**
-     * @deprecated Will be removed in next version
+     * @hidden
      */
-    CustomAction = 'customAction',
     DownloadEmbraceQueries = 'downloadEmbraceQueries',
     Pin = 'pin',
+    /**
+     * @hidden
+     */
     AnalysisInfo = 'analysisInfo',
     Subscription = 'subscription',
     Explore = 'explore',
     DrillInclude = 'context-menu-item-include',
     DrillExclude = 'context-menu-item-exclude',
     CopyToClipboard = 'context-menu-item-copy-to-clipboard',
+    CopyAndEdit = 'context-menu-item-copy-and-edit',
+    /**
+     * @hidden
+     */
     DrillEdit = 'context-menu-item-edit',
     EditMeasure = 'context-menu-item-edit-measure',
     Separator = 'context-menu-item-separator',
+    /**
+     * @hidden
+     */
     DrillDown = 'DRILL',
     RequestAccess = 'requestAccess',
     QueryDetailsButtons = 'queryDetailsButtons',
+    /**
+     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl
+     */
+    AnswerDelete = 'onDeleteAnswer',
+    /**
+     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl
+     */
+    AnswerChartSwitcher = 'answerChartSwitcher',
+    /**
+     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl
+     */
+    AddToFavorites = 'addToFavorites',
+    /**
+     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl
+     */
+    EditDetails = 'editDetails',
+    /**
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl
+     */
+    CreateMonitor = 'createMonitor',
 }
 
 export interface SessionInterface {

@@ -57,6 +57,7 @@ a {
     padding: 10px 25px;
 }
 
+
 .d-inline-block {
     display: inline-block;
 }
@@ -99,7 +100,12 @@ button {
     width: auto;
     img {
         width: auto;
+        max-width: 100%;
     }
+}
+
+.bordered img {
+  border: 1px solid var(--border-color);
 }
 
 .displayNone {
@@ -124,6 +130,36 @@ button {
     min-width: $tag-width;
     padding: $tag-padding;
     color: $tag-font-color;
+}
+
+.version {
+    display: inline-block;
+    font-size: $font-size-small;
+    font-weight: $font-weight-bold;
+    height: 25px;
+    line-height: $line-height-doc;
+    text-align: center;
+    min-width: $tag-width;
+    margin: 2px;
+    padding: $tag-padding;
+    color: var(--primary-color);
+    border: solid 1px;
+    border-color: $tip-color; 
+}
+
+
+.beta {
+    border-radius: $beta-border-radius;
+    display: inline-block;
+    font-size: $font-size-small;
+    font-weight: $font-weight-normal;
+    height: 22px;
+    line-height: $line-height-doc;
+    text-align: center;
+    min-width: $tag-width;
+    padding: $beta-padding;
+    color: $tag-font-color;
+    margin: 2px;
 }
 
 .blueBackground {
@@ -154,12 +190,20 @@ button {
     background-color: $tag-color-yellow;
 }
 
+.noBackground {
+    background-color: $tag-color-white;
+}
+
+.lightBackground {
+    background-color: $tag-color-light;
+}
+
 /*Tags style end*/
 
 /* Div box style start */
 
 .boxDiv {
-    padding: 10px;
+    padding: 15px;
     display: inline-block;
     margin: 10px;
     box-shadow: var(--box-shadow);
@@ -170,12 +214,26 @@ button {
 }
 
 .boxHalfWidth {
-    width: 48%;
     display: inline-block;
+    padding: 15px;
+    height: 225px;
+    max-height: 500px;
+    width: 475px;
+    max-width: 500px;
+    margin: 10px;
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
+    &:hover {
+        box-shadow: var(--box-shadow-hover);
+    }
 }
 
 .boxFullWidth {
     width: 100%;
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-color);
+    margin: 10px;
+    padding: 15px;
 }
 
 .divider {
@@ -201,6 +259,65 @@ summary.title  {
     color: var(--primary-color);
 
 }
+
+.tableContainer {
+    border: 0.5px solid $disabledcolor;
+	height: 750px;
+	overflow-y: scroll;
+	width: 100%;
+	padding: 0 0 0 2px;
+}
+
+summary.title  {
+    font-size: $font-size-summ-title;
+    margin-top: $margin-sm;
+    margin-left: 3px;
+    font-weight: $font-weight-normal;
+    line-height: $line-height-doc;
+    color: var(--primary-color);
+
+}
+
+.cardHead {
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+    color: var(--primary-color);
+    font-size: $font-size-h5;
+    margin: auto;
+    padding: 10px;
+    font-weight: $font-weight-bold;
+
+}
+
+ 
+a.anchor {
+    position: absolute;
+    text-decoration: none;
+    width: 1.75ex;
+    margin-left: -1.5ex;
+    visibility: hidden;
+    font-size: .8em;
+    font-weight: 400;
+    padding-top: 0.05em;
+}    
+
+
+.introCard     {
+    padding: 15px;
+    display: inline-block;
+    position: relative;
+    height: 225px;
+    max-height: 500px;
+    width: 300px;
+    max-width:400px;
+    margin: 10px;
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
+    &:hover {
+        box-shadow: var(--box-shadow-hover);
+    }
+}
+
 
 
 /* Div box style end */
@@ -242,6 +359,10 @@ summary.title  {
         padding-left: 0;
     }
 
+   .introCard {
+        width: 100%;
+    }
+    
     .boxDiv {
         width: 100%;
     }
@@ -249,6 +370,10 @@ summary.title  {
     .boxHalfWidth {
         width: 100%;
     }
+    
+    .tableContainer {
+	overflow: scroll;
+}
 }
 
 @media screen and (max-width: $mobile-resolution-max) {
@@ -256,6 +381,7 @@ summary.title  {
         flex-direction: column;
     }
 }
+
 
 .searchResultHighlightColor {
     color: var(--secondary-color);

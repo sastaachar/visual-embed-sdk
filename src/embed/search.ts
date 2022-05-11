@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021
+ * Copyright (c) 2022
  *
  * Embed ThoughtSpot search or a saved answer
  *
@@ -7,7 +7,7 @@
  * @author Ayon Ghosh <ayon.ghosh@thoughtspot.com>
  */
 
-import { DataSourceVisualMode, DOMSelector, Param } from '../types';
+import { DataSourceVisualMode, DOMSelector, Param, Action } from '../types';
 import { getQueryParamString } from '../utils';
 import { ViewConfig, TsEmbed } from './ts-embed';
 import { version } from '../../package.json';
@@ -81,6 +81,14 @@ export interface SearchViewConfig extends ViewConfig {
     answerId?: string;
 }
 
+export const HiddenActionItemByDefaultForSearchEmbed = [
+    Action.EditACopy,
+    Action.SaveAsView,
+    Action.UpdateTML,
+    Action.EditTML,
+    Action.AnswerDelete,
+];
+
 /**
  * Embed ThoughtSpot search
  *
@@ -129,6 +137,12 @@ export class SearchEmbed extends TsEmbed {
         } = this.viewConfig;
         const answerPath = answerId ? `saved-answer/${answerId}` : 'answer';
         const queryParams = this.getBaseQueryParams();
+
+        queryParams[Param.HideActions] = [
+            ...(queryParams[Param.HideActions] ?? []),
+            ...HiddenActionItemByDefaultForSearchEmbed,
+        ];
+
         if (dataSources && dataSources.length) {
             queryParams[Param.DataSources] = JSON.stringify(dataSources);
         }
@@ -153,13 +167,17 @@ export class SearchEmbed extends TsEmbed {
 
         queryParams[Param.DataSourceMode] = this.getDataSourceMode();
         queryParams[Param.UseLastSelectedDataSource] = false;
+        queryParams[Param.searchEmbed] = true;
         let query = '';
         const queryParamsString = getQueryParamString(queryParams, true);
         if (queryParamsString) {
             query = `?${queryParamsString}`;
         }
+        const tsPostHashParams = this.getThoughtSpotPostUrlParams();
 
-        return `${this.getEmbedBasePath(query)}/${answerPath}`;
+        return `${this.getEmbedBasePath(
+            query,
+        )}/${answerPath}${tsPostHashParams}`;
     }
 
     /**

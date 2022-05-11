@@ -16,45 +16,45 @@ The more dynamic your content creation process is, the more likely you will want
 
 To generate menu or selection box items with ThoughtSpot objects, you will require the names and GUIDs of the objects. You can obtain this data by making a REST API call to xref:metadata-api.adoc#metadata-list[metadata/list] or xref:metadata-api#object-header[metadata/listobjectheaders]. The `metadata/list` endpoint provides more information about tags than `metadata/listobjectheaders`. Both calls are scoped to the user and will only show the objects the user has access to.
 
-In your REST API calls to the xref:metadata-api.adoc#metadata-list[metadata/list] and  xref:metadata-api#object-header[metadata/listobjectheaders] endpoints, you must specify the object type; that is, `PINBOARD_ANSWER_BOOK` for Pinboards, `QUESTION_ANSWER_BOOK` for answers, and `LOGICAL_TABLE` for data objects. You can also specify an additional `subtype` parameter to limit your query specifically to ThoughtSpot tables, worksheets or views.
+In your REST API calls to the xref:metadata-api.adoc#metadata-list[metadata/list] and  xref:metadata-api#object-header[metadata/listobjectheaders] endpoints, you must specify the object type; that is, `PINBOARD_ANSWER_BOOK` for Liveboards, `QUESTION_ANSWER_BOOK` for answers, and `LOGICAL_TABLE` for data objects. You can also specify an additional `subtype` parameter to limit your query specifically to ThoughtSpot tables, worksheets or views.
 
 Both endpoints include parameters for sorting and a `category` parameter that can filter the response to show only the objects created or marked as favorites by the logged-in user.
 
 When your application user selects or clicks on an item in the embedded UI, the GUID(s) must pass to the appropriate parameter in the options object of the Embed constructor:
 
-* `pinboardId` for a xref:embed-pinboard.adoc[Pinboard] in a `PinboardEmbed` object
-* `pinboardId` and `vizId` for an xref:embed-a-viz.adoc[individual visualization] from a Pinboard through the `PinboardEmbed` object
+* `liveboardId` for a xref:embed-pinboard.adoc[Liveboard] in a `LiveboardEmbed` object
+* `liveboardId` and `vizId` for an xref:embed-a-viz.adoc[individual visualization] from a Liveboard through the `LiveboardEmbed` object
 * `datasources` array for a xref:embed-search.adoc[SearchEmbed]
 * `answerId` for loading a xref:embed-search.adoc[saved Answer] in a `SearchEmbed`
 
 == Filters in the embedded UI
 
-xref:runtime-filters.adoc[Runtime filters] can be tied into the embedding application, since they are set programmatically before loading the embedded ThoughtSpot content. If you want users to set filter values outside of the embedded ThoughtSpot content, display some type of filter UI in the embedding application, then set those values in the runtime filters section of the constructor of the *PinboardEmbed* object.
+xref:runtime-filters.adoc[Runtime filters] can be tied into the embedding application, since they are set programmatically before loading the embedded ThoughtSpot content. If you want users to set filter values outside of the embedded ThoughtSpot content, display some type of filter UI in the embedding application, then set those values in the runtime filters section of the constructor of the *LiveboardEmbed* object.
 
-ThoughtSpot Pinboards have four levels of filters:
+ThoughtSpot Liveboards have four levels of filters:
 
 Row-level security (RLS) rules::
 Tied to the logged-in user and their group memberships.
 Runtime filters::
 Set via the Visual Embed SDK or URL parameters. Runtime filters do not display as UI filter components.
 Answer filters::
-Established via the search definition, not visible as UI filter components on a Pinboard, but can be viewed in **Explore** or *Edit* modes.
-Pinboard filters::
-Visible as UI components at the top of a Pinboard, affecting all visualizations on the Pinboard.
+Established via the search definition, not visible as UI filter components on a Liveboard, but can be viewed in **Explore** or *Edit* modes.
+Liveboard filters::
+Visible as UI components at the top of a Liveboard, affecting all visualizations on the Liveboard.
 
 RLS rules are only affected by the SSO process, which makes them the appropriate layer for secure data filtering. The other filter types can all be adjusted by the end user in the browser.
 
 Embedded search operations are always filtered by RLS rules. The end user can create their own UI filters via search within the embedded search component.
 
-== Size and placement of PinboardEmbed object
+== Size and placement of LiveboardEmbed object
 
-The first argument of the constructors of each of the Embed classes in the Visual Embed SDK (xref:search-embed.adoc[SearchEmbed], xref:embed-pinboard.adoc[PinboardEmbed]) is a *div* element in the embedding page, where the embedded ThoughtSpot content will load.
+The first argument of the constructors of each of the Embed classes in the Visual Embed SDK (xref:search-embed.adoc[SearchEmbed], xref:embed-pinboard.adoc[LiveboardEmbed]) is a *div* element in the embedding page, where the embedded ThoughtSpot content will load.
 
 The second argument of the constructors is a JavaScript object of options, several of which control how the embedded content fills the `div`.
 
 `frameParams` is an object with `width` and `height` attributes. If `frameParams` is not included, the embedded ThoughtSpot will fill the `div` entirely, and resize automatically if the `div` adjusts in size. This is equivalent to `width: '100%', height: '100%'`. When `width` and `height` are set to percentages, the embedded area will be adjusted according to the proportion of the embedded div. When set to exact pixel sizes, the size of the embedded area stays fixed regardless of what happens to the `div`.
 
-When `fullHeight` is set to `true`, the scrollbar within the embedded Pinboard area does not appear.
+When `fullHeight` is set to `true`, the scrollbar within the embedded Liveboard area does not appear.
 
 [source,javascript]
 ----
@@ -67,7 +67,7 @@ When `fullHeight` is set to `true`, the scrollbar within the embedded Pinboard a
 }
 ----
 
-== Handle load and errors for embedded Pinboard objects
+== Handle load and errors for embedded Liveboard objects
 
 A common workflow is to use an overlay `div` element to hide the embed content until you know that SSO has completed and the content is fully loaded. If an error occurs in the process, you may prefer to display your own custom message to the end user rather than showing embedded ThoughtSpot content in an error state.
 
@@ -100,7 +100,7 @@ Fires as soon as the area for embedding is created, not when the content has beg
 
 . `Data`
 +
-Fires only on `SearchEmbed` components. Never fires with a `PinboardEmbed` component.
+Fires only on `SearchEmbed` components. Never fires with a `LiveboardEmbed` component.
 
 The full list events are defined in the link:https://github.com/thoughtspot/visual-embed-sdk/blob/main/src/types.ts[types.ts, window=_blank] file of the Visual Embed SDK source.
 
@@ -108,9 +108,9 @@ The full list events are defined in the link:https://github.com/thoughtspot/visu
 
 [source,javascript]
 ----
-// Instantiate class for embedding a Pinboard
-const embed = new PinboardEmbed("#thoughtspot-embed", {
-    pinboardId: '<Pinboard-guid>',
+// Instantiate class for embedding a Liveboard
+const embed = new LiveboardEmbed("#thoughtspot-embed", {
+    liveboardId: '<Liveboard-guid>',
 });
 let tsLoggedIn = false;
 embed
@@ -141,7 +141,7 @@ xref:custom-action-intro.adoc[Custom actions] fire an event when a user clicks o
 
 Custom actions provide a way for interaction within the ThoughtSpot components to trigger further workflows within the embedding application.
 
-There are other xref:embed-events.adoc#embed-events[events] that fire as the user interacts with the `SearchEmbed` and `PinboardEmbed` components:
+There are other xref:embed-events.adoc#embed-events[events] that fire as the user interacts with the `SearchEmbed` and `LiveboardEmbed` components:
 
 * `Drilldown`
 * `VizPointDoubleClick`

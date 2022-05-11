@@ -3,7 +3,7 @@
 
 :page-title: Customization and rebranding
 :page-pageid: customization-intro
-:page-description: You can insert custom buttons or menu items in ThoughtSpot UI
+:page-description: You can customize the look and feel of the ThoughtSpot UI and rebrand the UI elements as per your organization's branding guidelines.
 
 You can customize the look and feel of the embedded ThoughtSpot content to match the styles and layout of your host application. You can also create new buttons and actions to provide additional workflows to your application users.
 
@@ -27,7 +27,7 @@ Insert xref:custom-actions.adoc[custom actions] into the ThoughtSpot UI to send 
 --
 +++<h5>Customize link format</h5>+++
 
-You can xref:customize-links.adoc[customize system-generated links to use a URL format that preserves your host application context]. These links are used in notifications that are generated when a user shares an object, schedules a pinboard job, or runs SpotIQ analyses.
+You can xref:customize-links.adoc[customize system-generated links to use a URL format that preserves your host application context]. These links are used in notifications that are generated when a user shares an object, schedules a Liveboard job, or runs SpotIQ analyses.
 --
 
 [div boxDiv boxFullWidth]

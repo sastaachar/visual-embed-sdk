@@ -36,7 +36,7 @@ const Header = (props: { location: Location }) => {
                             {t('DOCS')}
                         </a>
                         <div className="d-inline-block headerLink">
-                            {communityLinks.map(({ name, href }) => (
+                            {headerLinks.map(({ name, href }) => (
                                 <a href={href} target="_blank">
                                     {name}
                                 </a>

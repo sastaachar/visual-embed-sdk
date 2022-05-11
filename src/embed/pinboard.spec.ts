@@ -1,4 +1,4 @@
-import { PinboardEmbed, PinboardViewConfig } from './pinboard';
+import { PinboardEmbed, LiveboardViewConfig } from './liveboard';
 import { init } from '../index';
 import { Action, AuthType, EmbedEvent, RuntimeFilterOp } from '../types';
 import {
@@ -19,7 +19,7 @@ const pinboardId = 'eca215d4-0d2c-4a55-90e3-d81ef6848ae0';
 const vizId = '6e73f724-660e-11eb-ae93-0242ac130002';
 const thoughtSpotHost = 'tshost';
 const defaultParams = `&hostAppUrl=local-host&viewPortHeight=768&viewPortWidth=1024&sdkVersion=${version}`;
-const prefixParams = '&isLiveboardEmbed=true';
+const prefixParams = '&isLiveboardEmbed=true&isPinboardV2Enabled=false';
 
 beforeAll(() => {
     init({
@@ -37,7 +37,7 @@ describe('Pinboard/viz embed tests', () => {
         const pinboardEmbed = new PinboardEmbed(getRootEl(), {
             ...defaultViewConfig,
             pinboardId,
-        } as PinboardViewConfig);
+        } as LiveboardViewConfig);
         pinboardEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
@@ -56,7 +56,7 @@ describe('Pinboard/viz embed tests', () => {
             disabledActionReason: 'Action denied',
             ...defaultViewConfig,
             pinboardId,
-        } as PinboardViewConfig);
+        } as LiveboardViewConfig);
         pinboardEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
@@ -74,7 +74,7 @@ describe('Pinboard/viz embed tests', () => {
             ],
             ...defaultViewConfig,
             pinboardId,
-        } as PinboardViewConfig);
+        } as LiveboardViewConfig);
         pinboardEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
@@ -92,7 +92,7 @@ describe('Pinboard/viz embed tests', () => {
             ],
             ...defaultViewConfig,
             pinboardId,
-        } as PinboardViewConfig);
+        } as LiveboardViewConfig);
         pinboardEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
@@ -106,7 +106,7 @@ describe('Pinboard/viz embed tests', () => {
             visibleActions: [],
             ...defaultViewConfig,
             pinboardId,
-        } as PinboardViewConfig);
+        } as LiveboardViewConfig);
         pinboardEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
@@ -120,7 +120,7 @@ describe('Pinboard/viz embed tests', () => {
             enableVizTransformations: true,
             ...defaultViewConfig,
             pinboardId,
-        } as PinboardViewConfig);
+        } as LiveboardViewConfig);
         pinboardEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
@@ -134,7 +134,7 @@ describe('Pinboard/viz embed tests', () => {
             enableVizTransformations: false,
             ...defaultViewConfig,
             pinboardId,
-        } as PinboardViewConfig);
+        } as LiveboardViewConfig);
         pinboardEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
@@ -148,7 +148,7 @@ describe('Pinboard/viz embed tests', () => {
             ...defaultViewConfig,
             pinboardId,
             vizId,
-        } as PinboardViewConfig);
+        } as LiveboardViewConfig);
         pinboardEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
@@ -169,7 +169,7 @@ describe('Pinboard/viz embed tests', () => {
                     values: [1000],
                 },
             ],
-        } as PinboardViewConfig);
+        } as LiveboardViewConfig);
         pinboardEmbed.render();
         await executeAfterWait(() => {
             expect(getIFrameSrc()).toBe(
@@ -184,7 +184,7 @@ describe('Pinboard/viz embed tests', () => {
             fullHeight: true,
             pinboardId,
             vizId,
-        } as PinboardViewConfig);
+        } as LiveboardViewConfig);
 
         const onSpy = jest.spyOn(pinboardEmbed, 'on');
         pinboardEmbed.render();
