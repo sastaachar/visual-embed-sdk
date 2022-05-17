@@ -45,6 +45,7 @@
         "algoliasearch": "^4.10.5",
         "classnames": "^2.3.1",
         "eventemitter3": "^4.0.7",
+        "gatsby-plugin-google-tagmanager": "^4.14.0",
         "html-react-parser": "^1.4.12",
         "mixpanel-browser": "^2.45.0",
         "use-deep-compare-effect": "^1.8.1"
