@@ -1,5 +1,5 @@
 
-authType::  
+authType::
 _String_. Authentication type. You can set the `AuthType` attribute to one of the following values:
 
 None;;
@@ -23,22 +23,21 @@ Sets SAML SSO as the authentication method. Federated users can authenticate wit
 
 * `noRedirect` __Optional__
 +
-_Boolean_. When set to `true`, it opens the SAML SSO authentication workflow in a pop-up window, instead of refreshing the application web page to direct users to the SAML login page. 
+_Boolean_. When set to `true`, it opens the SAML SSO authentication workflow in a pop-up window, instead of refreshing the application web page to direct users to the SAML login page.
 
 * `redirectPath` __Optional__
 +
-__String__. Allows adding a redirect path string to the host origin. If the `redirectPath` attribute is configured, the SAML SSO authentication flow will be terminated on the specified redirect path. 
+__String__. Allows adding a redirect path string to the host origin. If the `redirectPath` attribute is configured, the SAML SSO authentication flow will be terminated on the specified redirect path.
 
 +
 Do not include the host URL in the path string. For example, `/dashboard`.
-
 
 OIDC;;
 Enables OpenID connect authentication method. To allow embedded application users to authenticate using OpenID connect login, you must enable support for the OpenID connect authentication on ThoughtSpot. For more information, see xref:configure-oidc.adoc[OpenID connect authentication].
 
 
 AuthServer;;
-Enables trusted authentication method. To use the trusted authentication method, specify the  trusted authentication server in the `authEndpoint` attribute or use the `getAuthToken` method. 
+Enables trusted authentication method. To use the trusted authentication method, specify the  trusted authentication server in the `authEndpoint` attribute or use the `getAuthToken` method.
 
 +
 * `authEndpoint` __Optional__
@@ -55,12 +54,10 @@ _String_. The username of the ThoughtSpot user.
 +
 A function that invokes the trusted authentication endpoint and returns a `Promise` string that resolves to the authentication token. This attribute is not required if `authEndpoint` is used. +
 
-    getAuthToken: () => Promise.resolve(token) 
+    getAuthToken: () => Promise.resolve(token)
 
 +
-We recommend that you fetch a new token inside this method instead of using an existing token. When a session expires and if this method is called again with an old token, the user authentication may fail.   
+We recommend that you fetch a new token inside this method instead of using an existing token. When a session expires and if this method is called again with an old token, the user authentication may fail.
 
 +
-For more information, see xref:embed-authentication.adoc[Authentication].  
- 
- 
+For more information, see xref:embed-authentication.adoc[Authentication].

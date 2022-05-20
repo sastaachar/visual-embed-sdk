@@ -10,6 +10,9 @@ ThoughtSpot offers a separate license for customers who want to embed the Though
 [div tableContainer]
 --
 
+[div tableContainer]
+--
+
 [width="100%" cols="7,5,5,5,5"]
 [options='header']
 |=====
@@ -80,7 +83,6 @@ a|REST API v1  +
 (CSP, CORS, and SAML Redirect configuration)| [tag greyBackground]#–#  | [tag greenBackground]#✓# | [tag greyBackground]#–# | [tag greyBackground]#–#
 |=====
 --
-
 ////
 
 a|Runtime filters
@@ -95,7 +97,7 @@ a|Runtime filters
 
 |[tag greenBackground]#✓# REST APIs
 
-[tag greenBackground]#✓#  Visual Embed SDK 
+[tag greenBackground]#✓#  Visual Embed SDK
 
 (Basic authentication only)
 | [tag greenBackground]#✓# REST APIs

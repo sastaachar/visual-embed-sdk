@@ -47,7 +47,6 @@
 ** link:{{navprefix}}=integrate-with-app-ui[Integrate ThoughtSpot content]
 ** link:{{navprefix}}=react-app-embed[Embed ThoughtSpot in React app]
 ** link:{{navprefix}}=js-reference[Visual Embed SDK Reference]
-
 *  link:{{navprefix}}=embed-without-sdk[Embed without SDK]
 
 * link:{{navprefix}}=custom-action-intro[Custom actions]
@@ -94,9 +93,8 @@
 *** link:{{navprefix}}=security-api[Security API]
 *** link:{{navprefix}}=logs-api[Log streaming service API]
 ** link:{{navprefix}}=rest-apiv2-reference[REST API v2 Reference]
- 
-* link:{{navprefix}}=runtime-filters[Runtime filters]
 
+* link:{{navprefix}}=runtime-filters[Runtime filters]
 * link:{{navprefix}}=code-samples[Code samples]
 
 * Resources
@@ -105,5 +103,3 @@
 ** link:https://developers.thoughtspot.com[ThoughtSpot Developers, window=_blank]
 ** link:https://community.thoughtspot.com/customers/s/[Community, window=_blank]
 ** link:https://cloud-docs.thoughtspot.com[Product Documentation, window=_blank]
-
-

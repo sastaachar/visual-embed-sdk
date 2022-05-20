@@ -8,7 +8,7 @@
     width: calc(100% - #{$docmap-width-desktop});
     color: var(--primary-color);
     padding-left: $document-padding;
-    
+
 
     .documentView {
         min-height: 75vh;
@@ -44,8 +44,8 @@
 
     img {
         width: 100%;
-        
-        
+
+
     }
 
     pre {
@@ -141,7 +141,6 @@
             background-color: var(--table-header-color);
             position: sticky;
             top: 0;
-
 
         }
 

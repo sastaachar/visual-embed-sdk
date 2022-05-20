@@ -90,7 +90,7 @@ When using the Visual Embed SDK, the embedding application page is redirected to
 
 === Enabling automatic SAML redirect
 
-If you are xref:embed-without-sdk.adoc[embedding without the Visual Embed SDK] or using `AuthType.None`, the IdP flow will occur when the ThoughtSpot content is loaded. The general SAML configurations in ThoughtSpot will be obeyed in this scenario, and you will also need to configure the IdP to allow the flow to complete. To achieve a seamless sign-on without the Visual Embed SDK, contact ThoughtSpot Support to enable automatic SAML redirect on your instance. Note that this will apply to all users even when not embedding. 
+If you are xref:embed-without-sdk.adoc[embedding without the Visual Embed SDK] or using `AuthType.None`, the IdP flow will occur when the ThoughtSpot content is loaded. The general SAML configurations in ThoughtSpot will be obeyed in this scenario, and you will also need to configure the IdP to allow the flow to complete. To achieve a seamless sign-on without the Visual Embed SDK, contact ThoughtSpot Support to enable automatic SAML redirect on your instance. Note that this will apply to all users even when not embedding.
 
 When automatic SAML redirect is enabled, you can override it when necessary by appending the following query parameter to a ThoughtSpot URL:
 
@@ -179,7 +179,7 @@ init({
     thoughtSpotHost: "https://<hostname>:<port>",
     authType: AuthType.SSO,
 });
----- 
+----
 
 [#saml-redirect]
 === Allow SAML Redirect Domains
@@ -194,14 +194,14 @@ To add a SAML redirect domain, follow these steps:
 . In the *SAML redirect domains* text box, add the domain names. Valid values are:
 +
 
-* Domain name strings without port and protocol. For example, `thoughtspot.com`, `www.thoughtspot.com`
-* Comma-separated values. For example, `thoughtspot.com, thoughtspot.cloud`
+* Domain name strings without port and protocol. For example, `thoughtspot.com`,`www.thoughtspot.com`
+* Comma-separated values. For example, `thoughtspot.com,thoughtspot.cloud`
 * IPv4 addresses. For example, `255.255.255.255`
 
 +
 [NOTE]
 ====
-To avoid configuration errors, do NOT include the protocol in the SAML redirect domain name string. 
+To avoid configuration errors, do NOT include the protocol in the SAML redirect domain name string.
 ====
 +
 . Click *Save changes*.

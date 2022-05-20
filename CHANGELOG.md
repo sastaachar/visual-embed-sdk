@@ -8,6 +8,32 @@ This project follows Semantic Versioning.
 ### New Features
 - Events for all actions on Search Embed
 
+## 1.10.4 (05-06-2022)
+### New Features
+- Config option `detectCookieAccessSlow` when doing Basic|AuthServer auth. [Ref doc](https://developers.thoughtspot.com/docs/typedoc/interfaces/EmbedConfig.html#detectCookieAccessSlow)
+
+## 1.10.3 (05-04-2022)
+### Fixed
+- `logout` method works consistently on multiple TS releases  
+
+## 1.10.2 (05-01-2022)
+### New features
+- Ability to configure `redirectPath` on the origin when using SSO auth. [Ref doc](https://developers.thoughtspot.com/docs/typedoc/interfaces/EmbedConfig.html#redirectPath)
+
+## 1.10.1 (05-01-2022)
+
+### New features
+- `logout` method exposed from the SDK. This can be used to log the user out. [Ref doc](https://developers.thoughtspot.com/docs/typedoc/modules.html#logout)
+
+### Updated
+- When login fails the user is presented with a `Not logged in` message, which is configurable using `loginFailedMessage` property on `init`. [Ref doc](https://developers.thoughtspot.com/docs/typedoc/interfaces/EmbedConfig.html#loginFailedMessage)
+- `init` now returns a event emitter which can be used to listen to Login `failures` and `success`. [Ref doc](https://developers.thoughtspot.com/docs/typedoc/modules.html#init)
+
+## 1.10.0 (04-22-2022)
+
+- Release to support TS version 8.2.0.cl
+- Please check the full list of changes [here](https://developers.thoughtspot.com/docs/?pageid=whats-new)
+
 ## 1.9.5 (04-06-2022)
 
 ### New Features

@@ -4,11 +4,11 @@
 
 +++<p class="divider">Signs in a user to ThoughtSpot system. </p>+++
 
-`xref:session-api.adoc#session-authToken[*POST* /tspublic/v1/session/auth/token]`  
+`xref:session-api.adoc#session-authToken[*POST* /tspublic/v1/session/auth/token]`
 
 +++<p class="divider">Generates an authentication token for a user session. </p>+++
 
-`xref:session-api.adoc#session-loginToken[*GET* /tspublic/v1/session/login/token]` 
+`xref:session-api.adoc#session-loginToken[*GET* /tspublic/v1/session/login/token]`
 
 Authenticates a user using token and creates a login session.
 
@@ -16,7 +16,7 @@ This request method sends authentication attributes as query string parameters i
 
 +++<p class="divider"><emphasis>This API call is not required if you are using Visual Embed SDK</emphasis>. </p>+++
 
-`xref:session-api.adoc#session-loginToken[*POST* /tspublic/v1/session/login/token]` 
+`xref:session-api.adoc#session-loginToken[*POST* /tspublic/v1/session/login/token]`
 
 Authenticates a user using token and creates a login session.
 
@@ -28,7 +28,7 @@ This request method sends authentication attributes in the request body as `form
 
 +++<p class="divider">Logs out a user from an existing session. </p>+++
 
-`xref:session-api.adoc#session-info[*GET* /tspublic/v1/session/info]` 
+`xref:session-api.adoc#session-info[*GET* /tspublic/v1/session/info]`
 
 +++<p class="divider">Gets session information.</p>+++
 
