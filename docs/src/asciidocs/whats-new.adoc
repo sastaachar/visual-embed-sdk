@@ -845,3 +845,4 @@ You can use this API to programmatically update a ThoughtSpot user's profile set
 +
 You can use this API to get a list of object headers for a ThoughtSpot user or user group. For more information, see xref:metadata-api.adoc#headers-metadata-users[Metadata API].
 ====
+
