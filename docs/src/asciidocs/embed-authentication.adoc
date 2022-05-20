@@ -218,7 +218,7 @@ console.log('Authentication failed');
 
 [NOTE]
 ====
-The `EventEmitter` returned from `init` supports listening to only authentication status events such as `AuthStatus.SUCCESS`, `AuthStatus.FAILURE`, and `AuthStatus.LOGOUT`.
+The `EventEmitter` returned from `init`  is used only for listening to authentication status events such as `AuthStatus.SUCCESS`, `AuthStatus.FAILURE`, and `AuthStatus.LOGOUT`.
 ====
 
 If you want to display a message in the embedded UI when a user login fails, include the `loginFailedMessage` property in your `init` call.
