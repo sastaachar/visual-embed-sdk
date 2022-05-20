@@ -33,7 +33,7 @@ To determine the method that best fits your embedding requirement, refer to the 
 ||Visual Embed SDK|Embed without SDK|Legacy iFrame embedding
 s|When to use|The SDK Supports all embed and customization use cases. Use the SDK for embedding ThoughtSpot if your host platform allows custom Javascript.
 |Use this method only if your host platform doesn't allow custom Javascript. This method involves embedding a ThoughtSpot component in an iFrame.| The legacy iFrame embedding method is available for only ThoughtSpot Software deployments. This method supports basic embedding of a ThoughtSpot page, object, or the full application using the `api.min.js` script.
-s|License requirements|Requires ThoughtSpot Everywhere| Does not require an additional license | Requires ThoughtSpot Extended Enterprise Edition license
+s|License requirements|Requires ThoughtSpot Everywhere| Requires ThoughtSpot Everywhere | Requires ThoughtSpot Extended Enterprise Edition license
 s|Feature availability a|
 ThoughtSpot Cloud ts7.may.cl or later +
 ThoughtSpot Software version 8.4.0-sw or later a|
