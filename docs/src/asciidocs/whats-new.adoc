@@ -56,7 +56,7 @@ The Visual Embed SDK version 1.11.0 introduces several new events for embedded c
 ** `**PUT** /tspublic/rest/v2/metadata/favorite/unassign` +
 ** `**PUT** /tspublic/rest/v2/metadata/homeliveboard/assign` +
 ** `**PUT** /tspublic/rest/v2/metadata/homeliveboard/unassign` +
-* In the REST API SDK [beta blueBackground]^BETA^, the classes corresponding to enumerations used for string fields such as the `type` field in metadata API, are renamed. If you are using the REST API SDK in your environments, make sure the class names are updated.
+* In the REST API SDK [beta blueBackground]^BETA^, the classes corresponding to enumerations used for string fields such as the `type` field in metadata API, are renamed. If you are using the REST API SDK in your environments, make sure the class names are updated. 
 |[tag redBackground]#REMOVED# a| The `ownedBy` attribute is removed from the `/tspublic/rest/v2/metadata/header/search` API endpoint.
 |====
 
@@ -845,4 +845,3 @@ You can use this API to programmatically update a ThoughtSpot user's profile set
 +
 You can use this API to get a list of object headers for a ThoughtSpot user or user group. For more information, see xref:metadata-api.adoc#headers-metadata-users[Metadata API].
 ====
-
