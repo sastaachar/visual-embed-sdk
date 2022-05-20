@@ -27,7 +27,7 @@ To determine the method that best fits your embedding requirement, refer to the 
 
 [div boxAuto]
 --
-[width="100%" cols="5,7,5,5"]
+[width="100%" cols="4,7,7,7"]
 [options='header']
 |=====
 ||Visual Embed SDK|Embed without SDK|Legacy iFrame embedding
