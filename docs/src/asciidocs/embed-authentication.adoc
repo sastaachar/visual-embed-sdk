@@ -20,7 +20,7 @@ You can use one of the following authentication methods to authenticate your app
 
 [IMPORTANT]
 ====
-If you are developing or testing code for embedding ThoughtSpot in your host app, you might want to use basic authentication with `username` and `password`, or no authentication. For production environments, ThoughtSpot strongly recommends using SAML SSO, OIDC, or trusted authentication.
+If you are developing or testing code for embedding ThoughtSpot in your host app, you might want to use basic authentication with `username` and `password`, or no authentication. For production environments, ThoughtSpot recommends using SAML SSO, OIDC, or trusted authentication.
 ====
 
 [#no-auth-embed]
