@@ -21,7 +21,7 @@ Based on your embedding requirements and integration setup, you can use one of t
 
 * xref:visual-embed-sdk.adoc[Embed using Visual Embed SDK] (Recommended)
 * xref:embed-without-sdk.adoc[iFrame embedding without SDK]
-* link:https://docs.thoughtspot.com/software/7.1/embedding[Legacy iFrame embedding with app.min.js, window=_blank] (ThoughtSpot Software only)
+* link:https://docs.thoughtspot.com/software/7.2/embedding[Legacy embedding method with app.min.js, window=_blank] (ThoughtSpot Software only)
 
 To determine the method that best fits your embedding requirement, refer to the information in the following tables.
 
@@ -30,9 +30,9 @@ To determine the method that best fits your embedding requirement, refer to the 
 [width="100%" cols="4,7,7,7"]
 [options='header']
 |=====
-||Visual Embed SDK|Embed without SDK|Legacy iFrame embedding
+||Visual Embed SDK|Embed without SDK|Legacy embedding method
 s|When to use|The SDK Supports all embed and customization use cases. Use the SDK for embedding ThoughtSpot if your host platform allows custom Javascript.
-|Use this method only if your host platform doesn't allow custom Javascript. This method involves embedding a ThoughtSpot component in an iFrame.| The legacy iFrame embedding method is available for only ThoughtSpot Software deployments. This method supports basic embedding of a ThoughtSpot page, object, or the full application using the `api.min.js` script.
+|Use this method only if your host platform doesn't allow custom Javascript. This method involves embedding a ThoughtSpot component in an iFrame.| The legacy embedding method is available for only ThoughtSpot Software deployments. With this method, you can embed a ThoughtSpot page, object, or the full application using `api.min.js` script.
 s|Feature availability a|
 ThoughtSpot Cloud ts7.may.cl or later +
 ThoughtSpot Software version 8.4.0-sw or later a|
@@ -57,7 +57,7 @@ The following table lists the features available with each embed flavor:
 [width="100%" cols="4,5,5,6,6"]
 [options='header']
 |=====
-|Feature category|Features| Visual Embed SDK|Embedding without SDK |Legacy iFrame embedding
+|Feature category|Features| Visual Embed SDK|Embedding without SDK |Legacy embedding method
 
 .5+|**Embed options**|Search|[tag greenBackground]#✓#|[tag greyBackground]#–#| [tag greyBackground]#–#
 |Visualization|[tag greenBackground]#✓#|[tag greenBackground]#✓#|[tag greenBackground]#✓#|
