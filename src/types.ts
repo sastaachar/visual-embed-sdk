@@ -810,7 +810,7 @@ export enum Action {
     CreateMonitor = 'createMonitor',
     /**
      * @version SDK: 1.11.1 | ThoughtSpot: 8.3.0.cl
-     */    
+     */
     ReportError = 'reportError',
 }
 

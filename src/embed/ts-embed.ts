@@ -384,7 +384,10 @@ export class TsEmbed {
         if (disabledActionReason) {
             queryParams[Param.DisableActionReason] = disabledActionReason;
         }
-        queryParams[Param.HideActions] = [...this.defaultHiddenActions, ...hiddenActions ?? []]
+        queryParams[Param.HideActions] = [
+            ...this.defaultHiddenActions,
+            ...(hiddenActions ?? []),
+        ];
         if (Array.isArray(visibleActions)) {
             queryParams[Param.VisibleActions] = visibleActions;
         }
