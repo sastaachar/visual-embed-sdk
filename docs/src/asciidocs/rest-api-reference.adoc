@@ -10,9 +10,8 @@
 --
 *Pinboards are now Liveboards!*
 
-Effective from ThoughtSpot 8.4.0-sw (Limited Availability) release, ThoughtSpot pinboards are rebranded as Liveboards.
-As part of this rebranding, we have made some terminology changes in the ThoughtSpot UI and documentation artifacts.
-However, the REST v1 API endpoints URLs, request and response workflows will continue to use the legacy terminology for backward compatibility.
+Effective from the ThoughtSpot 8.4.0-sw (Limited Availability) release, ThoughtSpot pinboards are rebranded as Liveboards in ThoughtSpot UI, documentation, and learning resources.
+Note that the `pinboard` and `PINBOARD_ANSWER_BOOK` terminology in REST API v1 endpoint URLs and request and response workflows are not rebranded.
 --
 
 == User management
@@ -48,10 +47,9 @@ include::{path}/data-connection-apis.adoc[]
 |=====
 |API endpoint| Available from
 |`xref:materialization-api.adoc[*POST* /tspublic/v1/materialization/refreshview/{id}]` +
-Allows you refresh a materialized view.| [version noBackground]#6.0.x#
+Allows you refresh a materialized view.|ThoughtSpot Software [version noBackground]#6.0.x#
 |=====
 --
-
 
 == TML objects
 
@@ -70,7 +68,7 @@ include::{path}/pinboard-api-list.adoc[]
 |=====
 |API endpoint| Available from
 |`xref:search-data-api.adoc#search-data-api-ref[**POST** /tspublic/v1/searchdata]`
-Allows searching for data from a specific data source in the ThoughtSpot application.|  [version noBackground]#6.0.x#
+Allows searching for data from a specific data source in the ThoughtSpot application.| ThoughtSpot Software [version noBackground]#6.0.x#
 |=====
 --
 

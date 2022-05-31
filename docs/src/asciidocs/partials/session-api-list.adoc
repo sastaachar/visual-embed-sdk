@@ -6,27 +6,27 @@
 |=====
 |API endpoint| Available from
 |`xref:session-api.adoc#session-login[*POST* /tspublic/v1/session/login]` +
-Signs in a user to ThoughtSpot system.| [version noBackground]#6.0.x#
+Signs in a user to ThoughtSpot system.| ThoughtSpot Software [version noBackground]#6.0.x#
 |`xref:session-api.adoc#session-authToken[*POST* /tspublic/v1/session/auth/token]` +
-Generates an authentication token for a user session.|[version noBackground]#7.1.1#
+Generates an authentication token for a user session.|ThoughtSpot Software [version noBackground]#7.1.1#
 |`xref:session-api.adoc#session-loginToken[*GET* /tspublic/v1/session/login/token]` +
 Authenticates and logs in a user using token.
 This request method sends authentication attributes as query string parameters in the request URL. +
-__This API call is not required if you are using Visual Embed SDK__. |[version noBackground]#7.1.1#
+__This API call is not required if you are using Visual Embed SDK__. |ThoughtSpot Software [version noBackground]#7.1.1#
 |`xref:session-api.adoc#session-loginToken[*POST* /tspublic/v1/session/login/token]` +
 Authenticates and logs in a user using token.
 This request method sends authentication attributes in the request body as `formData` parameters. For secure exchange of authentication information, we recommend using the `POST` request method. +
 __This API call is not required if you are using Visual Embed SDK__.
-| [version noBackground]#8.4.0-sw#
+|ThoughtSpot Software [version noBackground]#8.4.0-sw#
 |`xref:session-api.adoc#session-logout[*POST* /tspublic/v1/session/logout]` +
-Logs out a user from an existing session.|[version noBackground]#6.0.x#
+Logs out a user from an existing session.|ThoughtSpot Software [version noBackground]#6.0.x#
 |`xref:session-api.adoc#session-info[*GET* /tspublic/v1/session/info]` +
-Gets session information.| [version noBackground]#7.2.1#
+Gets session information.|ThoughtSpot Software [version noBackground]#7.2.1#
 |`xref:session-api.adoc#set-home-liveboard[**POST** /tspublic/v1/session/homepinboard]` +
-Sets a specific Liveboard as a home Liveboard.| [version noBackground]#7.1.1#
+Sets a specific Liveboard as a home Liveboard.|ThoughtSpot Software  [version noBackground]#7.1.1#
 |`xref:session-api.adoc#get-home-liveboard[**GET** /tspublic/v1/session/homepinboard]` +
-Returns the GUID of the Liveboard that is set as a home Liveboard for the current logged-in user.|[version noBackground]#7.1.1#
+Returns the GUID of the Liveboard that is set as a home Liveboard for the current logged-in user.|ThoughtSpot Software [version noBackground]#7.1.1#
 |`xref:session-api.adoc#del-home-liveboard[**DELETE** /tspublic/v1/session/homepinboard]` +
-Removes the home Liveboard settings for the current logged-in user.| [version noBackground]#7.1.1#
+Removes the home Liveboard settings for the current logged-in user.| ThoughtSpot Software [version noBackground]#7.1.1#
 |=====
 --
