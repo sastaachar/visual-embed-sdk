@@ -15,6 +15,7 @@ ThoughtSpot supports connecting to external data warehouses and using these as d
 * Oracle ADW
 * Starburst
 * Databricks
+* Dremio
 * Teradata
 * SAP HANA
 
@@ -92,7 +93,7 @@ _Integer_. Enter the port number associated with the database. The default port 
 
 * `user`
 +
-_String_. The user name of your Redshift account.
+_String_. The username of your Redshift account.
 
 * `password`
 +
@@ -141,7 +142,7 @@ _Integer_. Enter the port number associated with the database.
 
 * `user`
 +
-_String_. The user name of your Azure Synapse account.
+_String_. The username of your Azure Synapse account.
 
 * `password`
 +
@@ -165,7 +166,7 @@ __String__. The hostname of the database connection.
 
 * `user`
 +
-_String_. The user name of your Teradata account.
+_String_. The username of your Teradata account.
 
 * `password`
 +
@@ -218,7 +219,7 @@ __String__. The hostname of the database connection.
 
 * `user`
 +
-_String_. The user name of your Starburst account.
+_String_. The username of your Starburst account.
 
 * `password`
 +
@@ -246,7 +247,7 @@ __String__. The HTTP path of your Databricks connection host.
 
 * `user`
 +
-_String_. The user name of your Databricks account.
+_String_. The username of your Databricks account.
 
 * `password`
 +
@@ -254,6 +255,31 @@ __String__. Password of your Databricks account.
 
 ====
 
+.Dremio
+
+[%collapsible]
+====
+
+* `host`
++
+__String__. The hostname of Dremio server.
+
+* `port`
++
+__String__. Dremio server port.
+
+* `user`
++
+_String_. Username of the Dremio server.
+
+* `password`
++
+__String__. Password of the Dremio server account.
+
+* `database`
++
+__String__. The database associated with the account.
+====
 
 .SAP HANA connection
 
@@ -266,11 +292,11 @@ __String__. The hostname of the SAP HANA database connection. For example, if yo
 
 * `user`
 +
-_String_. The user name of your SAP HANA database account.
+_String_. Username of your SAP HANA database account.
 
 * `password`
 +
-__String__. Password of your SAP HANA database account.
+__String__. Password of the SAP HANA database account.
 
 * `database`
 +
