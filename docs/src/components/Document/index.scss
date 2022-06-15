@@ -51,6 +51,7 @@
     pre {
         white-space: pre-wrap;
         background: var(--code-block-color);
+        width: auto;
         padding: 20px;
         display: flex;
         font-family: $font-family-code;
@@ -180,6 +181,7 @@
         font-size: $font-size-h4;
         margin-top: $sub-title-margin;
         font-weight: $font-weight-normal;
+        margin-bottom: $sub-title-margin-h5;
     }
 
     h5 {
