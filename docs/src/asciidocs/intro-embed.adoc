@@ -31,7 +31,7 @@ For more information, see xref:about-rest-apis.adoc[REST APIs].
 
 ThoughtSpot Everywhere users with Developer or admin privilege can access the *Develop* tab and use the developer playgrounds and customization features. The *Visual Embed Playground* allows you to explore the embedding options available with the SDK and view results instantly.
 
-The *Develop* tab also provides separate playgrounds for Rest API v1 and REST v2 and several customization controls.
+The *Develop* tab also provides separate playgrounds for Rest API v1 and REST API v2, and several customization features.
 
 For more information, see xref:spotdev-portal.adoc[ThoughtSpot Developer portal].
 
