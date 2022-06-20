@@ -8,7 +8,7 @@
 
 This page provides information about new features, enhancements, and deprecated functionality in ThoughtSpot Everywhere.
 
-== Version 8.4.0.cl, June 2022
+== Version 8.4.0.cl
 
 ==== Link customization
 
