@@ -158,7 +158,7 @@ button {
     min-width: $tag-width;
     padding: $beta-padding;
     color: $tag-font-color;
-    margin: 2px;
+    margin-right: 1px;
 }
 
 .blueBackground {
@@ -263,15 +263,15 @@ button {
 
 .boxAuto {
     border: 0.5px solid $disabledcolor;
-	  height: auto;
-	  width: 100%;
-	  padding: 0 0 0 2px;
+	height: auto;
+	width: 100%;
+	padding: 0 0 0 2px;
 }
 
 .tableContainer {
     border: 0.5px solid $disabledcolor;
-    width: 100%;
-    padding: 0 0 0 2px;
+    padding: 0 0 0 5px;
+    overflow-x: auto;
 }
 
 summary.title  {
@@ -376,7 +376,8 @@ a.anchor {
     .boxHalfWidth {
         width: 100%;
     }
-   .tableContainer {
+
+    .tableContainer {
 	overflow: scroll;
 }
 }
