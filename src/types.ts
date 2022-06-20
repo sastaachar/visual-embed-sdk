@@ -177,6 +177,12 @@ export interface EmbedConfig {
      * @version SDK: 1.10.4 | ThoughtSpot: *
      */
     detectCookieAccessSlow?: boolean;
+    /**
+     * Hide beta alert warning message for SearchEmbed.
+     *
+     * @version SDK: 1.12.0 | ThoughtSpot: *
+     */
+    suppressSearchEmbedBetaWarning?: boolean;
 }
 
 /**
@@ -608,6 +614,18 @@ export enum HostEvent {
      * @version SDK: 1.12.0 | ThoughtSpot: 8.4.0.cl
      */
     Navigate = 'Navigate',
+    /**
+     * Gets the current pinboard content.
+     * @version SDK: 1.13.0 | ThoughtSpot: 8.5.0.cl
+     */
+    getExportRequestForCurrentPinboard = 'getExportRequestForCurrentPinboard',
+    /**
+     * Fires the pin action on an embedded object
+     * @param - incase of liveboard embed, takes in an object with vizId as a key
+     * can be left empty for search and viz embeds
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl
+     */
+    Pin = 'pin',
 }
 
 /**

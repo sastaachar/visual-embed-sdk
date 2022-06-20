@@ -8,6 +8,7 @@ import {
     getIFrameEl,
     getIFrameSrc,
     postMessageToParent,
+    mockMessageChannel,
 } from '../test/test-utils';
 import { SearchEmbed, AppEmbed, LiveboardEmbed, useEmbedRef } from './index';
 import { AuthType, init } from '../index';
@@ -21,6 +22,7 @@ beforeAll(() => {
         thoughtSpotHost,
         authType: AuthType.None,
     });
+    spyOn(window, 'alert');
 });
 
 describe('React Components', () => {
@@ -74,6 +76,7 @@ describe('React Components', () => {
     describe('LiveboardEmbed', () => {
         //
         it('Should be able to trigger events on the embed using refs', async () => {
+            mockMessageChannel();
             const TestComponent = () => {
                 const embedRef = useEmbedRef();
                 const onLiveboardRendered = () => {
@@ -110,6 +113,7 @@ describe('React Components', () => {
                         data: ['viz1', 'viz2'],
                     },
                     `http://${thoughtSpotHost}`,
+                    expect.anything(),
                 );
             });
         });
