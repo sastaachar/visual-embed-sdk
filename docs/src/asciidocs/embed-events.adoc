@@ -108,7 +108,6 @@ searchEmbed.trigger(HostEvent.Search)
 ====
 --
 
-
 ==== SetVisibleVizs
 Available with `LiveboardEmbed` and `AppEmbed` in `V1.6.0` or later. +
 Sets specific visualizations as visible objects on a Liveboard. The visualization IDs that are not passed in the parameter are hidden on the Liveboard. +
@@ -1355,7 +1354,6 @@ searchEmbed.on(EmbedEvent.SpotIQAnalyze, payload => {
 })
 ----
 |`VizPointClick`|[version noBackground]#V1.11.0# |  `SearchEmbed` +
-`LiveboardEmbed` +
 `AppEmbed` a|
 Is triggered when an area or data point on a chart is clicked.
 [source,javascript]
@@ -1366,7 +1364,6 @@ searchEmbed.on(EmbedEvent.VizPointClick, payload => {
 ----
 |`VizPointDoubleClick` |[version noBackground]#V1.5.0#
 | `SearchEmbed` +
-`LiveboardEmbed` +
 `AppEmbed` a|
 Is triggered when an area or data point on a chart or table is double-clicked.
 [source,javascript]

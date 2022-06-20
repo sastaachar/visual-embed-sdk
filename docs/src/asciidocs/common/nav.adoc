@@ -107,3 +107,9 @@
 ** link:https://cloud-docs.thoughtspot.com[Product Documentation, window=_blank]
 ** link:https://training.thoughtspot.com/page/developer[Training resources, window=_blank]
 
+
+////
+
+** link:{{navprefix}}=trblshoot[Troubleshoot common issues]
+** link:{{navprefix}}=terminology[Terminology changes]
+////
