@@ -13,10 +13,10 @@ ThoughtSpot supports a range of events that your app can listen to and respond t
 The events in the Visual Embed SDK library are classified as:
 
 * `HostEvent` +
-Events triggered by the host application in which ThoughtSpot components are embedded. 
+Events triggered by the host application in which ThoughtSpot components are embedded.
 
 * `EmbedEvent` +
-Events emitted by the embedded ThoughtSpot components. 
+Events emitted by the embedded ThoughtSpot components.
 
 == Import event library
 
@@ -36,8 +36,8 @@ import { LiveboardEmbed, useEmbedRef } from '@thoughtspot/visual-embed-sdk/react
 
 [#host-events]
 == Register, handle, and trigger host events
-The following host events are triggered by the host application, which the embedded ThoughtSpot app can register. 
-The host events are part of the *HostEvent* object; for example, `HostEvent.SetVisibleVizs`. 
+The following host events are triggered by the host application, which the embedded ThoughtSpot app can register.
+The host events are part of the *HostEvent* object; for example, `HostEvent.SetVisibleVizs`.
 Host events use the `.trigger()` method to send the event message to embedded ThoughtSpot components. The events are sent in the  `.trigger(hostEvent, data)` format.
 
 ==== DrillDown
@@ -914,14 +914,14 @@ searchEmbed.on(EmbedEvent.VizPointDoubleClick, payload => {
 |======
 |Event|Available from|
 SDK package|Description
-|`ALL` 
+|`ALL`
  +
 |[version noBackground]#V1.11.0#|
  `SearchEmbed` +
  `LiveboardEmbed` +
- `AppEmbed` + 
+ `AppEmbed` +
 a|
-Triggers all embed events. 
+Triggers all embed events.
 
 [source, javascript]
 ----
@@ -930,12 +930,12 @@ appEmbed.on(EmbedEvent.ALL, payload => {
 })
 ----
 a|`AddRemoveColumns` +
-|[version noBackground]#V1.10.0# 
+|[version noBackground]#V1.10.0#
  |
 `SearchEmbed` +
 `AppEmbed` a|
 Is triggered when one or more columns are selected when passing search tokens in a search query. +
-Returns the GUIDs of the selected columns. 
+Returns the GUIDs of the selected columns.
 
 [source,Javascript]
 ----
@@ -948,16 +948,16 @@ appEmbed.on(EmbedEvent.AddRemoveColumns, payload => {
 |
 `SearchEmbed` +
 `LiveboardEmbed` +
-`AppEmbed` 
+`AppEmbed`
 a|
 
-Is triggered when the embedded object sends an alert. 
+Is triggered when the embedded object sends an alert.
 [source]
 ----
 searchEmbed.on(EmbedEvent.Alert)
----- 
+----
 |`AnswerChartSwitcher`|[version noBackground]#V1.11.0#| `SearchEmbed` +
-`AppEmbed` 
+`AppEmbed`
 
 a|Is triggered when a user switches to the chart or table view on the answer page.
 
@@ -969,7 +969,7 @@ appEmbed.on(EmbedEvent.AnswerChartSwitcher, payload => {
 ----
 
 |`AnswerDelete`|[version noBackground]#V1.11.0#| `SearchEmbed` +
-`AppEmbed` 
+`AppEmbed`
 
 a|Is triggered when the `Delete` action clicked on the answer page.
 
@@ -986,9 +986,9 @@ appEmbed.on(EmbedEvent.AnswerDelete, payload => {
 |`AuthInit` +
 |[version noBackground]#V1.1.0# |`SearchEmbed` +
 `LiveboardEmbed` +
-`AppEmbed` a| 
+`AppEmbed` a|
 
-Is emitted when authentication is initiated. Returns user GUID as data.  
+Is emitted when authentication is initiated. Returns user GUID as data.
 You can also subscribe to the `AuthInit` event to be notified when user authentication is successful, and `AuthExpire` to trigger an alert when an authenticated session expires.
 
 
@@ -1022,7 +1022,7 @@ appEmbed.on(EmbedEvent.CopyAEdit, payload => {
   console.log('Copy and edit', payload)}, {start: true })
  //trigger when action ends
 appEmbed.on(EmbedEvent.CopyAEdit, payload => {
-  console.log('Copy and edit', payload)})  
+  console.log('Copy and edit', payload)})
 ----
 |`CopyToClipboard`|[version noBackground]#V1.11.0# | `SearchEmbed` +
 `AppEmbed` a|
@@ -1033,7 +1033,7 @@ seachEmbed.on(EmbedEvent.CopyToClipboard, payload => {
     console.log('copy to clipboard', payload);
 })
 ----
-|`CustomAction` |[version noBackground]#V1.1.0# 
+|`CustomAction` |[version noBackground]#V1.1.0#
 |`SearchEmbed` +
 `LiveboardEmbed` +
 `AppEmbed`  a|
@@ -1060,8 +1060,8 @@ searchEmbed.on(EmbedEvent.Data, payload => {
 |`DataSourceSelected` |[version noBackground]#V1.1.0#
 |`SearchEmbed` +
 `AppEmbed`  a|
-Is triggered when one or more data sources are selected. 
-Returns the GUIDs of the data sources selected. 
+Is triggered when one or more data sources are selected.
+Returns the GUIDs of the data sources selected.
 [source, javascript]
 ----
 searchEmbed.on(EmbedEvent.DataSourceSelected, payload => {
@@ -1079,11 +1079,11 @@ appEmbed.on(EmbedEvent.DialogOpen, payload => {
     console.log('dialog open', payload);
 })
 ----
-|`DialogClose` |[version noBackground]#V1.6.0# 
+|`DialogClose` |[version noBackground]#V1.6.0#
 
 | `SearchEmbed` +
 `LiveboardEmbed` +
-`AppEmbed` a| Is triggered when a modal dialog is closed. 
+`AppEmbed` a| Is triggered when a modal dialog is closed.
 [source, javascript]
 ----
 appEmbed.on(EmbedEvent.DialogClose, payload => {
@@ -1140,12 +1140,12 @@ searchEmbed.on(EmbedEvent.DownloadAsXlsx, payload => {
 searchEmbed.on(EmbedEvent.DownloadAsXlsx, payload => {
     console.log('download Xlsx', payload)})
 ----
-|`Drilldown` | [version noBackground]#V1.1.0# 
+|`Drilldown` | [version noBackground]#V1.1.0#
 | `SearchEmbed` +
 `LiveboardEmbed` +
 `AppEmbed` a|
 Is triggered when the *Drill down* action is executed. +
-Returns the IDs of the column on which the drill down operation was performed, any additional filters applied during the operation, and the columns that were not filtered. 
+Returns the IDs of the column on which the drill down operation was performed, any additional filters applied during the operation, and the columns that were not filtered.
 
 [source,javascript]
 ----
@@ -1154,9 +1154,9 @@ searchEmbed.on(EmbedEvent.Drilldown, payload => {
 })
 ----
 |`DrillExclude`|[version noBackground]#V1.11.0# | `SearchEmbed` +
-`AppEmbed` a| 
+`AppEmbed` a|
 Is triggered when a filter is applied to exclude a data point in the drilled down view. +
-Returns the IDs of the column and the filters applied during the operation. 
+Returns the IDs of the column and the filters applied during the operation.
 [source,javascript]
 ----
 appEmbed.on(EmbedEvent.DrillExclude, payload => {
@@ -1164,9 +1164,9 @@ appEmbed.on(EmbedEvent.DrillExclude, payload => {
 })
 ----
 |`DrillInclude`|[version noBackground]#V1.11.0# | `SearchEmbed` +
-`AppEmbed` a| 
+`AppEmbed` a|
 Is triggered when a filter is applied to include a data point in the drilled down view. +
-Returns the IDs of the column and the filters that were applied during the operation. 
+Returns the IDs of the column and the filters that were applied during the operation.
 [source,javascript]
 ----
 appEmbed.on(EmbedEvent.DrillInclude, payload => {
@@ -1184,7 +1184,7 @@ appEmbed.on(EmbedEvent.EditTML, payload => {
 ----
 |`ExportTML`|[version noBackground]#V1.11.0# |`SearchEmbed` +
 `AppEmbed` a|
-Is triggered when a user clicks *Export TML* action on the answer page. 
+Is triggered when a user clicks *Export TML* action on the answer page.
 [source,javascript]
 ----
  //trigger when action starts
@@ -1194,11 +1194,11 @@ searchEmbed.on(EmbedEvent.ExportTML, payload => {
 searchEmbed.on(EmbedEvent.ExportTML, payload => {
     console.log('Export TML', payload)})
 ----
-|`Error` |[version noBackground]#V1.1.0# 
+|`Error` |[version noBackground]#V1.1.0#
 |`SearchEmbed` +
 `LiveboardEmbed` +
-`AppEmbed` a| 
-Indicates that an error has occurred. 
+`AppEmbed` a|
+Indicates that an error has occurred.
 [source,javascript]
 ----
 SearchEmbed.on(EmbedEvent.Error, showErrorMsg)
@@ -1207,10 +1207,10 @@ function showErrorMsg() {
     document.getElementById("error");
 
 ----
-|`Init` |[version noBackground]#V1.1.0# 
+|`Init` |[version noBackground]#V1.1.0#
 |`SearchEmbed` +
 `LiveboardEmbed` +
-`AppEmbed` a| 
+`AppEmbed` a|
 Is triggered when the embedded object rendering initializes. In this example, a showLoader function is called to show a loader when the `Init` event is emitted.
 
 [source,javascript]
@@ -1244,7 +1244,7 @@ embedRef.current.trigger(HostEvent.SetVisibleVizs, ['viz1', 'viz2']);
 |`Load` |[version noBackground]#V1.1.0#
  | `SearchEmbed` +
 `LiveboardEmbed` +
-`AppEmbed` a| 
+`AppEmbed` a|
 Indicates if the embedded ThoughtSpot object has loaded.
 [source]
 ----
@@ -1258,14 +1258,14 @@ function hideLoader() {
 |`NoCookieAccess` |[version noBackground]#V1.2.0#
 | `SearchEmbed` +
 `LiveboardEmbed` +
-`AppEmbed` a| 
+`AppEmbed` a|
 Is emitted when third-party cookies are blocked by a user's browser. +
 In this example, the `NoCookieAccess` event calls the `showCookieSettingsMsg` function to show a message about setting cookies.
 [source,javascript]
 ----
 appEmbed.on(EmbedEvent.NoCookieAccess, showCookieSettingsMsg)
 ----
- 
+
 |`Pin`|[version noBackground]#V1.11.0# | `SearchEmbed` +
 `AppEmbed` a|
 
@@ -1282,7 +1282,7 @@ searchEmbed.on(EmbedEvent.Pin, payload => {
     console.log('pin', payload)
 })
 ----
-|`QueryChanged` |[version noBackground]#V1.4.0# 
+|`QueryChanged` |[version noBackground]#V1.4.0#
 | `SearchEmbed` +
 `AppEmbed` a|
 Is triggered when a search query is updated.
@@ -1292,7 +1292,7 @@ searchEmbed.on(EmbedEvent.QueryChanged, payload => console.log('data', payload))
 ----
 |`RouteChange` |[version noBackground]#V1.7.0#
 | `AppEmbed` a|
-Is triggered when a user navigates from one page to another in the embedded ThoughtSpot app. This event logs the application page URL accessed by a user. 
+Is triggered when a user navigates from one page to another in the embedded ThoughtSpot app. This event logs the application page URL accessed by a user.
 [source,javascript]
 ----
 searchEmbed.on(EmbedEvent.RouteChange, payload => console.log('data', payload))
@@ -1300,8 +1300,8 @@ searchEmbed.on(EmbedEvent.RouteChange, payload => console.log('data', payload))
 |`Save` |[version noBackground]#V1.11.0#
 | `SearchEmbed`  +
 `AppEmbed`
-a| 
-Is triggered when an answer is saved in the embedded view. 
+a|
+Is triggered when an answer is saved in the embedded view.
 
 [source,javascript]
 ----
@@ -1337,7 +1337,7 @@ searchEmbed.on(EmbedEvent.Share, payload => {
 })
 ----
 |`SpotIQAnalyze`|[version noBackground]#V1.11.0#|`SearchEmbed` +
-`AppEmbed` a| 
+`AppEmbed` a|
 Is triggered when the *SpotIQ Analyze* action is clicked on an answer page.
 
 [source,javascript]
@@ -1421,7 +1421,7 @@ The embed events are generated by the embedded ThoughtSpot application component
 
 `LiveboardEmbed`
 
-`AppEmbed` 
+`AppEmbed`
 
 |`AuthInit`
 | Indicates if a user authentication has either succeeded or failed. The event returns the `IsLoggedIn` attribute with a boolean value.| Version 1.1.0 or later |`SearchEmbed`
@@ -1482,7 +1482,7 @@ The embed events are generated by the embedded ThoughtSpot application component
 
 `AppEmbed`
 
-|`LiveboardRendered`|Is emitted when a Liveboard has completed rendering. This event can be used as a hook to trigger other events on a rendered Liveboard.|Version 1.9.1 or later | `LiveboardEmbed` 
+|`LiveboardRendered`|Is emitted when a Liveboard has completed rendering. This event can be used as a hook to trigger other events on a rendered Liveboard.|Version 1.9.1 or later | `LiveboardEmbed`
 
 `AppEmbed`
 

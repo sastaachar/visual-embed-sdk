@@ -262,10 +262,6 @@ This parameter is required only for the `REPORT_BOOK_VIEW` access mode.
 |`tokenExpiryDuration`  __Optional__|__String__. Duration in seconds after which the authorization token expires. By default, the token is valid for 24 hours. If a new `secret_key` is generated, the token will become invalid despite the token expiry value set in this attribute. 
 |====
 
-////
-|`tsObjectId`| __String__. The GUID of the Liveboard or answer.
-This parameter is required only for the `REPORT_BOOK_VIEW` access mode.
-////
 
 === Example request
 
