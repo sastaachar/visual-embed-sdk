@@ -74,21 +74,6 @@ searchEmbed.on(EmbedEvent.VizPointDoubleClick, (data) => {
 ====
 --
 
-==== Search
-Available with `SearchEmbed`  and  `AppEmbed` in `V1.1.0` or later. +
-Is triggered when a search operation is executed. The event returns the data source GUID and search query details. +
-[div divider]
---
-.Example
-[%collapsible]
-====
-[source,javascript]
-----
-searchEmbed.trigger(HostEvent.Search)
-----
-====
---
-
 ==== Navigate
 
 Available with `AppEmbed` in `V1.12.0` or later. +
@@ -107,6 +92,22 @@ appEmbed.trigger(HostEvent.Navigate, {
 });
 ----
 --
+
+==== Search
+Available with `SearchEmbed`  and  `AppEmbed` in `V1.1.0` or later. +
+Is triggered when a search operation is executed. The event returns the data source GUID and search query details. +
+[div divider]
+--
+.Example
+[%collapsible]
+====
+[source,javascript]
+----
+searchEmbed.trigger(HostEvent.Search)
+----
+====
+--
+
 
 ==== SetVisibleVizs
 Available with `LiveboardEmbed` and `AppEmbed` in `V1.6.0` or later. +
