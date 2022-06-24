@@ -1,6 +1,6 @@
 = What's new
 :toc: true
-:toclevels: 1
+:toclevels: 2
 
 :page-title: What's new
 :page-pageid: whats-new
@@ -8,9 +8,30 @@
 
 This article provides information about new features, enhancements, and deprecated functionality in ThoughtSpot Everywhere.
 
-== Version 7.2.0
 
-The ThoughtSpot Software 7.2.0 version introduces the following features and enhancements in the Developer portal:
+== Version 7.2.1
+
+The ThoughtSpot Software 7.2.1 version introduces the following features and enhancements in the Developer portal:
+
+=== Search embed 
+
+If you are using the SearchEmbed SDK version 1.12.0 or later to embed ThoughtSpot Search in your app, the SDK shows the following alert:
+----
+Search Embed is in Beta in this release
+----
+
+The SDK displays this alert by default on all ThoughtSpot Software instances running 7.2.1CU1 or lower versions.
+Embedding Search using Visual Embed SDK is fully supported from the 8.4.0-sw release on ThoughtSpot Software instances that support *New Answer experience*.
+
+If you are aware of the Search Embed feature limitation in 7.2.1 and lower versions, and you do not want to see the alert, you can disable it in the SDK by setting the `suppressSearchEmbedBetaWarning` attribute to `true`.
+
+----
+suppressSearchEmbedBetaWarning: true
+----
+
+For more information about Visual Embed SDK enhancements, see link:https://developers.thoughtspot.com/docs/?pageid=embed-sdk-changelog[Visual Embed Changelog, window=_blank].
+
+=== Developer portal
 
 [width="100%" cols="1,4"]
 |====
@@ -22,6 +43,11 @@ The ThoughtSpot Software 7.2.0 version introduces the following features and enh
 * The *Full Height* checkbox in *Pinboard* Playground provides a preview of the `fullHeight` attribute that can dynamically resize the embedded pinboard frame according to the height of the pinboard.
 
 For more information, see xref:developer-playground.adoc[Developer Playground].
+|====
+=== Custom actions
+
+[width="100%" cols="1,4"]
+|====
 |[tag greenBackground]#NEW FEATURE# a|  +++<h5>+++Custom actions for worksheets+++</h5>+++
 
 The worksheet pages now include a `Custom actions` tab that shows the custom actions created in the Developer portal. ThoughtSpot users can add these  actions to a worksheet and place them as primary actions or menu items in the new visualizations built from that worksheet.
@@ -29,12 +55,6 @@ The worksheet pages now include a `Custom actions` tab that shows the custom act
 This feature is available to all ThoughtSpot users who have edit privileges to a worksheet.
 
 For more information, see xref:custom-actions-worksheet.adoc[Add custom actions to a worksheet].
-
-|[tag greenBackground]#NEW FEATURE# a| +++<h5>OpenID Connect authentication</h5> +++ 
-
-ThoughtSpot now supports OpenID Connect (OIDC) authentication framework on embedded instances. Your application users can now authenticate to an authorization server at your OpenID provider and access embedded ThoughtSpot content using their SSO credentials.  
-
-For more information, see xref:configure-oidc.adoc[OpenID Connect authentication].
 
 |[tag greenBackground]#NEW FEATURE# a| +++<h5>+++Query parameters for URL-based custom actions +++</h5>+++
 
@@ -58,9 +78,15 @@ You can xref:custom-actions-edit.adoc[modify the position of this action] by usi
 
 |====
 
-=== Visual Embed SDK 1.5.x
+=== OpenID Connect authentication
 
-The ThoughtSpot Software 7.2.0 version supports Visual Embed SDK version 1.5.x, which includes the following new features and enhancements.
+Your application users can now authenticate to an authorization server at your OpenID provider and access embedded ThoughtSpot content using their SSO credentials.  
+
+For more information, see xref:configure-oidc.adoc[OpenID Connect authentication].
+
+=== Visual Embed SDK
+
+The ThoughtSpot Software 7.2.1 version supports Visual Embed SDK version 1.5.0, which includes the following new features and enhancements. 
 
 [width="100%" cols="1,4"]
 |====
