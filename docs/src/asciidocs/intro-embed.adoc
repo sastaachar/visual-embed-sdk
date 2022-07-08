@@ -9,7 +9,7 @@ ThoughtSpot Everywhere provides a low-code embedded analytics platform for devel
 
 ThoughtSpot Everywhere offers a robust API framework with Visual Embed SDK and REST APIs to embed and customize ThoughtSpot components and automate deployments. You can explore these APIs and preview the coding experience in the interactive developer playgrounds.
 
-== Visual Embed SDK::
+== Visual Embed SDK
 The Visual Embed SDK provides Javascript-based embed packages and client libraries to embed and customize ThoughtSpot components in your web application. The SDK package includes separate libraries for embedding Search, Liveboard, full ThoughtSpot application, or a single visualization. To explore the Visual Embed APIs, navigate to the *Develop* tab and click *Visual Embed Playground*.
 
 For more information, see xref:visual-embed-sdk.adoc[Visual Embed SDK].
