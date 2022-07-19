@@ -332,6 +332,7 @@ export const authenticate = async (
     const { authType } = embedConfig;
     switch (authType) {
         case AuthType.SSO:
+        case AuthType.SAML:
             return doSamlAuth(embedConfig);
         case AuthType.OIDC:
             return doOIDCAuth(embedConfig);

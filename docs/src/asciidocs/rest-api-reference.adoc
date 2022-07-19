@@ -9,7 +9,7 @@
 [div announcementBlock]
 --
 Starting from the ThoughtSpot Cloud ts8.nov.cl and ThoughtSpot Software 8.4.0-sw (Limited Availability) releases, pinboards are rebranded as *Liveboards* in ThoughtSpot UI, documentation, and learning resources.
-Note that the `pinboard` and `PINBOARD_ANSWER_BOOK` in REST API v1 endpoint URLs and request and response workflows are not rebranded.
+Note that the `pinboard` and `PINBOARD_ANSWER_BOOK` terminology in REST API v1 endpoint URLs, request and response workflows are not rebranded.
 --
 
 
@@ -33,7 +33,7 @@ include::{path}/metadata-api-list.adoc[]
 
 include::{path}/admin-api-list.adoc[]
 
-== Data connections 
+== Data connections
 
 include::{path}/data-connection-apis.adoc[]
 
@@ -105,7 +105,3 @@ ThoughtSpot Software [version noBackground]#6.0.x#
 == Database and schema
 
 include::{path}/database-api-list.adoc[]
-
-
-
-
