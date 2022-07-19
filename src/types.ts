@@ -210,13 +210,11 @@ export interface EmbedConfig {
      * @version SDK: 1.12.0 | ThoughtSpot: *
      */
     suppressSearchEmbedBetaWarning?: boolean;
-<<<<<<< HEAD
-=======
+
     /**
      * Custom style params for embed Config
      */
     customisations?: CustomisationsInterface;
->>>>>>> main
 }
 
 /**
