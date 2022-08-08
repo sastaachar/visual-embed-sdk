@@ -86,7 +86,7 @@ GUID of the object. Unique within a given ThoughtSpot instance
 * `author` +
 GUID of the user who created / uploaded the object, or had the object transferred to them.
 * `owner` +
-GUID representing the relationship between hierarchical objects, For example, a *column* would have the GUID of a *table* or *worksheet* as owner.
+GUID representing the relationship between hierarchical objects. For example, a *column* would have the GUID of a *table* or *worksheet* as owner.
 * `created` +
 timestamp of object creation
 * `modified` +
