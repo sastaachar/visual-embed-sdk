@@ -27,7 +27,7 @@ Data engineers with *Can manage data* privilege can add connections either link:
 1. Create a *connection* to a cloud data warehouse.
 2. Import *tables* from the *connection*.
 3. Create *worksheets* (analytic data models) based on *tables*.
-4. Create *link:https://docs.thoughtspot.com/cloud/latest/views[ThoughtSpot views, window=_blank]* or *link:https://docs.thoughtspot.com/cloud/latest/sql-views[SQL views, window=_blank]* as necessary.
+4. Create link:https://docs.thoughtspot.com/cloud/latest/views[ThoughtSpot views, window=_blank] or link:https://docs.thoughtspot.com/cloud/latest/sql-views[SQL views, window=_blank] as necessary.
 
 ThoughtSport supports programmatic deployment of data models through link:https://docs.thoughtspot.com/cloud/latest/spotapps[Spotapps, window=_blank], link:https://docs.thoughtspot.com/cloud/latest/scriptability[scriptability, window=_blank], and data representation in link:https://docs.thoughtspot.com/cloud/latest/tml[ThoughtSpot Modeling Language (TML), window=_blank].
 
@@ -116,7 +116,7 @@ The following notation is used in REST API v1 for the object types:
 * *Joins*: `LOGICAL_RELATIONSHIP`
 * *Columns*: `LOGICAL_COLUMN`
 
-Column and join objects with their own GUIDs do exist within the ThoughtSpot system, but they are connected to *tables*,  *worksheets*, or other data objects.  Columns and joins can be viewed or modified only within the context of the data object to which they belong.
+Column and join objects with their own GUIDs do exist within the ThoughtSpot system, but they are connected to *tables*,  *worksheets*, or other data objects. Columns and joins can be viewed or modified only within the context of the data object to which they belong.
 
 == Related resources
 
