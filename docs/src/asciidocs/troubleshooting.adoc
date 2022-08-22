@@ -120,7 +120,7 @@ Runtime filters are applied at runtime and do not show up in the Filter bar.
 
 Runtime filters are applied separately from the visible Liveboard filters. Therefore, when you apply these filters together, the conditions for both must be true for data to appear. +
 
-For example, if `Store Region` is set to `west, southwest` in the Liveboard filter, and you set runtime filter of `Store Region` as `east`, you will get the *No data found* error because the total filter condition is `Store Region IN ('west', 'southwest') AND Store Region = 'east'`, which results in an emtpy data set.
+For example, if `Store Region` is set to `west, southwest` in the Liveboard filter, and you set runtime filter of `Store Region` as `east`, you will get the *No data found* error because the total filter condition is `Store Region IN ('west', 'southwest') AND Store Region = 'east'`, which results in an empty data set.
 
 === ThoughtSpot navigation bar shows in the embedded mode
 
@@ -151,7 +151,7 @@ If you have the required privileges and still get an error, perform the followin
 * The Liveboard and visualization GUIDs passed in the API request body are valid. +
 * Your application domain is added as a xref:security-settings.adoc#cors-hosts[CORS host].
 
-=== The Search Data REST API call returns an error 
+=== The Search Data REST API call returns an error
 
 **Error**: When I try to use the Search Data REST API, I get the error `Cannot create answer from empty query`. +
 

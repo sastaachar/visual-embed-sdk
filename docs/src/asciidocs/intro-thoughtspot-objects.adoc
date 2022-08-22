@@ -45,7 +45,7 @@ To create content:
 1. Use the *link:https://docs.thoughtspot.com/cloud/latest/search-data[Search data, window=_blank]* functionality to build visualizations from data sources such as *worksheets* or *views*.
 2. Save the search result as an *Answer* or pin it to a Liveboard as a visualization.
 
-=== Visualizations on a Liveboard 
+=== Visualizations on a Liveboard
 You can add any number of visualizations retrieved from the search to a Liveboard object. Pinned visualizations exist only within the Liveboard and are independent of the objects saved as *answers*.
 
 Each time you pin a search result, a separate new visualization is created on the Liveboard.
@@ -123,4 +123,3 @@ Column and join objects with their own GUIDs do exist within the ThoughtSpot sys
 * link:https://docs.thoughtspot.com/home/[ThoughtSpot product documentation, window=_blank]
 * link:https://training.thoughtspot.com/thoughtspot-basics?next=%2Fthoughtspot-basics%2F386470[ThoughtSpot basics training, window=_blank]
 * link:https://training.thoughtspot.com/page/data-expert[Data expert learning path, window=_blank]
-
