@@ -58,7 +58,7 @@ export interface SearchViewConfig extends ViewConfig {
     expandAllDataSource?: boolean;
     /**
      * If set to true, the Search Assist feature is enabled.
-     * @version SDK: 1.13.0 | ThoughtSpot: 8.5.0.cl
+     * @version SDK: 1.13.0 | ThoughtSpot: 8.5.0.cl, 8.8.1-sw
      */
     enableSearchAssist?: boolean;
     /**
