@@ -60,15 +60,19 @@ export enum AuthStatus {
     LOGOUT = 'LOGOUT',
 }
 
+const getAuthVerificationUrl = (thoughtSpotHost: string) =>
+    `${thoughtSpotHost}${EndPoints.AUTH_VERIFICATION}`;
+
 /**
  * Check if we are logged into the ThoughtSpot cluster
  * @param thoughtSpotHost The ThoughtSpot cluster hostname or IP
  */
 async function isLoggedIn(thoughtSpotHost: string): Promise<boolean> {
-    const authVerificationUrl = `${thoughtSpotHost}${EndPoints.AUTH_VERIFICATION}`;
     let response = null;
     try {
-        response = await fetchSessionInfoService(authVerificationUrl);
+        response = await fetchSessionInfoService(
+            getAuthVerificationUrl(thoughtSpotHost),
+        );
         const sessionInfoResp = await response.json();
         releaseVersion = sessionInfoResp.releaseVersion;
     } catch (e) {
@@ -87,8 +91,11 @@ export function getReleaseVersion() {
 /**
  * Return sessionInfo if available else make a loggedIn check to fetch the sessionInfo
  */
-export function getSessionInfo() {
-    return sessionInfo;
+export async function getOrFetchSessionInfo(thoughtSpotHost: string) {
+    return (
+        sessionInfo ||
+        fetchSessionInfoService(getAuthVerificationUrl(thoughtSpotHost))
+    );
 }
 
 export function initSession(sessionDetails: any) {
@@ -325,6 +332,7 @@ export const logout = async (embedConfig: EmbedConfig): Promise<boolean> => {
     const { thoughtSpotHost } = embedConfig;
     const response = await fetchLogoutService(thoughtSpotHost);
     loggedInStatus = false;
+    sessionInfo = null;
     return loggedInStatus;
 };
 

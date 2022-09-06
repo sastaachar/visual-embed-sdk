@@ -15,6 +15,7 @@ import {
     logout as _logout,
     AuthFailureType,
     AuthStatus,
+    getOrFetchSessionInfo,
 } from '../auth';
 import { uploadMixpanelEvent, MIXPANEL_EVENT } from '../mixpanel-service';
 
@@ -156,6 +157,21 @@ export const logout = (doNotDisableAutoLogin = false): Promise<boolean> => {
         notifyLogout();
         return isLoggedIn;
     });
+};
+
+/**
+ *
+ * @returns Promise which resolves with the session info.
+ */
+export const getCurrentUserInfo = async (): Promise<any> => {
+    const sessionInfo = await getOrFetchSessionInfo(config.thoughtSpotHost);
+    const { userName, userEmail, userGUID, privileges } = sessionInfo;
+    return {
+        userName,
+        userEmail,
+        userGUID,
+        privileges,
+    };
 };
 
 let renderQueue: Promise<any> = Promise.resolve();
