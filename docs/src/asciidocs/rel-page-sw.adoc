@@ -8,6 +8,10 @@
 
 This page provides information about new features and enhancements available for embedded ThoughtSpot instances.
 
+== Version 8.8.0-sw, October 2022
+
+ThoughtSpot 8.8.0-sw is a limited availability release. To upgrade your ThoughtSpot cluster to 8.8.0-sw, contact ThoughtSpot Support.
+
 == Version 8.4.1-sw, September 2022
 
 === Support for ThoughtSpot Everywhere and Visual Embed SDK
