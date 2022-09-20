@@ -49,7 +49,6 @@ const appEmbed = new AppEmbed(document.getElementById('ts-embed'), {
 The actions and menu options on the embedded Liveboard page vary based on the Liveboard experience setting.
 
 Liveboard editing::
-
 To edit a Liveboard, users must switch to the edit mode by clicking the *Edit* button on the Liveboard page. For example, to delete a visualization on a Liveboard, the user must click *Edit*, and then navigate to the *Delete* option on a visualization.
 
 Filter application::

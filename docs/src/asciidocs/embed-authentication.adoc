@@ -26,7 +26,7 @@ If you are developing or testing code for embedding ThoughtSpot in your host app
 [#no-auth-embed]
 === No authentication
 
-In development and testing environments, you can choose not to use any authentication method. To allow your logged-in application users to access ThoughtSpot content without any authentication, set the `authType` attribute to `None` as shown here:
+If your application already uses an IdP to authenticate users and allows iframe embedding, and your ThoughtSpot instance has SAML or OIDC configured, you can set the `authType` attribute to `None`.
 
 [source,javascript]
 ----

@@ -33,9 +33,7 @@ For more information, see xref:enable-liveboardv2.adoc#_customize_liveboard_tabs
 * SchedulesList
 * UpdateTML
 
-////
 For more information, see xref:events-ref.adoc#host-events[Events reference].
-////
 |====
 
 
@@ -51,7 +49,6 @@ This enhancement does not introduce any breaking changes in your current impleme
 For more information, see xref:embed-authentication.adoc[Authentication].
 
 ////
-
 
 == Version 1.14.0, August 2022
 [width="100%" cols="1,4"]
@@ -138,7 +135,7 @@ For more information, see xref:embed-actions.adoc[Show or hide UI actions].
 == Version 1.10.4, May 2022
 [width="100%" cols="1,4"]
 |====
-|[tag greenBackground]#NEW FEATURE#|The `detectCookieAccessSlow` parameter in the SDK allows your app to check if third-party cookies are enabled on the browser. This parameter is available only for `TrustedAuth` and `Basic` authentication types.
+|[tag greenBackground]#NEW FEATURE#|The `detectCookieAccessSlow` parameter in the SDK allows your app to check if third-party cookies are enabled on the browser. This parameter is available only for trusted and `Basic` authentication types.
 |====
 == Version 1.10.3, May 2022
 
@@ -198,7 +195,7 @@ Bug fixes and improvements to React components.
 |====
 |[tag greenBackground]#NEW FEATURE#| The SDK now supports the `disableLoginRedirect` attribute to improve the login experience for your application users. When enabled, this attribute prevents your app from redirecting users to the login page when their session expires. +
 You can use this attribute along with `autoLogin` to automatically authenticate and re-login a user. +
-This feature is applicable to token-based authentication, that is, when the `AuthType` is set as `TrustedAuth` in the SDK.
+This feature is applicable to token-based authentication, that is, when the `AuthType` is set as `AuthServer` in the SDK.
 
 For more information, see xref:embed-authentication.adoc#trusted-auth-embed[Authentication].
 |====

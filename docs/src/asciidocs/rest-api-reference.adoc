@@ -1,4 +1,4 @@
-= REST API v1 Reference 
+= REST API v1 Reference
 :toc: true
 
 :page-title: REST API Reference Guide

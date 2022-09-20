@@ -21,7 +21,7 @@ The REST v2 API [beta blueBackground]^BETA^ endpoints will remain functional, bu
 
 [NOTE]
 ====
-If your current deployment is using REST v2 API [beta blueBackground]^BETA^ endpoints, your implementation will continue to work. However, ThoughtSpot recommends that you start using REST v2.0 API endpoints as and when they are made Generally Available (GA).
+If your current deployment is using REST v2 API [beta blueBackground]^BETA^ endpoints, your implementation will continue to work. However, ThoughtSpot recommends that you start using the REST v2.0 API endpoints as and when they are made Generally Available (GA).
 ====
 
 === REST v2.0 API rollout
