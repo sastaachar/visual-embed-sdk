@@ -10,7 +10,9 @@ This changelog lists only the changes introduced in REST API v1. For a complete 
 
 == Version 8.8.0.cl, October 2022
 
-The `/tspublic/v1/connection/fetchLiveColumns` and `/tspublic/v1/connection/fetchConnection` API endpoints now allow filtering API response by authentication type.
+The connection API endpoints now support the following features:
+
+* The `/tspublic/v1/connection/fetchLiveColumns` and `/tspublic/v1/connection/fetchConnection` API endpoints now allow filtering API response by authentication type.
 +
 For more information, see xref:connections-api.adoc#fetchLiveColums[Get column data for connections with external tables] and xref:connections-api.adoc#connMetadata[Get details of a specific connection].
 
