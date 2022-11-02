@@ -63,7 +63,7 @@ For example, if a Liveboard has 10 charts and each chart has 5 columns and 10 re
 [#transient-pinboard]
 == Liveboard data with unsaved changes
 
-To download Liveboards with unsaved changes as PDFs, pass the `transient_pinboard_content` script with `getExportRequestForCurrentPinboard` method in the browser fetch request .
+To retrieve a Liveboard with unsaved changes, pass the `transient_pinboard_content` script with `getExportRequestForCurrentPinboard` method in the browser fetch request .
 
 [source,javascript]
 ----
