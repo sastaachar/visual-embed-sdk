@@ -16,6 +16,7 @@ import {
     LiveboardEmbed,
 } from './embed/liveboard';
 import { SearchEmbed, SearchViewConfig } from './embed/search';
+import { SearchBarEmbed, SearchBarViewConfig } from './embed/search-bar';
 import { AuthFailureType, AuthStatus } from './auth';
 import {
     AuthType,
@@ -26,6 +27,7 @@ import {
     DataSourceVisualMode,
     Action,
     EmbedConfig,
+    PrefetchFeatures,
 } from './types';
 
 export {
@@ -33,6 +35,7 @@ export {
     logout,
     prefetch,
     SearchEmbed,
+    SearchBarEmbed,
     PinboardEmbed,
     LiveboardEmbed,
     AppEmbed,
@@ -49,6 +52,8 @@ export {
     Action,
     EmbedConfig,
     SearchViewConfig,
+    SearchBarViewConfig,
     LiveboardViewConfig,
     AppViewConfig,
+    PrefetchFeatures,
 };

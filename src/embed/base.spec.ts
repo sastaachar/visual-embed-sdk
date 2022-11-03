@@ -55,7 +55,11 @@ describe('Base TS Embed', () => {
 
     test('Should add the prefetch iframe when prefetch is called. Should remove it once init is called.', async () => {
         const url = 'https://10.87.90.95/';
-        index.prefetch(url);
+        index.init({
+            thoughtSpotHost: url,
+            authType: index.AuthType.None,
+            callPrefetch: true,
+        });
         expect(getAllIframeEl().length).toBe(1);
         const prefetchIframe = document.querySelectorAll<HTMLIFrameElement>(
             '.prefetchIframe',
@@ -63,6 +67,25 @@ describe('Base TS Embed', () => {
         expect(prefetchIframe.length).toBe(1);
         const firstIframe = <HTMLIFrameElement>prefetchIframe[0];
         expect(firstIframe.src).toBe(url);
+    });
+
+    test('Should add the prefetch iframe when prefetch is called with multiple options', async () => {
+        const url = 'https://10.87.90.95/';
+        const searchUrl = `${url}v2/#/embed/answer`;
+        const liveboardUrl = url;
+        index.prefetch(url, [
+            index.PrefetchFeatures.SearchEmbed,
+            index.PrefetchFeatures.LiveboardEmbed,
+        ]);
+        expect(getAllIframeEl().length).toBe(2);
+        const prefetchIframe = document.querySelectorAll<HTMLIFrameElement>(
+            '.prefetchIframe',
+        );
+        expect(prefetchIframe.length).toBe(2);
+        const firstIframe = <HTMLIFrameElement>prefetchIframe[0];
+        expect(firstIframe.src).toBe(searchUrl);
+        const secondIframe = <HTMLIFrameElement>prefetchIframe[1];
+        expect(secondIframe.src).toBe(liveboardUrl);
     });
 
     test('Should not generate a prefetch iframe when url is empty string', async () => {
@@ -162,6 +185,7 @@ describe('Base without init', () => {
         base.notifyAuthSuccess();
         base.notifyAuthFailure(auth.AuthFailureType.SDK);
         base.notifyLogout();
-        expect(global.console.error).toHaveBeenCalledTimes(3);
+        base.notifyAuthSDKSuccess();
+        expect(global.console.error).toHaveBeenCalledTimes(4);
     });
 });
