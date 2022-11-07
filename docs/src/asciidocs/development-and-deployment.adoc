@@ -10,6 +10,18 @@ When deploying embedded analytics, there is a set of defined practices for the d
 
 The ThoughtSpot system contains many types of objects that link together. These objects can broadly be split into data objects and content objects. All of the objects are modeled using the link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/tml.html[ThoughtSpot modeling language (TML), window=_blank]. The TML for an object can be viewed and edited through the UI and via REST APIs. With the proper understanding of TML and how the APIs work, you can integrate ThoughtSpot into your source control system and programmatically move content through your development and deployment phases.
 
+=== GUIDs in TML files
+Every object in a ThoughtSpot instance has a unique idenitifer called a GUID. 
+
+GUIDs appear in two places in a TML file:
+
+ 1. The first element at the top of the file called *guid* : This is the GUID of the object the TML file represents
+ 2. In any *fqn* property in the *table* section of the TML file: GUIDs of other data objects being referenced. The *fqn* property is optional prior to ThoughtSpot 8.9, but is included by default from 8.9 onward.
+ 
+The process of publishing to different *environments* in ThoughtSpot involves *replacing GUID references* in TML files from the originating environment with the GUIDs of the destination environment. The first time an object is published in a new environment, the new GUID should be recorded in a *mapping file* with the GUID from the originating environment, so that it can be swapped in for any subsequent updates to that object.
+
+Object names are not unique in ThoughtSpot, so you *must* correctly swap out the *fqn* references when deploying to avoid ambiguous name references or leaving your new objects pointed to the incorrect data objects.
+
 == Development and deployment process (SDLC)
 Most development and deployment starts with a *development (dev)* environment, and then the content is promoted from that *dev* environment through varying *stages* until it reaches a stage called *production (prod)*. The process for moving from one stage to another, regardless of your process, is relatively the same:
 
