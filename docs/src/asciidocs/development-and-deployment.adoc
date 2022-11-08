@@ -36,37 +36,66 @@ GUIDs appear in two places in a TML file:
  1. The first element at the top of the file called *guid* : This is the GUID of the object the TML file represents
  2. In any *fqn* property in the *table* section of the TML file: GUIDs of other data objects being referenced. The *fqn* property is optional prior to ThoughtSpot 8.9, but is included by default from 8.9 onward.
 
-==== GUIDs determine object create vs. update operation
+==== GUIDs determine create vs. update operations
 Object names are never used for determining an object to update, because object names are not unique within ThoughtSpot.
 
-Whether an imported TML GUIDs will create a new object or update an existing 
+Whether an imported TML will create a new object or update an existing object depends on the presence of the *guid* property and whether that GUID matches an existing object on that ThoughtSpot instance.
 
-If the *force_create=true* parameter is used, every uploaded TML file results in new objects being created and assigned new GUIDs.
-
-Otherwise, creation vs. update is determined by the *guid* property in the TML file:
+Creation vs. update is determined by the following rules:
 
  - *No GUID* in the TML file: creates a new object with a new GUID
+ - *force_create=true* parameter of the TML Import API is used: every uploaded TML file results in new objects being created and assigned new GUIDs
  - *GUID in TML file*, where an object with the *same GUID already exists* in instance: update object
  - *GUID in TML file*, where *no object with same GUID exists* in ThoughtSpot instance: starting in 8.10, will create new object with the GUID from the TML file. In previous versions, a new GUID will be assigned to the object instead of the GUID provided in the TML file
-  - *Table objects* match on fully-qualified tables in the database (each Connection can only have one Table object per table in database): If existing Table object representing the same database table is found, the GUID of the original object is maintained, but the updatse are applied from the new TML file
+  - *Table objects* match on fully-qualified tables in the database (each Connection can only have one Table object per table in database), not GUID: If existing Table object representing the same database table is found, the GUID of the original object is maintained, but the updatse are applied from the new TML file
 
-==== Preparing release to an environment
-Because the presence of the *guid* property determines whether it is a create or an update action, 
+==== Preparing release for an environment
+Because the presence of the *guid* property determines whether an individual TML file will cause a create or an update action, you need to keep a *GUID mapping file* to determine how to adjust the TML files for upload to the new environment.
 
-The process of preparing a release to be published to a different *environment* from *dev* involves *replacing GUID references* in TML files from the originating environment with the GUIDs of the destination environment. This is necessary unless you know the destination instance can use the GUIDs you provide.
+An example of simple JSON structure for a *guid mapping file* is as follows:
 
-Object names are not unique in ThoughtSpot, so you *must* correctly swap out the *fqn* references when deploying to avoid ambiguous name references or leaving your new objects pointed to the incorrect data objects.
+[source,json]
+----
+{
+  "test": {
+    "<dev-env-guid>" :  "<test-env-guid>"
+  },
+  "prod": {
+    "<dev-env-guid>" :  "<prod-env-guid>"
+  }
+}
+----
 
+The *guid mapping file* is referenced when creating the final TML files for publishing, then should be updated after publish with any new object GUIDs:
 
+ . Check the *guid mapping file*
+ .. If no key-value pair exists for the *dev GUID* for the new environment: *remove the guid property from the TML file*. This will cause a *create* action
+ .. If a key-value pair exists: *swap* the TML file *guid* value from the *dev GUID* to the *destination environment GUID*. This will cause an *update* action
+ . When a new object is published for the first time, record the *dev GUID* as the key, and the *new object GUID* as the value
+ . Perform the same process for any *fqn* properties, which specify data object references. Remove the *fqn* property if the data object is being newly created, or swap it to the mapped GUID for that environment
 
- . A *Release build process* copies the TML of the *dev* content with changes to objects to connect the next stage and any GUIDs for objects that will be updated (already exist in the next stage)
- . A *Release publish process* imports the new TML to the next stage environment and shares it to the appropriate groups for that stage's __environment__
- . The GUIDs of any new objects are recorded with their relationship to the *dev* content to allow for future updates
+==== Packaging release files for import
+Name matching does occur for data object references within a TML file. All data objects are referenced as "tables" within TML, whether they are a ThoughtSpot table, worksheet, view, SQL view or any other data objet type.
 
-The first time an object is published in a new environment, the new GUID should be recorded in a *mapping file* with the GUID from the originating environment, so that it can be swapped in for any subsequent updates to that object. 
+The following heuristic is used to find matching objects by name:
 
-=== Environments / stages
-ThoughtSpot uses groups and sharing to control the visibility of content to different groups. The word __environment__ in this document refers to a logical grouping in ThoughtSpot, which is not necessarily a separate cluster or other form of separation. In a multi-tenanted ThoughtSpot deployment, the __environments__ for each stage are enforced by sharing to the correct groups after publish time.
+ . Data object names within the same TML Import operation: Must only be one single object with that name
+ . Searches the entire ThoughtSpot instance: Must be only one single object with that name
+
+*Best practices* to create "packages": 
+ 
+ - Upload all related TML files together in a single TML Import
+ - Give data objects within a package unique names, even though not enforced by ThoughtSpot
+ - If a data object already exists, swap out the *fqn* references to avoid the name matching heuristic
+
+=== Environment separation
+ThoughtSpot "environments" can be created with any combination of the following:
+
+ - Access control using groups and sharing
+ - Multiple distinct ThoughtSpot instances
+ - Separate Orgs (on an Orgs enabled instance) on the same ThoughtSpot instance
+
+Each of these techniques can serve to create complete separation of content access between different groups of users, and thus can be considered a separate "environment". 
 
 For a thorough explanation of how to control object access using ThoughtSpot groups, see xref:multi-tenancy-best-practices.adoc[Multi-tenancy best practices].
 
