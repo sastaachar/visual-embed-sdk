@@ -28,6 +28,11 @@ Content in the *dev environment* in ThoughtSpot is downloaded as link:https://cl
  .. *Individual user TML export requests*: users may download their changed objects, commit them to a local branch, then make pull requests to the 'dev' branch
  . *Releases* are always cut initially from the *dev branch*, with the dev environments GUIDs in place until the publishing process
 
+==== Export TML into source control
+The xref:metadata-api.adoc#object-header[/metadata/listobjectheaders] can be used to retrieve the GUIDs for the various objects on the ThoughtSpot server. Looping through those GUIDs with the xref:tml-api.adoc#export[export TML REST API endpoint] allows for saving the current state of all objects to disk. A simple form of Git (or other source control) integration can be achieved simply by exporting all the TML files to a Git-enabled directory, with Git determining if there are any changes.
+
+The xref:metadata-api.adoc#object-header[/metadata/listobjectheaders] endpoint can be sorted by the `MODIFIED` keyword and then retrieved in batches, allowing a TML retrieval script to only retrieve objects modified since the last run date or some other reasonable time period. Remember to xref:development-and-deployment.adoc#addGuids[Add GUIDs of associated objects to TML] when downloading each TML object.
+
 === Release deployment process
 Every object in a ThoughtSpot instance has a unique idenitifer called a GUID. The GUID for an object is randomly generated when the object is first created. Starting in version 8.10, new objects created via TML import will use the GUID in the TML file, if that GUID has not been previously used on the instance, to allow for synchronizing GUIDs between instances.
 
@@ -99,7 +104,7 @@ Each of these techniques can serve to create complete separation of content acce
 
 For a thorough explanation of how to control object access using ThoughtSpot groups, see xref:multi-tenancy-best-practices.adoc[Multi-tenancy best practices].
 
-== ThoughtSpot modeling language
+== Implementing programmatic SDLC
 Every object type in ThoughtSpot has a representation in link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/tml.html[TML, window=_blank]. TML documents are available by default in the easy-to-read link:https://en.wikipedia.org/wiki/YAML[YAML, window=_blank] format, and can also be requested in JSON format from the ThoughtSpot REST API.
 
 Almost every aspect of an object can be defined or modified via TML, with a few limitations around making updates to very complicated data modeling features. While building content in ThoughtSpot is most easily achieved via the web-based UI, TML allows for integrating into common SDLC processes, deploying changes across a whole environment, and scripting complex SaaS deployments.
@@ -113,8 +118,6 @@ The TML import REST API call itself does not specify any objects. All details of
 If you want to store TML within Git or any other version control system, use the xref:tml-api.adoc#export[export REST API endpoint] to retrieve the TML representations of the objects on the ThoughtSpot server. Alternatively, you might use the ThoughtSpot server itself as your system of record, but export TML and apply changes programmatically before importing these modified TML files as new objects.
 
 You can pass any number of GUIDs in the `export_ids` argument, although it is simpler to retrieve one at a time, particularly when processing the results from using the `export_associated=true` option. The `export_associated` argument retrieves the TML objects for all related objects when used, including the GUID of each object within the headers.
-
-If you want to retrieve TML representation of objects with `fqn` data, you can set the `export_fqn` attribute to `true`.
 
 The `formattype` argument can be set to `YAML` or `JSON`. YAML is more human-readable and matches the view when you edit TML within the ThoughtSpot UI, while JSON may be easier to process for programmatic manipulation.
 
@@ -465,76 +468,6 @@ The `layout` section is an ordered list with a `size` property for each visualiz
     - visualization_id: <visualization_id_2>
 ----
 
-== Deployment methods
-
-=== Change tracking and source control
-
-In the development phase, most content creation and updates occurs within the ThoughtSpot web application. Changes can be made directly to TML files and uploaded, but ThoughtSpot's interface is designed for creating new searches and Liveboards with maximum speed and control. This presents the question of when and how to track content changes for content in the `development environment`.
-
-The xref:metadata-api.adoc#object-header[/metadata/listobjectheaders] can be used to retrieve the GUIDs for the various objects on the ThoughtSpot server. Looping through those GUIDs with the xref:tml-api.adoc#export[export TML REST API endpoint] allows for saving the current state of all objects to disk. A simple form of Git (or other source control) integration can be achieved simply by exporting all the TML files to a Git-enabled directory, with Git determining if there are any changes.
-
-The xref:metadata-api.adoc#object-header[/metadata/listobjectheaders] endpoint can be sorted by the `MODIFIED` keyword and then retrieved in batches, allowing a TML retrieval script to only retrieve objects modified since the last run date or some other reasonable time period. Remember to xref:development-and-deployment.adoc#addGuids[Add GUIDs of associated objects to TML] when downloading each TML object.
-
-=== Copy from one instance to a separate instance
-When moving content from one instance of ThoughtSpot to another, object names can be left exactly as they are from the first environment to the other. Changes like referencing a different *connection* can be achieved by changing the `name` property under the `connection` (value labeled `connection_name` below) within the link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/tml.html#syntax-tables[table TML objects, window=_blank]:
-
-[source,yaml]
-----
-table:
-  name: <table_name>
-  db: <database_name>
-  schema: <schema_name>
-  db_table: <database_table_name>
-  connection:
-    name: <connection_name>
- ...
-----
-
-You should still record the mapping of parent:child guids when you publish, to allow for future updates.
-
-=== Dev -> test -> prod
-A standard pattern for software development life cycle (SDLC) is moving content from a development (dev) environment to a test environment, and then eventually to production (prod) where end customers can see it.
-
-==== Prefixes on content names as namespaces
-The easiest way to avoid name collisions is by adding `dev_` or `test_` before the name of any object. By using a consistent __namespace prefix__, deployment scripts can easily find and replace when moving from __dev__ to __test__, or remove the prefix entirely when copying the content to prod where end customers can see it.
-
-Example pattern:
-
-[width="100%" cols="3,3,3"]
-[options='header']
-|===
-|dev name|test name|prod name
-|dev_Connection A|test_Connection A|Connection A
-|dev_Table A|test_Table A|Table A
-|===
-
-Using this namespace prefix scheme, you can export the TML files related to `dev_Connection A` and simply update any name references by replacing `dev_` with `test_`. When moving from test to prod, remove the prefix from the names entirely.
-
-==== Duplicate object names
-If you are not using prefixes to namespace, you must rely on adding the GUIDs as the `fqn` property using the `export_associated=true` option outlined above, and then keeping the mapping of parent:child guids for each environment.
-
-==== Access control
-Dev and test content should be xref:multi-tenancy-best-practices.adoc[shared only to specific groups] designed to give access to the correct app developer users. Individual tenant users will never see content that is not shared with them.
-
-=== Single-tenant databases deployment model
-As described in the xref:multi-tenancy-best-practices.adoc[Multi-tenancy best practices] article, the single-tenant databases model requires separate connections for each tenant, along with replicas of all other standardized objects. In this model, there is one additional tier of deployment: dev, test, prod template, and prod tenant content.
-
-Prod template content is the finalized data model and other content for a given prod release, before being published to each tenant with the necessary changes to their tenant connection.
-
-==== Namespacing in the single-tenant databases model
-When you have a different database for each of your tenants, you'll programmatically build a connection for each tenant, and then copy your prod template for each tenant. In this pattern, you namespace dev, test, and prod template content, and remove the namespace for the tenant-specific content.
-
-Example pattern:
-
-[width="100%" cols="3,3,3,3"]
-[options='header']
-|===
-|dev name|test name|prod name|tenant name (per tenant)
-|dev_Connection A|test_Connection A|prod_Connection A|Connection A
-|dev_Table A|test_Table A|prod_Table A|Table A
-|===
-
-Each prod tenant copy will have the same name so that each tenant will not see their customer name or ID listed out. Access control through sharing will ensure they never have any awareness of the other objects that exist with the same name for the other tenants.
 
 [#relatedResources]
 == Additional Resources
