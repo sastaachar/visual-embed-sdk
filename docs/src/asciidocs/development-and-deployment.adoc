@@ -81,6 +81,13 @@ The *guid mapping file* is referenced when creating the final TML files for publ
  . Perform the same process for any *fqn* properties, which specify data object references. Remove the *fqn* property if the data object is being newly created, or swap it to the mapped GUID for that environment
 
 ==== Packaging release files for import
+
+Best practice is to to create and upload "packages" of related objects together at once: 
+ 
+ - Upload all related TML files together in a single TML Import
+ - Give data objects within a package unique names, even though not enforced by ThoughtSpot
+ - If a data object already exists, swap out the *fqn* references to avoid the name matching heuristic
+
 Name matching does occur for data object references within a TML file. All data objects are referenced as "tables" within TML, whether they are a ThoughtSpot table, worksheet, view, SQL view or any other data objet type.
 
 The following heuristic is used to find matching objects by name:
@@ -88,11 +95,7 @@ The following heuristic is used to find matching objects by name:
  . Data object names within the same TML Import operation: Must only be one single object with that name
  . Searches the entire ThoughtSpot instance: Must be only one single object with that name
 
-*Best practices* to create "packages": 
- 
- - Upload all related TML files together in a single TML Import
- - Give data objects within a package unique names, even though not enforced by ThoughtSpot
- - If a data object already exists, swap out the *fqn* references to avoid the name matching heuristic
+
 
 === Environment separation
 ThoughtSpot "environments" can be created with any combination of the following:
@@ -401,7 +404,21 @@ Under `table_paths`, the `table` property also uses the values we moved to `id`.
 ----
 
 ==== SQL Views
+A link:https://docs.thoughtspot.com/cloud/latest/tml#syntax-sql-views[SQL View, window=_blank] defines an underlying query directly to a *connection*. The `connection` property can be changed similar to a *table* object's TML either using the `name` property or adding an `fqn`, while the `sql_query` property can be changed to a different valid text string.
 
+[source,yaml]
+----
+guid: <sql_view_guid>
+sql_view:
+  name: <view_name>
+  description:
+    This is a multi-line description of the View.
+    Description line 2
+  connection:
+    name: <connection_name>
+    fqn: <optional_connection_GUID>
+  sql_query: <sql_query_string>
+----
 
 ==== Answers
 The link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/tml.html#syntax-answers[answer TML syntax, window=_blank] defines all aspects of a saved search and how it is visualized. The `tables` property is used to point to ThoughtSpot *table*, *view*, or *worksheet* objects, whichever the answer is connected to. As mentioned above, it is simpler to connect an answer to a single *worksheet*, so that you only have to update one reference in the `tables` section.
