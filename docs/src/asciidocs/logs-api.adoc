@@ -14,10 +14,6 @@ The ThoughtSpot log API service allows you to programmatically get a security au
 
 include::{path}/audit-log-api.adoc[]
 
-== Supported operations
-
-include::{path}/audit-log-api.adoc[]
-
 == Required permissions
 
 The log API call requires administrator access.
