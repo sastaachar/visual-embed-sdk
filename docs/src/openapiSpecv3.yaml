@@ -3,10 +3,7 @@ openapi: 3.0.0
 info:
   title: ThoughtSpot REST API Documentation
   version: v2 beta
-  x-logo:
-    url: "https://raw.githubusercontent.com/thoughtspot/visual-embed-sdk/redoc-test/docs/src/assets/svg/ts-logo-white.svg"
-    backgroundColor: "#1D232F"
-    altText: "ThoughtSpot logo"
+
 tags: []
 paths:
   "/tspublic/rest/v2/session":
