@@ -45,6 +45,8 @@ POST /tspublic/v1/user/
 |`usertype` __Optional__ a|__String__. Type of user. The default value is `LOCAL_USER`, which indicates that the user is created locally in the ThoughtSpot system.
 |`tenantid` __Optional__|__String__. GUID of the tenant for which the user is being created.
 |`visibility` __Optional__|__String__. Visibility of the user. The `visibility` attribute is set to `DEFAULT` when creating a user. The `DEFAULT` attribute makes a user visible to other users and user groups, and thus allows them to share objects.
+|`triggeredbyadmin` a|__Boolean__. Indicates if the API request is initiated by a ThoughtSpot administrator or an external application. The default value is `false`. +
+ When set to `true`, the `displayNameLastUpdatedBy` property is set to `ADMIN` in the API response, Else, `displayNameLastUpdatedBy` is set to `AUTO`.
 |===
 
 === Example request
@@ -79,7 +81,9 @@ If the user is successfully created in ThoughtSpot, the API returns the user GUI
       "showWalkMe": true,
       "analystOnboardingComplete": false
     },
-    "userProperties": {},
+     "userProperties": {
+      "displayNameLastUpdatedBy": "ADMIN"
+    },
     "userActivityProto": {
       "first_login": -1,
       "welcome_email_sent": false
@@ -160,6 +164,14 @@ PUT /tspublic/v1/user/{userid}
 |`userid`|__String__. GUID of the user.
 |`content`|__String__. A JSON map of strings with the user profile attributes.
 |`password` __Optional__|__String__. Password string for the user account. Use this attribute to change the password of the user account.
+|`triggeredbyadmin` a|__Boolean__. Indicates if the user update API request is initiated by the ThoughtSpot administrator or an external application. By default, the `triggeredbyadmin` flag is set to `false`. The default value is `false`. +
+
+* When set to `true`, ThoughtSpot updates the `displayNameLastUpdatedBy` property to `ADMIN`. Else, the `displayNameLastUpdatedBy` property is set to `AUTO` for the specified user object.
+
+[NOTE]
+====
+Starting from 8.9.0.cl, ThoughtSpot users can update their display name on the profile setting page in the UI. If a user updates their display name, ThoughtSpot sets `displayNameLastUpdatedBy` to `USER` in the object properties.
+====
 |===
 
 === Example request
@@ -193,9 +205,6 @@ https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/{userid}
          "notifyOnShare":false,
          "showWalkMe":true,
          "analystOnboardingComplete":false
-      },
-      "userProperties":{
-
       },
       "userActivityProto":{
          "first_login":-1,
@@ -381,8 +390,9 @@ https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/?userid=b995e481-d0a7-48
       "analystOnboardingComplete": false
     },
     "userProperties": {
-        "persona": "business_user",
-        "mail": "tsadmin@thoughtspot.com",
+        "displayNameLastUpdatedBy": "ADMIN",
+        "persona": "BUSINESS_USER"
+        "mail": "tsUser@thoughtspot.com",
         "companyName": "",
         "activatedAtMs": 1649842964294
      },
@@ -450,7 +460,7 @@ If no `userid` or `name` attribute is specified, the API returns a response with
 [#deactivate-user]
 == Deactivate a user account
 
-To deactivate a user account, send a `POST` request to the `/tspublic/v1/user/inactivate` API endpoint. 
+To deactivate a user account, send a `POST` request to the `/tspublic/v1/user/inactivate` API endpoint.
 
 === Resource URL
 ----
@@ -509,11 +519,11 @@ Note the user ID and auth token string. You will need this information to re-act
 [#activate-user]
 == Activate a user account
 
-To activate a user account that is currently inactive, send a `POST` request to the `/tspublic/v1/user/activate` API endpoint. 
+To activate a user account that is currently inactive, send a `POST` request to the `/tspublic/v1/user/activate` API endpoint.
 
 [IMPORTANT]
 ====
-When a user account is deactivated using the `/tspublic/v1/user/inactivate` endpoint, the API returns a response with the user ID and auth token string. This auth token string and the user ID are required for reactivating a user session. 
+When a user account is deactivated using the `/tspublic/v1/user/inactivate` endpoint, the API returns a response with the user ID and auth token string. This auth token string and the user ID are required for reactivating a user session.
 
 ----
 https:/<ThoughtSpot-Host>/#/activate?id=<user-guid>&token=<auth_token_string>
@@ -532,7 +542,7 @@ POST /tspublic/v1/user/activate
 |===
 |Form parameter|Description
 |`userid`|__String__. The GUID of the user account to activate.
-|`auth_token`|__String__. The authentication token to reactivate the user account. 
+|`auth_token`|__String__. The authentication token to reactivate the user account.
 |`password` |__String__. The password string for the user account.
 |`properties`|__Array of Strings__. A JSON map of the user properties to update the user account.
 |===
@@ -579,15 +589,15 @@ Response Code
 [#invalidate-user-session]
 == Invalidate a user session
 
-After a password of a user account is reset, you may want to invalidate a user session and force the user to re-login with the new password. To invalidate a user session, you can send a `POST` request to the `/tspublic/v1/user/session/invalidate` endpoint. 
+After a password of a user account is reset, you may want to invalidate a user session and force the user to re-login with the new password. To invalidate a user session, you can send a `POST` request to the `/tspublic/v1/user/session/invalidate` endpoint.
 
 
 [WARNING]
 ====
-* Use this API with caution as it may invalidate active user sessions and force users to re-login. 
-* Make sure you specify the usernames or user IDs. If you pass null values in the API call, all user sessions on your cluster become invalid and users are forced to re-login. 
+* Use this API with caution as it may invalidate active user sessions and force users to re-login.
+* Make sure you specify the usernames or user IDs. If you pass null values in the API call, all user sessions on your cluster become invalid and users are forced to re-login.
 ====
- 
+
 === Resource URL
 ----
 POST /tspublic/v1/user/session/invalidate
@@ -831,6 +841,8 @@ Type of the user created in the ThoughtSpot system. For example:
 ** `SAML_USER` for SSO users authenticated by a SAML IdP
 ** `OIDC_USER` for SSO users authenticated by an OpenID provider via OIDC protocol
 ** `LDAP_GROUP` for groups synchronized from an LDAP server
+** `LOCAL_GROUP` for groups that are created locally on ThoughtSpot.
+
 * `password`
 +
 The password of the user. This field is populated only for the user object. It is ignored in the case of groups.
@@ -851,7 +863,7 @@ If the user is visible to the other ThoughtSpot users or user groups who might w
 
 * `activate`
 
-Indicates if the user or user group needs to be activated. If the user or user group is already active, the `activate` property is set to `false`. 
+Indicates if the user or user group needs to be activated. If the user or user group is already active, the `activate` property is set to `false`.
 
 === Response codes
 [width="100%" cols="2,4"]
@@ -1292,7 +1304,7 @@ Use the example format for the JSON requests:
 ----
 [IMPORTANT]
 ====
-The above example covers user objects (with emails), group objects, and their relationships.
+The preceding example covers user objects (with emails), group objects, and their relationships.
 
 * You can leave the `created` and `modified` dates blank for new users.
 * You can specify if the principal is a user or user group in the `principalTypeEnum` keyword.
@@ -1342,7 +1354,7 @@ curl -X POST \
 --header 'Accept: application/json' \
 --header 'X-Requested-By: ThoughtSpot' \
 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/a8aeda00-dc3c-4485-b8d1-fd6ac701a819/groups?groupids=%5B%2246fc2125-d424-40bd-9513-23cd5e2e92c3%22%2C%222e3f697a-e38d-4d50-b5c5-e2514e85d90e%22%5D'
- 
+
 ----
 
 .Request URL
@@ -1371,7 +1383,7 @@ Response Code
 [#getGroupsUser]
 == Get user group details for a specific user
 
-To get a list of user groups associated with a user, send a `GET` request to the `/tspublic/v1/user/{userid}/groups` API endpoint. 
+To get a list of user groups associated with a user, send a `GET` request to the `/tspublic/v1/user/{userid}/groups` API endpoint.
 
 === Resource URL
 
@@ -1496,7 +1508,7 @@ If the GET operation is successful, the API returns the following response:
 [#editGroupsforUser]
 == Update group association for a user
 
-To update the user group data for a specific user, send a `PUT` request to the `/tspublic/v1/user/{userid}/groups` API endpoint. 
+To update the user group data for a specific user, send a `PUT` request to the `/tspublic/v1/user/{userid}/groups` API endpoint.
 
 === Resource URL
 
@@ -1523,7 +1535,7 @@ curl -X PUT \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json'  \
 --header 'X-Requested-By: ThoughtSpot' \
-'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/a8aeda00-dc3c-4485-b8d1-fd6ac701a819/groups?groupids=%5B%222e3f697a-e38d-4d50-b5c5-e2514e85d90e%22%2C%222364bf7c-7eec-4839-ac4b-e0cbb27aec37%22%2C%2246fc2125-d424-40bd-9513-23cd5e2e92c3%22%5D' 
+'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/a8aeda00-dc3c-4485-b8d1-fd6ac701a819/groups?groupids=%5B%222e3f697a-e38d-4d50-b5c5-e2514e85d90e%22%2C%222364bf7c-7eec-4839-ac4b-e0cbb27aec37%22%2C%2246fc2125-d424-40bd-9513-23cd5e2e92c3%22%5D'
 ----
 
 .Request URL
@@ -1553,7 +1565,7 @@ Response Code
 
 == Remove a user from user groups
 
-To remove the existing group assignments for a user, send a `DELETE` request to the `/tspublic/v1/user/{userid}/groups` API endpoint. 
+To remove the existing group assignments for a user, send a `DELETE` request to the `/tspublic/v1/user/{userid}/groups` API endpoint.
 
 === Resource URL
 
