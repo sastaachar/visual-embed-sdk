@@ -4,9 +4,9 @@ info:
   title: ThoughtSpot REST API v2 Documentation
   version: Beta
   description: Before constructing your API requests, browse through the documentation and view
-     the request and response format. Note that the API endpoints will be deprecated
-     from 9.0.0.cl onwards. For more information,
-     see https://developers.thoughtspot.com/docs/?pageid=deprecated-features.
+     the request and response format. Note that the REST API v2 Beta endpoints will be deprecated
+     from 9.0.0.cl onwards. For more information, see <a href="https://developers.thoughtspot.com/docs/?pageid=deprecated-features" target="_blank">
+     ThoughtSpot Developer documentation</a>.
 tags: []
 paths:
   "/tspublic/rest/v2/session":
