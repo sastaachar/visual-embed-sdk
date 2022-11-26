@@ -5,7 +5,7 @@ info:
   version: Beta
   x-logo:
     url: "https://raw.githubusercontent.com/thoughtspot/visual-embed-sdk/redoc-test/docs/src/assets/svg/ts-logo-black.svg"
-    backgroundColor: "#FFFFFF"
+    backgroundColor: "#F5F5F5"
     altText: "ThoughtSpot Logo"
   description: Before constructing your API requests, browse through the documentation and view
      the request and response format. Note that the REST API v2 Beta endpoints will be deprecated
@@ -1364,12 +1364,12 @@ paths:
                   description: Duration in seconds after which the token expires
                   type: string
                   deprecated: false
-                orgId:
-                  description: Id of the organization to be associated with the user
-                    login. If no input is provided then last logged in organization
-                    will be considered
-                  type: string
-                  deprecated: false
+                #orgId:
+                  #description: Id of the organization to be associated with the user
+                    #login. If no input is provided then last logged in organization
+                    #will be considered
+                  #type: string
+                  #deprecated: false
               required:
               - userName
         required: true
@@ -1479,15 +1479,15 @@ paths:
                   description: Password for the user account.
                   type: string
                   deprecated: false
-                orgIds:
-                  description: Array of org identifiers. If no value is provided then
-                    user will be created in the organization associated with the login
-                    session.
-                  type: array
-                  items:
-                    type: integer
-                    format: int32
-                  deprecated: false
+                #orgIds:
+                  #description: Array of org identifiers. If no value is provided then
+                    #user will be created in the organization associated with the login
+                    #session.
+                  #type: array
+                  #items:
+                    #type: integer
+                    #format: int32
+                  #deprecated: false
                 groups:
                   description: Array of objects of groups that the user belong to.
                   type: array
@@ -1684,16 +1684,16 @@ paths:
           type: string
         description: The GUID of the user account to query
         deprecated: false
-      - in: query
-        name: orgId
-        required: false
-        schema:
-          type: integer
-          format: int32
-        description: Unique identifier of the organization from which the user would
-          be deleted. If no value is provided then user will be deleted from the organization
-          associated with the login session.
-        deprecated: false
+      #- in: query
+        #name: orgId
+        #required: false
+        #schema:
+          #type: integer
+          #format: int32
+        #description: Unique identifier of the organization from which the user would
+          #be deleted. If no value is provided then user will be deleted from the organization
+          #associated with the login session.
+        #deprecated: false
       responses:
         '200':
           content:
@@ -2026,10 +2026,10 @@ paths:
                     - DISABLE_PINBOARD_CREATION
                     - ADMINISTRATION
                   deprecated: false
-                orgId:
-                  description: Unique identifier of the organization. If no value
-                    is provided then group will be created in the organization associated
-                    with the login session.
+                #orgId:
+                  #description: Unique identifier of the organization. If no value
+                    #is provided then group will be created in the organization associated
+                    #with the login session.
                   type: integer
                   format: int32
                   deprecated: false
@@ -4712,11 +4712,11 @@ components:
           items:
             type: string
           description: Privileges assigned to user account
-        orgs:
-          type: array
-          items:
-            "$ref": "#/components/schemas/OrgType"
-          description: The organizations that user belongs to
+        #orgs:
+          #type: array
+          #items:
+            #"$ref": "#/components/schemas/OrgType"
+          #description: The organizations that user belongs to
         tags:
           type: array
           items:
@@ -4835,11 +4835,11 @@ components:
           items:
             type: string
           description: Privileges assigned to the group
-        orgs:
-          type: array
-          items:
-            "$ref": "#/components/schemas/OrgType"
-          description: The organizations that user belongs to
+        #orgs:
+          #type: array
+          #items:
+            #"$ref": "#/components/schemas/OrgType"
+          #description: The organizations that user belongs to
         groups:
           type: array
           items:
@@ -5472,16 +5472,16 @@ components:
         name:
           type: string
           description: Name of the table
-    OrgType:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Name of the organization
-        id:
-          type: integer
-          format: int32
-          description: Id of the organization
+    #OrgType:
+      #type: object
+      #properties:
+        #name:
+          #type: string
+          #description: Name of the organization
+        #id:
+          #type: integer
+          #format: int32
+          #description: Id of the organization
     tableList:
       type: object
       properties:
