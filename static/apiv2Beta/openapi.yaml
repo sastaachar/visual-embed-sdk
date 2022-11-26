@@ -3,6 +3,10 @@ openapi: 3.0.0
 info:
   title: ThoughtSpot REST API v2 Documentation
   version: Beta
+  x-logo:
+    url: "https://github.com/thoughtspot/visual-embed-sdk/blob/redoc-test/docs/src/assets/svg/ts-logo-black.svg"
+    backgroundColor: "#FFFFFF"
+    altText: "ThoughtSpot Logo"
   description: Before constructing your API requests, browse through the documentation and view
      the request and response format. Note that the REST API v2 Beta endpoints will be deprecated
      from 9.0.0.cl onwards. For more information, see <a href="https://developers.thoughtspot.com/docs/?pageid=deprecated-features" target="_blank">
