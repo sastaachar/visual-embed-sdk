@@ -2030,9 +2030,9 @@ paths:
                   #description: Unique identifier of the organization. If no value
                     #is provided then group will be created in the organization associated
                     #with the login session.
-                  type: integer
-                  format: int32
-                  deprecated: false
+                  #type: integer
+                  #format: int32
+                  #deprecated: false
                 groups:
                   description: Array of objects of groups that the group belong to.
                   type: array
