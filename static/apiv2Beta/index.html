@@ -43,11 +43,12 @@
    },
    "menuToggle":true,
    "hideSecuritySection":true,
-   "pagination":"section",
+   "pagination":"none",
    "pathInMiddlePanel":true,
    "sortEnumValuesAlphabetically":true,
    "sortPropsAlphabetically":true,
    "jsonSampleExpandLevel":"1",
+   "nativeScrollbars":"true",
    "sideNavStyle":"summary-only",
    "theme":{
       "breakpoints":{
@@ -100,7 +101,10 @@
          "textColor":"#1D232F",
          "fontFamily":"Optimo-Plain,Roboto,sans-serif",
          "activeTextColor":"rgba(39, 112, 239, 1)",
-         "backgroundColor":"#FFFFFF",
+         "backgroundColor":"#F5F5F5",
+         "arrow":{
+            "color":"rgba(29, 35, 47, 1)"
+         },
          "groupItems":{
             "subItemsColor":"#000000",
             "fontFamily":"Optimo-Plain,Roboto,sans-serif",
@@ -187,14 +191,6 @@
                "paddingVertical":"20px"
             }
          },
-         "menu":{
-            "backgroundColor":"#ffffff",
-            "fontColor":"rgba(29, 35, 47, 1)",
-            "fontSize":"16px",
-            "arrow":{
-               "color":"rgba(29, 35, 47, 1)"
-            }
-         }
       }
    }
 }, document.getElementById('redoc-container'));
