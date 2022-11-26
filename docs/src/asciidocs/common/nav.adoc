@@ -106,6 +106,8 @@
 ** link:{{navprefix}}=rest-apiv2-reference[REST API v2 Reference ^*BETA*^]
 * link:{{navprefix}}=runtime-filters[Runtime filters]
 
+* link:https://visual-embed-sdk-git-redoc-api-docs-thoughtspot-site.vercel.app/docs/redoc/index.html[REST v2 beta docs, window=_blank]
+
 * Additional resources
 ** link:{{navprefix}}=faqs[FAQs]
 ** link:{{navprefix}}=troubleshoot-errors[Troubleshoot errors]
