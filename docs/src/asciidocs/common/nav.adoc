@@ -106,8 +106,6 @@
 ** link:{{navprefix}}=rest-apiv2-reference[REST API v2 Reference ^*BETA*^]
 * link:{{navprefix}}=runtime-filters[Runtime filters]
 
-* link:https://visual-embed-sdk-git-redoc-api-docs-thoughtspot-site.vercel.app/docs/apiv2Beta/index.html[REST v2 reference^*BETA*^ (Deprecated), window=_blank]
-
 * Additional resources
 ** link:{{navprefix}}=faqs[FAQs]
 ** link:{{navprefix}}=troubleshoot-errors[Troubleshoot errors]
@@ -116,3 +114,4 @@
 ** link:https://community.thoughtspot.com/customers/s/[Community, window=_blank]
 ** link:https://cloud-docs.thoughtspot.com[Product Documentation, window=_blank]
 ** link:https://training.thoughtspot.com/page/developer[Training resources, window=_blank]
+** link:https://visual-embed-sdk-git-redoc-api-docs-thoughtspot-site.vercel.app/docs/apiv2Beta/index.html[REST v2 ^*BETA*^ documentation (Deprecated), window=_blank]
