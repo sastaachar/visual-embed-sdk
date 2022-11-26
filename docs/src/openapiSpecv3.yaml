@@ -1114,7 +1114,7 @@ paths:
       description: To search custom actions available on a ThoughtSpot instance, use
         this endpoint
       tags:
-      - Custom actions
+      - CustomActions
       requestBody:
         content:
           application/json:
