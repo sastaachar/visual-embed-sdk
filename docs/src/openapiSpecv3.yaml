@@ -1,15 +1,15 @@
 ---
 openapi: 3.0.0
 info:
-  title: ThoughtSpot REST API Documentation
-  version: v2 beta
+  title: ThoughtSpot REST API v2 Documentation
+  version: Beta
 
 tags: []
 paths:
   "/tspublic/rest/v2/session":
     get:
       operationId: Get session information
-      description: Get Session object information
+      description: Get session object information.
       tags:
       - Session
       parameters: []
@@ -30,7 +30,7 @@ paths:
       operationId: Get user
       description: To get the details of a specific user account by username or user
         id, use this endpoint. At Least one value is needed.  When both are given,
-        user id will be considered to fetch user information
+        user id will be considered to fetch user information.
       tags:
       - User
       parameters:
