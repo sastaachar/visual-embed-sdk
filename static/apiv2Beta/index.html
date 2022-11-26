@@ -6,7 +6,7 @@
   <!-- needed for adaptive design -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,600,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,600,700|Roboto+Mono:300,400,600,700" rel="stylesheet" />
   <style>
   body {
     margin: 0;
@@ -30,18 +30,18 @@
   <!--
     Link to Redoc JavaScript on CDN for rendering standalone element
     -->
-  <redoc spec-url='https://raw.githubusercontent.com/thoughtspot/visual-embed-sdk/redoc-test/docs/src/openapiSpecv3.yaml'></redoc>
+  <redoc spec-url='https://raw.githubusercontent.com/thoughtspot/visual-embed-sdk/redoc-test/static/apiv2Beta/openapi.yaml'></redoc>
   <script src="https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js"></script>
   <script>
-  Redoc.init('https://raw.githubusercontent.com/thoughtspot/visual-embed-sdk/redoc-test/docs/src/openapiSpecv3.yaml', {
+  Redoc.init('https://raw.githubusercontent.com/thoughtspot/visual-embed-sdk/redoc-test/static/apiv2Beta/openapi.yaml', {
    "scrollYOffset":"0",
    "hideDownloadButton":true,
+   "hideLoading":true,
+   "hideHostname":true,
    "layout":{
       "showDarkRightPanel":true
    },
-   "hideHostname":true,
    "menuToggle":true,
-   "hideLoading":true,
    "hideSecuritySection":true,
    "pagination":"section",
    "pathInMiddlePanel":true,
@@ -55,26 +55,29 @@
          "medium":"40rem",
          "large":"85rem"
       },
+      "logo": {
+         "gutter": "10px",
+         "maxWidth": "230px",
+         "maxHeight": "60px"
+      },
       "components":{
             "layoutControls":{
-               "top":"40px"
+               "top":"10px"
             },
             "httpBadges":{
                "borderRadius":"5px",
+               "fontWeight":"700",
+               "fontFamily":"Roboto Mono",
                "sizes":{
-                  "small":{
-                     "fontSize":"15px",
-                     "lineHeight":"1.6em"
-                  },
                   "medium":{
-                     "fontSize":"15px",
-                     "lineHeight":"1.6em"
+                     "fontSize":"16px",
+                     "lineHeight":"1.6em",
                   }
                }
             }
       },
       "spacing":{
-         "sectionVertical":"10px",
+         "sectionVertical":"8",
       },
       "colors":{
          "primary":{
@@ -95,18 +98,17 @@
       "sidebar":{
          "width":"290px",
          "textColor":"#1D232F",
-         "fontFamily":"Optimo-Plain, Roboto, sans-serif",
+         "fontFamily":"Optimo-Plain,Roboto,sans-serif",
          "activeTextColor":"rgba(39, 112, 239, 1)",
-         "backgroundColor":"#F6F8FA",
+         "backgroundColor":"#FFFFFF",
          "groupItems":{
             "subItemsColor":"#000000",
-            "fontFamily":"Optimo-Plain, Roboto, sans-serif",
+            "fontFamily":"Optimo-Plain,Roboto,sans-serif",
             "fontSize":"16px",
             "fontWeight":"600",
-            "rightLineColor":"#EAEDF2"
          },
          "spacing":{
-            "paddingVertical":"20px"
+            "paddingVertical":"10"
          },
          "level1items":{
             "fontWeight":"600"
@@ -123,7 +125,7 @@
       "rightPanel":{
          "backgroundColor":"#1D232F",
          "textColor":"#ffffff",
-         "fontSize":"14pt",
+         "fontSize":"14px",
          "width":"35%",
          "colors":{
             "http":{
@@ -138,19 +140,19 @@
          "backgroundColor":"#ffffff",
          "title":{
             "color":"#1D232F",
-            "fontFamily":"Optimo-Plain, Roboto, sans-serif",
+            "fontFamily":"Optimo-Plain,Roboto,sans-serif",
             "fontSize":"20px",
             "lineHeight":"1em"
          },
          "subTitle":{
             "color":"#1D232F",
-            "fontFamily":"Optimo-Plain, Roboto, sans-serif",
+            "fontFamily":"Optimo-Plain,Roboto,sans-serif",
             "fontSize":"20px",
             "lineHeight":"1em"
          }
       },
       "typography":{
-         "fontFamily":"Optimo-Plain, Roboto, sans-serif",
+         "fontFamily":"Optimo-Plain,Roboto,sans-serif",
          "fontSize":"15px",
          "lineHeight":"1.6em",
          "fontWeightRegular":"400",
@@ -159,7 +161,8 @@
          "fontColor":"#1D232F",
          "codeBlock":{
             "backgroundColor":"#777E8B",
-            "fontFamily":"Consolas,Monaco,monospace",
+            "fontSize":"14px",
+            "fontFamily":"Roboto Mono",
             "maxHeight":"250px"
          },
          "links":{
@@ -169,14 +172,14 @@
          },
          "code":{
             "backgroundColor":"#777E8B",
-            "fontSize":"13px",
+            "fontSize":"15px",
             "fontColor":"rgba(255, 255, 255, 1)",
-            "fontFamily":"Consolas,Monaco,monospace",
+            "fontFamily":"Roboto Mono",
             "wrap":true,
-            "fontWeight":"300"
+            "fontWeight":"400"
          },
          "headings":{
-            "fontFamily":"Optimo-Plain, Roboto, sans-serif",
+            "fontFamily":"Optimo-Plain,Roboto,sans-serif",
             "fontWeight":"400",
             "lineHeight":"1.6em",
             "spacing":{
