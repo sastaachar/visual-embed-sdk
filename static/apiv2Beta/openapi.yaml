@@ -1,7 +1,7 @@
 ---
 openapi: 3.0.0
 servers:
-  - url: "https://<Thoughtpot-Host>"
+  - url: "https://{Thoughtpot-Host}"
     description: Request URL
 info:
   title: ThoughtSpot REST API v2 Documentation
@@ -169,16 +169,6 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/ErrorResponse"
-        x-codeSamples:
-          lang: curl
-          label: 'CURL'
-          source: |
-            curl --request GET \
-            --url 'https://{ThoughtSpot-Host}/tspublic/rest/v2/metadata/tag' \
-            -H 'Authorization: Bearer {OAUTH_TOKEN}' \
-            -H 'Accept-Language: *' \
-            -H 'Content-Type: application/json'
-            -d 'name=sales'
   "/tspublic/rest/v2/metadata/homeliveboard":
     get:
       operationId: Get home Liveboard
@@ -2699,7 +2689,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/ErrorResponse"
       x-codeSamples:
-        - lang: 'cURL'
+        - lang: cURL
           label: 'CURL'
           source: |
             curl --request POST \
