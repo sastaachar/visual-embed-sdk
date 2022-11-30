@@ -1,8 +1,8 @@
 ---
 openapi: 3.0.0
 servers:
-- url:  
-  default: https://try-everywhere.thoughtspot.cloud
+- url: https://try-everywhere.thoughtspot.cloud
+  default: https://localhost:443
 info:
   title: ThoughtSpot REST API v2 Documentation
   version: Beta
