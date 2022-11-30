@@ -32,6 +32,8 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/ErrorResponse"
+      x-codeSamples:
+        lang: curl
   "/tspublic/rest/v2/user":
     get:
       operationId: Get user
@@ -67,6 +69,8 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/ErrorResponse"
+      x-codeSamples:
+          lang: curl
   "/tspublic/rest/v2/group":
     get:
       operationId: Get group
@@ -171,6 +175,8 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/ErrorResponse"
+      x-codeSamples:
+        lang: curl
   "/tspublic/rest/v2/metadata/header/search":
     post:
       operationId: Search object header
