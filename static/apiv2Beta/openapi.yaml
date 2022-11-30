@@ -2699,18 +2699,18 @@ paths:
               schema:
                 "$ref": "#/components/schemas/ErrorResponse"
       x-codeSamples:
-        lang: 'cURL'
-        label: 'CURL'
-        source: |
-          curl --request POST \
-          --url 'https://{ThoughtSpot-Host}/tspublic/rest/v2/metadata/tag/create' \
-          -H 'Authorization: Bearer {OAUTH_TOKEN}' \
-          -H 'Accept-Language: *' \
-          -H 'Content-Type: application/json' \
-          --data-raw '{
-          "name": "Accounting",
-          "color": "#FCC838"
-          }'
+        - lang: 'cURL'
+          label: 'CURL'
+          source: |
+            curl --request POST \
+            --url 'https://{ThoughtSpot-Host}/tspublic/rest/v2/metadata/tag/create' \
+            -H 'Authorization: Bearer {OAUTH_TOKEN}' \
+            -H 'Accept-Language: *' \
+            -H 'Content-Type: application/json' \
+            --data-raw '{
+            "name": "Accounting",
+            "color": "#FCC838"
+            }'
   "/tspublic/rest/v2/metadata/tag/update":
     put:
       operationId: Update tag
