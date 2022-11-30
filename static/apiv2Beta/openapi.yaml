@@ -173,7 +173,7 @@ paths:
           lang: curl
           label: 'CURL'
           source: |
-            curl --request POST \
+            curl --request GET \
             --url 'https://{ThoughtSpot-Host}/tspublic/rest/v2/metadata/tag' \
             -H 'Authorization: Bearer {OAUTH_TOKEN}' \
             -H 'Accept-Language: *' \
@@ -2699,7 +2699,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/ErrorResponse"
       x-codeSamples:
-        lang: curl
+        lang: 'cURL'
         label: 'CURL'
         source: |
           curl --request POST \
