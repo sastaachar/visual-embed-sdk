@@ -2710,7 +2710,7 @@ paths:
           --data-raw '{
           "name": "Accounting",
           "color": "#FCC838"
-          }'                
+          }'
   "/tspublic/rest/v2/metadata/tag/update":
     put:
       operationId: Update tag
