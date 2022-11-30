@@ -1,5 +1,8 @@
 ---
 openapi: 3.0.0
+servers:
+  - url: //<ThoughtSpot_Host>/
+  - url: //try-everywhere.thoughtspot.cloud/
 info:
   title: ThoughtSpot REST API v2 Documentation
   version: Beta
@@ -32,8 +35,6 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/ErrorResponse"
-      x-codeSamples:
-        lang: curl
   "/tspublic/rest/v2/user":
     get:
       operationId: Get user
@@ -69,8 +70,6 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/ErrorResponse"
-      x-codeSamples:
-          lang: curl
   "/tspublic/rest/v2/group":
     get:
       operationId: Get group
@@ -175,8 +174,6 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/ErrorResponse"
-      x-codeSamples:
-        lang: curl
   "/tspublic/rest/v2/metadata/header/search":
     post:
       operationId: Search object header
