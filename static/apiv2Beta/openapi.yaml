@@ -1,7 +1,10 @@
 ---
 openapi: 3.0.0
 servers:
-- url: "https://try-everywhere.thoughtspot.cloud"
+  - url: "https://<Thoughtpot-Host>"
+    description: Default server
+  - url: "https://try-everywhere.thoughtspot.cloud"
+    description: Sandbox server
 info:
   title: ThoughtSpot REST API v2 Documentation
   version: Beta
