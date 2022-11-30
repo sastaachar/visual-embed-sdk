@@ -1,7 +1,7 @@
 ---
 openapi: 3.0.0
 servers:
-  - url: "https://{Thoughtpot-Host}"
+  - url: "https://try-everywhere.thoughtspot.cloud"
     description: Request URL
 info:
   title: ThoughtSpot REST API v2 Documentation
@@ -40,7 +40,7 @@ paths:
         label: 'CURL'
         source: |
           curl --request POST \
-          --url 'https://{ThoughtSpot-Host}/tspublic/rest/v2/session' \
+          --url 'https://try-everywhere.thoughtspot.cloud/tspublic/rest/v2/session' \
           -H 'Authorization: Bearer {OAUTH_TOKEN}' \
           -H 'Accept-Language: *' \
           -H 'Content-Type: application/json'
@@ -85,7 +85,7 @@ paths:
         label: 'CURL'
         source: |
           curl --request POST \
-          --url 'https://{ThoughtSpot-Host}/tspublic/rest/v2/user' \
+          --url 'https://try-everywhere.thoughtspot.cloud/tspublic/rest/v2/user' \
           -H 'Authorization: Bearer {OAUTH_TOKEN}' \
           -H 'Accept-Language: *' \
           -H 'Content-Type: application/json'
@@ -129,8 +129,8 @@ paths:
         lang: curl
         label: 'CURL'
         source: |
-          curl --request POST \
-          --url 'https://{ThoughtSpot-Host}/tspublic/rest/v2/group' \
+          curl --request GET \
+          --url 'https://try-everywhere.thoughtspot.cloud/tspublic/rest/v2/group' \
           -H 'Authorization: Bearer {OAUTH_TOKEN}' \
           -H 'Accept-Language: *' \
           -H 'Content-Type: application/json'
