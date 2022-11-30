@@ -1,10 +1,9 @@
 ---
 openapi: 3.0.0
 servers:
-- url: "{base-url}" 
-  variables:
-    base-url: https://<ThoughtSpot-Host>/
-      default: //try-everywhere.thoughtspot.cloud/
+- url:    
+  default: //<ThoughtSpot-Host>/
+  sandbox: //try-everywhere.thoughtspot.cloud/
 info:
   title: ThoughtSpot REST API v2 Documentation
   version: Beta
