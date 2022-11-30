@@ -3,7 +3,7 @@ openapi: 3.0.0
 servers:
 - url: "{base-url}"
   variables:
-    base-url: https://<ThoughtSpot-Host>
+    base-url: https://try-everywhere.thoughtspot.cloud
 info:
   title: ThoughtSpot REST API v2 Documentation
   version: Beta
