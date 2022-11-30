@@ -1,7 +1,6 @@
 ---
 openapi: 3.0.0
 servers:
-  - url: //<ThoughtSpot_Host>/
   - url: //try-everywhere.thoughtspot.cloud/
 info:
   title: ThoughtSpot REST API v2 Documentation
@@ -5790,3 +5789,4 @@ components:
           items:
             "$ref": "#/components/schemas/TableColumns"
           description: List of columns in the table
+          
