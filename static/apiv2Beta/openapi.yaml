@@ -35,6 +35,19 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/ErrorResponse"
+<<<<<<< HEAD
+=======
+      x-codeSamples:
+        lang: curl
+        label: 'CURL'
+        source: |
+          curl --request POST \
+          --url 'https://{ThoughtSpot-Host}/tspublic/rest/v2/session' \
+          -H 'Authorization: Bearer {OAUTH_TOKEN}' \
+          -H 'Accept-Language: *' \
+          -H 'Content-Type: application/json'
+
+>>>>>>> 19202683... code sample test
   "/tspublic/rest/v2/user":
     get:
       operationId: Get user
@@ -70,6 +83,19 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/ErrorResponse"
+<<<<<<< HEAD
+=======
+      x-codeSamples:
+        lang: curl
+        label: 'CURL'
+        source: |
+          curl --request POST \
+          --url 'https://{ThoughtSpot-Host}/tspublic/rest/v2/user' \
+          -H 'Authorization: Bearer {OAUTH_TOKEN}' \
+          -H 'Accept-Language: *' \
+          -H 'Content-Type: application/json'
+          -d 'name=tsadmin'
+>>>>>>> 19202683... code sample test
   "/tspublic/rest/v2/group":
     get:
       operationId: Get group
@@ -105,6 +131,16 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/ErrorResponse"
+      x-codeSamples:
+        lang: curl
+        label: 'CURL'
+        source: |
+          curl --request POST \
+          --url 'https://{ThoughtSpot-Host}/tspublic/rest/v2/group' \
+          -H 'Authorization: Bearer {OAUTH_TOKEN}' \
+          -H 'Accept-Language: *' \
+          -H 'Content-Type: application/json'
+          -d 'name=administrator'
   "/tspublic/rest/v2/metadata/tag":
     get:
       operationId: Get tag
