@@ -1,5 +1,6 @@
 ---
 openapi: 3.0.0
+servers:
 - url: "{base-url}" 
   variables:
     base-url: https://<ThoughtSpot-Host>/
