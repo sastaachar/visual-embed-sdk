@@ -2,7 +2,9 @@
 openapi: 3.0.0
 servers:
   - url: //<ThoughtSpot_Host>/
+  description: Default
   - url: //try-everywhere.thoughtspot.cloud/
+  description: Sandbox server
 info:
   title: ThoughtSpot REST API v2 Documentation
   version: Beta
@@ -5790,8 +5792,3 @@ components:
           items:
             "$ref": "#/components/schemas/TableColumns"
           description: List of columns in the table
-servers:
-- url: "{base-url}"
-  variables:
-    base-url:
-      default: https://localhost:443
