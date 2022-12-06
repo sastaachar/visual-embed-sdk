@@ -12,7 +12,7 @@ This page provides information about new features, enhancements, and deprecated 
 
 === Improvements to authentication methods and AuthType enums in the SDK
 
-The upcoming release introduces the following changes to the authentication framework in the Visual Embed SDK.
+The following changes are introduced in the Visual Embed SDK to improve the authentication framework and options for embedded application users:
 
 * New auth type enum for embedded SSO authentication
 +
@@ -31,7 +31,7 @@ Starting from 8.9.0.cl, the xref:session-api.adoc#session-authToken[/tspublic/v1
 
 === Advanced style customization [beta betaBackground]^Beta^
 
-In the upcoming release, ThoughtSpot allows you to override style specifications of the embedded UI pages and elements with custom CSS. Custom CSS provides granular control over the design elements and lets you modify the properties of these elements
+ThoughtSpot now allows you to override style specifications of the embedded UI pages and elements with custom CSS. Custom CSS provides granular control over the design elements and lets you modify the properties of these elements
 to match the look and feel of your host application.
 
 To help users visualize and preview the CSS overrides, the *Visual Embed* playground will include the *Apply custom styles* checkbox, which allows you to explore the variables available for customization.
