@@ -10,8 +10,8 @@ ThoughtSpot provides advanced style customization capabilities with the custom C
 
 == Before you begin
 
-* See xref:style-customization.adoc#_scope_of_customization[Scope of customization] to understand feature limitations. For best results, you can combine the customization settings in the UI and custom CSS. However,
-note that CSS overrides take precedence over the style customization settings configured in the UI.
+* Identify the UI elements you want to customize.
+* For best results, you can combine the customization settings in the UI and custom CSS. However, note that CSS overrides take precedence over the style customization settings configured in the UI. For more information, see  xref:style-customization.adoc#_scope_of_customization[Scope of customization].
 * Try it out in the Playground.
 The *Visual Embed* Playground now includes the *Apply Styles* checkbox, using which you can try out the variables and rules. +
 To preview the CSS settings:
@@ -96,9 +96,10 @@ init({
 });
 ----
 +
-. If required, add a custom font:
+
+. If custom fonts are required, import fonts.
 +
-The following example shows how to add a custom font and apply the font to a variable in the CSS file:
+The following example shows how to add a custom font in the CSS file:
 
 +
 [source,CSS]
@@ -112,7 +113,7 @@ The following example shows how to add a custom font and apply the font to a var
     }
 ----
 +
-The following example shows how to add a custom font and apply styles to variables in the `customCSS` object:
+The following example shows how to add a custom font and apply font styles to variables in the `customCSS` object:
 
 +
 [source,javascript]
@@ -152,8 +153,7 @@ The following example shows the supported variables:
 |Variable|UI element/area|  Description
 |`--ts-var-root-background`|Application pages|Application-wide setting +
 
-Background color of the application page
-The color code setting applies to all pages in the app.
+Background color of the Liveboard, visualization, Search, and answer pages.
 |`--ts-var-root-color`|Text on application pages| Application-wide setting +
 
 Color of the text on application pages +
@@ -177,7 +177,7 @@ Border-radius of main buttons. For example, the *Search data* button in the top 
 Border-radius of small buttons such as secondary buttons. For example, share and favorite buttons.
 |`--ts-var-button--primary-color`|Primary buttons|Element-level setting +
 
-Font color of the text on primary buttons. For example, the *Go* button on the search bar that appears on clicking Search data, the primary action buttons on  Liveboard, answer, data workspace, SpotIQ, or Home page.
+Font color of the text on primary buttons. For example, the primary buttons on *Liveboard*, answer, *Data* workspace, *SpotIQ*, or *Home* page.
 |`--ts-var-button--primary--font-family`|Primary buttons|Element-level setting +
 
 Font family specification for the text on primary buttons.
@@ -201,7 +201,7 @@ Background color of the secondary action buttons.
 Background color of the secondary action button when a pointer hovers over these buttons.
 |`--ts-var-button--tertiary-color`|Tertiary button|Element-level setting +
 
-Font color of the tertiary button. For example, the *Undo*, *Redo*, and *Reset* buttons on the search results page.
+Font color of the tertiary button. For example, the *Undo*, *Redo*, and *Reset* buttons on the Search page.
 |`--ts-var-button--tertiary-background`|Tertiary button|Element-level setting +
 
 Background color of the tertiary button.
