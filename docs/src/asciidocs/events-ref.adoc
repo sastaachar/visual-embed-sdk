@@ -477,12 +477,12 @@ The following example shows how to register an event handler to trigger an event
 ----
 liveboardEmbed.trigger(HostEvent.UpdateRuntimeFilters, [{
 columnName: "state",
-operator: "EQ",
+operator: RuntimeFilterOp.EQ,
 values: ["michigan"]
 },
 {
 columnName: "item type",
-operator: "EQ",
+operator: RuntimeFilterOp.EQ,
 values: ["Jackets"]
 }
 ])

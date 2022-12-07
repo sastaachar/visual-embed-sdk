@@ -286,7 +286,7 @@ export type MessageOptions = {
 export type MessageCallback = (
     /* payload: Message payload contain type, data and status */
     payload: MessagePayload,
-    /* responder: Messsage callback function triggered when embed event initiated */
+    /* responder: Message callback function triggered when embed event initiated */
     responder?: (data: any) => void,
 ) => void;
 /**
@@ -754,8 +754,8 @@ export enum HostEvent {
      * @param - {@link RuntimeFilter}[] an array of {@link RuntimeFilter} Types.
      * @example
      * liveboardEmbed.trigger(HostEvent.UpdateRuntimeFilters, [
-     * {columnName: "state",operator: "EQ",values: ["michigan"]},
-     * {columnName: "item type",operator: "EQ",values: ["Jackets"]}
+     * {columnName: "state",operator: RuntimeFilterOp.EQ,values: ["michigan"]},
+     * {columnName: "item type",operator: RuntimeFilterOp.EQ,values: ["Jackets"]}
      * ])
      * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1-sw
      */
@@ -890,7 +890,7 @@ export enum HostEvent {
     /**
      * Get TML for the current search.
      * @example searchEmbed.trigger(HostEvent.GetTML)
-     * @version SDK: 1.18.0 | ThoughtSpot: 8.10.0.cl
+     * @version SDK: 1.18.0 | ThoughtSpot: 8.10.0.cl, 9.0.1-sw
      */
     GetTML = 'getTML',
     /**
@@ -898,7 +898,7 @@ export enum HostEvent {
      * @example
      * liveboardEmbed.trigger(HostEvent.Share)
      * searchEmbed.trigger(HostEvent.Share)
-     * @version SDK: 1.18.0 | Thoughtspot: 9.0.0.cl
+     * @version SDK: 1.19.0 | Thoughtspot: 9.0.0.cl, 9.0.1-sw
      */
     Share = 'share',
     /**
@@ -906,7 +906,7 @@ export enum HostEvent {
      * @example
      * liveboardEmbed.trigger(HostEvent.Save)
      * searchEmbed.trigger(HostEvent.Save)
-     * @version SDK: 1.18.0 | Thoughtspot: 9.0.0.cl
+     * @version SDK: 1.19.0 | Thoughtspot: 9.0.0.cl, 9.0.1-sw
      */
     Save = 'save',
 }
