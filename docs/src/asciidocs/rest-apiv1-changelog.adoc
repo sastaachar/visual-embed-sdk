@@ -10,16 +10,22 @@ This changelog lists only the changes introduced in REST API v1. For a complete 
 
 == Version 8.10.0.cl, Coming soon
 
+The 8.10.0.cl release version introduces the following features and enhancements:
+
+TML Import API::
+The `/tspublic/v1/metadata/tml/import` endpoint supports re-using GUIDs for new objects created during the import if the `guid` in the imported TML is not being used by any other object on the server.
+
+APIs for Orgs::
 The upcoming release introduces new REST v1 API endpoints and object properties on clusters that have the Orgs [beta betaBackground]^Beta^ feature enabled.
 
-Org API endpoints::
+Org API endpoints;;
 For multi-tenant clusters with Orgs, ThoughtSpot provides new endpoints to allow CRUD operations on Org objects.
 
 ////
 +
 For more information, see xref:org-api.adoc[Org API] and xref:org-manage-api.adoc[Org administration and management via REST API].
 ////
-Session API endpoints::
+Session API endpoints;;
 If the Orgs feature is enabled on your cluster and Orgs are created, the cluster administrators can use the `/tspublic/v1/session/orgs` to Switch between Orgs.
 
 +
@@ -34,7 +40,7 @@ xref:session-api#orgSwitch[Switch between Orgs].
 xref:session-api.adoc#session-authToken[to create a user just-in-time and dynamically assign Orgs, groups, and privileges to the user].
 ////
 
-Mapping Orgs to users and groups::
+Mapping Orgs to users and groups;;
 On multi-tenant clusters with Orgs, the `user` and `group` API endpoints allow assigning users and groups to an Org object.
 
 ////
