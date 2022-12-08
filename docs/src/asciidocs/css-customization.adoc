@@ -282,7 +282,7 @@ image::./images/custom-css-viz.png[CSS customization Liveboard page]
   /* Application-wide button design for smaller buttons. For example, buttons with share and favorite icons*/
   --ts-var-button--icon-border-radius: 5px;
 
-  /* Primary buttons: For example, the Go button in the search bar, the Pin and Save buttons on the search results page */
+  /* Primary buttons: For example, the Go button in the search bar, the Pin and Save buttons on the Search page */
   --ts-var-button--primary-color: #ffffff;
   --ts-var-button--primary-background: #2770EF;
   --ts-var-button--primary--hover-background: #1D232F;
