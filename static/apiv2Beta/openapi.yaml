@@ -19,17 +19,17 @@ info:
     and the allowed and default values for attributes.
     On the right panel, you can also view the data structure of the request and response.
 
-    # Request and response
+    ## Request and response format
     For APIs that require data payload in the request body, you can find the request body sample on the right panel.
     You can copy the sample and replace it with actual values before passing the parameters in the request body.
     If GET requests allow query and path parameters in the request URL,
     make sure to add the correct query and path parameters.
 
-    # Errors
+    ## Errors
     The REST API v2 framework uses standard HTTP response codes to indicate the success or failure of a request.
     The 200 response code indicates a successful request, whereas the 500 and 4xx response codes indicate an error.
 
-    # Authentication
+    ## Authentication
     All API requests to REST API v2 beta endpoints must include the Bearer token in the Authorization header.
     The token is generated for the logged-in user and is valid for 24 hours.
     To generate a new token, use the "/tspublic/rest/v2/session/gettoken endpoint".
