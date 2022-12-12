@@ -12,6 +12,12 @@ info:
     altText: "ThoughtSpot Logo"
   description: |
     This document provides information about the REST API v2(Beta) endpoints, request and response workflows.
+
+    "*Note*:" The REST API v2 Beta endpoints will be deprecated from 9.0.0.cl onwards. For more information,
+    see <a href="https://developers.thoughtspot.com/docs/?pageid=deprecated-features" target="_blank">
+    ThoughtSpot Developer documentation</a>.
+
+    # Overview
     On the left pane, you can find a catalog of REST API v2(Beta) API endpoints, grouped based on the objects they operate on.
     The middle section of the portal provides a detailed description of the endpoint, its input fields,
     and the allowed and default values for attributes.
@@ -31,11 +37,7 @@ info:
     All API requests to REST API v2 beta endpoints must include the Bearer token in the Authorization header.
     The token is generated for the logged-in user and is valid for 24 hours.
     To generate a new token, use the "/tspublic/rest/v2/session/gettoken endpoint".
-  Note: |
-    The REST API v2 Beta endpoints will be deprecated
-    from 9.0.0.cl onwards. For more information,
-    see <a href="https://developers.thoughtspot.com/docs/?pageid=deprecated-features" target="_blank">
-    ThoughtSpot Developer documentation</a>.
+
 tags: []
 paths:
   "/tspublic/rest/v2/session":
