@@ -11,16 +11,15 @@ info:
     backgroundColor: "#F5F5F5"
     altText: "ThoughtSpot Logo"
   description: |
-    This document provides information about the REST API v2(Beta) endpoints, request and response workflows.
-
-    **Note**: The REST API v2 Beta endpoints will be deprecated from 9.0.0.cl onwards. For more information,
-    see <a href="https://developers.thoughtspot.com/docs/?pageid=deprecated-features" target="_blank">
+    **Note**: The REST API v2 Beta endpoints are deprecated from 9.0.0.cl onwards and can no longer be accessed from the ThoughtSpot API Playground.
+    For more information, see <a href="https://developers.thoughtspot.com/docs/?pageid=deprecated-features" target="_blank">
     ThoughtSpot Developer documentation</a>.
 
-    # Contents
+    # Overview
+    This document provides information about the REST API v2(Beta) endpoints, request and response workflows.
     On the left pane, you can find a catalog of REST API v2(Beta) API endpoints, grouped based on the objects they operate on.
     The middle section of the portal provides a detailed description of the endpoint, its input fields,
-    and the allowed and default values for attributes.
+    and allowed values for attributes.
     On the right panel, you can view the data format of the request and response.
 
     ### Request and response format
