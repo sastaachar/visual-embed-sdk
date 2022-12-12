@@ -13,7 +13,7 @@ info:
   description: |
     This document provides information about the REST API v2(Beta) endpoints, request and response workflows.
 
-    "*Note*:" The REST API v2 Beta endpoints will be deprecated from 9.0.0.cl onwards. For more information,
+    **Note**: The REST API v2 Beta endpoints will be deprecated from 9.0.0.cl onwards. For more information,
     see <a href="https://developers.thoughtspot.com/docs/?pageid=deprecated-features" target="_blank">
     ThoughtSpot Developer documentation</a>.
 
