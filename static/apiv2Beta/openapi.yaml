@@ -17,7 +17,7 @@ info:
     see <a href="https://developers.thoughtspot.com/docs/?pageid=deprecated-features" target="_blank">
     ThoughtSpot Developer documentation</a>.
 
-    # Overview
+    ## Contents
     On the left pane, you can find a catalog of REST API v2(Beta) API endpoints, grouped based on the objects they operate on.
     The middle section of the portal provides a detailed description of the endpoint, its input fields,
     and the allowed and default values for attributes.
