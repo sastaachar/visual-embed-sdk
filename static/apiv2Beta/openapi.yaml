@@ -10,10 +10,34 @@ info:
     url: "https://raw.githubusercontent.com/thoughtspot/visual-embed-sdk/redoc-test/docs/src/assets/svg/ts-logo-black.svg"
     backgroundColor: "#F5F5F5"
     altText: "ThoughtSpot Logo"
-  description: Before constructing your API requests, browse through the documentation and view
-     the request and response format. Note that the REST API v2 Beta endpoints will be deprecated
-     from 9.0.0.cl onwards. For more information, see <a href="https://developers.thoughtspot.com/docs/?pageid=deprecated-features" target="_blank">
-     ThoughtSpot Developer documentation</a>.
+  description: |
+    This document provides information about the REST API v2(Beta) endpoints, request and response workflows.
+
+    # Overview
+    On the left pane, you can find a catalog of REST API v2(Beta) API endpoints, grouped based on the objects they operate on.
+    The middle section of the portal provides a detailed description of the endpoint, its input fields,
+    and the allowed and default values for attributes.
+    On the right panel, you can also view the data structure of the request and response.
+
+    # Request and response
+    For APIs that require data payload in the request body, you can find the request body sample on the right panel.
+    You can copy the sample and replace it with actual values before passing the parameters in the request body.
+    If GET requests allow query and path parameters in the request URL,
+    make sure to add the correct query and path parameters.
+
+    # Errors
+    The REST API v2 framework uses standard HTTP response codes to indicate the success or failure of a request.
+    The 200 response code indicates a successful request, whereas the 500 and 4xx response codes indicate an error.
+
+    # Authentication
+    All API requests to REST API v2 beta endpoints must include the Bearer token in the Authorization header.
+    The token is generated for the logged-in user and is valid for 24 hours.
+    To generate a new token, use the "/tspublic/rest/v2/session/gettoken endpoint".
+  Note: |
+    The REST API v2 Beta endpoints will be deprecated
+    from 9.0.0.cl onwards. For more information,
+    see <a href="https://developers.thoughtspot.com/docs/?pageid=deprecated-features" target="_blank">
+    ThoughtSpot Developer documentation</a>.
 tags: []
 paths:
   "/tspublic/rest/v2/session":
