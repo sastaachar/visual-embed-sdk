@@ -1,7 +1,7 @@
 ---
 openapi: 3.0.0
 servers:
-  - url: "https://<ThoughtSpot-Host>"
+  - url: "//<ThoughtSpot-Host>"
     description: Request URL
 info:
   title: ThoughtSpot REST API v2 Documentation
@@ -27,6 +27,8 @@ info:
     You can copy the sample and replace it with actual values before passing the parameters in the request body.
     If GET requests allow query and path parameters in the request URL,
     make sure to add the correct query and path parameters.
+    For example, for the GET user endpoint, the right panel shows the request URL as */tspublic/rest/v2/user*. To get details of a specific user,
+    you must pass the user GUID or name as a query parameter in your API request.
 
     ### Errors
     The REST API v2 framework uses standard HTTP response codes to indicate the success or failure of a request.
