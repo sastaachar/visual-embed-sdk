@@ -13,8 +13,13 @@ import {
     Param,
     Action,
     ViewConfig,
+    RuntimeFilter,
 } from '../types';
-import { getQueryParamString, checkReleaseVersionInBeta } from '../utils';
+import {
+    getQueryParamString,
+    checkReleaseVersionInBeta,
+    getFilterQuery,
+} from '../utils';
 import { TsEmbed } from './ts-embed';
 import { version } from '../../package.json';
 import { ERROR_MESSAGE } from '../errors';

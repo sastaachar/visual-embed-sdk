@@ -227,8 +227,33 @@ liveboardEmbed.trigger(HostEvent.getExportRequestForCurrentPinboard)
 .then(data => {
 console.log('Liveboard Data: ', data);
 })
+----
 ====
 --
+
+
+==== GetTML
+Available with `LiveboardEmbed`, `SearchEmbed`, and `AppEmbed` in V1.18.0 or later. +
+
+Gets TML of the visualization or answer object when a user on the *Show underlying data* action on a Liveboard visualization or answer. +
+
+[div divider]
+--
+.Examples
+[%collapsible]
+====
+The event trigger from a Liveboard visualization includes the `vizId` key: +
+[source,javascript]
+----
+liveboardEmbed.trigger(HostEvent.ShowUnderlyingData), {vizId: '730496d6-6903-4601-937e-2c691821af3c'})
+----
+
+----
+searchEmbed.trigger(HostEvent.ShowUnderlyingData)
+----
+====
+--
+
 
 ==== LiveboardInfo
 
@@ -1051,7 +1076,7 @@ Is emitted when a Liveboard container loads. You can use this event as a hook to
 
 [NOTE]
 ====
-The `LiveboardRendered` event is triggered when the Liveboard shell loads. The data on the Liveboard visualizations are loaded asynchronously and may not be loaded fully when the event is emitted.
+The `LiveboardRendered` event is triggered when the Liveboard container loads. The data on the Liveboard visualizations are loaded asynchronously and may not be loaded fully when the event is emitted.
 ====
 
 [div divider]
@@ -1103,7 +1128,7 @@ function hideLoader() {
 ==== NoCookieAccess
 
 Available with `SearchEmbed`, `LiveboardEmbed`,  and `AppEmbed` in `V1.2.0` or later. +
-Is emitted when third-party cookies are blocked by a user's browser. +
+Is emitted when third-party cookies are blocked by a user's browser.  +
 
 [div divider]
 --
@@ -1352,4 +1377,3 @@ appEmbed.off(EmbedEvent.AuthInit)
 * For information about common use cases and how to use events for app integration, see xref:embed-events.adoc[Events and app integration].
 * For information about triggering events on React components, see xref:embed-ts-react-app.adoc[Embed ThoughtSpot in a React app].
 * See also the link:{{visualEmbedSDKPrefix}}/enums/EmbedEvent.html[EmbedEvent, window=_blank] and link:{{visualEmbedSDKPrefix}}/enums/HostEvent.html[HostEvent, window=_blank] SDK documentation.
-

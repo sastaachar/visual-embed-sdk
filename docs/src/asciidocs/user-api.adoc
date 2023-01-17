@@ -15,6 +15,9 @@ include::{path}/user-api-list.adoc[]
 
 You must have administrator access to create, edit, and delete a user, assign users to groups, transfer objects from one user to another, and invalidate, deactivate or activate a user session.
 
+If you have a multi-tenant instance with Orgs feature enabled, the cluster admin can create a user and associate the user to an `orgid`. For more information about Orgs, see xref:orgs.adoc[Multi-tenancy with Orgs].
+
+
 [#create-user]
 == Create a user
 
@@ -33,22 +36,24 @@ POST /tspublic/v1/user/
 
 === Request parameters
 
-[width="100%" cols="1,4"]
+[width="100%" cols="1,1,4"]
 [options='header']
 |===
-|Form parameter|Description
-|`name` |__String__. Name of the user. The username string must be unique.
-|`password`|__String__. Password for the user account.
-|`displayname`|__String__. A unique display name string for the user, usually their first and last name.
-|`properties` __Optional__|__String__. A JSON map of user properties fetched from external systems such as LDAP. If you are using Active Directory to authenticate users, and your LDAP configuration requires users to be created manually, you can upload the user properties as a JSON file.
-|`groups` __Optional__|__Array of strings__. A JSON array of the GUIDs of groups to which you want to assign the user. The user privileges are determined by the group to which you assign the user. For example, if you assign the user to a group that has the `ADMINISTRATION` privilege, the user will have admin privileges.
-|`usertype` __Optional__ a|__String__. Type of user. The default value is `LOCAL_USER`, which indicates that the user is created locally in the ThoughtSpot system.
-|`tenantid` __Optional__|__String__. GUID of the tenant for which the user is being created.
-|`visibility` __Optional__|__String__. Visibility of the user. The `visibility` attribute is set to `DEFAULT` when creating a user. The `DEFAULT` attribute makes a user visible to other users and user groups, and thus allows them to share objects.
-|`triggeredbyadmin` a|__Boolean__. Indicates if the API request is initiated by a ThoughtSpot administrator or an external application. The default value is `false`. +
- When set to `true`, the `displayNameLastUpdatedBy` property is set to `ADMIN` in the API response, Else, `displayNameLastUpdatedBy` is set to `AUTO`.
+|Parameter|Type|Description
+|`name` |Form parameter|__String__. Name of the user. The username string must be unique.
+|`password`|Form parameter|__String__. Password for the user account.
+|`displayname`|Form parameter|__String__. A unique display name string for the user, usually their first and last name.
+|`properties` __Optional__|Form parameter|__String__. A JSON map of user properties fetched from external systems such as LDAP. If you are using Active Directory to authenticate users, and your LDAP configuration requires users to be created manually, you can upload the user properties as a JSON file.
+|`groups` __Optional__|Form parameter|__Array of strings__. A JSON array of the GUIDs of groups to which you want to assign the user. The user privileges are determined by the group to which you assign the user. For example, if you assign the user to a group that has the `ADMINISTRATION` privilege, the user will have admin privileges.
+|`usertype` __Optional__ a|Form parameter|__String__. Type of user. The default value is `LOCAL_USER`, which indicates that the user is created locally in the ThoughtSpot system.
+|`tenantid` __Optional__|Form parameter|__String__. GUID of the tenant for which the user is being created.
+|`visibility` __Optional__|Form parameter|__String__. Visibility of the user. The `visibility` attribute is set to `DEFAULT` when creating a user. The `DEFAULT` attribute makes a user visible to other users and user groups, and thus allows them to share objects.
+|`orgids` +
+__Optional__|Form parameter|__Integer__. A JSON array of org IDs to which you want to add the user. If `orgids` is not defined, ThoughtSpot assigns the user to an Org based on the administrator's session. For example, if the administrator sends the API request from the `Org 0` context, the user is added to `Org 0`.
+|`triggeredbyadmin` a|Form parameter|__Boolean__. Indicates if the API request is initiated by a ThoughtSpot administrator or an external application. The default value is `false`. +
+When set to `true`, the `displayNameLastUpdatedBy` property is set to `ADMIN` in the API response, Else, `displayNameLastUpdatedBy` is set to `AUTO`.
+|`orgScope` __Optional__|Query parameter|__String__. The Org scope. If you want to add the user to a specific Org, you must set the Org scope to `ALL`.
 |===
-
 === Example request
 
 .cURL
@@ -129,6 +134,9 @@ If the user is successfully created in ThoughtSpot, the API returns the user GUI
 |===
 |HTTP status code|Description
 |**200**| Successful operation
+|**400**| Invalid parameter values +
+Unauthorized user addition to an org
+|**409**| Username is not unique
 |**403**| Unauthorized request
 |**500**| Incorrect password format
 |===
@@ -157,14 +165,14 @@ PUT /tspublic/v1/user/{userid}
 ----
 
 === Request parameters
-[width="100%" cols="1,4"]
+[width="100%" cols="1,1,4"]
 [options='header']
 |===
-|Form parameter|Description
-|`userid`|__String__. GUID of the user.
-|`content`|__String__. A JSON map of strings with the user profile attributes.
-|`password` __Optional__|__String__. Password string for the user account. Use this attribute to change the password of the user account.
-|`triggeredbyadmin` a|__Boolean__. Indicates if the user update API request is initiated by the ThoughtSpot administrator or an external application. By default, the `triggeredbyadmin` flag is set to `false`. The default value is `false`. +
+|Parameter|Type|Description
+|`userid`|Form parameter|__String__. GUID of the user.
+|`content`|Form parameter|__String__. A JSON map of strings with the user profile attributes.
+|`password` __Optional__|Form parameter|__String__. Password string for the user account. Use this attribute to change the password of the user account.
+|`triggeredbyadmin` a|Form parameter|__Boolean__. Indicates if the user update API request is initiated by the ThoughtSpot administrator or an external application. By default, the `triggeredbyadmin` flag is set to `false`. The default value is `false`. +
 
 * When set to `true`, ThoughtSpot updates the `displayNameLastUpdatedBy` property to `ADMIN`. Else, the `displayNameLastUpdatedBy` property is set to `AUTO` for the specified user object.
 
@@ -172,6 +180,7 @@ PUT /tspublic/v1/user/{userid}
 ====
 Starting from 8.9.0.cl, ThoughtSpot users can update their display name on the profile setting page in the UI. If a user updates their display name, ThoughtSpot sets `displayNameLastUpdatedBy` to `USER` in the object properties.
 ====
+|`orgScope` __Optional__|Query|__String__. The Org scope. Specify `ALL` to set the Org scope to all Orgs.
 |===
 
 === Example request
@@ -328,6 +337,64 @@ Response Code
 |**204** | Successful operation
 |**400**| Invalid user ID
 |**500**| Invalid email format
+|===
+
+[#addOrg]
+== Add users to an Org
+To add one or several users to an org, send a `POST` request to the `POST /tspublic/v1/user/addtoorg` API endpoint.
+
+
+=== Resource URL
+
+----
+POST /tspublic/v1/user/addtoorg
+----
+
+=== Request parameters
+[width="100%" cols="1,4"]
+[options='header']
+|===
+|Parameter|Type|Description
+|`userids`|Form parameter|__String__. A JSON array of user GUIDs to add to the specified org.
+|`orgid`|Query parameter|__Integer__. ID of the Org object to which you want to assign the users.
+|`orgScope`|Query parameter|__String__. The Org scope. Specify `ALL` to set the Org scope to all Orgs.
+|===
+
+=== Example request
+
+.cURL
+
+[source,cURL]
+----
+curl -X POST \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--header 'Accept: application/json' \
+-d 'userids=%5B4391d676-2dd8-4248-b6db-d973811f0122%2C37539499-624a-4d3d-8f88-e9be5653c114%5D&orgid=3' \
+'http://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/addtoorg?orgScope=ALL'
+----
+
+.Request URL
+----
+https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/user/addtoorg?orgScope=ALL
+----
+
+=== Example response
+
+If the request is successful, the API returns the 204 response code:
+
+----
+Response Code
+204
+----
+
+=== Response codes
+[width="100%" cols="2,4"]
+[options='header']
+|===
+|HTTP status code|Description
+|**204** | Successful operation
+|**400**| Invalid parameter
+|**403**| Unauthorized request
 |===
 
 [#get-user-details]
@@ -661,15 +728,20 @@ To remove a user from the ThoughtSpot system, send a `DELETE` request to the `/t
 ----
 DELETE /tspublic/v1/user/{userid}
 ----
+
 === Request parameters
 
-[width="100%" cols="1,4"]
+[width="100%" cols="1,1,4"]
 [options='header']
 |===
-|Path Parameter|Description
-|`userid`|__String__. GUID of the user account to delete.
+|Parameter|Type|Description
+|`userid`|Path|__String__. GUID of the user account to delete.
+|`orgid`|Query|__Integer__. The org ID to which the user is associated. This parameter is required only if your ThoughtSpot instance has multi-tenancy enabled. +
+If you are trying to delete a user that belongs only to the Org specified in the API request, the user is deleted from the Org and ThoughtSpot system. +
+If the user belongs to multiple Orgs and you specify only one Org ID, the user is removed only from the specified Org and not from the ThoughtSpot system. +
+To remove the user from all Orgs and the ThoughtSpot system, set the `orgScope` to `ALL`.
+|`orgScope`|Query|__String__. The Org scope. Specify `ALL` to set the Org scope to all Orgs.
 |===
-
 === Example request
 
 .cURL
