@@ -875,7 +875,10 @@ export enum HostEvent {
      * Triggers the Pin action on an embedded object
      * @param - incase of Liveboard embed, takes in an object with vizId as a key
      * can be left empty for search and visualization embeds
-     * @example liveboardEmbed.trigger(HostEvent.Pin, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})
+     * @example
+     * liveboardEmbed.trigger(HostEvent.Pin, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})
+     * vizEmbed.trigger(HostEvent.Pin)
+     * searchEmbed.trigger(HostEvent.Pin)
      * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
      */
     Pin = 'pin',
@@ -922,8 +925,11 @@ export enum HostEvent {
      */
     DownloadAsPdf = 'downloadAsPdf',
     /**
-     * Triggers the Make a copy action on a Liveboard
-     * @example liveboardEmbed.trigger(HostEvent.MakeACopy)
+     * Triggers the Make a copy action on a Liveboard, search or visualization
+     * @example
+     * liveboardEmbed.trigger(HostEvent.MakeACopy, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})
+     * vizEmbed.trigger(HostEvent.MakeACopy)
+     * searchEmbed.trigger(HostEvent.MakeACopy)
      * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
      */
     MakeACopy = 'makeACopy',
@@ -991,11 +997,70 @@ export enum HostEvent {
      */
     GetTML = 'getTML',
     /**
+     * Triggers the ShowUnderlyingData action on visualization or search
+     * @param - an object with vizId as a key
+     * @example
+     * liveboardEmbed.trigger(HostEvent.ShowUnderlyingData, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})
+     * vizEmbed.trigger(HostEvent.ShowUnderlyingData)
+     * searchEmbed.trigger(HostEvent.ShowUnderlyingData)
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
+     */
+    ShowUnderlyingData = 'showUnderlyingData',
+    /**
+     * Triggers the Delete action on visualization or search
+     * @param - incase of Liveboard embed, takes in an object with vizId as a key
+     * can be left empty for search and visualization embeds
+     * @example
+     * liveboardEmbed.trigger(HostEvent.Delete, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})
+     * vizEmbed.trigger(HostEvent.Delete)
+     * searchEmbed.trigger(HostEvent.Delete)
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
+     */
+    Delete = 'delete',
+    /**
+     * Triggers the SpotIQAnalyze action on visualization or search
+     * @param - incase of Liveboard embed, takes in an object with vizId as a key
+     * can be left empty for search and visualization embeds
+     * @example
+     * liveboardEmbed.trigger(HostEvent.SpotIQAnalyze, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})
+     * vizEmbed.trigger(HostEvent.SpotIQAnalyze)
+     * searchEmbed.trigger(HostEvent.SpotIQAnalyze)
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
+     */
+    SpotIQAnalyze = 'spotIQAnalyze',
+    /**
+     * Triggers the Download action on visualization or search when Displaymode is Chart
+     * @example
+     * liveboardEmbed.trigger(HostEvent.Download, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})
+     * vizEmbed.trigger(HostEvent.Download)
+     * searchEmbed.trigger(HostEvent.Download)
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
+     */
+    Download = 'download',
+    /**
+     * Triggers the downloadAsCSV action on visualization or search when Displaymode is Table
+     * @example
+     * liveboardEmbed.trigger(HostEvent.DownloadAsCsv, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})
+     * vizEmbed.trigger(HostEvent.DownloadAsCsv)
+     * searchEmbed.trigger(HostEvent.DownloadAsCsv)
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
+     */
+    DownloadAsCsv = 'downloadAsCSV',
+    /**
+     * Triggers the downloadAsXLSX action on visualization or search when Displaymode is Table
+     * @example
+     * liveboardEmbed.trigger(HostEvent.DownloadAsXlsx, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})
+     * vizEmbed.trigger(HostEvent.DownloadAsXlsx)
+     * searchEmbed.trigger(HostEvent.DownloadAsXlsx)
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
+     */
+    DownloadAsXlsx = 'downloadAsXLSX',
+    /**
      * Triggers the Share action on a liveboard or answer
      * @example
      * liveboardEmbed.trigger(HostEvent.Share)
      * searchEmbed.trigger(HostEvent.Share)
-     * @version SDK: 1.19.0 | Thoughtspot: 9.0.0.cl, 9.0.1-sw
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
      */
     Share = 'share',
     /**
@@ -1003,9 +1068,36 @@ export enum HostEvent {
      * @example
      * liveboardEmbed.trigger(HostEvent.Save)
      * searchEmbed.trigger(HostEvent.Save)
-     * @version SDK: 1.19.0 | Thoughtspot: 9.0.0.cl, 9.0.1-sw
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
      */
     Save = 'save',
+    /**
+     * Triggers the SyncToSheets action on visualization
+     * @param - an object with vizId as a key
+     * @example
+     * liveboardEmbed.trigger(HostEvent.SyncToSheets, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})
+     * vizEmbed.trigger(HostEvent.SyncToSheets)
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
+     */
+    SyncToSheets = 'sync-to-sheets',
+    /**
+     * Triggers the SyncToOtherApps action on visualization
+     * @param - an object with vizId as a key
+     * @example
+     * liveboardEmbed.trigger(HostEvent.SyncToOtherApps, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})
+     * vizEmbed.trigger(HostEvent.SyncToOtherApps)
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
+     */
+    SyncToOtherApps = 'sync-to-other-apps',
+    /**
+     * Triggers the ManagePipelines action on visualization
+     * @param - an object with vizId as a key
+     * @example
+     * liveboardEmbed.trigger(HostEvent.ManagePipelines, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})
+     * vizEmbed.trigger(HostEvent.ManagePipelines)
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
+     */
+    ManagePipelines = 'manage-pipeline',
 }
 
 /**

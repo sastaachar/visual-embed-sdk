@@ -27,7 +27,7 @@ export interface SearchBarViewConfig
  * Embed ThoughtSpot search bar
  *
  * @Category Search Embed
- * @version: SDK: 1.17.0 | ThoughtSpot 8.10.0.cl, 9.0.1-sw
+ * @version: SDK: 1.18.0 | ThoughtSpot: 8.10.0.cl, 9.0.1-sw
  */
 export class SearchBarEmbed extends TsEmbed {
     /**
