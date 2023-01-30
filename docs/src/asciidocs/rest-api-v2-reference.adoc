@@ -322,7 +322,7 @@ Transfers the ownership of objects from one user to another.
 
 `*PUT* /tspublic/rest/v2/admin/assignauthor`
 
-Assigns ownership to one or several objects to a specific user.
+Assigns ownership of objects to a specific user.
 
 ++++
 <a href="{{previewPrefix}}/api/rest/playgroundV2?apiResourceId=/http/api-endpoints/admin/assign-author-to-objects" id="preview-in-playground" target="_blank">View in Playground</a>
@@ -731,7 +731,7 @@ Downloads answer data in the specified file format, such as PDF, CSV, PNG, and X
 
 `**POST** /tspublic/rest/v2/report/liveboard`
 
-Downloads a given Liveboard and its visualizations as a PDF, CSV, XLSX, or PNF file.
+Downloads a given Liveboard and its visualizations as a PDF, CSV, XLSX, or PNG file.
 
 ++++
 <a href="{{previewPrefix}}/api/rest/playgroundV2?apiResourceId=/http/api-endpoints/report/liveboard-report" id="preview-in-playground" target="_blank">View in Playground</a>
