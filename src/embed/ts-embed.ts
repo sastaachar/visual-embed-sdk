@@ -296,6 +296,7 @@ export class TsEmbed {
             additionalFlags,
             locale,
             customizations,
+            linkOverrideFlag,
         } = this.viewConfig;
 
         if (Array.isArray(visibleActions) && Array.isArray(hiddenActions)) {
@@ -332,6 +333,9 @@ export class TsEmbed {
         }
         if (locale !== undefined) {
             queryParams[Param.Locale] = locale;
+        }
+        if (linkOverrideFlag){
+            queryParams[Param.LinkOverrideFlag]=linkOverrideFlag;
         }
         if (additionalFlags && additionalFlags.constructor.name === 'Object') {
             Object.assign(queryParams, additionalFlags);

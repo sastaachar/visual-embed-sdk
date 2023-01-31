@@ -300,6 +300,10 @@ export interface ViewConfig {
     /**
      * @hidden
      */
+    linkOverrideFlag?: boolean;
+    /**
+     * @hidden
+     */
     layoutConfig?: LayoutConfig;
     /**
      * The <b>width</b> and <b>height</b> dimensions to render an embedded object inside your app.  Specify the values in pixels or percentage.
@@ -1170,6 +1174,7 @@ export enum Param {
     ForceSAMLAutoRedirect = 'forceSAMLAutoRedirect',
     // eslint-disable-next-line @typescript-eslint/no-shadow
     AuthType = 'authType',
+    LinkOverrideFlag = 'linkOverrideFlag',
 }
 
 /**
