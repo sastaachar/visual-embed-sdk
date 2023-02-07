@@ -13,6 +13,7 @@ The new Liveboard experience in ThoughtSpot includes several new features and us
 The new Liveboard experience is Generally Available (GA) on embedded instances starting from 9.0.0.cl.
 ====
 
+
 == Enable new Liveboard experience for all users
 
 You can enable the new Liveboard experience using one of the following options:

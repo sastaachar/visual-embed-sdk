@@ -42,11 +42,13 @@ For more information, see xref:rest-api-v2-reference.adoc[REST API v2 reference]
 
 === New Liveboard experience
 
-The new Liveboard experience is GA on embedded instances and is enabled by default.
+The new Liveboard experience is now Generally Available (GA) on embedded instances and is enabled by default.
 
+////
 === GraphQL Playground[beta betaBackground]^Beta^
 
 In 9.0.0.cl, the *Develop* tab in ThoughtSpot UI introduces a GraphQL playground to explore the REST API v2.0 operations and try out GrpahQL queries and mutations.
+////
 
 === Early access features
 
