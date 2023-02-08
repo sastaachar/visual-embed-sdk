@@ -31,6 +31,10 @@ We recommend using a development environment to test your customizations before 
 
 == Version 9.0.0.cl, Coming soon
 
+=== New Liveboard experience
+
+The xref:enable-liveboardv2.adoc[new Liveboard experience] is now Generally Available (GA) on embedded instances and is enabled by default. 
+
 === CSS variables for custom styling
 
 The CSS customization feature supports new variables to customize the look and feel of the following UI elements:
@@ -45,25 +49,23 @@ For more information, see xref:css-customization.adoc[Customize CSS].
 
 === REST API v2 endpoints and Playground
 
-Starting with 9.0.0.cl, the REST API v2[beta betaBackground]^Beta^ API endpoints are deprecated and removed from the REST API v2 Playground. The REST API v2.0 API Playground will include a set of new endpoints that will be generally available (GA) on all ThoughtSpot instances.
+Starting with 9.0.0.cl, the REST API v2 [beta betaBackground]^Beta^ API endpoints are deprecated and removed from the REST API v2 Playground. A set of new endpoints are now generally available (GA) on all ThoughtSpot instances.
 
-The REST API v2.0 endpoints introduce several improvements to the request and response structure and let you perform more tasks in a single API call. For example, you can create a new user, map the user to groups and Orgs, set home Liveboards for the user, and assign privileges in a single API request.
+The new REST API v2.0 endpoints introduce several improvements to the request and response structure and let you perform more tasks in a single API call. For example, you can create a new user, map the user to groups and Orgs, set home Liveboards for the user, and assign privileges in a single API request.
 
 [IMPORTANT]
 ====
-* All REST API v2 [beta betaBackground]^Beta^ endpoints are deprecated. For more information, see xref:deprecated-features.adoc#_deprecation_of_rest_v2_api[Deprecation announcements].
-* No new endpoint collections or resources will be introduced in the REST API v2 [beta betaBackground]^Beta^ framework.
-* The new REST v2.0 API endpoints are not an extension of the REST API v2 [beta betaBackground]^Beta^ endpoints. The resource categories, base path, and endpoint URIs are not the same as those of the REST API v2 [beta betaBackground]^Beta^ version.
-* Some API operations for data connections, Liveboard schedules, and Orgs are not available in the initial release.
+* The new REST API v2.0 endpoints are not an extension of the REST API v2 [beta betaBackground]^Beta^ endpoints. The resource categories, base path, endpoint URIs, and the structure of API requests and responses are different from those of the REST API v2 [beta betaBackground]^Beta^ version.
+* Some API operations such as the CRUD operations for data connections and passing runtime filters on Liveboard visualizations are not available in the initial release of REST API v2.0. 
 
 ////
-For more information, see xref:rest-api-v2-reference.adoc[REST API v2 reference].
+For more information, see xref:rest-api-v1v2-comparison.adoc[REST API v1 and v2.0 comparison] and xref:rest-api-v2-reference.adoc[REST API v2.0 reference].
 ////
+
+* For Org CRUD operations in production environments, ThoughtSpot recommends using xref:org-manage-api.adoc[REST API v1 endpoints].
+* All REST API v2 [beta betaBackground]^Beta^ endpoints are deprecated, but remain functional until further notice. The REST API SDK that was available with REST API v2 [beta betaBackground]^Beta^ version is no longer supported. +
+ThoughtSpot does not recommend using REST API v2 [beta betaBackground]^Beta^ endpoints for production use cases. For more information, see xref:deprecated-features.adoc#_deprecation_of_rest_v2_api[Deprecation announcements].
 ====
-
-=== New Liveboard experience
-
-The new Liveboard experience is now Generally Available (GA) on embedded instances and is enabled by default.
 
 ////
 === GraphQL Playground[beta betaBackground]^Beta^
