@@ -369,6 +369,10 @@ export interface ViewConfig {
      */
     customizations?: CustomisationsInterface;
     /**
+     * Insert as a sibling of the target container, instead of appending to a child inside it.
+     */
+    insertAsSibling?: boolean;
+    /**
      * If set to true, search page will render without the Search Bar
      * The chart/table should still be visible.
      * @version SDK: 1.18.1 | ThoughtSpot: 9.2.0.cl
