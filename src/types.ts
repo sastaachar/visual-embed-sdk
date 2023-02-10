@@ -368,6 +368,12 @@ export interface ViewConfig {
      * @default ''
      */
     customizations?: CustomisationsInterface;
+    /**
+     * If set to true, search page will render without the Search Bar
+     * The chart/table should still be visible.
+     * @version SDK: 1.18.1 | ThoughtSpot: 9.2.0.cl
+     */
+    contextMenuTrigger?: ContextMenuTriggerOptions;
 }
 
 /**
@@ -1147,7 +1153,7 @@ export enum HostEvent {
      * Triggers the Reset search in answer
      * @example
      * searchEmbed.trigger(HostEvent.SearchReset
-     * @version SDK: 1.19.0 | ThoughtSpot: 9.2.0.cl, 9.0.1-sw
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
     ResetSearch = 'resetSearch',
 }
@@ -1214,6 +1220,7 @@ export enum Param {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     AuthType = 'authType',
     IconSpriteUrl = 'iconSprite',
+    ContextMenuTrigger = 'isContextMenuEnabledOnLeftClick',
 }
 
 /**
@@ -1394,4 +1401,9 @@ export enum PrefetchFeatures {
     SearchEmbed = 'SearchEmbed',
     LiveboardEmbed = 'LiveboardEmbed',
     VizEmbed = 'VizEmbed',
+}
+
+export enum ContextMenuTriggerOptions {
+    LEFT_CLICK = 'left-click',
+    RIGHT_CLICK = 'right-click',
 }
