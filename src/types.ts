@@ -92,8 +92,10 @@ interface CustomStyles {
 export interface CustomisationsInterface {
     style?: CustomStyles;
     content?: {
-        [key: string]: string;
+        strings?: Record<string, any>;
+        [key: string]: any;
     };
+    iconSpriteUrl?: string;
 }
 
 /**
@@ -367,6 +369,15 @@ export interface ViewConfig {
      * @default ''
      */
     customizations?: CustomisationsInterface;
+    /**
+     * Insert as a sibling of the target container, instead of appending to a child inside it.
+     */
+    insertAsSibling?: boolean;
+    /**
+     * flag to set ContextMenu Trigger to either left or right click.
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
+     */
+    contextMenuTrigger?: ContextMenuTriggerOptions;
 }
 
 /**
@@ -801,6 +812,16 @@ export enum EmbedEvent {
      * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
      */
     CopyLink = 'embedDocument',
+    /**
+     * Emitted when a user interacts with cross filters on a visualization or liveboard
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
+     */
+    CrossFilterChanged = 'cross-filter-changed',
+    /**
+     * Emitted when a user right clicks on chart or table
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
+     */
+    VizPointRightClick = 'vizPointRightClick',
 }
 
 /**
@@ -814,7 +835,9 @@ export enum EmbedEvent {
 export enum HostEvent {
     /**
      * Trigger a search
-     * @param - dataSourceIds - The list of data source GUIDs
+     * @param - dataSourceIds - The data source GUID to Search on
+     *                        - Although an array, only a single source
+     *                          is supported at this time.
      * @param - searchQuery - The search query
      * @example
      * searchEmbed.trigger(HostEvent.Search, {
@@ -875,6 +898,28 @@ export enum HostEvent {
      * @version SDK: 1.12.0 | ThoughtSpot 8.4.0.cl, 8.4.1-sw
      */
     Navigate = 'Navigate',
+    /**
+     * Opens the filter panel for a particular column.
+     * Works with Search embed.
+     * @param - { columnId: string, name: string, type: INT64/CHAR/DATE, dataType: ATTRIBUTE/MEASURE }
+     * @example searchEmbed.trigger(HostEvent.OpenFilter, { columnId: '123', name: 'column name', type: 'INT64', dataType: 'ATTRIBUTE' })
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
+     */
+    OpenFilter = 'openFilter',
+    /**
+     * Adds the columns to the current Search.
+     * @param - { columnIds: string[] }
+     * @example searchEmbed.trigger(HostEvent.AddColumns, { columnIds: ['123', '456'] })
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
+     */
+    AddColumns = 'addColumns',
+    /**
+     * Removes a column from the current Search.
+     * @param - { columnId: string }
+     * @example - searchEmbed.trigger(HostEvent.RemoveColumn, { columnId: '123' })
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
+     */
+    RemoveColumn = 'removeColumn',
     /**
      * Gets the current pinboard content.
      * @example liveboardEmbed.trigger(HostEvent.getExportRequestForCurrentPinboard)
@@ -1108,6 +1153,13 @@ export enum HostEvent {
      * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
      */
     ManagePipelines = 'manage-pipeline',
+    /**
+     * Triggers the Reset search in answer
+     * @example
+     * searchEmbed.trigger(HostEvent.SearchReset
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.0.1-sw
+     */
+    ResetSearch = 'resetSearch',
 }
 
 /**
@@ -1171,6 +1223,8 @@ export enum Param {
     ForceSAMLAutoRedirect = 'forceSAMLAutoRedirect',
     // eslint-disable-next-line @typescript-eslint/no-shadow
     AuthType = 'authType',
+    IconSpriteUrl = 'iconSprite',
+    ContextMenuTrigger = 'isContextMenuEnabledOnLeftClick',
 }
 
 /**
@@ -1201,10 +1255,10 @@ export enum Action {
     Share = 'share',
     AddFilter = 'addFilter',
     ConfigureFilter = 'configureFilter',
-    /**
-     * @hidden
-     */
+    CollapseDataSources = 'collapseDataSources',
+    ChooseDataSources = 'chooseDataSources',
     AddFormula = 'addFormula',
+    AddParameter = 'addParameter',
     /**
      * @hidden
      */
@@ -1320,6 +1374,14 @@ export enum Action {
     SyncToSheets = 'sync-to-sheets',
     SyncToOtherApps = 'sync-to-other-apps',
     ManagePipelines = 'manage-pipeline',
+    /**
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
+     */
+    CrossFilter = 'context-menu-item-cross-filter',
+    /**
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
+     */
+    RemoveCrossFilter = 'context-menu-item-remove-cross-filter',
 }
 
 export interface SessionInterface {
@@ -1343,4 +1405,9 @@ export enum PrefetchFeatures {
     SearchEmbed = 'SearchEmbed',
     LiveboardEmbed = 'LiveboardEmbed',
     VizEmbed = 'VizEmbed',
+}
+
+export enum ContextMenuTriggerOptions {
+    LEFT_CLICK = 'left-click',
+    RIGHT_CLICK = 'right-click',
 }

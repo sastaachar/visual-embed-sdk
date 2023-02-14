@@ -37,6 +37,7 @@ import {
     MessageCallbackObj,
     ViewConfig,
     FrameParams,
+    ContextMenuTriggerOptions,
 } from '../types';
 import { uploadMixpanelEvent, MIXPANEL_EVENT } from '../mixpanel-service';
 import { processEventData } from '../utils/processData';
@@ -57,9 +58,7 @@ export const THOUGHTSPOT_PARAM_PREFIX = 'ts-';
  * We cannot rename v1 event types to maintain backward compatibility
  * @internal
  */
-const V1EventMap = {
-    [EmbedEvent.Data]: [EmbedEvent.V1Data],
-};
+const V1EventMap = {};
 
 /**
  * Base class for embedding v2 experience
@@ -298,6 +297,7 @@ export class TsEmbed {
             additionalFlags,
             locale,
             customizations,
+            contextMenuTrigger,
         } = this.viewConfig;
 
         if (Array.isArray(visibleActions) && Array.isArray(hiddenActions)) {
@@ -329,6 +329,26 @@ export class TsEmbed {
         if (Array.isArray(visibleActions)) {
             queryParams[Param.VisibleActions] = visibleActions;
         }
+
+        /** Default behavior for context menu will be left-click
+         *  from version 9.2.0.cl the user have an option to override context menu click
+         */
+        if (contextMenuTrigger === ContextMenuTriggerOptions.LEFT_CLICK) {
+            queryParams[Param.ContextMenuTrigger] = true;
+        } else if (
+            contextMenuTrigger === ContextMenuTriggerOptions.RIGHT_CLICK
+        ) {
+            queryParams[Param.ContextMenuTrigger] = false;
+        }
+
+        const spriteUrl = customizations?.iconSpriteUrl;
+        if (spriteUrl) {
+            queryParams[Param.IconSpriteUrl] = spriteUrl.replace(
+                'https://',
+                '',
+            );
+        }
+
         if (showAlerts !== undefined) {
             queryParams[Param.ShowAlerts] = showAlerts;
         }
@@ -410,7 +430,7 @@ export class TsEmbed {
             return getAuthPromise()
                 ?.then((isLoggedIn: boolean) => {
                     if (!isLoggedIn) {
-                        this.el.innerHTML = this.embedConfig.loginFailedMessage;
+                        this.insertIntoDOM(this.embedConfig.loginFailedMessage);
                         return;
                     }
 
@@ -471,8 +491,7 @@ export class TsEmbed {
                     this.iFrame.addEventListener('error', () => {
                         nextInQueue();
                     });
-                    this.el.innerHTML = '';
-                    this.el.appendChild(this.iFrame);
+                    this.insertIntoDOM(this.iFrame);
                     const prefetchIframe = document.querySelectorAll(
                         '.prefetchIframe',
                     );
@@ -487,11 +506,29 @@ export class TsEmbed {
                     nextInQueue();
                     uploadMixpanelEvent(
                         MIXPANEL_EVENT.VISUAL_SDK_RENDER_FAILED,
+                        { error: JSON.stringify(error) },
                     );
-                    this.el.innerHTML = this.embedConfig.loginFailedMessage;
+                    this.insertIntoDOM(this.embedConfig.loginFailedMessage);
                     this.handleError(error);
                 });
         });
+    }
+
+    protected insertIntoDOM(child: string | Node): void {
+        if (this.viewConfig.insertAsSibling) {
+            if (typeof child === 'string') {
+                const div = document.createElement('div');
+                div.innerHTML = child;
+                // eslint-disable-next-line no-param-reassign
+                child = div;
+            }
+            this.el.parentElement.insertBefore(child, this.el.nextSibling);
+        } else if (typeof child === 'string') {
+            this.el.innerHTML = child;
+        } else {
+            this.el.innerHTML = '';
+            this.el.appendChild(child);
+        }
     }
 
     /**
@@ -723,7 +760,7 @@ export class V1Embed extends TsEmbed {
         options: MessageOptions = { start: false },
     ): typeof TsEmbed.prototype {
         const eventType = this.getCompatibleEventType(messageType);
-
+        uploadMixpanelEvent(`${MIXPANEL_EVENT.VISUAL_SDK_ON}-${messageType}`);
         return super.on(eventType, callback, options);
     }
 }

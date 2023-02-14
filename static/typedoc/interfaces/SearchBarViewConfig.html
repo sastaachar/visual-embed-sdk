@@ -80,6 +80,9 @@
 						<a href="../enums/Action.html" class="tsd-kind-icon">Action</a>
 					</li>
 					<li class=" tsd-kind-enum">
+						<a href="../enums/AuthEvent.html" class="tsd-kind-icon">Auth<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-enum">
 						<a href="../enums/AuthFailureType.html" class="tsd-kind-icon">Auth<wbr>Failure<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-enum">
@@ -142,10 +145,16 @@
 								<a href="SearchBarViewConfig.html#customizations" class="tsd-kind-icon">customizations</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="SearchBarViewConfig.html#dataSource" class="tsd-kind-icon">data<wbr>Source</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="SearchBarViewConfig.html#dataSources" class="tsd-kind-icon">data<wbr>Sources</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="SearchBarViewConfig.html#frameParams" class="tsd-kind-icon">frame<wbr>Params</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="SearchBarViewConfig.html#insertAsSibling" class="tsd-kind-icon">insert<wbr>AsSibling</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="SearchBarViewConfig.html#locale" class="tsd-kind-icon">locale</a>
@@ -195,8 +204,10 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="SearchBarViewConfig.html#additionalFlags" class="tsd-kind-icon">additional<wbr>Flags</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="SearchBarViewConfig.html#customizations" class="tsd-kind-icon">customizations</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="SearchBarViewConfig.html#dataSource" class="tsd-kind-icon">data<wbr>Source</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="SearchBarViewConfig.html#dataSources" class="tsd-kind-icon">data<wbr>Sources</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="SearchBarViewConfig.html#frameParams" class="tsd-kind-icon">frame<wbr>Params</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="SearchBarViewConfig.html#insertAsSibling" class="tsd-kind-icon">insert<wbr>AsSibling</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="SearchBarViewConfig.html#locale" class="tsd-kind-icon">locale</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="SearchBarViewConfig.html#searchOptions" class="tsd-kind-icon">search<wbr>Options</a></li>
 							</ul>
@@ -213,7 +224,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Omit.additionalFlags</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/135b5bc0/src/types.ts#L362">types.ts:362</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3dc89a5c/src/types.ts#L363">types.ts:363</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -247,7 +258,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Omit.customizations</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/135b5bc0/src/types.ts#L369">types.ts:369</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3dc89a5c/src/types.ts#L370">types.ts:370</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -266,18 +277,44 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="dataSources" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> data<wbr>Sources</h3>
-					<div class="tsd-signature tsd-kind-icon">data<wbr>Sources<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<a name="dataSource" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> data<wbr>Source</h3>
+					<div class="tsd-signature tsd-kind-icon">data<wbr>Source<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/135b5bc0/src/embed/search-bar.tsx#L19">embed/search-bar.tsx:19</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3dc89a5c/src/embed/search-bar.tsx#L26">embed/search-bar.tsx:26</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>The array of data source GUIDs to set on load.</p>
 						</div>
+						<dl class="tsd-comment-tags">
+							<dt class="version:">version:</dt>
+							<dd><p>SDK: 1.19.0</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="dataSources" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> data<wbr>Sources</h3>
+					<div class="tsd-signature tsd-kind-icon">data<wbr>Sources<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3dc89a5c/src/embed/search-bar.tsx#L21">embed/search-bar.tsx:21</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The array of data source GUIDs to set on load.
+							Only a single dataSource supported currently.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt class="deprecated">deprecated</dt>
+							<dd><p>Use dataSource instead</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
@@ -287,12 +324,28 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Omit.frameParams</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/135b5bc0/src/types.ts#L308">types.ts:308</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3dc89a5c/src/types.ts#L309">types.ts:309</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>The <b>width</b> and <b>height</b> dimensions to render an embedded object inside your app.  Specify the values in pixels or percentage.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="insertAsSibling" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> insert<wbr>AsSibling</h3>
+					<div class="tsd-signature tsd-kind-icon">insert<wbr>AsSibling<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from Omit.insertAsSibling</p>
+						<ul>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3dc89a5c/src/types.ts#L374">types.ts:374</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Insert as a sibling of the target container, instead of appending to a child inside it.</p>
 						</div>
 					</div>
 				</section>
@@ -303,7 +356,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Omit.locale</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/135b5bc0/src/types.ts#L352">types.ts:352</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3dc89a5c/src/types.ts#L353">types.ts:353</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -323,7 +376,7 @@
 					<div class="tsd-signature tsd-kind-icon">search<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SearchOptions</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/135b5bc0/src/embed/search-bar.tsx#L23">embed/search-bar.tsx:23</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3dc89a5c/src/embed/search-bar.tsx#L30">embed/search-bar.tsx:30</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
