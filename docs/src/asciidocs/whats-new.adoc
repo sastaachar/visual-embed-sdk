@@ -193,7 +193,6 @@ For information about the new features and enhancements introduced in Visual Emb
 .REST API
 [%collapsible]
 ====
->>>>>>> main
 For information about REST API v1 enhancements, see xref:rest-apiv1-changelog.adoc[REST API changelog].
 ====
 
