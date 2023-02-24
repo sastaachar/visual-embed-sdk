@@ -8,11 +8,11 @@
 
 This page provides information about new features and enhancements available for embedded ThoughtSpot instances.
 
-== Version 8.8.1-sw, January 2023
+== Version 8.8.1.sw, January 2023
 
-ThoughtSpot 8.8.1-sw release version is now generally available!
+ThoughtSpot 8.8.1.sw release version is now generally available!
 
-The 8.8.1-sw release introduces the following new features and enhancements:
+The 8.8.1.sw release introduces the following new features and enhancements:
 
 === Search Assist support for embedded instances
 
@@ -100,13 +100,13 @@ For more information, see xref:tml-api.adoc#export[Export TML].
 === REST API v2 [beta betaBackground]^Beta^
 The REST v2 API [beta betaBackground]^Beta^  feature will be deprecated in the future release and replaced with the new REST v2.0 API endpoints. For more information, see xref:deprecated-features.adoc[Deprecation announcements].
 
-== Version 8.4.1-sw, September 2022
+== Version 8.4.1.sw, September 2022
 
 === Support for ThoughtSpot Everywhere and Visual Embed SDK
 
 ThoughtSpot Software clusters now support ThoughtSpot Everywhere and embedding with Visual Embed SDK!
 
-Starting from the 8.4.1-sw release, customers with a license to embed ThoughtSpot can use ThoughtSpot Everywhere features and Visual Embed SDK to embed ThoughtSpot objects in their apps.
+Starting from the 8.4.1.sw release, customers with a license to embed ThoughtSpot can use ThoughtSpot Everywhere features and Visual Embed SDK to embed ThoughtSpot objects in their apps.
 
 ==== Visual Embed SDK
 
