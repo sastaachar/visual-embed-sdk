@@ -113,8 +113,10 @@ __Applicable to ThoughtSpot Software deployments only__ |[tag greenBackground]#�
 
 API for querying metadata objects, assigning tags, setting favorites, and importing and exporting TML objects|[tag greenBackground]#✓# Available +
 
-__The metadata API service does not support deleting metadata objects and fetching SQL query information from Answer and Liveboard objects__|[tag greenBackground]#✓# Available +
-__Includes API services for importing and exporting TML representation of metadata objects such as Liveboard, Worksheets, and Answers.__
+__The metadata API service does not support fetching SQL query information from Answer and Liveboard objects__|[tag greenBackground]#✓# Available +
+
+__Supports fetching SQL query information from Answer and Liveboard objects +
+__Includes API services for importing and exporting TML representation of metadata objects such as Liveboard, Worksheets, and Answers__
 
 |*Orgs* +
 API endpoints for Org administration and management | [tag greenBackground]#✓# Available |[tag greenBackground]#✓# Available
