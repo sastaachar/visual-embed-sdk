@@ -49,12 +49,7 @@ The runtime filters are specified in the request URL as parameters. To apply run
 
 === Embedded Liveboard and visualizations
 
-The Visual Embed SDK allows applying runtime filters on embedded Liveboard, visualization, and Answer objects. You can apply runtime filters to answers only in the full app embed mode. In the full app embed mode, ThoughtSpot applies runtime filters on all Liveboard, visualization, and Answer objects in the embedded app.
-
-[NOTE]
-====
-The `SearchEmbed` SDK package does not support runtime filters.
-====
+The Visual Embed SDK allows applying runtime filters on embedded Liveboard, visualization, and Answer objects. In the full app embed mode, ThoughtSpot applies runtime filters on all Liveboard, visualization, and Answer objects in the embedded app.
 
 The following example shows how to apply runtime filters on an embedded visualization. Here, the runtime filter is operating on the `Revenue` column to filter revenue data matching `100000`.
 
