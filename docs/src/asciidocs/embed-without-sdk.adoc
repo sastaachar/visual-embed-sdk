@@ -56,7 +56,7 @@ To pass filters as URL query parameters, use runtime filters.
 For example, to filter `michigan` in the `State` column of a visualization on a Liveboard, pass these values as filter parameters in the URL:
 
 ----
-http://{ThoughtspotHost}/?embedApp=true#/embed/viz/{Liveboard_id}/{visualization_id}
+https://{ThoughtspotHost}/?embedApp=true#/embed/viz/{Liveboard_id}/{visualization_id}
 &col1=State&op1=EQ&val1=michigan
 ----
 
