@@ -56,8 +56,7 @@ SCAL-118269 |The `fullHeight` setting does not work on Liveboards when the new L
 |SCAL-125060
 |ThoughtSpot application website displays a blank page on Safari and Chrome on iOS devices.
 |SCAL-122996
-|Users could not scroll on the Liveboard page in the new experience mode. This issue was limited to deployments on which the new Liveboard experience was enabled. 
+|Users could not scroll on the Liveboard page in the new experience mode. This issue was limited to deployments on which the new Liveboard experience was enabled.
 |SCAL-117427
 |When the `disableLoginRedirect` was set to `true` on an embedded ThoughtSpot instance, users were directed to the license upload page.
 |===
-
