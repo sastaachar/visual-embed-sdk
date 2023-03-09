@@ -31,6 +31,10 @@ We recommend using a development environment to test your customizations before 
 
 == Version 9.1.0.cl, Coming soon
 
+=== Per Org tokens for Trusted authentication [tag redBackground]#BREAKING CHANGE#
+
+Starting from the 9.1.0.cl release, Org users authenticating to ThoughtSpot via Trusted authentication method will require Org-specific tokens to switch between Orgs. After your ThoughtSpot instance is upgraded to 9.1.0.cl release version, your Org users will not be able to switch to another Org if they don't have a token to access that Org. When generating an authentication token on behalf of a user via `POST /tspublic/v1/session/auth/token` REST API call, the cluster administrator or Org administrator must make sure to request a token for each Org to which the user belongs.
+
 === Bug fixes and improvements
 
 The 9.1.0.cl release includes bug fixes and improvements to Search bar embed experience, new Liveboard experience, and REST API v2.0 Playground experience.
