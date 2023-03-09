@@ -122,19 +122,6 @@ module.exports = {
             __key: 'asciidocs_common',
         },
         {
-            resolve: 'gatsby-plugin-intl',
-            options: {
-                // language JSON resource path
-                path: `${__dirname}/docs/src/intl`,
-                // supported language
-                languages: ['en'],
-                // language file path
-                defaultLanguage: 'en',
-                // option to redirect to `/en` when connecting `/`
-                redirect: false,
-            },
-        },
-        {
             resolve: 'gatsby-transformer-asciidoc',
             options: {
                 safe: 'server',
@@ -147,12 +134,12 @@ module.exports = {
                 converterFactory: CustomDocConverter,
             },
         },
-        {
-            resolve: 'gatsby-transformer-rehype',
-            options: {
-                mediaType: 'text/html',
-            },
-        },
+        // {
+        //     resolve: 'gatsby-transformer-rehype',
+        //     options: {
+        //         mediaType: 'text/html',
+        //     },
+        // },
         {
             resolve: 'gatsby-source-filesystem',
             options: {

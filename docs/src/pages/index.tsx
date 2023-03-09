@@ -349,3 +349,12 @@ const IndexPage = ({ location }) => {
 };
 
 export default IndexPage;
+
+export const Head = () => {
+    return (
+        <meta
+            name="google-site-verification"
+            content="WhPhHLBsKjQT3dlzVxv2MRiJG-62qbllDhpXH3VcNVs"
+        />
+    );
+};
