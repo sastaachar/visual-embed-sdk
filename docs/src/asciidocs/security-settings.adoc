@@ -165,3 +165,9 @@ a|+++Wildcard (*) for port+++
 `thoughtspot:*`|[tag greenBackground]#✓# Supported|[tag greenBackground]#✓# Supported 2*|[tag greenBackground]#✓# Supported
 |====
 --
+
+== Block access to non-embedded ThoughtSpot application context
+
+If you have embedded ThoughtSpot content in your app, you may want your users to access ThoughtSpot content only within the context of your host app. By default, embedded application users cannot access or switch to ThoughtSpot application experience in the non-embed mode.
+
+However, users with administrator or developer privileges can access the ThoughtSpot in the non-embed mode. They can also enable or turn off the  *Block non-embed full app access* toggle switch on the *Develop* > *Customizations* > *Security Settings* page.
