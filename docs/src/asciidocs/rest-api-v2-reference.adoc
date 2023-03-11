@@ -260,6 +260,35 @@ __Requires administrator privileges__.
 +++<a href="{{previewPrefix}}/api/rest/playgroundV2_0" id="preview-in-playground" target="_blank">View in Playground</a>+++
 --
 
+<<<<<<< HEAD
+=======
+[div divider]
+--
++++<h4>Get System Override Info</h4>+++
+
+`GET /api/rest/2.0/system/config-overrides`  [tag greenBackground]#NEW in 9.2.0.cl#
+
+Gets details of the configuration overrides on your cluster.
+
+__Requires administrator privileges__.
+
++++<a href="{{previewPrefix}}/api/rest/playgroundV2_0" id="preview-in-playground" target="_blank">View in Playground</a>+++
+--
+
+[div divider]
+--
++++<h4>Update System Config</h4>+++
+
+`POST /api/rest/2.0/system/config-update` [tag greenBackground]#NEW in 9.2.0.cl#
+
+Updates the current configuration of your cluster.
+
+__Requires administrator privileges__.
+
++++<a href="{{previewPrefix}}/api/rest/playgroundV2_0" id="preview-in-playground" target="_blank">View in Playground</a>+++
+--
+
+>>>>>>> 607ebdf0... rel number change
 == Orgs
 
 You can perform CRUD operations on Org objects if the Orgs feature is enabled on your cluster. For Org operations, cluster administration privileges are required.

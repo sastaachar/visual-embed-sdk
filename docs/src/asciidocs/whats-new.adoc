@@ -8,7 +8,7 @@
 
 This page provides information about new features, enhancements, and deprecated functionality in ThoughtSpot Everywhere.
 
-== Upcoming changes (Version 9.2.0.cl and later)
+== Coming soon
 
 === Cross-filters and contextual menu changes
 
@@ -29,15 +29,9 @@ To listen to the right-click events on a chart or table, use the `EmbedEvent.Viz
 
 We recommend using a development environment to test your customizations before rolling them out on production servers. For more information, contact ThoughtSpot Support.
 
-== Version 9.1.0.cl, Coming soon
-
 === Per Org tokens for Trusted authentication [tag redBackground]#BREAKING CHANGE#
 
-Starting from the 9.1.0.cl release, Org users authenticating to ThoughtSpot via Trusted authentication method will require Org-specific tokens to switch between Orgs. After your ThoughtSpot instance is upgraded to 9.1.0.cl release version, your Org users will not be able to switch to another Org if they don't have a token to access that Org. When generating an authentication token on behalf of a user via `POST /tspublic/v1/session/auth/token` REST API call, the cluster administrator or Org administrator must make sure to request a token for each Org to which the user belongs.
-
-=== Bug fixes and improvements
-
-The 9.1.0.cl release includes bug fixes and improvements to Search bar embed experience, new Liveboard experience, and REST API v2.0 Playground experience.
+Org users authenticating to ThoughtSpot via Trusted authentication method will require Org-specific tokens to switch between Orgs. After your ThoughtSpot instance is upgraded to the new release version, your Org users will not be able to switch to another Org if they don't have a token to access that Org. When generating an authentication token on behalf of a user via `POST /tspublic/v1/session/auth/token` REST API call, the cluster administrator or Org administrator must make sure to request a token for each Org to which the user belongs.
 
 === GraphQL playground [beta betaBackground]^Beta^
 The *Develop* tab in the ThoughtSpot UI introduces a GraphQL playground to explore the REST API v2.0 operations and try out GrpahQL queries and mutations. To enable this feature on your instance, contact ThoughtSpot Support.
@@ -50,6 +44,13 @@ For information about the new features and enhancements introduced in Visual Emb
 
 For information about REST API enhancements, see xref:rest-apiv1-changelog.adoc[REST API v1 changelog] and xref:rest-apiv2-changelog.adoc[REST API v2.0 changelog].
 
+<<<<<<< HEAD
+=======
+=== Bug fixes and improvements
+
+The upcoming release includes bug fixes and improvements to the Search bar embed experience, new Liveboard experience, and REST API v2.0 Playground experience.
+
+>>>>>>> 607ebdf0... rel number change
 
 == Version 9.0.0.cl
 
