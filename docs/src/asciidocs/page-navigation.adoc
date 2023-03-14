@@ -1,15 +1,11 @@
-= Navigate to ThoughtSpot content
+= Customize navigation
 :toc: true
 
-:page-title: Navigate to ThoughtSpot content
+:page-title: Customize navigation
 :page-pageid: in-app-navigation
-:page-description: Navigate to ThoughtSpot content
+:page-description: Navigate to ThoughtSpot content in the embedding application
 
-This article describes how to configure controls to navigate from and to the embedded ThoughtSpot content.
-
-== Navigate from embedding application
-
-You can use the ThoughtSpot REST API to create navigation elements, such as application pages, menus, or drop-down selectors.
+If you have embedded ThoughtSpot application pages or objects in your app, you can use the default navigation controls available with the embedded content. If you need additional customization, you can use the ThoughtSpot REST API to create navigation elements, such as application pages, menus, or drop-down selectors.
 This allows you to give dynamic navigation to objects to your users with full control of the display.
 
 All REST API requests from the browser are scoped to the signed-in user and show only those objects that a user can access.
@@ -230,7 +226,7 @@ metadataListRestApiCall(
 Note that the `loadContent()` function referenced in the anchor tag created for the name column in the function above is a placeholder representing whatever is necessary to load that type of ThoughtSpot content in the web application. The actual design you choose for your application will determine the code you need to go from the navigation component to loading the ThoughtSpot content.
 
 === Load ThoughtSpot content in embed components
-However you have rendered the navigation element, when the user selects the object, the GUID of the object must pass to the appropriate parameter in the options object of the embed constructor for one of the embed components:
+However, you have rendered the navigation element, when the user selects the object, the GUID of the object must pass to the appropriate parameter in the options object of the embed constructor for one of the embed components:
 
 * `liveboardId` for a xref:embed-pinboard.adoc[Liveboard] in a `LiveboardEmbed` object
 * `liveboardId` and `vizId` for an xref:embed-a-viz.adoc[individual visualization] from a Liveboard through the `LiveboardEmbed` object
