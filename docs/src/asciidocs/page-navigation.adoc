@@ -1,4 +1,4 @@
-= Customize navigation
+= Customize navigation using REST API
 :toc: true
 
 :page-title: Customize navigation
