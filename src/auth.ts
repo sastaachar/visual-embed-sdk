@@ -193,6 +193,21 @@ function removeSSORedirectUrlMarker(): void {
     );
 }
 
+export const getAuthenticaionToken = async (
+    embedConfig: EmbedConfig,
+): Promise<any> => {
+    const { authEndpoint, getAuthToken } = embedConfig;
+    let authToken = null;
+    if (getAuthToken) {
+        authToken = await getAuthToken();
+        alertForDuplicateToken(authToken);
+    } else {
+        const response = await fetchAuthTokenService(authEndpoint);
+        authToken = await response.text();
+    }
+    return authToken;
+};
+
 /**
  * Perform token based authentication
  * @param embedConfig The embed configuration
@@ -213,14 +228,7 @@ export const doTokenAuth = async (
     }
     loggedInStatus = await isLoggedIn(thoughtSpotHost);
     if (!loggedInStatus) {
-        let authToken = null;
-        if (getAuthToken) {
-            authToken = await getAuthToken();
-            alertForDuplicateToken(authToken);
-        } else {
-            const response = await fetchAuthTokenService(authEndpoint);
-            authToken = await response.text();
-        }
+        const authToken = await getAuthenticaionToken(embedConfig);
         let resp;
         try {
             resp = await fetchAuthPostService(
@@ -240,6 +248,22 @@ export const doTokenAuth = async (
         }
     }
     return loggedInStatus;
+};
+
+/**
+ * Validate embedConfig parameters required for cookielessTokenAuth
+ * @param embedConfig The embed configuration
+ */
+export const doCookielessTokenAuth = async (
+    embedConfig: EmbedConfig,
+): Promise<boolean> => {
+    const { authEndpoint, getAuthToken } = embedConfig;
+    if (!authEndpoint && !getAuthToken) {
+        throw new Error(
+            'Either auth endpoint or getAuthToken function must be provided',
+        );
+    }
+    return Promise.resolve(true);
 };
 
 /**
@@ -338,7 +362,7 @@ const doSSOAuth = async (
     }
 
     const ssoURL = `${thoughtSpotHost}${ssoEndPoint}`;
-    if (embedConfig.noRedirect || embedConfig.inPopup) {
+    if (embedConfig.inPopup) {
         await samlPopupFlow(
             ssoURL,
             embedConfig.authTriggerContainer,
@@ -355,7 +379,7 @@ export const doSamlAuth = async (embedConfig: EmbedConfig) => {
     const { thoughtSpotHost } = embedConfig;
     // redirect for SSO, when the SSO authentication is done, this page will be loaded
     // again and the same JS will execute again.
-    const ssoRedirectUrl = embedConfig.noRedirect
+    const ssoRedirectUrl = embedConfig.inPopup
         ? `${thoughtSpotHost}/v2/#/embed/saml-complete`
         : getRedirectUrl(
               window.location.href,
@@ -420,6 +444,8 @@ export const authenticate = async (
         case AuthType.AuthServer:
         case AuthType.TrustedAuthToken:
             return doTokenAuth(embedConfig);
+        case AuthType.TrustedAuthTokenCookieless:
+            return doCookielessTokenAuth(embedConfig);
         case AuthType.Basic:
             return doBasicAuth(embedConfig);
         default:

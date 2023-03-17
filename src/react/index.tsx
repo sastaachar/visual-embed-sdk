@@ -36,7 +36,7 @@ const componentFactory = <
                     ref!.current,
                     deepMerge(
                         {
-                            insertAsSibling: true,
+                            insertAsSibling: viewConfig.insertAsSibling,
                             frameParams: {
                                 class: className || '',
                             },
@@ -55,6 +55,9 @@ const componentFactory = <
                     // eslint-disable-next-line no-param-reassign
                     forwardedRef.current = tsEmbed;
                 }
+                return () => {
+                    tsEmbed.destroy();
+                };
             }, [viewConfig, listeners]);
 
             return (
