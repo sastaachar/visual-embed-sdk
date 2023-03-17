@@ -58,11 +58,18 @@ export enum AuthType {
      */
     AuthServer = 'AuthServer',
     /**
-     * Trusted authentication server, Use you own authentication server
+     * Trusted authentication server, Use your own authentication server
      * which returns a bearer token, generated using the secret_key obtained from
      * ThoughtSpot.
      */
     TrustedAuthToken = 'AuthServer',
+    /**
+     * Trusted authentication server Cookieless, Use you own authentication server
+     * which returns a bearer token, generated using the secret_key obtained from
+     * ThoughtSpot. This uses a cookieless authentication approach, recommended
+     * to by pass third-party cookie-blocking restriction implemented by some browsers
+     */
+    TrustedAuthTokenCookieless = 'AuthServerCookieless',
     /**
      * Use the ThoughtSpot login API to authenticate to the cluster directly.
      *
@@ -378,6 +385,17 @@ export interface ViewConfig {
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
     contextMenuTrigger?: ContextMenuTriggerOptions;
+    /**
+     * flag to override openNew tab context menu link
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
+     */
+    linkOverride?: boolean;
+    /**
+     * flag to enable insert into slides action
+     * @hidden
+     * @private
+     */
+    insertInToSlide?: boolean;
 }
 
 /**
@@ -613,6 +631,12 @@ export enum EmbedEvent {
      */
     EmbedIframeCenter = 'EmbedIframeCenter',
     /**
+     * Emitted when  the "Get Data" button in Search Bar embed
+     * is clicked.
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.0-sw
+     */
+    GetDataClick = 'getDataClick',
+    /**
      * Detects the route change.
      */
     RouteChange = 'ROUTE_CHANGE',
@@ -839,10 +863,12 @@ export enum HostEvent {
      *                        - Although an array, only a single source
      *                          is supported at this time.
      * @param - searchQuery - The search query
+     * @param - execute - execute the existing / updated query
      * @example
      * searchEmbed.trigger(HostEvent.Search, {
      * searchQuery: "[sales] by [item type],
      * "dataSourceIds: ["cd252e5c-b552-49a8-821d-3eadaa049cca"]
+     * "execute": true
      * })
      */
     Search = 'search',
@@ -1224,7 +1250,10 @@ export enum Param {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     AuthType = 'authType',
     IconSpriteUrl = 'iconSprite',
+    cookieless = 'cookieless',
     ContextMenuTrigger = 'isContextMenuEnabledOnLeftClick',
+    LinkOverride = 'linkOverride',
+    ShowInsertToSlide = 'insertInToSlide',
 }
 
 /**
@@ -1382,6 +1411,58 @@ export enum Action {
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
     RemoveCrossFilter = 'context-menu-item-remove-cross-filter',
+    /**
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
+     */
+    AxisMenuAggregate = 'axisMenuAggregate',
+    /**
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
+     */
+    AxisMenuTimeBucket = 'axisMenuTimeBucket',
+    /**
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
+     */
+    AxisMenuFilter = 'axisMenuFilter',
+    /**
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
+     */
+    AxisMenuConditionalFormat = 'axisMenuConditionalFormat',
+    /**
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
+     */
+    AxisMenuSort = 'axisMenuSort',
+    /**
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
+     */
+    AxisMenuGroup = 'axisMenuGroup',
+    /**
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
+     */
+    AxisMenuPosition = 'axisMenuPosition',
+    /**
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
+     */
+    AxisMenuRename = 'axisMenuRename',
+    /**
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
+     */
+    AxisMenuEdit = 'axisMenuEdit',
+    /**
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
+     */
+    AxisMenuNumberFormat = 'axisMenuNumberFormat',
+    /**
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
+     */
+    AxisMenuTextWrapping = 'axisMenuTextWrapping',
+    /**
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
+     */
+    AxisMenuRemove = 'axisMenuRemove',
+    /**
+     * @hidden
+     */
+    InsertInToSlide = 'insertInToSlide',
 }
 
 export interface SessionInterface {

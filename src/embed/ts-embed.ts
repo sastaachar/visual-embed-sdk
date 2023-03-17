@@ -43,7 +43,14 @@ import { uploadMixpanelEvent, MIXPANEL_EVENT } from '../mixpanel-service';
 import { processEventData } from '../utils/processData';
 import { processTrigger } from '../utils/processTrigger';
 import pkgInfo from '../../package.json';
-import { getAuthPromise, getEmbedConfig, renderInQueue } from './base';
+import {
+    getAuthPromise,
+    getEmbedConfig,
+    renderInQueue,
+    handleAuth,
+    notifyAuthFailure,
+} from './base';
+import { AuthFailureType, getAuthenticaionToken } from '../auth';
 
 const { version } = pkgInfo;
 
@@ -51,6 +58,7 @@ const { version } = pkgInfo;
  * Global prefix for all Thoughtspot postHash Params.
  */
 export const THOUGHTSPOT_PARAM_PREFIX = 'ts-';
+const TS_EMBED_ID = '_thoughtspot-embed';
 
 /**
  * The event id map from v2 event names to v1 event id
@@ -66,6 +74,14 @@ const V1EventMap = {};
  * React+GraphQL
  */
 export class TsEmbed {
+    /**
+     * The DOM node which was inserted by the SDK to either
+     * render the iframe or display an error message.
+     * This is useful for removing the DOM node when the
+     * embed instance is destroyed.
+     */
+    private insertedDomEl: Node;
+
     /**
      * The DOM node where the ThoughtSpot app is to be embedded.
      */
@@ -217,7 +233,11 @@ export class TsEmbed {
     /**
      * Send Custom style as part of payload of APP_INIT
      */
-    private appInitCb = (_: any, responder: any) => {
+    private appInitCb = async (_: any, responder: any) => {
+        let authToken = '';
+        if (this.embedConfig.authType === AuthType.TrustedAuthTokenCookieless) {
+            authToken = await getAuthenticaionToken(this.embedConfig);
+        }
         responder({
             type: EmbedEvent.APP_INIT,
             data: {
@@ -225,8 +245,26 @@ export class TsEmbed {
                     this.embedConfig,
                     this.viewConfig,
                 ),
+                authToken,
             },
         });
+    };
+
+    /**
+     * Sends updated auth token to the iFrame to avoid user logout
+     */
+    private updateAuthToken = async (_: any, responder: any) => {
+        const { autoLogin = false, authType } = this.embedConfig; // Set autoLogin default to false
+        if (authType === AuthType.TrustedAuthTokenCookieless) {
+            const authToken = await getAuthenticaionToken(this.embedConfig);
+            responder({
+                type: EmbedEvent.AuthExpire,
+                data: { authToken },
+            });
+        } else if (autoLogin) {
+            handleAuth();
+        }
+        notifyAuthFailure(AuthFailureType.EXPIRY);
     };
 
     /**
@@ -234,6 +272,7 @@ export class TsEmbed {
      */
     private registerAppInit = () => {
         this.on(EmbedEvent.APP_INIT, this.appInitCb);
+        this.on(EmbedEvent.AuthExpire, this.updateAuthToken);
     };
 
     /**
@@ -287,6 +326,9 @@ export class TsEmbed {
         if (this.embedConfig.authType === AuthType.EmbeddedSSO) {
             queryParams[Param.ForceSAMLAutoRedirect] = true;
         }
+        if (this.embedConfig.authType === AuthType.TrustedAuthTokenCookieless) {
+            queryParams[Param.cookieless] = true;
+        }
 
         const {
             disabledActions,
@@ -298,6 +340,8 @@ export class TsEmbed {
             locale,
             customizations,
             contextMenuTrigger,
+            linkOverride,
+            insertInToSlide,
         } = this.viewConfig;
 
         if (Array.isArray(visibleActions) && Array.isArray(hiddenActions)) {
@@ -357,6 +401,12 @@ export class TsEmbed {
         }
         if (additionalFlags && additionalFlags.constructor.name === 'Object') {
             Object.assign(queryParams, additionalFlags);
+        }
+        if (linkOverride) {
+            queryParams[Param.LinkOverride] = linkOverride;
+        }
+        if (insertInToSlide) {
+            queryParams[Param.ShowInsertToSlide] = insertInToSlide;
         }
         return queryParams;
     }
@@ -442,6 +492,7 @@ export class TsEmbed {
                         this.iFrame || document.createElement('iframe');
 
                     this.iFrame.src = url;
+                    this.iFrame.id = TS_EMBED_ID;
 
                     // according to screenfull.js documentation
                     // allowFullscreen, webkitallowfullscreen and mozallowfullscreen must be true
@@ -519,15 +570,22 @@ export class TsEmbed {
             if (typeof child === 'string') {
                 const div = document.createElement('div');
                 div.innerHTML = child;
+                div.id = TS_EMBED_ID;
                 // eslint-disable-next-line no-param-reassign
                 child = div;
             }
+            if (this.el.nextElementSibling?.id === TS_EMBED_ID) {
+                this.el.nextElementSibling.remove();
+            }
             this.el.parentElement.insertBefore(child, this.el.nextSibling);
+            this.insertedDomEl = child;
         } else if (typeof child === 'string') {
             this.el.innerHTML = child;
+            this.insertedDomEl = this.el.children[0];
         } else {
             this.el.innerHTML = '';
             this.el.appendChild(child);
+            this.insertedDomEl = child;
         }
     }
 
@@ -729,6 +787,18 @@ export class TsEmbed {
         tsParams = tsParams ? `?${tsParams}` : '';
 
         return tsParams;
+    }
+
+    /**
+     * Destroys the ThoughtSpot embed, and remove any nodes from the DOM.
+     * @version SDK: 1.19.1 | ThoughtSpot: *
+     */
+    public destroy(): void {
+        try {
+            this.insertedDomEl.parentNode.removeChild(this.insertedDomEl);
+        } catch (e) {
+            console.log('Error destroying TS Embed', e);
+        }
     }
 }
 
