@@ -111,6 +111,9 @@
 							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
 								<a href="AuthType.html#TrustedAuthToken" class="tsd-kind-icon">Trusted<wbr>Auth<wbr>Token</a>
 							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="AuthType.html#TrustedAuthTokenCookieless" class="tsd-kind-icon">Trusted<wbr>Auth<wbr>Token<wbr>Cookieless</a>
+							</li>
 						</ul>
 					</li>
 				</ul>
@@ -164,6 +167,12 @@
 						<a href="../interfaces/SearchViewConfig.html" class="tsd-kind-icon">Search<wbr>View<wbr>Config</a>
 					</li>
 					<li class=" tsd-kind-function">
+						<a href="../modules.html#getInitConfig" class="tsd-kind-icon">get<wbr>Init<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../modules.html#getSessionInfo" class="tsd-kind-icon">get<wbr>Session<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-function">
 						<a href="../modules.html#init" class="tsd-kind-icon">init</a>
 					</li>
 					<li class=" tsd-kind-function">
@@ -197,6 +206,7 @@
 								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="AuthType.html#OIDCRedirect" class="tsd-kind-icon">OIDCRedirect</a></li>
 								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="AuthType.html#SAMLRedirect" class="tsd-kind-icon">SAMLRedirect</a></li>
 								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="AuthType.html#TrustedAuthToken" class="tsd-kind-icon">Trusted<wbr>Auth<wbr>Token</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="AuthType.html#TrustedAuthTokenCookieless" class="tsd-kind-icon">Trusted<wbr>Auth<wbr>Token<wbr>Cookieless</a></li>
 							</ul>
 						</section>
 					</div>
@@ -210,7 +220,7 @@
 					<div class="tsd-signature tsd-kind-icon">Basic<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;Basic&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/705f4ac5/src/types.ts#L72">types.ts:72</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/d5df0322/src/types.ts#L79">types.ts:79</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -227,7 +237,7 @@
 					<div class="tsd-signature tsd-kind-icon">EmbeddedSSO<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;EmbeddedSSO&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/705f4ac5/src/types.ts#L25">types.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/d5df0322/src/types.ts#L25">types.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -248,7 +258,7 @@
 					<div class="tsd-signature tsd-kind-icon">None<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;None&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/705f4ac5/src/types.ts#L19">types.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/d5df0322/src/types.ts#L19">types.ts:19</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -263,7 +273,7 @@
 					<div class="tsd-signature tsd-kind-icon">OIDCRedirect<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;SSO_OIDC&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/705f4ac5/src/types.ts#L53">types.ts:53</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/d5df0322/src/types.ts#L53">types.ts:53</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -279,7 +289,7 @@
 					<div class="tsd-signature tsd-kind-icon">SAMLRedirect<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;SSO_SAML&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/705f4ac5/src/types.ts#L42">types.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/d5df0322/src/types.ts#L42">types.ts:42</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -295,14 +305,32 @@
 					<div class="tsd-signature tsd-kind-icon">Trusted<wbr>Auth<wbr>Token<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;AuthServer&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/705f4ac5/src/types.ts#L65">types.ts:65</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/d5df0322/src/types.ts#L65">types.ts:65</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Trusted authentication server, Use you own authentication server
+							<p>Trusted authentication server, Use your own authentication server
 								which returns a bearer token, generated using the secret_key obtained from
 							ThoughtSpot.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="TrustedAuthTokenCookieless" class="tsd-anchor"></a>
+					<h3>Trusted<wbr>Auth<wbr>Token<wbr>Cookieless</h3>
+					<div class="tsd-signature tsd-kind-icon">Trusted<wbr>Auth<wbr>Token<wbr>Cookieless<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;AuthServerCookieless&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/d5df0322/src/types.ts#L72">types.ts:72</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Trusted authentication server Cookieless, Use you own authentication server
+								which returns a bearer token, generated using the secret_key obtained from
+								ThoughtSpot. This uses a cookieless authentication approach, recommended
+							to by pass third-party cookie-blocking restriction implemented by some browsers</p>
 						</div>
 					</div>
 				</section>
