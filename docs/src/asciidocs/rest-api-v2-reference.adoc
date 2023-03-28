@@ -197,7 +197,11 @@ __Requires administrator privileges__.
 
 `POST /api/rest/2.0/users/change_password`
 
-Allows ThoughtSpot users to change the password of their account. Administrators can also change the password on behalf of a user.
+Allows ThoughtSpot users to change the password of their account. 
+
+////
+Administrators can also change the password on behalf of a user.
+////
 
 +++<a href="{{previewPrefix}}/api/rest/playgroundV2_0" id="preview-in-playground" target="_blank">View in Playground</a>+++
 --
@@ -208,7 +212,7 @@ Allows ThoughtSpot users to change the password of their account. Administrators
 
 `POST /api/rest/2.0/users/reset_password`
 
-Resets a user's password.
+Resets the password of a user account.
 
 __Requires administrator privileges__.
 
