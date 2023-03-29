@@ -49,9 +49,9 @@ If the login is successful, a user session is established.
 Gets an authentication token from ThoughtSpot, which allows access to a specific metadata object in ThoughtSpot. The token obtained from this API call provides only view access to the object specified in the API request.
 +
 ** To obtain a bearer token, specify the username, password, and object ID in the API request.
-** To obtain a token on behalf of a user, specify the username, secret key, and object ID.
+** To obtain a token on behalf of a user, specify the `username`, `secret_key`, and object ID.
 +
-__Requires administrator privileges__.
+__Requires access to the `secret_key`. For more information, see xref:trusted-authentication.adoc#trusted-auth-enable[Trusted authentication]__.
 
 
 * `POST /api/rest/2.0/auth/token/full`
@@ -59,14 +59,16 @@ __Requires administrator privileges__.
 Gets an authentication token from ThoughtSpot, which provides access to full application.
 +
 ** To obtain a bearer token, specify the username and password in the API request.
-** To obtain a token on behalf of a user, specify the username and secret key.
+** To obtain a token on behalf of a user, specify the `username` and `secret_key`.
 +
-__Requires administrator privileges__.
+__Requires access to the `secret_key`. For more information, see xref:trusted-authentication.adoc#trusted-auth-enable[Trusted authentication]__.
 
+////
 [NOTE]
 ====
 You can copy the `secret key` from *Develop* > *Customizations* > *Security Settings* page if xref:trusted-authentication.adoc#trusted-auth-enable[Trusted authentication] is enabled on your instance.
 ====
+////
 
 +++ <h5>Just-in-time user provisioning</h5> +++
 
