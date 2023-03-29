@@ -768,7 +768,7 @@ __Requires data download privileges and at least view access to the Answer objec
 
 Gets security audit logs from the ThoughtSpot system.
 
---Requires administrator privileges__.
+__Requires administrator privileges__.
 
 +++<a href="{{previewPrefix}}/api/rest/playgroundV2_0" id="preview-in-playground" target="_blank">View in Playground</a>+++
 --
