@@ -8,11 +8,23 @@
 
 When deploying embedded analytics, each organization will have defined practices for development, testing, and deployment of content to ThoughtSpot. ThoughtSpot instances act as a constantly running service, so deployment only involves publishing *content* to a given ThoughtSpot instance, this means deployment processes must be aware of the object IDs in ThoughtSpot when performing updates.
 
-The ThoughtSpot system contains many types of objects that link together. All of the objects are modeled using the link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/tml.html[ThoughtSpot modeling language (TML), window=_blank]. The TML for an object can be viewed and edited through the UI and via REST APIs. 
+The ThoughtSpot system contains many types of objects that link together, which are modeled using the link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/tml.html[ThoughtSpot modeling language (TML), window=_blank]. The TML for an object can be viewed and edited through the UI and via REST APIs. 
 
 With the proper understanding of TML and how the APIs work, you can integrate ThoughtSpot into your source control system and programmatically move content through your development and deployment phases.
 
 The xref:development-and-deployment.adoc#relatedResources[Additional Resources] section at the end contains links to libraries and code examples implementing these development and deployment workflows. Any example code you see within this document has been implemented and tested within the libraries available in the  xref:development-and-deployment.adoc#relatedResources[Additional Resources] and we recommend that you start with these libraries. 
+
+== GUIDs and FQNs in ThoughtSpot and TML
+Every object on a ThoughtSpot instance has a *GUID* as a unique reference. 
+
+The most essential aspect of content migration / promotion / deployment with ThoughtSpot is *mapping* the unique GUID of a *source object* to the GUID of the equivalent *destination object*.
+
+Objects of the same or different types can have the same display name, so the GUID is necessary to identify the particular object. 
+
+In the REST APIs, `id` properties are the GUIDs.
+
+In TML, the `guid:` property will be at the top of the file. The `fqn:` property will be the GUID of another connected object (typically data sources).
+
 
 == Development and deployment process (SDLC) overview
 Almost all SDLC processes start with a *development (dev)* environment, and then content is promoted from that *dev* environment through varying *stages* until it is made available to end users in *production (prod)*. These stages / environments may be on the same ThoughtSpot instance or separate instances. 
@@ -29,9 +41,12 @@ Content in the *dev environment* in ThoughtSpot is downloaded as link:https://cl
  . *Releases* are always cut initially from the *dev branch*, with the dev environments GUIDs in place until the publishing process
 
 ==== Export TML into source control
-The xref:metadata-api.adoc#object-header[/metadata/listobjectheaders] can be used to retrieve the GUIDs for the various objects on the ThoughtSpot server. Looping through those GUIDs with the xref:tml-api.adoc#export[export TML REST API endpoint] allows for saving the current state of all objects to disk. A simple form of Git (or other source control) integration can be achieved simply by exporting all the TML files to a Git-enabled directory, with Git determining if there are any changes.
+The process for exporting TML files into source control is:
 
-The xref:metadata-api.adoc#object-header[/metadata/listobjectheaders] endpoint can be sorted by the `MODIFIED` keyword and then retrieved in batches, allowing a TML retrieval script to only retrieve objects modified since the last run date or some other reasonable time period. Remember to xref:development-and-deployment.adoc#addGuids[Add GUIDs of associated objects to TML] when downloading each TML object.
+ . Use Metadata APIs (xref:metadata-api#metadata-list[/metadata/list] in V1, xref:rest-apiv2-reference#_metadata[/metadata/search] in V2) to get a filtered list of objects
+ . Use /metadata/tml/export endpoint in REST API V1 or V2 xref:tml-api.adoc#export[export TML REST API endpoint] with `export_fqns=true` argument
+ . Save the TML response strings to disk in a Git-enabled directory using consitent name format
+
 
 === Release deployment process
 Every object in a ThoughtSpot instance has a unique idenitifer called a GUID. The GUID for an object is randomly generated when the object is first created. Starting in version 8.10, new objects created via TML import will use the GUID in the TML file, if that GUID has not been previously used on the instance, to allow for synchronizing GUIDs between instances.
@@ -39,7 +54,7 @@ Every object in a ThoughtSpot instance has a unique idenitifer called a GUID. Th
 GUIDs appear in two places in a TML file:
 
  1. The first element at the top of the file called *guid* : This is the GUID of the object the TML file represents
- 2. In any *fqn* property in the *table* section of the TML file: GUIDs of other data objects being referenced. The *fqn* property is optional prior to ThoughtSpot 8.9, but is included by default from 8.9 onward.
+ 2. In any *fqn* property in the *table* section of the TML file: GUIDs of other data objects being referenced. The *fqn* property can be exported using the `export_fqns` argument of the Export TML REST APIs.
 
 ==== GUIDs determine create vs. update operations
 Object names are never used for determining an object to update, because object names are not unique within ThoughtSpot.
