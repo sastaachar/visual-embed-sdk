@@ -93,36 +93,40 @@ To change the source environment TML files so that they can be imported in the d
 
 Common adjustments include:
 
- . Switching connections at the Table level 
- . Changing database details within Table objects
- . Adding or removing columns 
- . Renaming columns for translations
+ - Switching connections at the Table level 
+ - Changing database details within Table objects
+ - Adding or removing columns 
+ - Renaming columns for translations
 
 The specific TML changes to achieve these goals are detailed on the xref:modify-tml.adoc[Modify TML files] page. There are also functioning code examples of many of these changes in the link:https://github.com/thoughtspot/thoughtspot_tml[thoughtspot_tml, target=_blank] repository.
 
-=== GUIDs and FQNs in ThoughtSpot and TML
-Every object on a ThoughtSpot instance has a *GUID* as a unique reference. 
+=== GUIDs in TML files determine create vs. update operations
 
-The most essential aspect of content migration / promotion / deployment with ThoughtSpot is *mapping* the unique GUID of a *source object* to the GUID of the equivalent *destination object*.
-
-Objects of the same or different types can have the same display name, so the GUID is necessary to identify the particular object. 
+Objects of the same or different types can have the same display name in ThoughtSpot, so the GUID is necessary to identify the particular object. 
 
 In the REST APIs, `id` properties are the GUIDs.
 
-In TML, the `guid:` property will be at the top of the file. The `fqn:` property will be the GUID of another connected object (typically data sources).
+In TML:
 
-==== GUIDs in TML files determine create vs. update operations
-Object names are never used for determining an object to update, because object names are not unique within ThoughtSpot.
+ - the `guid:` property will be at the top of the file 
+ - `fqn:` properties are used to reference other connected objects (typically data sources) with a GUID
 
-Whether an imported TML will create a new object or update an existing object depends on the presence of the *guid* property and whether that GUID matches an existing object on that ThoughtSpot instance.
+==== Rules for create vs. update operations
+Object names are *never used* for determining an object to update, because object names are not unique within ThoughtSpot.
+
+Whether an imported TML will create a new object or update an existing object depends on:
+
+ - The presence/absence of the *guid:* property in the TML file
+ - Whether that GUID matches an existing object on that ThoughtSpot instance
+ - The `force_create=true` parameter
 
 Creation vs. update is determined by the following rules:
 
- - *No GUID* in the TML file: creates a new object with a new GUID
- - *force_create=true* parameter of the TML Import API is used: every uploaded TML file results in new objects being created and assigned new GUIDs
+ - *No GUID* in the TML file: always creates a new object with a new GUID
  - *GUID in TML file*, where an object with the *same GUID already exists* in instance: update object
  - *GUID in TML file*, where *no object with same GUID exists* in ThoughtSpot instance: creates a new object with the GUID from the TML file 
   - *Table objects* match on fully-qualified tables in the database (each Connection can only have one Table object per table in database), not GUID: If existing Table object representing the same database table is found, the GUID of the original object is maintained, but the updatse are applied from the new TML file
+  - *force_create=true* parameter of the TML Import API is used: every uploaded TML file results in new objects being created
 
 NOTE: Prior to version 9.0.0, ThoughtSpot did not consistently use the GUID provided in the TML file for a new object when that GUID was not already in use on that ThoughtSpot instance.
 
@@ -130,8 +134,6 @@ NOTE: Prior to version 9.0.0, ThoughtSpot did not consistently use the GUID prov
 The regardless of the other changes you make, building a release for an environment on the same instance will require swapping in the correct GUIDs
 
 Because the presence of the *guid* property determines whether an individual TML file will cause a create or an update action, you need to keep a *GUID mapping file* to determine how to adjust the TML files for upload to the new environment.
-
-
 
 The *guid mapping file* is referenced when creating the final TML files for publishing, then should be updated after publish with any new object GUIDs:
 
@@ -141,22 +143,7 @@ The *guid mapping file* is referenced when creating the final TML files for publ
  . When a new object is published for the first time, record the *dev GUID* as the key, and the *new object GUID* as the value
  . Perform the same process for any *fqn* properties, which specify data object references. Remove the *fqn* property if the data object is being newly created, or swap it to the mapped GUID for that environment
 
-==== Packaging release files for import
-
-Best practice is to to create and upload "packages" of related objects together at once: 
- 
- - Upload all related TML files together in a single TML Import
- - Give data objects within a package unique names, even though not enforced by ThoughtSpot
- - If a data object already exists, swap out the *fqn* references to avoid the name matching heuristic
-
-Name matching does occur for data object references within a TML file. All data objects are referenced as "tables" within TML, whether they are a ThoughtSpot table, worksheet, view, SQL view or any other data objet type.
-
-The following heuristic is used to find matching objects by name:
-
- . Data object names within the same TML Import operation: Must only be one single object with that name
- . Searches the entire ThoughtSpot instance: Must be only one single object with that name
-
-
+The link:https://github.com/thoughtspot/thoughtspot_tml[thoughtspot_tml library, target=_blank] provides a helper function called `disambiguate()` which implements the logic above when provided with a Dict representing the GUID map. Please see the README and examples for how to use if using the library, or look at the source code if building an equivalent process yourself in another language.
 
 
 [#linkImportRelease]
@@ -169,7 +156,21 @@ The xref:development-and-deployment#linkBuildRelease[Build release process] sect
 
 === /metadata/tml/import options and responses
 
-=== Uploading related files together
+=== Import related TML files together
+ThoughtSpot does not consider object display name for a TML file, but does use name matching for data object references within a TML file. 
+
+All data objects are referenced as "tables" within TML, whether they are a ThoughtSpot table, worksheet, view, SQL view or any other data object type.
+
+The following heuristic is used to find matching objects by name within `tables` or `joins` sections:
+
+ . Data object names within the same TML Import operation: Must only be one single object with that name
+ . Searches the entire ThoughtSpot instance: Must be only one single object with that name
+ 
+Best practice is to to create and upload "packages" of related objects together at once: 
+ 
+  - Give data objects within a package unique names, even though not enforced by ThoughtSpot
+ - All Table objects that use the same Connection object and all Worksheets connected to those tables should be uploaded together in a single TML Import
+ - If a data object already exists, swap out the *fqn* references to avoid the name matching heuristic
 
 === Storing new GUIDs in a mapping
 To track relationships between objects in different environments, particularly on the same instance, you must store a *mapping* of the child obbject GUID to its source object GUID when you first publish the child object.
@@ -199,23 +200,7 @@ The xref:tml-api#import[import REST API endpoint] returns the GUID in the respon
 }
 ----
 
-You should always map the original object GUID (from the 'dev branch') to the GUID for whatever new environment you are publishing to. This allows for continuous pushing of changes from the active develop branch all the way up through to any environment. An example of simple JSON structure to store the relationship in this way is as follows:
-
-[source,json]
-----
-{
-  "test": {
-    "<dev-env-guid>" :  "<test-env-guid>"
-  },
-  "prod": {
-    "<dev-env-guid>" :  "<prod-env-guid>"
-  }
-}
-----
-
-The 'dev environment' becomes the source of truth that can be relied upon. You will be able to swap any TML file to another environment by doing simple substitution of any `guid` or `fqn` property from the parent/dev environment to the GUID from the appropriate child environment.
-
-
+Update the *mapping file* with the new pair of source object GUID and destination environment object GUID, so that the release build process can do the appropriate swaps the next time the object needs to be updated.
 
 
 [#relatedResources]
