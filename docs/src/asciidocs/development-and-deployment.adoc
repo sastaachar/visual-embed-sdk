@@ -13,13 +13,13 @@ NOTE: Any example workflow you see within this document has been implemented and
 == Overview
 The three steps to building an SDLC process with ThoughtSpot are:  
 
- . *Export source*: Downloading ThoughtSpot objects as TML files into a source control system (Git, etc.)
- . *Build release*: Altering copies of the TML files for the next stage / environment
- . *Import release*: Importing the TML files into the new environment
+ . *xref:linkExportSource[Export source]*: Downloading ThoughtSpot objects as TML files into a source control system (Git, etc.)
+ . *xref:linkBuildRelease[Build release]*: Altering copies of the TML files for the next stage / environment
+ . *xref:linkImportRelease[Import release]*: Importing the TML files into the new environment
  
 Every object on a ThoughtSpot instance has a *GUID* as a unique reference. 
  
-The *most essential* aspect of steps 2 and 3 is recording any newly created object GUIDs from the destination environment into a *mapping file* along with the GUID of the source object. 
+The *most essential* aspect of steps 2 and 3 is recording any newly created object GUIDs from the destination environment into a *xref:guidMapping[mapping file]* along with the GUID of the source object. 
 
 When publishing to a new environment on the same ThoughtSpot instance, you *must* swap out the GUIDs from the source environment with those of the equivalent objects in the destination environment within the TML files, so that only destination environment content is referenced.
 
@@ -36,13 +36,15 @@ If you have a release prior to 9.0.0, you can use the same process listed below 
 
 === Multiple "environments" on the same instance
 
-Many ThoughtSpot customers have multiple "environments" on the same instance, either using xref:orgs[Orgs] or well-defined xref:multitenancy-without-orgs[Access Control]. 
+Many ThoughtSpot customers have multiple "environments" on the same instance, either using xref:orgs.adoc[Orgs] or well-defined xref:multitenancy-without-orgs.adoc[Access Control]. 
 
 In this scenario, you must track the equivalent GUIDS between source and destination environments, and swap them out within the TML files for your deployment process to work correctly.
 
 The workflow for a very simple "dev" to "prod" flow on the same environment shown here, is the same pattern for any source to destination environment flow:
+
 image::./images/development-deployment-process.png[Development and deployment workflow]
 
+[#guidMapping]
 == GUID mapping file
 As noted above, keeping a *mapping file* of GUIDs of source objects and their descendant objects in the destination environment is essential. The exact structure of the file will depend on the complexity of your deployment needs.
 
@@ -72,7 +74,7 @@ Note that this pattern assumes 1:1 equivalence betweeen source and destination e
 == Export source process
 The process for exporting TML files into source control is:
 
- . Use Metadata APIs (xref:metadata-api#metadata-list[/metadata/list] in V1, xref:rest-apiv2-reference#_metadata[/metadata/search] in V2) to get a filtered list of objects
+ . Use Metadata APIs (xref:metadata-api.adoc#metadata-list[/metadata/list] in V1, xref:rest-apiv2-reference.adoc#_metadata[/metadata/search] in V2) to get a filtered list of objects
  . Use /metadata/tml/export endpoint in REST API xref:tml-api.adoc#export[V1] or V2 with `export_fqns=true` argument and `formmattype=YAML` to retrieve the TML of the object
  . Save the TML response strings to disk in a Git-enabled directory using consistent name format
 
@@ -85,7 +87,7 @@ Export in YAML for saving to disk for source control or use with the `thoughtspo
 
 You can pass any number of GUIDs in the `export_ids` argument, although it is simpler to retrieve one at a time, particularly when processing the results from using the `export_associated=true` option. 
 
-The `export_associated` argument retrieves the TML objects for all related objects when used, including the GUID of each object within the headers. This is useful for dependency checking, and was valuable prior to version 8.9 to fill in fqn values (see bottom of article if you are on an earlier version).
+The `export_associated` argument retrieves the TML objects for all related objects when used, including the GUID of each object within the headers. This is useful for dependency checking, and was valuable prior to version 8.9 to fill in fqn values (see xref:olderReleaseNotes[Notes for older releases] below).
 
 [#linkBuildRelease]
 == Build release process
