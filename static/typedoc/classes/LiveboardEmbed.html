@@ -233,9 +233,19 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Embed a ThoughtSpot Liveboard or visualization</p>
+						<p>Embed a ThoughtSpot Liveboard or a Thoughtspot visualization. When rendered it already
+						waits for the authentication to complete, so no need to wait for AuthStatus.SUCCESS.</p>
 					</div>
 					<dl class="tsd-comment-tags">
+						<dt class="example">example</dt>
+						<dd><pre><code class="language-js"><span style="color: #AF00DB">import</span><span style="color: #000000"> { .. } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@thoughtspot/visual-embed-sdk&#039;</span><span style="color: #000000">;</span>
+<span style="color: #795E26">init</span><span style="color: #000000">({ ... });</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">embed</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">LiveboardEmbed</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;#container&quot;</span><span style="color: #000000">, {</span>
+<span style="color: #000000">  </span><span style="color: #001080">liveboardId:</span><span style="color: #000000"> </span><span style="color: #800000">&lt;</span><span style="color: #267F99">your-id-here</span><span style="color: #800000">&gt;</span><span style="color: #000000">,</span>
+<span style="color: #000000">// .. other params here.</span>
+<span style="color: #000000">})</span>
+</code></pre>
+						</dd>
 						<dt class="group">group</dt>
 						<dd><p>Embed components</p>
 						</dd>
@@ -291,7 +301,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides V1Embed.constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3c81bd1d/src/embed/liveboard.ts#L103">embed/liveboard.ts:103</a></li>
+									<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3bf70670/src/embed/liveboard.ts#L113">embed/liveboard.ts:113</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -321,7 +331,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from V1Embed.destroy</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3c81bd1d/src/embed/ts-embed.ts#L810">embed/ts-embed.ts:810</a></li>
+									<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3bf70670/src/embed/ts-embed.ts#L810">embed/ts-embed.ts:810</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -349,7 +359,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from V1Embed.getThoughtSpotPostUrlParams</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3c81bd1d/src/embed/ts-embed.ts#L783">embed/ts-embed.ts:783</a></li>
+									<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3bf70670/src/embed/ts-embed.ts#L783">embed/ts-embed.ts:783</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -379,7 +389,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from V1Embed.on</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3c81bd1d/src/embed/ts-embed.ts#L860">embed/ts-embed.ts:860</a></li>
+									<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3bf70670/src/embed/ts-embed.ts#L860">embed/ts-embed.ts:860</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -429,7 +439,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides V1Embed.render</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3c81bd1d/src/embed/liveboard.ts#L232">embed/liveboard.ts:232</a></li>
+									<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3bf70670/src/embed/liveboard.ts#L242">embed/liveboard.ts:242</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -452,7 +462,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides V1Embed.trigger</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3c81bd1d/src/embed/liveboard.ts#L219">embed/liveboard.ts:219</a></li>
+									<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3bf70670/src/embed/liveboard.ts#L229">embed/liveboard.ts:229</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

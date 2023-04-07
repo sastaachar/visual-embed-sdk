@@ -273,7 +273,7 @@
 					<div class="tsd-signature tsd-kind-icon">Basic<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;Basic&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3c81bd1d/src/types.ts#L101">types.ts:101</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3bf70670/src/types.ts#L133">types.ts:133</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -290,7 +290,7 @@
 					<div class="tsd-signature tsd-kind-icon">EmbeddedSSO<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;EmbeddedSSO&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3c81bd1d/src/types.ts#L26">types.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3bf70670/src/types.ts#L26">types.ts:26</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -311,7 +311,7 @@
 					<div class="tsd-signature tsd-kind-icon">None<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;None&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3c81bd1d/src/types.ts#L20">types.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3bf70670/src/types.ts#L20">types.ts:20</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -326,13 +326,14 @@
 					<div class="tsd-signature tsd-kind-icon">OIDCRedirect<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;SSO_OIDC&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3c81bd1d/src/types.ts#L63">types.ts:63</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3bf70670/src/types.ts#L95">types.ts:95</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>SSO using OIDC
-							Will make the host application redirect to the OIDC Idp.</p>
+								Will make the host application redirect to the OIDC Idp.
+							See code samples in <a href="AuthType.html#SAMLRedirect">SAMLRedirect</a>.</p>
 						</div>
 					</div>
 				</section>
@@ -342,22 +343,50 @@
 					<div class="tsd-signature tsd-kind-icon">SAMLRedirect<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;SSO_SAML&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3c81bd1d/src/types.ts#L52">types.ts:52</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3bf70670/src/types.ts#L83">types.ts:83</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>SSO using SAML
-							Will make the host application redirect to the SAML Idp.</p>
+								Will make the host application redirect to the SAML Idp. Use this
+							when the idp does not allow itself to be embedded.</p>
 						</div>
+						<p>This redirects the host application to the SAML Idp. The host application
+						will be redirected back to the ThoughtSpot app after authentication.</p>
 						<dl class="tsd-comment-tags">
+							<dt class="example">example</dt>
+							<dd><pre><code class="language-js"><span style="color: #795E26">init</span><span style="color: #000000">({</span>
+<span style="color: #000000">  </span><span style="color: #008000">// ...</span>
+<span style="color: #000000">  </span><span style="color: #001080">authType:</span><span style="color: #000000"> </span><span style="color: #001080">AuthType</span><span style="color: #000000">.</span><span style="color: #001080">SAMLRedirect</span><span style="color: #000000">,</span>
+<span style="color: #000000"> });</span>
+</code></pre>
+								<p>This opens the SAML Idp in a popup window. The popup is triggered
+									when the user clicks the trigger button. The popup window will be
+								closed automatically after authentication.</p>
+							</dd>
 							<dt class="example">example</dt>
 							<dd><pre><code class="language-js"><span style="color: #795E26">init</span><span style="color: #000000">({</span>
 <span style="color: #000000">  </span><span style="color: #008000">// ...</span>
 <span style="color: #000000">  </span><span style="color: #001080">authType:</span><span style="color: #000000"> </span><span style="color: #001080">AuthType</span><span style="color: #000000">.</span><span style="color: #001080">SAMLRedirect</span><span style="color: #000000">,</span>
 <span style="color: #000000">  </span><span style="color: #001080">authTriggerText:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Login with SAML&#039;</span><span style="color: #000000">,</span>
 <span style="color: #000000">  </span><span style="color: #001080">authTriggerContainer:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;#embed-container&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000"> });</span>
+<span style="color: #000000">  </span><span style="color: #001080">inPopup:</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span><span style="color: #000000">,</span>
+<span style="color: #000000">});</span>
+</code></pre>
+								<p>Can also use event to trigger the popup flow. Works the same
+								as above example.</p>
+							</dd>
+							<dt class="example">example</dt>
+							<dd><pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">authEE</span><span style="color: #000000"> = </span><span style="color: #795E26">init</span><span style="color: #000000">({</span>
+<span style="color: #000000"> </span><span style="color: #008000">// ...</span>
+<span style="color: #000000"> </span><span style="color: #001080">authType:</span><span style="color: #000000"> </span><span style="color: #001080">AuthType</span><span style="color: #000000">.</span><span style="color: #001080">SAMLRedirect</span><span style="color: #000000">,</span>
+<span style="color: #000000"> </span><span style="color: #001080">inPopup:</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span><span style="color: #000000">,</span>
+<span style="color: #000000">});</span>
+
+<span style="color: #001080">someButtonOnYourPage</span><span style="color: #000000">.</span><span style="color: #795E26">addEventListener</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;click&#039;</span><span style="color: #000000">, () </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000"> </span><span style="color: #001080">authEE</span><span style="color: #000000">.</span><span style="color: #795E26">emit</span><span style="color: #000000">(</span><span style="color: #001080">AuthEvent</span><span style="color: #000000">.</span><span style="color: #0070C1">TRIGGER_SSO_POPUP</span><span style="color: #000000">);</span>
+<span style="color: #000000">});</span>
 </code></pre>
 							</dd>
 						</dl>
@@ -369,7 +398,7 @@
 					<div class="tsd-signature tsd-kind-icon">Trusted<wbr>Auth<wbr>Token<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;AuthServer&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3c81bd1d/src/types.ts#L87">types.ts:87</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3bf70670/src/types.ts#L119">types.ts:119</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -399,7 +428,7 @@
 					<div class="tsd-signature tsd-kind-icon">Trusted<wbr>Auth<wbr>Token<wbr>Cookieless<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;AuthServerCookieless&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3c81bd1d/src/types.ts#L94">types.ts:94</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/3bf70670/src/types.ts#L126">types.ts:126</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
