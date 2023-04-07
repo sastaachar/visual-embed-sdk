@@ -145,7 +145,9 @@ function backwardCompat(embedConfig: EmbedConfig): EmbedConfig {
 
 /**
  * Initializes the Visual Embed SDK globally and perform
- * authentication if applicable.
+ * authentication if applicable. This function needs to be called before any ThoughtSpot
+ * component like liveboard etc can be embedded. But need not wait for AuthEvent.SUCCESS
+ * to actually embed. That is handled internally.
  * @param embedConfig The configuration object containing ThoughtSpot host,
  * authentication mechanism and so on.
  *
@@ -237,7 +239,7 @@ export const renderInQueue = (
         return renderQueue;
     }
     // Sending an empty function to keep it consistent with the above usage.
-    return fn(() => {}); // eslint-disable-line @typescript-eslint/no-empty-function
+    return fn(() => { }); // eslint-disable-line @typescript-eslint/no-empty-function
 };
 
 // For testing purposes only
