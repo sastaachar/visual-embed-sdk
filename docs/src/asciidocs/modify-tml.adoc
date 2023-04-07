@@ -117,7 +117,7 @@ table:
   db_table: <database_table_name>
   connection:
     name: <connection_name>
-    type: <connection_type>
+    fqn: <connection_guid>
  ...
 ----
 
@@ -146,16 +146,13 @@ If you are modifying a packge of TML for deployment to a new environment, change
 ----
 
 == Join relationships and row-level security rules
-
-ThoughtSpot will import join relationships between tables when adding the table through the UI if the relationships are defined within the database. You can also manually define join relationships through the UI or table TML.
+*To import joins, you must import all the related Table TML files together at one time*
 
 Joins do not have separate TML representations, but are defined in the table TML in the `joins_with` section.
 
 Row-level security (RLS) rules are defined in the `rls_rules` section of the table TML. Similar to the `joins_with` section, RLS rules must reference existing table objects for the TML to validate.
 
-For this reason, you should always upload all *table* objects using the same *connection* together in a single TML Import REST API command. ThoughtSpot will parse all of the uploaded documents as related, allowing it to correctly identify JOINed objects even if there might be naming conflicts within the `joins_with` section when uploading individually.
-
-If you cannot upload all at once and you are encountering errors with Import, you can try the following process to minimize any unresolved references:
+If you cannot upload your Table TMLs all at once and you are encountering errors with Import, you can try the following process to minimize any unresolved references:
 
  . Remove the `rls_rules` and `joins_with` sections from the TML document on the initial import of each table TML. Save the GUID of each newly created object where it can be referenced to the original GUID.
  . Check that all table objects have been created successfully on the ThoughtSpot server.
@@ -178,7 +175,7 @@ view:
   tables:
   - name: <table_name_1>
     id : <optional_table_id>
-    fqn : <optional_GUID_of_table_name>
+    fqn : <GUID_of_table_name>
   - name: <table_name_2>
   - name: <table_name_n>
   joins:
@@ -203,17 +200,10 @@ view:
 ==== Worksheets
 Worksheets combine several *tables*, including *views*, into a coherent data model optimized for searches. The link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/tml.html#syntax-worksheets[TML syntax for worksheets, window=_blank] defines all of the aspects of the *worksheet*, including the tables it joins together, the columns and their properties, filters, and so on.
 
-If you are taking a *worksheet* from one environment and promoting it to another environment, and you added the `fqn` property per the instructions above, you simply use the __parent:child guid__ map to swap out the guid in the original `fqn` property for the one in the child environment.
-
 If you want to change the values for an existing *worksheet* object, the `tables`, `joins` and `table_paths` sections are the most important.
 
 The `tables` section is a list of table objects that exist on the ThoughtSpot Server. The `name` property is all that is included in an exported TML file, and this matches the `name` property of the table object. If there is more than one table object on the server with identical name properties, you must use the `fqn` property to specify the GUID of the particular table you want. However, the string value of `name` is used in the `joins` section, so the correct process for adding an `fqn` property is as follows:
 
-. Find the GUID of the specific table from the ThoughtSpot server.
-. Add the `fqn` element. Set the GUID as the value.
-. Copy the value from the `name` element.
-. Create an `id` property and set the value as the `name` value.
-. Remove the `name` element entirely.
 
 So you go from
 [source,yaml]
@@ -294,17 +284,23 @@ answer:
 = Liveboards
 link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/tml.html#syntax-pinboards[Liveboards, window=_blank] include many different visualizations and define a layout of the visualizations elements.
 
-The individual elements on a *Liveboard* are referred to as visualizations and are defined in the `visualizations` section. With the TML, the visualization section uses the exact same syntax as a separate *answer* stored on its own, with the `guid` property of an individual answer replaced by an `id` property. The value for the `id` property is typically the word `Viz` and a number, `Viz 1`, `Viz 10`.
+It is *best practice* to only use *one worksheet* for all visualizations on a Liveboard, however each visualization on a *Liveboard* can connect to different data objects.
 
-A visualization on a Liveboard is not linked in any way to any answer outside that Liveboard. When you pin an answer to a Liveboard, the full definition of the answer is copied into the Liveboard definition at that time. However, the capabilities and definitions for answers stored separately or on a Liveboard are identical.
+=== Visualizations on a Liveboard
+The individual elements on a *Liveboard* are referred to as visualizations and are defined in the `visualizations` section. 
 
-Prior to ThoughtSpot 8.9, you *must not* create visualizations on a single *Liveboard* that connect to different *worksheets* with the *same name* (this is possible, as *worksheet* names are not unique) if you wish to do programmatic deployment. After 8.9, the `fqn` property will be included for all data objects, so a definite comparison can be made for the appropriate substitution.
+A visualization on a Liveboard *is not linked* in any way to any answer object outside that Liveboard.
 
-Although each visualization on a *Liveboard* can connect to different data objects, it is best practice only to use one *worksheet* with content intended to be transformed and deployed out from a template.
+When you pin an answer to a Liveboard, the full definition of the answer is copied into the Liveboard definition at that time. However, the capabilities and definitions for answers stored separately or on a Liveboard are identical.
 
+Within the TML, the `visualizations` section uses the exact same syntax as a separate *answer* stored on its own, with the `guid` property of an individual answer replaced by an `id` property. The value for the `id` property is typically the word `Viz` and a number, `Viz 1`, `Viz 10`.
+
+NOTE: Prior to ThoughtSpot 8.9, you *must not* create visualizations on a single *Liveboard* that connect to different *worksheets* with the *same name* (this is possible, as *worksheet* names are not unique) if you wish to do programmatic transformations, because it is impossible to add in the FQN properties based on just name if names are not unique. 
+
+=== Modifying Liveboard TML
 [source,yaml]
 ----
-pinboard:
+liveboard:
   name: <Liveboard_name>
   description:
     This is a multi-line description of the Liveboard
