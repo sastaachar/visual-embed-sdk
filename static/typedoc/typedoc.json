@@ -1635,7 +1635,7 @@
 					"flags": {},
 					"comment": {
 						"shortText": "SSO using SAML\nWill make the host application redirect to the SAML Idp. Use this\nwhen the idp does not allow itself to be embedded.",
-						"text": "This redirects the host application to the SAML Idp. The host application\nwill be redirected back to the ThoughtSpot app after authentication.",
+						"text": "This redirects the host application to the SAML Idp. The flow\nwill be redirected back to the host app after authentication.",
 						"tags": [
 							{
 								"tag": "example",

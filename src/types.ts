@@ -41,8 +41,8 @@ export enum AuthType {
      * Will make the host application redirect to the SAML Idp. Use this
      * when the idp does not allow itself to be embedded.
      *
-     * This redirects the host application to the SAML Idp. The host application
-     * will be redirected back to the ThoughtSpot app after authentication.
+     * This redirects the host application to the SAML Idp. The flow
+     * will be redirected back to the host app after authentication.
      * @example
      * ```js
      * init({
@@ -370,7 +370,7 @@ export interface EmbedConfig {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface LayoutConfig {}
+export interface LayoutConfig { }
 
 /**
  * Embedded iFrame configuration
@@ -799,7 +799,7 @@ export enum EmbedEvent {
      *
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.4.0-sw
      */
-    DownloadAsPng='downloadAsPng',
+    DownloadAsPng = 'downloadAsPng',
     /**
      * Emitted when the Download as PDF action is triggered on an answer
      * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
@@ -1483,7 +1483,7 @@ export enum Action {
     ReplaySearch = 'replaySearch',
     ShowUnderlyingData = 'showUnderlyingData',
     Download = 'download',
-    DownloadAsPng='downloadAsPng',
+    DownloadAsPng = 'downloadAsPng',
     DownloadAsPdf = 'downloadAsPdf',
     DownloadAsCsv = 'downloadAsCSV',
     DownloadAsXlsx = 'downloadAsXLSX',
