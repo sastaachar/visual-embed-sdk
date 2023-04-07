@@ -9,18 +9,21 @@
 
 link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/tml.html[TML, window=_blank] is slightly different for every object type, but all follow a general pattern which allow for programmatic editing.
 
-Because of the flexibility of the various data object types, there is no particular hierarchy, but rather just the following rules:
+You can use the link:https://github.com/thoughtspot/thoughtspot_tml[thoughtspot_tml Python library, target=_blank] to access and transform any of the properties discussed within this document, most of which are covered in the README and the link:https://github.com/thoughtspot/thoughtspot_tml/blob/v2_main/examples/common_attribute_changes.py[common_attribute_changes.py example script, target=_blank].
+
+= Best practices
+Because of the flexibility of the various data object types, there is no particular hierarchy to TML files, but rather just the following rules:
 
  - Data objects can only be joined to other objects from a single connection
  - Any single search (an *answer* or a *visualization* on a *Liveboard*) can only connect to data objects from a single connection 
  
 The *connection* is thus the natural packaging level for importing TML files, except for Liveboards which may contain visualizations connected to different *connections*. 
 
+This is to say, for a given *connection* you can always upload all TML files connected to that connection safely *except Liveboards*.
+
 One best practice recommendation is to only connect *answers* and *Liveboards* to *worksheets*. Although they can connect directly to *tables* and *views*, it is far simpler to adjust a single reference to one *worksheet* within the *answer* and *Liveboard* TML than many individual *tables*. The only exception is if you use a single *table* or *view* for the underlying search answer.
 
 image::./images/object_model_hierarchy.png[ThoughtSpot object model hierarchy and relationships]
-
-= Best practices
 
 == Export with fqn: property
 Always export TML files with `export_fqns=true` (pre-9.0.0 versions see xref:development-and-deployment.adoc[Notes for older releases])
