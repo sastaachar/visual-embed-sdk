@@ -161,46 +161,7 @@ If you cannot upload your Table TMLs all at once and you are encountering errors
  . Check that all table objects have been created successfully on the ThoughtSpot server.
  . Do a second import of the TML documents with the `rls_rules` and `joins_with` sections. To update the new objects rather than the original objects,  specify the GUIDs of the newly created table objects on the server in the TML documents' `guid` property .
 
-= Views
-
-link:https://cloud-docs.thoughtspot.com/complex-search/about-query-on-query.html[Views, window=_blank] transform a saved search into a data source, allowing for analysis that would require complex sub-queries in SQL. *Views* can be joined with other data objects in a *worksheet*. The best practice is to make *views* available to *answers* and *Liveboards* through a *worksheet*.
-
-The link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/tml.html#syntax-views[TML syntax for views, window=_blank] is similar to that of worksheets, in that it defines links to table objects on the ThoughtSpot server and join overrides using the `joins` and `table_paths` sections. What truly distinguishes a view is the `search_query` element, which contains a string using the xref:search-data-api.adoc[ThoughtSpot search syntax].
-
-[source,yaml]
-----
-guid: <view_guid>
-view:
-  name: <view_name>
-  description:
-    This is a multi-line description of the View.
-    Description line 2
-  tables:
-  - name: <table_name_1>
-    id : <optional_table_id>
-    fqn : <GUID_of_table_name>
-  - name: <table_name_2>
-  - name: <table_name_n>
-  joins:
-  - name: <join_name_1>
-    source: <source_table_name>
-    destination: <destination_table_name>
-    type: [RIGHT_OUTER | LEFT_OUTER | INNER | OUTER]
-    on: <join_expression_string>
-    is_one_to_one: [ false | true ]
-  table_paths:
-  - id: <table_path_name_1>
-    table: <table_name_1>
-    join_path:
-    - join:
-      - <join_name_1>
-      - <join_name_n>
- ...
-  search_query: <query_string>
- ...
-----
-
-==== Worksheets
+= Worksheets
 Worksheets combine several *tables*, including *views*, into a coherent data model optimized for searches. The link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/tml.html#syntax-worksheets[TML syntax for worksheets, window=_blank] defines all of the aspects of the *worksheet*, including the tables it joins together, the columns and their properties, filters, and so on.
 
 If you want to change the values for an existing *worksheet* object, the `tables`, `joins` and `table_paths` sections are the most important.
@@ -247,22 +208,7 @@ Under `table_paths`, the `table` property also uses the values we moved to `id`.
       - <join_name_n>
 ----
 
-==== SQL Views
-A link:https://docs.thoughtspot.com/cloud/latest/tml#syntax-sql-views[SQL View, window=_blank] defines an underlying query directly to a *connection*. The `connection` property can be changed similar to a *table* object's TML either using the `name` property or adding an `fqn`, while the `sql_query` property can be changed to a different valid text string.
 
-[source,yaml]
-----
-guid: <sql_view_guid>
-sql_view:
-  name: <view_name>
-  description:
-    This is a multi-line description of the View.
-    Description line 2
-  connection:
-    name: <connection_name>
-    fqn: <optional_connection_GUID>
-  sql_query: <sql_query_string>
-----
 
 = Answers
 The link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/tml.html#syntax-answers[answer TML syntax, window=_blank] defines all aspects of a saved search and how it is visualized. The `tables` property is used to point to ThoughtSpot *table*, *view*, or *worksheet* objects, whichever the answer is connected to. 
@@ -280,7 +226,7 @@ answer:
   tables:
   - id: <table_id>
     name: <table_name_1>
-    fqn : <optional_GUID_of_table_name>
+    fqn : <GUID_of_table_name>
  ...
 ----
 
@@ -323,4 +269,62 @@ The `layout` section is an ordered list with a `size` property for each visualiz
     - visualization_id: <visualization_id_1>
       size: <viz_id_1_size>
     - visualization_id: <visualization_id_2>
+----
+
+= Views
+
+link:https://cloud-docs.thoughtspot.com/complex-search/about-query-on-query.html[Views, window=_blank] transform a saved search into a data source, allowing for analysis that would require complex sub-queries in SQL. *Views* can be joined with other data objects in a *worksheet*. The best practice is to make *views* available to *answers* and *Liveboards* through a *worksheet*.
+
+The link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/tml.html#syntax-views[TML syntax for views, window=_blank] is similar to that of worksheets, in that it defines links to table objects on the ThoughtSpot server and join overrides using the `joins` and `table_paths` sections. What truly distinguishes a view is the `search_query` element, which contains a string using the xref:search-data-api.adoc[ThoughtSpot search syntax].
+
+[source,yaml]
+----
+guid: <view_guid>
+view:
+  name: <view_name>
+  description:
+    This is a multi-line description of the View.
+    Description line 2
+  tables:
+  - name: <table_name_1>
+    id : <optional_table_id>
+    fqn : <GUID_of_table_name>
+  - name: <table_name_2>
+  - name: <table_name_n>
+  joins:
+  - name: <join_name_1>
+    source: <source_table_name>
+    destination: <destination_table_name>
+    type: [RIGHT_OUTER | LEFT_OUTER | INNER | OUTER]
+    on: <join_expression_string>
+    is_one_to_one: [ false | true ]
+  table_paths:
+  - id: <table_path_name_1>
+    table: <table_name_1>
+    join_path:
+    - join:
+      - <join_name_1>
+      - <join_name_n>
+ ...
+  search_query: <query_string>
+ ...
+----
+
+= SQL Views
+A link:https://docs.thoughtspot.com/cloud/latest/tml#syntax-sql-views[SQL View, window=_blank] defines an underlying query directly to a *connection*. 
+
+The `connection` property can be changed similar to a *table* object's TML either using the `fqn` property, while the `sql_query` property can be changed to a different valid text string.
+
+[source,yaml]
+----
+guid: <sql_view_guid>
+sql_view:
+  name: <view_name>
+  description:
+    This is a multi-line description of the View.
+    Description line 2
+  connection:
+    name: <connection_name>
+    fqn: <connection_GUID>
+  sql_query: <sql_query_string>
 ----
