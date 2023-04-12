@@ -247,6 +247,7 @@ Within the TML, the `visualizations` section uses the exact same syntax as a sep
 [NOTE]
 ====
 If your instance is running 8.9.0.cl, do not create visualizations on a single *Liveboard* that connect to different *worksheets* with the *same name* (this is possible, as *worksheet* names are not unique) if you wish to do programmatic transformations, because it is impossible to add in the FQN properties based on just name if names are not unique.
+====
 
 === Modifying Liveboard TML
 [source,yaml]
@@ -272,6 +273,7 @@ The `layout` section is an ordered list with a `size` property for each visualiz
       size: <viz_id_1_size>
     - visualization_id: <visualization_id_2>
 ----
+
 
 == Views
 
@@ -311,6 +313,7 @@ view:
   search_query: <query_string>
  ...
 ----
+
 
 == SQL Views
 A link:https://docs.thoughtspot.com/cloud/latest/tml#syntax-sql-views[SQL View, window=_blank] defines an underlying query directly to a *connection*. 
