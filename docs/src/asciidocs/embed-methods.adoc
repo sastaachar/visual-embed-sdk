@@ -5,12 +5,12 @@
 :page-pageid: embed-ts
 :page-description: ThoughtSpot supports several embedding options to embed ThoughtSpot in your web application or portal.
 
-ThoughtSpot supports embedding Search, Liveboard, visualizations, and the full ThoughtSpot experience in a web application, product, or portal.
+ThoughtSpot supports embedding Search bar, Search page, Liveboard, visualizations, and the full ThoughtSpot experience in a web application, product, or portal.
 
-[NOTE]
-====
-Starting from the 8.4.1-sw release, ThoughtSpot Software clusters support ThoughtSpot Everywhere features and embedding with Visual Embed SDK. For more information, see xref:rel-page-sw.adoc[Now available on ThoughtSpot Software].
-====
+[div announcementBlock]
+--
+Starting from 8.4.1-sw release, ThoughtSpot Software clusters support ThoughtSpot Everywhere and embedding with Visual Embed SDK.
+--
 
 == Supported embedding methods
 Based on your embedding requirements and integration setup, you can use one of the following embedding methods:

@@ -41,7 +41,7 @@ import { LiveboardEmbed } from '@thoughtspot/visual-embed-sdk';
 
 // NPM <script>
 <script src="https://cdn.jsdelivr.net/npm/@thoughtspot/visual-embed-sdk/dist/tsembed.js"></script>;
-// Make the SDK available on global namespace window.tsembed
+// Makes the SDK available on global namespace window.tsembed
 
 // ES6 from web
 import {
@@ -225,4 +225,4 @@ const MyComponent = () => {
 <br/>
 <br/>
 
-Visual-Embed-SDK, © ThoughtSpot, Inc. 2022
+Visual-Embed-SDK, © ThoughtSpot, Inc. 2023

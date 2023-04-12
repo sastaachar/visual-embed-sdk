@@ -63,33 +63,43 @@ For example, if a Liveboard has 10 charts and each chart has 5 columns and 10 re
 [#transient-pinboard]
 == Liveboard data with unsaved changes
 
-To download Liveboards with unsaved changes as PDFs, pass the `transient_pinboard_content` script with `getExportRequestForCurrentPinboard` method in the browser fetch request .
+To download retrieve a Liveboard with unsaved changes, pass the `transient_pinboard_content` script with `getExportRequestForCurrentPinboard` method in the browser fetch request .
 
-[source,javascript]
+[source,JavaScript]
 ----
 function getExportRequestForCurrentPinboard(frame: HTMLIframeElement): Promise<string>;
 ----
 
-The promise returned resolves to  a string that contains the transient Liveboard content, which is encoded as JSON and is sent to the `/tspublic/v1/pinboarddata` endpoint with the `transient_pinboard_content` key. This content resembles the current Liveboard as is, including the unsaved changes if any.
+The promise returned resolves to a string that contains the transient Liveboard content, which is encoded as JSON and is sent to the `/tspublic/v1/pinboarddata` endpoint with the `transient_pinboard_content` key. This content resembles the current Liveboard as is, including the unsaved changes if any.
+
+The promise returned resolves to  a string that contains the transient Liveboard content, which is encoded as JSON and is sent to the `/tspublic/v1/pinboarddata` endpoint with the `transient_pinboard_content` key. This content resembles the current Liveboard as is, including unsaved changes to the following:
+
+* Liveboard filters
+* Runtime filters applied on visualizations on a Liveboard
+* Liveboard layout
+
+If the new Liveboard experience is enabled, the transient content includes ad hoc changes to visualizations such as sorting, toggling of legends, and data drill down.
 
 === Sample browser fetch request
-[source,javascript]
+[source,JavaScript]
 ----
-<iframe src="http://ts_host:port/" id="ts-embed"></iframe>
-<script src="/path/to/ts-api.js"></script>
-<script>
-    const tsFrame = document.getElementById("ts-embed");
-async function liveboardData() {
-    const transientPinboardContent = await thoughtspot.getExportRequestForCurrentPinboard(tsFrame);
-    const liveboardDataResponse = await fetch("http://ts_host:port/callosum/v1/tspublic/v1/pinboarddata", {
+< iframe src = "http://ts_host:port/" id = "ts-embed" > < /iframe>
+< script src = "/path/to/liveboard.js" > < /script>
+< script >
+    const embed = new LiveboardEmbed("#embed", {
+        frameParams: {},
+    });
+    async function liveboardData() {
+    const transientPinboardContent = await embed.trigger(HostEvent.getExportRequestForCurrentPinboard);
+    const liveboardDataResponse = await fetch("https://ts_host:port/callosum/v1/tspublic/v1/pinboarddata", {
         method: "POST",
         body: createFormDataObjectWith({
-           "formattype": "COMPACT",
-           "transient_pinboard_content": transientPinboardContent,
-    }),
-  });
-}
-</script>
+            "formattype": "COMPACT",
+            "transient_pinboard_content": transientPinboardContent,
+        }),
+    });
+ }
+< /script>
 ----
 
 == Example requests
@@ -101,14 +111,15 @@ async function liveboardData() {
 [source,cURL]
 ----
 curl -X POST \
---header 'Content-Type: application/json' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
 --header 'Accept: application/json' \
---header 'X-Requested-By: ThoughtSpot' 'https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/pinboarddata?id=f4533461-caa5-4efa-a189-13815ab86770&batchsize=-1&pagenumber=-1&offset=-1&formattype=COMPACT'
+--header 'X-Requested-By: ThoughtSpot' \
+'https://{ThoughtSpot-Host}/callosum/v1/tspublic/v1/pinboarddata?id=f4533461-caa5-4efa-a189-13815ab86770&batchsize=-1&pagenumber=-1&offset=-1&formattype=COMPACT'
 ----
 
 .Request URL
 ----
-https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/pinboarddata?id=f4533461-caa5-4efa-a189-13815ab86770&batchsize=-1&pagenumber=-1&offset=-1&formattype=COMPACT
+https://{ThoughtSpot-Host}/callosum/v1/tspublic/v1/pinboarddata?id=f4533461-caa5-4efa-a189-13815ab86770&batchsize=-1&pagenumber=-1&offset=-1&formattype=COMPACT
 ----
 
 === Visualization data
@@ -118,14 +129,15 @@ https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/pinboarddata?id=f4533461-caa5
 [source,cURL]
 ----
 curl -X POST \
---header 'Content-Type: application/json' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
 --header 'Accept: application/json' \
---header 'X-Requested-By: ThoughtSpot' https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/pinboarddata?id=bea79810-145f-4ad0-a02c-4177a6e7d861&vizid=['fa934657-e347-4de7-b02d-3b46609233cc','62f98ad3-6ddd-4aed-8f13-58054295b7e3','eb77ba14-15de-4d4d-aac4-625ebd58b1c6']&batchsize=-1&pagenumber=-1&offset=-1&formattype=COMPACT'
+--header 'X-Requested-By: ThoughtSpot'
+'https://{ThoughtSpot-Host}/callosum/v1/tspublic/v1/pinboarddata?id=bea79810-145f-4ad0-a02c-4177a6e7d861&vizid=['fa934657-e347-4de7-b02d-3b46609233cc','62f98ad3-6ddd-4aed-8f13-58054295b7e3','eb77ba14-15de-4d4d-aac4-625ebd58b1c6']&batchsize=-1&pagenumber=-1&offset=-1&formattype=COMPACT'
 ----
 
 .Request URL
 ----
-https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/pinboarddata?id=bea79810-145f-4ad0-a02c-4177a6e7d861&vizid=['fa934657-e347-4de7-b02d-3b46609233cc','62f98ad3-6ddd-4aed-8f13-58054295b7e3','eb77ba14-15de-4d4d-aac4-625ebd58b1c6']&batchsize=-1&pagenumber=-1&offset=-1&formattype=COMPACT
+https://{ThoughtSpot-Host}/callosum/v1/tspublic/v1/pinboarddata?id=bea79810-145f-4ad0-a02c-4177a6e7d861&vizid=['fa934657-e347-4de7-b02d-3b46609233cc','62f98ad3-6ddd-4aed-8f13-58054295b7e3','eb77ba14-15de-4d4d-aac4-625ebd58b1c6']&batchsize=-1&pagenumber=-1&offset=-1&formattype=COMPACT
 ----
 
 == Example response
@@ -253,7 +265,7 @@ You can modify the API's output by passing runtime filters as parameters in the 
 For example:
 
 ----
-https://<ThoughtSpot-host>/callosum/v1/tspublic/v1/pinboarddata?id=f4533461-caa5-4efa-a189-13815ab86770&batchsize=-1&col1=COL_NAME1&op1=OP_TYPE1&val1=VALUE1&coln=COL_NAMEn&opn=OP_TYPEn&valn=VALUEn
+https://{ThoughtSpot-Host}/callosum/v1/tspublic/v1/pinboarddata?id=f4533461-caa5-4efa-a189-13815ab86770&batchsize=-1&col1=COL_NAME1&op1=OP_TYPE1&val1=VALUE1&coln=COL_NAMEn&opn=OP_TYPEn&valn=VALUEn
 ----
 
 You can add more than one filter by specifying `col2`, `op2`, `val2`, and so on.

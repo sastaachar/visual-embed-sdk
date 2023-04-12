@@ -1,4 +1,5 @@
 import EventEmitter from 'eventemitter3';
+import { EmbedConfig } from '../index';
 import * as auth from '../auth';
 import * as index from '../index';
 import * as base from './base';
@@ -19,7 +20,7 @@ describe('Base TS Embed', () => {
         authEE = index.init({
             thoughtSpotHost,
             authType: index.AuthType.None,
-        });
+        }) as EventEmitter;
     });
 
     beforeEach(() => {
@@ -61,9 +62,7 @@ describe('Base TS Embed', () => {
             callPrefetch: true,
         });
         expect(getAllIframeEl().length).toBe(1);
-        const prefetchIframe = document.querySelectorAll<HTMLIFrameElement>(
-            '.prefetchIframe',
-        );
+        const prefetchIframe = document.querySelectorAll<HTMLIFrameElement>('.prefetchIframe');
         expect(prefetchIframe.length).toBe(1);
         const firstIframe = <HTMLIFrameElement>prefetchIframe[0];
         expect(firstIframe.src).toBe(url);
@@ -78,9 +77,7 @@ describe('Base TS Embed', () => {
             index.PrefetchFeatures.LiveboardEmbed,
         ]);
         expect(getAllIframeEl().length).toBe(2);
-        const prefetchIframe = document.querySelectorAll<HTMLIFrameElement>(
-            '.prefetchIframe',
-        );
+        const prefetchIframe = document.querySelectorAll<HTMLIFrameElement>('.prefetchIframe');
         expect(prefetchIframe.length).toBe(2);
         const firstIframe = <HTMLIFrameElement>prefetchIframe[0];
         expect(firstIframe.src).toBe(searchUrl);
@@ -92,9 +89,7 @@ describe('Base TS Embed', () => {
         const url = '';
         index.prefetch(url);
         expect(getAllIframeEl().length).toBe(0);
-        const prefetchIframe = document.querySelectorAll<HTMLIFrameElement>(
-            '.prefetchIframe',
-        );
+        const prefetchIframe = document.querySelectorAll<HTMLIFrameElement>('.prefetchIframe');
         expect(prefetchIframe.length).toBe(0);
     });
 
@@ -147,9 +142,9 @@ describe('Base TS Embed', () => {
         });
 
         authEmitter.on(auth.AuthStatus.FAILURE, failureCallback);
-        authEmitter.on(auth.AuthStatus.SDK_SUCCESS, (reason) => {
+        authEmitter.on(auth.AuthStatus.SDK_SUCCESS, (...args) => {
             expect(failureCallback).not.toBeCalled();
-            expect(reason).toBe(undefined);
+            expect(args.length).toBe(0);
             done();
         });
     });
@@ -175,6 +170,50 @@ describe('Base TS Embed', () => {
             },
         );
         expect(base.getEmbedConfig().autoLogin).toBe(false);
+    });
+
+    test('config sanity, no ts host', () => {
+        expect(() => {
+            index.init({
+                authType: index.AuthType.None,
+            } as EmbedConfig);
+        }).toThrowError();
+    });
+
+    test('config sanity, no username in trusted auth', () => {
+        expect(() => {
+            index.init({
+                authType: index.AuthType.TrustedAuthToken,
+                thoughtSpotHost,
+            } as EmbedConfig);
+        }).toThrowError();
+    });
+
+    test('config sanity, no authEndpoint and getAuthToken', () => {
+        expect(() => {
+            index.init({
+                authType: index.AuthType.TrustedAuthToken,
+                thoughtSpotHost,
+                username: 'test',
+            });
+        }).toThrowError();
+    });
+    test('config backward compat, should assign inPopup when noRedirect is set', () => {
+        index.init({
+            authType: index.AuthType.None,
+            thoughtSpotHost,
+            noRedirect: true,
+        });
+        expect(base.getEmbedConfig().inPopup).toBe(true);
+    });
+    test('config backward compat, should not override inPopup with noRedirect', () => {
+        index.init({
+            authType: index.AuthType.None,
+            thoughtSpotHost,
+            noRedirect: true,
+            inPopup: false,
+        });
+        expect(base.getEmbedConfig().inPopup).toBe(false);
     });
 });
 

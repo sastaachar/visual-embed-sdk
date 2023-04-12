@@ -2,7 +2,7 @@ import { ERROR_MESSAGE } from './errors';
 import { EmbedConfig } from './types';
 
 /**
- * Copyright (c) 2022
+ * Copyright (c) 2023
  *
  * Utilities related to reading configuration objects
  *
@@ -23,6 +23,7 @@ const urlRegex = new RegExp(
 /**
  * Parse and construct the ThoughtSpot hostname or IP address
  * from the embed configuration object.
+ *
  * @param config
  */
 export const getThoughtSpotHost = (config: EmbedConfig): string => {
@@ -51,9 +52,10 @@ export const getV2BasePath = (config: EmbedConfig): string => {
 
     const tsHost = getThoughtSpotHost(config);
 
-    // This is to handle when e2e's. Search is run on pods for comp-blink-test-pipeline
-    // with baseUrl=https://localhost:8443.
-    // This is to handle when the developer is developing in their local environment.
+    // This is to handle when e2e's. Search is run on pods for
+    // comp-blink-test-pipeline with baseUrl=https://localhost:8443.
+    // This is to handle when the developer is developing in their local
+    // environment.
     if (tsHost.includes('://localhost') && !tsHost.includes(':8443')) {
         return '';
     }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022
+ * Copyright (c) 2023
  *
  * Common utility functions for ThoughtSpot Visual Embed SDK
  *
@@ -7,11 +7,14 @@
  * @author Ayon Ghosh <ayon.ghosh@thoughtspot.com>
  */
 
+import merge from 'ts-deepmerge';
 import {
     EmbedConfig,
     QueryParams,
     RuntimeFilter,
     CustomisationsInterface,
+    DOMSelector,
+    ViewConfig,
 } from './types';
 
 /**
@@ -19,6 +22,7 @@ import {
  * Refer to the following docs for more details on runtime filter syntax:
  * https://cloud-docs.thoughtspot.com/admin/ts-cloud/apply-runtime-filter.html
  * https://cloud-docs.thoughtspot.com/admin/ts-cloud/runtime-filter-operators.html
+ *
  * @param runtimeFilters
  */
 export const getFilterQuery = (runtimeFilters: RuntimeFilter[]): string => {
@@ -28,9 +32,7 @@ export const getFilterQuery = (runtimeFilters: RuntimeFilter[]): string => {
             const filterExpr = [];
             filterExpr.push(`col${index}=${filter.columnName}`);
             filterExpr.push(`op${index}=${filter.operator}`);
-            filterExpr.push(
-                filter.values.map((value) => `val${index}=${value}`).join('&'),
-            );
+            filterExpr.push(filter.values.map((value) => `val${index}=${value}`).join('&'));
 
             return filterExpr.join('&');
         });
@@ -44,15 +46,12 @@ export const getFilterQuery = (runtimeFilters: RuntimeFilter[]): string => {
 /**
  * Convert a value to a string representation to be sent as a query
  * parameter to the ThoughtSpot app.
+ *
  * @param value Any parameter value
  */
 const serializeParam = (value: any) => {
     // do not serialize primitive types
-    if (
-        typeof value === 'string' ||
-        typeof value === 'number' ||
-        typeof value === 'boolean'
-    ) {
+    if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
         return value;
     }
 
@@ -63,14 +62,16 @@ const serializeParam = (value: any) => {
  * Convert a value to a string:
  * in case of an array, we convert it to CSV.
  * in case of any other type, we directly return the value.
+ *
  * @param value
  */
-const paramToString = (value: any) =>
-    Array.isArray(value) ? value.join(',') : value;
+const paramToString = (value: any) => (Array.isArray(value) ? value.join(',') : value);
 
 /**
  * Return a query param string composed from the given params object
+ *
  * @param queryParams
+ * @param shouldSerializeParamValues
  */
 export const getQueryParamString = (
     queryParams: QueryParams,
@@ -98,6 +99,7 @@ export const getQueryParamString = (
 /**
  * Get a string representation of a dimension value in CSS
  * If numeric, it is considered in pixels.
+ *
  * @param value
  */
 export const getCssDimension = (value: number | string): string => {
@@ -110,6 +112,7 @@ export const getCssDimension = (value: number | string): string => {
 
 /**
  * Append a string to a URL's hash fragment
+ *
  * @param url A URL
  * @param stringToAppend The string to append to the URL hash
  */
@@ -126,6 +129,12 @@ export const appendToUrlHash = (url: string, stringToAppend: string) => {
     return outputUrl;
 };
 
+/**
+ *
+ * @param url
+ * @param stringToAppend
+ * @param path
+ */
 export function getRedirectUrl(url: string, stringToAppend: string, path = '') {
     const targetUrl = path ? new URL(path, window.location.origin).href : url;
     return appendToUrlHash(targetUrl, stringToAppend);
@@ -135,10 +144,7 @@ export const getEncodedQueryParamsString = (queryString: string) => {
     if (!queryString) {
         return queryString;
     }
-    return btoa(queryString)
-        .replace(/\+/g, '-')
-        .replace(/\//g, '_')
-        .replace(/=+$/, '');
+    return btoa(queryString).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 };
 
 export const getOffsetTop = (element: any) => {
@@ -178,12 +184,42 @@ export const checkReleaseVersionInBeta = (
 
 export const getCustomisations = (
     embedConfig: EmbedConfig,
+    viewConfig: ViewConfig,
 ): CustomisationsInterface => {
-    const { customCssUrl } = embedConfig;
-    let { customisations } = embedConfig;
-    customisations = customisations || ({} as CustomisationsInterface);
-    customisations.style = customisations.style || {};
-    customisations.style.customCSSUrl =
-        customisations.style.customCSSUrl || customCssUrl;
-    return customisations;
+    const customCssUrlFromEmbedConfig = embedConfig.customCssUrl;
+    const customizationsFromViewConfig = viewConfig.customizations;
+    const customizationsFromEmbedConfig = embedConfig.customizations
+        || ((embedConfig as any).customisations as CustomisationsInterface);
+
+    const customizations: CustomisationsInterface = {
+        style: {
+            ...customizationsFromEmbedConfig?.style,
+            ...customizationsFromViewConfig?.style,
+            customCSS: {
+                ...customizationsFromEmbedConfig?.style?.customCSS,
+                ...customizationsFromViewConfig?.style?.customCSS,
+            },
+            customCSSUrl:
+                customizationsFromViewConfig?.style?.customCSSUrl
+                || customizationsFromEmbedConfig?.style?.customCSSUrl
+                || customCssUrlFromEmbedConfig,
+        },
+        content: {
+            ...customizationsFromEmbedConfig?.content,
+            ...customizationsFromViewConfig?.content,
+        },
+    };
+    return customizations;
 };
+
+/**
+ * Gets a reference to the DOM node given
+ * a selector.
+ *
+ * @param domSelector
+ */
+export function getDOMNode(domSelector: DOMSelector): HTMLElement {
+    return typeof domSelector === 'string' ? document.querySelector(domSelector) : domSelector;
+}
+
+export const deepMerge = (target: any, source: any) => merge(target, source);

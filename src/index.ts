@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022
+ * Copyright (c) 2023
  *
  * ThoughtSpot Visual Embed SDK for embedding ThoughtSpot analytics
  * in other web applications.
@@ -7,17 +7,16 @@
  * @summary ThoughtSpot Visual Embed SDK
  * @author Ayon Ghosh <ayon.ghosh@thoughtspot.com>
  */
-
 import { AppEmbed, Page, AppViewConfig } from './embed/app';
-import { init, prefetch, logout } from './embed/base';
 import {
-    PinboardEmbed,
-    LiveboardViewConfig,
-    LiveboardEmbed,
-} from './embed/liveboard';
+    init, prefetch, logout, getEmbedConfig,
+} from './embed/base';
+import { PinboardEmbed, LiveboardViewConfig, LiveboardEmbed } from './embed/liveboard';
 import { SearchEmbed, SearchViewConfig } from './embed/search';
 import { SearchBarEmbed, SearchBarViewConfig } from './embed/search-bar';
-import { AuthFailureType, AuthStatus } from './auth';
+import {
+    AuthFailureType, AuthStatus, AuthEvent, AuthEventEmitter, getSessionInfo,
+} from './auth';
 import {
     AuthType,
     RuntimeFilter,
@@ -28,12 +27,22 @@ import {
     Action,
     EmbedConfig,
     PrefetchFeatures,
+    FrameParams,
+    DOMSelector,
+    MessageOptions,
+    MessageCallback,
+    MessagePayload,
+    CustomisationsInterface,
+    CustomStyles,
+    customCssInterface,
 } from './types';
 
 export {
     init,
     logout,
     prefetch,
+    getEmbedConfig as getInitConfig,
+    getSessionInfo,
     SearchEmbed,
     SearchBarEmbed,
     PinboardEmbed,
@@ -41,6 +50,8 @@ export {
     AppEmbed,
     AuthFailureType,
     AuthStatus,
+    AuthEvent,
+    AuthEventEmitter,
     // types
     Page,
     AuthType,
@@ -56,4 +67,12 @@ export {
     LiveboardViewConfig,
     AppViewConfig,
     PrefetchFeatures,
+    FrameParams,
+    DOMSelector,
+    MessageOptions,
+    MessageCallback,
+    MessagePayload,
+    CustomisationsInterface,
+    CustomStyles,
+    customCssInterface,
 };

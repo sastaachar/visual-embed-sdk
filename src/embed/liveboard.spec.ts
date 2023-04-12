@@ -3,6 +3,7 @@ import { init } from '../index';
 import {
     Action,
     AuthType,
+    ContextMenuTriggerOptions,
     EmbedEvent,
     HostEvent,
     RuntimeFilterOp,
@@ -12,6 +13,12 @@ import {
     getDocumentBody,
     getIFrameSrc,
     getRootEl,
+    defaultParams,
+    defaultParamsWithoutHiddenActions,
+    expectUrlMatchesWithParams,
+    postMessageToParent,
+    getIFrameEl,
+    mockMessageChannel,
 } from '../test/test-utils';
 import { version } from '../../package.json';
 import * as processTriggerInstance from '../utils/processTrigger';
@@ -26,8 +33,6 @@ const liveboardId = 'eca215d4-0d2c-4a55-90e3-d81ef6848ae0';
 const activeTabId = '502693ba-9818-4e71-8ecd-d1a194e46861';
 const vizId = '6e73f724-660e-11eb-ae93-0242ac130002';
 const thoughtSpotHost = 'tshost';
-const defaultParamsSansHideAction = `&hostAppUrl=local-host&viewPortHeight=768&viewPortWidth=1024&sdkVersion=${version}`;
-const defaultParams = `${defaultParamsSansHideAction}&hideAction=[%22${Action.ReportError}%22]`;
 const prefixParams = '&isLiveboardEmbed=true';
 const prefixParamsVizEmbed = '&isLiveboardEmbed=true&isVizEmbed=true';
 
@@ -50,7 +55,8 @@ describe('Liveboard/viz embed tests', () => {
         } as LiveboardViewConfig);
         liveboardEmbed.render();
         await executeAfterWait(() => {
-            expect(getIFrameSrc()).toBe(
+            expectUrlMatchesWithParams(
+                getIFrameSrc(),
                 `http://${thoughtSpotHost}/?embedApp=true${defaultParams}${prefixParams}#/embed/viz/${liveboardId}`,
             );
         });
@@ -58,54 +64,45 @@ describe('Liveboard/viz embed tests', () => {
 
     test('should set disabled actions', async () => {
         const liveboardEmbed = new LiveboardEmbed(getRootEl(), {
-            disabledActions: [
-                Action.DownloadAsCsv,
-                Action.DownloadAsPdf,
-                Action.DownloadAsXlsx,
-            ],
+            disabledActions: [Action.DownloadAsCsv, Action.DownloadAsPdf, Action.DownloadAsXlsx],
             disabledActionReason: 'Action denied',
             ...defaultViewConfig,
             liveboardId,
         } as LiveboardViewConfig);
         liveboardEmbed.render();
         await executeAfterWait(() => {
-            expect(getIFrameSrc()).toBe(
-                `http://${thoughtSpotHost}/?embedApp=true${defaultParamsSansHideAction}&disableAction=[%22${Action.DownloadAsCsv}%22,%22${Action.DownloadAsPdf}%22,%22${Action.DownloadAsXlsx}%22]&disableHint=Action%20denied&hideAction=[%22${Action.ReportError}%22]${prefixParams}#/embed/viz/${liveboardId}`,
+            expectUrlMatchesWithParams(
+                getIFrameSrc(),
+                `http://${thoughtSpotHost}/?embedApp=true&${defaultParamsWithoutHiddenActions}&disableAction=[%22${Action.DownloadAsCsv}%22,%22${Action.DownloadAsPdf}%22,%22${Action.DownloadAsXlsx}%22]&disableHint=Action%20denied&hideAction=[%22${Action.ReportError}%22]${prefixParams}#/embed/viz/${liveboardId}`,
             );
         });
     });
 
     test('should set hidden actions', async () => {
         const liveboardEmbed = new LiveboardEmbed(getRootEl(), {
-            hiddenActions: [
-                Action.DownloadAsCsv,
-                Action.DownloadAsPdf,
-                Action.DownloadAsXlsx,
-            ],
+            hiddenActions: [Action.DownloadAsCsv, Action.DownloadAsPdf, Action.DownloadAsXlsx],
             ...defaultViewConfig,
             liveboardId,
         } as LiveboardViewConfig);
         liveboardEmbed.render();
         await executeAfterWait(() => {
-            expect(getIFrameSrc()).toBe(
-                `http://${thoughtSpotHost}/?embedApp=true${defaultParamsSansHideAction}&hideAction=[%22${Action.ReportError}%22,%22${Action.DownloadAsCsv}%22,%22${Action.DownloadAsPdf}%22,%22${Action.DownloadAsXlsx}%22]${prefixParams}#/embed/viz/${liveboardId}`,
+            expectUrlMatchesWithParams(
+                getIFrameSrc(),
+                `http://${thoughtSpotHost}/?embedApp=true&${defaultParamsWithoutHiddenActions}&hideAction=[%22${Action.ReportError}%22,%22${Action.DownloadAsCsv}%22,%22${Action.DownloadAsPdf}%22,%22${Action.DownloadAsXlsx}%22]${prefixParams}#/embed/viz/${liveboardId}`,
             );
         });
     });
 
     test('should set visible actions', async () => {
         const liveboardEmbed = new LiveboardEmbed(getRootEl(), {
-            visibleActions: [
-                Action.DownloadAsCsv,
-                Action.DownloadAsPdf,
-                Action.DownloadAsXlsx,
-            ],
+            visibleActions: [Action.DownloadAsCsv, Action.DownloadAsPdf, Action.DownloadAsXlsx],
             ...defaultViewConfig,
             liveboardId,
         } as LiveboardViewConfig);
         liveboardEmbed.render();
         await executeAfterWait(() => {
-            expect(getIFrameSrc()).toBe(
+            expectUrlMatchesWithParams(
+                getIFrameSrc(),
                 `http://${thoughtSpotHost}/?embedApp=true${defaultParams}&visibleAction=[%22${Action.DownloadAsCsv}%22,%22${Action.DownloadAsPdf}%22,%22${Action.DownloadAsXlsx}%22]${prefixParams}#/embed/viz/${liveboardId}`,
             );
         });
@@ -119,7 +116,8 @@ describe('Liveboard/viz embed tests', () => {
         } as LiveboardViewConfig);
         liveboardEmbed.render();
         await executeAfterWait(() => {
-            expect(getIFrameSrc()).toBe(
+            expectUrlMatchesWithParams(
+                getIFrameSrc(),
                 `http://${thoughtSpotHost}/?embedApp=true${defaultParams}&visibleAction=[]${prefixParams}#/embed/viz/${liveboardId}`,
             );
         });
@@ -133,7 +131,8 @@ describe('Liveboard/viz embed tests', () => {
         } as LiveboardViewConfig);
         liveboardEmbed.render();
         await executeAfterWait(() => {
-            expect(getIFrameSrc()).toBe(
+            expectUrlMatchesWithParams(
+                getIFrameSrc(),
                 `http://${thoughtSpotHost}/?embedApp=true${defaultParams}&enableVizTransform=true${prefixParams}#/embed/viz/${liveboardId}`,
             );
         });
@@ -147,7 +146,8 @@ describe('Liveboard/viz embed tests', () => {
         } as LiveboardViewConfig);
         liveboardEmbed.render();
         await executeAfterWait(() => {
-            expect(getIFrameSrc()).toBe(
+            expectUrlMatchesWithParams(
+                getIFrameSrc(),
                 `http://${thoughtSpotHost}/?embedApp=true${defaultParams}&enableVizTransform=false${prefixParams}#/embed/viz/${liveboardId}`,
             );
         });
@@ -161,7 +161,8 @@ describe('Liveboard/viz embed tests', () => {
         } as LiveboardViewConfig);
         liveboardEmbed.render();
         await executeAfterWait(() => {
-            expect(getIFrameSrc()).toBe(
+            expectUrlMatchesWithParams(
+                getIFrameSrc(),
                 `http://${thoughtSpotHost}/?embedApp=true${defaultParams}${prefixParamsVizEmbed}#/embed/viz/${liveboardId}/${vizId}`,
             );
         });
@@ -182,13 +183,15 @@ describe('Liveboard/viz embed tests', () => {
         } as LiveboardViewConfig);
         liveboardEmbed.render();
         await executeAfterWait(() => {
-            expect(getIFrameSrc()).toBe(
+            expectUrlMatchesWithParams(
+                getIFrameSrc(),
                 `http://${thoughtSpotHost}/?embedApp=true&col1=sales&op1=EQ&val1=1000${defaultParams}${prefixParamsVizEmbed}#/embed/viz/${liveboardId}/${vizId}`,
             );
         });
     });
 
     test('should register event handler to adjust iframe height', async () => {
+        const onSpy = jest.spyOn(LiveboardEmbed.prototype, 'on');
         const liveboardEmbed = new LiveboardEmbed(getRootEl(), {
             ...defaultViewConfig,
             fullHeight: true,
@@ -196,14 +199,10 @@ describe('Liveboard/viz embed tests', () => {
             vizId,
         } as LiveboardViewConfig);
 
-        const onSpy = jest.spyOn(liveboardEmbed, 'on');
         liveboardEmbed.render();
 
         executeAfterWait(() => {
-            expect(onSpy).toHaveBeenCalledWith(
-                EmbedEvent.EmbedHeight,
-                expect.anything(),
-            );
+            expect(onSpy).toHaveBeenCalledWith(EmbedEvent.EmbedHeight, expect.anything());
         });
     });
     test('Should set the visible vizs', async () => {
@@ -214,16 +213,14 @@ describe('Liveboard/viz embed tests', () => {
         } as LiveboardViewConfig);
         liveboardEmbed.render();
         await executeAfterWait(() => {
-            expect(getIFrameSrc()).toBe(
+            expectUrlMatchesWithParams(
+                getIFrameSrc(),
                 `http://${thoughtSpotHost}/?embedApp=true${defaultParams}&pinboardVisibleVizs=[%22abcd%22,%22pqrs%22]${prefixParams}#/embed/viz/${liveboardId}`,
             );
         });
     });
     test('should process the trigger, for vizEmbed', async () => {
-        const mockProcessTrigger = spyOn(
-            processTriggerInstance,
-            'processTrigger',
-        );
+        const mockProcessTrigger = spyOn(processTriggerInstance, 'processTrigger');
         const liveboardEmbed = new LiveboardEmbed(getRootEl(), {
             enableVizTransformations: true,
             ...defaultViewConfig,
@@ -243,7 +240,8 @@ describe('Liveboard/viz embed tests', () => {
         } as LiveboardViewConfig);
         liveboardEmbed.render();
         await executeAfterWait(() => {
-            expect(getIFrameSrc()).toBe(
+            expectUrlMatchesWithParams(
+                getIFrameSrc(),
                 `http://${thoughtSpotHost}/?embedApp=true${defaultParams}&isLiveboardEmbed=true&isPinboardV2Enabled=true#/embed/viz/${liveboardId}/tab/${activeTabId}`,
             );
         });
@@ -258,9 +256,45 @@ describe('Liveboard/viz embed tests', () => {
         } as LiveboardViewConfig);
         liveboardEmbed.render();
         await executeAfterWait(() => {
-            expect(getIFrameSrc()).toBe(
+            expectUrlMatchesWithParams(
+                getIFrameSrc(),
                 `http://${thoughtSpotHost}/?embedApp=true${defaultParams}&preventPinboardFilterRemoval=true&isLiveboardEmbed=true&isPinboardV2Enabled=true#/embed/viz/${liveboardId}/tab/${activeTabId}`,
             );
+        });
+    });
+    test('Should set contextMenuTrigger options', async () => {
+        const liveboardEmbed = new LiveboardEmbed(getRootEl(), {
+            liveboardId,
+            activeTabId,
+            liveboardV2: true,
+            contextMenuTrigger: ContextMenuTriggerOptions.LEFT_CLICK,
+        } as LiveboardViewConfig);
+        liveboardEmbed.render();
+        await executeAfterWait(() => {
+            expectUrlMatchesWithParams(
+                getIFrameSrc(),
+                `http://${thoughtSpotHost}/?embedApp=true${defaultParams}&isContextMenuEnabledOnLeftClick=true&isLiveboardEmbed=true&isPinboardV2Enabled=true#/embed/viz/${liveboardId}/tab/${activeTabId}`,
+            );
+        });
+    });
+
+    test('navigateToLiveboard should trigger the navigate event with the correct path', (done) => {
+        mockMessageChannel();
+        const liveboardEmbed = new LiveboardEmbed(getRootEl(), {
+            ...defaultViewConfig,
+        } as LiveboardViewConfig);
+        const onSpy = jest.spyOn(liveboardEmbed, 'trigger');
+        liveboardEmbed.prerenderGeneric();
+        executeAfterWait(() => {
+            const iframe = getIFrameEl();
+            postMessageToParent(iframe.contentWindow, {
+                type: EmbedEvent.APP_INIT,
+            });
+        });
+        executeAfterWait(() => {
+            liveboardEmbed.navigateToLiveboard('lb1', 'viz1');
+            expect(onSpy).toHaveBeenCalledWith(HostEvent.Navigate, 'embed/viz/lb1/viz1');
+            done();
         });
     });
 });

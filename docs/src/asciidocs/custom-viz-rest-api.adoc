@@ -15,11 +15,11 @@ Rendering a custom visualization from ThoughtSpot data within a web application 
  4. Render the chart on the page using the charting library
 
 == Sign-in via Visual Embed SDK
-Any method of xref:embed-authentication.adoc[sign-in] establishes a ThoughtSpot session in the browser. After a session is established, you can make REST API requests from the browser as the signed-in user as long as xref:api-auth-session.adoc[credentials are included in the request]. 
+Any method of xref:embed-authentication.adoc[sign-in] establishes a ThoughtSpot session in the browser. After a session is established, you can make REST API requests from the browser as the signed-in user as long as xref:api-auth-session.adoc[credentials are included in the request].
 
 The trusted authentication SSO method issues a REST API sign-in command automatically when the `init()` function is called, without the need to render any ThoughtSpot embed components:
 
-[source,javascript]
+[source,JavaScript]
 ----
 import {
     init,
@@ -28,7 +28,7 @@ import {
 
 init({
    thoughtSpotHost: "{thoughtSpotFQDN}",
-   authType:  AuthType.AuthServer,  // Trusted Authentication
+   authType:  AuthType.TrustedAuthToken,  // Trusted Authentication
    username: tsUsername, // string variable of username to sign-in
    getAuthToken: tokenCallbackFunc // Trusted Auth token retrieval callback function
  });
@@ -39,9 +39,9 @@ You can request data from the xref:pinboarddata.adoc[visualizations on an existi
 
 Whether you make the API request using link:https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest[XMLHttpRequest (XHR), window=_blank] or link:https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch[Fetch, window=_blank],  ensure that the browser cookies are included when making the request.
 
-The `tspublic/v1/pinboarddata` endpoint requires a URL with all parameters to be sent (there are no default values that can be left out) in the API request. The two most important parameters are the Liveboard GUID and the optional visualization GUIDs. The Liveboard GUID is visible in the URL when viewing the Liveboard in the ThoughtSpot UI. 
+The `tspublic/v1/pinboarddata` endpoint requires a URL with all parameters to be sent (there are no default values that can be left out) in the API request. The two most important parameters are the Liveboard GUID and the optional visualization GUIDs. The Liveboard GUID is visible in the URL when viewing the Liveboard in the ThoughtSpot UI.
 
-To get the visualization GUID of a given visualization on a Liveboard, right-click the **More** image:./images/icon-more-10px.png[the more options menu] menu for that visualization and click **Copy embed link**. 
+To get the visualization GUID of a given visualization on a Liveboard, right-click the **More** image:./images/icon-more-10px.png[the more options menu] menu for that visualization and click **Copy embed link**.
 The link will be in this format:
 
 ----
@@ -50,7 +50,7 @@ The link will be in this format:
 
 The following is an example of creating the full REST API URL. Note that `vizIds` is an array that gets converted to a string representation before being added to the URL.
 
-[source,javascript]
+[source,JavaScript]
 ----
  let tsURL = "https://{}.thoughtspot.cloud";// Adjust to your instance name
  // IDs to retrieve - you can find these by clicking "Copy Embed Link" in the menu of any item on a Liveboard
@@ -72,7 +72,7 @@ The following is an example of creating the full REST API URL. Note that `vizIds
 
 Now you can make the API request. The following is an example using `XMLHttpRequest`, showing all necessary settings for the request to be accepted by the ThoughtSpot instance:
 
-[source,javascript]
+[source,JavaScript]
 ----
  var xhr = new XMLHttpRequest();
  xhr.open('POST', encodeURI(liveboardDataFullEndpoint), true);
@@ -94,7 +94,7 @@ Now you can make the API request. The following is an example using `XMLHttpRequ
 
 A more modern form, using Fetch and Promises, would look like:
 
-[source,javascript]
+[source,JavaScript]
 ----
 fetch(
     liveboardDataFullEndpoint, {
@@ -111,16 +111,16 @@ fetch(
 });
 ----
 
-The JSON object created by the code above will match the format documented in the  xref:pinboarddata.adoc[Liveboard data API].  
+The JSON object created by this code matches the format in the xref:pinboarddata.adoc[Liveboard data API].
 
 == Transform the REST API response
 In almost every case, you are required to transform the data format returned from ThoughtSpot to match the expected input for your charting library.
 
-The link:https://github.com/thoughtspot/ts_everywhere_resources/blob/master/apis/dataclasses.js[dataclasses.js, window=_blank] file provides classes for each ThoughtSpot data response type with standardized methods for retrieving the data in various formats.  
+The link:https://github.com/thoughtspot/ts_everywhere_resources/blob/master/apis/dataclasses.js[dataclasses.js, window=_blank] file provides classes for each ThoughtSpot data response type with standardized methods for retrieving the data in various formats.
 
 The `LiveboardData` class matches the Liveboard data API. The `LiveboardData.vizData[{vizId}]` object brings back all of the data for the given visualization. You can retrieve all of the data for a given column using the `.data[{columnName}]` object of the return from `.vizData`:
 
-[source,javascript]
+[source,JavaScript]
 ----
  // Using the LiveboardData class from dataclasses.js to make operations on the data easier
  let lbDataObj = LiveboardData.createFromJSON(JSON.parse(this.responseText));
@@ -139,7 +139,7 @@ There are additional methods such as `getDataAsTable` available in the link:http
 == Render the chart
 After you have transformed the data into the input format, you can render the chart into the page. Your overall steps will look like the following:
 
-[source,javascript]
+[source,JavaScript]
 ----
 
 function transformVizData(responseFromApi){
@@ -209,4 +209,3 @@ var xhr = new XMLHttpRequest();
  console.log("Sending REST API request to " + liveboardDataFullEndpoint);
  xhr.send();
 ----
-
