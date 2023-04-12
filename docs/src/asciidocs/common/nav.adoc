@@ -12,44 +12,49 @@
 ** link:{{navprefix}}=fixed-issues[Fixed issues]
 ** link:{{navprefix}}=known-issues[Known Issues]
 
-* link:{{navprefix}}=embed-ts[Embed ThoughtSpot]
-** link:{{navprefix}}=thoughtspot-objects[ThoughtSpot objects]
+* link:{{navprefix}}=embed-ts[Configure ThoughtSpot for embedding]
+** link:{{navprefix}}=security-settings[Security settings]
+** link:{{navprefix}}=developer-access[Developer access]
+** link:{{navprefix}}=custom-domain-config[Custom domain configuration]
+** link:{{navprefix}}=license-feature-matrix[Feature matrix and license types]
+** link:{{navprefix}}=orgs[Multi-tenancy with Orgs]
+
 ** link:{{navprefix}}=embed-analytics[ThoughtSpot Everywhere]
 ** link:{{navprefix}}=integration-guidelines[Integration guidelines]
 ** link:{{navprefix}}=get-started-tse[Get started with embedding]
-** link:{{navprefix}}=license-feature-matrix[Feature matrix and license types]
+
+
+
 
 * link:{{navprefix}}=spotdev-portal[ThoughtSpot Developer portal]
 ** link:{{navprefix}}=dev-playground[Visual Embed Playground]
 ** link:{{navprefix}}=rest-playground[REST API Playground]
 
-* link:{{navprefix}}=deploy-overview[Embedded app deployment]
+* link:{{navprefix}}=deploy-overview[Deployment and multi-tenancy]
+** link:{{navprefix}}=thoughtspot-objects[ThoughtSpot objects]
 ** link:{{navprefix}}=development-and-deployment[Development and deployment]
 ** link:{{navprefix}}=modify-tml[TML modification]
-
-* link:{{navprefix}}=multi-tenancy[Multi-tenancy]
-** link:{{navprefix}}=orgs[Multi-tenancy with Orgs]
 ** link:{{navprefix}}=orgs-api-op[Orgs administration]
 ** link:{{navprefix}}=multitenancy-without-orgs[Multi-tenancy with groups]
 
 * link:{{navprefix}}=auth-overview[Authentication and security]
-** link:{{navprefix}}=developer-access[Developer access]
-** link:{{navprefix}}=security-settings[Security settings]
+** link:{{navprefix}}=embed-auth[Authentication]
+** link:{{navprefix}}=authorization-settings[Authentication and authorization]
+** link:{{navprefix}}=trusted-auth[Trusted authentication]
 ** link:{{navprefix}}=saml-sso[SAML SSO authentication]
 ** link:{{navprefix}}=oidc-auth[OpenID Connect authentication]
-** link:{{navprefix}}=trusted-auth[Trusted authentication]
-** link:{{navprefix}}=authorization-settings[Authentication and authorization]
 ** link:{{navprefix}}=embed-object-access[Access control and data security]
 
 * link:{{navprefix}}=visual-embed-sdk[Embed with Visual Embed SDK]
-** link:{{navprefix}}=getting-started[Get started]
+** link:{{navprefix}}=getting-started[Embed ThoughtSpot components]
 *** link:{{navprefix}}=embed-searchbar[Embed search bar]
 *** link:{{navprefix}}=search-embed[Embed search page]
 *** link:{{navprefix}}=embed-liveboard[Embed a Liveboard]
 *** link:{{navprefix}}=embed-a-viz[Embed a visualization]
 *** link:{{navprefix}}=full-embed[Embed full application]
 *** link:{{navprefix}}=react-app-embed[Embed ThoughtSpot in a React app]
-** link:{{navprefix}}=embed-auth[Authentication]
+***  link:{{navprefix}}=embed-without-sdk[Embed when SDK is blocked]
+
 ** link:{{navprefix}}=in-app-navigation[Navigate to ThoughtSpot content]
 ** link:{{navprefix}}=events-app-integration[Events and app integration]
 ** link:{{navprefix}}=action-config[Show or hide menu items]
@@ -60,7 +65,6 @@
 ** link:{{navprefix}}=js-reference[Visual Embed SDK Reference]
 *** link:{{navprefix}}=events[Events Reference]
 *** link:{{navprefix}}=actions[Actions Reference]
-*  link:{{navprefix}}=embed-without-sdk[Embed without SDK]
 
 * link:{{navprefix}}=custom-action-intro[Custom actions]
 ** link:{{navprefix}}=customize-actions[Create and manage custom actions]
@@ -77,7 +81,7 @@
 *** link:{{navprefix}}=custom-css[Customize CSS]
 ** link:{{navprefix}}=customize-links[Customize links]
 ** link:{{navprefix}}=customize-emails[Customize onboarding settings]
-** link:{{navprefix}}=custom-domain-config[Custom domain configuration]
+
 
 * link:{{navprefix}}=rest-apis[REST APIs]
 ** link:{{navprefix}}=v1v2-comparison[REST v1 and v2.0 comparison]
