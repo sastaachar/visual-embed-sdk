@@ -105,7 +105,7 @@ __ThoughtSpot doesn’t support OIDC group synchronization and automatic mapping
 __OIDC authentication is supported only if users are already created and mapped to Orgs.__
 ////
 a|
-[tag greyBackground]#–#
+[tag greenBackground]#✓#  Trusted authentication +
 |Security settings (CORS and CSP for embedded instances)| [tag greyBackground]#–# |__CORS and CSP configuration via UI is supported only at the Primary Org (Org 0) level__
 |Data connections and objects a| [tag greyBackground]#–# a|[tag greenBackground]#✓# Object creation and management +
 
@@ -139,10 +139,11 @@ __Group provisioning and custom action group association API operations are not 
 a|__All API operations are supported except for the CRUD operations of Orgs__.
 |REST API v2 [beta betaBackground]^Beta^ endpoints +
 (Deprecated from 9.0.0.cl onwards)| [tag greyBackground]#–#| [tag greyBackground]#–#
-|REST API v2.0 endpoints | [tag greyBackground]#–#| [tag greyBackground]#–#
+|REST API v2.0 endpoints | [tag greenBackground]#✓# | [tag greenBackground]#✓#
 |=====
 
 == Authentication considerations for embedded apps
+
 
 ////
 The Visual Embed SDK supports leveraging your IdP or OpenID provider setup to authenticate the embedded app users. To determine the authentication method that best suits your deployment, refer to the recommendations listed on the xref:embed-authentication.adoc[Authentication].
@@ -152,15 +153,16 @@ On a multi-tenant cluster with Orgs, ThoughtSpot supports local, SAML, and trust
 
 === Just-in-time user creation and dynamic privilege assignment
 
-If trusted authentication is configured in the SDK, the *authenticator service* can send an API request to `/tspublic/v1/session/auth/token` to obtain an authentication token for a given user. If the user doesn't exist in the ThoughtSpot system, you can `autocreate` a user account just-in-time and dynamically assign privileges by adding the user to `groups`.
+If trusted authentication is enabled on your instance, you can use the `secret key` to generate an authentication token for your Org context using one of the following REST API endpoints:
 
-The `/tspublic/v1/session/auth/token` also allows defining the Org context to which the user must be logged in to after successful authentication. If the user should be logged in to a different Org context, you can specify the Org ID in the `orgid` property and set `autocreate` to `true`.
+* REST API v1 - xref:session-api.adoc#session-authToken[`/tspublic/v1/session/auth/token`]
+* REST API v2.0 - xref:rest-api-v2-reference.adoc#_authentication[`/api/rest/2.0/auth/token/full`] or xref:rest-api-v2-reference.adoc#_authentication[`/api/rest/2.0/auth/token/object`]
 
-For more information, see xref:session-api.adoc#session-authToken[Obtain an authentication token] and xref:trusted-authentication.adoc[Trusted authentication].
+If the user doesn't exist in the ThoughtSpot system, you can create a user account just-in-time and dynamically assign privileges by adding the user to `groups`.
 
 === SAML authentication
 
-For SAML authentication, you must ensure that the Org support is enabled for SAML authentication.
+For SAML authentication, ensure that the Org support is enabled for SAML authentication.
 You must also configure the Org information on your IdP so that the SAML users are allowed to access the Orgs to which they belong. To enable Orgs support for SAML authentication on ThoughtSpot, contact ThoughtSpot Support.
 
 The following conditions apply to SAML authentication on a multi-tenant setup:

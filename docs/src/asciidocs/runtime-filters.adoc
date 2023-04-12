@@ -94,7 +94,6 @@ This attribute is defined as `val1`, `val2`, `val3` in the object URLs and as `v
 +
 Some operators like `EQ`, `LE` accept a single operand, whereas `BW_INC_MAX`, `BW_INC_MIN`, `BW_INC`, `BW`, and `IN` accept multiple operands.
 
-
 === Supported data types
 
 You can apply runtime filters on these data types:
