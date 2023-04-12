@@ -23,12 +23,13 @@
 ** link:{{navprefix}}=integration-guidelines[Integration guidelines]
 ** link:{{navprefix}}=get-started-tse[Get started with embedding]
 
-
-
-
 * link:{{navprefix}}=spotdev-portal[ThoughtSpot Developer portal]
 ** link:{{navprefix}}=dev-playground[Visual Embed Playground]
 ** link:{{navprefix}}=rest-playground[REST API Playground]
+
+* link:{{navprefix}}=js-reference[Visual Embed SDK Reference]
+** link:{{navprefix}}=events[Events Reference]
+** link:{{navprefix}}=actions[Actions Reference]
 
 * link:{{navprefix}}=deploy-overview[Deployment and multi-tenancy]
 ** link:{{navprefix}}=thoughtspot-objects[ThoughtSpot objects]
@@ -39,7 +40,7 @@
 
 * link:{{navprefix}}=auth-overview[Authentication and security]
 ** link:{{navprefix}}=embed-auth[Authentication]
-** link:{{navprefix}}=authorization-settings[Authentication and authorization]
+** link:{{navprefix}}=authorization-settings[Authorization]
 ** link:{{navprefix}}=trusted-auth[Trusted authentication]
 ** link:{{navprefix}}=saml-sso[SAML SSO authentication]
 ** link:{{navprefix}}=oidc-auth[OpenID Connect authentication]
@@ -62,9 +63,15 @@
 ** link:{{navprefix}}=set-locale[Set locale and display language]
 ** link:{{navprefix}}=search-assist[Enable Search Assist]
 ** link:{{navprefix}}=Liveboard-new-experience[New Liveboard experience]
-** link:{{navprefix}}=js-reference[Visual Embed SDK Reference]
-*** link:{{navprefix}}=events[Events Reference]
-*** link:{{navprefix}}=actions[Actions Reference]
+
+
+
+* link:{{navprefix}}=customization-intro[Customization and rebranding]
+** link:{{navprefix}}=style-customization[Customize styles and layout]
+*** link:{{navprefix}}=customize-style[Customize styles in the UI]
+*** link:{{navprefix}}=custom-css[Customize CSS]
+** link:{{navprefix}}=customize-links[Customize links]
+** link:{{navprefix}}=customize-emails[Customize onboarding settings]
 
 * link:{{navprefix}}=custom-action-intro[Custom actions]
 ** link:{{navprefix}}=customize-actions[Create and manage custom actions]
@@ -74,14 +81,6 @@
 ** link:{{navprefix}}=custom-action-url[URL actions]
 ** link:{{navprefix}}=custom-action-callback[Callback actions]
 ** link:{{navprefix}}=custom-action-payload[Callback response payload]
-
-* link:{{navprefix}}=customization-intro[Customization and rebranding]
-** link:{{navprefix}}=style-customization[Customize styles and layout]
-*** link:{{navprefix}}=customize-style[Customize styles in the UI]
-*** link:{{navprefix}}=custom-css[Customize CSS]
-** link:{{navprefix}}=customize-links[Customize links]
-** link:{{navprefix}}=customize-emails[Customize onboarding settings]
-
 
 * link:{{navprefix}}=rest-apis[REST APIs]
 ** link:{{navprefix}}=v1v2-comparison[REST v1 and v2.0 comparison]
