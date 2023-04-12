@@ -7,16 +7,15 @@
 :page-description: Details of how to change TML files to achieve various transformations and goals
 
 
-link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/tml.html[TML, window=_blank] is slightly different for every object type, but all follow a general pattern which allow for programmatic editing.
+link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/tml.html[TML, window=_blank] is slightly different for every object type, but all follow a general pattern that allows for programmatic editing.
 
-You can use the link:https://github.com/thoughtspot/thoughtspot_tml[thoughtspot_tml Python library, target=_blank] to access and transform any of the properties discussed within this document, most of which are covered in the README and the link:https://github.com/thoughtspot/thoughtspot_tml/blob/v2_main/examples/common_attribute_changes.py[common_attribute_changes.py example script, target=_blank].
+You can use the link:https://github.com/thoughtspot/thoughtspot_tml[thoughtspot_tml Python library, window=_blank] to access and transform any of the properties discussed within this document, most of which are covered in the README and the link:https://github.com/thoughtspot/thoughtspot_tml/blob/v2_main/examples/common_attribute_changes.py[common_attribute_changes.py example script, window=_blank].
 
-= Best practices
+== Best practices
 Because of the flexibility of the various data object types, there is no particular hierarchy to TML files, but rather just the following rules:
 
  - Data objects can only be joined to other objects from a single connection
- - Any single search (an *answer* or a *visualization* on a *Liveboard*) can only connect to data objects from a single connection 
- 
+ - Any single search (an *answer* or a *visualization* on a *Liveboard*) can only connect to data objects from a single connection
 The *connection* is thus the natural packaging level for importing TML files, except for Liveboards which may contain visualizations connected to different *connections*. 
 
 This is to say, for a given *connection* you can always upload all TML files connected to that connection safely *except Liveboards*.
@@ -25,8 +24,8 @@ One best practice recommendation is to only connect *answers* and *Liveboards* t
 
 image::./images/object_model_hierarchy.png[ThoughtSpot object model hierarchy and relationships]
 
-== Export with fqn: property
-Always export TML files with `export_fqns=true` (pre-9.0.0 versions see xref:development-and-deployment.adoc[Notes for older releases])
+=== Export with fqn: property
+Always export TML files with `export_fqns=true` (for versions lower than 9.0.0.cl, see xref:development-and-deployment.adoc#_notes_for_older_releases_8_9_0_cl_or_earlier_versions[Notes for older releases]).
  
 The `fqn:` property provides the GUID of associated objects, which can be swapped out when moving packages of TML files between environments. The following is an example of the `connection:` property within a Table TML:
  
@@ -39,12 +38,13 @@ connection:
 
 You can always *remove* an `fqn:` property when uploading a set of TML with the intention of creating all new objects.
 
-== Name properties are identifiers in connected objects
+=== Name properties are identifiers in connected objects
 When editing entire packages of exported TML files to be deployed in a different environment, you *must consider changes to identifiers in other "downstream" TML files*. ThoughtSpot will do the necessary updates on an existing data model. 
 
 One of the most important examples is that the `name:` property of a column in a Table is used as part of the column identifier in connected Worksheet objects.
 
-A Table object might have column with a display name property (`name:`) that has been modified to be different than the `db_table:` property (the actual name of the column in the database itself):
+A Table object might have a column with a display name property (`name:`) that has been modified to be different than the `db_table:` property (the actual name of the column in the database itself):
+
 [source,yaml]
 ----
 table:
@@ -65,7 +65,8 @@ table:
       data_type: INT64
 ----
 
-The connected worksheet TML referencing the same column would look like (note it is the formatted `name` property from the Table TML, not `db_table_name`:
+The connected worksheet TML referencing the same column would be as shown in the following example. Note that it is the formatted `name` property from the Table TML, not `db_table_name`.
+
 [source,yaml]
 ----
 ...
@@ -77,9 +78,10 @@ The connected worksheet TML referencing the same column would look like (note it
 ...
 ----
 
-The pattern for `column_id` is actually a combination of the `id` from the `table_paths` section along with the `name` property of the column in the table object: `{Worksheet.table_paths[n].id}::{Table.columns[n].name}`
+The pattern for `column_id` is a combination of the `id` from the `table_paths` section along with the `name` property of the column in the table object: `{Worksheet.table_paths[n].id}::{Table.columns[n].name}`
 
 This is the section in Worksheet where the first part of the identifier is defined as the `id` property (`table` property references the `tables:` section above in the TML file):
+
 [source,yaml]
 ----
 table_paths:
@@ -95,17 +97,14 @@ table_paths:
       - C_FACT_RETAPP_SALES
 ----
 
-
-
-= Connections
+== Connections
 Connections contain the details and credentials necessary to connect to a database. 
 
 Connections do not have a TML representation, but can be created and modified via the xref:connections-api.adoc[data connection REST APIs]. There is a connection YAML file (not TML but similar) that can be exported to save all details except for the password, but you must translate that back into a REST API call to create or update.
 
 ThoughtSpot does not enforce uniqueness on connection names, but *best practice is to give connections unique names*.
 
-
-= Tables
+== Tables
 link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/tml.html#syntax-tables[Table objects, window=_blank] represent an actual table (or view) within a database.
 
 When importing a table through the ThoughtSpot UI, a table's display name will default to the table's name in the data warehouse, but you can change the display name to whatever you'd like. You can specify the display name within the TML document when creating a table via TML import by changing the `name` property, while leaving the `db_table` property as it was originally imported.
@@ -124,17 +123,17 @@ table:
  ...
 ----
 
-== Change table properties
+=== Change table properties
 You can replace the `connection: name:` or `fqn:` property to 'repoint' the *table* to a different data environment.
 
 The `db`, `schema`, and `db_table` properties may also be changed easily along with `connecton`, assuming the schema/structure (field names and data types) are identical to the original object. 
 
-== Change or add columns
-You can adjust properties of existing columns or even add new column objects with TML. 
+=== Change or add columns
+You can adjust the properties of existing columns or even add new column objects with TML.
 
-When updating an existing object, do not change both `name` and `db_column_name` at the same time - the TML parser will consider this a delete of the original column and an add of a new column. 
+When updating an existing object, do not change both `name` and `db_column_name` at the same time. The TML parser will consider this a delete of the original column and an add of a new column.
 
-If you are modifying a packge of TML for deployment to a new environment, changes to `name` property have downstream affects in connected Worksheet files.
+If you are modifying a package of TML for deployment to a new environment, changes to `name` property have downstream effects in connected Worksheet files.
 
 [source,yaml]
 ----
@@ -148,7 +147,7 @@ If you are modifying a packge of TML for deployment to a new environment, change
       data_type: INT64
 ----
 
-== Join relationships and row-level security rules
+=== Join relationships and row-level security rules
 *To import joins, you must import all the related Table TML files together at one time*
 
 Joins do not have separate TML representations, but are defined in the table TML in the `joins_with` section.
@@ -159,10 +158,11 @@ If you cannot upload your Table TMLs all at once and you are encountering errors
 
  . Remove the `rls_rules` and `joins_with` sections from the TML document on the initial import of each table TML. Save the GUID of each newly created object where it can be referenced to the original GUID.
  . Check that all table objects have been created successfully on the ThoughtSpot server.
- . Do a second import of the TML documents with the `rls_rules` and `joins_with` sections. To update the new objects rather than the original objects,  specify the GUIDs of the newly created table objects on the server in the TML documents' `guid` property .
+ . Do a second import of the TML documents with the `rls_rules` and `joins_with` sections. To update the new objects rather than the original objects,  specify the GUIDs of the newly created table objects on the server in the TML documents' `guid` property.
 
-= Worksheets
-Worksheets combine several *tables*, including *views*, into a coherent data model optimized for searches. The link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/tml.html#syntax-worksheets[TML syntax for worksheets, window=_blank] defines all of the aspects of the *worksheet*, including the tables it joins together, the columns and their properties, filters, and so on.
+== Worksheets
+
+Worksheets combine several *tables*, including *Views*, into a coherent data model optimized for searches. The link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/tml.html#syntax-worksheets[TML syntax for worksheets, window=_blank] defines all aspects of the *worksheet*, including the tables it joins together, the columns and their properties, filters, and so on.
 
 If you want to change the values for an existing *worksheet* object, the `tables`, `joins` and `table_paths` sections are the most important.
 
@@ -208,9 +208,8 @@ Under `table_paths`, the `table` property also uses the values we moved to `id`.
       - <join_name_n>
 ----
 
+== Answers
 
-
-= Answers
 The link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/tml.html#syntax-answers[answer TML syntax, window=_blank] defines all aspects of a saved search and how it is visualized. The `tables` property is used to point to ThoughtSpot *table*, *view*, or *worksheet* objects, whichever the answer is connected to. 
 
 As mentioned above, it is simpler to connect an answer to a single *worksheet*, so that you only have to update one reference in the `tables` section.
@@ -230,7 +229,8 @@ answer:
  ...
 ----
 
-= Liveboards
+== Liveboards
+
 link:https://cloud-docs.thoughtspot.com/admin/ts-cloud/tml.html#syntax-pinboards[Liveboards, window=_blank] include many different visualizations and define a layout of the visualizations elements.
 
 It is *best practice* to only use *one worksheet* for all visualizations on a Liveboard, however each visualization on a *Liveboard* can connect to different data objects.
@@ -244,7 +244,9 @@ When you pin an answer to a Liveboard, the full definition of the answer is copi
 
 Within the TML, the `visualizations` section uses the exact same syntax as a separate *answer* stored on its own, with the `guid` property of an individual answer replaced by an `id` property. The value for the `id` property is typically the word `Viz` and a number, `Viz 1`, `Viz 10`.
 
-NOTE: Prior to ThoughtSpot 8.9, you *must not* create visualizations on a single *Liveboard* that connect to different *worksheets* with the *same name* (this is possible, as *worksheet* names are not unique) if you wish to do programmatic transformations, because it is impossible to add in the FQN properties based on just name if names are not unique. 
+[NOTE]
+====
+If your instance is running 8.9.0.cl, do not create visualizations on a single *Liveboard* that connect to different *worksheets* with the *same name* (this is possible, as *worksheet* names are not unique) if you wish to do programmatic transformations, because it is impossible to add in the FQN properties based on just name if names are not unique.
 
 === Modifying Liveboard TML
 [source,yaml]
@@ -271,7 +273,7 @@ The `layout` section is an ordered list with a `size` property for each visualiz
     - visualization_id: <visualization_id_2>
 ----
 
-= Views
+== Views
 
 link:https://cloud-docs.thoughtspot.com/complex-search/about-query-on-query.html[Views, window=_blank] transform a saved search into a data source, allowing for analysis that would require complex sub-queries in SQL. *Views* can be joined with other data objects in a *worksheet*. The best practice is to make *views* available to *answers* and *Liveboards* through a *worksheet*.
 
@@ -310,7 +312,7 @@ view:
  ...
 ----
 
-= SQL Views
+== SQL Views
 A link:https://docs.thoughtspot.com/cloud/latest/tml#syntax-sql-views[SQL View, window=_blank] defines an underlying query directly to a *connection*. 
 
 The `connection` property can be changed similar to a *table* object's TML either using the `fqn` property, while the `sql_query` property can be changed to a different valid text string.
