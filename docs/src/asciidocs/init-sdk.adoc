@@ -1,0 +1,101 @@
+= Initialize SDK
+:toc: true
+:linkattrs:
+:sectanchors:
+
+
+:page-title: Initialize SDK
+:page-pageid: init-sdk
+:page-description: Initialize SDK
+
+[#initSdk]
+
+
+== init function 
+The `init` function is called before creating any individual embed components within a page, in particular setting the URL of the ThoughtSpot instance and triggering any authentication flows.
+
+It is safe to run `init` on any page as it wil not create any unnecessary login attempts. The `init` function will automatically sign-in using the authentication method specified in the *authType* property, but only if there is no existing ThoughtSpot session in the browser. 
+
+[source,JavaScript]
+----
+init({
+    thoughtSpotHost: "https://<hostname>:<port>",
+    authType: AuthType.EmbeddedSSO,
+});
+----
+thoughtSpotHost::
+_String_. Hostname or IP address of the ThoughtSpot application.
+
+include::{path}/embed-auth-config.adoc[]
+
+You can also specify xref:css-customization.adoc[CSS customizations] using the `init` function 
+
+== Prefetch static resources (Recommended)
+
+Make sure you call prefetch before user login and cache static assets as early as possible.
+
+By default, the SDK fetches application resources when the embedded app content is requested. For optimal performance and faster loading of embedded objects, we recommend prefetching static resources and serving these static assets from the local cache of the user's browser.
+
+To prefetch static resources, use one of these options:
+
+* Use the `prefetch` method (Recommended)
++
+The `prefetch` method in the SDK allows your web browsers to prefetch static resources from a given URL on application load. In the `prefetch` method, you can define the prefetch URL and specify the embed components for which you want to prefetch resources. To improve application response time, ThoughtSpot recommends that you call the `prefetch` method as soon as possible when your application initializes.
++
+In the following example, the `prefetch` method is called before `init` to prefetch resources before the authentication process is initialized.
++
+You do not need to call the `prefetch` method more than once in a user session.
+[source,JavaScript]
+----
+// App.jsx
+import {
+   prefetch,
+   PrefetchFeatures
+}
+from '@thoughtspot/visual-embed-sdk';
+...
+prefetch
+   ({
+      url: "https://<hostname>:<port>",
+      prefetchFeatures: [PrefetchFeatures.LiveboardEmbed,PrefetchFeatures.VizEmbed]
+   });
+...
+// post-login.jsx
+// might need to be called after login to get
+// the user's context.
+
+import {
+   AuthType,
+   init,
+}
+from '@thoughtspot/visual-embed-sdk';
+init
+   ({
+      thoughtSpotHost: "https://<hostname>:<port>",
+      authType: AuthType.None,
+   });
+----
+
+* Call prefetch in `init`
++
+You can call prefetch in the `init` method by setting the `callPrefetch` attribute to `true`.
++
+Only use the `callPrefetch` attribute once within a session in the embedding app, as it does create an additional call to the ThoughtSpot instance every time it is used.
+
++
+[source,JavaScript]
+----
+import {
+   LiveboardEmbed,
+   AuthType,
+   init,
+   prefetch,
+}
+from '@thoughtspot/visual-embed-sdk';
+init
+   ({
+      thoughtSpotHost: "https://<hostname>:<port>",
+      authType: AuthType.None,
+      callPrefetch: true
+   });
+----
