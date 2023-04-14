@@ -40,11 +40,10 @@
 
 * link:{{navprefix}}=auth-overview[Authentication and security]
 ** link:{{navprefix}}=embed-auth[Authentication]
-** link:{{navprefix}}=authorization-settings[Authorization]
+** link:{{navprefix}}=authorization-settings[Authorization and data security]
 ** link:{{navprefix}}=trusted-auth[Trusted authentication]
 ** link:{{navprefix}}=saml-sso[SAML SSO authentication]
 ** link:{{navprefix}}=oidc-auth[OpenID Connect authentication]
-** link:{{navprefix}}=embed-object-access[Access control and data security]
 
 * link:{{navprefix}}=visual-embed-sdk[Embed with Visual Embed SDK]
 ** link:{{navprefix}}=getting-started[Embed ThoughtSpot components]
