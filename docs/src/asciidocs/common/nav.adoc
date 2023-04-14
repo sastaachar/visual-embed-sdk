@@ -48,6 +48,7 @@
 
 * link:{{navprefix}}=visual-embed-sdk[Embed with Visual Embed SDK]
 ** link:{{navprefix}}=getting-started[Embed ThoughtSpot components]
+*** link:{{navprefix}}=embed-searchbar[Initialize the SDK]
 *** link:{{navprefix}}=embed-searchbar[Embed search bar]
 *** link:{{navprefix}}=search-embed[Embed search page]
 *** link:{{navprefix}}=embed-liveboard[Embed a Liveboard]
@@ -59,7 +60,6 @@
 ** link:{{navprefix}}=in-app-navigation[Navigate to ThoughtSpot content]
 ** link:{{navprefix}}=events-app-integration[Events and app integration]
 ** link:{{navprefix}}=action-config[Show or hide menu items]
-** link:{{navprefix}}=prefetch[Prefetch static resources]
 ** link:{{navprefix}}=set-locale[Set locale and display language]
 ** link:{{navprefix}}=search-assist[Enable Search Assist]
 ** link:{{navprefix}}=Liveboard-new-experience[New Liveboard experience]
