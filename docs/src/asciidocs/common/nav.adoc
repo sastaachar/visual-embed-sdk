@@ -4,6 +4,7 @@
 
 [navSection]
 * link:{{navprefix}}=introduction[Home]
+** link:{{navprefix}}=get-started-tse[Try out embedding ThoughtSpot]
 
 * link:{{navprefix}}=whats-new[What's new]
 ** link:{{navprefix}}=embed-sdk-changelog[Visual Embed changelog]
@@ -12,16 +13,12 @@
 ** link:{{navprefix}}=fixed-issues[Fixed issues]
 ** link:{{navprefix}}=known-issues[Known Issues]
 
-* link:{{navprefix}}=embed-ts[Configure ThoughtSpot for embedding]
+* Configure ThoughtSpot for embedding
 ** link:{{navprefix}}=security-settings[Security settings]
 ** link:{{navprefix}}=developer-access[Developer access]
 ** link:{{navprefix}}=custom-domain-config[Custom domain configuration]
 ** link:{{navprefix}}=license-feature-matrix[Feature matrix and license types]
 ** link:{{navprefix}}=orgs[Multi-tenancy with Orgs]
-
-** link:{{navprefix}}=embed-analytics[ThoughtSpot Everywhere]
-** link:{{navprefix}}=integration-guidelines[Integration guidelines]
-** link:{{navprefix}}=get-started-tse[Get started with embedding]
 
 * link:{{navprefix}}=spotdev-portal[ThoughtSpot Developer portal]
 ** link:{{navprefix}}=dev-playground[Visual Embed Playground]
@@ -54,7 +51,8 @@
 *** link:{{navprefix}}=embed-a-viz[Embed a visualization]
 *** link:{{navprefix}}=full-embed[Embed full application]
 *** link:{{navprefix}}=react-app-embed[Embed ThoughtSpot in a React app]
-***  link:{{navprefix}}=embed-without-sdk[Embed when SDK is blocked]
+*** link:{{navprefix}}=embed-without-sdk[Embed when SDK is blocked]
+*** link:{{navprefix}}=embed-ts[Feature comparison of embedding methods]
 
 ** link:{{navprefix}}=in-app-navigation[Navigate to ThoughtSpot content]
 ** link:{{navprefix}}=events-app-integration[Events and app integration]
