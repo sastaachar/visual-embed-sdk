@@ -64,32 +64,8 @@ Although you can use a saved Answer as a data source in SearchEmbed, ThoughtSpot
 AppEmbed::
 Use this package to embed xref:full-embed.adoc[the full ThoughtSpot application].
 
-[#initSdk]
 == Initialize the SDK
-
-After importing the package, specify the hostname or IP address of your ThoughtSpot application instance and the authentication type.
-
-[source,JavaScript]
-----
-init({
-    thoughtSpotHost: "https://<hostname>:<port>",
-    authType: AuthType.EmbeddedSSO,
-});
-----
-thoughtSpotHost::
-_String_. Hostname or IP address of the ThoughtSpot application.
-
-include::{path}/embed-auth-config.adoc[]
-
-== Prefetch static resources (Recommended)
-
-To prefetch static resources and load your application fast, call the `prefetch` method by setting  `callPrefetch` attribute to `true` in the `init` code. Make sure you call prefetch before user login and cache static assets as early as possible.
-
-For more information, see xref:prefetch-and-cache.adoc[Prefetch static resources].
-
-== Configure security and login parameters (Optional)
-
-include::{path}/embed-config.adoc[]
+Prior to loading any embed components, xref:init-sdk.adoc[initalize the SDK] with authorization, CSS customization and other properties.
 
 == Embed objects
 After you initialize the SDK, create embed object classes and define object properties. +
