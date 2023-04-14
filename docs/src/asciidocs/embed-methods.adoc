@@ -1,7 +1,7 @@
-= Embed ThoughtSpot
+= Feature comparison of embedding methods
 :toc: true
 
-:page-title: Embedded ThoughtSpot
+:page-title: Feature comparison of embedding methods
 :page-pageid: embed-ts
 :page-description: ThoughtSpot supports several embedding options to embed ThoughtSpot in your web application or portal.
 
