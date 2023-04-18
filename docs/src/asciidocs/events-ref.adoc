@@ -145,7 +145,7 @@ liveboardEmbed.trigger(HostEvent.DownloadAsXlsx, {vizId: '730496d6-6903-4601-937
 --
 
 ==== DrillDown
-Available with `SearchEmbed`, `LiveboardEmbed`,  and `AppEmbed` in `v1.5.0` or later. +
+Available with `SearchEmbed` and `AppEmbed` in `v1.5.0` or later. +
 Triggers a drill-down event on certain points of the specified column.  +
 Includes the following parameters:
 
