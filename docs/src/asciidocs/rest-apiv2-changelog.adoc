@@ -37,7 +37,7 @@ Deletes a data connection
 Enhancements::
 
 * Support for runtime filters and runtime sorting of columns +
-The following REST API v2.0 endpoints support applying xref:runtime-filters.adoc#_apply_runtime_filters_in_rest_api_v2_requests[runtime filters] and xref:runtime-sort.adoc[sorting data in columns]:
+The following REST API v2.0 endpoints support applying runtime filters and sorting column data:
 +
 ** `POST /api/rest/2.0/report/liveboard` +
 ** `POST /api/rest/2.0/report/answer`
