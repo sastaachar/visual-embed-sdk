@@ -14,7 +14,7 @@ This page provides information about new features, enhancements, and deprecated 
 
 ThoughtSpot now supports generating secret keys per Org. Org administrators can generate a secret key for trusted authentication in their Org context and allow their Org users to obtain authentication tokens using this secret key.
 
-Starting from 9.2.0.cl, Org users require Org-specific authentication tokens issued for their user accounts when switching between Orgs. When generating an authentication token via REST API calls, make sure to request a separate token for each Org context.
+Starting from 9.2.0.cl, Org users require Org-specific authentication tokens issued for their user accounts when switching between Orgs. When generating an authentication token via REST API call, make sure to request separate tokens for each Org context.
 
 ////
 For more information, see xref:trusted-authentication.adoc#trusted-auth-enable[Trusted authentication].
