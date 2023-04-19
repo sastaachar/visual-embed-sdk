@@ -8,9 +8,9 @@
 
 This page provides information about new features, enhancements, and deprecated functionality in ThoughtSpot Everywhere.
 
-== 9.2.0.cl, Coming soon
+== Version 9.2.0.cl, Coming soon
 
-=== Per Org tokens for Trusted authentication
+=== Per-Org tokens and secret key for Trusted authentication
 
 ThoughtSpot now supports generating secret keys per Org. Org administrators can generate a secret key for trusted authentication in their Org context and allow their Org users to obtain authentication tokens using this secret key.
 
