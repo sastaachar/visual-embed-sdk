@@ -45,17 +45,18 @@
 * link:{{navprefix}}=visual-embed-sdk[Embed with Visual Embed SDK]
 ** link:{{navprefix}}=getting-started[Embed ThoughtSpot components]
 *** link:{{navprefix}}=init-sdk[Initialize the SDK]
-*** link:{{navprefix}}=embed-searchbar[Embed search bar]
-*** link:{{navprefix}}=search-embed[Embed search page]
 *** link:{{navprefix}}=embed-liveboard[Embed a Liveboard]
-*** link:{{navprefix}}=embed-a-viz[Embed a visualization]
+*** link:{{navprefix}}=search-embed[Embed search page]
+*** link:{{navprefix}}=embed-a-viz[Embed a single visualization]
 *** link:{{navprefix}}=full-embed[Embed full application]
+*** link:{{navprefix}}=embed-searchbar[Embed search bar]
 *** link:{{navprefix}}=react-app-embed[Embed ThoughtSpot in a React app]
 *** link:{{navprefix}}=embed-without-sdk[Embed when SDK is blocked]
 *** link:{{navprefix}}=embed-ts[Feature comparison of embedding methods]
 
 ** link:{{navprefix}}=in-app-navigation[Navigate to ThoughtSpot content]
 ** link:{{navprefix}}=events-app-integration[Events and app integration]
+** link:{{navprefix}}=runtime-filters[Runtime filters]
 ** link:{{navprefix}}=action-config[Show or hide menu items]
 ** link:{{navprefix}}=set-locale[Set locale and display language]
 ** link:{{navprefix}}=search-assist[Enable Search Assist]
@@ -113,7 +114,7 @@
 **** link:{{navprefix}}=materialization-api[Materialization API]
 **** link:{{navprefix}}=database-api[Database API]
 
-* link:{{navprefix}}=runtime-filters[Runtime filters]
+
 
 * Additional resources
 ** link:{{navprefix}}=faqs[FAQs]
