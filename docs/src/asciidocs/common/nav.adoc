@@ -51,6 +51,7 @@
 *** link:{{navprefix}}=full-embed[Embed full application]
 *** link:{{navprefix}}=embed-searchbar[Embed search bar]
 *** link:{{navprefix}}=react-app-embed[Embed ThoughtSpot in a React app]
+*** link:{{navprefix}}=custom-viz-rest-api[Custom visualization with data APIs]
 *** link:{{navprefix}}=embed-without-sdk[Embed when SDK is blocked]
 *** link:{{navprefix}}=embed-ts[Feature comparison of embedding methods]
 
@@ -59,6 +60,14 @@
 ** link:{{navprefix}}=runtime-filters[Runtime filters]
 ** link:{{navprefix}}=action-config[Show or hide menu items]
 ** link:{{navprefix}}=set-locale[Set locale and display language]
+** link:{{navprefix}}=custom-action-intro[Custom actions]
+*** link:{{navprefix}}=customize-actions[Create and manage custom actions]
+*** link:{{navprefix}}=edit-custom-action[Set the position of a custom action]
+*** link:{{navprefix}}=add-action-viz[Add a local action to a visualization]
+*** link:{{navprefix}}=add-action-worksheet[Add a local action to a worksheet]
+*** link:{{navprefix}}=custom-action-url[URL actions]
+*** link:{{navprefix}}=custom-action-callback[Callback actions]
+*** link:{{navprefix}}=custom-action-payload[Callback response payload]
 ** link:{{navprefix}}=search-assist[Enable Search Assist]
 ** link:{{navprefix}}=Liveboard-new-experience[New Liveboard experience]
 
@@ -71,14 +80,7 @@
 ** link:{{navprefix}}=customize-links[Customize links]
 ** link:{{navprefix}}=customize-emails[Customize onboarding settings]
 
-* link:{{navprefix}}=custom-action-intro[Custom actions]
-** link:{{navprefix}}=customize-actions[Create and manage custom actions]
-** link:{{navprefix}}=edit-custom-action[Set the position of a custom action]
-** link:{{navprefix}}=add-action-viz[Add a local action to a visualization]
-** link:{{navprefix}}=add-action-worksheet[Add a local action to a worksheet]
-** link:{{navprefix}}=custom-action-url[URL actions]
-** link:{{navprefix}}=custom-action-callback[Callback actions]
-** link:{{navprefix}}=custom-action-payload[Callback response payload]
+
 
 * link:{{navprefix}}=rest-apis[REST APIs]
 ** link:{{navprefix}}=v1v2-comparison[REST v1 and v2.0 comparison]
@@ -92,7 +94,6 @@
 *** link:{{navprefix}}=rest-api-getstarted[Get started]
 *** link:{{navprefix}}=api-auth-session[REST API v1 authentication]
 *** link:{{navprefix}}=api-user-management[Users and group privileges]
-*** link:{{navprefix}}=custom-viz-rest-api[Create a custom visualization]
 *** link:{{navprefix}}=embed-data-restapi[Embed objects using REST API]
 *** link:{{navprefix}}=catalog-and-audit[Catalog and audit content]
 *** link:{{navprefix}}=rest-api-pagination[Paginate API response]
