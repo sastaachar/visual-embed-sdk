@@ -134,9 +134,6 @@ __The login, authentication, token generation, and logout services are available
 |*Security* +
 API endpoints for sharing objects and assigning permissions. |[tag greenBackground]#✓# Available|[tag greenBackground]#✓# Available
 
-|*Subscription* +
-API endpoints for managing scheduled jobs for a given Liveboard|[tag greenBackground]#✓# Available| [tag greyBackground]#–#
-
 |*System* +
 API endpoints for querying system information a|[tag greenBackground]#✓# Available +
 
