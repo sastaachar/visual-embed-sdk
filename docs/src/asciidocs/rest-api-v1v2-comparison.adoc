@@ -79,7 +79,7 @@ __The login, authentication, token generation, and logout services are available
 Data query APIs for searching data from a data source and querying a Liveboard and its visualization data.|[tag greenBackground]#✓# Available|[tag greenBackground]#✓# Available
 
 |*Data connection and live query services*
-API endpoints for CRUD operations of data connection objects |[tag greenBackground]#✓# Available| [tag greyBackground]#–#
+API endpoints for CRUD operations of data connection objects |[tag greenBackground]#✓# Available| [tag greenBackground]#✓#
 
 |*Database services* +
 Data management API services for databases such as Falcon +

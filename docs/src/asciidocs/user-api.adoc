@@ -960,7 +960,7 @@ POST /tspublic/v1/user/updatepassword
 |====
 |Form parameter|Description
 |`name` |__String__. Name of the user account.
-|`currentpassword`|__String__. The password of the currently logged-in user. 
+|`currentpassword`|__String__. The password of the currently logged-in user.
 |`password`|__String__. A new password for the user specified in the `name` attribute.
 |====
 === Example request

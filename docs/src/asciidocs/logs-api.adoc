@@ -16,8 +16,7 @@ include::{path}/audit-log-api.adoc[]
 
 == Required permissions
 
-The log API call requires administrator access. 
-
+You must have administrator access to query security logs.
 
 == Resource URL
 ----
@@ -26,21 +25,22 @@ GET /tspublic/v1/logs/topics/{topic}
 
 == Request parameters
 
- 
+== Request parameters
+
 [width="100%" cols="2,1,4"]
 [options='header']
 |====
 |Parameter|Type|Description
 |`topic`|Path |__String__. Type of the log. The valid value is `security_logs`.
 a|`fromEpoch` +
-__Optional__|Query|__Epoch time string__. The EPOCH time in milliseconds to set the start time for streaming logs. For example, to set the timestamp as June 1, 2021 8 am, specify `1622534400000`. 
+__Optional__|Query|__Epoch time string__. The EPOCH time in milliseconds to set the start time for streaming logs. For example, to set the timestamp as June 1, 2021 8 am, specify `1622534400000`.
 a|`toEpoch`  +
 __Optional__|Query|__Epoch time string__. The EPOCH time in milliseconds to set the end time for streaming logs. To set the timestamp as June 2, 2021, 8 am, specify `1622620800000`.
 |====
 
 [NOTE]
 ====
-The API allows querying logs for a 24-hour duration only. Make sure the log duration specified in your API request doesn't exceed 24 hours. If you must fetch logs for a longer time range, you can make multiple sequential API requests with different start and end time values. 
+The API allows querying logs for a 24-hour duration only. Make sure the log duration specified in your API request doesn't exceed 24 hours. If you must fetch logs for a longer time range, you can make multiple sequential API requests with different start and end time values.
 ====
 
 == Example request
