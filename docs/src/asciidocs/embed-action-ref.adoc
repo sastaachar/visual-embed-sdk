@@ -306,6 +306,18 @@ The following actions are available for saved answers and the answers generated 
 [options='header']
 |===
 |Action string in SDK| Required SDK library|Action label in the UI
+|`Action.ChooseDataSources`| `SearchEmbed` +
+`SearchBarEmbed` +
+`AppEmbed`| *Choose sources* option in the data panel on a Search page +
+Allows selecting data sources from which you want to query data. +
+|`Action.AddFormula`| `SearchEmbed` +
+`SearchBarEmbed` +
+`AppEmbed`| *Create formula* option in the data panel on a Search page +
+Allows adding formulas to a search query. +
+|`Action.AddParameter`| `SearchEmbed` +
+`SearchBarEmbed` +
+`AppEmbed`| *Add Parameters* option in the data panel on a Search page +
+Allows adding parameters to a search Answer.
 |`Action.AnswerChartSwitcher`| `SearchEmbed` +
 `AppEmbed` | Chart toggle icon +
 Allows switching to the table or chart mode.
@@ -386,10 +398,6 @@ Allows editing the TML representation of the answer object. This action is avail
 Allows importing the TML representation of an answer into ThoughtSpot. This action is available on the saved answers page.
 |`Action.UpdateTML`|`AppEmbed` | *Update TML* +
 Publishes the modified TML representation of an answer.
-|`Action.AddParameter`| `SearchEmbed` +
-`SearchBarEmbed` +
-`AppEmbed`| *Add Parameters* option in the data panel on a Search page +
-Allows adding parameters to a search Answer. +
 |===
 
 == Axis and column customization actions on charts and tables

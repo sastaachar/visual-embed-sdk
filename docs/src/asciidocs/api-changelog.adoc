@@ -13,6 +13,9 @@ This changelog lists only the changes introduced in the Visual Embed SDK. For a 
 |====
 |[tag greenBackground]#NEW FEATURE# a|The new version of the SDK introduces the following action enumeration members:
 
+* `Action.ChooseDataSources`
+* `Action.AddFormula`
+* `Action.AddParameter`
 * `Action.AxisMenuAggregate`
 * `Action.AxisMenuConditionalFormat`
 * `Action.AxisMenuEdit`
