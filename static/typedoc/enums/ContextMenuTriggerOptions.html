@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>DataSourceVisualMode | @thoughtspot/visual-embed-sdk
+	<title>ContextMenuTriggerOptions | @thoughtspot/visual-embed-sdk
 	</title>
 	<meta name="description" content="Documentation for @thoughtspot/visual-embed-sdk">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -57,10 +57,10 @@
 					<a href="../modules.html">@thoughtspot/visual-embed-sdk</a>
 				</li>
 				<li>
-					<a href="DataSourceVisualMode.html">DataSourceVisualMode</a>
+					<a href="ContextMenuTriggerOptions.html">ContextMenuTriggerOptions</a>
 				</li>
 			</ul>
-			<h1>Enumeration DataSourceVisualMode</h1>
+			<h1>Enumeration ContextMenuTriggerOptions</h1>
 		</div>
 	</div>
 </header>
@@ -189,22 +189,19 @@
 							<li class=" tsd-kind-enum">
 								<a href="Action.html" class="tsd-kind-icon">Action</a>
 							</li>
-							<li class=" tsd-kind-enum">
-								<a href="ContextMenuTriggerOptions.html" class="tsd-kind-icon">Context<wbr>Menu<wbr>Trigger<wbr>Options</a>
-							</li>
 							<li class="current tsd-kind-enum">
-								<a href="DataSourceVisualMode.html" class="tsd-kind-icon">Data<wbr>Source<wbr>Visual<wbr>Mode</a>
+								<a href="ContextMenuTriggerOptions.html" class="tsd-kind-icon">Context<wbr>Menu<wbr>Trigger<wbr>Options</a>
 								<ul>
 									<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-										<a href="DataSourceVisualMode.html#Collapsed" class="tsd-kind-icon">Collapsed</a>
+										<a href="ContextMenuTriggerOptions.html#LEFT_CLICK" class="tsd-kind-icon">LEFT_<wbr>CLICK</a>
 									</li>
 									<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-										<a href="DataSourceVisualMode.html#Expanded" class="tsd-kind-icon">Expanded</a>
-									</li>
-									<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-										<a href="DataSourceVisualMode.html#Hidden" class="tsd-kind-icon">Hidden</a>
+										<a href="ContextMenuTriggerOptions.html#RIGHT_CLICK" class="tsd-kind-icon">RIGHT_<wbr>CLICK</a>
 									</li>
 								</ul>
+							</li>
+							<li class=" tsd-kind-enum">
+								<a href="DataSourceVisualMode.html" class="tsd-kind-icon">Data<wbr>Source<wbr>Visual<wbr>Mode</a>
 							</li>
 							<li class=" tsd-kind-enum">
 								<a href="Page.html" class="tsd-kind-icon">Page</a>
@@ -227,8 +224,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>The different visual modes that the data sources panel within
-						search could appear in, i.e., hidden, collapsed, or expanded.</p>
+						<p>Enum for options to change context trigger</p>
 					</div>
 				</div>
 			</section>
@@ -239,9 +235,8 @@
 						<section class="tsd-index-section ">
 							<h3>Enumeration members</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="DataSourceVisualMode.html#Collapsed" class="tsd-kind-icon">Collapsed</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="DataSourceVisualMode.html#Expanded" class="tsd-kind-icon">Expanded</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="DataSourceVisualMode.html#Hidden" class="tsd-kind-icon">Hidden</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="ContextMenuTriggerOptions.html#LEFT_CLICK" class="tsd-kind-icon">LEFT_<wbr>CLICK</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="ContextMenuTriggerOptions.html#RIGHT_CLICK" class="tsd-kind-icon">RIGHT_<wbr>CLICK</a></li>
 							</ul>
 						</section>
 					</div>
@@ -250,49 +245,24 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Enumeration members</h2>
 				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="Collapsed" class="tsd-anchor"></a>
-					<h3>Collapsed</h3>
-					<div class="tsd-signature tsd-kind-icon">Collapsed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;collapse&quot;</span></div>
+					<a name="LEFT_CLICK" class="tsd-anchor"></a>
+					<h3>LEFT_<wbr>CLICK</h3>
+					<div class="tsd-signature tsd-kind-icon">LEFT_<wbr>CLICK<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;left-click&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/9ade8593/src/types.ts#L1762">types.ts:1762</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/9ade8593/src/types.ts#L2081">types.ts:2081</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Data source panel is collapsed, but the user can manually expand it.</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="Expanded" class="tsd-anchor"></a>
-					<h3>Expanded</h3>
-					<div class="tsd-signature tsd-kind-icon">Expanded<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;expand&quot;</span></div>
+					<a name="RIGHT_CLICK" class="tsd-anchor"></a>
+					<h3>RIGHT_<wbr>CLICK</h3>
+					<div class="tsd-signature tsd-kind-icon">RIGHT_<wbr>CLICK<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;right-click&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/9ade8593/src/types.ts#L1766">types.ts:1766</a></li>
+							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/9ade8593/src/types.ts#L2082">types.ts:2082</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Data source panel is expanded, but the user can manually collapse it.</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="Hidden" class="tsd-anchor"></a>
-					<h3>Hidden</h3>
-					<div class="tsd-signature tsd-kind-icon">Hidden<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;hide&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/thoughtspot/visual-embed-sdk/blob/9ade8593/src/types.ts#L1758">types.ts:1758</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Data source panel is hidden.</p>
-						</div>
-					</div>
 				</section>
 			</section>
 		</div>
