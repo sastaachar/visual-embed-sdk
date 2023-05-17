@@ -313,7 +313,7 @@ Use the following variables to customize the background color of the chart type 
 |`--ts-var-answer-chart-hover-background`|Background color of the chart type element when a user hovers over a chart type on the chart selection widget.
 |======
 
-==== Filter chips on visualization and answer pages
+==== Filter chips on visualization and Answer pages
 Filter chips appear on the Liveboard, Answer, and visualization pages if filters are applied on charts and tables. You can use the following variables to customize the look and feel of filter chips.
 
 [width="100%" cols="7,7"]

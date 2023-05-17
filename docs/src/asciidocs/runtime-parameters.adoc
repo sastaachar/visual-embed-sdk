@@ -4,7 +4,7 @@
 
 :page-title: Runtime Parameters
 :page-pageid: runtime-params
-:page-description: Use Parameters to run multiple scenarios with adjustable values, without changing your answer.
+:page-description: Use Parameters to run multiple scenarios with adjustable values, without changing your Answer.
 
 ThoughtSpot lets you create Parameters in a Worksheet and integrate them into formulas, filters, data queries, and Liveboards. Parameters are useful for 'what-if' analysis, financial planning, cohort analysis, and so on. Parameters allow users to visualize data by running different scenarios with adjustable values. With Parameters, a single report can be created that a business user adjusts to fit the scenario they want to analyze.
 
