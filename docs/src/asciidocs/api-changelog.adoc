@@ -55,6 +55,16 @@ The following events are deprecated from version 1.21.0 onwards.
 You can use the `DownloadAsPng`, `DownloadAsXlsx`, `DownloadAsCsv` and `DownloadAsPdf` events for download actions.
 
 For more information, see xref:events-ref.adoc[Events reference].
+|[tag orangeBackground]#MODIFIED# a|
+
+Starting from 9.2.0.cl release, use the following action enumeration members instead of `Action.Download` to show, hide, or disable the *Download* menu action on an embedded Liveboard, visualization, or Answer:
+
+* `Action.DownloadAsCsv`
+* `Action.DownloadAsPdf`
+* `Action.DownloadAsXlsx`
+* `Action.DownloadAsPng`
+
+For more information, see xref:embed-action-ref.adoc[Action reference].
 |[tag greenBackground]#NEW FEATURE# a| The SDK includes new attributes to customize the experience for embedded app users:
 
 * `linkOverride`
