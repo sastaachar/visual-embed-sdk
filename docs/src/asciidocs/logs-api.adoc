@@ -25,8 +25,6 @@ GET /tspublic/v1/logs/topics/{topic}
 
 == Request parameters
 
-== Request parameters
-
 [width="100%" cols="2,1,4"]
 [options='header']
 |====
