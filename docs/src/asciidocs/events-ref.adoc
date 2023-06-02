@@ -26,7 +26,8 @@ Adds new columns to the current Search.
 ====
 [source,JavaScript]
 ----
-searchEmbed.trigger(HostEvent.AddColumns, { columnIds: ['123', '456'] })
+searchEmbed.trigger(HostEvent.AddColumns, {
+    columnIds: ['085f9694-0d02-479e-973a-d216336e5253', 'acf6b749-7a9b-4fce-8ad2-daa8ee87ee07']})
 ----
 ====
 --
@@ -486,7 +487,7 @@ Available with `SearchEmbed` in `v1.21.0` or later.
 
 Opens the filter panel for a particular column on the Answer page.
 
-Requires column ID and column name.
+Requires column ID and column name. Opens the filter panel for a particular column. Works with Search embed.
 
 [div divider]
 --
@@ -495,11 +496,15 @@ Requires column ID and column name.
 ====
 [source,JavaScript]
 ----
-searchEmbed.trigger(HostEvent.OpenFilter, { columnId: '123', name: 'column name', type: 'INT64', dataType: 'ATTRIBUTE' })
+searchEmbed.trigger(HostEvent.OpenFilter, {
+    columnId: 'fe7d717d-7739-4cdf-a6b6-309e0d2a8408',
+    name: 'Sales',
+    type: 'INT64',
+    dataType: 'ATTRIBUTE'
+})
 ----
 ====
 --
-
 
 
 ==== Pin
@@ -579,11 +584,11 @@ Removes a column from the current Search.
 [source,JavaScript]
 ----
 searchEmbed.trigger(HostEvent.RemoveColumn, {
-columnId: '123'
-})
+columnId: '085f9694-0d02-479e-973a-d216336e5253'})
 ----
 ====
 --
+
 
 ==== ResetSearch
 
@@ -621,16 +626,20 @@ liveboardEmbed.trigger(HostEvent.Save)
 ====
 --
 
+[#hostEventSearch]
 ==== Search
 Available with `SearchEmbed`  and  `AppEmbed` in `v1.1.0` or later. +
 Triggers a search query. +
 Requires the following parameters: +
 
 * `searchQuery` +
-__String__. Query string with search tokens
+__String__. Query string with search tokens.
 
 * `dataSourceIds` +
-__String__. Data source GUIDs
+__String__. Data source GUIDs.
+
+* `execute` +
+__Boolean__. Executes or omits a search query.
 
 [div divider]
 --
@@ -640,8 +649,9 @@ __String__. Data source GUIDs
 [source,JavaScript]
 ----
 searchEmbed.trigger(HostEvent.Search {
-    searchQuery: "[sales] by [item type]"
-    dataSourceIds: ["cd252e5c-b552-49a8-821d-3eadaa049cca"]
+    searchQuery: "[sales] by [item type]",
+    dataSourceIds: ["cd252e5c-b552-49a8-821d-3eadaa049cca"],
+    execute: true
 })
 ----
 ====
