@@ -37,7 +37,7 @@ The *Develop* tab now allows customizing UI styles and layout at the Org level. 
 
 === Visual Embed Playground enhancements
 
-The Visual Embed developer Playground now includes a *Try* button in the preview panel. The *Try* button is attached to an event handler, using which you can try out host events in the SDK to trigger an action in the embed mode.
+The Visual Embed developer Playground now includes a *Try* button in the preview panel. The *Try* button is attached to an event handler. You can register a host event and click *Try* to trigger an action on the embedded page in the Playground.
 ////
 For more information, see xref:events-ref.adoc#host-events[Events reference].
 ////
