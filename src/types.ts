@@ -597,6 +597,7 @@ export interface ViewConfig {
      * if available and matches the configuration.
      *
      * @version SDK: 1.22.0
+     * @hidden
      *
      * See [docs]() on how to create a prerender pool.
      */
@@ -1940,9 +1941,6 @@ export enum Action {
     DrillEdit = 'context-menu-item-edit',
     EditMeasure = 'context-menu-item-edit-measure',
     Separator = 'context-menu-item-separator',
-    /**
-     * @hidden
-     */
     DrillDown = 'DRILL',
     RequestAccess = 'requestAccess',
     QueryDetailsButtons = 'queryDetailsButtons',
