@@ -243,7 +243,7 @@ For example, the *Search data* button in the top navigation panel.
 For example, share and favorite buttons.
 |`--ts-var-button\--primary-color`|Primary button a|
 Font color of the text on primary buttons. For example, the primary buttons on *Liveboard*, Answer, *Data* workspace, *SpotIQ*, or *Home* page.
-|`--ts-var-button\--primary--font-family`|Primary button|
+|`--ts-var-button\--primary\--font-family`|Primary button|
 
 Font family specification for the text on primary buttons.
 |`--ts-var-button\--primary-background`|Primary button|
@@ -255,7 +255,7 @@ Background color of the primary buttons on hover.
 |`--ts-var-button\--secondary-color`|Secondary button|
 
 Font color of the text on the secondary buttons.
-|`--ts-var-button\--secondary--font-family`|Secondary button|
+|`--ts-var-button\--secondary\--font-family`|Secondary button|
 
 Font family specification for the text on the secondary buttons.
 |`--ts-var-button\--secondary-background`|Secondary button|Background color of the secondary buttons.
@@ -414,7 +414,7 @@ A rule is defined in a JSON notation for styles, rather than direct CSS.
 
 [source,javascript]
 ----
-rules_UNSTABLE: { 
+rules_UNSTABLE: {
       '{selector1}' : {
         "{css-property-name}" : "{value}",
         "{css-property-name2}" : "{value}"
