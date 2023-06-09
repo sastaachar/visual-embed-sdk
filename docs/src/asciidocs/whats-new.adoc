@@ -28,12 +28,9 @@ For more information, see xref:tse-eco-mode.adoc[Manage your cluster state].
 
 The *Develop* tab now allows customizing UI styles and layout at the Org level. To enable this feature on your multi-tenant instance, contact ThoughtSpot support.
 
-////
-===  Version control APIs for GIT workflows
+===  Version control and Git integration via REST API [beta betaBackground]^Beta^
 
-=== New features and enhancements to the new Liveboard experience
-
-////
+You can now connect your ThoughtSpot instance to a Git repository and push commits from your application instance to a Git branch via REST API. With the Git integration feature, ThoughtSpot provides the ability to integrate your application environment with Git workflows and deploy commits from a development instance to a production cluster.
 
 === Visual Embed Playground enhancements
 
@@ -41,6 +38,8 @@ The Visual Embed developer Playground now includes a *Try* button in the preview
 ////
 For more information, see xref:events-ref.adoc#host-events[Events reference].
 ////
+
+
 === Visual Embed SDK
 
 For information about the new features and enhancements introduced in Visual Embed SDK version 1.22.0, see xref:api-changelog.adoc[Visual Embed changelog].

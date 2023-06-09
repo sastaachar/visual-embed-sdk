@@ -1200,7 +1200,7 @@ The allowed values are:
 [#transfer-ownership]
 == Transfer ownership
 
-When a user is removed from the ThoughtSpot application, you may want to transfer objects from the deleted user account to the account. If you are an admin user, you can programmatically transfer the ownership of one or several objects from one ThoughtSpot user account to another, using the `/tspublic/v1/user/transfer/ownership` API.
+When a user is removed from the ThoughtSpot application, you may want to transfer objects from the deleted user account to the account. Administrators can programmatically transfer the ownership of one or several objects from one user to another via  `/tspublic/v1/user/transfer/ownership` API endpoint.
 
 === Resource URL
 ----
