@@ -57,7 +57,7 @@ new Date('2020-05-22').getTime() / 1000
 ----
 ====
 
-=== Apply Parameter overrides via REST API
+== Apply Parameter overrides via REST API
 
 You can apply Parameter overrides to a Liveboard or Answer using REST v1 data API endpoints.
 
@@ -66,7 +66,7 @@ You can apply Parameter overrides to a Liveboard or Answer using REST v1 data AP
 REST API v2.0 endpoints do not support Parameter overrides.
 ====
 
-==== Liveboard data
+=== Liveboard data
 Before applying a Parameter override on a Liveboard, make sure the Worksheet used for generating visualizations contains Parameters.
 
 To apply overrides to a Liveboard via REST API, add Parameters to the xref:pinboarddata.adoc[Liveboard data API] request URL as shown in the example here:
@@ -108,7 +108,7 @@ If the API request is valid, overrides are applied to the Liveboard data, and Th
 }
 ----
 
-==== Answer data
+=== Answer data
 
 Before applying a Parameter override on an Answer object, make sure the Worksheet used for generating the Answer data has the Parameters and formula configured.
 
@@ -183,6 +183,6 @@ https://{ThoughtSpot-host}/?param1=double%20list%20param&paramVal1=0&param2=doub
 https://{ThoughtSpot-host}/callosum/v1/tspublic/v1/pinboarddata?id=e36ee65e-64be-436b-a29a-22d8998c4fae&batchsize=-1&pagenumber=-1&offset=-1&formattype=COMPACT&param1=double%20list%20param&paramVal1=0&param2=double%20param&paramVal2=0
 ----
 
-=== Apply Parameter overrides using Visual Embed SDK
+== Apply Parameter overrides using Visual Embed SDK
 
 Applying runtime Parameter overrides via Visual Embed SDK is not supported.
