@@ -1223,13 +1223,14 @@ export enum EmbedEvent {
 // eslint-disable-next-line no-shadow
 export enum HostEvent {
     /**
-     * Trigger a search
-     *
+     * Triggers a search query in AppEmbed and SearchEmbed
+     * deployments.
+     * Includes the following properties:
      * @param - dataSourceIds - The data source GUID to Search on
      *                        - Although an array, only a single source
-     *                          is supported at this time.
-     * @param - searchQuery - The search query
-     * @param - execute - execute the existing / updated query
+     *                          is supported.
+     * @param - searchQuery - Query string with search tokens
+     * @param - execute - executes the existing / updated query
      * @example
      * ```js
      * searchEmbed.trigger(HostEvent.Search, {
@@ -1241,13 +1242,13 @@ export enum HostEvent {
      */
     Search = 'search',
     /**
-     * Trigger a drill on certain points by certain column
-     *
+     * Triggers a drill on certain points of the specified column
+     * Includes the following properties:
      * @param - points - an object containing selectedPoints/clickedPoints
-     *              eg. { selectedPoints: []}
-     * @param - columnGuid - a string guid of the column to drill by. This is optional,
-     *                     if not provided it will auto drill by the configured
-     *                     column.
+     * to drill to. For example, { selectedPoints: []}
+     * @param - columnGuid - Optional. GUID of the column to drill
+     * by. If not provided it will auto drill by the configured
+     *   column.
      * @example
      * ```js
      * searchEmbed.on(EmbedEvent.VizPointDoubleClick, (payload) => {
@@ -1280,10 +1281,10 @@ export enum HostEvent {
      */
     Reload = 'reload',
     /**
-     * Set the visible visualizations on a Liveboard.
+     * Sets the visible visualizations on a Liveboard.
      *
-     * @param - an array of ids of visualizations to show, the ids not passed
-     *          will be hidden.
+     * @param - An array of GUIDs of the visualization to show. The visualization IDs not passed
+     *  in this parameter will be hidden.
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.SetVisibleVizs, [
@@ -1294,9 +1295,17 @@ export enum HostEvent {
      */
     SetVisibleVizs = 'SetPinboardVisibleVizs',
     /**
-     * Update the runtime filters. The runtime filters passed here are extended
-     * on to the existing runtime filters if they exist.
-     *
+     * Updates runtime filters applied on a Saved Answer or Liveboard. The
+     * runtime filters passed here appended to the existing runtime filters
+     * if any.
+     * Pass an array of runtime filters with the following attributes:
+     * `columnName`
+     * _String_. The name of the column to filter on.
+     * `operator`
+     * Runtime filter operator to apply. For information, see [Runtime filter operators](https://developers.thoughtspot.com/docs/?pageid=runtime-filters#rtOperator) about supported operators,  .
+     * `values`
+     * List of operands. Some operators such as EQ, LE allow a single value, whereas operators
+     * such as BW and IN accept multiple operands.
      * @param - {@link RuntimeFilter}[] an array of {@link RuntimeFilter} Types.
      * @example
      * ```js
@@ -1310,7 +1319,7 @@ export enum HostEvent {
      */
     UpdateRuntimeFilters = 'UpdateRuntimeFilters',
     /**
-     * Navigate to a specific page in App embed without any reload.
+     * Navigate to a specific page in embedded application without reloading the page.
      * This is the same as calling `appEmbed.navigateToPage(path, true)`
      *
      * @param - path - the path to navigate to (can be a number[1/-1] to go forward/back)
@@ -1332,7 +1341,7 @@ export enum HostEvent {
      * @example
      * ```js
      * searchEmbed.trigger(HostEvent.OpenFilter,
-     *  { columnId: '123', name: 'column name', type: 'INT64', dataType: 'ATTRIBUTE' })
+     *  { columnId: '085f9694-0d02-479e-973a-d216336e5253', name: 'column name', type: 'INT64', dataType: 'ATTRIBUTE' })
      * ```
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
@@ -1343,7 +1352,7 @@ export enum HostEvent {
      * @param - { columnIds: string[] }
      * @example
      * ```js
-     * searchEmbed.trigger(HostEvent.AddColumns, { columnIds: ['123', '456'] })
+     * searchEmbed.trigger(HostEvent.AddColumns, { columnIds: ['085f9694-0d02-479e-973a-d216336e5253','acf6b749-7a9b-4fce-8ad2-daa8ee87ee07'] })
      * ```
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
@@ -1354,13 +1363,13 @@ export enum HostEvent {
      * @param - { columnId: string }
      * @example
      * ```js
-     * searchEmbed.trigger(HostEvent.RemoveColumn, { columnId: '123' })
+     * searchEmbed.trigger(HostEvent.RemoveColumn, { columnId: '085f9694-0d02-479e-973a-d216336e5253' })
      * ```
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
     RemoveColumn = 'removeColumn',
     /**
-     * Gets the current pinboard content.
+     * Gets the current Liveboard content.
      *
      * @example
      * ```js
@@ -1370,10 +1379,11 @@ export enum HostEvent {
      */
     getExportRequestForCurrentPinboard = 'getExportRequestForCurrentPinboard',
     /**
-     * Triggers the Pin action on an embedded object
+     * Triggers the *Pin* action on an embedded object
      *
-     * @param - incase of Liveboard embed, takes in an object with vizId as a key
-     * can be left empty for search and visualization embeds
+     * @param - For Liveboard embed, takes `vizId` as a
+     * key. Can be left undefined when embedding Search, full app or
+     * a visualization.
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.Pin, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})
@@ -1384,7 +1394,7 @@ export enum HostEvent {
      */
     Pin = 'pin',
     /**
-     * Triggers the Show Liveboard details action on a Liveboard
+     * Triggers the *Show Liveboard details* action on a Liveboard
      *
      * @example
      * ```js
@@ -1515,8 +1525,10 @@ export enum HostEvent {
     /**
      * Triggers the Edit action on a Liveboard or visualization
      *
-     * @param - object - to trigger the action for a specfic visualization
-     *   in Liveboard embed, pass in vizId as a key
+     * @param - object - To trigger the action for a specific visualization
+     *   in Liveboard embed, pass in vizId as a
+     *  key. Can be left undefined when embedding Search, full app, or
+     * a visualization.
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.Edit)
@@ -1532,8 +1544,8 @@ export enum HostEvent {
     /**
      * Triggers the Copy link action on a Liveboard or visualization
      *
-     * @param - object - to trigger the action for a s
-     *  pecfic visualization in Liveboard embed, pass in vizId as a key
+     * @param - object - to trigger the action for a
+     *  specific visualization in Liveboard embed, pass in vizId as a key
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.CopyLink)
@@ -1546,7 +1558,7 @@ export enum HostEvent {
     /**
      * Triggers the Present action on a Liveboard or visualization
      *
-     * @param - object - to trigger the action for a specfic visualization
+     * @param - object - to trigger the action for a specific visualization
      *  in Liveboard embed, pass in vizId as a key
      * @example
      * ```js
@@ -1608,8 +1620,9 @@ export enum HostEvent {
     /**
      * Triggers the SpotIQAnalyze action on visualization or search
      *
-     * @param - incase of Liveboard embed, takes in an object with vizId as a key
-     * can be left empty for search and visualization embeds
+     * @param - In case of Liveboard embed, takes in an object with vizId as a
+     * key. Can be left undefined when embedding Search or
+     * visualization.
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.SpotIQAnalyze, {vizId:
@@ -1623,7 +1636,7 @@ export enum HostEvent {
      */
     SpotIQAnalyze = 'spotIQAnalyze',
     /**
-     * Triggers the Download action on visualization or search when Displaymode is Chart
+     * Triggers the Download action on a chart
      *
      * @example
      * ```js
@@ -1639,8 +1652,8 @@ export enum HostEvent {
      */
     Download = 'downloadAsPng',
     /**
-     * Triggers the Download action on visualization or search when Displaymode is Chart
-     *
+     * Triggers the Download action on the chart in embedded Liveboard or Search
+     * page
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.DownloadAsPng,
@@ -1654,7 +1667,8 @@ export enum HostEvent {
      */
     DownloadAsPng = 'downloadAsPng',
     /**
-     * Triggers the downloadAsCSV action on visualization or search
+     * Triggers the downloadAsCSV action on the table in embedded Liveboard or Search
+     * page
      *
      * @example
      * ```js
@@ -1669,8 +1683,8 @@ export enum HostEvent {
      */
     DownloadAsCsv = 'downloadAsCSV',
     /**
-     * Triggers the downloadAsXLSX action on visualization or search
-     *
+     * Triggers the downloadAsXLSX action the table in embedded Liveboard or Search
+     * page
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.DownloadAsXlsx, {vizId:
@@ -1684,7 +1698,7 @@ export enum HostEvent {
      */
     DownloadAsXlsx = 'downloadAsXLSX',
     /**
-     * Triggers the Share action on a liveboard or answer
+     * Triggers the Share action on a Liveboard or Answer
      *
      * @example
      * ```js
@@ -1696,7 +1710,7 @@ export enum HostEvent {
      */
     Share = 'share',
     /**
-     * Trigger the Save action on a liveboard or answer
+     * Trigger the Save action on a Liveboard or Answer
      *
      * @example
      * ```js
@@ -1708,7 +1722,7 @@ export enum HostEvent {
      */
     Save = 'save',
     /**
-     * Triggers the SyncToSheets action on visualization
+     * Triggers the SyncToSheets action on an embedded visualization or Answer
      *
      * @param - an object with vizId as a key
      * @example
@@ -1722,7 +1736,7 @@ export enum HostEvent {
      */
     SyncToSheets = 'sync-to-sheets',
     /**
-     * Triggers the SyncToOtherApps action on visualization
+     * Triggers the SyncToOtherApps action on an embedded visualization or Answer
      *
      * @param - an object with vizId as a key
      * @example
@@ -1736,7 +1750,7 @@ export enum HostEvent {
      */
     SyncToOtherApps = 'sync-to-other-apps',
     /**
-     * Triggers the ManagePipelines action on visualization
+     * Triggers the ManagePipelines action on an embedded visualization or Answer
      *
      * @param - an object with vizId as a key
      * @example
@@ -1750,7 +1764,7 @@ export enum HostEvent {
      */
     ManagePipelines = 'manage-pipeline',
     /**
-     * Triggers the Reset search in answer
+     * Triggers the Reset search on the Search page
      *
      * @example
      * ```js
@@ -1834,11 +1848,10 @@ export enum Param {
 }
 
 /**
- * The list of actions that can be performed on visual ThoughtSpot
- * entities, such as answers and Liveboards.
- *
- * This enum is used to specify the actions that could be disabled,
- * hidden or made visible.
+ * ThoughtSpot visualizations, Liveboards, and Answers support several actions and menu commands
+ * for various user-initiated operations. The Action enumeration members mapped to these actions
+ * can be used in the `disabledActions`, `visibleActions`, and `hiddenActions` array
+ * to show or hide a menu action in the embedded UI.
  *
  * @example
  * ```js
@@ -1861,27 +1874,150 @@ export enum Action {
      * @hidden
      */
     SaveUntitled = 'saveUntitled',
+    /**
+    * The `Save as View* action on the Answer
+    * page. Saves an Answer as a View object.
+    *
+    * @example
+    * ```js
+    * disableActions: [Action.SaveAsView]
+    * })
+    * ```
+    */
     SaveAsView = 'saveAsView',
+    /**
+    * The *Make a copy* action on a Liveboard or Answer
+    * page.
+    * Creates a copy of the Liveboard, visualization,
+    * or Answer.
+    *
+    * @example
+    * ```js
+    * disableActions: [Action.MakeACopy]
+    * })
+    * ```
+    */
     MakeACopy = 'makeACopy',
+    /**
+    * The *Copy and Edit* action on a Liveboard.
+    * This action is now replaced with `Action.MakeACopy`.
+    *
+    * @example
+    * ```js
+    * disableActions: [Action.EditACopy]
+    * })
+    * ```
+    */
     EditACopy = 'editACopy',
+    /**
+    * The *Copy link* menu action on a Liveboard visualization.
+    * Copies the visualization URL
+    * @example
+    * ```js
+    * disableActions: [Action.CopyLink]
+    * })
+    * ```
+    */
     CopyLink = 'embedDocument',
     /**
      * @hidden
      */
     ResetLayout = 'resetLayout',
+    /**
+    * The *Schedule* menu action on a Liveboard.
+    * Allows scheduling a Liveboard notification.
+    * @example
+    * ```js
+    * disableActions: [Action.Schedule]
+    * })
+    * ```
+    */
     Schedule = 'subscription',
+    /**
+    * The *Manage Schedules* menu action on a Liveboard.
+    * Allows users to manage scheduled Liveboard jobs.
+    * @example
+    * ```js
+    * disableActions: [Action.SchedulesList]
+    * })
+    * ```
+    */
     SchedulesList = 'schedule-list',
+    /**
+    * The *Share* action on a Liveboard, Answer, or Worksheet.
+    * Allows users to share an object with other users and groups.
+    * @example
+    * ```js
+    * disableActions: [Action.Share]
+    * })
+    * ```
+    */
     Share = 'share',
+    /**
+    * The *Add filter* action on a Liveboard and Search page.
+    * Allows adding filters to Answers and visualizations on a Liveboard.
+    * @example
+    * ```js
+    * disableActions: [Action.AddFilter]
+    * })
+    * ```
+    */
     AddFilter = 'addFilter',
+    /**
+    * The *Add filter* action on a Liveboard and Search page.
+    * Allows configuring filter options when adding filters to a
+    * Liveboard or Answer.
+    * @example
+    * ```js
+    * disableActions: [Action.ConfigureFilter]
+    * })
+    * ```
+    */
     ConfigureFilter = 'configureFilter',
     CollapseDataSources = 'collapseDataSources',
+    /**
+    * The *Choose sources* button on Search page.
+    * Allows selecting data sources for search queries.
+    * @example
+    * ```js
+    * disableActions: [Action.ChooseDataSources]
+    * })
+    * ```
+    */
     ChooseDataSources = 'chooseDataSources',
+    /**
+    * The *Create formula* action on a Search or Answer page.
+    * Allows adding formulas to an Answer.
+    * @example
+    * ```js
+    * disableActions: [Action.AddFormula]
+    * })
+    * ```
+    */
     AddFormula = 'addFormula',
+    /**
+    * The *Add parameter* action on a Liveboard or Answer.
+    * Allows adding Parameters to a Liveboard or Answer.
+    * @example
+    * ```js
+    * disableActions: [Action.AddParameter]
+    * })
+    * ```
+    */
     AddParameter = 'addParameter',
     /**
      * @hidden
      */
     SearchOnTop = 'searchOnTop',
+    /**
+    * The *SpotIQ analyze* menu action on a visualization or
+    * Answer page.
+    * @example
+    * ```js
+    * disableActions: [Action.SpotIQAnalyze]
+    * })
+    * ```
+    */
     SpotIQAnalyze = 'spotIQAnalyze',
     /**
      * @hidden
@@ -1896,11 +2032,55 @@ export enum Action {
      * @hidden
      */
     ReplaySearch = 'replaySearch',
+    /**
+    * The *Show underlying data* menu action on a visualization or
+    * Answer page.
+    * @example
+    * ```js
+    * disableActions: [Action.ShowUnderlyingData]
+    * })
+    * ```
+    */
     ShowUnderlyingData = 'showUnderlyingData',
     Download = 'download',
+    /**
+    * The *Download* > *PNG* menu action for charts on a Liveboard
+    * or Answer page.
+    * @example
+    * ```js
+    * disableActions: [Action.DownloadAsPng]
+    * })
+    * ```
+    */
     DownloadAsPng = 'downloadAsPng',
+    /**
+    * The *Download* > PDF* menu action on a Liveboard.
+    * @example
+    * ```js
+    * disableActions: [Action.DownloadAsPdf]
+    * })
+    * ```
+    */
     DownloadAsPdf = 'downloadAsPdf',
+    /**
+    * The *Download* > CSV* menu action for tables on a Liveboard
+    * or Answer page.
+    * @example
+    * ```js
+    * disableActions: [Action.DownloadAsCsv]
+    * })
+    * ```
+    */
     DownloadAsCsv = 'downloadAsCSV',
+    /**
+    * The *Download* > XLSX* menu action for tables on a Liveboard
+    * or Answer page.
+    * @example
+    * ```js
+    * disableActions: [Action.DownloadAsXlsx]
+    * })
+    * ```
+    */
     DownloadAsXlsx = 'downloadAsXLSX',
     /**
      * @hidden
