@@ -30,7 +30,7 @@ Opens Liveboard in the edit mode.
 
 |`Action.AddFilter` a| `LiveboardEmbed` +
 `AppEmbed` |*Add filters* +
-Allows filters to visualizations in a Liveboard.
+Adds filters to visualizations on a Liveboard.
 |`Action.ConfigureFilter`
 a| `LiveboardEmbed` +
 `AppEmbed`
