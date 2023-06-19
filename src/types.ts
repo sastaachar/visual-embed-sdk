@@ -1689,9 +1689,11 @@ export enum HostEvent {
      * ```js
      * liveboardEmbed.trigger(HostEvent.DownloadAsXlsx, {vizId:
      * '730496d6-6903-4601-937e-2c691821af3c'})
-     *
+     * ```
+     * ```js
      * vizEmbed.trigger(HostEvent.DownloadAsXlsx)
-     *
+     * ```
+     * ```js
      * searchEmbed.trigger(HostEvent.DownloadAsXlsx)
      * ```
      * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
@@ -1703,7 +1705,8 @@ export enum HostEvent {
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.Share)
-     *
+     * ```
+     * ```js
      * searchEmbed.trigger(HostEvent.Share)
      * ```
      * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
@@ -1715,7 +1718,8 @@ export enum HostEvent {
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.Save)
-     *
+     * ```
+     * ```js
      * searchEmbed.trigger(HostEvent.Save)
      * ```
      * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
@@ -1729,7 +1733,8 @@ export enum HostEvent {
      * ```js
      * liveboardEmbed.trigger(HostEvent.SyncToSheets, {vizId:
      * '730496d6-6903-4601-937e-2c691821af3c'})
-     *
+     * ```
+     * ```js
      * vizEmbed.trigger(HostEvent.SyncToSheets)
      * ```
      * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
@@ -1743,7 +1748,8 @@ export enum HostEvent {
      * ```js
      * liveboardEmbed.trigger(HostEvent.SyncToOtherApps, {vizId:
      * '730496d6-6903-4601-937e-2c691821af3c'})
-     *
+     * ```
+     * ```js
      * vizEmbed.trigger(HostEvent.SyncToOtherApps)
      * ```
      * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
@@ -1757,7 +1763,8 @@ export enum HostEvent {
      * ```js
      * liveboardEmbed.trigger(HostEvent.ManagePipelines, {vizId:
      * '730496d6-6903-4601-937e-2c691821af3c'})
-     *
+     * ```
+     * ```js
      * vizEmbed.trigger(HostEvent.ManagePipelines)
      * ```
      * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
@@ -2042,10 +2049,21 @@ export enum Action {
     * ```
     */
     ShowUnderlyingData = 'showUnderlyingData',
+    /**
+    * The *Download* menu action on Liveboard visualizations
+    * and Answers.
+    * Allows downloading a visualization or Answer.
+    * @example
+    * ```js
+    * disableActions: [Action.DownloadAsPng]
+    * })
+    * ```
+    */
     Download = 'download',
     /**
     * The *Download* > *PNG* menu action for charts on a Liveboard
     * or Answer page.
+    * Downloads a visualization or Answer as a PNG file.
     * @example
     * ```js
     * disableActions: [Action.DownloadAsPng]
@@ -2055,6 +2073,7 @@ export enum Action {
     DownloadAsPng = 'downloadAsPng',
     /**
     * The *Download* > PDF* menu action on a Liveboard.
+    * Downloads a visualization or Answer as a PDF file.
     * @example
     * ```js
     * disableActions: [Action.DownloadAsPdf]
@@ -2065,6 +2084,7 @@ export enum Action {
     /**
     * The *Download* > CSV* menu action for tables on a Liveboard
     * or Answer page.
+    * Downloads a visualization or Answer in the XLSX format.
     * @example
     * ```js
     * disableActions: [Action.DownloadAsCsv]
@@ -2075,6 +2095,7 @@ export enum Action {
     /**
     * The *Download* > XLSX* menu action for tables on a Liveboard
     * or Answer page.
+    * Downloads a visualization or Answer in the XLSX format.
     * @example
     * ```js
     * disableActions: [Action.DownloadAsXlsx]
@@ -2086,8 +2107,36 @@ export enum Action {
      * @hidden
      */
     DownloadTrace = 'downloadTrace',
+    /**
+    * The *Export TML* menu action on Liveboard, Answers
+    * Worksheets and Data Connections page.
+    * Exports an object as a TML file.
+    * @example
+    * ```js
+    * disableActions: [Action.ExportTML]
+    * })
+    * ```
+    */
     ExportTML = 'exportTSL',
+    /**
+    * The *Import TML* menu action for Liveboards and Answers.
+    * Imports TML representation of ThoughtSpot objects.
+    * @example
+    * ```js
+    * disableActions: [Action.ImportTML]
+    * })
+    * ```
+    */
     ImportTML = 'importTSL',
+   /**
+    * The *Update TML* menu action for Liveboards and Answers.
+    * Imports TML representation of ThoughtSpot objects.
+    * @example
+    * ```js
+    * disableActions: [Action.ImportTML]
+    * })
+    * ```
+    */
     UpdateTML = 'updateTSL',
     EditTML = 'editTSL',
     Present = 'present',
