@@ -20,13 +20,13 @@
         "./react": {
             "import": "./lib/src/react/all-types-export.js",
             "require": "./cjs/src/react/all-types-export.js",
-            "types": "./lib/src/react/all-types-export.d.ts"
+            "types": "./dist/visual-embed-sdk-react-full.d.ts"
         }
     },
     "typesVersions": {
         "*": {
             "react": [
-                "./lib/src/react/index.d.ts"
+                "./dist/visual-embed-sdk-react-full.d.ts"
             ]
         }
     },
