@@ -524,7 +524,7 @@ Allows downloading Liveboard data in PDF, XLSX, CSV, and PNG format
 +
 Allows downloading Answer data in PDF, XLSX, CSV, and PNG format
 
-The following example shows the request body with runtime filter parameters:
+The following examples show the request body with runtime filter parameters. Note that you can add additional filters by incrementing the number at the end of each parameter. For example, col2, op2, val2.
 
 .Answer report
 
@@ -540,7 +540,10 @@ curl -X POST \
   "runtime_filter": {
     "col1": "item type",
     "op1": "EQ",
-    "values": "Jackets"
+    "val1": "Jackets",
+    "col2": "state",
+    "op2": "EQ",
+    "val2": "California"
   }
 }'
 ----
@@ -559,7 +562,10 @@ curl -X POST \
   "runtime_filter": {
     "col1": "item type",
     "op1": "EQ",
-    "values": "Jackets"
+    "val1": "Jackets",
+    "col2": "state",
+    "op2": "EQ",
+    "val2": "California"
   }
 }'
 ----
