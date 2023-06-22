@@ -195,18 +195,17 @@ export interface customCssInterface {
     /**
      * Can be used to define a custom font face
      * like:
-     *
      * @example
      * ```js
      * rules_UNSTABLE?: {
      *     "@font-face": {
      *         "font-family": "custom-font",
      *         "src": url("/path/")
-     *     };
+     *  *     };
      *   };
      * ```
      *
-     * Also, custom css rules outside of variables.
+     * * Also, custom css rules outside of variables.
      * @example
      * ```js
      * rules_UNSTABLE?: {
@@ -448,6 +447,7 @@ export interface EmbedConfig {
      * @version SDK: 1.12.0 | ThoughtSpot: 8.4.0.cl, 8.4.1-sw*
      */
     suppressSearchEmbedBetaWarning?: boolean;
+
     /**
      * Custom style params for embed Config.
      *

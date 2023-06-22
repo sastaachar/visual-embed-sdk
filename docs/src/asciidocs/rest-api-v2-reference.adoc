@@ -51,7 +51,7 @@ If the login is successful, a user session is established.
 Gets an authentication token from ThoughtSpot, which allows access to a specific metadata object in ThoughtSpot. The token obtained from this API call provides only view access to the object specified in the API request.
 +
 ** To obtain a bearer token, specify the username, password, and object ID in the API request.
-** To obtain a token on behalf of a user, specify the username, secret key, and object ID.
+** To obtain a token on behalf of a user, specify the `username`, `secret_key`, and object ID.
 +
 __Requires access to the `secret_key`. For more information, see xref:trusted-authentication.adoc#trusted-auth-enable[Trusted authentication]__.
 
@@ -61,7 +61,7 @@ __Requires access to the `secret_key`. For more information, see xref:trusted-au
 Gets an authentication token from ThoughtSpot, which provides access to the full application.
 +
 ** To obtain a bearer token, specify the username and password in the API request.
-** To obtain a token on behalf of a user, specify the username and secret key.
+** To obtain a token on behalf of a user, specify the `username` and `secret_key`.
 +
 __Requires access to the `secret_key`. For more information, see xref:trusted-authentication.adoc#trusted-auth-enable[Trusted authentication]__.
 
@@ -460,7 +460,7 @@ __Available to all users. Does not require administrator privileges__.
 
 `POST /api/rest/2.0/groups/create`
 
-Creates a user in ThoughtSpot. This API also supports the following operations: +
+Creates a group in ThoughtSpot. This API also supports the following operations: +
 
 * assign privileges
 * add users

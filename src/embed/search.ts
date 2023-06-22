@@ -61,6 +61,10 @@ export interface SearchViewConfig extends ViewConfig {
      */
     hideResults?: boolean;
     /**
+     * If set to true, expands all the data sources panel.
+     */
+    expandAllDataSource?: boolean;
+    /**
      * If set to true, the Search Assist feature is enabled.
      *
      * @version SDK: 1.13.0 | ThoughtSpot: 8.5.0.cl, 8.8.1-sw
@@ -150,6 +154,7 @@ export class SearchEmbed extends TsEmbed {
     protected getEmbedParams(): string {
         const {
             hideResults,
+            expandAllDataSource,
             enableSearchAssist,
             forceTable,
             searchOptions,

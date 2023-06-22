@@ -184,7 +184,7 @@ module.exports = {
             resolve: 'gatsby-plugin-sitemap',
             options: {
                 query: `
-                {   
+                {
                     allAsciidoc {
                         edges {
                             node {

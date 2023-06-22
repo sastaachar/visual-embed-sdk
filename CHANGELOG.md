@@ -6,14 +6,14 @@ This project follows Semantic Versioning.
 ## Unreleased
 
 ### New Features
-- Set of new Host events to drive interactions on the embed programatically 
+- Set of new Host events to drive interactions on the embed programatically
 
 ## 1.14.1 (08-31-2022)
 - Fixed "not logged in" message showing up on "SearchEmbed" with AuthType.None.
 
 ## 1.14.0 (08-29-2022)
 - [AuthType.AuthServer] Now uses `POST` call to log the user in using the bearer token.
-- `liveboardV2` flag on `LiveboardEmbed` to try out the LiveboardV2 experience. 
+- `liveboardV2` flag on `LiveboardEmbed` to try out the LiveboardV2 experience.
 
 ## 1.13.0 (07-19-2022)
 - Release to support TS version 8.5.0.cl
@@ -24,6 +24,10 @@ This project follows Semantic Versioning.
 ## 1.12.0 (06-21-2022)
 - Release to support TS version 8.4.0.cl
 - Please check the full list of changes [here](https://developers.thoughtspot.com/docs/?pageid=embed-sdk-changelog)
+
+## 1.11.2 (06-10-2022)
+### Fixed
+- Typescript build that was affecting some Angular project configurations
 
 ## 1.11.2 (06-10-2022)
 ### Fixed
@@ -77,12 +81,12 @@ This project follows Semantic Versioning.
 
 ## 1.9.3 (03-22-2022)
 
-### New Features 
+### New Features
 - `disableLoginRedirect` option in `EmbedConfig`
 
 ## 1.9.2 (03-17-2022)
 
-### New Features 
+### New Features
 - Ability to trigger events on React components
   - Added new `useEmbedRef` hook, check README for usage.
 

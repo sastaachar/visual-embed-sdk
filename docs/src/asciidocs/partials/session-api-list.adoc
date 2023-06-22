@@ -31,13 +31,13 @@ ThoughtSpot Software [version noBackground]#6.0.x#
 Gets session information.|ThoughtSpot Cloud [version noBackground]#ts7.oct.cl# +
 ThoughtSpot Software [version noBackground]#7.2.1#
 |`xref:session-api.adoc#orgSwitch[*PUT* /tspublic/v1/session/orgs]` +
-Allows switching between organizations on a multi-tenant instance.| ThoughtSpot Cloud [version noBackground]#Coming soon# +
+Allows switching between organizations on a multi-tenant instance.| ThoughtSpot Cloud [version noBackground]#8.10.0.cl# +
 ThoughtSpot Software [version noBackground]#Not available#
 |`xref:session-api.adoc#getOrgs[*GET* /tspublic/v1/session/orgs]` +
-Gets Orgs for the logged-in user. | ThoughtSpot Cloud [version noBackground]#Coming soon# +
+Gets Orgs for the logged-in user. | ThoughtSpot Cloud [version noBackground]#8.10.0.cl# +
 ThoughtSpot Software [version noBackground]#Not available#
 |`xref:session-api.adoc#getOrgsForUser[*GET* /tspublic/v1/session/orgs/users/{userid}]` +
-Gets Orgs for a specific user. | ThoughtSpot Cloud [version noBackground]#Coming soon# +
+Gets Orgs for a specific user. | ThoughtSpot Cloud [version noBackground]#8.10.0.cl# +
 ThoughtSpot Software [version noBackground]#Not available#
 |`xref:session-api.adoc#set-home-liveboard[**POST** /tspublic/v1/session/homepinboard]` +
 Sets a specific Liveboard as a home Liveboard.|ThoughtSpot Cloud [version noBackground]#ts7.jun.cl# +
@@ -62,13 +62,13 @@ ThoughtSpot Software [version noBackground]#7.1.1#
 
 +++<p class="divider">Signs in a user to ThoughtSpot system. </p>+++
 
-`xref:session-api.adoc#session-authToken[*POST* /tspublic/v1/session/auth/token]`  
+`xref:session-api.adoc#session-authToken[*POST* /tspublic/v1/session/auth/token]`
 
 +++<p class="divider">Generates an authentication token for a user session. </p>+++
 
 `xref:session-api.adoc#session-loginToken[*GET* /tspublic/v1/session/login/token]`
 
-Authenticates and logs in a user using token.
+Authenticates a user using token and creates a login session.
 
 This request method sends authentication attributes as query string parameters in the request URL.
 
@@ -76,7 +76,7 @@ This request method sends authentication attributes as query string parameters i
 
 `xref:session-api.adoc#session-loginToken[*POST* /tspublic/v1/session/login/token]`
 
-Authenticates and logs in a user using token.
+Authenticates a user using token and creates a login session.
 
 This request method sends authentication attributes in the request body as `formData` parameters. For secure exchange of authentication information, we recommend using the `POST`request method.
 
@@ -86,7 +86,7 @@ This request method sends authentication attributes in the request body as `form
 
 +++<p class="divider">Logs out a user from an existing session. </p>+++
 
-`xref:session-api.adoc#session-info[*GET* /tspublic/v1/session/info]` 
+`xref:session-api.adoc#session-info[*GET* /tspublic/v1/session/info]`
 
 +++<p class="divider">Gets session information.</p>+++
 

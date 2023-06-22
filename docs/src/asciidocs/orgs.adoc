@@ -153,6 +153,7 @@ __For production use cases, ThoughtSpot recommends using REST API v1 endpoints__
 
 == Authentication considerations for embedded apps
 
+
 ////
 The Visual Embed SDK supports leveraging your IdP or OpenID provider setup to authenticate the embedded app users. To determine the authentication method that best suits your deployment, refer to the recommendations listed on the xref:embed-authentication.adoc[Authentication].
 ////
@@ -176,11 +177,11 @@ If the user doesn't exist in the ThoughtSpot system, you can `autocreate` a user
 
 The `/tspublic/v1/session/auth/token` API endpoint also allows you to define the Org context to which the user must be logged in to after successful authentication. However, the API requests to REST API v2.0 endpoint will automatically generate the token based on your current session context.
 
-For more information, see xref:session-api.adoc#session-authToken[Obtain an authentication token] and xref:trusted-authentication.adoc[Trusted authentication].
+If the user doesn't exist in the ThoughtSpot system, you can create a user account just-in-time and dynamically assign privileges by adding the user to `groups`.
 
 === SAML authentication
 
-For SAML authentication, you must ensure that the Org support is enabled for SAML authentication.
+For SAML authentication, ensure that the Org support is enabled for SAML authentication.
 You must also configure the Org information on your IdP so that the SAML users are allowed to access the Orgs to which they belong. To enable Orgs support for SAML authentication on ThoughtSpot, contact ThoughtSpot Support.
 
 The following conditions apply to SAML authentication on a multi-tenant setup:

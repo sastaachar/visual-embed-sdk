@@ -29,6 +29,11 @@ The import TML API endpoint allows you to upload multiple TML files at a time. I
 
 By default, the `fqn` parameter is not present in the TML file. However, you can export TML with FQNs and use it during the import.
 
+The import TML API endpoint allows you to upload multiple TML files at a time. If you are importing TML files one at a time, include the `fqn` property to distinguish objects that have the same name. For example, if you have multiple connections or tables with the same name, the connection or table you reference in your TML does not have a unique name and thus can lead to invalid object references. Adding `fqn` helps ThoughtSpot differentiate a table from another with the same name.
+
+By default, the `fqn` parameter is not present in the TML file. However, you can export TML with FQNs and use it during the import.
+
+
 [NOTE]
 ====
 You can import single or multiple objects using the `tml/import` API. If you import only a Worksheet object, it may take some time for the Worksheet to become available in the ThoughtSpot system. You may need to wait for a few seconds to create answers and Liveboards.

@@ -43,7 +43,7 @@ ThoughtSpot Software [version noBackground]#9.0.1.sw#
 
 ////
 --
-`xref:metadata-api.adoc#assign-tag[*POST* /tspublic/v1/metadata/assigntag]` 
+`xref:metadata-api.adoc#assign-tag[*POST* /tspublic/v1/metadata/assigntag]`
 
 +++<p class="divider">Assigns tags to a metadata object, such as a Liveboard, search answer, table, worksheet, or view. </p>+++
 
@@ -51,15 +51,15 @@ ThoughtSpot Software [version noBackground]#9.0.1.sw#
 
 +++<p class="divider">Removes tag associations to metadata objects. </p>+++
 
-`xref:metadata-api.adoc#metadata-details[**GET** /tspublic/v1/metadata/details]` 
+`xref:metadata-api.adoc#metadata-details[**GET** /tspublic/v1/metadata/details]`
 
 +++<p class="divider">Gets metadata details for a specific data object such as a Liveboard, answer, or a worksheet.</p>+++
 
-`xref:metadata-api.adoc#metadata-list[**GET** /tspublic/v1/metadata/list]` 
+`xref:metadata-api.adoc#metadata-list[**GET** /tspublic/v1/metadata/list]`
 
 +++<p class="divider">Gets a list of all metadata objects from the ThoughtSpot resource repository.</p>+++
 
-`xref:metadata-api.adoc#headers-metadata-users[**GET** /tspublic/v1/metadata/listas]` 
+`xref:metadata-api.adoc#headers-metadata-users[**GET** /tspublic/v1/metadata/listas]`
 
 +++<p class="divider">Gets a list of metadata objects that are available to a user or user group.</p>+++
 

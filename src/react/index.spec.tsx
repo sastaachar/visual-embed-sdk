@@ -197,6 +197,35 @@ describe('React Components', () => {
             ).toBe(true);
             expect(containerSibling.querySelector('div')).toBe(null);
         });
+
+        it('Should have the correct container element', async () => {
+            const { container } = render(
+                <LiveboardEmbed liveboardId="abcd" className="def" />,
+            );
+
+            await waitFor(() => getIFrameEl(container));
+            expect(container.querySelector('div')).not.toBe(null);
+            expect(
+                container.querySelector('div').classList.contains('def'),
+            ).toBe(true);
+
+            const { container: containerSibling } = render(
+                <LiveboardEmbed
+                    liveboardId="abcd"
+                    className="def"
+                    insertAsSibling={true}
+                />,
+            );
+            await waitFor(() => getIFrameEl(containerSibling));
+            expect(containerSibling.querySelector('span')).not.toBe(null);
+            expect(containerSibling.querySelector('span').style.position).toBe(
+                'absolute',
+            );
+            expect(
+                getIFrameEl(containerSibling).classList.contains('def'),
+            ).toBe(true);
+            expect(containerSibling.querySelector('div')).toBe(null);
+        });
     });
 
     describe('SearchBarEmbed', () => {
