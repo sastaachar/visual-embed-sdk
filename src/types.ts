@@ -164,7 +164,7 @@ export enum AuthType {
      *      .then((data) => data.token);
      *  }
      * ```
-     * @version SDK: 1.22.0| ThouhgtSpot: 9.3.0.cl, 9.5.1-sw
+     * @version SDK: 1.22.0| ThouhgtSpot: 9.3.0.cl, 9.5.1.sw
      */
     TrustedAuthTokenCookieless = 'AuthServerCookieless',
     /**
@@ -314,7 +314,7 @@ export interface EmbedConfig {
      *
      * Eg: "/dashboard", "#/foo" [Do not include the host]
      *
-     * @version SDK: 1.10.2 | 8.2.0.cl, 8.4.1-sw
+     * @version SDK: 1.10.2 | 8.2.0.cl, 8.4.1.sw
      */
     redirectPath?: string;
 
@@ -353,7 +353,7 @@ export interface EmbedConfig {
      * This flag is typically used alongside the combination of auth modes such as {@link
      * AuthType.AuthServer} and auto login behavior {@link EmbedConfig.autoLogin}
      *
-     * @version SDK: 1.9.3 | ThoughtSpot: 8.1.0.cl, 8.4.1-sw
+     * @version SDK: 1.9.3 | ThoughtSpot: 8.1.0.cl, 8.4.1.sw
      * @default false
      */
     disableLoginRedirect?: boolean;
@@ -361,7 +361,7 @@ export interface EmbedConfig {
     /**
      * This message is displayed on the embed view when the login fails.
      *
-     * @version SDK: 1.10.1 | ThoughtSpot: 8.2.0.cl, 8.4.1-sw
+     * @version SDK: 1.10.1 | ThoughtSpot: 8.2.0.cl, 8.4.1.sw
      */
     loginFailedMessage?: string;
 
@@ -386,7 +386,7 @@ export interface EmbedConfig {
      * Dynamic CSS Url to be injected in the loaded application.
      * You would also need to set `style-src` in the CSP settings.
      *
-     * @version SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1-sw
+     * @version SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1.sw
      * @default ''
      */
     customCssUrl?: string;
@@ -398,13 +398,13 @@ export interface EmbedConfig {
      * This is slightly slower than letting the browser handle the cookie check, as it
      * involves an extra network call.
      *
-     * @version SDK: 1.10.4 | ThoughtSpot: 8.2.0.cl, 8.4.1-sw
+     * @version SDK: 1.10.4 | ThoughtSpot: 8.2.0.cl, 8.4.1.sw
      */
     detectCookieAccessSlow?: boolean;
     /**
      * Hide beta alert warning message for SearchEmbed.
      *
-     * @version SDK: 1.12.0 | ThoughtSpot: 8.4.0.cl, 8.4.1-sw*
+     * @version SDK: 1.12.0 | ThoughtSpot: 8.4.0.cl, 8.4.1.sw*
      */
     suppressSearchEmbedBetaWarning?: boolean;
     /**
@@ -447,7 +447,7 @@ export interface EmbedConfig {
      * Disable Full App access of Embedded app outside of the iFrame.
      *
      * @default true
-     * @version SDK: 1.22.0 | ThoughtSpot: 9.3.0.cl, 9.5.1-sw
+     * @version SDK: 1.22.0 | ThoughtSpot: 9.3.0.cl, 9.5.1.sw
      */
     blockNonEmbedFullAppAccess?: boolean;
 }
@@ -546,14 +546,14 @@ export interface ViewConfig {
      *
      * Use either this or hiddenActions.
      *
-     * @version SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1-sw
+     * @version SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1.sw
      * @important
      */
     visibleActions?: Action[];
     /**
      * Show alert messages and toast messages in the embedded view.
      *
-     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      */
     showAlerts?: boolean;
     /**
@@ -564,7 +564,7 @@ export interface ViewConfig {
     /**
      * The locale/language to use for the embedded view.
      *
-     * @version SDK: 1.9.4 | ThoughtSpot 8.1.0.cl, 8.4.1-sw
+     * @version SDK: 1.9.4 | ThoughtSpot 8.1.0.cl, 8.4.1.sw
      */
     locale?: string;
     /**
@@ -575,14 +575,14 @@ export interface ViewConfig {
      * to control embed behavior in non-regular ways. We do not publish the
      * list of supported keys and values associated with each.
      *
-     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1-sw
+     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1.sw
      */
     additionalFlags?: { [key: string]: string | number | boolean };
     /**
      * Dynamic CSSUrl and customCSS to be injected in the loaded application.
      * You would also need to set `style-src` in the CSP settings.
      *
-     * @version SDK: 1.17.2 | ThoughtSpot: 8.4.1-sw, 8.4.0.cl
+     * @version SDK: 1.17.2 | ThoughtSpot: 8.4.1.sw, 8.4.0.cl
      * @default ''
      */
     customizations?: CustomisationsInterface;
@@ -847,7 +847,7 @@ export enum EmbedEvent {
      * One or more data columns have been selected.
      *
      * @returns columnIds - the list of columns
-     * @version SDK: 1.10.0 | ThoughtSpot: 8.2.0.cl, 8.4.1-sw
+     * @version SDK: 1.10.0 | ThoughtSpot: 8.2.0.cl, 8.4.1.sw
      */
     AddRemoveColumns = 'addRemoveColumns',
     /**
@@ -880,7 +880,7 @@ export enum EmbedEvent {
      * });
      * ```
      * @return viz, clickedPoint - metadata about point that is clicked
-     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      * @important
      */
     VizPointClick = 'vizPointClick',
@@ -930,7 +930,7 @@ export enum EmbedEvent {
      * Emitted when  the "Get Data" button in Search Bar embed
      * is clicked.
      *
-     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.0-sw
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.0.sw
      */
     GetDataClick = 'getDataClick',
     /**
@@ -960,13 +960,13 @@ export enum EmbedEvent {
     /**
      * Emitted when any modal is opened in the app
      *
-     * @version SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1-sw
+     * @version SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1.sw
      */
     DialogOpen = 'dialog-open',
     /**
      * Emitted when any modal is closed in the app
      *
-     * @version SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1-sw
+     * @version SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1.sw
      */
     DialogClose = 'dialog-close',
     /**
@@ -974,136 +974,136 @@ export enum EmbedEvent {
      * You can use this event as a hook to trigger
      * other events on the rendered Liveboard.
      *
-     * @version SDK: 1.9.1 | ThoughtSpot: 8.1.0.cl, 8.4.1-sw
+     * @version SDK: 1.9.1 | ThoughtSpot: 8.1.0.cl, 8.4.1.sw
      */
     LiveboardRendered = 'PinboardRendered',
     /**
      * This can be used to register an event listener which
      * is triggered on all events.
      *
-     * @Version SDK: 1.10.0 | ThoughtSpot: 8.2.0.cl, 8.4.1-sw
+     * @Version SDK: 1.10.0 | ThoughtSpot: 8.2.0.cl, 8.4.1.sw
      */
     ALL = '*',
     /**
-     * Emitted when answer is saved in the app
+     * Emitted when an Answer is saved in the app
      *
-     * @Version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
+     * @Version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      */
     Save = 'save',
     /**
      * Emitted when the download action is triggered on an answer
      *
-     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      */
     Download = 'download',
     /**
      * Emitted when the download action is triggered on an answer
      *
-     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.4.0-sw
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.4.0.sw
      */
     DownloadAsPng = 'downloadAsPng',
     /**
      * Emitted when the Download as PDF action is triggered on an answer
      *
-     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      */
     DownloadAsPdf = 'downloadAsPdf',
     /**
      * Emitted when the Download as CSV action is triggered on an answer
      *
-     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      */
     DownloadAsCsv = 'downloadAsCsv',
     /**
      * Emitted when the Download as XLSX action is triggered on an answer
      *
-     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      */
     DownloadAsXlsx = 'downloadAsXlsx',
     /**
      * Emitted when an answer is deleted in the app
      *
-     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      */
     AnswerDelete = 'answerDelete',
     /**
      * Emitted when an answer is pinned to a Liveboard
      *
-     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      */
     Pin = 'pin',
     /**
      * Emitted when SpotIQ analysis is triggered
      *
-     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      */
     SpotIQAnalyze = 'spotIQAnalyze',
     /**
      * Emitted when a user shares an object with another user or group
      *
-     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      */
     Share = 'share',
     /**
      * Emitted when a user clicks the Include action to include a specific value or data
      * on a chart or table
      *
-     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      */
     DrillInclude = 'context-menu-item-include',
     /**
      * Emitted when a user clicks the Exclude action to exclude a specific value or data
      * on a chart or table
      *
-     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      */
     DrillExclude = 'context-menu-item-exclude',
     /**
      * Emitted when copied column value on the app
      *
-     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      */
     CopyToClipboard = 'context-menu-item-copy-to-clipboard',
     /**
      * Emitted when a user clicks the Update TML action
      *
-     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      */
     UpdateTML = 'updateTSL',
     /**
      * Emitted when a user clicks the Edit TML action
      *
-     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      */
     EditTML = 'editTSL',
     /**
      * Emitted when ExportTML trigger in answer on the app
      *
-     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      */
     ExportTML = 'exportTSL',
     /**
      * Emitted when an answer is saved as a view
      *
-     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      */
     SaveAsView = 'saveAsView',
     /**
      * Emitted when copy of existing answer on the app
      *
-     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      */
     CopyAEdit = 'copyAEdit',
     /**
      * Emitted when a user clicks Show underlying data on an answe
      *
-     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      */
     ShowUnderlyingData = 'showUnderlyingData',
     /**
      * Emitted when an answer is switched to a chart or table view
      *
-     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      */
     AnswerChartSwitcher = 'answerChartSwitcher',
     /**
@@ -1115,67 +1115,67 @@ export enum EmbedEvent {
     /**
      * Emitted when a user clicks Show Liveboard details on a Liveboard
      *
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     LiveboardInfo = 'pinboardInfo',
     /**
      * Emitted when a user clicks on the Favorite icon on a Liveboard
      *
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     AddToFavorites = 'addToFavorites',
     /**
      * Emitted when a user clicks Schedule on a Liveboard
      *
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     Schedule = 'subscription',
     /**
      * Emitted when a user clicks Edit on a Liveboard or visualization
      *
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     Edit = 'edit',
     /**
      * Emitted when a user clicks Make a copy on a Liveboard
      *
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     MakeACopy = 'makeACopy',
     /**
      * Emitted when a user clicks Present on a Liveboard or visualization
      *
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     Present = 'present',
     /**
      * Emitted when a user clicks Delete on a Liveboard
      *
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     Delete = 'delete',
     /**
      * Emitted when a user clicks Manage schedules on a Liveboard
      *
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     SchedulesList = 'schedule-list',
     /**
      * Emitted when a user clicks Cancel in edit mode on a Liveboard
      *
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     Cancel = 'cancel',
     /**
      * Emitted when a user clicks Explore on a visualization
      *
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     Explore = 'explore',
     /**
      * Emitted when a user clicks Copy link action on a visualization
      *
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     CopyLink = 'embedDocument',
     /**
@@ -1291,21 +1291,22 @@ export enum HostEvent {
      *  '730496d6-6903-4601-937e-2c691821af3c',
      *  'd547ec54-2a37-4516-a222-2b06719af726'])
      * ```
-     * @version SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1-sw
+     * @version SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1.sw
      */
     SetVisibleVizs = 'SetPinboardVisibleVizs',
     /**
      * Updates runtime filters applied on a Saved Answer or Liveboard. The
-     * runtime filters passed here appended to the existing runtime filters
-     * if any.
+     * runtime filters passed here are appended to the existing runtime
+     * filters.
      * Pass an array of runtime filters with the following attributes:
      * `columnName`
      * _String_. The name of the column to filter on.
      * `operator`
-     * Runtime filter operator to apply. For information, see [Runtime filter operators](https://developers.thoughtspot.com/docs/?pageid=runtime-filters#rtOperator) about supported operators,  .
+     *  Runtime filter operator to apply. For information,
+     *  see [Runtime filter operators](https://developers.thoughtspot.com/docs/?pageid=runtime-filters#rtOperator).
      * `values`
-     * List of operands. Some operators such as EQ, LE allow a single value, whereas operators
-     * such as BW and IN accept multiple operands.
+     *  List of operands. Some operators such as EQ, LE allow a single value, whereas operators
+     *  such as BW and IN accept multiple operands.
      * @param - {@link RuntimeFilter}[] an array of {@link RuntimeFilter} Types.
      * @example
      * ```js
@@ -1314,26 +1315,24 @@ export enum HostEvent {
      *   {columnName: "item type",operator: RuntimeFilterOp.EQ,values: ["Jackets"]}
      * ])
      * ```
-     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1-sw
+     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1.sw
      * @important
      */
     UpdateRuntimeFilters = 'UpdateRuntimeFilters',
     /**
-     * Navigate to a specific page in embedded application without reloading the page.
+     * Navigate to a specific page in the embedded application without reloading the page.
      * This is the same as calling `appEmbed.navigateToPage(path, true)`
-     *
      * @param - path - the path to navigate to (can be a number[1/-1] to go forward/back)
      * @example
      * ```js
      * appEmbed.navigateToPage(-1)
      * ```
-     * @version SDK: 1.12.0 | ThoughtSpot 8.4.0.cl, 8.4.1-sw
+     * @version SDK: 1.12.0 | ThoughtSpot 8.4.0.cl, 8.4.1.sw
      */
     Navigate = 'Navigate',
     /**
      * Opens the filter panel for a particular column.
      * Works with Search embed.
-     *
      * @param - { columnId: string,
      *  name: string,
      *  type: INT64/CHAR/DATE,
@@ -1347,7 +1346,7 @@ export enum HostEvent {
      */
     OpenFilter = 'openFilter',
     /**
-     * Adds the columns to the current Search.
+     * Adds columns to the current search query.
      *
      * @param - { columnIds: string[] }
      * @example
@@ -1358,7 +1357,7 @@ export enum HostEvent {
      */
     AddColumns = 'addColumns',
     /**
-     * Removes a column from the current Search.
+     * Removes a column from the current search query.
      *
      * @param - { columnId: string }
      * @example
@@ -1375,202 +1374,221 @@ export enum HostEvent {
      * ```js
      * liveboardEmbed.trigger(HostEvent.getExportRequestForCurrentPinboard)
      * ```
-     * @version SDK: 1.13.0 | ThoughtSpot: 8.5.0.cl, 8.8.1-sw
+     * @version SDK: 1.13.0 | ThoughtSpot: 8.5.0.cl, 8.8.1.sw
      */
     getExportRequestForCurrentPinboard = 'getExportRequestForCurrentPinboard',
     /**
-     * Triggers the *Pin* action on an embedded object
+     * Triggers the **Pin** action on an embedded object
      *
-     * @param - For Liveboard embed, takes `vizId` as a
+     * @param - Liveboard embed takes the `vizId` as a
      * key. Can be left undefined when embedding Search, full app or
      * a visualization.
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.Pin, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})
+     * ```
+     * ```js
      * vizEmbed.trigger(HostEvent.Pin)
+     * ```
+     * ```js
      * searchEmbed.trigger(HostEvent.Pin)
      * ```
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     Pin = 'pin',
     /**
-     * Triggers the *Show Liveboard details* action on a Liveboard
+     * Triggers the **Show Liveboard details** action on a Liveboard
      *
      * @example
      * ```js
      *  liveboardEmbed.trigger(HostEvent.LiveboardInfo)
      * ```
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     LiveboardInfo = 'pinboardInfo',
     /**
-     * Triggers the Schedule action on a Liveboard
+     * Triggers the **Schedule** action on a Liveboard
      *
      * @example
      * ```js
      *  liveboardEmbed.trigger(HostEvent.Schedule)
      * ```
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     Schedule = 'subscription',
     /**
-     * Triggers the Manage schedule action on a Liveboard
+     * Triggers the **Manage schedule** action on a Liveboard
      *
      * @example
      * ```js
      *  liveboardEmbed.trigger(HostEvent.ScheduleList)
      * ```
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     SchedulesList = 'schedule-list',
     /**
-     * Triggers the Export TML action on a Liveboard
+     * Triggers the **Export TML** action on a Liveboard
      *
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.ExportTML)
      * ```
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     ExportTML = 'exportTSL',
     /**
-     * Triggers the Edit TML action on a Liveboard
+     * Triggers the **Edit TML** action on a Liveboard
      *
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.EditTML)
      * ```
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     EditTML = 'editTSL',
     /**
-     * Triggers the Update TML action on a Liveboard
+     * Triggers the **Update TML** action on a Liveboard
      *
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.UpdateTML)
      * ```
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     UpdateTML = 'updateTSL',
     /**
-     * Triggers the Download PDF action on a Liveboard
+     * Triggers the **Download PDF** action on a Liveboard
      *
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.DownloadAsPdf)
      * ```
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     DownloadAsPdf = 'downloadAsPdf',
     /**
-     * Triggers the Make a copy action on a Liveboard, search or visualization
+     * Triggers the **Make a copy** action on a Liveboard, Search, or
+     * visualization page
      *
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.MakeACopy, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})
+     * ```
+     * ```js
      * vizEmbed.trigger(HostEvent.MakeACopy)
+     * ```
+     * ```js
      * searchEmbed.trigger(HostEvent.MakeACopy)
      * ```
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     MakeACopy = 'makeACopy',
     /**
-     * Triggers the Delete action on a Liveboard
+     * Triggers the **Delete** action on a Liveboard
      *
      * @example
      * ```js
      * appEmbed.trigger(HostEvent.Remove)
      * ```
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     Remove = 'delete',
     /**
-     * Triggers the Explore action on a visualization
+     * Triggers the **Explore* action on a visualization
      *
-     * @param - an object with vizId as a key
+     * @param - an object with `vizId` as a key
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.Explore, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})
      * ```
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     Explore = 'explore',
     /**
-     * Triggers the Create alert action on a visualization
+     * Triggers the **Create alert** action on a visualization
      *
-     * @param - an object with vizId as a key
+     * @param - an object with `vizId` as a key
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.CreateMonitor {
      *  vizId: '730496d6-6903-4601-937e-2c691821af3c'
      * })
      * ```
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     CreateMonitor = 'createMonitor',
     /**
-     * Triggers the Manage alert action on a visualization
+     * Triggers the **Manage alerts** action on a visualization
      *
-     * @param - an object with vizId as a key
+     * @param - an object with `vizId` as a key
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.ManageMonitor, {
      *  vizId: '730496d6-6903-4601-937e-2c691821af3c'
      * })
      * ```
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     ManageMonitor = 'manageMonitor',
     /**
-     * Triggers the Edit action on a Liveboard or visualization
+     * Triggers the **Edit** action on a Liveboard or visualization
      *
      * @param - object - To trigger the action for a specific visualization
-     *   in Liveboard embed, pass in vizId as a
-     *  key. Can be left undefined when embedding Search, full app, or
+     * in Liveboard embed, pass in `vizId` as a key.
+     * Can be left undefined when embedding Search, full app, or
      * a visualization.
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.Edit)
-     *
+     * ```
+     * ```js
      * liveboardEmbed.trigger(HostEvent.Edit, {vizId:
      * '730496d6-6903-4601-937e-2c691821af3c'})
-     *
+     * ```
+     * ```js
      * vizEmbed.trigger((HostEvent.Edit)
      * ```
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     Edit = 'edit',
     /**
-     * Triggers the Copy link action on a Liveboard or visualization
+     * Triggers the **Copy link** action on a Liveboard or visualization
      *
      * @param - object - to trigger the action for a
-     *  specific visualization in Liveboard embed, pass in vizId as a key
+     * specific visualization in Liveboard embed, pass in `vizId` as a key
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.CopyLink)
+     * ```
+     * ```js
      * liveboardEmbed.trigger(HostEvent.CopyLink, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})
+     * ```
+     * ```js
      * vizEmbed.trigger((HostEvent.CopyLink)
      * ```
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     CopyLink = 'embedDocument',
     /**
-     * Triggers the Present action on a Liveboard or visualization
+     * Triggers the **Present** action on a Liveboard or visualization
      *
      * @param - object - to trigger the action for a specific visualization
-     *  in Liveboard embed, pass in vizId as a key
+     *  in Liveboard embed, pass in `vizId` as a key
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.Present)
+     * ```
+     * ```js
      * liveboardEmbed.trigger(HostEvent.Present, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})
+     * ```
+     * ```js
      * vizEmbed.trigger((HostEvent.Present)
      * ```
-     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
+     * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw
      */
     Present = 'present',
     /**
-     * Get TML for the current search.
+     * Gets TML for the current search.
      *
      * @example
      * ```js
@@ -1580,80 +1598,89 @@ export enum HostEvent {
      *   );
      * })
      * ```
-     * @version SDK: 1.18.0 | ThoughtSpot: 8.10.0.cl, 9.0.1-sw
+     * @version SDK: 1.18.0 | ThoughtSpot: 8.10.0.cl, 9.0.1.sw
      * @important
      */
     GetTML = 'getTML',
     /**
-     * Triggers the ShowUnderlyingData action on visualization or search
+     * Triggers the **Show underlying data** action on visualization or search
      *
      * @param - an object with vizId as a key
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.ShowUnderlyingData, {vizId:
      * '730496d6-6903-4601-937e-2c691821af3c'})
-     *
+     * ```
+     * ```js
      * vizEmbed.trigger(HostEvent.ShowUnderlyingData)
-     *
+     * ```
+     * ```js
      * searchEmbed.trigger(HostEvent.ShowUnderlyingData)
      * ```
-     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1.sw
      */
     ShowUnderlyingData = 'showUnderlyingData',
     /**
-     * Triggers the Delete action on visualization or search
+     * Triggers the **Delete** action on visualization or search
      *
-     * @param - incase of Liveboard embed, takes in an object with vizId as a key
-     * can be left empty for search and visualization embeds
+     * @param - Liveboard embed takes an object with `vizId` as a key.
+     * Can be left empty if embedding Search or visualization.
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.Delete, {vizId:
      * '730496d6-6903-4601-937e-2c691821af3c'})
-     *
+     * ```
+     * ```js
      * vizEmbed.trigger(HostEvent.Delete)
-     *
+     * ```
+     * ```js
      * searchEmbed.trigger(HostEvent.Delete)
      * ```
-     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1.sw
      */
     Delete = 'onDeleteAnswer',
     /**
-     * Triggers the SpotIQAnalyze action on visualization or search
-     *
-     * @param - In case of Liveboard embed, takes in an object with vizId as a
+     * Triggers the **SpotIQ analyze** action on visualization
+     * or search.
+     * @param - Liveboard embed takes `vizId` as a
      * key. Can be left undefined when embedding Search or
      * visualization.
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.SpotIQAnalyze, {vizId:
      * '730496d6-6903-4601-937e-2c691821af3c'})
-     *
+     * ```
+     * ```js
      * vizEmbed.trigger(HostEvent.SpotIQAnalyze)
-     *
+     * ```
+     * ```js
      * searchEmbed.trigger(HostEvent.SpotIQAnalyze)
      * ```
-     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1.sw
      */
     SpotIQAnalyze = 'spotIQAnalyze',
     /**
-     * Triggers the Download action on a chart
+     * Triggers the **Download** action on charts in
+     * the embedded view.
      *
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.Download, {vizId:
      * '730496d6-6903-4601-937e-2c691821af3c'})
-     *
+     * ```
+     * ```js
      * vizEmbed.trigger(HostEvent.Download)
-     *
+     * ```
+     * ```js
      * searchEmbed.trigger(HostEvent.Download)
      * ```
-     * @deprecated from SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl ,9.4.1-sw ,Use {@link DownloadAsPng}
-     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
+     * @deprecated from SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl ,9.4.1.sw ,Use {@link DownloadAsPng}
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1.sw
      */
     Download = 'downloadAsPng',
     /**
-     * Triggers the Download action on the chart in embedded Liveboard or Search
-     * page
+     * Triggers the **Download** > **PNG** action on
+     * charts in the embedded view.
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.DownloadAsPng,
@@ -1663,28 +1690,30 @@ export enum HostEvent {
      *
      * searchEmbed.trigger(HostEvent.DownloadAsPng)
      * ```
-     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.4.1-sw
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.4.1.sw
      */
     DownloadAsPng = 'downloadAsPng',
     /**
-     * Triggers the downloadAsCSV action on the table in embedded Liveboard or Search
-     * page
+     * Triggers the **Download** > **CSV**  action on tables in
+     * the embedded view.
      *
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.DownloadAsCsv, {vizId:
      * '730496d6-6903-4601-937e-2c691821af3c'})
-     *
+     * ```
+     * ```js
      * vizEmbed.trigger(HostEvent.DownloadAsCsv)
-     *
+     * ```
+     * ```js
      * searchEmbed.trigger(HostEvent.DownloadAsCsv)
      * ```
-     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1.sw
      */
     DownloadAsCsv = 'downloadAsCSV',
     /**
-     * Triggers the downloadAsXLSX action the table in embedded Liveboard or Search
-     * page
+     * Triggers the **Download** > **XLSX**  action on tables
+     * in the embedded view.
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.DownloadAsXlsx, {vizId:
@@ -1696,11 +1725,12 @@ export enum HostEvent {
      * ```js
      * searchEmbed.trigger(HostEvent.DownloadAsXlsx)
      * ```
-     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1.sw
      */
     DownloadAsXlsx = 'downloadAsXLSX',
     /**
-     * Triggers the Share action on a Liveboard or Answer
+     * Triggers the **Share** action on an embedded
+     * Liveboard or Answer.
      *
      * @example
      * ```js
@@ -1709,12 +1739,12 @@ export enum HostEvent {
      * ```js
      * searchEmbed.trigger(HostEvent.Share)
      * ```
-     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1.sw
      */
     Share = 'share',
     /**
-     * Trigger the Save action on a Liveboard or Answer
-     *
+     * Triggers the **Save**  action on a Liveboard or Answer.
+     * Saves the changes.
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.Save)
@@ -1722,13 +1752,13 @@ export enum HostEvent {
      * ```js
      * searchEmbed.trigger(HostEvent.Save)
      * ```
-     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1.sw
      */
     Save = 'save',
     /**
-     * Triggers the SyncToSheets action on an embedded visualization or Answer
-     *
-     * @param - an object with vizId as a key
+     * Triggers the **Sync to Sheets** action on an embedded visualization or Answer
+     * Sends data from an Answer or Liveboard visualization to a Google sheet.
+     * @param - an object with `vizId` as a key
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.SyncToSheets, {vizId:
@@ -1737,12 +1767,13 @@ export enum HostEvent {
      * ```js
      * vizEmbed.trigger(HostEvent.SyncToSheets)
      * ```
-     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1.sw
      */
     SyncToSheets = 'sync-to-sheets',
     /**
-     * Triggers the SyncToOtherApps action on an embedded visualization or Answer
-     *
+     * Triggers the **Sync to Other Apps** action on an embedded visualization or Answer
+     * Sends data from an Answer or Liveboard visualization to third-party apps such
+     * as Slack, Salesforce, Microsoft Teams, ServiceNow and so on.
      * @param - an object with vizId as a key
      * @example
      * ```js
@@ -1752,13 +1783,14 @@ export enum HostEvent {
      * ```js
      * vizEmbed.trigger(HostEvent.SyncToOtherApps)
      * ```
-     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1.sw
      */
     SyncToOtherApps = 'sync-to-other-apps',
     /**
-     * Triggers the ManagePipelines action on an embedded visualization or Answer
-     *
-     * @param - an object with vizId as a key
+     * Triggers the **Manage pipelines** action on an embedded
+     * visualization or Answer.
+     * Allows users to manage ThoughtSpot Sync pipelines.
+     * @param - an object with `vizId` as a key
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.ManagePipelines, {vizId:
@@ -1767,7 +1799,7 @@ export enum HostEvent {
      * ```js
      * vizEmbed.trigger(HostEvent.ManagePipelines)
      * ```
-     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw
+     * @version SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1.sw
      */
     ManagePipelines = 'manage-pipeline',
     /**
@@ -1777,7 +1809,7 @@ export enum HostEvent {
      * ```js
      * searchEmbed.trigger(HostEvent.ResetSearch)
      * ```
-     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.0.1-sw
+     * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.0.1.sw
      */
     ResetSearch = 'resetSearch',
 }
@@ -1855,23 +1887,42 @@ export enum Param {
 }
 
 /**
- * ThoughtSpot visualizations, Liveboards, and Answers support several actions and menu commands
- * for various user-initiated operations. The Action enumeration members mapped to these actions
- * can be used in the `disabledActions`, `visibleActions`, and `hiddenActions` array
- * to show or hide a menu action in the embedded UI.
- *
+ * ThoughtSpot application pages include actions and menu commands
+ * for various user-initiated operations. These actions are represented
+ * as enumeration members in the SDK. To show, hide, or disable
+ * specific actions in the embedded view, define the Action
+ * enumeration members in the `disabledActions`, `visibleActions`,
+ * or `hiddenActions` array.
  * @example
  * ```js
  * const embed = new LiveboardEmbed('#embed-container', {
  *    ... // other options
- *    visibleActions: [Action.Save, Action.Explore],
- *    disableActions: [Action.Save],
- *    hiddenActions: [Action.Download], // Set either this or visibleActions
+ *    visibleActions: [Action.Save, Action.Edit, Action.Present, ActionAction.Explore],
+ *    disabledActions: [Action.Download],
+ *    //hiddenActions: [], // Set either this or visibleActions
  * })
  * ```
+ * @example
+ * ```js
+ * const embed = new LiveboardEmbed('#embed-container', {
+ *    ... // other options
+ *    //visibleActions: [],
+ *    disabledActions: [Action.Download],
+ *    hiddenActions: [Action.Edit, ActionAction.Explore],
+ * })
+ * ```
+
  */
 // eslint-disable-next-line no-shadow
 export enum Action {
+   /**
+    * The **Save** action on an Answer or Liveboard.
+    * Allows users to save the changes.
+    * @example
+    * ```js
+    * disabledActions: [Action.SaveAsView]
+    * ```
+    */
     Save = 'save',
     /**
      * @hidden
@@ -1882,47 +1933,43 @@ export enum Action {
      */
     SaveUntitled = 'saveUntitled',
     /**
-    * The `Save as View* action on the Answer
+    * The **Save as View** action on the Answer
     * page. Saves an Answer as a View object.
     *
     * @example
     * ```js
-    * disableActions: [Action.SaveAsView]
-    * })
+    * disabledActions: [Action.SaveAsView]
     * ```
     */
     SaveAsView = 'saveAsView',
     /**
-    * The *Make a copy* action on a Liveboard or Answer
+    * The **Make a copy** action on a Liveboard or Answer
     * page.
     * Creates a copy of the Liveboard, visualization,
     * or Answer.
     *
     * @example
     * ```js
-    * disableActions: [Action.MakeACopy]
-    * })
+    * disabledActions: [Action.MakeACopy]
     * ```
     */
     MakeACopy = 'makeACopy',
     /**
-    * The *Copy and Edit* action on a Liveboard.
+    * The **Copy and Edit** action on a Liveboard.
     * This action is now replaced with `Action.MakeACopy`.
     *
     * @example
     * ```js
-    * disableActions: [Action.EditACopy]
-    * })
+    * disabledActions: [Action.EditACopy]
     * ```
     */
     EditACopy = 'editACopy',
     /**
-    * The *Copy link* menu action on a Liveboard visualization.
+    * The **Copy link** menu action on a Liveboard visualization.
     * Copies the visualization URL
     * @example
     * ```js
-    * disableActions: [Action.CopyLink]
-    * })
+    * disabledActions: [Action.CopyLink]
     * ```
     */
     CopyLink = 'embedDocument',
@@ -1931,84 +1978,76 @@ export enum Action {
      */
     ResetLayout = 'resetLayout',
     /**
-    * The *Schedule* menu action on a Liveboard.
+    * The **Schedule** menu action on a Liveboard.
     * Allows scheduling a Liveboard notification.
     * @example
     * ```js
-    * disableActions: [Action.Schedule]
-    * })
+    * disabledActions: [Action.Schedule]
     * ```
     */
     Schedule = 'subscription',
     /**
-    * The *Manage Schedules* menu action on a Liveboard.
+    * The **Manage schedules** menu action on a Liveboard.
     * Allows users to manage scheduled Liveboard jobs.
     * @example
     * ```js
-    * disableActions: [Action.SchedulesList]
-    * })
+    * disabledActions: [Action.SchedulesList]
     * ```
     */
     SchedulesList = 'schedule-list',
     /**
-    * The *Share* action on a Liveboard, Answer, or Worksheet.
+    * The **Share** action on a Liveboard, Answer, or Worksheet.
     * Allows users to share an object with other users and groups.
     * @example
     * ```js
-    * disableActions: [Action.Share]
-    * })
+    * disabledActions: [Action.Share]
     * ```
     */
     Share = 'share',
     /**
-    * The *Add filter* action on a Liveboard and Search page.
+    * The **Add filter** action on a Liveboard and Search page.
     * Allows adding filters to Answers and visualizations on a Liveboard.
     * @example
     * ```js
-    * disableActions: [Action.AddFilter]
-    * })
+    * disabledActions: [Action.AddFilter]
     * ```
     */
     AddFilter = 'addFilter',
     /**
-    * The *Add filter* action on a Liveboard and Search page.
+    * Filter configuration options on a Liveboard and Search page.
     * Allows configuring filter options when adding filters to a
     * Liveboard or Answer.
     * @example
     * ```js
-    * disableActions: [Action.ConfigureFilter]
-    * })
+    * disabledActions: [Action.ConfigureFilter]
     * ```
     */
     ConfigureFilter = 'configureFilter',
     CollapseDataSources = 'collapseDataSources',
     /**
-    * The *Choose sources* button on Search page.
+    * The **Choose sources** button on Search page.
     * Allows selecting data sources for search queries.
     * @example
     * ```js
-    * disableActions: [Action.ChooseDataSources]
-    * })
+    * disabledActions: [Action.ChooseDataSources]
     * ```
     */
     ChooseDataSources = 'chooseDataSources',
     /**
-    * The *Create formula* action on a Search or Answer page.
+    * The **Create formula** action on a Search or Answer page.
     * Allows adding formulas to an Answer.
     * @example
     * ```js
-    * disableActions: [Action.AddFormula]
-    * })
+    * disabledActions: [Action.AddFormula]
     * ```
     */
     AddFormula = 'addFormula',
     /**
-    * The *Add parameter* action on a Liveboard or Answer.
+    * The **Add parameter** action on a Liveboard or Answer.
     * Allows adding Parameters to a Liveboard or Answer.
     * @example
     * ```js
-    * disableActions: [Action.AddParameter]
-    * })
+    * disabledActions: [Action.AddParameter]
     * ```
     */
     AddParameter = 'addParameter',
@@ -2017,12 +2056,11 @@ export enum Action {
      */
     SearchOnTop = 'searchOnTop',
     /**
-    * The *SpotIQ analyze* menu action on a visualization or
+    * The **SpotIQ analyze** menu action on a visualization or
     * Answer page.
     * @example
     * ```js
-    * disableActions: [Action.SpotIQAnalyze]
-    * })
+    * disabledActions: [Action.SpotIQAnalyze]
     * ```
     */
     SpotIQAnalyze = 'spotIQAnalyze',
@@ -2040,66 +2078,60 @@ export enum Action {
      */
     ReplaySearch = 'replaySearch',
     /**
-    * The *Show underlying data* menu action on a visualization or
+    * The **Show underlying data** menu action on a visualization or
     * Answer page.
     * @example
     * ```js
-    * disableActions: [Action.ShowUnderlyingData]
-    * })
+    * disabledActions: [Action.ShowUnderlyingData]
     * ```
     */
     ShowUnderlyingData = 'showUnderlyingData',
     /**
-    * The *Download* menu action on Liveboard visualizations
+    * The **Download** menu action on Liveboard visualizations
     * and Answers.
     * Allows downloading a visualization or Answer.
     * @example
     * ```js
-    * disableActions: [Action.DownloadAsPng]
-    * })
+    * disabledActions: [Action.DownloadAsPng]
     * ```
     */
     Download = 'download',
     /**
-    * The *Download* > *PNG* menu action for charts on a Liveboard
+    * The **Download** > **PNG** menu action for charts on a Liveboard
     * or Answer page.
     * Downloads a visualization or Answer as a PNG file.
     * @example
     * ```js
-    * disableActions: [Action.DownloadAsPng]
-    * })
+    * disabledActions: [Action.DownloadAsPng]
     * ```
     */
     DownloadAsPng = 'downloadAsPng',
     /**
-    * The *Download* > PDF* menu action on a Liveboard.
+    * The **Download** > **PDF** menu action on a Liveboard.
     * Downloads a visualization or Answer as a PDF file.
     * @example
     * ```js
-    * disableActions: [Action.DownloadAsPdf]
-    * })
+    * disabledActions: [Action.DownloadAsPdf]
     * ```
     */
     DownloadAsPdf = 'downloadAsPdf',
     /**
-    * The *Download* > CSV* menu action for tables on a Liveboard
+    * The **Download**  > **CSV** menu action for tables on a Liveboard
     * or Answer page.
     * Downloads a visualization or Answer in the XLSX format.
     * @example
     * ```js
-    * disableActions: [Action.DownloadAsCsv]
-    * })
+    * disabledActions: [Action.DownloadAsCsv]
     * ```
     */
     DownloadAsCsv = 'downloadAsCSV',
     /**
-    * The *Download* > XLSX* menu action for tables on a Liveboard
+    * The **Download** > **XLSX** menu action for tables on a Liveboard
     * or Answer page.
     * Downloads a visualization or Answer in the XLSX format.
     * @example
     * ```js
-    * disableActions: [Action.DownloadAsXlsx]
-    * })
+    * disabledActions: [Action.DownloadAsXlsx]
     * ```
     */
     DownloadAsXlsx = 'downloadAsXLSX',
@@ -2108,41 +2140,87 @@ export enum Action {
      */
     DownloadTrace = 'downloadTrace',
     /**
-    * The *Export TML* menu action on Liveboard, Answers
+    * The **Export TML** menu action on Liveboard, Answers
     * Worksheets and Data Connections page.
     * Exports an object as a TML file.
     * @example
     * ```js
-    * disableActions: [Action.ExportTML]
-    * })
+    * disabledActions: [Action.ExportTML]
     * ```
     */
     ExportTML = 'exportTSL',
     /**
-    * The *Import TML* menu action for Liveboards and Answers.
+    * The **Import TML** menu action for Liveboards and Answers.
     * Imports TML representation of ThoughtSpot objects.
     * @example
     * ```js
-    * disableActions: [Action.ImportTML]
-    * })
+    * disabledActions: [Action.ImportTML]
     * ```
     */
     ImportTML = 'importTSL',
    /**
-    * The *Update TML* menu action for Liveboards and Answers.
+    * The **Update TML** menu action for Liveboards and Answers.
     * Imports TML representation of ThoughtSpot objects.
     * @example
     * ```js
-    * disableActions: [Action.ImportTML]
-    * })
+    * disabledActions: [Action.ImportTML]
     * ```
     */
-    UpdateTML = 'updateTSL',
+    UpdateTML = 'UpdateTML',
+   /**
+    * The **Edit TML** menu action for Liveboards and Answers.
+    * Opens the TML editor.
+    * @example
+    * ```js
+    * disabledActions: [Action.EditTML]
+    * ```
+    */
     EditTML = 'editTSL',
+    /**
+    * The **Present** menu action for Liveboards and Answers.
+    * Allows presenting a Liveboard or visualization in
+    * slideshow mode.
+    * @example
+    * ```js
+    * disabledActions: [Action.Present]
+    * ```
+    */
     Present = 'present',
+    /**
+    * The tile resize options in the visualization menu.
+    * Allows switching between different preset layouts.
+    * @example
+    * ```js
+    * disabledActions: [Action.ToggleSize]
+    * ```
+    */
     ToggleSize = 'toggleSize',
+    /**
+    * The *Edit* action on the Liveboard page and in the
+    * visualization menu.
+    * Opens a Liveboard or visualization in edit mode.
+    * @example
+    * ```js
+    * disabledActions: [Action.Edit]
+    * ```
+    */
     Edit = 'edit',
+    /**
+    * The text edit option for Liveboard and visualization titles.
+    * @example
+    * ```js
+    * disabledActions: [Action.EditTitle]
+    * ```
+    */
     EditTitle = 'editTitle',
+    /**
+    * The **Delete** menu action on Liveboards and visualizations.
+    * Deletes a Liveboard or a visualization from a Liveboard.
+    * @example
+    * ```js
+    * disabledActions: [Action.Remove]
+    * ```
+    */
     Remove = 'delete',
     /**
      * @hidden
@@ -2164,6 +2242,16 @@ export enum Action {
      * @hidden
      */
     PinboardInfo = 'pinboardInfo',
+    /**
+    * The **Show Liveboard details** menu action on a Liveboard.
+    * Displays details such as the name, description, and
+    * author of the Liveboard, and timestamp of Liveboard creation
+    * and update.
+    * @example
+    * ```js
+    * disabledActions: [Action.LiveboardInfo]
+    * ```
+    */
     LiveboardInfo = 'pinboardInfo',
     /**
      * @hidden
@@ -2174,20 +2262,62 @@ export enum Action {
      */
     DownloadEmbraceQueries = 'downloadEmbraceQueries',
     /**
-     * Pin action.
-     */
+    * The **Pin** menu action on an Answer or
+    * Search results page.
+    * @example
+    * ```js
+    * disabledActions: [Action.Pin]
+    * ```
+    */
     Pin = 'pin',
     /**
      * @hidden
      */
     AnalysisInfo = 'analysisInfo',
+   /**
+    * The **Schedule** menu action on a Liveboard.
+    * @example
+    * ```js
+    * disabledActions: [Action.Subscription]
+    * ```
+    */
     Subscription = 'subscription',
     /**
-     * Explore action.
-     */
+    * The **Explore** action on Liveboard visualizations
+    * @example
+    * ```js
+    * disabledActions: [Action.Explore]
+    * ```
+    */
     Explore = 'explore',
+    /**
+    * The action to include data points on a drilled-down Answer
+    * or visualization
+    * @example
+    * ```js
+    * disabledActions: [Action.DrillInclude]
+    * ```
+    */
+
     DrillInclude = 'context-menu-item-include',
+   /**
+    * The action to exclude data points on a drilled-down Answer
+    * or visualization
+    * @example
+    * ```js
+    * disabledActions: [Action.DrillInclude]
+    * ```
+    */
     DrillExclude = 'context-menu-item-exclude',
+   /**
+    * The **Copy to clipboard** menu action on tables in an Answer
+    * or Liveboard.
+    * Copies the selected data point.
+    * @example
+    * ```js
+    * disabledActions: [Action.CopyToClipboard]
+    * ```
+    */
     CopyToClipboard = 'context-menu-item-copy-to-clipboard',
     CopyAndEdit = 'context-menu-item-copy-and-edit',
     /**
@@ -2196,89 +2326,266 @@ export enum Action {
     DrillEdit = 'context-menu-item-edit',
     EditMeasure = 'context-menu-item-edit-measure',
     Separator = 'context-menu-item-separator',
+   /**
+    * The **Drill down** menu action on Answers and Liveboard
+    * visualizations.
+    * Allows drilling down to a specific data point on a chart or table.
+    * @example
+    * ```js
+    * disabledActions: [Action.DrillDown]
+    * ```
+    */
     DrillDown = 'DRILL',
+   /**
+    * The request access action on Liveboards.
+    * Allows users with view permissions to request edit access to a Liveboard.
+    * @example
+    * ```js
+    * disabledActions: [Action.RequestAccess]
+    * ```
+    */
     RequestAccess = 'requestAccess',
-    QueryDetailsButtons = 'queryDetailsButtons',
+   /**
+    * The **Query visualizer** and **Query SQL** buttons in Query details panel
+    * of the Answer page
+    * @example
+    * ```js
+    * disabledActions: [Action.QueryDetailsButtons]
+    * ```
+    */
+    QueryDetailsButtons = 'QueryDetailsButtons',
     /**
-     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1-sw
+     * The **Delete* action for Answers
+     * @example
+     * ```js
+     * disabledActions: [Action.AnswerDelete]
+     * ```
+     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1.sw
      */
     AnswerDelete = 'onDeleteAnswer',
     /**
-     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1-sw
+     * Chart switcher icon on Answers and visualizations.
+     * @example
+     * ```js
+     * disabledActions: [Action.AnswerChartSwitcher]
+     * ```
+     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1.sw
      */
     AnswerChartSwitcher = 'answerChartSwitcher',
     /**
-     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1-sw
+     * Favorites icon on Answers, Liveboard, and Data pages
+     * @example
+     * ```js
+     * disabledActions: [Action.AddToFavorites]
+     * ```
+     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1.sw
      */
     AddToFavorites = 'addToFavorites',
     /**
-     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1-sw
+     * The edit icon on Liveboards (Classic experience).
+     * @example
+     * ```js
+     * disabledActions: [Action.EditDetails]
+     * ```
+     * @version SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1.sw
      */
     EditDetails = 'editDetails',
     /**
-     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
+     * The Create alert action on KPI charts.
+     * @example
+     * ```js
+     * disabledActions: [Action.CreateMonitor ]
+     * ```
+     * @version SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      */
     CreateMonitor = 'createMonitor',
     /**
-     * @version SDK: 1.11.1 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw
+     * @example
+     * ```js
+     * disabledActions: [Action.ReportError]
+     * ```
+     * @version SDK: 1.11.1 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw
      */
     ReportError = 'reportError',
+    /**
+     * The **Sync to sheets** action on Answers and Liveboard visualizations.
+     * Allows sending data to a Google Sheet.
+     * @example
+     * ```js
+     * disabledActions: [Action.SyncToSheets]
+     * ```
+     * @version SDK: 1.18.0| ThoughtSpot: 8.10.0.cl, 9.0.1.sw
+     */
     SyncToSheets = 'sync-to-sheets',
+    /**
+     * The **Sync to other apps** action on Answers and Liveboard visualizations.
+     * Allows sending data to third-party apps like Slack, Salesforce,
+     * Microsoft Teams, and so on.
+     * @example
+     * ```js
+     * disabledActions: [Action.SyncToOtherApps]
+     * ```
+     * @version SDK: 1.18.0| ThoughtSpot: 8.10.0.cl, 9.0.1.sw
+     */
     SyncToOtherApps = 'sync-to-other-apps',
+    /**
+     * The **Manage pipelines** action on Answers and Liveboard visualizations.
+     * Allows users to manage data sync pipelines to third-party apps.
+     * @example
+     * ```js
+     * disabledActions: [Action.SyncToOtherApps]
+     * ```
+     * @version SDK: 1.18.0| ThoughtSpot: 8.10.0.cl, 9.0.1.sw
+     */
     ManagePipelines = 'manage-pipeline',
     /**
+     * The **Filter** action on Liveboard visualizations.
+     * Allows users to apply cross-filters on a Liveboard.
+     * @example
+     * ```js
+     * disabledActions: [Action.CrossFilter]
+     * ```
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
     CrossFilter = 'context-menu-item-cross-filter',
     /**
+     * The **Remove** action that appears when cross filters are applied
+     * on a Liveboard.
+     * Removes filters applied o a visualization.
+     * @example
+     * ```js
+     * disabledActions: [Action.RemoveCrossFilter]
+     * ```
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
     RemoveCrossFilter = 'context-menu-item-remove-cross-filter',
     /**
+     * The **Aggregate** option in the chart axis or the
+     * table column customization menu.
+     * Provides aggregation options to analyze the data on a chart or table.
+     * @example
+     * ```js
+     * disabledActions: [Action.AxisMenuAggregate]
+     * ```
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
     AxisMenuAggregate = 'axisMenuAggregate',
     /**
+     * The **Time bucket** option in the chart axis or table column
+     * customization menu.
+     * Allows defining time metric for date comparison.
+     * @example
+     * ```js
+     * disabledActions: [Action.AxisMenuTimeBucket]
+     * ```
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
     AxisMenuTimeBucket = 'axisMenuTimeBucket',
     /**
+     * The **Filter** action in the chart axis or table column
+     * customization menu.
+     * @example
+     * ```js
+     * disabledActions: [Action.AxisMenuFilter]
+     * ```
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
     AxisMenuFilter = 'axisMenuFilter',
     /**
+     * The **Conditional formatting** action on chart or table.
+     * Allows adding rules for conditional formatting of data
+     * points on a chart or table.
+     * @example
+     * ```js
+     * disabledActions: [Action.AxisMenuConditionalFormat]
+     * ```
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
     AxisMenuConditionalFormat = 'axisMenuConditionalFormat',
     /**
+     * The **Sort** menu action on a table or chart axis
+     * Sorts data in ascending or descending order.
+     * Allows adding, editing, or removing filters.
+     * @example
+     * ```js
+     * disabledActions: [Action.AxisMenuConditionalFormat]
+     * ```
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
     AxisMenuSort = 'axisMenuSort',
     /**
+     * The **Group** option in the chart axis or table column
+     * customization menu.
+     * Allows grouping data points if the axes use the same
+     * unit of measurement and a similar scale.
+     * @example
+     * ```js
+     * disabledActions: [Action.AxisMenuGroup]
+     * ```
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
     AxisMenuGroup = 'axisMenuGroup',
     /**
+     * The **Position** option in the axis customization menu.
+     * Allows changing the position of the axis to the
+     * left or right side of the chart.
+     * @example
+     * ```js
+     * disabledActions: [Action.AxisMenuPosition]
+     * ```
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
     AxisMenuPosition = 'axisMenuPosition',
     /**
+     * The **Rename** option in the chart axis or table column customization menu.
+     * Renames the axis label on a chart or the column header on a table.
+     * @example
+     * ```js
+     * disabledActions: [Action.AxisMenuRename]
+     * ```
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
     AxisMenuRename = 'axisMenuRename',
     /**
+     * The **Edit** action in the axis customization menu.
+     * Allows editing the axis name, position, minimum and maximum values,
+     * and format of a column.
+     * @example
+     * ```js
+     * disabledActions: [Action.AxisMenuEdit]
+     * ```
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
     AxisMenuEdit = 'axisMenuEdit',
     /**
+     * The **Number format** action to customize the format of
+     * the data labels on a chart or table.
+     * @example
+     * ```js
+     * disabledActions: [Action.AxisMenuNumberFormat]
+     * ```
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
     AxisMenuNumberFormat = 'axisMenuNumberFormat',
     /**
+     * The **Text wrapping** action on a table.
+     * Wraps or clips column text on a table.
+     * @example
+     * ```js
+     * disabledActions: [Action.AxisMenuTextWrapping]
+     * ```
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
     AxisMenuTextWrapping = 'axisMenuTextWrapping',
     /**
+     * The **Remove** action in the chart axis or table column
+     * customization menu.
+     * Removes the data labels from a chart or the column of a
+     * table visualization.
+     * @example
+     * ```js
+     * disabledActions: [Action.AxisMenuRemove]
+     * ```
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
     AxisMenuRemove = 'axisMenuRemove',
@@ -2286,8 +2593,13 @@ export enum Action {
      * @hidden
      */
     InsertInToSlide = 'insertInToSlide',
-
     /**
+     * The **Rename** menu action on Liveboards and visualizations.
+     * Allows renaming a Liveboard or visualization.
+     * @example
+     * ```js
+     * disabledActions: [Action.RenameModalTitleDescription]
+     * ```
      * @version SDK: 1.23.0 | ThoughtSpot: 9.4.0.cl
      */
     RenameModalTitleDescription = 'renameModalTitleDescription',
