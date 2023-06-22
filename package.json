@@ -1,6 +1,6 @@
 {
     "name": "@thoughtspot/visual-embed-sdk",
-    "version": "1.21.0",
+    "version": "1.21.1",
     "description": "ThoughtSpot Embed SDK",
     "module": "lib/src/index.js",
     "main": "dist/tsembed.js",
@@ -84,6 +84,7 @@
         "lodash": "^4.17.21",
         "mixpanel-browser": "^2.45.0",
         "ts-deepmerge": "^6.0.2",
+        "tslib": "^2.5.3",
         "use-deep-compare-effect": "^1.8.1"
     },
     "devDependencies": {
