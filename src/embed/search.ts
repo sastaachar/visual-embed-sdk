@@ -161,6 +161,7 @@ export class SearchEmbed extends TsEmbed {
             runtimeFilters,
             dataSource,
             dataSources,
+            excludeRuntimeFiltersfromURL,
         } = this.viewConfig;
         const queryParams = this.getBaseQueryParams();
 
@@ -203,7 +204,7 @@ export class SearchEmbed extends TsEmbed {
             query = `?${queryParamsString}`;
         }
         const filterQuery = getFilterQuery(runtimeFilters || []);
-        if (filterQuery) {
+        if (filterQuery && !excludeRuntimeFiltersfromURL) {
             query += `&${filterQuery}`;
         }
         return query;

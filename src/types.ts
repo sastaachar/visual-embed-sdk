@@ -7,6 +7,8 @@
  * @author Ayon Ghosh <ayon.ghosh@thoughtspot.com>
  */
 
+import { CustomCssVariables } from './css-variables';
+
 /**
  * The authentication mechanism for allowing access to the
  * the embedded app
@@ -33,6 +35,18 @@ export enum AuthType {
      * configuration, but may not be supported by all IDPs. This will behave like `None`
      * if SSO is not configured on ThoughtSpot.
      *
+     * @example
+     * ```js
+     * init({
+     *   // ...
+     *   authType: AuthType.EmbeddedSSO,
+     *  });
+     * ```
+     * Set authentication type as Embedded SSO.
+     *
+     * To use this:
+     * Your SAML or OpenID provider must allow iframe redirects.
+     * eg. If you are using okta as IdP, you can enable iFrame embedding.
      * @version: SDK: 1.15.0 | ThouhgtSpot: 8.8.0.cl
      */
     EmbeddedSSO = 'EmbeddedSSO',
@@ -170,9 +184,7 @@ export type DOMSelector = string | HTMLElement;
  * inline customCSS within the {@link CustomisationsInterface}.
  */
 export interface customCssInterface {
-    variables?: {
-        [variableName: string]: string;
-    };
+    variables?: CustomCssVariables;
     // eslint-disable-next-line camelcase
     rules_UNSTABLE?: {
         [selector: string]: {
@@ -330,6 +342,15 @@ export interface EmbedConfig {
     suppressNoCookieAccessAlert?: boolean;
 
     /**
+     * Ignore cookie access alert when third party cookies are blocked by the
+     * user's browser. If you set this to `true`, the embedded iframe behaviour
+     * persist even in case of non logged in user.
+     *
+     * @default false
+     */
+    ignoreNoCookieAccess?: boolean;
+
+    /**
      * Re-login when session expires with the previous login options
      *
      * @default false
@@ -432,6 +453,22 @@ export interface EmbedConfig {
      * @version SDK: 1.17.0 | ThoughtSpot: *
      */
     authTriggerText?: string;
+    /**
+     * Disable Full App access of Embedded app outside of the iFrame.
+     *
+     * @default true
+     * @version SDK: 1.22.0 | ThoughtSpot: 9.3.0.cl, 9.5.1-sw
+     */
+    blockNonEmbedFullAppAccess?: boolean;
+
+    /**
+     * Host config incase embedded app is inside TS app itself
+     */
+    hostConfig?: {
+        hostUserGuid: string;
+        hostClusterId: string;
+        hostClusterName: string;
+    }
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -602,6 +639,13 @@ export interface ViewConfig {
      * See [docs]() on how to create a prerender pool.
      */
     usePrerenderedIfAvailable?: boolean;
+    /**
+     * Boolean to exclude runtimeFilters in the URL
+     *
+     * @default false
+     * @hidden
+     */
+    excludeRuntimeFiltersfromURL?: boolean;
 }
 
 /**
@@ -1802,9 +1846,12 @@ export enum Param {
     cookieless = 'cookieless',
     ContextMenuTrigger = 'isContextMenuEnabledOnLeftClick',
     LinkOverride = 'linkOverride',
+    blockNonEmbedFullAppAccess = 'blockNonEmbedFullAppAccess',
     ShowInsertToSlide = 'insertInToSlide',
     PrimaryNavHidden = 'primaryNavHidden',
     HideProfleAndHelp = 'profileAndHelpInNavBarHidden',
+    HideApplicationSwitcher= 'applicationSwitcherHidden',
+    HideOrgSwitcher= 'orgSwitcherHidden',
 }
 
 /**
