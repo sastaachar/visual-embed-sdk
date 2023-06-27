@@ -338,16 +338,6 @@ appEmbed.on(EmbedEvent.CustomAction, async (payload: any) => {
 })
 ----
 
-== Render the embedded application
-
-Render the embedded application.
-
-[source,JavaScript]
-----
-appEmbed.render();
-----
-
-
 
 == Test the embedded workflows
 

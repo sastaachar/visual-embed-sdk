@@ -8,7 +8,7 @@
 
 ThoughtSpot Software clusters now support ThoughtSpot Everywhere and embedding with Visual Embed SDK!
 
-Starting from the 8.4.1-sw release, ThoughtSpot Software customers who have a license to embed ThoughtSpot can use ThoughtSpot Everywhere features and Visual Embed SDK to embed ThoughtSpot objects in their apps.
+Starting from the 8.4.1.sw release, ThoughtSpot Software customers who have a license to embed ThoughtSpot can use ThoughtSpot Everywhere features and Visual Embed SDK to embed ThoughtSpot objects in their apps.
 
 == Embedding methods
 

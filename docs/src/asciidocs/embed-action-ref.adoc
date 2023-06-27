@@ -60,8 +60,8 @@ Presents the Liveboard in fullscreen mode.
 Allows scheduling Liveboard notifications.
 |`Action.SchedulesList`| `LiveboardEmbed` +
 `AppEmbed` | *Manage schedules* +
- Allows you to manage Liveboard jobs.
- Saves Liveboard modifications.
+Allows you to manage Liveboard jobs.
+Saves Liveboard modifications.
 |`Action.ExportTML`|`AppEmbed` +
 `LiveboardEmbed`| *Export TML* +
 Exports the TML representation of a Liveboard object from ThoughtSpot.
@@ -80,6 +80,7 @@ Displays information about the Liveboard.
 |`Action.Remove` | `AppEmbed`| *Delete* +
 Deletes a Liveboard.
 |====
+
 
 [#liveboardv2-viz-actions]
 == Visualizations on a Liveboard (New experience)
@@ -166,7 +167,6 @@ Allows you to include a specific data point on a search answer. Available as a c
 Allows switching to the table or chart mode when editing a visualization.
 |===
 
-
 [#liveboard-action]
 == Liveboard (Classic experience)
 
@@ -208,6 +208,7 @@ a| `LiveboardEmbed` +
 `AppEmbed`
 |*Configure filters* +
 Allows configuring filters for visualizations on a Liveboard.
+
 |`Action.DownloadAsPdf` |  `LiveboardEmbed` +
 `AppEmbed`|*Download as PDF*  +
 Downloads the Liveboard as a PDF file.
@@ -221,14 +222,14 @@ Presents the Liveboard in fullscreen mode.
 `AppEmbed` |
  *Liveboard info* +
  Displays information about the Liveboard.|
- 
+
 `Action.EditTML`|`AppEmbed` | *Edit TML* +
-Allows editing the ThoughtSpot Modelling Language (TML) representation of a Liveboard object loaded on the ThoughtSpot server. 
+Allows editing the ThoughtSpot Modelling Language (TML) representation of a Liveboard object loaded on the ThoughtSpot server.
 |`Action.ImportTML`|`AppEmbed` | *Import TML* +
-Allows importing the TML representation of a Liveboard object to ThoughtSpot. 
+Allows importing the TML representation of a Liveboard object to ThoughtSpot.
 |`Action.ExportTML`| `LiveboardEmbed` +
 `AppEmbed` | *Export TML* +
-Exports the TML representation of a Liveboard object from ThoughtSpot. 
+Exports the TML representation of a Liveboard object from ThoughtSpot.
 |`Action.UpdateTML`|`LiveboardEmbed` +
 `AppEmbed` | *Update TML* +
 Publishes the modified TML representation of a Liveboard object.
@@ -304,7 +305,6 @@ Allows switching to the table or chart mode when editing a visualization.|
 |===
 
 
-
 [#answer-actions]
 == Answers
 The following actions are available for saved answers and the answers generated using the embedded ThoughtSpot search component:
@@ -348,7 +348,7 @@ a|The *Query visualizer* and *Query SQL* buttons in *Query details* +
 
 |`Action.Save`|`SearchEmbed` +
 `AppEmbed` | *Save* +
- Saves the answer and any modifications made to the answer. 
+ Saves the answer and any modifications made to the answer.
 
 |`Action.Download`|`SearchEmbed` +
 `AppEmbed`|*Download* +
@@ -526,6 +526,7 @@ Allows exporting a Worksheet, Table, or View as a TML file.
 |`Action.EditTML`| `AppEmbed` | *Edit TML*  action on the *Data* > *Home* page +
 Opens the TML Editor that allows you to modify the TML file of Worksheet, Table, or View.
 |===
+
 
 == Additional resources
 * For information about showing or hiding UI actions, see xref:embed-actions.adoc[Show or hide actions].

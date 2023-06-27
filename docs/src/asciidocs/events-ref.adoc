@@ -14,6 +14,33 @@ The following host events are triggered by the host application, which the embed
 The host events are part of the *HostEvent* object; for example, `HostEvent.SetVisibleVizs`.
 Host events use the `.trigger()` method to send the event message to embedded ThoughtSpot components. The events are sent in the  `.trigger(hostEvent, data)` format.
 
+To explore the host event functionality in the Playground, follow these steps:
+
+* Go to *Develop* > *Visual Embed SDK* > *Playground*.
+* Select the feature to embed, for example, Search.
+* Select the objects to load in the Playground.
+* In the event handler code, add a host event as shown in the following example:
++
+[source,JavaScript]
+----
+document.getElementById('tryBtn').addEventListener('click', e => {
+  embed.trigger((HostEvent.DownloadAsPng)
+});
+----
+* Click *Run*.
+* Click *Try* to trigger the action.
+
+The following video shows how to register `HostEvent.RemoveColumn` and remove a column from the search query string using the *Try* button:
+
+[div videoContainer]
+--
+video::./images/hostEvent.mp4[width=100%,options="autoplay,loop"]
+++++
+<a href="{{previewPrefix}}/playground/search" id="preview-in-playground" target="_blank">Try it out in Playground</a>
+</div>
+++++
+--
+
 ==== AddColumns
 Available with `SearchEmbed` and `AppEmbed` in `v1.21.0` or later.
 
@@ -584,7 +611,7 @@ Removes a column from the current Search.
 [source,JavaScript]
 ----
 searchEmbed.trigger(HostEvent.RemoveColumn, {
-columnId: '085f9694-0d02-479e-973a-d216336e5253'})
+    columnId: '085f9694-0d02-479e-973a-d216336e5253'})
 ----
 ====
 --
@@ -594,7 +621,7 @@ columnId: '085f9694-0d02-479e-973a-d216336e5253'})
 
 Available with `SearchEmbed`, `LiveboardEmbed`, and `AppEmbed` in `v1.21.0` or later.
 
-Triggers the Reset search action on the Answer page.
+Triggers the `Reset` action on the Answer page.
 
 [div divider]
 --
@@ -1524,7 +1551,7 @@ function hideLoader() {
 ==== NoCookieAccess
 
 Available with `SearchEmbed`, `LiveboardEmbed`,  and `AppEmbed` in `V1.2.0` or later. +
-Is emitted when third-party cookies are blocked by a user's browser.  +
+Is emitted when third-party cookies are blocked by a user's browser.
 
 [div divider]
 --

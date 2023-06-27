@@ -38,7 +38,8 @@ customizations: {
     },
   },
 ----
-. Change the style specifications for any variable and click `Run`. For a complete list of variables, see xref:css-customization.adoc#supported-variables[Supported variables].
+. Change the style specifications for any variable. For a complete list of variables, see xref:css-customization.adoc#supported-variables[Supported variables].
+. Click `Run`.
 
 ++++
 <a href="{{previewPrefix}}/playground/fullApp" id="preview-in-playground" target="_blank">Try it out</a>

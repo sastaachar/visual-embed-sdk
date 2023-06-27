@@ -195,17 +195,18 @@ export interface customCssInterface {
     /**
      * Can be used to define a custom font face
      * like:
+     *
      * @example
      * ```js
      * rules_UNSTABLE?: {
      *     "@font-face": {
      *         "font-family": "custom-font",
      *         "src": url("/path/")
-     *  *     };
+     *     };
      *   };
      * ```
      *
-     * * Also, custom css rules outside of variables.
+     * Also, custom css rules outside of variables.
      * @example
      * ```js
      * rules_UNSTABLE?: {
@@ -448,6 +449,11 @@ export interface EmbedConfig {
      */
     suppressSearchEmbedBetaWarning?: boolean;
 
+    /**
+     * Hide beta alert warning message for SageEmbed.
+     *
+     */
+    suppressSageEmbedBetaWarning?: boolean;
     /**
      * Custom style params for embed Config.
      *
@@ -1344,6 +1350,19 @@ export enum HostEvent {
      */
     SetVisibleVizs = 'SetPinboardVisibleVizs',
     /**
+     * Set the Active Tab of a Liveboard.
+     *
+     * @param - tabId - string of id of Tab to show
+     * @example
+     * ```js
+     * liveboardEmbed.trigger(HostEvent.SetActiveTab,{
+     *  tabId:'730496d6-6903-4601-937e-2c691821af3c'
+     * })
+     * ```
+     * @version SDK: 1.24.0 | ThoughtSpot: 9.5.0.cl, 9.5.1-sw
+     */
+    SetActiveTab = 'SetActiveTab',
+    /**
      * Update the runtime filters. The runtime filters passed here are extended
      * on to the existing runtime filters if they exist.
      *
@@ -1883,6 +1902,11 @@ export enum Param {
     HideProfleAndHelp = 'profileAndHelpInNavBarHidden',
     HideApplicationSwitcher= 'applicationSwitcherHidden',
     HideOrgSwitcher= 'orgSwitcherHidden',
+    IsSageEmbed = 'isSageEmbed',
+    HideWorksheetSelector = 'hideWorksheetSelector',
+    DisableWorksheetChange = 'disableWorksheetChange',
+    HideEurekaResults = 'hideEurekaResults',
+    HideEurekaSuggestions = 'hideEurekaSuggestions',
 }
 
 /**
