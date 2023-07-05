@@ -2355,7 +2355,7 @@ export enum Action {
     */
     QueryDetailsButtons = 'QueryDetailsButtons',
     /**
-     * The **Delete* action for Answers
+     * The **Delete** action for Answers.
      * @example
      * ```js
      * disabledActions: [Action.AnswerDelete]
@@ -2364,7 +2364,7 @@ export enum Action {
      */
     AnswerDelete = 'onDeleteAnswer',
     /**
-     * Chart switcher icon on Answers and visualizations.
+     * The Chart switcher icon on Answer and visualization pages.
      * @example
      * ```js
      * disabledActions: [Action.AnswerChartSwitcher]
@@ -2373,7 +2373,7 @@ export enum Action {
      */
     AnswerChartSwitcher = 'answerChartSwitcher',
     /**
-     * Favorites icon on Answers, Liveboard, and Data pages
+     * Favorites icon (*) on Answers, Liveboard, and Data pages
      * @example
      * ```js
      * disabledActions: [Action.AddToFavorites]
