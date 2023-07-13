@@ -72,7 +72,7 @@ For more information, see xref:events-ref.adoc#host-events[Events reference].
 
 === Visual Embed SDK
 
-For information about the new features and enhancements introduced in Visual Embed SDK versions 1.22.0, see xref:api-changelog.adoc[Visual Embed changelog].
+For information about the new features and enhancements introduced in Visual Embed SDK version 1.22.0, see xref:api-changelog.adoc[Visual Embed changelog].
 
 === REST API
 
