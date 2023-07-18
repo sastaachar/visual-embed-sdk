@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Generate TypeDocs
+name: Publish package to NPM
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -10,32 +10,22 @@ jobs:
         runs-on: ubuntu-latest
         # Steps represent a sequence of tasks that will be executed as part of the job
         steps:
-            # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
 
-            # Use NodeJS v14.19.0
-            - uses: actions/setup-node@v2
+            - uses: actions/setup-node@v3
               with:
                   node-version: '16.19.0'
+                  registry-url: 'https://registry.npmjs.org'
 
             # Run npm install
             - name: Run npm install
               run: npm install --legacy-peer-deps
 
-            # Runs TypeScript compiler
-            - name: Run TypeScript compiler
-              run: npm run tsc
-
-            # Runs docgen and update PR
-            - name: Run docgen and update PR
+            # Runs docgen and publish
+            - name: Run docgen and publish
               run: |
-                  # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
-                  git --version
-                  git config user.name "GitHub Actions Bot"
-                  git config user.email "<>"
-                  gh pr checkout ${{ github.event.pull_request.number }}
-                  npm run test
                   npm run docgen
-                  npm run publish tag --dev
+                  npm run publish-dev
               env:
-                  GITHUB_TOKEN: ${{ github.token }}
+                  NODE_AUTH_TOKEN: ${{ github.token }}
+
