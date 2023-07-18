@@ -42,6 +42,6 @@ jobs:
                   gh pr checkout ${{ github.event.pull_request.number }}
 
                   npm run docgen
-                  npm run publish tags --latest
+                  npm run publish-prod
               env:
                   GITHUB_TOKEN: ${{ github.token }}

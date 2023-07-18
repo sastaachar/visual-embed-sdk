@@ -36,6 +36,6 @@ jobs:
                   gh pr checkout ${{ github.event.pull_request.number }}
                   npm run test
                   npm run docgen
-                  npm run publish tag --dev
+                  npm run publish-dev
               env:
                   GITHUB_TOKEN: ${{ github.token }}
