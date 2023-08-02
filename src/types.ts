@@ -1496,7 +1496,7 @@ export enum HostEvent {
      * @param - { columnId: string }
      * @example
      * ```js
-     * searchEmbed.trigger(HostEvent.RemoveColumn, { columnId: '085f9694-0d02-479e-973a-d216336e5253' })
+     * searchEmbed.trigger(HostEvent.RemoveColumn, { columnId: '<column-Guid>' })
      * ```
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
