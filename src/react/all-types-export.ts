@@ -1,8 +1,9 @@
-export { 
+export {
     SearchEmbed,
     LiveboardEmbed,
     SearchBarEmbed,
     AppEmbed,
+    SageEmbed,
     useEmbedRef,
 } from './index';
 
@@ -30,6 +31,7 @@ export {
     SearchViewConfig,
     SearchBarViewConfig,
     LiveboardViewConfig,
+    SageViewConfig,
     AppViewConfig,
     PrefetchFeatures,
     FrameParams,
@@ -40,4 +42,5 @@ export {
     CustomisationsInterface,
     CustomStyles,
     customCssInterface,
+    CustomCssVariables,
 } from '../index';

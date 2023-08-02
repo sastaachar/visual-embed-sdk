@@ -2,6 +2,7 @@ import React from 'react';
 import useDeepCompareEffect from 'use-deep-compare-effect';
 import { deepMerge } from '../utils';
 import { SearchBarEmbed as _SearchBarEmbed, SearchBarViewConfig } from '../embed/search-bar';
+import { SageEmbed as _SageEmbed, SageViewConfig } from '../embed/sage';
 import { SearchEmbed as _SearchEmbed, SearchViewConfig } from '../embed/search';
 import { AppEmbed as _AppEmbed, AppViewConfig } from '../embed/app';
 import { LiveboardEmbed as _LiveboardEmbed, LiveboardViewConfig } from '../embed/liveboard';
@@ -149,6 +150,27 @@ export const SearchBarEmbed = componentFactory<
     SearchBarEmbedProps,
     SearchBarViewConfig
 >(_SearchBarEmbed);
+
+interface SageEmbedProps extends EmbedProps, SageViewConfig {}
+
+/**
+ * React component for LLM based search Sage embed.
+ *
+ * @example
+ * ```tsx
+ * function Sage() {
+ *  return <SageEmbed
+ *      showObjectResults={true}
+ *      ... other view config props or event listeners.
+ *  />
+ * }
+ * ```
+ */
+export const SageEmbed = componentFactory<
+    typeof _SageEmbed,
+    SageEmbedProps,
+    SageViewConfig
+>(_SageEmbed);
 
 /**
  * Get a reference to the embed component to trigger events on the component.

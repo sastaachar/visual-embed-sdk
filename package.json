@@ -1,6 +1,6 @@
 {
     "name": "@thoughtspot/visual-embed-sdk",
-    "version": "1.21.0-alpha.19",
+    "version": "1.23.0-alpha.0",
     "description": "ThoughtSpot Embed SDK",
     "module": "lib/src/index.js",
     "main": "dist/tsembed.js",
@@ -14,19 +14,24 @@
     "exports": {
         ".": {
             "import": "./lib/src/index.js",
-            "require": "./dist/tsembed.js",
+            "require": "./cjs/src/index.js",
             "types": "./lib/src/index.d.ts"
         },
         "./react": {
-            "import": "./lib/src/react/index.js",
-            "require": "./cjs/src/react.index.js",
-            "types": "./lib/src/react/index.d.ts"
+            "import": "./lib/src/react/all-types-export.js",
+            "require": "./cjs/src/react/all-types-export.js",
+            "types": "./lib/src/react/all-types-export.d.ts"
+        },
+        "./lib/src/react": {
+            "import": "./lib/src/react/all-types-export.js",
+            "require": "./cjs/src/react/all-types-export.js",
+            "types": "./lib/src/react/all-types-export.d.ts"
         }
     },
     "typesVersions": {
         "*": {
             "react": [
-                "./lib/src/react/index.d.ts"
+                "./lib/src/react/all-types-export.d.ts"
             ]
         }
     },
@@ -40,6 +45,7 @@
         "serve:gatsby": "gatsby serve",
         "clean:gatsby": "gatsby clean",
         "build-and-publish": "npm run build:gatsby && npm run publish",
+        "bundle-dts-file": "dts-bundle --name @thoughtspot/visual-embed-sdk --out visual-embed-sdk.d.ts --main lib/src/index.d.ts",
         "bundle-dts": "dts-bundle --name ../../dist/visual-embed-sdk --main lib/src/index.d.ts --outputAsModuleFolder=true",
         "bundle-dts-react": "dts-bundle --name ../../../dist/visual-embed-sdk-react --main lib/src/react/index.d.ts --outputAsModuleFolder=true",
         "bundle-dts-react-full": "dts-bundle --name ../../../dist/visual-embed-sdk-react-full --main lib/src/react/all-types-export.d.ts --outputAsModuleFolder=true",
@@ -51,7 +57,8 @@
         "test-docs": "jest -c jest.config.docs.js",
         "test": "npm run test-sdk && npm run test-docs",
         "posttest": "cat ./coverage/sdk/lcov.info | coveralls",
-        "prepublishOnly": "npm run test; npm run tsc; npm run bundle-dts; npm run bundle-dts-react-full; npm run build",
+        "is-publish-allowed": "node scripts/is-publish-allowed.js",
+        "prepublishOnly": "npm run is-publish-allowed && npm run test && npm run tsc && npm run bundle-dts-file && npm run bundle-dts && npm run bundle-dts-react && npm run bundle-dts-react-full && npm run build",
         "publish-dev": "npm publish --tag dev",
         "publish-prod": "npm publish --tag latest"
     },
@@ -71,6 +78,7 @@
         "lodash": "^4.17.21",
         "mixpanel-browser": "^2.45.0",
         "ts-deepmerge": "^6.0.2",
+        "tslib": "^2.5.3",
         "use-deep-compare-effect": "^1.8.1"
     },
     "devDependencies": {
@@ -95,6 +103,7 @@
         "babel-preset-gatsby": "^1.10.0",
         "command-line-args": "^5.1.1",
         "coveralls": "^3.1.0",
+        "current-git-branch": "^1.1.0",
         "dts-bundle": "^0.7.3",
         "eslint": "^7.12.1",
         "eslint-config-airbnb-base": "^14.2.0",

@@ -7,6 +7,8 @@
  * @author Ayon Ghosh <ayon.ghosh@thoughtspot.com>
  */
 
+import { CustomCssVariables } from './css-variables';
+
 /**
  * The authentication mechanism for allowing access to the
  * the embedded app
@@ -180,11 +182,41 @@ export type DOMSelector = string | HTMLElement;
 
 /**
  * inline customCSS within the {@link CustomisationsInterface}.
+ * Use {@link CustomCssVariables} or css rules.
  */
 export interface customCssInterface {
-    variables?: {
-        [variableName: string]: string;
-    };
+    /**
+     * The custom css variables, which can be set.
+     * The allowed list is in the CustomCssVariables
+     * interface.
+     * Or here: https://try-everywhere.thoughtspot.cloud/resources/static/css/custom_variables.css
+     */
+    variables?: CustomCssVariables;
+    /**
+     * Can be used to define a custom font face
+     * like:
+     *
+     * @example
+     * ```js
+     * rules_UNSTABLE?: {
+     *     "@font-face": {
+     *         "font-family": "custom-font",
+     *         "src": url("/path/")
+     *     };
+     *   };
+     * ```
+     *
+     * Also, custom css rules outside of variables.
+     * @example
+     * ```js
+     * rules_UNSTABLE?: {
+     *     ".thoughtspot_class_name": {
+     *         "border-radius": "10px",
+     *         margin: "20px"
+     *     };
+     *   };
+     * ```
+     */
     // eslint-disable-next-line camelcase
     rules_UNSTABLE?: {
         [selector: string]: {
@@ -342,6 +374,15 @@ export interface EmbedConfig {
     suppressNoCookieAccessAlert?: boolean;
 
     /**
+     * Ignore cookie access alert when third party cookies are blocked by the
+     * user's browser. If you set this to `true`, the embedded iframe behaviour
+     * persist even in case of non logged in user.
+     *
+     * @default false
+     */
+    ignoreNoCookieAccess?: boolean;
+
+    /**
      * Re-login when session expires with the previous login options
      *
      * @default false
@@ -408,6 +449,11 @@ export interface EmbedConfig {
      */
     suppressSearchEmbedBetaWarning?: boolean;
     /**
+     * Hide beta alert warning message for SageEmbed.
+     *
+     */
+    suppressSageEmbedBetaWarning?: boolean;
+    /**
      * Custom style params for embed Config.
      *
      * @version SDK: 1.17.0 | ThoughtSpot: 8.9.0.cl
@@ -450,6 +496,15 @@ export interface EmbedConfig {
      * @version SDK: 1.22.0 | ThoughtSpot: 9.3.0.cl, 9.5.1.sw
      */
     blockNonEmbedFullAppAccess?: boolean;
+
+    /**
+     * Host config incase embedded app is inside TS app itself
+     */
+    hostConfig?: {
+        hostUserGuid: string;
+        hostClusterId: string;
+        hostClusterName: string;
+    }
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -627,6 +682,63 @@ export interface ViewConfig {
      * @hidden
      */
     excludeRuntimeFiltersfromURL?: boolean;
+    /**
+     * Boolean to hide liveboard header
+     *
+     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
+     * @default false
+     */
+    hideLiveboardHeader?: boolean;
+    /**
+     * Boolean to show liveboard title
+     *
+     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
+     * @default false
+     */
+    showLiveboardTitle?: boolean;
+    /**
+     * Boolean to show liveboard description
+     *
+     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
+     * @default false
+     */
+    showLiveboardDescription?: boolean;
+    /**
+     * The list of tab IDs to hide from the embedded.
+     * This Tabs will be hidden from their respective LBs.
+     * Use this to hide an tabID.
+     *
+     * @example
+     * ```js
+     * const embed = new LiveboardEmbed('#embed', {
+     *   ... // other liveboard view config
+     *   hiddenTabs: [
+     * '430496d6-6903-4601-937e-2c691821af3c',
+     *  'f547ec54-2a37-4516-a222-2b06719af726']
+     * });
+     * ```
+     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
+     */
+    hiddenTabs?: string[];
+    /**
+     * The list of tab IDs to show in the embedded.
+     * Only this Tabs will be shown in their respective LBs.
+     * Use this to show an tabID.
+     *
+     * Use either this or hiddenTabs.
+     *
+     * @example
+     * ```js
+     * const embed = new LiveboardEmbed('#embed', {
+     *   ... // other liveboard view config
+     *   visibleTabs: [
+     * '430496d6-6903-4601-937e-2c691821af3c',
+     *  'f547ec54-2a37-4516-a222-2b06719af726']
+     * });
+     * ```
+     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
+     */
+    visibleTabs?: string[];
 }
 
 /**
@@ -1196,6 +1308,12 @@ export enum EmbedEvent {
      * @hidden
      */
     InsertIntoSlide = 'insertInToSlide',
+    /**
+     * Emitted when a user changes any filter on a Liveboard.
+     *
+     * @version SDK: 1.23.0 | ThoughtSpot: 9.4.0.cl
+     */
+    FilterChanged = 'filterChanged',
 }
 
 /**
@@ -1295,18 +1413,31 @@ export enum HostEvent {
      */
     SetVisibleVizs = 'SetPinboardVisibleVizs',
     /**
-     * Updates runtime filters applied on a Saved Answer or Liveboard. The
-     * runtime filters passed here are appended to the existing runtime
-     * filters.
-     * Pass an array of runtime filters with the following attributes:
-     * `columnName`
-     * _String_. The name of the column to filter on.
-     * `operator`
-     *  Runtime filter operator to apply. For information,
-     *  see [Runtime filter operators](https://developers.thoughtspot.com/docs/?pageid=runtime-filters#rtOperator).
-     * `values`
-     *  List of operands. Some operators such as EQ, LE allow a single value, whereas operators
-     *  such as BW and IN accept multiple operands.
+     * Set the Active Tab of a Liveboard.
+     *
+     * @param - tabId - string of id of Tab to show
+     * @example
+     * ```js
+     * liveboardEmbed.trigger(HostEvent.SetActiveTab,{
+     *  tabId:'730496d6-6903-4601-937e-2c691821af3c'
+     * })
+     * ```
+     * @version SDK: 1.24.0 | ThoughtSpot: 9.5.0.cl, 9.5.1-sw
+     */
+    SetActiveTab = 'SetActiveTab',
+    /**
+    * Updates runtime filters applied on a Saved Answer or Liveboard. The
+    * runtime filters passed here are appended to the existing runtime
+    * filters.
+    * Pass an array of runtime filters with the following attributes:
+    * `columnName`
+    * _String_. The name of the column to filter on.
+    * `operator`
+    *  Runtime filter operator to apply. For information,
+    *  see [Runtime filter operators](https://developers.thoughtspot.com/docs/?pageid=runtime-filters#rtOperator).
+    * `values`
+    *  List of operands. Some operators such as EQ, LE allow a single value, whereas operators
+    *  such as BW and IN accept multiple operands.
      * @param - {@link RuntimeFilter}[] an array of {@link RuntimeFilter} Types.
      * @example
      * ```js
@@ -1332,7 +1463,8 @@ export enum HostEvent {
     Navigate = 'Navigate',
     /**
      * Opens the filter panel for a particular column.
-     * Works with Search embed.
+     * Works with Search and Liveboard embed.
+     *
      * @param - { columnId: string,
      *  name: string,
      *  type: INT64/CHAR/DATE,
@@ -1340,7 +1472,9 @@ export enum HostEvent {
      * @example
      * ```js
      * searchEmbed.trigger(HostEvent.OpenFilter,
-     *  { columnId: '085f9694-0d02-479e-973a-d216336e5253', name: 'column name', type: 'INT64', dataType: 'ATTRIBUTE' })
+     *   { columnId: '085f9694-0d02-479e-973a-d216336e5253', name: 'column name', type: 'INT64', dataType: 'ATTRIBUTE' })
+     * LiveboardEmbed.trigger(HostEvent.OpenFilter,
+     *  { columnId: '085f9694-0d02-479e-973a-d216336e5253'})
      * ```
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
@@ -1812,6 +1946,70 @@ export enum HostEvent {
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.0.1.sw
      */
     ResetSearch = 'resetSearch',
+    /**
+     * Gets the currents visible and runtime filters applied on a Liveboard
+     *
+     * @example
+     * liveboardEmbed.trigger(HostEvent.GetFilters)
+     * @version SDK: 1.23.0 | ThoughtSpot: 9.4.0.cl
+     */
+    GetFilters = 'getFilters',
+    /**
+     * Updates the visible filters on the Liveboard.
+     *
+     * @param - filter: filter object containing column name and filter operation and values
+     * @example
+     *
+     * ```js
+     * liveboardEmbed.trigger(HostEvent.UpdateFilters, {
+     *  filter: { column: 'column name', oper: 'in', values: [1,2,3], is_mandatory: false }
+     * })
+     * ```
+     * @version SDK: 1.23.0 | ThoughtSpot: 9.4.0.cl
+     */
+    UpdateFilters = 'updateFilters',
+    /*
+     * Get Tab for the current Liveboard.
+     *
+     * @example
+     * ```js
+     * liveboardEmbed.trigger(HostEvent.GetTabs).then((tabDetails) => {
+     *   console.log(
+     *      tabDetails // TabDetails of current LB
+     *   );
+     * })
+     * ```
+     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
+     */
+    GetTabs = 'getTabs',
+    /**
+     * Set the visible Tabs on a Liveboard.
+     *
+     * @param - an array of ids of Tabs to show, the ids not passed
+     *          will be hidden.
+     * @example
+     * ```js
+     * liveboardEmbed.trigger(HostEvent.SetVisibleTabs, [
+     *  '430496d6-6903-4601-937e-2c691821af3c',
+     *  'f547ec54-2a37-4516-a222-2b06719af726'])
+     * ```
+     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
+     */
+    SetVisibleTabs = 'SetPinboardVisibleTabs',
+    /**
+     * Set the hidden tabs on a Liveboard.
+     *
+     * @param - an array of ids of Tabs to hide, the ids not passed
+     *          will be shown.
+     * @example
+     * ```js
+     * liveboardEmbed.trigger(HostEvent.SetHiddenTabs, [
+     *  '630496d6-6903-4601-937e-2c691821af3c',
+     *  'i547ec54-2a37-4516-a222-2b06719af726'])
+     * ```
+     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
+     */
+    SetHiddenTabs = 'SetPinboardHiddenTabs',
 }
 
 /**
@@ -1884,6 +2082,19 @@ export enum Param {
     ShowInsertToSlide = 'insertInToSlide',
     PrimaryNavHidden = 'primaryNavHidden',
     HideProfleAndHelp = 'profileAndHelpInNavBarHidden',
+    HideApplicationSwitcher = 'applicationSwitcherHidden',
+    HideOrgSwitcher = 'orgSwitcherHidden',
+    IsSageEmbed = 'isSageEmbed',
+    HideWorksheetSelector = 'hideWorksheetSelector',
+    DisableWorksheetChange = 'disableWorksheetChange',
+    HideEurekaResults = 'hideEurekaResults',
+    HideEurekaSuggestions = 'hideEurekaSuggestions',
+    HideLiveboardHeader = 'hideLiveboardHeader',
+    ShowLiveboardDescription = 'showLiveboardDescription',
+    ShowLiveboardTitle = 'showLiveboardTitle',
+    HiddenTabs = 'hideTabs',
+    VisibleTabs = 'visibleTabs',
+    HideTabPanel = 'hideTabPanel'
 }
 
 /**
@@ -2603,6 +2814,22 @@ export enum Action {
      * @version SDK: 1.23.0 | ThoughtSpot: 9.4.0.cl
      */
     RenameModalTitleDescription = 'renameModalTitleDescription',
+    /**
+     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
+     */
+    RequestVerification = 'requestVerification',
+    /**
+     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
+     */
+    MarkAsVerified = 'markAsVerified',
+    /**
+     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
+     */
+    AddTab = 'addTab',
+    /**
+     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
+     */
+    EnableContextualChangeAnalysis = 'enableContextualChangeAnalysis',
 }
 
 export interface SessionInterface {

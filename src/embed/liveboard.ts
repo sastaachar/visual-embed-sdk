@@ -99,6 +99,12 @@ export interface LiveboardViewConfig extends ViewConfig {
      * @version SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw
      */
     activeTabId?: string;
+    /**
+     * Hide tab Panel of embedded LB
+     *
+     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
+     */
+    hideTabPanel?: boolean;
 }
 
 /**
@@ -146,6 +152,7 @@ export class LiveboardEmbed extends V1Embed {
             visibleVizs,
             liveboardV2,
             vizId,
+            hideTabPanel,
             activeTabId,
         } = this.viewConfig;
 
@@ -173,6 +180,9 @@ export class LiveboardEmbed extends V1Embed {
         }
         if (liveboardV2 !== undefined) {
             params[Param.LiveboardV2Enabled] = liveboardV2;
+        }
+        if (hideTabPanel) {
+            params[Param.HideTabPanel] = hideTabPanel;
         }
         const queryParams = getQueryParamString(params, true);
 
@@ -231,6 +241,14 @@ export class LiveboardEmbed extends V1Embed {
         }
     };
 
+    private setActiveTab(data: { tabId: string }) {
+        if (!this.viewConfig.vizId) {
+            const prefixPath = this.iFrame.src.split('#/')[1].split('/tab')[0];
+            const path = `${prefixPath}/tab/${data.tabId}`;
+            super.trigger(HostEvent.Navigate, path);
+        }
+    }
+
     /**
      * Triggers an event to the embedded app
      *
@@ -239,6 +257,10 @@ export class LiveboardEmbed extends V1Embed {
      */
     public trigger(messageType: HostEvent, data: any = {}): Promise<any> {
         const dataWithVizId = data;
+        if (messageType === HostEvent.SetActiveTab) {
+            this.setActiveTab(data);
+            return Promise.resolve(null);
+        }
         if (typeof dataWithVizId === 'object' && this.viewConfig.vizId) {
             dataWithVizId.vizId = this.viewConfig.vizId;
         }
@@ -276,4 +298,4 @@ export class LiveboardEmbed extends V1Embed {
 /**
  * @hidden
  */
-export class PinboardEmbed extends LiveboardEmbed { }
+export class PinboardEmbed extends LiveboardEmbed {}

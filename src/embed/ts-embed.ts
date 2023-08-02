@@ -240,6 +240,16 @@ export class TsEmbed {
                 );
             }
         });
+        window.addEventListener('online', (e) => {
+            this.trigger(HostEvent.Reload);
+        });
+        window.addEventListener('offline', (e) => {
+            const offlineWarning = 'Network not Detected. Embed is offline. Please reconnect and refresh';
+            this.executeCallbacks(EmbedEvent.Error, {
+                offlineWarning,
+            });
+            console.warn(offlineWarning);
+        });
     }
 
     /**
@@ -260,6 +270,7 @@ export class TsEmbed {
                 customisations: getCustomisations(this.embedConfig, this.viewConfig),
                 authToken,
                 runtimeFilterParams: getRuntimeFilters(this.viewConfig.runtimeFilters),
+                hostConfig: this.embedConfig.hostConfig,
             },
         });
     };
@@ -347,6 +358,8 @@ export class TsEmbed {
             disabledActionReason,
             hiddenActions,
             visibleActions,
+            hiddenTabs,
+            visibleTabs,
             showAlerts,
             additionalFlags,
             locale,
@@ -354,10 +367,18 @@ export class TsEmbed {
             contextMenuTrigger,
             linkOverride,
             insertInToSlide,
+            hideLiveboardHeader,
+            showLiveboardDescription,
+            showLiveboardTitle,
         } = this.viewConfig;
 
         if (Array.isArray(visibleActions) && Array.isArray(hiddenActions)) {
             this.handleError('You cannot have both hidden actions and visible actions');
+            return queryParams;
+        }
+
+        if (Array.isArray(visibleTabs) && Array.isArray(hiddenTabs)) {
+            this.handleError('You cannot have both hidden Tabs and visible Tabs');
             return queryParams;
         }
 
@@ -378,7 +399,12 @@ export class TsEmbed {
         if (Array.isArray(visibleActions)) {
             queryParams[Param.VisibleActions] = visibleActions;
         }
-
+        if (Array.isArray(hiddenTabs)) {
+            queryParams[Param.HiddenTabs] = hiddenTabs;
+        }
+        if (Array.isArray(visibleTabs)) {
+            queryParams[Param.VisibleTabs] = visibleTabs;
+        }
         /**
          * Default behavior for context menu will be left-click
          *  from version 9.2.0.cl the user have an option to override context
@@ -411,6 +437,16 @@ export class TsEmbed {
         if (insertInToSlide) {
             queryParams[Param.ShowInsertToSlide] = insertInToSlide;
         }
+        if (hideLiveboardHeader) {
+            queryParams[Param.HideLiveboardHeader] = hideLiveboardHeader;
+        }
+        if (showLiveboardDescription) {
+            queryParams[Param.ShowLiveboardDescription] = showLiveboardDescription;
+        }
+        if (showLiveboardTitle) {
+            queryParams[Param.ShowLiveboardTitle] = showLiveboardTitle;
+        }
+
         return queryParams;
     }
 
@@ -716,10 +752,7 @@ export class TsEmbed {
      * tsEmbed.off(EmbedEvent.Error, errorHandler);
      * ```
      */
-    public off(
-        messageType: EmbedEvent,
-        callback: MessageCallback,
-    ): typeof TsEmbed.prototype {
+    public off(messageType: EmbedEvent, callback: MessageCallback): typeof TsEmbed.prototype {
         const callbacks = this.eventHandlerMap.get(messageType) || [];
         const index = callbacks.findIndex((cb) => cb.callback === callback);
         if (index > -1) {
@@ -814,7 +847,7 @@ export class TsEmbed {
      */
     public destroy(): void {
         try {
-            this.insertedDomEl.parentNode.removeChild(this.insertedDomEl);
+            this.insertedDomEl?.parentNode.removeChild(this.insertedDomEl);
         } catch (e) {
             console.log('Error destroying TS Embed', e);
         }
