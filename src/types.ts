@@ -2374,10 +2374,10 @@ export enum Action {
     * Imports TML representation of ThoughtSpot objects.
     * @example
     * ```js
-    * disabledActions: [Action.ImportTML]
+    * disabledActions: [Action.UpdateTML]
     * ```
     */
-    UpdateTML = 'UpdateTML',
+    UpdateTML = 'UpdateTSL',
    /**
     * The **Edit TML** menu action for Liveboards and Answers.
     * Opens the TML editor.
