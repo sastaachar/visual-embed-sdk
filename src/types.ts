@@ -2602,7 +2602,7 @@ export enum Action {
      */
     EditDetails = 'editDetails',
     /**
-     * The Create alert action on KPI charts.
+     * The **Create alert** action on KPI charts.
      * @example
      * ```js
      * disabledActions: [Action.CreateMonitor ]
