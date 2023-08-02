@@ -1472,9 +1472,9 @@ export enum HostEvent {
      * @example
      * ```js
      * searchEmbed.trigger(HostEvent.OpenFilter,
-     *   { columnId: '085f9694-0d02-479e-973a-d216336e5253', name: 'column name', type: 'INT64', dataType: 'ATTRIBUTE' })
+     * { columnId: '<column-GUID>', name: 'column name', type: 'INT64', dataType: 'ATTRIBUTE'})
      * LiveboardEmbed.trigger(HostEvent.OpenFilter,
-     *  { columnId: '085f9694-0d02-479e-973a-d216336e5253'})
+     *  { columnId: '<column-GUID>'})
      * ```
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
@@ -1485,7 +1485,7 @@ export enum HostEvent {
      * @param - { columnIds: string[] }
      * @example
      * ```js
-     * searchEmbed.trigger(HostEvent.AddColumns, { columnIds: ['085f9694-0d02-479e-973a-d216336e5253','acf6b749-7a9b-4fce-8ad2-daa8ee87ee07'] })
+     * searchEmbed.trigger(HostEvent.AddColumns, { columnIds: ['<column-GUID>','<column-GUID>'] })
      * ```
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
