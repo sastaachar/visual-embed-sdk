@@ -1213,7 +1213,7 @@ POST /tspublic/v1/user/transfer/ownership
 |Query parameter|Description
 |`fromUserName`|__String__. Username to transfer from.
 |`toUserName`|__String__. Username to transfer to.
-|`objectsID` +
+a|`objectsID` +
 __Optional__ a|__Array of strings__. A JSON array of ThoughtSpot object IDs. +
 
 * Example with multiple object IDs: +
