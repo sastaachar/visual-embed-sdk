@@ -13,12 +13,15 @@
 			"kindString": "Enumeration",
 			"flags": {},
 			"comment": {
-				"shortText": "The list of actions that can be performed on visual ThoughtSpot\nentities, such as answers and Liveboards.",
-				"text": "This enum is used to specify the actions that could be disabled,\nhidden or made visible.\n",
+				"shortText": "ThoughtSpot application pages include actions and menu commands\nfor various user-initiated operations. These actions are represented\nas enumeration members in the SDK. To show, hide, or disable\nspecific actions in the embedded view, define the Action\nenumeration members in the `disabledActions`, `visibleActions`,\nor `hiddenActions` array.",
 				"tags": [
 					{
 						"tag": "example",
-						"text": "\n```js\nconst embed = new LiveboardEmbed('#embed-container', {\n   ... // other options\n   visibleActions: [Action.Save, Action.Explore],\n   disableActions: [Action.Save],\n   hiddenActions: [Action.Download], // Set either this or visibleActions\n})\n```\n"
+						"text": "\n```js\nconst embed = new LiveboardEmbed('#embed-container', {\n   ... // other options\n   visibleActions: [Action.Save, Action.Edit, Action.Present, ActionAction.Explore],\n   disabledActions: [Action.Download],\n   //hiddenActions: [], // Set either this or visibleActions\n})\n```"
+					},
+					{
+						"tag": "example",
+						"text": "\n```js\nconst embed = new LiveboardEmbed('#embed-container', {\n   ... // other options\n   //visibleActions: [],\n   disabledActions: [Action.Download],\n   hiddenActions: [Action.Edit, ActionAction.Explore],\n})\n```\n\n"
 					}
 				]
 			},
@@ -29,10 +32,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Add filter** action on a Liveboard and Search page.\nAllows adding filters to Answers and visualizations on a Liveboard.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.AddFilter]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2085,
+							"line": 2226,
 							"character": 4
 						}
 					],
@@ -44,10 +56,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Create formula** action on a Search or Answer page.\nAllows adding formulas to an Answer.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.AddFormula]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2089,
+							"line": 2255,
 							"character": 4
 						}
 					],
@@ -59,10 +80,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Add parameter** action on a Liveboard or Answer.\nAllows adding Parameters to a Liveboard or Answer.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.AddParameter]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2090,
+							"line": 2264,
 							"character": 4
 						}
 					],
@@ -85,7 +115,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2286,
+							"line": 2828,
 							"character": 4
 						}
 					],
@@ -98,17 +128,22 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
+						"shortText": "Favorites icon (*) on Answers, Liveboard, and Data pages",
 						"tags": [
 							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.AddToFavorites]\n```"
+							},
+							{
 								"tag": "version",
-								"text": "SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2194,
+							"line": 2594,
 							"character": 4
 						}
 					],
@@ -121,17 +156,22 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
+						"shortText": "The Chart switcher icon on Answer and visualization pages.",
 						"tags": [
 							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.AnswerChartSwitcher]\n```"
+							},
+							{
 								"tag": "version",
-								"text": "SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2190,
+							"line": 2585,
 							"character": 4
 						}
 					],
@@ -144,17 +184,22 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
+						"shortText": "The **Delete** action for Answers.",
 						"tags": [
 							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.AnswerDelete]\n```"
+							},
+							{
 								"tag": "version",
-								"text": "SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2186,
+							"line": 2576,
 							"character": 4
 						}
 					],
@@ -167,7 +212,12 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
+						"shortText": "The **Aggregate** option in the chart axis or the\ntable column customization menu.\nProvides aggregation options to analyze the data on a chart or table.",
 						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.AxisMenuAggregate]\n```"
+							},
 							{
 								"tag": "version",
 								"text": "SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl\n"
@@ -177,7 +227,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2221,
+							"line": 2683,
 							"character": 4
 						}
 					],
@@ -190,7 +240,12 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
+						"shortText": "The **Conditional formatting** action on chart or table.\nAllows adding rules for conditional formatting of data\npoints on a chart or table.",
 						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.AxisMenuConditionalFormat]\n```"
+							},
 							{
 								"tag": "version",
 								"text": "SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl\n"
@@ -200,7 +255,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2233,
+							"line": 2715,
 							"character": 4
 						}
 					],
@@ -213,7 +268,12 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
+						"shortText": "The **Edit** action in the axis customization menu.\nAllows editing the axis name, position, minimum and maximum values,\nand format of a column.",
 						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.AxisMenuEdit]\n```"
+							},
 							{
 								"tag": "version",
 								"text": "SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl\n"
@@ -223,7 +283,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2253,
+							"line": 2770,
 							"character": 4
 						}
 					],
@@ -236,7 +296,12 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
+						"shortText": "The **Filter** action in the chart axis or table column\ncustomization menu.",
 						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.AxisMenuFilter]\n```"
+							},
 							{
 								"tag": "version",
 								"text": "SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl\n"
@@ -246,7 +311,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2229,
+							"line": 2704,
 							"character": 4
 						}
 					],
@@ -259,7 +324,12 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
+						"shortText": "The **Group** option in the chart axis or table column\ncustomization menu.\nAllows grouping data points if the axes use the same\nunit of measurement and a similar scale.",
 						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.AxisMenuGroup]\n```"
+							},
 							{
 								"tag": "version",
 								"text": "SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl\n"
@@ -269,7 +339,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2241,
+							"line": 2738,
 							"character": 4
 						}
 					],
@@ -282,7 +352,12 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
+						"shortText": "The **Number format** action to customize the format of\nthe data labels on a chart or table.",
 						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.AxisMenuNumberFormat]\n```"
+							},
 							{
 								"tag": "version",
 								"text": "SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl\n"
@@ -292,7 +367,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2257,
+							"line": 2780,
 							"character": 4
 						}
 					],
@@ -305,7 +380,12 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
+						"shortText": "The **Position** option in the axis customization menu.\nAllows changing the position of the axis to the\nleft or right side of the chart.",
 						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.AxisMenuPosition]\n```"
+							},
 							{
 								"tag": "version",
 								"text": "SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl\n"
@@ -315,7 +395,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2245,
+							"line": 2749,
 							"character": 4
 						}
 					],
@@ -328,7 +408,12 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
+						"shortText": "The **Remove** action in the chart axis or table column\ncustomization menu.\nRemoves the data labels from a chart or the column of a\ntable visualization.",
 						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.AxisMenuRemove]\n```"
+							},
 							{
 								"tag": "version",
 								"text": "SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl\n"
@@ -338,7 +423,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2265,
+							"line": 2802,
 							"character": 4
 						}
 					],
@@ -351,7 +436,12 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
+						"shortText": "The **Rename** option in the chart axis or table column customization menu.\nRenames the axis label on a chart or the column header on a table.",
 						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.AxisMenuRename]\n```"
+							},
 							{
 								"tag": "version",
 								"text": "SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl\n"
@@ -361,7 +451,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2249,
+							"line": 2759,
 							"character": 4
 						}
 					],
@@ -374,7 +464,12 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
+						"shortText": "The **Sort** menu action on a table or chart axis\nSorts data in ascending or descending order.\nAllows adding, editing, or removing filters.",
 						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.AxisMenuConditionalFormat]\n```"
+							},
 							{
 								"tag": "version",
 								"text": "SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl\n"
@@ -384,7 +479,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2237,
+							"line": 2726,
 							"character": 4
 						}
 					],
@@ -397,7 +492,12 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
+						"shortText": "The **Text wrapping** action on a table.\nWraps or clips column text on a table.",
 						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.AxisMenuTextWrapping]\n```"
+							},
 							{
 								"tag": "version",
 								"text": "SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl\n"
@@ -407,7 +507,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2261,
+							"line": 2790,
 							"character": 4
 						}
 					],
@@ -420,7 +520,12 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
+						"shortText": "The **Time bucket** option in the chart axis or table column\ncustomization menu.\nAllows defining time metric for date comparison.",
 						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.AxisMenuTimeBucket]\n```"
+							},
 							{
 								"tag": "version",
 								"text": "SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl\n"
@@ -430,7 +535,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2225,
+							"line": 2694,
 							"character": 4
 						}
 					],
@@ -442,10 +547,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Choose sources** button on Search page.\nAllows selecting data sources for search queries.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.ChooseDataSources]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2088,
+							"line": 2246,
 							"character": 4
 						}
 					],
@@ -460,7 +574,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2087,
+							"line": 2237,
 							"character": 4
 						}
 					],
@@ -472,10 +586,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "Filter configuration options on a Liveboard and Search page.\nAllows configuring filter options when adding filters to a\nLiveboard or Answer.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.ConfigureFilter]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2086,
+							"line": 2236,
 							"character": 4
 						}
 					],
@@ -490,7 +613,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2173,
+							"line": 2533,
 							"character": 4
 						}
 					],
@@ -502,10 +625,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Copy link** menu action on a Liveboard visualization.\nCopies the visualization URL",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.CopyLink]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2077,
+							"line": 2186,
 							"character": 4
 						}
 					],
@@ -517,10 +649,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Copy to clipboard** menu action on tables in an Answer\nor Liveboard.\nCopies the selected data point.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.CopyToClipboard]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2172,
+							"line": 2532,
 							"character": 4
 						}
 					],
@@ -533,17 +674,22 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
+						"shortText": "The Create alert action on KPI charts.",
 						"tags": [
 							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.CreateMonitor ]\n```"
+							},
+							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2202,
+							"line": 2612,
 							"character": 4
 						}
 					],
@@ -556,7 +702,12 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
+						"shortText": "The **Filter** action on Liveboard visualizations.\nAllows users to apply cross-filters on a Liveboard.",
 						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.CrossFilter]\n```"
+							},
 							{
 								"tag": "version",
 								"text": "SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl\n"
@@ -566,7 +717,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2213,
+							"line": 2661,
 							"character": 4
 						}
 					],
@@ -578,10 +729,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Download** menu action on Liveboard visualizations\nand Answers.\nAllows downloading a visualization or Answer.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.DownloadAsPng]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2110,
+							"line": 2309,
 							"character": 4
 						}
 					],
@@ -593,10 +753,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Download**  > **CSV** menu action for tables on a Liveboard\nor Answer page.\nDownloads a visualization or Answer in the XLSX format.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.DownloadAsCsv]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2113,
+							"line": 2338,
 							"character": 4
 						}
 					],
@@ -608,10 +777,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Download** > **PDF** menu action on a Liveboard.\nDownloads a visualization or Answer as a PDF file.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.DownloadAsPdf]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2112,
+							"line": 2328,
 							"character": 4
 						}
 					],
@@ -623,10 +801,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Download** > **PNG** menu action for charts on a Liveboard\nor Answer page.\nDownloads a visualization or Answer as a PNG file.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.DownloadAsPng]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2111,
+							"line": 2319,
 							"character": 4
 						}
 					],
@@ -638,10 +825,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Download** > **XLSX** menu action for tables on a Liveboard\nor Answer page.\nDownloads a visualization or Answer in the XLSX format.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.DownloadAsXlsx]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2114,
+							"line": 2348,
 							"character": 4
 						}
 					],
@@ -653,10 +849,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Drill down** menu action on Answers and Liveboard\nvisualizations.\nAllows drilling down to a specific data point on a chart or table.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.DrillDown]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2180,
+							"line": 2549,
 							"character": 4
 						}
 					],
@@ -668,10 +873,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The action to exclude data points on a drilled-down Answer\nor visualization",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.DrillInclude]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2171,
+							"line": 2522,
 							"character": 4
 						}
 					],
@@ -683,10 +897,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The action to include data points on a drilled-down Answer\nor visualization",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.DrillInclude]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2170,
+							"line": 2513,
 							"character": 4
 						}
 					],
@@ -698,10 +921,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The *Edit* action on the Liveboard page and in the\nvisualization menu.\nOpens a Liveboard or visualization in edit mode.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.Edit]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2125,
+							"line": 2418,
 							"character": 4
 						}
 					],
@@ -713,10 +945,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Copy and Edit** action on a Liveboard.\nThis action is now replaced with `Action.MakeACopy`.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.EditACopy]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2076,
+							"line": 2177,
 							"character": 4
 						}
 					],
@@ -729,17 +970,22 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
+						"shortText": "The edit icon on Liveboards (Classic experience).",
 						"tags": [
 							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.EditDetails]\n```"
+							},
+							{
 								"tag": "version",
-								"text": "SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2198,
+							"line": 2603,
 							"character": 4
 						}
 					],
@@ -754,7 +1000,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2178,
+							"line": 2538,
 							"character": 4
 						}
 					],
@@ -766,10 +1012,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Edit TML** menu action for Liveboards and Answers.\nOpens the TML editor.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.EditTML]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2122,
+							"line": 2389,
 							"character": 4
 						}
 					],
@@ -781,10 +1036,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The text edit option for Liveboard and visualization titles.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.EditTitle]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2126,
+							"line": 2426,
 							"character": 4
 						}
 					],
@@ -807,7 +1071,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2290,
+							"line": 2832,
 							"character": 4
 						}
 					],
@@ -820,12 +1084,18 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Explore action."
+						"shortText": "The **Explore** action on Liveboard visualizations",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.Explore]\n```\n"
+							}
+						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2169,
+							"line": 2503,
 							"character": 4
 						}
 					],
@@ -837,10 +1107,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Export TML** menu action on Liveboard, Answers\nWorksheets and Data Connections page.\nExports an object as a TML file.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.ExportTML]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2119,
+							"line": 2362,
 							"character": 4
 						}
 					],
@@ -852,10 +1131,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Import TML** menu action for Liveboards and Answers.\nImports TML representation of ThoughtSpot objects.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.ImportTML]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2120,
+							"line": 2371,
 							"character": 4
 						}
 					],
@@ -867,10 +1155,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Show Liveboard details** menu action on a Liveboard.\nDisplays details such as the name, description, and\nauthor of the Liveboard, and timestamp of Liveboard creation\nand update.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.LiveboardInfo]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2148,
+							"line": 2466,
 							"character": 4
 						}
 					],
@@ -882,10 +1179,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Make a copy** action on a Liveboard or Answer\npage.\nCreates a copy of the Liveboard, visualization,\nor Answer.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.MakeACopy]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2075,
+							"line": 2167,
 							"character": 4
 						}
 					],
@@ -897,10 +1203,23 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Manage pipelines** action on Answers and Liveboard visualizations.\nAllows users to manage data sync pipelines to third-party apps.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.SyncToOtherApps]\n```"
+							},
+							{
+								"tag": "version",
+								"text": "SDK: 1.18.0| ThoughtSpot: 8.10.0.cl, 9.0.1.sw\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2209,
+							"line": 2651,
 							"character": 4
 						}
 					],
@@ -923,7 +1242,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2282,
+							"line": 2824,
 							"character": 4
 						}
 					],
@@ -936,12 +1255,18 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Pin action."
+						"shortText": "The **Pin** menu action on an Answer or\nSearch results page.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.Pin]\n```\n"
+							}
+						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2160,
+							"line": 2483,
 							"character": 4
 						}
 					],
@@ -953,10 +1278,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Present** menu action for Liveboards and Answers.\nAllows presenting a Liveboard or visualization in\nslideshow mode.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.Present]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2123,
+							"line": 2399,
 							"character": 4
 						}
 					],
@@ -968,14 +1302,23 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Query visualizer** and **Query SQL** buttons in Query details panel\nof the Answer page",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.QueryDetailsButtons]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2182,
+							"line": 2567,
 							"character": 4
 						}
 					],
-					"defaultValue": "\"queryDetailsButtons\""
+					"defaultValue": "\"QueryDetailsButtons\""
 				},
 				{
 					"id": 838,
@@ -983,10 +1326,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Delete** menu action on Liveboards and visualizations.\nDeletes a Liveboard or a visualization from a Liveboard.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.Remove]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2127,
+							"line": 2435,
 							"character": 4
 						}
 					],
@@ -999,7 +1351,12 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
+						"shortText": "The **Remove** action that appears when cross filters are applied\non a Liveboard.\nRemoves filters applied o a visualization.",
 						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.RemoveCrossFilter]\n```"
+							},
 							{
 								"tag": "version",
 								"text": "SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl\n"
@@ -1009,7 +1366,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2217,
+							"line": 2672,
 							"character": 4
 						}
 					],
@@ -1022,7 +1379,12 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
+						"shortText": "The **Rename** menu action on Liveboards and visualizations.\nAllows renaming a Liveboard or visualization.",
 						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.RenameModalTitleDescription]\n```"
+							},
 							{
 								"tag": "version",
 								"text": "SDK: 1.23.0 | ThoughtSpot: 9.4.0.cl\n"
@@ -1032,7 +1394,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2274,
+							"line": 2816,
 							"character": 4
 						}
 					],
@@ -1047,15 +1409,19 @@
 					"comment": {
 						"tags": [
 							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.ReportError]\n```"
+							},
+							{
 								"tag": "version",
-								"text": "SDK: 1.11.1 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.1 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2206,
+							"line": 2620,
 							"character": 4
 						}
 					],
@@ -1067,10 +1433,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The request access action on Liveboards.\nAllows users with view permissions to request edit access to a Liveboard.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.RequestAccess]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2181,
+							"line": 2558,
 							"character": 4
 						}
 					],
@@ -1093,7 +1468,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2278,
+							"line": 2820,
 							"character": 4
 						}
 					],
@@ -1105,10 +1480,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Save** action on an Answer or Liveboard.\nAllows users to save the changes.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.SaveAsView]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2065,
+							"line": 2137,
 							"character": 4
 						}
 					],
@@ -1120,10 +1504,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Save as View** action on the Answer\npage. Saves an Answer as a View object.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.SaveAsView]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2074,
+							"line": 2155,
 							"character": 4
 						}
 					],
@@ -1135,10 +1528,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Schedule** menu action on a Liveboard.\nAllows scheduling a Liveboard notification.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.Schedule]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2082,
+							"line": 2199,
 							"character": 4
 						}
 					],
@@ -1150,10 +1552,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Manage schedules** menu action on a Liveboard.\nAllows users to manage scheduled Liveboard jobs.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.SchedulesList]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2083,
+							"line": 2208,
 							"character": 4
 						}
 					],
@@ -1168,7 +1579,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2179,
+							"line": 2539,
 							"character": 4
 						}
 					],
@@ -1180,10 +1591,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Share** action on a Liveboard, Answer, or Worksheet.\nAllows users to share an object with other users and groups.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.Share]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2084,
+							"line": 2217,
 							"character": 4
 						}
 					],
@@ -1198,7 +1618,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2104,
+							"line": 2286,
 							"character": 4
 						}
 					],
@@ -1210,10 +1630,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Show underlying data** menu action on a visualization or\nAnswer page.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.ShowUnderlyingData]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2109,
+							"line": 2299,
 							"character": 4
 						}
 					],
@@ -1225,10 +1654,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **SpotIQ analyze** menu action on a visualization or\nAnswer page.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.SpotIQAnalyze]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2095,
+							"line": 2277,
 							"character": 4
 						}
 					],
@@ -1240,10 +1678,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Schedule** menu action on a Liveboard.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.Subscription]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2165,
+							"line": 2495,
 							"character": 4
 						}
 					],
@@ -1255,10 +1702,23 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Sync to other apps** action on Answers and Liveboard visualizations.\nAllows sending data to third-party apps like Slack, Salesforce,\nMicrosoft Teams, and so on.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.SyncToOtherApps]\n```"
+							},
+							{
+								"tag": "version",
+								"text": "SDK: 1.18.0| ThoughtSpot: 8.10.0.cl, 9.0.1.sw\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2208,
+							"line": 2641,
 							"character": 4
 						}
 					],
@@ -1270,10 +1730,23 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Sync to sheets** action on Answers and Liveboard visualizations.\nAllows sending data to a Google Sheet.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.SyncToSheets]\n```"
+							},
+							{
+								"tag": "version",
+								"text": "SDK: 1.18.0| ThoughtSpot: 8.10.0.cl, 9.0.1.sw\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2207,
+							"line": 2630,
 							"character": 4
 						}
 					],
@@ -1285,10 +1758,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The tile resize options in the visualization menu.\nAllows switching between different preset layouts.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.ToggleSize]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2124,
+							"line": 2408,
 							"character": 4
 						}
 					],
@@ -1300,10 +1782,19 @@
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
+					"comment": {
+						"shortText": "The **Update TML** menu action for Liveboards and Answers.\nUpdate TML representation of ThoughtSpot objects.",
+						"tags": [
+							{
+								"tag": "example",
+								"text": "\n```js\ndisabledActions: [Action.UpdateTML]\n```\n"
+							}
+						]
+					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2121,
+							"line": 2380,
 							"character": 4
 						}
 					],
@@ -1393,7 +1884,7 @@
 			"sources": [
 				{
 					"fileName": "types.ts",
-					"line": 2064,
+					"line": 2128,
 					"character": 12
 				}
 			]
@@ -1858,7 +2349,7 @@
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.22.0| ThouhgtSpot: 9.3.0.cl, 9.5.1-sw\n"
+								"text": "SDK: 1.22.0| ThouhgtSpot: 9.3.0.cl, 9.5.1.sw\n"
 							}
 						]
 					},
@@ -1914,7 +2405,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2320,
+							"line": 2862,
 							"character": 4
 						}
 					],
@@ -1929,7 +2420,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2321,
+							"line": 2863,
 							"character": 4
 						}
 					],
@@ -1949,7 +2440,7 @@
 			"sources": [
 				{
 					"fileName": "types.ts",
-					"line": 2319,
+					"line": 2861,
 					"character": 12
 				}
 			]
@@ -1976,7 +2467,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1974,
+							"line": 2028,
 							"character": 4
 						}
 					],
@@ -1994,7 +2485,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1978,
+							"line": 2032,
 							"character": 4
 						}
 					],
@@ -2012,7 +2503,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1970,
+							"line": 2024,
 							"character": 4
 						}
 					],
@@ -2033,7 +2524,7 @@
 			"sources": [
 				{
 					"fileName": "types.ts",
-					"line": 1966,
+					"line": 2020,
 					"character": 12
 				}
 			]
@@ -2070,7 +2561,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.10.0 | ThoughtSpot: 8.2.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.10.0 | ThoughtSpot: 8.2.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -2098,7 +2589,7 @@
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.10.0 | ThoughtSpot: 8.2.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.10.0 | ThoughtSpot: 8.2.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -2122,7 +2613,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
@@ -2170,7 +2661,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -2194,7 +2685,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -2260,7 +2751,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
@@ -2284,7 +2775,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -2308,7 +2799,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
@@ -2332,7 +2823,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -2460,7 +2951,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
@@ -2484,7 +2975,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -2508,7 +2999,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -2532,7 +3023,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -2556,7 +3047,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -2580,7 +3071,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -2604,7 +3095,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.4.0-sw\n"
+								"text": "SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.4.0.sw\n"
 							}
 						]
 					},
@@ -2628,7 +3119,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -2652,7 +3143,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -2676,7 +3167,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -2732,7 +3223,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
@@ -2756,7 +3247,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -2804,7 +3295,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
@@ -2828,7 +3319,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -2876,7 +3367,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.0-sw\n"
+								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.0.sw\n"
 							}
 						]
 					},
@@ -2924,7 +3415,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
@@ -2948,7 +3439,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.9.1 | ThoughtSpot: 8.1.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.9.1 | ThoughtSpot: 8.1.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -2996,7 +3487,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
@@ -3044,7 +3535,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -3068,7 +3559,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
@@ -3124,11 +3615,11 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Emitted when answer is saved in the app",
+						"shortText": "Emitted when an Answer is saved in the app",
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -3152,7 +3643,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -3176,7 +3667,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
@@ -3200,7 +3691,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
@@ -3224,7 +3715,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -3248,7 +3739,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -3272,7 +3763,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -3296,7 +3787,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -3328,7 +3819,7 @@
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw"
 							},
 							{
 								"tag": "important",
@@ -3497,7 +3988,7 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Adds the columns to the current Search.",
+						"shortText": "Adds columns to the current search query.",
 						"tags": [
 							{
 								"tag": "param",
@@ -3506,7 +3997,7 @@
 							},
 							{
 								"tag": "example",
-								"text": "\n```js\nsearchEmbed.trigger(HostEvent.AddColumns, { columnIds: ['123', '456'] })\n```"
+								"text": "\n```js\nsearchEmbed.trigger(HostEvent.AddColumns, { columnIds: ['<column-GUID>','<column-GUID>'] })\n```"
 							},
 							{
 								"tag": "version",
@@ -3517,7 +4008,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1483,
+							"line": 1492,
 							"character": 4
 						}
 					],
@@ -3530,27 +4021,27 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the Copy link action on a Liveboard or visualization",
+						"shortText": "Triggers the **Copy link** action on a Liveboard or visualization",
 						"tags": [
 							{
 								"tag": "param",
-								"text": "object - to trigger the action for a s\n pecfic visualization in Liveboard embed, pass in vizId as a key",
+								"text": "object - to trigger the action for a\nspecific visualization in Liveboard embed, pass in `vizId` as a key",
 								"param": "-"
 							},
 							{
 								"tag": "example",
-								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.CopyLink)\nliveboardEmbed.trigger(HostEvent.CopyLink, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})\nvizEmbed.trigger((HostEvent.CopyLink)\n```"
+								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.CopyLink)\n```\n```js\nliveboardEmbed.trigger(HostEvent.CopyLink, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})\n```\n```js\nvizEmbed.trigger((HostEvent.CopyLink)\n```"
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1678,
+							"line": 1705,
 							"character": 4
 						}
 					],
@@ -3563,11 +4054,11 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the Create alert action on a visualization",
+						"shortText": "Triggers the **Create alert** action on a visualization",
 						"tags": [
 							{
 								"tag": "param",
-								"text": "an object with vizId as a key",
+								"text": "an object with `vizId` as a key",
 								"param": "-"
 							},
 							{
@@ -3576,14 +4067,14 @@
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1634,
+							"line": 1653,
 							"character": 4
 						}
 					],
@@ -3596,27 +4087,27 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the Delete action on visualization or search",
+						"shortText": "Triggers the **Delete** action on visualization or search",
 						"tags": [
 							{
 								"tag": "param",
-								"text": "incase of Liveboard embed, takes in an object with vizId as a key\ncan be left empty for search and visualization embeds",
+								"text": "Liveboard embed takes an object with `vizId` as a key.\nCan be left empty if embedding Search or visualization.",
 								"param": "-"
 							},
 							{
 								"tag": "example",
-								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.Delete, {vizId:\n'730496d6-6903-4601-937e-2c691821af3c'})\n\nvizEmbed.trigger(HostEvent.Delete)\n\nsearchEmbed.trigger(HostEvent.Delete)\n```"
+								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.Delete, {vizId:\n'730496d6-6903-4601-937e-2c691821af3c'})\n```\n```js\nvizEmbed.trigger(HostEvent.Delete)\n```\n```js\nsearchEmbed.trigger(HostEvent.Delete)\n```"
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw\n"
+								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1740,
+							"line": 1775,
 							"character": 4
 						}
 					],
@@ -3629,26 +4120,26 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the Download action on visualization or search when Displaymode is Chart",
+						"shortText": "Triggers the **Download** action on charts in\nthe embedded view.",
 						"tags": [
 							{
 								"tag": "example",
-								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.Download, {vizId:\n'730496d6-6903-4601-937e-2c691821af3c'})\n\nvizEmbed.trigger(HostEvent.Download)\n\nsearchEmbed.trigger(HostEvent.Download)\n```"
+								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.Download, {vizId:\n'730496d6-6903-4601-937e-2c691821af3c'})\n```\n```js\nvizEmbed.trigger(HostEvent.Download)\n```\n```js\nsearchEmbed.trigger(HostEvent.Download)\n```"
 							},
 							{
 								"tag": "deprecated",
-								"text": "from SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl ,9.4.1-sw ,Use {@link DownloadAsPng}"
+								"text": "from SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl ,9.4.1.sw ,Use {@link DownloadAsPng}"
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw\n"
+								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1773,
+							"line": 1814,
 							"character": 4
 						}
 					],
@@ -3661,22 +4152,22 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the downloadAsCSV action on visualization or search",
+						"shortText": "Triggers the **Download** > **CSV**  action on tables in\nthe embedded view.",
 						"tags": [
 							{
 								"tag": "example",
-								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.DownloadAsCsv, {vizId:\n'730496d6-6903-4601-937e-2c691821af3c'})\n\nvizEmbed.trigger(HostEvent.DownloadAsCsv)\n\nsearchEmbed.trigger(HostEvent.DownloadAsCsv)\n```"
+								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.DownloadAsCsv, {vizId:\n'730496d6-6903-4601-937e-2c691821af3c'})\n```\n```js\nvizEmbed.trigger(HostEvent.DownloadAsCsv)\n```\n```js\nsearchEmbed.trigger(HostEvent.DownloadAsCsv)\n```"
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw\n"
+								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1803,
+							"line": 1847,
 							"character": 4
 						}
 					],
@@ -3689,7 +4180,7 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the Download PDF action on a Liveboard",
+						"shortText": "Triggers the **Download PDF** action on a Liveboard",
 						"tags": [
 							{
 								"tag": "example",
@@ -3697,14 +4188,14 @@
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1588,
+							"line": 1602,
 							"character": 4
 						}
 					],
@@ -3717,7 +4208,7 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the Download action on visualization or search when Displaymode is Chart",
+						"shortText": "Triggers the **Download** > **PNG** action on\ncharts in the embedded view.",
 						"tags": [
 							{
 								"tag": "example",
@@ -3725,14 +4216,14 @@
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.4.1-sw\n"
+								"text": "SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.4.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1788,
+							"line": 1829,
 							"character": 4
 						}
 					],
@@ -3745,22 +4236,22 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the downloadAsXLSX action on visualization or search",
+						"shortText": "Triggers the **Download** > **XLSX**  action on tables\nin the embedded view.",
 						"tags": [
 							{
 								"tag": "example",
-								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.DownloadAsXlsx, {vizId:\n'730496d6-6903-4601-937e-2c691821af3c'})\n\nvizEmbed.trigger(HostEvent.DownloadAsXlsx)\n\nsearchEmbed.trigger(HostEvent.DownloadAsXlsx)\n```"
+								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.DownloadAsXlsx, {vizId:\n'730496d6-6903-4601-937e-2c691821af3c'})\n```\n```js\nvizEmbed.trigger(HostEvent.DownloadAsXlsx)\n```\n```js\nsearchEmbed.trigger(HostEvent.DownloadAsXlsx)\n```"
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw\n"
+								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1818,
+							"line": 1864,
 							"character": 4
 						}
 					],
@@ -3773,16 +4264,16 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Trigger a drill on certain points by certain column",
+						"shortText": "Triggers a drill on certain points of the specified column\nIncludes the following properties:",
 						"tags": [
 							{
 								"tag": "param",
-								"text": "points - an object containing selectedPoints/clickedPoints\n             eg. { selectedPoints: []}",
+								"text": "points - an object containing selectedPoints/clickedPoints\nto drill to. For example, { selectedPoints: []}",
 								"param": "-"
 							},
 							{
 								"tag": "param",
-								"text": "columnGuid - a string guid of the column to drill by. This is optional,\n                    if not provided it will auto drill by the configured\n                    column.",
+								"text": "columnGuid - Optional. GUID of the column to drill\nby. If not provided it will auto drill by the configured\n  column.",
 								"param": "-"
 							},
 							{
@@ -3798,7 +4289,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1387,
+							"line": 1388,
 							"character": 4
 						}
 					],
@@ -3811,27 +4302,27 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the Edit action on a Liveboard or visualization",
+						"shortText": "Triggers the **Edit** action on a Liveboard or visualization",
 						"tags": [
 							{
 								"tag": "param",
-								"text": "object - to trigger the action for a specfic visualization\n  in Liveboard embed, pass in vizId as a key",
+								"text": "object - To trigger the action for a specific visualization\nin Liveboard embed, pass in `vizId` as a key.\nCan be left undefined when embedding Search, full app, or\na visualization.",
 								"param": "-"
 							},
 							{
 								"tag": "example",
-								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.Edit)\n\nliveboardEmbed.trigger(HostEvent.Edit, {vizId:\n'730496d6-6903-4601-937e-2c691821af3c'})\n\nvizEmbed.trigger((HostEvent.Edit)\n```"
+								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.Edit)\n```\n```js\nliveboardEmbed.trigger(HostEvent.Edit, {vizId:\n'730496d6-6903-4601-937e-2c691821af3c'})\n```\n```js\nvizEmbed.trigger((HostEvent.Edit)\n```"
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1664,
+							"line": 1687,
 							"character": 4
 						}
 					],
@@ -3844,7 +4335,7 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the Edit TML action on a Liveboard",
+						"shortText": "Triggers the **Edit TML** action on a Liveboard",
 						"tags": [
 							{
 								"tag": "example",
@@ -3852,14 +4343,14 @@
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1568,
+							"line": 1582,
 							"character": 4
 						}
 					],
@@ -3872,11 +4363,11 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the Explore action on a visualization",
+						"shortText": "Triggers the **Explore* action on a visualization",
 						"tags": [
 							{
 								"tag": "param",
-								"text": "an object with vizId as a key",
+								"text": "an object with `vizId` as a key",
 								"param": "-"
 							},
 							{
@@ -3885,14 +4376,14 @@
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1621,
+							"line": 1640,
 							"character": 4
 						}
 					],
@@ -3905,7 +4396,7 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the Export TML action on a Liveboard",
+						"shortText": "Triggers the **Export TML** action on a Liveboard",
 						"tags": [
 							{
 								"tag": "example",
@@ -3913,14 +4404,14 @@
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1558,
+							"line": 1572,
 							"character": 4
 						}
 					],
@@ -3948,7 +4439,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1902,
+							"line": 1956,
 							"character": 4
 						}
 					],
@@ -3961,7 +4452,7 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Get TML for the current search.",
+						"shortText": "Gets TML for the current search.",
 						"tags": [
 							{
 								"tag": "example",
@@ -3969,7 +4460,7 @@
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.18.0 | ThoughtSpot: 8.10.0.cl, 9.0.1-sw"
+								"text": "SDK: 1.18.0 | ThoughtSpot: 8.10.0.cl, 9.0.1.sw"
 							},
 							{
 								"tag": "important",
@@ -3980,7 +4471,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1707,
+							"line": 1738,
 							"character": 4
 						}
 					],
@@ -3995,7 +4486,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1930,
+							"line": 1984,
 							"character": 4
 						}
 					],
@@ -4008,7 +4499,7 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the Show Liveboard details action on a Liveboard",
+						"shortText": "Triggers the **Show Liveboard details** action on a Liveboard",
 						"tags": [
 							{
 								"tag": "example",
@@ -4016,14 +4507,14 @@
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1528,
+							"line": 1542,
 							"character": 4
 						}
 					],
@@ -4036,22 +4527,22 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the Make a copy action on a Liveboard, search or visualization",
+						"shortText": "Triggers the **Make a copy** action on a Liveboard, Search, or\nvisualization page",
 						"tags": [
 							{
 								"tag": "example",
-								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.MakeACopy, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})\nvizEmbed.trigger(HostEvent.MakeACopy)\nsearchEmbed.trigger(HostEvent.MakeACopy)\n```"
+								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.MakeACopy, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})\n```\n```js\nvizEmbed.trigger(HostEvent.MakeACopy)\n```\n```js\nsearchEmbed.trigger(HostEvent.MakeACopy)\n```"
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1600,
+							"line": 1619,
 							"character": 4
 						}
 					],
@@ -4064,11 +4555,11 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the Manage alert action on a visualization",
+						"shortText": "Triggers the **Manage alerts** action on a visualization",
 						"tags": [
 							{
 								"tag": "param",
-								"text": "an object with vizId as a key",
+								"text": "an object with `vizId` as a key",
 								"param": "-"
 							},
 							{
@@ -4077,14 +4568,14 @@
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1647,
+							"line": 1666,
 							"character": 4
 						}
 					],
@@ -4097,27 +4588,27 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the ManagePipelines action on visualization",
+						"shortText": "Triggers the **Manage pipelines** action on an embedded\nvisualization or Answer.\nAllows users to manage ThoughtSpot Sync pipelines.",
 						"tags": [
 							{
 								"tag": "param",
-								"text": "an object with vizId as a key",
+								"text": "an object with `vizId` as a key",
 								"param": "-"
 							},
 							{
 								"tag": "example",
-								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.ManagePipelines, {vizId:\n'730496d6-6903-4601-937e-2c691821af3c'})\n\nvizEmbed.trigger(HostEvent.ManagePipelines)\n```"
+								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.ManagePipelines, {vizId:\n'730496d6-6903-4601-937e-2c691821af3c'})\n```\n```js\nvizEmbed.trigger(HostEvent.ManagePipelines)\n```"
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw\n"
+								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1884,
+							"line": 1938,
 							"character": 4
 						}
 					],
@@ -4130,7 +4621,7 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Navigate to a specific page in App embed without any reload.\nThis is the same as calling `appEmbed.navigateToPage(path, true)`",
+						"shortText": "Navigate to a specific page in the embedded application without reloading the page.\nThis is the same as calling `appEmbed.navigateToPage(path, true)`",
 						"tags": [
 							{
 								"tag": "param",
@@ -4143,14 +4634,14 @@
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.12.0 | ThoughtSpot 8.4.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.12.0 | ThoughtSpot 8.4.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1454,
+							"line": 1463,
 							"character": 4
 						}
 					],
@@ -4172,7 +4663,7 @@
 							},
 							{
 								"tag": "example",
-								"text": "\n```js\nsearchEmbed.trigger(HostEvent.OpenFilter,\n { columnId: '123', name: 'column name', type: 'INT64', dataType: 'ATTRIBUTE' })\nLiveboardEmbed.trigger(HostEvent.OpenFilter,\n { columnId: '123' })\n```"
+								"text": "\n```js\nsearchEmbed.trigger(HostEvent.OpenFilter,\n{ columnId: '<column-GUID>', name: 'column name', type: 'INT64', dataType: 'ATTRIBUTE'})\nLiveboardEmbed.trigger(HostEvent.OpenFilter,\n { columnId: '<column-GUID>'})\n```"
 							},
 							{
 								"tag": "version",
@@ -4183,7 +4674,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1472,
+							"line": 1481,
 							"character": 4
 						}
 					],
@@ -4196,27 +4687,27 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the Pin action on an embedded object",
+						"shortText": "Triggers the **Pin** action on an embedded object",
 						"tags": [
 							{
 								"tag": "param",
-								"text": "incase of Liveboard embed, takes in an object with vizId as a key\ncan be left empty for search and visualization embeds",
+								"text": "Liveboard embed takes the `vizId` as a\nkey. Can be left undefined when embedding Search, full app or\na visualization.",
 								"param": "-"
 							},
 							{
 								"tag": "example",
-								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.Pin, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})\nvizEmbed.trigger(HostEvent.Pin)\nsearchEmbed.trigger(HostEvent.Pin)\n```"
+								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.Pin, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})\n```\n```js\nvizEmbed.trigger(HostEvent.Pin)\n```\n```js\nsearchEmbed.trigger(HostEvent.Pin)\n```"
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1518,
+							"line": 1532,
 							"character": 4
 						}
 					],
@@ -4229,27 +4720,27 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the Present action on a Liveboard or visualization",
+						"shortText": "Triggers the **Present** action on a Liveboard or visualization",
 						"tags": [
 							{
 								"tag": "param",
-								"text": "object - to trigger the action for a specfic visualization\n in Liveboard embed, pass in vizId as a key",
+								"text": "object - to trigger the action for a specific visualization\n in Liveboard embed, pass in `vizId` as a key",
 								"param": "-"
 							},
 							{
 								"tag": "example",
-								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.Present)\nliveboardEmbed.trigger(HostEvent.Present, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})\nvizEmbed.trigger((HostEvent.Present)\n```"
+								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.Present)\n```\n```js\nliveboardEmbed.trigger(HostEvent.Present, {vizId: '730496d6-6903-4601-937e-2c691821af3c'})\n```\n```js\nvizEmbed.trigger((HostEvent.Present)\n```"
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1692,
+							"line": 1723,
 							"character": 4
 						}
 					],
@@ -4262,7 +4753,7 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the Delete action on a Liveboard",
+						"shortText": "Triggers the **Delete** action on a Liveboard",
 						"tags": [
 							{
 								"tag": "example",
@@ -4270,14 +4761,14 @@
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1610,
+							"line": 1629,
 							"character": 4
 						}
 					],
@@ -4290,7 +4781,7 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Removes a column from the current Search.",
+						"shortText": "Removes a column from the current search query.",
 						"tags": [
 							{
 								"tag": "param",
@@ -4299,7 +4790,7 @@
 							},
 							{
 								"tag": "example",
-								"text": "\n```js\nsearchEmbed.trigger(HostEvent.RemoveColumn, { columnId: '123' })\n```"
+								"text": "\n```js\nsearchEmbed.trigger(HostEvent.RemoveColumn, { columnId: '<column-Guid>' })\n```"
 							},
 							{
 								"tag": "version",
@@ -4310,7 +4801,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1494,
+							"line": 1503,
 							"character": 4
 						}
 					],
@@ -4323,7 +4814,7 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the Reset search in answer",
+						"shortText": "Triggers the Reset search on the Search page",
 						"tags": [
 							{
 								"tag": "example",
@@ -4331,14 +4822,14 @@
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.0.1-sw\n"
+								"text": "SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl, 9.0.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1894,
+							"line": 1948,
 							"character": 4
 						}
 					],
@@ -4351,22 +4842,22 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Trigger the Save action on a liveboard or answer",
+						"shortText": "Triggers the **Save**  action on a Liveboard or Answer.\nSaves the changes.",
 						"tags": [
 							{
 								"tag": "example",
-								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.Save)\n\nsearchEmbed.trigger(HostEvent.Save)\n```"
+								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.Save)\n```\n```js\nsearchEmbed.trigger(HostEvent.Save)\n```"
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw\n"
+								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1842,
+							"line": 1891,
 							"character": 4
 						}
 					],
@@ -4379,7 +4870,7 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the Schedule action on a Liveboard",
+						"shortText": "Triggers the **Schedule** action on a Liveboard",
 						"tags": [
 							{
 								"tag": "example",
@@ -4387,14 +4878,14 @@
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1538,
+							"line": 1552,
 							"character": 4
 						}
 					],
@@ -4407,7 +4898,7 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the Manage schedule action on a Liveboard",
+						"shortText": "Triggers the **Manage schedule** action on a Liveboard",
 						"tags": [
 							{
 								"tag": "example",
@@ -4415,14 +4906,14 @@
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1548,
+							"line": 1562,
 							"character": 4
 						}
 					],
@@ -4435,21 +4926,21 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Trigger a search",
+						"shortText": "Triggers a search query in AppEmbed and SearchEmbed\ndeployments.\nIncludes the following properties:",
 						"tags": [
 							{
 								"tag": "param",
-								"text": "dataSourceIds - The data source GUID to Search on\n                       - Although an array, only a single source\n                         is supported at this time.",
+								"text": "dataSourceIds - The data source GUID to Search on\n                       - Although an array, only a single source\n                         is supported.",
 								"param": "-"
 							},
 							{
 								"tag": "param",
-								"text": "searchQuery - The search query",
+								"text": "searchQuery - Query string with search tokens",
 								"param": "-"
 							},
 							{
 								"tag": "param",
-								"text": "execute - execute the existing / updated query",
+								"text": "execute - executes the existing / updated query",
 								"param": "-"
 							},
 							{
@@ -4461,7 +4952,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1360,
+							"line": 1361,
 							"character": 4
 						}
 					],
@@ -4494,7 +4985,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1426,
+							"line": 1427,
 							"character": 4
 						}
 					],
@@ -4527,7 +5018,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1958,
+							"line": 2012,
 							"character": 4
 						}
 					],
@@ -4560,7 +5051,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1944,
+							"line": 1998,
 							"character": 4
 						}
 					],
@@ -4573,11 +5064,11 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Set the visible visualizations on a Liveboard.",
+						"shortText": "Sets the visible visualizations on a Liveboard.",
 						"tags": [
 							{
 								"tag": "param",
-								"text": "an array of ids of visualizations to show, the ids not passed\n         will be hidden.",
+								"text": "An array of GUIDs of the visualization to show. The visualization IDs not passed\n in this parameter will be hidden.",
 								"param": "-"
 							},
 							{
@@ -4586,14 +5077,14 @@
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1413,
+							"line": 1414,
 							"character": 4
 						}
 					],
@@ -4606,22 +5097,22 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the Share action on a liveboard or answer",
+						"shortText": "Triggers the **Share** action on an embedded\nLiveboard or Answer.",
 						"tags": [
 							{
 								"tag": "example",
-								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.Share)\n\nsearchEmbed.trigger(HostEvent.Share)\n```"
+								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.Share)\n```\n```js\nsearchEmbed.trigger(HostEvent.Share)\n```"
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw\n"
+								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1830,
+							"line": 1878,
 							"character": 4
 						}
 					],
@@ -4634,7 +5125,7 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the ShowUnderlyingData action on visualization or search",
+						"shortText": "Triggers the **Show underlying data** action on visualization or search",
 						"tags": [
 							{
 								"tag": "param",
@@ -4643,18 +5134,18 @@
 							},
 							{
 								"tag": "example",
-								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.ShowUnderlyingData, {vizId:\n'730496d6-6903-4601-937e-2c691821af3c'})\n\nvizEmbed.trigger(HostEvent.ShowUnderlyingData)\n\nsearchEmbed.trigger(HostEvent.ShowUnderlyingData)\n```"
+								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.ShowUnderlyingData, {vizId:\n'730496d6-6903-4601-937e-2c691821af3c'})\n```\n```js\nvizEmbed.trigger(HostEvent.ShowUnderlyingData)\n```\n```js\nsearchEmbed.trigger(HostEvent.ShowUnderlyingData)\n```"
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw\n"
+								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1723,
+							"line": 1756,
 							"character": 4
 						}
 					],
@@ -4667,27 +5158,27 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the SpotIQAnalyze action on visualization or search",
+						"shortText": "Triggers the **SpotIQ analyze** action on visualization\nor search.",
 						"tags": [
 							{
 								"tag": "param",
-								"text": "incase of Liveboard embed, takes in an object with vizId as a key\ncan be left empty for search and visualization embeds",
+								"text": "Liveboard embed takes `vizId` as a\nkey. Can be left undefined when embedding Search or\nvisualization.",
 								"param": "-"
 							},
 							{
 								"tag": "example",
-								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.SpotIQAnalyze, {vizId:\n'730496d6-6903-4601-937e-2c691821af3c'})\n\nvizEmbed.trigger(HostEvent.SpotIQAnalyze)\n\nsearchEmbed.trigger(HostEvent.SpotIQAnalyze)\n```"
+								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.SpotIQAnalyze, {vizId:\n'730496d6-6903-4601-937e-2c691821af3c'})\n```\n```js\nvizEmbed.trigger(HostEvent.SpotIQAnalyze)\n```\n```js\nsearchEmbed.trigger(HostEvent.SpotIQAnalyze)\n```"
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw\n"
+								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1757,
+							"line": 1795,
 							"character": 4
 						}
 					],
@@ -4700,7 +5191,7 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the SyncToOtherApps action on visualization",
+						"shortText": "Triggers the **Sync to Other Apps** action on an embedded visualization or Answer\nSends data from an Answer or Liveboard visualization to third-party apps such\nas Slack, Salesforce, Microsoft Teams, ServiceNow and so on.",
 						"tags": [
 							{
 								"tag": "param",
@@ -4709,18 +5200,18 @@
 							},
 							{
 								"tag": "example",
-								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.SyncToOtherApps, {vizId:\n'730496d6-6903-4601-937e-2c691821af3c'})\n\nvizEmbed.trigger(HostEvent.SyncToOtherApps)\n```"
+								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.SyncToOtherApps, {vizId:\n'730496d6-6903-4601-937e-2c691821af3c'})\n```\n```js\nvizEmbed.trigger(HostEvent.SyncToOtherApps)\n```"
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw\n"
+								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1870,
+							"line": 1922,
 							"character": 4
 						}
 					],
@@ -4733,27 +5224,27 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the SyncToSheets action on visualization",
+						"shortText": "Triggers the **Sync to Sheets** action on an embedded visualization or Answer\nSends data from an Answer or Liveboard visualization to a Google sheet.",
 						"tags": [
 							{
 								"tag": "param",
-								"text": "an object with vizId as a key",
+								"text": "an object with `vizId` as a key",
 								"param": "-"
 							},
 							{
 								"tag": "example",
-								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.SyncToSheets, {vizId:\n'730496d6-6903-4601-937e-2c691821af3c'})\n\nvizEmbed.trigger(HostEvent.SyncToSheets)\n```"
+								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.SyncToSheets, {vizId:\n'730496d6-6903-4601-937e-2c691821af3c'})\n```\n```js\nvizEmbed.trigger(HostEvent.SyncToSheets)\n```"
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1-sw\n"
+								"text": "SDK: 1.19.0 | ThoughtSpot: 9.0.0.cl, 9.0.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1856,
+							"line": 1906,
 							"character": 4
 						}
 					],
@@ -4786,7 +5277,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1916,
+							"line": 1970,
 							"character": 4
 						}
 					],
@@ -4799,7 +5290,7 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Update the runtime filters. The runtime filters passed here are extended\non to the existing runtime filters if they exist.",
+						"shortText": "Updates runtime filters applied on a Saved Answer or Liveboard. The\nruntime filters passed here are appended to the existing runtime\nfilters.\nPass an array of runtime filters with the following attributes:\n`columnName`\n_String_. The name of the column to filter on.\n`operator`\n Runtime filter operator to apply. For information,\n see [Runtime filter operators](https://developers.thoughtspot.com/docs/?pageid=runtime-filters#rtOperator).\n`values`\n List of operands. Some operators such as EQ, LE allow a single value, whereas operators\n such as BW and IN accept multiple operands.",
 						"tags": [
 							{
 								"tag": "param",
@@ -4812,7 +5303,7 @@
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1-sw"
+								"text": "SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1.sw"
 							},
 							{
 								"tag": "important",
@@ -4823,7 +5314,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1442,
+							"line": 1452,
 							"character": 4
 						}
 					],
@@ -4836,7 +5327,7 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Triggers the Update TML action on a Liveboard",
+						"shortText": "Triggers the **Update TML** action on a Liveboard",
 						"tags": [
 							{
 								"tag": "example",
@@ -4844,14 +5335,14 @@
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.15.0 | ThoughtSpot: 8.7.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1578,
+							"line": 1592,
 							"character": 4
 						}
 					],
@@ -4864,7 +5355,7 @@
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Gets the current pinboard content.",
+						"shortText": "Gets the current Liveboard content.",
 						"tags": [
 							{
 								"tag": "example",
@@ -4872,14 +5363,14 @@
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.13.0 | ThoughtSpot: 8.5.0.cl, 8.8.1-sw\n"
+								"text": "SDK: 1.13.0 | ThoughtSpot: 8.5.0.cl, 8.8.1.sw\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1504,
+							"line": 1513,
 							"character": 4
 						}
 					],
@@ -5104,7 +5595,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2310,
+							"line": 2852,
 							"character": 4
 						}
 					],
@@ -5119,7 +5610,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2312,
+							"line": 2854,
 							"character": 4
 						}
 					],
@@ -5134,7 +5625,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2311,
+							"line": 2853,
 							"character": 4
 						}
 					],
@@ -5149,7 +5640,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 2313,
+							"line": 2855,
 							"character": 4
 						}
 					],
@@ -5171,7 +5662,7 @@
 			"sources": [
 				{
 					"fileName": "types.ts",
-					"line": 2309,
+					"line": 2851,
 					"character": 12
 				}
 			]
@@ -6805,6 +7296,10 @@
 				"shortText": "Embed ThoughtSpot LLM and GPT based natural language search component.",
 				"tags": [
 					{
+						"tag": "version:",
+						"text": "SDK: 1.23.0 | ThoughtSpot: 9.4.0.cl, 9.5.1-sw"
+					},
+					{
 						"tag": "group",
 						"text": "Embed components\n"
 					}
@@ -6820,7 +7315,7 @@
 					"sources": [
 						{
 							"fileName": "embed/sage.ts",
-							"line": 64,
+							"line": 65,
 							"character": 4
 						}
 					],
@@ -7236,7 +7731,7 @@
 					"sources": [
 						{
 							"fileName": "embed/sage.ts",
-							"line": 115,
+							"line": 116,
 							"character": 11
 						}
 					],
@@ -7372,7 +7867,7 @@
 			"sources": [
 				{
 					"fileName": "embed/sage.ts",
-					"line": 56,
+					"line": 57,
 					"character": 13
 				}
 			],
@@ -8601,7 +9096,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -8710,7 +9205,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.17.2 | ThoughtSpot: 8.4.1-sw, 8.4.0.cl"
+								"text": "SDK: 1.17.2 | ThoughtSpot: 8.4.1.sw, 8.4.0.cl"
 							},
 							{
 								"tag": "default",
@@ -9171,7 +9666,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.9.4 | ThoughtSpot 8.1.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.9.4 | ThoughtSpot 8.1.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -9282,7 +9777,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -9436,7 +9931,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1-sw"
+								"text": "SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1.sw"
 							},
 							{
 								"tag": "important",
@@ -12227,7 +12722,7 @@
 							},
 							{
 								"tag": "version",
-								"text": "SDK: 1.22.0 | ThoughtSpot: 9.3.0.cl, 9.5.1-sw\n"
+								"text": "SDK: 1.22.0 | ThoughtSpot: 9.3.0.cl, 9.5.1.sw\n"
 							}
 						]
 					},
@@ -12285,7 +12780,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1-sw"
+								"text": "SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1.sw"
 							},
 							{
 								"tag": "default",
@@ -12349,7 +12844,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.10.4 | ThoughtSpot: 8.2.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.10.4 | ThoughtSpot: 8.2.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -12378,7 +12873,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.9.3 | ThoughtSpot: 8.1.0.cl, 8.4.1-sw"
+								"text": "SDK: 1.9.3 | ThoughtSpot: 8.1.0.cl, 8.4.1.sw"
 							},
 							{
 								"tag": "default",
@@ -12570,7 +13065,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.10.1 | ThoughtSpot: 8.2.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.10.1 | ThoughtSpot: 8.2.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -12690,7 +13185,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.10.2 | 8.2.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.10.2 | 8.2.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -12800,7 +13295,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.12.0 | ThoughtSpot: 8.4.0.cl, 8.4.1-sw*\n"
+								"text": "SDK: 1.12.0 | ThoughtSpot: 8.4.0.cl, 8.4.1.sw*\n"
 							}
 						]
 					},
@@ -13209,7 +13704,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -13318,7 +13813,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.17.2 | ThoughtSpot: 8.4.1-sw, 8.4.0.cl"
+								"text": "SDK: 1.17.2 | ThoughtSpot: 8.4.1.sw, 8.4.0.cl"
 							},
 							{
 								"tag": "default",
@@ -13803,7 +14298,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.9.4 | ThoughtSpot 8.1.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.9.4 | ThoughtSpot 8.1.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -13896,7 +14391,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -14004,7 +14499,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1-sw"
+								"text": "SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1.sw"
 							},
 							{
 								"tag": "important",
@@ -14318,7 +14813,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -14427,7 +14922,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.17.2 | ThoughtSpot: 8.4.1-sw, 8.4.0.cl"
+								"text": "SDK: 1.17.2 | ThoughtSpot: 8.4.1.sw, 8.4.0.cl"
 							},
 							{
 								"tag": "default",
@@ -14781,7 +15276,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.9.4 | ThoughtSpot 8.1.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.9.4 | ThoughtSpot 8.1.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -14845,7 +15340,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -14999,7 +15494,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1-sw"
+								"text": "SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1.sw"
 							},
 							{
 								"tag": "important",
@@ -15141,7 +15636,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -15250,7 +15745,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.17.2 | ThoughtSpot: 8.4.1-sw, 8.4.0.cl"
+								"text": "SDK: 1.17.2 | ThoughtSpot: 8.4.1.sw, 8.4.0.cl"
 							},
 							{
 								"tag": "default",
@@ -15619,7 +16114,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.9.4 | ThoughtSpot 8.1.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.9.4 | ThoughtSpot 8.1.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -15750,7 +16245,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1-sw"
+								"text": "SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1.sw"
 							},
 							{
 								"tag": "important",
@@ -15909,7 +16404,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.9.0 | ThoughtSpot: 8.1.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -16064,7 +16559,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.17.2 | ThoughtSpot: 8.4.1-sw, 8.4.0.cl"
+								"text": "SDK: 1.17.2 | ThoughtSpot: 8.4.1.sw, 8.4.0.cl"
 							},
 							{
 								"tag": "default",
@@ -16560,7 +17055,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.9.4 | ThoughtSpot 8.1.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.9.4 | ThoughtSpot 8.1.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -16676,7 +17171,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1-sw\n"
+								"text": "SDK: 1.11.0 | ThoughtSpot: 8.3.0.cl, 8.4.1.sw\n"
 							}
 						]
 					},
@@ -16784,7 +17279,7 @@
 						"tags": [
 							{
 								"tag": "version",
-								"text": "SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1-sw"
+								"text": "SDK: 1.6.0 | ThoughtSpot: ts8.nov.cl, 8.4.1.sw"
 							},
 							{
 								"tag": "important",
