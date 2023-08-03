@@ -119,17 +119,14 @@ export class SageEmbed extends V1Embed {
      */
     private getIFrameSrc() {
         const path = 'eureka';
-        const {
-            searchQuery,
-            dataSource,
-        } = this.viewConfig;
-
+        const postHashObj = {};
         const tsPostHashParams = this.getThoughtSpotPostUrlParams();
-        let sagePostHashParams = new URLSearchParams({
-            query: searchQuery,
-            worksheet: dataSource,
-        }).toString();
-        sagePostHashParams = `${tsPostHashParams ? '&' : '?'}${sagePostHashParams}`;
+
+        if (this.viewConfig.searchQuery) postHashObj[Param.Query] = this.viewConfig.searchQuery;
+        if (this.viewConfig.dataSource) postHashObj[Param.WorksheetId] = this.viewConfig.dataSource;
+        let sagePostHashParams = new URLSearchParams(postHashObj).toString();
+        if (sagePostHashParams) sagePostHashParams = `${tsPostHashParams ? '&' : '?'}${sagePostHashParams}`;
+
         return `${this.getRootIframeSrc()}/embed/${path}${tsPostHashParams}${sagePostHashParams}`;
     }
 

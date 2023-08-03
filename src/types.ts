@@ -1344,6 +1344,7 @@ export enum HostEvent {
      * Triggers a search query in AppEmbed and SearchEmbed
      * deployments.
      * Includes the following properties:
+     *
      * @param - dataSourceIds - The data source GUID to Search on
      *                        - Although an array, only a single source
      *                          is supported.
@@ -1362,6 +1363,7 @@ export enum HostEvent {
     /**
      * Triggers a drill on certain points of the specified column
      * Includes the following properties:
+     *
      * @param - points - an object containing selectedPoints/clickedPoints
      * to drill to. For example, { selectedPoints: []}
      * @param - columnGuid - Optional. GUID of the column to drill
@@ -1426,18 +1428,19 @@ export enum HostEvent {
      */
     SetActiveTab = 'SetActiveTab',
     /**
-    * Updates runtime filters applied on a Saved Answer or Liveboard. The
-    * runtime filters passed here are appended to the existing runtime
-    * filters.
-    * Pass an array of runtime filters with the following attributes:
-    * `columnName`
-    * _String_. The name of the column to filter on.
-    * `operator`
-    *  Runtime filter operator to apply. For information,
-    *  see [Runtime filter operators](https://developers.thoughtspot.com/docs/?pageid=runtime-filters#rtOperator).
-    * `values`
-    *  List of operands. Some operators such as EQ, LE allow a single value, whereas operators
-    *  such as BW and IN accept multiple operands.
+     * Updates runtime filters applied on a Saved Answer or Liveboard. The
+     * runtime filters passed here are appended to the existing runtime
+     * filters.
+     * Pass an array of runtime filters with the following attributes:
+     * `columnName`
+     * _String_. The name of the column to filter on.
+     * `operator`
+     *  Runtime filter operator to apply. For information,
+     *  see [Runtime filter operators](https://developers.thoughtspot.com/docs/?pageid=runtime-filters#rtOperator).
+     * `values`
+     *  List of operands. Some operators such as EQ, LE allow a single value, whereas
+     *  operators such as BW and IN accept multiple operands.
+     *
      * @param - {@link RuntimeFilter}[] an array of {@link RuntimeFilter} Types.
      * @example
      * ```js
@@ -1453,6 +1456,7 @@ export enum HostEvent {
     /**
      * Navigate to a specific page in the embedded application without reloading the page.
      * This is the same as calling `appEmbed.navigateToPage(path, true)`
+     *
      * @param - path - the path to navigate to (can be a number[1/-1] to go forward/back)
      * @example
      * ```js
@@ -1776,6 +1780,7 @@ export enum HostEvent {
     /**
      * Triggers the **SpotIQ analyze** action on visualization
      * or search.
+     *
      * @param - Liveboard embed takes `vizId` as a
      * key. Can be left undefined when embedding Search or
      * visualization.
@@ -1815,6 +1820,7 @@ export enum HostEvent {
     /**
      * Triggers the **Download** > **PNG** action on
      * charts in the embedded view.
+     *
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.DownloadAsPng,
@@ -1848,6 +1854,7 @@ export enum HostEvent {
     /**
      * Triggers the **Download** > **XLSX**  action on tables
      * in the embedded view.
+     *
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.DownloadAsXlsx, {vizId:
@@ -1879,6 +1886,7 @@ export enum HostEvent {
     /**
      * Triggers the **Save**  action on a Liveboard or Answer.
      * Saves the changes.
+     *
      * @example
      * ```js
      * liveboardEmbed.trigger(HostEvent.Save)
@@ -1892,6 +1900,7 @@ export enum HostEvent {
     /**
      * Triggers the **Sync to Sheets** action on an embedded visualization or Answer
      * Sends data from an Answer or Liveboard visualization to a Google sheet.
+     *
      * @param - an object with `vizId` as a key
      * @example
      * ```js
@@ -1908,6 +1917,7 @@ export enum HostEvent {
      * Triggers the **Sync to Other Apps** action on an embedded visualization or Answer
      * Sends data from an Answer or Liveboard visualization to third-party apps such
      * as Slack, Salesforce, Microsoft Teams, ServiceNow and so on.
+     *
      * @param - an object with vizId as a key
      * @example
      * ```js
@@ -1924,6 +1934,7 @@ export enum HostEvent {
      * Triggers the **Manage pipelines** action on an embedded
      * visualization or Answer.
      * Allows users to manage ThoughtSpot Sync pipelines.
+     *
      * @param - an object with `vizId` as a key
      * @example
      * ```js
@@ -2097,6 +2108,7 @@ export enum Param {
     HideTabPanel = 'hideTabPanel',
     HideSampleQuestions = 'hideSampleQuestions',
     WorksheetId = 'worksheetId',
+    Query = 'query,'
 }
 
 /**
@@ -2106,6 +2118,7 @@ export enum Param {
  * specific actions in the embedded view, define the Action
  * enumeration members in the `disabledActions`, `visibleActions`,
  * or `hiddenActions` array.
+ *
  * @example
  * ```js
  * const embed = new LiveboardEmbed('#embed-container', {
@@ -2124,13 +2137,13 @@ export enum Param {
  *    hiddenActions: [Action.Edit, ActionAction.Explore],
  * })
  * ```
-
  */
 // eslint-disable-next-line no-shadow
 export enum Action {
    /**
     * The **Save** action on an Answer or Liveboard.
     * Allows users to save the changes.
+    *
     * @example
     * ```js
     * disabledActions: [Action.SaveAsView]
@@ -2146,136 +2159,146 @@ export enum Action {
      */
     SaveUntitled = 'saveUntitled',
     /**
-    * The **Save as View** action on the Answer
-    * page. Saves an Answer as a View object.
-    *
-    * @example
-    * ```js
-    * disabledActions: [Action.SaveAsView]
-    * ```
-    */
+     * The **Save as View** action on the Answer
+     * page. Saves an Answer as a View object.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.SaveAsView]
+     * ```
+     */
     SaveAsView = 'saveAsView',
     /**
-    * The **Make a copy** action on a Liveboard or Answer
-    * page.
-    * Creates a copy of the Liveboard, visualization,
-    * or Answer.
-    *
-    * @example
-    * ```js
-    * disabledActions: [Action.MakeACopy]
-    * ```
-    */
+     * The **Make a copy** action on a Liveboard or Answer
+     * page.
+     * Creates a copy of the Liveboard, visualization,
+     * or Answer.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.MakeACopy]
+     * ```
+     */
     MakeACopy = 'makeACopy',
     /**
-    * The **Copy and Edit** action on a Liveboard.
-    * This action is now replaced with `Action.MakeACopy`.
-    *
-    * @example
-    * ```js
-    * disabledActions: [Action.EditACopy]
-    * ```
-    */
+     * The **Copy and Edit** action on a Liveboard.
+     * This action is now replaced with `Action.MakeACopy`.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.EditACopy]
+     * ```
+     */
     EditACopy = 'editACopy',
     /**
-    * The **Copy link** menu action on a Liveboard visualization.
-    * Copies the visualization URL
-    * @example
-    * ```js
-    * disabledActions: [Action.CopyLink]
-    * ```
-    */
+     * The **Copy link** menu action on a Liveboard visualization.
+     * Copies the visualization URL
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.CopyLink]
+     * ```
+     */
     CopyLink = 'embedDocument',
     /**
      * @hidden
      */
     ResetLayout = 'resetLayout',
     /**
-    * The **Schedule** menu action on a Liveboard.
-    * Allows scheduling a Liveboard notification.
-    * @example
-    * ```js
-    * disabledActions: [Action.Schedule]
-    * ```
-    */
+     * The **Schedule** menu action on a Liveboard.
+     * Allows scheduling a Liveboard notification.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.Schedule]
+     * ```
+     */
     Schedule = 'subscription',
     /**
-    * The **Manage schedules** menu action on a Liveboard.
-    * Allows users to manage scheduled Liveboard jobs.
-    * @example
-    * ```js
-    * disabledActions: [Action.SchedulesList]
-    * ```
-    */
+     * The **Manage schedules** menu action on a Liveboard.
+     * Allows users to manage scheduled Liveboard jobs.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.SchedulesList]
+     * ```
+     */
     SchedulesList = 'schedule-list',
     /**
-    * The **Share** action on a Liveboard, Answer, or Worksheet.
-    * Allows users to share an object with other users and groups.
-    * @example
-    * ```js
-    * disabledActions: [Action.Share]
-    * ```
-    */
+     * The **Share** action on a Liveboard, Answer, or Worksheet.
+     * Allows users to share an object with other users and groups.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.Share]
+     * ```
+     */
     Share = 'share',
     /**
-    * The **Add filter** action on a Liveboard and Search page.
-    * Allows adding filters to Answers and visualizations on a Liveboard.
-    * @example
-    * ```js
-    * disabledActions: [Action.AddFilter]
-    * ```
-    */
+     * The **Add filter** action on a Liveboard and Search page.
+     * Allows adding filters to Answers and visualizations on a Liveboard.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.AddFilter]
+     * ```
+     */
     AddFilter = 'addFilter',
     /**
-    * Filter configuration options on a Liveboard and Search page.
-    * Allows configuring filter options when adding filters to a
-    * Liveboard or Answer.
-    * @example
-    * ```js
-    * disabledActions: [Action.ConfigureFilter]
-    * ```
-    */
+     * Filter configuration options on a Liveboard and Search page.
+     * Allows configuring filter options when adding filters to a
+     * Liveboard or Answer.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.ConfigureFilter]
+     * ```
+     */
     ConfigureFilter = 'configureFilter',
     CollapseDataSources = 'collapseDataSources',
     /**
-    * The **Choose sources** button on Search page.
-    * Allows selecting data sources for search queries.
-    * @example
-    * ```js
-    * disabledActions: [Action.ChooseDataSources]
-    * ```
-    */
+     * The **Choose sources** button on Search page.
+     * Allows selecting data sources for search queries.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.ChooseDataSources]
+     * ```
+     */
     ChooseDataSources = 'chooseDataSources',
     /**
-    * The **Create formula** action on a Search or Answer page.
-    * Allows adding formulas to an Answer.
-    * @example
-    * ```js
-    * disabledActions: [Action.AddFormula]
-    * ```
-    */
+     * The **Create formula** action on a Search or Answer page.
+     * Allows adding formulas to an Answer.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.AddFormula]
+     * ```
+     */
     AddFormula = 'addFormula',
     /**
-    * The **Add parameter** action on a Liveboard or Answer.
-    * Allows adding Parameters to a Liveboard or Answer.
-    * @example
-    * ```js
-    * disabledActions: [Action.AddParameter]
-    * ```
-    */
+     * The **Add parameter** action on a Liveboard or Answer.
+     * Allows adding Parameters to a Liveboard or Answer.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.AddParameter]
+     * ```
+     */
     AddParameter = 'addParameter',
     /**
      * @hidden
      */
     SearchOnTop = 'searchOnTop',
     /**
-    * The **SpotIQ analyze** menu action on a visualization or
-    * Answer page.
-    * @example
-    * ```js
-    * disabledActions: [Action.SpotIQAnalyze]
-    * ```
-    */
+     * The **SpotIQ analyze** menu action on a visualization or
+     * Answer page.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.SpotIQAnalyze]
+     * ```
+     */
     SpotIQAnalyze = 'spotIQAnalyze',
     /**
      * @hidden
@@ -2291,89 +2314,98 @@ export enum Action {
      */
     ReplaySearch = 'replaySearch',
     /**
-    * The **Show underlying data** menu action on a visualization or
-    * Answer page.
-    * @example
-    * ```js
-    * disabledActions: [Action.ShowUnderlyingData]
-    * ```
-    */
+     * The **Show underlying data** menu action on a visualization or
+     * Answer page.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.ShowUnderlyingData]
+     * ```
+     */
     ShowUnderlyingData = 'showUnderlyingData',
     /**
-    * The **Download** menu action on Liveboard visualizations
-    * and Answers.
-    * Allows downloading a visualization or Answer.
-    * @example
-    * ```js
-    * disabledActions: [Action.DownloadAsPng]
-    * ```
-    */
+     * The **Download** menu action on Liveboard visualizations
+     * and Answers.
+     * Allows downloading a visualization or Answer.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.DownloadAsPng]
+     * ```
+     */
     Download = 'download',
     /**
-    * The **Download** > **PNG** menu action for charts on a Liveboard
-    * or Answer page.
-    * Downloads a visualization or Answer as a PNG file.
-    * @example
-    * ```js
-    * disabledActions: [Action.DownloadAsPng]
-    * ```
-    */
+     * The **Download** > **PNG** menu action for charts on a Liveboard
+     * or Answer page.
+     * Downloads a visualization or Answer as a PNG file.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.DownloadAsPng]
+     * ```
+     */
     DownloadAsPng = 'downloadAsPng',
     /**
-    * The **Download** > **PDF** menu action on a Liveboard.
-    * Downloads a visualization or Answer as a PDF file.
-    * @example
-    * ```js
-    * disabledActions: [Action.DownloadAsPdf]
-    * ```
-    */
+     * The **Download** > **PDF** menu action on a Liveboard.
+     * Downloads a visualization or Answer as a PDF file.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.DownloadAsPdf]
+     * ```
+     */
     DownloadAsPdf = 'downloadAsPdf',
     /**
-    * The **Download**  > **CSV** menu action for tables on a Liveboard
-    * or Answer page.
-    * Downloads a visualization or Answer in the XLSX format.
-    * @example
-    * ```js
-    * disabledActions: [Action.DownloadAsCsv]
-    * ```
-    */
+     * The **Download**  > **CSV** menu action for tables on a Liveboard
+     * or Answer page.
+     * Downloads a visualization or Answer in the XLSX format.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.DownloadAsCsv]
+     * ```
+     */
     DownloadAsCsv = 'downloadAsCSV',
     /**
-    * The **Download** > **XLSX** menu action for tables on a Liveboard
-    * or Answer page.
-    * Downloads a visualization or Answer in the XLSX format.
-    * @example
-    * ```js
-    * disabledActions: [Action.DownloadAsXlsx]
-    * ```
-    */
+     * The **Download** > **XLSX** menu action for tables on a Liveboard
+     * or Answer page.
+     * Downloads a visualization or Answer in the XLSX format.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.DownloadAsXlsx]
+     * ```
+     */
     DownloadAsXlsx = 'downloadAsXLSX',
     /**
      * @hidden
      */
     DownloadTrace = 'downloadTrace',
     /**
-    * The **Export TML** menu action on Liveboard, Answers
-    * Worksheets and Data Connections page.
-    * Exports an object as a TML file.
-    * @example
-    * ```js
-    * disabledActions: [Action.ExportTML]
-    * ```
-    */
+     * The **Export TML** menu action on Liveboard, Answers
+     * Worksheets and Data Connections page.
+     * Exports an object as a TML file.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.ExportTML]
+     * ```
+     */
     ExportTML = 'exportTSL',
     /**
-    * The **Import TML** menu action for Liveboards and Answers.
-    * Imports TML representation of ThoughtSpot objects.
-    * @example
-    * ```js
-    * disabledActions: [Action.ImportTML]
-    * ```
-    */
+     * The **Import TML** menu action for Liveboards and Answers.
+     * Imports TML representation of ThoughtSpot objects.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.ImportTML]
+     * ```
+     */
     ImportTML = 'importTSL',
    /**
     * The **Update TML** menu action for Liveboards and Answers.
     * Update TML representation of ThoughtSpot objects.
+    *
     * @example
     * ```js
     * disabledActions: [Action.UpdateTML]
@@ -2383,6 +2415,7 @@ export enum Action {
    /**
     * The **Edit TML** menu action for Liveboards and Answers.
     * Opens the TML editor.
+    *
     * @example
     * ```js
     * disabledActions: [Action.EditTML]
@@ -2390,50 +2423,55 @@ export enum Action {
     */
     EditTML = 'editTSL',
     /**
-    * The **Present** menu action for Liveboards and Answers.
-    * Allows presenting a Liveboard or visualization in
-    * slideshow mode.
-    * @example
-    * ```js
-    * disabledActions: [Action.Present]
-    * ```
-    */
+     * The **Present** menu action for Liveboards and Answers.
+     * Allows presenting a Liveboard or visualization in
+     * slideshow mode.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.Present]
+     * ```
+     */
     Present = 'present',
     /**
-    * The tile resize options in the visualization menu.
-    * Allows switching between different preset layouts.
-    * @example
-    * ```js
-    * disabledActions: [Action.ToggleSize]
-    * ```
-    */
+     * The tile resize options in the visualization menu.
+     * Allows switching between different preset layouts.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.ToggleSize]
+     * ```
+     */
     ToggleSize = 'toggleSize',
     /**
-    * The *Edit* action on the Liveboard page and in the
-    * visualization menu.
-    * Opens a Liveboard or visualization in edit mode.
-    * @example
-    * ```js
-    * disabledActions: [Action.Edit]
-    * ```
-    */
+     * The *Edit* action on the Liveboard page and in the
+     * visualization menu.
+     * Opens a Liveboard or visualization in edit mode.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.Edit]
+     * ```
+     */
     Edit = 'edit',
     /**
-    * The text edit option for Liveboard and visualization titles.
-    * @example
-    * ```js
-    * disabledActions: [Action.EditTitle]
-    * ```
-    */
+     * The text edit option for Liveboard and visualization titles.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.EditTitle]
+     * ```
+     */
     EditTitle = 'editTitle',
     /**
-    * The **Delete** menu action on Liveboards and visualizations.
-    * Deletes a Liveboard or a visualization from a Liveboard.
-    * @example
-    * ```js
-    * disabledActions: [Action.Remove]
-    * ```
-    */
+     * The **Delete** menu action on Liveboards and visualizations.
+     * Deletes a Liveboard or a visualization from a Liveboard.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.Remove]
+     * ```
+     */
     Remove = 'delete',
     /**
      * @hidden
@@ -2456,15 +2494,16 @@ export enum Action {
      */
     PinboardInfo = 'pinboardInfo',
     /**
-    * The **Show Liveboard details** menu action on a Liveboard.
-    * Displays details such as the name, description, and
-    * author of the Liveboard, and timestamp of Liveboard creation
-    * and update.
-    * @example
-    * ```js
-    * disabledActions: [Action.LiveboardInfo]
-    * ```
-    */
+     * The **Show Liveboard details** menu action on a Liveboard.
+     * Displays details such as the name, description, and
+     * author of the Liveboard, and timestamp of Liveboard creation
+     * and update.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.LiveboardInfo]
+     * ```
+     */
     LiveboardInfo = 'pinboardInfo',
     /**
      * @hidden
@@ -2475,13 +2514,14 @@ export enum Action {
      */
     DownloadEmbraceQueries = 'downloadEmbraceQueries',
     /**
-    * The **Pin** menu action on an Answer or
-    * Search results page.
-    * @example
-    * ```js
-    * disabledActions: [Action.Pin]
-    * ```
-    */
+     * The **Pin** menu action on an Answer or
+     * Search results page.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.Pin]
+     * ```
+     */
     Pin = 'pin',
     /**
      * @hidden
@@ -2489,6 +2529,7 @@ export enum Action {
     AnalysisInfo = 'analysisInfo',
    /**
     * The **Schedule** menu action on a Liveboard.
+    *
     * @example
     * ```js
     * disabledActions: [Action.Subscription]
@@ -2496,26 +2537,29 @@ export enum Action {
     */
     Subscription = 'subscription',
     /**
-    * The **Explore** action on Liveboard visualizations
-    * @example
-    * ```js
-    * disabledActions: [Action.Explore]
-    * ```
-    */
+     * The **Explore** action on Liveboard visualizations
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.Explore]
+     * ```
+     */
     Explore = 'explore',
     /**
-    * The action to include data points on a drilled-down Answer
-    * or visualization
-    * @example
-    * ```js
-    * disabledActions: [Action.DrillInclude]
-    * ```
-    */
+     * The action to include data points on a drilled-down Answer
+     * or visualization
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.DrillInclude]
+     * ```
+     */
 
     DrillInclude = 'context-menu-item-include',
    /**
     * The action to exclude data points on a drilled-down Answer
     * or visualization
+    *
     * @example
     * ```js
     * disabledActions: [Action.DrillInclude]
@@ -2526,6 +2570,7 @@ export enum Action {
     * The **Copy to clipboard** menu action on tables in an Answer
     * or Liveboard.
     * Copies the selected data point.
+    *
     * @example
     * ```js
     * disabledActions: [Action.CopyToClipboard]
@@ -2543,6 +2588,7 @@ export enum Action {
     * The **Drill down** menu action on Answers and Liveboard
     * visualizations.
     * Allows drilling down to a specific data point on a chart or table.
+    *
     * @example
     * ```js
     * disabledActions: [Action.DrillDown]
@@ -2552,6 +2598,7 @@ export enum Action {
    /**
     * The request access action on Liveboards.
     * Allows users with view permissions to request edit access to a Liveboard.
+    *
     * @example
     * ```js
     * disabledActions: [Action.RequestAccess]
@@ -2561,6 +2608,7 @@ export enum Action {
    /**
     * The **Query visualizer** and **Query SQL** buttons in Query details panel
     * of the Answer page
+    *
     * @example
     * ```js
     * disabledActions: [Action.QueryDetailsButtons]
@@ -2569,6 +2617,7 @@ export enum Action {
     QueryDetailsButtons = 'QueryDetailsButtons',
     /**
      * The **Delete** action for Answers.
+     *
      * @example
      * ```js
      * disabledActions: [Action.AnswerDelete]
@@ -2578,6 +2627,7 @@ export enum Action {
     AnswerDelete = 'onDeleteAnswer',
     /**
      * The Chart switcher icon on Answer and visualization pages.
+     *
      * @example
      * ```js
      * disabledActions: [Action.AnswerChartSwitcher]
@@ -2587,6 +2637,7 @@ export enum Action {
     AnswerChartSwitcher = 'answerChartSwitcher',
     /**
      * Favorites icon (*) on Answers, Liveboard, and Data pages
+     *
      * @example
      * ```js
      * disabledActions: [Action.AddToFavorites]
@@ -2596,6 +2647,7 @@ export enum Action {
     AddToFavorites = 'addToFavorites',
     /**
      * The edit icon on Liveboards (Classic experience).
+     *
      * @example
      * ```js
      * disabledActions: [Action.EditDetails]
@@ -2605,6 +2657,7 @@ export enum Action {
     EditDetails = 'editDetails',
     /**
      * The Create alert action on KPI charts.
+     *
      * @example
      * ```js
      * disabledActions: [Action.CreateMonitor ]
@@ -2623,6 +2676,7 @@ export enum Action {
     /**
      * The **Sync to sheets** action on Answers and Liveboard visualizations.
      * Allows sending data to a Google Sheet.
+     *
      * @example
      * ```js
      * disabledActions: [Action.SyncToSheets]
@@ -2634,6 +2688,7 @@ export enum Action {
      * The **Sync to other apps** action on Answers and Liveboard visualizations.
      * Allows sending data to third-party apps like Slack, Salesforce,
      * Microsoft Teams, and so on.
+     *
      * @example
      * ```js
      * disabledActions: [Action.SyncToOtherApps]
@@ -2644,6 +2699,7 @@ export enum Action {
     /**
      * The **Manage pipelines** action on Answers and Liveboard visualizations.
      * Allows users to manage data sync pipelines to third-party apps.
+     *
      * @example
      * ```js
      * disabledActions: [Action.SyncToOtherApps]
@@ -2654,6 +2710,7 @@ export enum Action {
     /**
      * The **Filter** action on Liveboard visualizations.
      * Allows users to apply cross-filters on a Liveboard.
+     *
      * @example
      * ```js
      * disabledActions: [Action.CrossFilter]
@@ -2665,6 +2722,7 @@ export enum Action {
      * The **Remove** action that appears when cross filters are applied
      * on a Liveboard.
      * Removes filters applied o a visualization.
+     *
      * @example
      * ```js
      * disabledActions: [Action.RemoveCrossFilter]
@@ -2676,6 +2734,7 @@ export enum Action {
      * The **Aggregate** option in the chart axis or the
      * table column customization menu.
      * Provides aggregation options to analyze the data on a chart or table.
+     *
      * @example
      * ```js
      * disabledActions: [Action.AxisMenuAggregate]
@@ -2687,6 +2746,7 @@ export enum Action {
      * The **Time bucket** option in the chart axis or table column
      * customization menu.
      * Allows defining time metric for date comparison.
+     *
      * @example
      * ```js
      * disabledActions: [Action.AxisMenuTimeBucket]
@@ -2697,6 +2757,7 @@ export enum Action {
     /**
      * The **Filter** action in the chart axis or table column
      * customization menu.
+     *
      * @example
      * ```js
      * disabledActions: [Action.AxisMenuFilter]
@@ -2708,6 +2769,7 @@ export enum Action {
      * The **Conditional formatting** action on chart or table.
      * Allows adding rules for conditional formatting of data
      * points on a chart or table.
+     *
      * @example
      * ```js
      * disabledActions: [Action.AxisMenuConditionalFormat]
@@ -2719,6 +2781,7 @@ export enum Action {
      * The **Sort** menu action on a table or chart axis
      * Sorts data in ascending or descending order.
      * Allows adding, editing, or removing filters.
+     *
      * @example
      * ```js
      * disabledActions: [Action.AxisMenuConditionalFormat]
@@ -2731,6 +2794,7 @@ export enum Action {
      * customization menu.
      * Allows grouping data points if the axes use the same
      * unit of measurement and a similar scale.
+     *
      * @example
      * ```js
      * disabledActions: [Action.AxisMenuGroup]
@@ -2742,6 +2806,7 @@ export enum Action {
      * The **Position** option in the axis customization menu.
      * Allows changing the position of the axis to the
      * left or right side of the chart.
+     *
      * @example
      * ```js
      * disabledActions: [Action.AxisMenuPosition]
@@ -2752,6 +2817,7 @@ export enum Action {
     /**
      * The **Rename** option in the chart axis or table column customization menu.
      * Renames the axis label on a chart or the column header on a table.
+     *
      * @example
      * ```js
      * disabledActions: [Action.AxisMenuRename]
@@ -2763,6 +2829,7 @@ export enum Action {
      * The **Edit** action in the axis customization menu.
      * Allows editing the axis name, position, minimum and maximum values,
      * and format of a column.
+     *
      * @example
      * ```js
      * disabledActions: [Action.AxisMenuEdit]
@@ -2773,6 +2840,7 @@ export enum Action {
     /**
      * The **Number format** action to customize the format of
      * the data labels on a chart or table.
+     *
      * @example
      * ```js
      * disabledActions: [Action.AxisMenuNumberFormat]
@@ -2783,6 +2851,7 @@ export enum Action {
     /**
      * The **Text wrapping** action on a table.
      * Wraps or clips column text on a table.
+     *
      * @example
      * ```js
      * disabledActions: [Action.AxisMenuTextWrapping]
@@ -2795,6 +2864,7 @@ export enum Action {
      * customization menu.
      * Removes the data labels from a chart or the column of a
      * table visualization.
+     *
      * @example
      * ```js
      * disabledActions: [Action.AxisMenuRemove]
@@ -2809,6 +2879,7 @@ export enum Action {
     /**
      * The **Rename** menu action on Liveboards and visualizations.
      * Allows renaming a Liveboard or visualization.
+     *
      * @example
      * ```js
      * disabledActions: [Action.RenameModalTitleDescription]
