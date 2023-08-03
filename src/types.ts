@@ -2040,7 +2040,9 @@ export enum Param {
     ShowLiveboardTitle = 'showLiveboardTitle',
     HiddenTabs = 'hideTabs',
     VisibleTabs = 'visibleTabs',
-    HideTabPanel = 'hideTabPanel'
+    HideTabPanel = 'hideTabPanel',
+    HideSampleQuestions = 'hideSampleQuestions',
+    WorksheetId = 'worksheetId',
 }
 
 /**
@@ -2288,6 +2290,22 @@ export enum Action {
      * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
      */
     EnableContextualChangeAnalysis = 'enableContextualChangeAnalysis',
+    /**
+     * @version SDK: 1.26.0 | Thoughtspot: 9.7.0.cl
+     */
+    ShowSageQuery = 'showSageQuery',
+    /**
+     * @version SDK: 1.26.0 | Thoughtspot: 9.7.0.cl
+     */
+    EditSageAnswer = 'editSageAnswer',
+    /**
+     * @version SDK: 1.26.0 | Thoughtspot: 9.7.0.cl
+     */
+    SageAnswerFeedback = 'sageAnswerFeedback',
+    /**
+     * @version SDK: 1.26.0 | Thoughtspot: 9.7.0.cl
+     */
+    ModifySageAnswer = 'modifySageAnswer',
 }
 
 export interface SessionInterface {
