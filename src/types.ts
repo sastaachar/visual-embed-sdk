@@ -260,6 +260,9 @@ export interface CustomStyles {
 export interface CustomisationsInterface {
     style?: CustomStyles;
     content?: {
+        /**
+         * @version SDK: 1.26.0 | 9.7.0.cl
+         */
         strings?: Record<string, any>;
         [key: string]: any;
     };
@@ -686,21 +689,21 @@ export interface ViewConfig {
     /**
      * Boolean to hide liveboard header
      *
-     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
+     * @version SDK: 1.26.0 | Thoughtspot: 9.7.0.cl
      * @default false
      */
     hideLiveboardHeader?: boolean;
     /**
      * Boolean to show liveboard title
      *
-     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
+     * @version SDK: 1.26.0 | Thoughtspot: 9.7.0.cl
      * @default false
      */
     showLiveboardTitle?: boolean;
     /**
      * Boolean to show liveboard description
      *
-     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
+     * @version SDK: 1.26.0 | Thoughtspot: 9.7.0.cl
      * @default false
      */
     showLiveboardDescription?: boolean;
@@ -718,7 +721,7 @@ export interface ViewConfig {
      *  'f547ec54-2a37-4516-a222-2b06719af726']
      * });
      * ```
-     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
+     * @version SDK: 1.26.0 | Thoughtspot: 9.7.0.cl
      */
     hiddenTabs?: string[];
     /**
@@ -737,7 +740,7 @@ export interface ViewConfig {
      *  'f547ec54-2a37-4516-a222-2b06719af726']
      * });
      * ```
-     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
+     * @version SDK: 1.26.0 | Thoughtspot: 9.7.0.cl
      */
     visibleTabs?: string[];
 }
@@ -1969,7 +1972,7 @@ export enum HostEvent {
      * @version SDK: 1.23.0 | ThoughtSpot: 9.4.0.cl
      */
     UpdateFilters = 'updateFilters',
-    /*
+    /**
      * Get Tab for the current Liveboard.
      *
      * @example
@@ -1980,7 +1983,7 @@ export enum HostEvent {
      *   );
      * })
      * ```
-     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
+     * @version SDK: 1.26.0 | ThoughtSpot: 9.7.0.cl
      */
     GetTabs = 'getTabs',
     /**
@@ -1994,7 +1997,7 @@ export enum HostEvent {
      *  '430496d6-6903-4601-937e-2c691821af3c',
      *  'f547ec54-2a37-4516-a222-2b06719af726'])
      * ```
-     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
+     * @version SDK: 1.26.0 | Thoughtspot: 9.7.0.cl
      */
     SetVisibleTabs = 'SetPinboardVisibleTabs',
     /**
@@ -2008,7 +2011,7 @@ export enum HostEvent {
      *  '630496d6-6903-4601-937e-2c691821af3c',
      *  'i547ec54-2a37-4516-a222-2b06719af726'])
      * ```
-     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
+     * @version SDK: 1.26.0 | Thoughtspot: 9.7.0.cl
      */
     SetHiddenTabs = 'SetPinboardHiddenTabs',
 }
@@ -2824,7 +2827,7 @@ export enum Action {
      */
     MarkAsVerified = 'markAsVerified',
     /**
-     * @version SDK: 1.25.0 | Thoughtspot: 9.6.0.cl
+     * @version SDK: 1.26.0 | Thoughtspot: 9.7.0.cl
      */
     AddTab = 'addTab',
     /**
