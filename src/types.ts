@@ -2119,8 +2119,8 @@ export enum Param {
     VisibleTabs = 'visibleTabs',
     HideTabPanel = 'hideTabPanel',
     HideSampleQuestions = 'hideSampleQuestions',
-    WorksheetId = 'worksheetId',
-    Query = 'query,'
+    WorksheetId = 'worksheet',
+    Query = 'query'
 }
 
 /**
