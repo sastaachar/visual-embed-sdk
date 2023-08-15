@@ -7,7 +7,7 @@
 	"originalName": "",
 	"children": [
 		{
-			"id": 799,
+			"id": 801,
 			"name": "Action",
 			"kind": 4,
 			"kindString": "Enumeration",
@@ -21,13 +21,13 @@
 					},
 					{
 						"tag": "example",
-						"text": "\n```js\nconst embed = new LiveboardEmbed('#embed-container', {\n   ... // other options\n   //visibleActions: [],\n   disabledActions: [Action.Download],\n   hiddenActions: [Action.Edit, ActionAction.Explore],\n})\n```\n\n"
+						"text": "\n```js\nconst embed = new LiveboardEmbed('#embed-container', {\n   ... // other options\n   //visibleActions: [],\n   disabledActions: [Action.Download],\n   hiddenActions: [Action.Edit, ActionAction.Explore],\n})\n```\n"
 					}
 				]
 			},
 			"children": [
 				{
-					"id": 811,
+					"id": 813,
 					"name": "AddFilter",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -51,7 +51,7 @@
 					"defaultValue": "\"addFilter\""
 				},
 				{
-					"id": 815,
+					"id": 817,
 					"name": "AddFormula",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -75,7 +75,7 @@
 					"defaultValue": "\"addFormula\""
 				},
 				{
-					"id": 816,
+					"id": 818,
 					"name": "AddParameter",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -99,7 +99,7 @@
 					"defaultValue": "\"addParameter\""
 				},
 				{
-					"id": 888,
+					"id": 890,
 					"name": "AddTab",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -122,7 +122,7 @@
 					"defaultValue": "\"addTab\""
 				},
 				{
-					"id": 863,
+					"id": 865,
 					"name": "AddToFavorites",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -150,7 +150,7 @@
 					"defaultValue": "\"addToFavorites\""
 				},
 				{
-					"id": 862,
+					"id": 864,
 					"name": "AnswerChartSwitcher",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -178,7 +178,7 @@
 					"defaultValue": "\"answerChartSwitcher\""
 				},
 				{
-					"id": 861,
+					"id": 863,
 					"name": "AnswerDelete",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -206,7 +206,7 @@
 					"defaultValue": "\"onDeleteAnswer\""
 				},
 				{
-					"id": 872,
+					"id": 874,
 					"name": "AxisMenuAggregate",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -234,7 +234,7 @@
 					"defaultValue": "\"axisMenuAggregate\""
 				},
 				{
-					"id": 875,
+					"id": 877,
 					"name": "AxisMenuConditionalFormat",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -262,7 +262,7 @@
 					"defaultValue": "\"axisMenuConditionalFormat\""
 				},
 				{
-					"id": 880,
+					"id": 882,
 					"name": "AxisMenuEdit",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -290,7 +290,7 @@
 					"defaultValue": "\"axisMenuEdit\""
 				},
 				{
-					"id": 874,
+					"id": 876,
 					"name": "AxisMenuFilter",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -318,7 +318,7 @@
 					"defaultValue": "\"axisMenuFilter\""
 				},
 				{
-					"id": 877,
+					"id": 879,
 					"name": "AxisMenuGroup",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -346,7 +346,7 @@
 					"defaultValue": "\"axisMenuGroup\""
 				},
 				{
-					"id": 881,
+					"id": 883,
 					"name": "AxisMenuNumberFormat",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -374,7 +374,7 @@
 					"defaultValue": "\"axisMenuNumberFormat\""
 				},
 				{
-					"id": 878,
+					"id": 880,
 					"name": "AxisMenuPosition",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -402,7 +402,7 @@
 					"defaultValue": "\"axisMenuPosition\""
 				},
 				{
-					"id": 883,
+					"id": 885,
 					"name": "AxisMenuRemove",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -430,7 +430,7 @@
 					"defaultValue": "\"axisMenuRemove\""
 				},
 				{
-					"id": 879,
+					"id": 881,
 					"name": "AxisMenuRename",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -458,7 +458,7 @@
 					"defaultValue": "\"axisMenuRename\""
 				},
 				{
-					"id": 876,
+					"id": 878,
 					"name": "AxisMenuSort",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -486,7 +486,7 @@
 					"defaultValue": "\"axisMenuSort\""
 				},
 				{
-					"id": 882,
+					"id": 884,
 					"name": "AxisMenuTextWrapping",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -514,7 +514,7 @@
 					"defaultValue": "\"axisMenuTextWrapping\""
 				},
 				{
-					"id": 873,
+					"id": 875,
 					"name": "AxisMenuTimeBucket",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -542,7 +542,7 @@
 					"defaultValue": "\"axisMenuTimeBucket\""
 				},
 				{
-					"id": 814,
+					"id": 816,
 					"name": "ChooseDataSources",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -566,7 +566,7 @@
 					"defaultValue": "\"chooseDataSources\""
 				},
 				{
-					"id": 813,
+					"id": 815,
 					"name": "CollapseDataSources",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -581,7 +581,7 @@
 					"defaultValue": "\"collapseDataSources\""
 				},
 				{
-					"id": 812,
+					"id": 814,
 					"name": "ConfigureFilter",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -605,7 +605,7 @@
 					"defaultValue": "\"configureFilter\""
 				},
 				{
-					"id": 854,
+					"id": 856,
 					"name": "CopyAndEdit",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -620,7 +620,7 @@
 					"defaultValue": "\"context-menu-item-copy-and-edit\""
 				},
 				{
-					"id": 806,
+					"id": 808,
 					"name": "CopyLink",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -644,7 +644,7 @@
 					"defaultValue": "\"embedDocument\""
 				},
 				{
-					"id": 853,
+					"id": 855,
 					"name": "CopyToClipboard",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -668,7 +668,7 @@
 					"defaultValue": "\"context-menu-item-copy-to-clipboard\""
 				},
 				{
-					"id": 865,
+					"id": 867,
 					"name": "CreateMonitor",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -696,7 +696,7 @@
 					"defaultValue": "\"createMonitor\""
 				},
 				{
-					"id": 870,
+					"id": 872,
 					"name": "CrossFilter",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -724,7 +724,7 @@
 					"defaultValue": "\"context-menu-item-cross-filter\""
 				},
 				{
-					"id": 824,
+					"id": 826,
 					"name": "Download",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -748,7 +748,7 @@
 					"defaultValue": "\"download\""
 				},
 				{
-					"id": 827,
+					"id": 829,
 					"name": "DownloadAsCsv",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -772,7 +772,7 @@
 					"defaultValue": "\"downloadAsCSV\""
 				},
 				{
-					"id": 826,
+					"id": 828,
 					"name": "DownloadAsPdf",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -796,7 +796,7 @@
 					"defaultValue": "\"downloadAsPdf\""
 				},
 				{
-					"id": 825,
+					"id": 827,
 					"name": "DownloadAsPng",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -820,7 +820,7 @@
 					"defaultValue": "\"downloadAsPng\""
 				},
 				{
-					"id": 828,
+					"id": 830,
 					"name": "DownloadAsXlsx",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -844,7 +844,7 @@
 					"defaultValue": "\"downloadAsXLSX\""
 				},
 				{
-					"id": 858,
+					"id": 860,
 					"name": "DrillDown",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -868,7 +868,7 @@
 					"defaultValue": "\"DRILL\""
 				},
 				{
-					"id": 852,
+					"id": 854,
 					"name": "DrillExclude",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -892,7 +892,7 @@
 					"defaultValue": "\"context-menu-item-exclude\""
 				},
 				{
-					"id": 851,
+					"id": 853,
 					"name": "DrillInclude",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -916,7 +916,7 @@
 					"defaultValue": "\"context-menu-item-include\""
 				},
 				{
-					"id": 836,
+					"id": 838,
 					"name": "Edit",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -940,7 +940,7 @@
 					"defaultValue": "\"edit\""
 				},
 				{
-					"id": 805,
+					"id": 807,
 					"name": "EditACopy",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -964,7 +964,7 @@
 					"defaultValue": "\"editACopy\""
 				},
 				{
-					"id": 864,
+					"id": 866,
 					"name": "EditDetails",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -992,7 +992,7 @@
 					"defaultValue": "\"editDetails\""
 				},
 				{
-					"id": 856,
+					"id": 858,
 					"name": "EditMeasure",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1054,7 +1054,7 @@
 					"defaultValue": "\"editTSL\""
 				},
 				{
-					"id": 837,
+					"id": 839,
 					"name": "EditTitle",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1078,7 +1078,7 @@
 					"defaultValue": "\"editTitle\""
 				},
 				{
-					"id": 889,
+					"id": 891,
 					"name": "EnableContextualChangeAnalysis",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1101,7 +1101,7 @@
 					"defaultValue": "\"enableContextualChangeAnalysis\""
 				},
 				{
-					"id": 850,
+					"id": 852,
 					"name": "Explore",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1125,7 +1125,7 @@
 					"defaultValue": "\"explore\""
 				},
 				{
-					"id": 830,
+					"id": 832,
 					"name": "ExportTML",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1149,7 +1149,7 @@
 					"defaultValue": "\"exportTSL\""
 				},
 				{
-					"id": 831,
+					"id": 833,
 					"name": "ImportTML",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1173,7 +1173,7 @@
 					"defaultValue": "\"importTSL\""
 				},
 				{
-					"id": 844,
+					"id": 846,
 					"name": "LiveboardInfo",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1197,7 +1197,7 @@
 					"defaultValue": "\"pinboardInfo\""
 				},
 				{
-					"id": 804,
+					"id": 806,
 					"name": "MakeACopy",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1221,7 +1221,7 @@
 					"defaultValue": "\"makeACopy\""
 				},
 				{
-					"id": 869,
+					"id": 871,
 					"name": "ManagePipelines",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1249,7 +1249,7 @@
 					"defaultValue": "\"manage-pipeline\""
 				},
 				{
-					"id": 887,
+					"id": 889,
 					"name": "MarkAsVerified",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1319,7 +1319,7 @@
 					"defaultValue": "\"pin\""
 				},
 				{
-					"id": 834,
+					"id": 836,
 					"name": "Present",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1343,7 +1343,7 @@
 					"defaultValue": "\"present\""
 				},
 				{
-					"id": 860,
+					"id": 862,
 					"name": "QueryDetailsButtons",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1367,7 +1367,7 @@
 					"defaultValue": "\"QueryDetailsButtons\""
 				},
 				{
-					"id": 838,
+					"id": 840,
 					"name": "Remove",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1391,7 +1391,7 @@
 					"defaultValue": "\"delete\""
 				},
 				{
-					"id": 871,
+					"id": 873,
 					"name": "RemoveCrossFilter",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1419,7 +1419,7 @@
 					"defaultValue": "\"context-menu-item-remove-cross-filter\""
 				},
 				{
-					"id": 885,
+					"id": 887,
 					"name": "RenameModalTitleDescription",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1447,7 +1447,7 @@
 					"defaultValue": "\"renameModalTitleDescription\""
 				},
 				{
-					"id": 866,
+					"id": 868,
 					"name": "ReportError",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1474,7 +1474,7 @@
 					"defaultValue": "\"reportError\""
 				},
 				{
-					"id": 859,
+					"id": 861,
 					"name": "RequestAccess",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1498,7 +1498,7 @@
 					"defaultValue": "\"requestAccess\""
 				},
 				{
-					"id": 886,
+					"id": 888,
 					"name": "RequestVerification",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1568,7 +1568,7 @@
 					"defaultValue": "\"save\""
 				},
 				{
-					"id": 803,
+					"id": 805,
 					"name": "SaveAsView",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1592,7 +1592,7 @@
 					"defaultValue": "\"saveAsView\""
 				},
 				{
-					"id": 808,
+					"id": 810,
 					"name": "Schedule",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1616,7 +1616,7 @@
 					"defaultValue": "\"subscription\""
 				},
 				{
-					"id": 809,
+					"id": 811,
 					"name": "SchedulesList",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1640,7 +1640,7 @@
 					"defaultValue": "\"schedule-list\""
 				},
 				{
-					"id": 857,
+					"id": 859,
 					"name": "Separator",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1655,7 +1655,7 @@
 					"defaultValue": "\"context-menu-item-separator\""
 				},
 				{
-					"id": 810,
+					"id": 812,
 					"name": "Share",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1679,7 +1679,7 @@
 					"defaultValue": "\"share\""
 				},
 				{
-					"id": 821,
+					"id": 823,
 					"name": "ShareViz",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1741,7 +1741,7 @@
 					"defaultValue": "\"showUnderlyingData\""
 				},
 				{
-					"id": 818,
+					"id": 820,
 					"name": "SpotIQAnalyze",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1765,7 +1765,7 @@
 					"defaultValue": "\"spotIQAnalyze\""
 				},
 				{
-					"id": 849,
+					"id": 851,
 					"name": "Subscription",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1789,7 +1789,7 @@
 					"defaultValue": "\"subscription\""
 				},
 				{
-					"id": 868,
+					"id": 870,
 					"name": "SyncToOtherApps",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1817,7 +1817,7 @@
 					"defaultValue": "\"sync-to-other-apps\""
 				},
 				{
-					"id": 867,
+					"id": 869,
 					"name": "SyncToSheets",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1845,7 +1845,7 @@
 					"defaultValue": "\"sync-to-sheets\""
 				},
 				{
-					"id": 835,
+					"id": 837,
 					"name": "ToggleSize",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1869,7 +1869,7 @@
 					"defaultValue": "\"toggleSize\""
 				},
 				{
-					"id": 832,
+					"id": 834,
 					"name": "UpdateTML",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1898,78 +1898,82 @@
 					"title": "Enumeration members",
 					"kind": 16,
 					"children": [
-						811,
-						815,
-						816,
-						888,
+						813,
+						817,
+						818,
+						890,
+						865,
+						864,
 						863,
-						862,
-						861,
-						872,
-						875,
-						880,
 						874,
 						877,
+						882,
+						876,
+						879,
+						883,
+						880,
+						885,
 						881,
 						878,
-						883,
-						879,
-						876,
-						882,
-						873,
+						884,
+						875,
+						816,
+						815,
 						814,
-						813,
-						812,
-						854,
-						806,
-						853,
-						865,
-						870,
-						824,
-						827,
-						826,
-						825,
-						828,
-						858,
-						852,
-						851,
-						836,
-						805,
-						864,
 						856,
-						833,
-						837,
-						889,
-						850,
-						830,
-						831,
-						844,
-						804,
-						869,
-						887,
-						847,
-						834,
-						860,
-						838,
-						871,
-						885,
-						866,
-						859,
-						886,
-						800,
-						803,
 						808,
-						809,
-						857,
-						810,
-						821,
-						823,
-						818,
-						849,
-						868,
+						855,
 						867,
+						872,
+						826,
+						829,
+						828,
+						827,
+						830,
+						860,
+						854,
+						853,
+						838,
+						807,
+						866,
+						858,
+						893,
 						835,
-						832
+						839,
+						891,
+						852,
+						832,
+						833,
+						846,
+						806,
+						871,
+						889,
+						895,
+						849,
+						836,
+						862,
+						840,
+						873,
+						887,
+						868,
+						861,
+						888,
+						894,
+						802,
+						805,
+						810,
+						811,
+						859,
+						812,
+						823,
+						892,
+						825,
+						820,
+						851,
+						870,
+						869,
+						837,
+						834
 					]
 				}
 			],
@@ -2479,7 +2483,7 @@
 			]
 		},
 		{
-			"id": 890,
+			"id": 896,
 			"name": "ContextMenuTriggerOptions",
 			"kind": 4,
 			"kindString": "Enumeration",
@@ -2489,7 +2493,7 @@
 			},
 			"children": [
 				{
-					"id": 891,
+					"id": 897,
 					"name": "LEFT_CLICK",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -2504,7 +2508,7 @@
 					"defaultValue": "\"left-click\""
 				},
 				{
-					"id": 892,
+					"id": 898,
 					"name": "RIGHT_CLICK",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -2524,8 +2528,8 @@
 					"title": "Enumeration members",
 					"kind": 16,
 					"children": [
-						891,
-						892
+						897,
+						898
 					]
 				}
 			],
@@ -2538,7 +2542,7 @@
 			]
 		},
 		{
-			"id": 795,
+			"id": 797,
 			"name": "DataSourceVisualMode",
 			"kind": 4,
 			"kindString": "Enumeration",
@@ -2548,7 +2552,7 @@
 			},
 			"children": [
 				{
-					"id": 797,
+					"id": 799,
 					"name": "Collapsed",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -2566,7 +2570,7 @@
 					"defaultValue": "\"collapse\""
 				},
 				{
-					"id": 798,
+					"id": 800,
 					"name": "Expanded",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -2584,7 +2588,7 @@
 					"defaultValue": "\"expand\""
 				},
 				{
-					"id": 796,
+					"id": 798,
 					"name": "Hidden",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -2607,9 +2611,9 @@
 					"title": "Enumeration members",
 					"kind": 16,
 					"children": [
-						797,
-						798,
-						796
+						799,
+						800,
+						798
 					]
 				}
 			],
@@ -2660,7 +2664,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1101,
+							"line": 1102,
 							"character": 4
 						}
 					],
@@ -2688,7 +2692,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 967,
+							"line": 968,
 							"character": 4
 						}
 					],
@@ -2712,7 +2716,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1241,
+							"line": 1242,
 							"character": 4
 						}
 					],
@@ -2736,7 +2740,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1013,
+							"line": 1014,
 							"character": 4
 						}
 					],
@@ -2760,7 +2764,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1223,
+							"line": 1224,
 							"character": 4
 						}
 					],
@@ -2784,7 +2788,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1143,
+							"line": 1144,
 							"character": 4
 						}
 					],
@@ -2802,7 +2806,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1017,
+							"line": 1018,
 							"character": 4
 						}
 					],
@@ -2826,7 +2830,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 923,
+							"line": 924,
 							"character": 4
 						}
 					],
@@ -2850,7 +2854,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1283,
+							"line": 1284,
 							"character": 4
 						}
 					],
@@ -2874,7 +2878,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1211,
+							"line": 1212,
 							"character": 4
 						}
 					],
@@ -2898,7 +2902,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1295,
+							"line": 1296,
 							"character": 4
 						}
 					],
@@ -2922,7 +2926,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1181,
+							"line": 1182,
 							"character": 4
 						}
 					],
@@ -2946,7 +2950,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1301,
+							"line": 1302,
 							"character": 4
 						}
 					],
@@ -2974,7 +2978,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 974,
+							"line": 975,
 							"character": 4
 						}
 					],
@@ -3002,7 +3006,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 936,
+							"line": 937,
 							"character": 4
 						}
 					],
@@ -3026,7 +3030,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 960,
+							"line": 961,
 							"character": 4
 						}
 					],
@@ -3050,7 +3054,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1271,
+							"line": 1272,
 							"character": 4
 						}
 					],
@@ -3074,7 +3078,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1086,
+							"line": 1087,
 							"character": 4
 						}
 					],
@@ -3098,7 +3102,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1080,
+							"line": 1081,
 							"character": 4
 						}
 					],
@@ -3122,7 +3126,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1113,
+							"line": 1114,
 							"character": 4
 						}
 					],
@@ -3146,7 +3150,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1131,
+							"line": 1132,
 							"character": 4
 						}
 					],
@@ -3170,7 +3174,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1125,
+							"line": 1126,
 							"character": 4
 						}
 					],
@@ -3194,7 +3198,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1119,
+							"line": 1120,
 							"character": 4
 						}
 					],
@@ -3218,7 +3222,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1137,
+							"line": 1138,
 							"character": 4
 						}
 					],
@@ -3242,7 +3246,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1175,
+							"line": 1176,
 							"character": 4
 						}
 					],
@@ -3266,7 +3270,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1168,
+							"line": 1169,
 							"character": 4
 						}
 					],
@@ -3298,7 +3302,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 954,
+							"line": 955,
 							"character": 4
 						}
 					],
@@ -3322,7 +3326,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1253,
+							"line": 1254,
 							"character": 4
 						}
 					],
@@ -3346,7 +3350,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1193,
+							"line": 1194,
 							"character": 4
 						}
 					],
@@ -3370,7 +3374,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1007,
+							"line": 1008,
 							"character": 4
 						}
 					],
@@ -3394,7 +3398,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1289,
+							"line": 1290,
 							"character": 4
 						}
 					],
@@ -3418,7 +3422,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1199,
+							"line": 1200,
 							"character": 4
 						}
 					],
@@ -3442,7 +3446,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1319,
+							"line": 1320,
 							"character": 4
 						}
 					],
@@ -3466,7 +3470,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1050,
+							"line": 1051,
 							"character": 4
 						}
 					],
@@ -3490,7 +3494,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 917,
+							"line": 918,
 							"character": 4
 						}
 					],
@@ -3514,7 +3518,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1235,
+							"line": 1236,
 							"character": 4
 						}
 					],
@@ -3538,7 +3542,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1094,
+							"line": 1095,
 							"character": 4
 						}
 					],
@@ -3562,7 +3566,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 929,
+							"line": 930,
 							"character": 4
 						}
 					],
@@ -3586,7 +3590,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1259,
+							"line": 1260,
 							"character": 4
 						}
 					],
@@ -3610,7 +3614,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1067,
+							"line": 1068,
 							"character": 4
 						}
 					],
@@ -3634,7 +3638,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1149,
+							"line": 1150,
 							"character": 4
 						}
 					],
@@ -3658,7 +3662,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1265,
+							"line": 1266,
 							"character": 4
 						}
 					],
@@ -3676,7 +3680,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 946,
+							"line": 947,
 							"character": 4
 						}
 					],
@@ -3694,7 +3698,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1054,
+							"line": 1055,
 							"character": 4
 						}
 					],
@@ -3718,7 +3722,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1325,
+							"line": 1326,
 							"character": 4
 						}
 					],
@@ -3742,7 +3746,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1331,
+							"line": 1332,
 							"character": 4
 						}
 					],
@@ -3766,7 +3770,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1107,
+							"line": 1108,
 							"character": 4
 						}
 					],
@@ -3790,7 +3794,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1205,
+							"line": 1206,
 							"character": 4
 						}
 					],
@@ -3814,7 +3818,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1247,
+							"line": 1248,
 							"character": 4
 						}
 					],
@@ -3838,7 +3842,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1277,
+							"line": 1278,
 							"character": 4
 						}
 					],
@@ -3862,7 +3866,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1161,
+							"line": 1162,
 							"character": 4
 						}
 					],
@@ -3886,7 +3890,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1217,
+							"line": 1218,
 							"character": 4
 						}
 					],
@@ -3910,7 +3914,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1155,
+							"line": 1156,
 							"character": 4
 						}
 					],
@@ -3934,7 +3938,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1187,
+							"line": 1188,
 							"character": 4
 						}
 					],
@@ -3970,7 +3974,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1001,
+							"line": 1002,
 							"character": 4
 						}
 					],
@@ -3998,7 +4002,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 981,
+							"line": 982,
 							"character": 4
 						}
 					],
@@ -4022,7 +4026,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1307,
+							"line": 1308,
 							"character": 4
 						}
 					],
@@ -4078,6 +4082,8 @@
 						737,
 						688,
 						703,
+						747,
+						748,
 						711,
 						727,
 						734,
@@ -4095,13 +4101,13 @@
 			"sources": [
 				{
 					"fileName": "types.ts",
-					"line": 911,
+					"line": 912,
 					"character": 12
 				}
 			]
 		},
 		{
-			"id": 747,
+			"id": 749,
 			"name": "HostEvent",
 			"kind": 4,
 			"kindString": "Enumeration",
@@ -4122,7 +4128,7 @@
 			},
 			"children": [
 				{
-					"id": 757,
+					"id": 759,
 					"name": "AddColumns",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4148,14 +4154,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1511,
+							"line": 1512,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"addColumns\""
 				},
 				{
-					"id": 774,
+					"id": 776,
 					"name": "CopyLink",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4181,14 +4187,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1724,
+							"line": 1725,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"embedDocument\""
 				},
 				{
-					"id": 771,
+					"id": 773,
 					"name": "CreateMonitor",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4214,14 +4220,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1672,
+							"line": 1673,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"createMonitor\""
 				},
 				{
-					"id": 778,
+					"id": 780,
 					"name": "Delete",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4247,14 +4253,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1794,
+							"line": 1795,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"onDeleteAnswer\""
 				},
 				{
-					"id": 780,
+					"id": 782,
 					"name": "Download",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4279,14 +4285,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1834,
+							"line": 1835,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"downloadAsPng\""
 				},
 				{
-					"id": 782,
+					"id": 784,
 					"name": "DownloadAsCsv",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4307,14 +4313,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1868,
+							"line": 1869,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"downloadAsCSV\""
 				},
 				{
-					"id": 767,
+					"id": 769,
 					"name": "DownloadAsPdf",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4335,14 +4341,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1621,
+							"line": 1622,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"downloadAsPdf\""
 				},
 				{
-					"id": 781,
+					"id": 783,
 					"name": "DownloadAsPng",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4363,14 +4369,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1850,
+							"line": 1851,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"downloadAsPng\""
 				},
 				{
-					"id": 783,
+					"id": 785,
 					"name": "DownloadAsXlsx",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4391,14 +4397,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1886,
+							"line": 1887,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"downloadAsXLSX\""
 				},
 				{
-					"id": 749,
+					"id": 751,
 					"name": "DrillDown",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4429,14 +4435,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1405,
+							"line": 1406,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"triggerDrillDown\""
 				},
 				{
-					"id": 773,
+					"id": 775,
 					"name": "Edit",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4462,14 +4468,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1706,
+							"line": 1707,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"edit\""
 				},
 				{
-					"id": 765,
+					"id": 767,
 					"name": "EditTML",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4490,14 +4496,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1601,
+							"line": 1602,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"editTSL\""
 				},
 				{
-					"id": 770,
+					"id": 772,
 					"name": "Explore",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4523,14 +4529,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1659,
+							"line": 1660,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"explore\""
 				},
 				{
-					"id": 764,
+					"id": 766,
 					"name": "ExportTML",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4551,14 +4557,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1591,
+							"line": 1592,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"exportTSL\""
 				},
 				{
-					"id": 790,
+					"id": 792,
 					"name": "GetFilters",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4579,14 +4585,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1982,
+							"line": 1983,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"getFilters\""
 				},
 				{
-					"id": 776,
+					"id": 778,
 					"name": "GetTML",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4611,14 +4617,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1757,
+							"line": 1758,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"getTML\""
 				},
 				{
-					"id": 792,
+					"id": 794,
 					"name": "GetTabs",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4628,7 +4634,7 @@
 						"tags": [
 							{
 								"tag": "example",
-								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.GetTabs).then((tabDetails) => {\n  console.log(\n     tabDetails // TabDetails of current LB\n  );\n})\n```\n"
+								"text": "\n```js\nliveboardEmbed.trigger(HostEvent.GetTabs).then((tabDetails) => {\n  console.log(\n     tabDetails // TabDetails of current LB\n  );\n})\n```"
 							},
 							{
 								"tag": "version",
@@ -4646,7 +4652,7 @@
 					"defaultValue": "\"getTabs\""
 				},
 				{
-					"id": 761,
+					"id": 763,
 					"name": "LiveboardInfo",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4667,14 +4673,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1561,
+							"line": 1562,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"pinboardInfo\""
 				},
 				{
-					"id": 768,
+					"id": 770,
 					"name": "MakeACopy",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4695,14 +4701,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1638,
+							"line": 1639,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"makeACopy\""
 				},
 				{
-					"id": 772,
+					"id": 774,
 					"name": "ManageMonitor",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4728,14 +4734,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1685,
+							"line": 1686,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"manageMonitor\""
 				},
 				{
-					"id": 788,
+					"id": 790,
 					"name": "ManagePipelines",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4761,14 +4767,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1964,
+							"line": 1965,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"manage-pipeline\""
 				},
 				{
-					"id": 755,
+					"id": 757,
 					"name": "Navigate",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4794,14 +4800,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1482,
+							"line": 1483,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"Navigate\""
 				},
 				{
-					"id": 756,
+					"id": 758,
 					"name": "OpenFilter",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4827,14 +4833,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1500,
+							"line": 1501,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"openFilter\""
 				},
 				{
-					"id": 760,
+					"id": 762,
 					"name": "Pin",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4860,14 +4866,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1551,
+							"line": 1552,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"pin\""
 				},
 				{
-					"id": 775,
+					"id": 777,
 					"name": "Present",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4893,14 +4899,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1742,
+							"line": 1743,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"present\""
 				},
 				{
-					"id": 769,
+					"id": 771,
 					"name": "Remove",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4921,14 +4927,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1648,
+							"line": 1649,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"delete\""
 				},
 				{
-					"id": 758,
+					"id": 760,
 					"name": "RemoveColumn",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4954,14 +4960,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1522,
+							"line": 1523,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"removeColumn\""
 				},
 				{
-					"id": 789,
+					"id": 791,
 					"name": "ResetSearch",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -4982,14 +4988,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1974,
+							"line": 1975,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"resetSearch\""
 				},
 				{
-					"id": 785,
+					"id": 787,
 					"name": "Save",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -5010,14 +5016,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1914,
+							"line": 1915,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"save\""
 				},
 				{
-					"id": 762,
+					"id": 764,
 					"name": "Schedule",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -5038,14 +5044,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1571,
+							"line": 1572,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"subscription\""
 				},
 				{
-					"id": 763,
+					"id": 765,
 					"name": "SchedulesList",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -5066,14 +5072,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1581,
+							"line": 1582,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"schedule-list\""
 				},
 				{
-					"id": 748,
+					"id": 750,
 					"name": "Search",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -5105,14 +5111,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1377,
+							"line": 1378,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"search\""
 				},
 				{
-					"id": 753,
+					"id": 755,
 					"name": "SetActiveTab",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -5138,14 +5144,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1444,
+							"line": 1445,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"SetActiveTab\""
 				},
 				{
-					"id": 794,
+					"id": 796,
 					"name": "SetHiddenTabs",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -5178,7 +5184,7 @@
 					"defaultValue": "\"SetPinboardHiddenTabs\""
 				},
 				{
-					"id": 793,
+					"id": 795,
 					"name": "SetVisibleTabs",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -5211,7 +5217,7 @@
 					"defaultValue": "\"SetPinboardVisibleTabs\""
 				},
 				{
-					"id": 752,
+					"id": 754,
 					"name": "SetVisibleVizs",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -5237,14 +5243,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1431,
+							"line": 1432,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"SetPinboardVisibleVizs\""
 				},
 				{
-					"id": 784,
+					"id": 786,
 					"name": "Share",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -5265,14 +5271,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1900,
+							"line": 1901,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"share\""
 				},
 				{
-					"id": 777,
+					"id": 779,
 					"name": "ShowUnderlyingData",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -5298,14 +5304,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1775,
+							"line": 1776,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"showUnderlyingData\""
 				},
 				{
-					"id": 779,
+					"id": 781,
 					"name": "SpotIQAnalyze",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -5331,14 +5337,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1815,
+							"line": 1816,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"spotIQAnalyze\""
 				},
 				{
-					"id": 787,
+					"id": 789,
 					"name": "SyncToOtherApps",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -5364,14 +5370,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1947,
+							"line": 1948,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"sync-to-other-apps\""
 				},
 				{
-					"id": 786,
+					"id": 788,
 					"name": "SyncToSheets",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -5397,14 +5403,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1930,
+							"line": 1931,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"sync-to-sheets\""
 				},
 				{
-					"id": 791,
+					"id": 793,
 					"name": "UpdateFilters",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -5430,20 +5436,20 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1996,
+							"line": 1997,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"updateFilters\""
 				},
 				{
-					"id": 754,
+					"id": 756,
 					"name": "UpdateRuntimeFilters",
 					"kind": 16,
 					"kindString": "Enumeration member",
 					"flags": {},
 					"comment": {
-						"shortText": "Updates runtime filters applied on a Saved Answer or Liveboard. The\nruntime filters passed here are appended to the existing runtime\nfilters.\nPass an array of runtime filters with the following attributes:\n`columnName`\n_String_. The name of the column to filter on.\n`operator`\n Runtime filter operator to apply. For information,\n see [Runtime filter operators](https://developers.thoughtspot.com/docs/?pageid=runtime-filters#rtOperator).\n`values`\n List of operands. Some operators such as EQ, LE allow a single value, whereas operators\n such as BW and IN accept multiple operands.",
+						"shortText": "Updates runtime filters applied on a Saved Answer or Liveboard. The\nruntime filters passed here are appended to the existing runtime\nfilters.\nPass an array of runtime filters with the following attributes:\n`columnName`\n_String_. The name of the column to filter on.\n`operator`\n Runtime filter operator to apply. For information,\n see [Runtime filter operators](https://developers.thoughtspot.com/docs/?pageid=runtime-filters#rtOperator).\n`values`\n List of operands. Some operators such as EQ, LE allow a single value, whereas\n operators such as BW and IN accept multiple operands.",
 						"tags": [
 							{
 								"tag": "param",
@@ -5467,14 +5473,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1470,
+							"line": 1471,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"UpdateRuntimeFilters\""
 				},
 				{
-					"id": 766,
+					"id": 768,
 					"name": "UpdateTML",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -5495,14 +5501,14 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1611,
+							"line": 1612,
 							"character": 4
 						}
 					],
 					"defaultValue": "\"updateTSL\""
 				},
 				{
-					"id": 759,
+					"id": 761,
 					"name": "getExportRequestForCurrentPinboard",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -5523,7 +5529,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 1532,
+							"line": 1533,
 							"character": 4
 						}
 					],
@@ -5535,58 +5541,58 @@
 					"title": "Enumeration members",
 					"kind": 16,
 					"children": [
-						757,
-						774,
-						771,
-						778,
+						759,
+						776,
+						773,
 						780,
 						782,
-						767,
-						781,
-						783,
-						749,
-						773,
-						765,
-						770,
-						764,
-						790,
-						776,
-						792,
-						761,
-						768,
-						772,
-						788,
-						755,
-						756,
-						760,
-						775,
-						769,
-						758,
-						789,
-						785,
-						762,
-						763,
-						748,
-						753,
-						794,
-						793,
-						752,
 						784,
-						777,
-						779,
-						787,
-						786,
-						791,
-						754,
+						769,
+						783,
+						785,
+						751,
+						775,
+						767,
+						772,
 						766,
-						759
+						792,
+						778,
+						794,
+						763,
+						770,
+						774,
+						790,
+						757,
+						758,
+						762,
+						777,
+						771,
+						760,
+						791,
+						787,
+						764,
+						765,
+						750,
+						755,
+						796,
+						795,
+						754,
+						786,
+						779,
+						781,
+						789,
+						788,
+						793,
+						756,
+						768,
+						761
 					]
 				}
 			],
 			"sources": [
 				{
 					"fileName": "types.ts",
-					"line": 1357,
+					"line": 1358,
 					"character": 12
 				}
 			]
@@ -5707,7 +5713,7 @@
 							"character": 4
 						}
 					],
-					"defaultValue": "\"spotiq\""
+					"defaultValue": "\"insights\""
 				}
 			],
 			"groups": [
@@ -5733,14 +5739,14 @@
 			]
 		},
 		{
-			"id": 1106,
+			"id": 1116,
 			"name": "PrefetchFeatures",
 			"kind": 4,
 			"kindString": "Enumeration",
 			"flags": {},
 			"children": [
 				{
-					"id": 1107,
+					"id": 1117,
 					"name": "FullApp",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -5755,7 +5761,7 @@
 					"defaultValue": "\"FullApp\""
 				},
 				{
-					"id": 1109,
+					"id": 1119,
 					"name": "LiveboardEmbed",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -5770,7 +5776,7 @@
 					"defaultValue": "\"LiveboardEmbed\""
 				},
 				{
-					"id": 1108,
+					"id": 1118,
 					"name": "SearchEmbed",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -5785,7 +5791,7 @@
 					"defaultValue": "\"SearchEmbed\""
 				},
 				{
-					"id": 1110,
+					"id": 1120,
 					"name": "VizEmbed",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -5805,10 +5811,10 @@
 					"title": "Enumeration members",
 					"kind": 16,
 					"children": [
-						1107,
-						1109,
-						1108,
-						1110
+						1117,
+						1119,
+						1118,
+						1120
 					]
 				}
 			],
@@ -5842,7 +5848,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 842,
+							"line": 843,
 							"character": 4
 						}
 					],
@@ -5860,7 +5866,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 862,
+							"line": 863,
 							"character": 4
 						}
 					],
@@ -5878,7 +5884,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 858,
+							"line": 859,
 							"character": 4
 						}
 					],
@@ -5896,7 +5902,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 850,
+							"line": 851,
 							"character": 4
 						}
 					],
@@ -5914,7 +5920,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 854,
+							"line": 855,
 							"character": 4
 						}
 					],
@@ -5932,7 +5938,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 838,
+							"line": 839,
 							"character": 4
 						}
 					],
@@ -5950,7 +5956,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 846,
+							"line": 847,
 							"character": 4
 						}
 					],
@@ -5968,7 +5974,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 814,
+							"line": 815,
 							"character": 4
 						}
 					],
@@ -5986,7 +5992,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 834,
+							"line": 835,
 							"character": 4
 						}
 					],
@@ -6004,7 +6010,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 830,
+							"line": 831,
 							"character": 4
 						}
 					],
@@ -6022,7 +6028,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 866,
+							"line": 867,
 							"character": 4
 						}
 					],
@@ -6040,7 +6046,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 826,
+							"line": 827,
 							"character": 4
 						}
 					],
@@ -6058,7 +6064,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 822,
+							"line": 823,
 							"character": 4
 						}
 					],
@@ -6076,7 +6082,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 818,
+							"line": 819,
 							"character": 4
 						}
 					],
@@ -6108,7 +6114,7 @@
 			"sources": [
 				{
 					"fileName": "types.ts",
-					"line": 810,
+					"line": 811,
 					"character": 12
 				}
 			]
@@ -6158,7 +6164,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1117,
+										"id": 1127,
 										"name": "DOMSelector"
 									}
 								},
@@ -6170,7 +6176,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1067,
+										"id": 1077,
 										"name": "AppViewConfig"
 									}
 								}
@@ -6456,7 +6462,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 1121,
+										"id": 1131,
 										"name": "MessageCallback"
 									}
 								}
@@ -6535,7 +6541,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1121,
+										"id": 1131,
 										"name": "MessageCallback"
 									}
 								},
@@ -6547,7 +6553,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1118,
+										"id": 1128,
 										"name": "MessageOptions"
 									},
 									"defaultValue": "..."
@@ -6699,7 +6705,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 747,
+										"id": 749,
 										"name": "HostEvent"
 									}
 								},
@@ -6828,7 +6834,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1117,
+										"id": 1127,
 										"name": "DOMSelector"
 									}
 								},
@@ -6840,7 +6846,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 995,
+										"id": 1002,
 										"name": "LiveboardViewConfig"
 									}
 								}
@@ -7116,7 +7122,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 1121,
+										"id": 1131,
 										"name": "MessageCallback"
 									}
 								}
@@ -7195,7 +7201,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1121,
+										"id": 1131,
 										"name": "MessageCallback"
 									}
 								},
@@ -7207,7 +7213,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1118,
+										"id": 1128,
 										"name": "MessageOptions"
 									},
 									"defaultValue": "..."
@@ -7359,7 +7365,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 747,
+										"id": 749,
 										"name": "HostEvent"
 									}
 								},
@@ -7468,7 +7474,7 @@
 					"sources": [
 						{
 							"fileName": "embed/sage.ts",
-							"line": 65,
+							"line": 79,
 							"character": 4
 						}
 					],
@@ -7488,7 +7494,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1117,
+										"id": 1127,
 										"name": "DOMSelector"
 									}
 								},
@@ -7500,7 +7506,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1035,
+										"id": 1042,
 										"name": "SageViewConfig"
 									}
 								}
@@ -7708,7 +7714,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 1121,
+										"id": 1131,
 										"name": "MessageCallback"
 									}
 								}
@@ -7787,7 +7793,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1121,
+										"id": 1131,
 										"name": "MessageCallback"
 									}
 								},
@@ -7799,7 +7805,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1118,
+										"id": 1128,
 										"name": "MessageOptions"
 									},
 									"defaultValue": "..."
@@ -7884,7 +7890,7 @@
 					"sources": [
 						{
 							"fileName": "embed/sage.ts",
-							"line": 116,
+							"line": 138,
 							"character": 11
 						}
 					],
@@ -7952,7 +7958,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 747,
+										"id": 749,
 										"name": "HostEvent"
 									}
 								},
@@ -8020,7 +8026,7 @@
 			"sources": [
 				{
 					"fileName": "embed/sage.ts",
-					"line": 57,
+					"line": 71,
 					"character": 13
 				}
 			],
@@ -8091,7 +8097,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 966,
+										"id": 973,
 										"name": "SearchBarViewConfig"
 									}
 								}
@@ -8299,7 +8305,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 1121,
+										"id": 1131,
 										"name": "MessageCallback"
 									}
 								}
@@ -8381,7 +8387,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 1121,
+										"id": 1131,
 										"name": "MessageCallback"
 									}
 								},
@@ -8396,7 +8402,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 1118,
+										"id": 1128,
 										"name": "MessageOptions"
 									},
 									"defaultValue": "..."
@@ -8548,7 +8554,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 747,
+										"id": 749,
 										"name": "HostEvent"
 									}
 								},
@@ -8652,7 +8658,7 @@
 					"sources": [
 						{
 							"fileName": "embed/search.ts",
-							"line": 129,
+							"line": 133,
 							"character": 4
 						}
 					],
@@ -8672,7 +8678,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1117,
+										"id": 1127,
 										"name": "DOMSelector"
 									}
 								},
@@ -8684,7 +8690,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 927,
+										"id": 933,
 										"name": "SearchViewConfig"
 									}
 								}
@@ -8892,7 +8898,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 1121,
+										"id": 1131,
 										"name": "MessageCallback"
 									}
 								}
@@ -8974,7 +8980,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 1121,
+										"id": 1131,
 										"name": "MessageCallback"
 									}
 								},
@@ -8989,7 +8995,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 1118,
+										"id": 1128,
 										"name": "MessageOptions"
 									},
 									"defaultValue": "..."
@@ -9074,7 +9080,7 @@
 					"sources": [
 						{
 							"fileName": "embed/search.ts",
-							"line": 225,
+							"line": 230,
 							"character": 11
 						}
 					],
@@ -9141,7 +9147,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 747,
+										"id": 749,
 										"name": "HostEvent"
 									}
 								},
@@ -9209,7 +9215,7 @@
 			"sources": [
 				{
 					"fileName": "embed/search.ts",
-					"line": 123,
+					"line": 127,
 					"character": 13
 				}
 			],
@@ -9221,7 +9227,7 @@
 			]
 		},
 		{
-			"id": 1067,
+			"id": 1077,
 			"name": "AppViewConfig",
 			"kind": 256,
 			"kindString": "Interface",
@@ -9237,7 +9243,7 @@
 			},
 			"children": [
 				{
-					"id": 1090,
+					"id": 1100,
 					"name": "additionalFlags",
 					"kind": 1024,
 					"kindString": "Property",
@@ -9256,27 +9262,27 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 638,
+							"line": 639,
 							"character": 4
 						}
 					],
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 1091,
+							"id": 1101,
 							"name": "__type",
 							"kind": 65536,
 							"kindString": "Type literal",
 							"flags": {},
 							"indexSignature": {
-								"id": 1092,
+								"id": 1102,
 								"name": "__index",
 								"kind": 8192,
 								"kindString": "Index signature",
 								"flags": {},
 								"parameters": [
 									{
-										"id": 1093,
+										"id": 1103,
 										"name": "key",
 										"kind": 32768,
 										"flags": {},
@@ -9312,7 +9318,7 @@
 					}
 				},
 				{
-					"id": 1096,
+					"id": 1106,
 					"name": "contextMenuTrigger",
 					"kind": 1024,
 					"kindString": "Property",
@@ -9331,13 +9337,13 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 657,
+							"line": 658,
 							"character": 4
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 890,
+						"id": 896,
 						"name": "ContextMenuTriggerOptions"
 					},
 					"inheritedFrom": {
@@ -9346,7 +9352,7 @@
 					}
 				},
 				{
-					"id": 1094,
+					"id": 1104,
 					"name": "customizations",
 					"kind": 1024,
 					"kindString": "Property",
@@ -9369,13 +9375,13 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 646,
+							"line": 647,
 							"character": 4
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 1134,
+						"id": 1144,
 						"name": "CustomisationsInterface"
 					},
 					"inheritedFrom": {
@@ -9384,7 +9390,7 @@
 					}
 				},
 				{
-					"id": 1069,
+					"id": 1079,
 					"name": "disableProfileAndHelp",
 					"kind": 1024,
 					"kindString": "Property",
@@ -9407,7 +9413,7 @@
 					}
 				},
 				{
-					"id": 1084,
+					"id": 1094,
 					"name": "disabledActionReason",
 					"kind": 1024,
 					"kindString": "Property",
@@ -9420,7 +9426,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 583,
+							"line": 584,
 							"character": 4
 						}
 					],
@@ -9434,7 +9440,7 @@
 					}
 				},
 				{
-					"id": 1083,
+					"id": 1093,
 					"name": "disabledActions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -9453,7 +9459,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 579,
+							"line": 580,
 							"character": 4
 						}
 					],
@@ -9461,7 +9467,7 @@
 						"type": "array",
 						"elementType": {
 							"type": "reference",
-							"id": 799,
+							"id": 801,
 							"name": "Action"
 						}
 					},
@@ -9471,7 +9477,7 @@
 					}
 				},
 				{
-					"id": 1077,
+					"id": 1087,
 					"name": "enableSearchAssist",
 					"kind": 1024,
 					"kindString": "Property",
@@ -9500,7 +9506,7 @@
 					}
 				},
 				{
-					"id": 1080,
+					"id": 1090,
 					"name": "frameParams",
 					"kind": 1024,
 					"kindString": "Property",
@@ -9513,13 +9519,13 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 555,
+							"line": 556,
 							"character": 4
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 1111,
+						"id": 1121,
 						"name": "FrameParams"
 					},
 					"inheritedFrom": {
@@ -9528,7 +9534,7 @@
 					}
 				},
 				{
-					"id": 1078,
+					"id": 1088,
 					"name": "fullHeight",
 					"kind": 1024,
 					"kindString": "Property",
@@ -9557,7 +9563,7 @@
 					}
 				},
 				{
-					"id": 1085,
+					"id": 1095,
 					"name": "hiddenActions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -9580,7 +9586,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 598,
+							"line": 599,
 							"character": 4
 						}
 					],
@@ -9588,7 +9594,7 @@
 						"type": "array",
 						"elementType": {
 							"type": "reference",
-							"id": 799,
+							"id": 801,
 							"name": "Action"
 						}
 					},
@@ -9598,7 +9604,7 @@
 					}
 				},
 				{
-					"id": 1104,
+					"id": 1114,
 					"name": "hiddenTabs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -9621,7 +9627,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 725,
+							"line": 726,
 							"character": 4
 						}
 					],
@@ -9638,7 +9644,7 @@
 					}
 				},
 				{
-					"id": 1070,
+					"id": 1080,
 					"name": "hideApplicationSwitcher",
 					"kind": 1024,
 					"kindString": "Property",
@@ -9661,7 +9667,7 @@
 					}
 				},
 				{
-					"id": 1101,
+					"id": 1111,
 					"name": "hideLiveboardHeader",
 					"kind": 1024,
 					"kindString": "Property",
@@ -9684,7 +9690,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 694,
+							"line": 695,
 							"character": 4
 						}
 					],
@@ -9698,7 +9704,7 @@
 					}
 				},
 				{
-					"id": 1075,
+					"id": 1085,
 					"name": "hideObjects",
 					"kind": 1024,
 					"kindString": "Property",
@@ -9724,7 +9730,7 @@
 					}
 				},
 				{
-					"id": 1071,
+					"id": 1081,
 					"name": "hideOrgSwitcher",
 					"kind": 1024,
 					"kindString": "Property",
@@ -9747,7 +9753,7 @@
 					}
 				},
 				{
-					"id": 1095,
+					"id": 1105,
 					"name": "insertAsSibling",
 					"kind": 1024,
 					"kindString": "Property",
@@ -9760,7 +9766,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 651,
+							"line": 652,
 							"character": 4
 						}
 					],
@@ -9774,7 +9780,7 @@
 					}
 				},
 				{
-					"id": 1097,
+					"id": 1107,
 					"name": "linkOverride",
 					"kind": 1024,
 					"kindString": "Property",
@@ -9793,7 +9799,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 663,
+							"line": 664,
 							"character": 4
 						}
 					],
@@ -9807,7 +9813,7 @@
 					}
 				},
 				{
-					"id": 1089,
+					"id": 1099,
 					"name": "locale",
 					"kind": 1024,
 					"kindString": "Property",
@@ -9826,7 +9832,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 627,
+							"line": 628,
 							"character": 4
 						}
 					],
@@ -9840,7 +9846,7 @@
 					}
 				},
 				{
-					"id": 1073,
+					"id": 1083,
 					"name": "pageId",
 					"kind": 1024,
 					"kindString": "Property",
@@ -9864,7 +9870,7 @@
 					}
 				},
 				{
-					"id": 1072,
+					"id": 1082,
 					"name": "path",
 					"kind": 1024,
 					"kindString": "Property",
@@ -9887,7 +9893,7 @@
 					}
 				},
 				{
-					"id": 1088,
+					"id": 1098,
 					"name": "runtimeFilters",
 					"kind": 1024,
 					"kindString": "Property",
@@ -9900,7 +9906,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 621,
+							"line": 622,
 							"character": 4
 						}
 					],
@@ -9918,7 +9924,7 @@
 					}
 				},
 				{
-					"id": 1087,
+					"id": 1097,
 					"name": "showAlerts",
 					"kind": 1024,
 					"kindString": "Property",
@@ -9937,7 +9943,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 616,
+							"line": 617,
 							"character": 4
 						}
 					],
@@ -9951,7 +9957,7 @@
 					}
 				},
 				{
-					"id": 1103,
+					"id": 1113,
 					"name": "showLiveboardDescription",
 					"kind": 1024,
 					"kindString": "Property",
@@ -9974,7 +9980,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 708,
+							"line": 709,
 							"character": 4
 						}
 					],
@@ -9988,7 +9994,7 @@
 					}
 				},
 				{
-					"id": 1102,
+					"id": 1112,
 					"name": "showLiveboardTitle",
 					"kind": 1024,
 					"kindString": "Property",
@@ -10011,7 +10017,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 701,
+							"line": 702,
 							"character": 4
 						}
 					],
@@ -10025,7 +10031,7 @@
 					}
 				},
 				{
-					"id": 1068,
+					"id": 1078,
 					"name": "showPrimaryNavbar",
 					"kind": 1024,
 					"kindString": "Property",
@@ -10048,7 +10054,7 @@
 					}
 				},
 				{
-					"id": 1074,
+					"id": 1084,
 					"name": "tag",
 					"kind": 1024,
 					"kindString": "Property",
@@ -10071,7 +10077,7 @@
 					}
 				},
 				{
-					"id": 1086,
+					"id": 1096,
 					"name": "visibleActions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -10095,7 +10101,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 610,
+							"line": 611,
 							"character": 4
 						}
 					],
@@ -10103,7 +10109,7 @@
 						"type": "array",
 						"elementType": {
 							"type": "reference",
-							"id": 799,
+							"id": 801,
 							"name": "Action"
 						}
 					},
@@ -10113,7 +10119,7 @@
 					}
 				},
 				{
-					"id": 1105,
+					"id": 1115,
 					"name": "visibleTabs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -10137,7 +10143,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 744,
+							"line": 745,
 							"character": 4
 						}
 					],
@@ -10159,34 +10165,34 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						1090,
-						1096,
-						1094,
-						1069,
-						1084,
-						1083,
-						1077,
-						1080,
-						1078,
-						1085,
+						1100,
+						1106,
 						1104,
-						1070,
-						1101,
-						1075,
-						1071,
-						1095,
-						1097,
-						1089,
-						1073,
-						1072,
-						1088,
+						1079,
+						1094,
+						1093,
 						1087,
-						1103,
-						1102,
-						1068,
-						1074,
-						1086,
-						1105
+						1090,
+						1088,
+						1095,
+						1114,
+						1080,
+						1111,
+						1085,
+						1081,
+						1105,
+						1107,
+						1099,
+						1083,
+						1082,
+						1098,
+						1097,
+						1113,
+						1112,
+						1078,
+						1084,
+						1096,
+						1115
 					]
 				}
 			],
@@ -10730,7 +10736,7 @@
 			]
 		},
 		{
-			"id": 1154,
+			"id": 1164,
 			"name": "CustomCssVariables",
 			"kind": 256,
 			"kindString": "Interface",
@@ -10740,7 +10746,7 @@
 			},
 			"children": [
 				{
-					"id": 1202,
+					"id": 1212,
 					"name": "--ts-var-answer-chart-hover-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -10763,7 +10769,7 @@
 					}
 				},
 				{
-					"id": 1201,
+					"id": 1211,
 					"name": "--ts-var-answer-chart-select-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -10786,7 +10792,7 @@
 					}
 				},
 				{
-					"id": 1174,
+					"id": 1184,
 					"name": "--ts-var-answer-data-panel-background-color",
 					"kind": 1024,
 					"kindString": "Property",
@@ -10809,7 +10815,7 @@
 					}
 				},
 				{
-					"id": 1175,
+					"id": 1185,
 					"name": "--ts-var-answer-edit-panel-background-color",
 					"kind": 1024,
 					"kindString": "Property",
@@ -10832,7 +10838,7 @@
 					}
 				},
 				{
-					"id": 1177,
+					"id": 1187,
 					"name": "--ts-var-answer-view-table-chart-switcher-active-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -10855,7 +10861,7 @@
 					}
 				},
 				{
-					"id": 1176,
+					"id": 1186,
 					"name": "--ts-var-answer-view-table-chart-switcher-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -10878,7 +10884,7 @@
 					}
 				},
 				{
-					"id": 1214,
+					"id": 1224,
 					"name": "--ts-var-axis-data-label-color",
 					"kind": 1024,
 					"kindString": "Property",
@@ -10901,7 +10907,7 @@
 					}
 				},
 				{
-					"id": 1215,
+					"id": 1225,
 					"name": "--ts-var-axis-data-label-font-family",
 					"kind": 1024,
 					"kindString": "Property",
@@ -10924,7 +10930,7 @@
 					}
 				},
 				{
-					"id": 1212,
+					"id": 1222,
 					"name": "--ts-var-axis-title-color",
 					"kind": 1024,
 					"kindString": "Property",
@@ -10947,7 +10953,7 @@
 					}
 				},
 				{
-					"id": 1213,
+					"id": 1223,
 					"name": "--ts-var-axis-title-font-family",
 					"kind": 1024,
 					"kindString": "Property",
@@ -10970,7 +10976,7 @@
 					}
 				},
 				{
-					"id": 1179,
+					"id": 1189,
 					"name": "--ts-var-button--icon-border-radius",
 					"kind": 1024,
 					"kindString": "Property",
@@ -10993,7 +10999,7 @@
 					}
 				},
 				{
-					"id": 1181,
+					"id": 1191,
 					"name": "--ts-var-button--primary--font-family",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11016,7 +11022,7 @@
 					}
 				},
 				{
-					"id": 1183,
+					"id": 1193,
 					"name": "--ts-var-button--primary--hover-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11039,7 +11045,7 @@
 					}
 				},
 				{
-					"id": 1182,
+					"id": 1192,
 					"name": "--ts-var-button--primary-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11062,7 +11068,7 @@
 					}
 				},
 				{
-					"id": 1180,
+					"id": 1190,
 					"name": "--ts-var-button--primary-color",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11085,7 +11091,7 @@
 					}
 				},
 				{
-					"id": 1185,
+					"id": 1195,
 					"name": "--ts-var-button--secondary--font-family",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11108,7 +11114,7 @@
 					}
 				},
 				{
-					"id": 1187,
+					"id": 1197,
 					"name": "--ts-var-button--secondary--hover-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11131,7 +11137,7 @@
 					}
 				},
 				{
-					"id": 1186,
+					"id": 1196,
 					"name": "--ts-var-button--secondary-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11154,7 +11160,7 @@
 					}
 				},
 				{
-					"id": 1184,
+					"id": 1194,
 					"name": "--ts-var-button--secondary-color",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11177,7 +11183,7 @@
 					}
 				},
 				{
-					"id": 1190,
+					"id": 1200,
 					"name": "--ts-var-button--tertiary--hover-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11200,7 +11206,7 @@
 					}
 				},
 				{
-					"id": 1189,
+					"id": 1199,
 					"name": "--ts-var-button--tertiary-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11223,7 +11229,7 @@
 					}
 				},
 				{
-					"id": 1188,
+					"id": 1198,
 					"name": "--ts-var-button--tertiary-color",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11246,7 +11252,7 @@
 					}
 				},
 				{
-					"id": 1178,
+					"id": 1188,
 					"name": "--ts-var-button-border-radius",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11269,7 +11275,7 @@
 					}
 				},
 				{
-					"id": 1207,
+					"id": 1217,
 					"name": "--ts-var-chip--active-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11292,7 +11298,7 @@
 					}
 				},
 				{
-					"id": 1206,
+					"id": 1216,
 					"name": "--ts-var-chip--active-color",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11315,7 +11321,7 @@
 					}
 				},
 				{
-					"id": 1209,
+					"id": 1219,
 					"name": "--ts-var-chip--hover-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11338,7 +11344,7 @@
 					}
 				},
 				{
-					"id": 1208,
+					"id": 1218,
 					"name": "--ts-var-chip--hover-color",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11361,7 +11367,7 @@
 					}
 				},
 				{
-					"id": 1205,
+					"id": 1215,
 					"name": "--ts-var-chip-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11384,7 +11390,7 @@
 					}
 				},
 				{
-					"id": 1203,
+					"id": 1213,
 					"name": "--ts-var-chip-border-radius",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11407,7 +11413,7 @@
 					}
 				},
 				{
-					"id": 1204,
+					"id": 1214,
 					"name": "--ts-var-chip-box-shadow",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11430,7 +11436,7 @@
 					}
 				},
 				{
-					"id": 1210,
+					"id": 1220,
 					"name": "--ts-var-chip-color",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11453,7 +11459,7 @@
 					}
 				},
 				{
-					"id": 1211,
+					"id": 1221,
 					"name": "--ts-var-chip-title-font-family",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11476,7 +11482,7 @@
 					}
 				},
 				{
-					"id": 1221,
+					"id": 1231,
 					"name": "--ts-var-dialog-body-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11499,7 +11505,7 @@
 					}
 				},
 				{
-					"id": 1222,
+					"id": 1232,
 					"name": "--ts-var-dialog-body-color",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11522,7 +11528,7 @@
 					}
 				},
 				{
-					"id": 1225,
+					"id": 1235,
 					"name": "--ts-var-dialog-footer-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11545,7 +11551,7 @@
 					}
 				},
 				{
-					"id": 1223,
+					"id": 1233,
 					"name": "--ts-var-dialog-header-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11568,7 +11574,7 @@
 					}
 				},
 				{
-					"id": 1224,
+					"id": 1234,
 					"name": "--ts-var-dialog-header-color",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11591,7 +11597,7 @@
 					}
 				},
 				{
-					"id": 1220,
+					"id": 1230,
 					"name": "--ts-var-menu--hover-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11614,7 +11620,7 @@
 					}
 				},
 				{
-					"id": 1217,
+					"id": 1227,
 					"name": "--ts-var-menu-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11637,7 +11643,7 @@
 					}
 				},
 				{
-					"id": 1216,
+					"id": 1226,
 					"name": "--ts-var-menu-color",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11660,7 +11666,7 @@
 					}
 				},
 				{
-					"id": 1218,
+					"id": 1228,
 					"name": "--ts-var-menu-font-family",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11683,7 +11689,7 @@
 					}
 				},
 				{
-					"id": 1219,
+					"id": 1229,
 					"name": "--ts-var-menu-text-transform",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11706,7 +11712,7 @@
 					}
 				},
 				{
-					"id": 1159,
+					"id": 1169,
 					"name": "--ts-var-nav-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11729,7 +11735,7 @@
 					}
 				},
 				{
-					"id": 1160,
+					"id": 1170,
 					"name": "--ts-var-nav-color",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11752,7 +11758,7 @@
 					}
 				},
 				{
-					"id": 1155,
+					"id": 1165,
 					"name": "--ts-var-root-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11775,7 +11781,7 @@
 					}
 				},
 				{
-					"id": 1156,
+					"id": 1166,
 					"name": "--ts-var-root-color",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11798,7 +11804,7 @@
 					}
 				},
 				{
-					"id": 1157,
+					"id": 1167,
 					"name": "--ts-var-root-font-family",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11821,7 +11827,7 @@
 					}
 				},
 				{
-					"id": 1158,
+					"id": 1168,
 					"name": "--ts-var-root-text-transform",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11844,7 +11850,7 @@
 					}
 				},
 				{
-					"id": 1168,
+					"id": 1178,
 					"name": "--ts-var-search-auto-complete-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11867,7 +11873,7 @@
 					}
 				},
 				{
-					"id": 1172,
+					"id": 1182,
 					"name": "--ts-var-search-auto-complete-font-color",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11890,7 +11896,7 @@
 					}
 				},
 				{
-					"id": 1173,
+					"id": 1183,
 					"name": "--ts-var-search-auto-complete-subtext-font-color",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11913,7 +11919,7 @@
 					}
 				},
 				{
-					"id": 1171,
+					"id": 1181,
 					"name": "--ts-var-search-bar-auto-complete-hover-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11936,7 +11942,7 @@
 					}
 				},
 				{
-					"id": 1167,
+					"id": 1177,
 					"name": "--ts-var-search-bar-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11959,7 +11965,7 @@
 					}
 				},
 				{
-					"id": 1170,
+					"id": 1180,
 					"name": "--ts-var-search-bar-navigation-help-text-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -11982,7 +11988,7 @@
 					}
 				},
 				{
-					"id": 1164,
+					"id": 1174,
 					"name": "--ts-var-search-bar-text-font-color",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12005,7 +12011,7 @@
 					}
 				},
 				{
-					"id": 1165,
+					"id": 1175,
 					"name": "--ts-var-search-bar-text-font-family",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12028,7 +12034,7 @@
 					}
 				},
 				{
-					"id": 1166,
+					"id": 1176,
 					"name": "--ts-var-search-bar-text-font-style",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12051,7 +12057,7 @@
 					}
 				},
 				{
-					"id": 1161,
+					"id": 1171,
 					"name": "--ts-var-search-data-button-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12074,7 +12080,7 @@
 					}
 				},
 				{
-					"id": 1162,
+					"id": 1172,
 					"name": "--ts-var-search-data-button-font-color",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12097,7 +12103,7 @@
 					}
 				},
 				{
-					"id": 1163,
+					"id": 1173,
 					"name": "--ts-var-search-data-button-font-family",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12120,7 +12126,7 @@
 					}
 				},
 				{
-					"id": 1169,
+					"id": 1179,
 					"name": "--ts-var-search-navigation-button-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12143,7 +12149,7 @@
 					}
 				},
 				{
-					"id": 1199,
+					"id": 1209,
 					"name": "--ts-var-viz-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12166,7 +12172,7 @@
 					}
 				},
 				{
-					"id": 1197,
+					"id": 1207,
 					"name": "--ts-var-viz-border-radius",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12189,7 +12195,7 @@
 					}
 				},
 				{
-					"id": 1198,
+					"id": 1208,
 					"name": "--ts-var-viz-box-shadow",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12212,7 +12218,7 @@
 					}
 				},
 				{
-					"id": 1194,
+					"id": 1204,
 					"name": "--ts-var-viz-description-color",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12235,7 +12241,7 @@
 					}
 				},
 				{
-					"id": 1195,
+					"id": 1205,
 					"name": "--ts-var-viz-description-font-family",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12258,7 +12264,7 @@
 					}
 				},
 				{
-					"id": 1196,
+					"id": 1206,
 					"name": "--ts-var-viz-description-text-transform",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12281,7 +12287,7 @@
 					}
 				},
 				{
-					"id": 1200,
+					"id": 1210,
 					"name": "--ts-var-viz-legend-hover-background",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12304,7 +12310,7 @@
 					}
 				},
 				{
-					"id": 1191,
+					"id": 1201,
 					"name": "--ts-var-viz-title-color",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12327,7 +12333,7 @@
 					}
 				},
 				{
-					"id": 1192,
+					"id": 1202,
 					"name": "--ts-var-viz-title-font-family",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12350,7 +12356,7 @@
 					}
 				},
 				{
-					"id": 1193,
+					"id": 1203,
 					"name": "--ts-var-viz-title-text-transform",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12378,77 +12384,77 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						1202,
-						1201,
-						1174,
-						1175,
-						1177,
-						1176,
-						1214,
-						1215,
 						1212,
-						1213,
-						1179,
-						1181,
-						1183,
-						1182,
-						1180,
+						1211,
+						1184,
 						1185,
 						1187,
 						1186,
-						1184,
-						1190,
-						1189,
-						1188,
-						1178,
-						1207,
-						1206,
-						1209,
-						1208,
-						1205,
-						1203,
-						1204,
-						1210,
-						1211,
-						1221,
-						1222,
-						1225,
-						1223,
 						1224,
-						1220,
+						1225,
+						1222,
+						1223,
+						1189,
+						1191,
+						1193,
+						1192,
+						1190,
+						1195,
+						1197,
+						1196,
+						1194,
+						1200,
+						1199,
+						1198,
+						1188,
 						1217,
 						1216,
-						1218,
 						1219,
-						1159,
-						1160,
-						1155,
-						1156,
-						1157,
-						1158,
-						1168,
-						1172,
-						1173,
-						1171,
-						1167,
+						1218,
+						1215,
+						1213,
+						1214,
+						1220,
+						1221,
+						1231,
+						1232,
+						1235,
+						1233,
+						1234,
+						1230,
+						1227,
+						1226,
+						1228,
+						1229,
+						1169,
 						1170,
-						1164,
 						1165,
 						1166,
-						1161,
-						1162,
-						1163,
-						1169,
-						1199,
-						1197,
-						1198,
-						1194,
-						1195,
-						1196,
-						1200,
-						1191,
-						1192,
-						1193
+						1167,
+						1168,
+						1178,
+						1182,
+						1183,
+						1181,
+						1177,
+						1180,
+						1174,
+						1175,
+						1176,
+						1171,
+						1172,
+						1173,
+						1179,
+						1209,
+						1207,
+						1208,
+						1204,
+						1205,
+						1206,
+						1210,
+						1201,
+						1202,
+						1203
 					]
 				}
 			],
@@ -12461,7 +12467,7 @@
 			]
 		},
 		{
-			"id": 1142,
+			"id": 1152,
 			"name": "CustomStyles",
 			"kind": 256,
 			"kindString": "Interface",
@@ -12471,7 +12477,7 @@
 			},
 			"children": [
 				{
-					"id": 1144,
+					"id": 1154,
 					"name": "customCSS",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12487,12 +12493,12 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 1145,
+						"id": 1155,
 						"name": "customCssInterface"
 					}
 				},
 				{
-					"id": 1143,
+					"id": 1153,
 					"name": "customCSSUrl",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12517,8 +12523,8 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						1144,
-						1143
+						1154,
+						1153
 					]
 				}
 			],
@@ -12531,7 +12537,7 @@
 			]
 		},
 		{
-			"id": 1134,
+			"id": 1144,
 			"name": "CustomisationsInterface",
 			"kind": 256,
 			"kindString": "Interface",
@@ -12547,7 +12553,7 @@
 			},
 			"children": [
 				{
-					"id": 1136,
+					"id": 1146,
 					"name": "content",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12564,14 +12570,14 @@
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 1137,
+							"id": 1147,
 							"name": "__type",
 							"kind": 65536,
 							"kindString": "Type literal",
 							"flags": {},
 							"children": [
 								{
-									"id": 1138,
+									"id": 1148,
 									"name": "strings",
 									"kind": 1024,
 									"kindString": "Property",
@@ -12614,19 +12620,19 @@
 									"title": "Properties",
 									"kind": 1024,
 									"children": [
-										1138
+										1148
 									]
 								}
 							],
 							"indexSignature": {
-								"id": 1139,
+								"id": 1149,
 								"name": "__index",
 								"kind": 8192,
 								"kindString": "Index signature",
 								"flags": {},
 								"parameters": [
 									{
-										"id": 1140,
+										"id": 1150,
 										"name": "key",
 										"kind": 32768,
 										"flags": {},
@@ -12645,7 +12651,7 @@
 					}
 				},
 				{
-					"id": 1141,
+					"id": 1151,
 					"name": "iconSpriteUrl",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12665,7 +12671,7 @@
 					}
 				},
 				{
-					"id": 1135,
+					"id": 1145,
 					"name": "style",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12681,7 +12687,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 1142,
+						"id": 1152,
 						"name": "CustomStyles"
 					}
 				}
@@ -12691,9 +12697,9 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						1136,
-						1141,
-						1135
+						1146,
+						1151,
+						1145
 					]
 				}
 			],
@@ -12706,7 +12712,7 @@
 			]
 		},
 		{
-			"id": 893,
+			"id": 899,
 			"name": "EmbedConfig",
 			"kind": 256,
 			"kindString": "Interface",
@@ -12722,7 +12728,7 @@
 			},
 			"children": [
 				{
-					"id": 896,
+					"id": 902,
 					"name": "authEndpoint",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12745,7 +12751,7 @@
 					}
 				},
 				{
-					"id": 918,
+					"id": 924,
 					"name": "authTriggerContainer",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12768,7 +12774,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 480,
+							"line": 481,
 							"character": 4
 						}
 					],
@@ -12787,7 +12793,7 @@
 					}
 				},
 				{
-					"id": 920,
+					"id": 926,
 					"name": "authTriggerText",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12806,7 +12812,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 494,
+							"line": 495,
 							"character": 4
 						}
 					],
@@ -12816,7 +12822,7 @@
 					}
 				},
 				{
-					"id": 895,
+					"id": 901,
 					"name": "authType",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12838,7 +12844,7 @@
 					}
 				},
 				{
-					"id": 908,
+					"id": 914,
 					"name": "autoLogin",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12867,7 +12873,7 @@
 					}
 				},
 				{
-					"id": 921,
+					"id": 927,
 					"name": "blockNonEmbedFullAppAccess",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12890,7 +12896,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 501,
+							"line": 502,
 							"character": 4
 						}
 					],
@@ -12900,7 +12906,7 @@
 					}
 				},
 				{
-					"id": 911,
+					"id": 917,
 					"name": "callPrefetch",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12929,7 +12935,7 @@
 					}
 				},
 				{
-					"id": 913,
+					"id": 919,
 					"name": "customCssUrl",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12962,7 +12968,7 @@
 					}
 				},
 				{
-					"id": 917,
+					"id": 923,
 					"name": "customizations",
 					"kind": 1024,
 					"kindString": "Property",
@@ -12981,18 +12987,18 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 464,
+							"line": 465,
 							"character": 4
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 1134,
+						"id": 1144,
 						"name": "CustomisationsInterface"
 					}
 				},
 				{
-					"id": 914,
+					"id": 920,
 					"name": "detectCookieAccessSlow",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13022,7 +13028,7 @@
 					}
 				},
 				{
-					"id": 909,
+					"id": 915,
 					"name": "disableLoginRedirect",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13055,7 +13061,7 @@
 					}
 				},
 				{
-					"id": 922,
+					"id": 928,
 					"name": "hostConfig",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13068,40 +13074,22 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 506,
+							"line": 507,
 							"character": 4
 						}
 					],
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 923,
+							"id": 929,
 							"name": "__type",
 							"kind": 65536,
 							"kindString": "Type literal",
 							"flags": {},
 							"children": [
 								{
-									"id": 925,
+									"id": 931,
 									"name": "hostClusterId",
-									"kind": 1024,
-									"kindString": "Property",
-									"flags": {},
-									"sources": [
-										{
-											"fileName": "types.ts",
-											"line": 508,
-											"character": 8
-										}
-									],
-									"type": {
-										"type": "intrinsic",
-										"name": "string"
-									}
-								},
-								{
-									"id": 926,
-									"name": "hostClusterName",
 									"kind": 1024,
 									"kindString": "Property",
 									"flags": {},
@@ -13118,7 +13106,25 @@
 									}
 								},
 								{
-									"id": 924,
+									"id": 932,
+									"name": "hostClusterName",
+									"kind": 1024,
+									"kindString": "Property",
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "types.ts",
+											"line": 510,
+											"character": 8
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 930,
 									"name": "hostUserGuid",
 									"kind": 1024,
 									"kindString": "Property",
@@ -13126,7 +13132,7 @@
 									"sources": [
 										{
 											"fileName": "types.ts",
-											"line": 507,
+											"line": 508,
 											"character": 8
 										}
 									],
@@ -13141,9 +13147,9 @@
 									"title": "Properties",
 									"kind": 1024,
 									"children": [
-										925,
-										926,
-										924
+										931,
+										932,
+										930
 									]
 								}
 							]
@@ -13151,7 +13157,7 @@
 					}
 				},
 				{
-					"id": 907,
+					"id": 913,
 					"name": "ignoreNoCookieAccess",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13180,7 +13186,7 @@
 					}
 				},
 				{
-					"id": 902,
+					"id": 908,
 					"name": "inPopup",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13214,7 +13220,7 @@
 					}
 				},
 				{
-					"id": 910,
+					"id": 916,
 					"name": "loginFailedMessage",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13243,7 +13249,7 @@
 					}
 				},
 				{
-					"id": 901,
+					"id": 907,
 					"name": "noRedirect",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13276,7 +13282,7 @@
 					}
 				},
 				{
-					"id": 900,
+					"id": 906,
 					"name": "password",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13300,7 +13306,7 @@
 					}
 				},
 				{
-					"id": 912,
+					"id": 918,
 					"name": "queueMultiRenders",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13333,7 +13339,7 @@
 					}
 				},
 				{
-					"id": 903,
+					"id": 909,
 					"name": "redirectPath",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13363,7 +13369,7 @@
 					}
 				},
 				{
-					"id": 905,
+					"id": 911,
 					"name": "shouldEncodeUrlQueryParams",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13392,7 +13398,7 @@
 					}
 				},
 				{
-					"id": 906,
+					"id": 912,
 					"name": "suppressNoCookieAccessAlert",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13421,7 +13427,7 @@
 					}
 				},
 				{
-					"id": 916,
+					"id": 922,
 					"name": "suppressSageEmbedBetaWarning",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13434,7 +13440,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 458,
+							"line": 459,
 							"character": 4
 						}
 					],
@@ -13444,7 +13450,7 @@
 					}
 				},
 				{
-					"id": 915,
+					"id": 921,
 					"name": "suppressSearchEmbedBetaWarning",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13473,7 +13479,7 @@
 					}
 				},
 				{
-					"id": 894,
+					"id": 900,
 					"name": "thoughtSpotHost",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13494,7 +13500,7 @@
 					}
 				},
 				{
-					"id": 919,
+					"id": 925,
 					"name": "useEventForSAMLPopup",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13507,7 +13513,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 487,
+							"line": 488,
 							"character": 4
 						}
 					],
@@ -13517,7 +13523,7 @@
 					}
 				},
 				{
-					"id": 899,
+					"id": 905,
 					"name": "username",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13540,7 +13546,7 @@
 					}
 				},
 				{
-					"id": 897,
+					"id": 903,
 					"name": "getAuthToken",
 					"kind": 2048,
 					"kindString": "Method",
@@ -13556,7 +13562,7 @@
 					],
 					"signatures": [
 						{
-							"id": 898,
+							"id": 904,
 							"name": "getAuthToken",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -13584,39 +13590,39 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						896,
-						918,
-						920,
-						895,
-						908,
-						921,
-						911,
-						913,
-						917,
-						914,
-						909,
-						922,
-						907,
 						902,
-						910,
+						924,
+						926,
 						901,
-						900,
-						912,
-						903,
-						905,
-						906,
-						916,
-						915,
-						894,
+						914,
+						927,
+						917,
 						919,
-						899
+						923,
+						920,
+						915,
+						928,
+						913,
+						908,
+						916,
+						907,
+						906,
+						918,
+						909,
+						911,
+						912,
+						922,
+						921,
+						900,
+						925,
+						905
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						897
+						903
 					]
 				}
 			],
@@ -13629,7 +13635,7 @@
 			]
 		},
 		{
-			"id": 1111,
+			"id": 1121,
 			"name": "FrameParams",
 			"kind": 256,
 			"kindString": "Interface",
@@ -13645,7 +13651,7 @@
 			},
 			"children": [
 				{
-					"id": 1113,
+					"id": 1123,
 					"name": "height",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13658,7 +13664,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 529,
+							"line": 530,
 							"character": 4
 						}
 					],
@@ -13677,7 +13683,7 @@
 					}
 				},
 				{
-					"id": 1114,
+					"id": 1124,
 					"name": "loading",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13690,7 +13696,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 535,
+							"line": 536,
 							"character": 4
 						}
 					],
@@ -13713,7 +13719,7 @@
 					}
 				},
 				{
-					"id": 1112,
+					"id": 1122,
 					"name": "width",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13726,7 +13732,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 525,
+							"line": 526,
 							"character": 4
 						}
 					],
@@ -13750,21 +13756,21 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						1113,
-						1114,
-						1112
+						1123,
+						1124,
+						1122
 					]
 				}
 			],
 			"sources": [
 				{
 					"fileName": "types.ts",
-					"line": 521,
+					"line": 522,
 					"character": 17
 				}
 			],
 			"indexSignature": {
-				"id": 1115,
+				"id": 1125,
 				"name": "__index",
 				"kind": 8192,
 				"kindString": "Index signature",
@@ -13774,7 +13780,7 @@
 				},
 				"parameters": [
 					{
-						"id": 1116,
+						"id": 1126,
 						"name": "key",
 						"kind": 32768,
 						"flags": {},
@@ -13808,7 +13814,7 @@
 			}
 		},
 		{
-			"id": 995,
+			"id": 1002,
 			"name": "LiveboardViewConfig",
 			"kind": 256,
 			"kindString": "Interface",
@@ -13824,7 +13830,7 @@
 			},
 			"children": [
 				{
-					"id": 1006,
+					"id": 1013,
 					"name": "activeTabId",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13853,7 +13859,7 @@
 					}
 				},
 				{
-					"id": 1019,
+					"id": 1026,
 					"name": "additionalFlags",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13872,27 +13878,27 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 638,
+							"line": 639,
 							"character": 4
 						}
 					],
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 1020,
+							"id": 1027,
 							"name": "__type",
 							"kind": 65536,
 							"kindString": "Type literal",
 							"flags": {},
 							"indexSignature": {
-								"id": 1021,
+								"id": 1028,
 								"name": "__index",
 								"kind": 8192,
 								"kindString": "Index signature",
 								"flags": {},
 								"parameters": [
 									{
-										"id": 1022,
+										"id": 1029,
 										"name": "key",
 										"kind": 32768,
 										"flags": {},
@@ -13928,7 +13934,7 @@
 					}
 				},
 				{
-					"id": 1025,
+					"id": 1032,
 					"name": "contextMenuTrigger",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13947,13 +13953,13 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 657,
+							"line": 658,
 							"character": 4
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 890,
+						"id": 896,
 						"name": "ContextMenuTriggerOptions"
 					},
 					"inheritedFrom": {
@@ -13962,7 +13968,7 @@
 					}
 				},
 				{
-					"id": 1023,
+					"id": 1030,
 					"name": "customizations",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13985,13 +13991,13 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 646,
+							"line": 647,
 							"character": 4
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 1134,
+						"id": 1144,
 						"name": "CustomisationsInterface"
 					},
 					"inheritedFrom": {
@@ -14000,7 +14006,7 @@
 					}
 				},
 				{
-					"id": 997,
+					"id": 1004,
 					"name": "defaultHeight",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14033,7 +14039,7 @@
 					}
 				},
 				{
-					"id": 1013,
+					"id": 1020,
 					"name": "disabledActionReason",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14046,7 +14052,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 583,
+							"line": 584,
 							"character": 4
 						}
 					],
@@ -14060,7 +14066,7 @@
 					}
 				},
 				{
-					"id": 1012,
+					"id": 1019,
 					"name": "disabledActions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14079,7 +14085,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 579,
+							"line": 580,
 							"character": 4
 						}
 					],
@@ -14087,7 +14093,7 @@
 						"type": "array",
 						"elementType": {
 							"type": "reference",
-							"id": 799,
+							"id": 801,
 							"name": "Action"
 						}
 					},
@@ -14097,7 +14103,7 @@
 					}
 				},
 				{
-					"id": 998,
+					"id": 1005,
 					"name": "enableVizTransformations",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14125,7 +14131,7 @@
 					}
 				},
 				{
-					"id": 1009,
+					"id": 1016,
 					"name": "frameParams",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14138,13 +14144,13 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 555,
+							"line": 556,
 							"character": 4
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 1111,
+						"id": 1121,
 						"name": "FrameParams"
 					},
 					"inheritedFrom": {
@@ -14153,7 +14159,7 @@
 					}
 				},
 				{
-					"id": 996,
+					"id": 1003,
 					"name": "fullHeight",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14182,7 +14188,7 @@
 					}
 				},
 				{
-					"id": 1014,
+					"id": 1021,
 					"name": "hiddenActions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14205,7 +14211,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 598,
+							"line": 599,
 							"character": 4
 						}
 					],
@@ -14213,7 +14219,7 @@
 						"type": "array",
 						"elementType": {
 							"type": "reference",
-							"id": 799,
+							"id": 801,
 							"name": "Action"
 						}
 					},
@@ -14223,7 +14229,7 @@
 					}
 				},
 				{
-					"id": 1033,
+					"id": 1040,
 					"name": "hiddenTabs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14246,7 +14252,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 725,
+							"line": 726,
 							"character": 4
 						}
 					],
@@ -14263,7 +14269,7 @@
 					}
 				},
 				{
-					"id": 1030,
+					"id": 1037,
 					"name": "hideLiveboardHeader",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14286,7 +14292,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 694,
+							"line": 695,
 							"character": 4
 						}
 					],
@@ -14300,7 +14306,7 @@
 					}
 				},
 				{
-					"id": 1007,
+					"id": 1014,
 					"name": "hideTabPanel",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14329,7 +14335,7 @@
 					}
 				},
 				{
-					"id": 1024,
+					"id": 1031,
 					"name": "insertAsSibling",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14342,7 +14348,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 651,
+							"line": 652,
 							"character": 4
 						}
 					],
@@ -14356,7 +14362,7 @@
 					}
 				},
 				{
-					"id": 1026,
+					"id": 1033,
 					"name": "linkOverride",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14375,7 +14381,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 663,
+							"line": 664,
 							"character": 4
 						}
 					],
@@ -14389,7 +14395,7 @@
 					}
 				},
 				{
-					"id": 999,
+					"id": 1006,
 					"name": "liveboardId",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14418,7 +14424,7 @@
 					}
 				},
 				{
-					"id": 1005,
+					"id": 1012,
 					"name": "liveboardV2",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14447,7 +14453,7 @@
 					}
 				},
 				{
-					"id": 1018,
+					"id": 1025,
 					"name": "locale",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14466,7 +14472,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 627,
+							"line": 628,
 							"character": 4
 						}
 					],
@@ -14480,7 +14486,7 @@
 					}
 				},
 				{
-					"id": 1002,
+					"id": 1009,
 					"name": "preventLiveboardFilterRemoval",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14509,7 +14515,7 @@
 					}
 				},
 				{
-					"id": 1017,
+					"id": 1024,
 					"name": "runtimeFilters",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14522,7 +14528,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 621,
+							"line": 622,
 							"character": 4
 						}
 					],
@@ -14540,7 +14546,7 @@
 					}
 				},
 				{
-					"id": 1016,
+					"id": 1023,
 					"name": "showAlerts",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14559,7 +14565,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 616,
+							"line": 617,
 							"character": 4
 						}
 					],
@@ -14573,7 +14579,7 @@
 					}
 				},
 				{
-					"id": 1032,
+					"id": 1039,
 					"name": "showLiveboardDescription",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14596,7 +14602,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 708,
+							"line": 709,
 							"character": 4
 						}
 					],
@@ -14610,7 +14616,7 @@
 					}
 				},
 				{
-					"id": 1031,
+					"id": 1038,
 					"name": "showLiveboardTitle",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14633,7 +14639,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 701,
+							"line": 702,
 							"character": 4
 						}
 					],
@@ -14647,7 +14653,7 @@
 					}
 				},
 				{
-					"id": 1015,
+					"id": 1022,
 					"name": "visibleActions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14671,7 +14677,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 610,
+							"line": 611,
 							"character": 4
 						}
 					],
@@ -14679,7 +14685,7 @@
 						"type": "array",
 						"elementType": {
 							"type": "reference",
-							"id": 799,
+							"id": 801,
 							"name": "Action"
 						}
 					},
@@ -14689,7 +14695,7 @@
 					}
 				},
 				{
-					"id": 1034,
+					"id": 1041,
 					"name": "visibleTabs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14713,7 +14719,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 744,
+							"line": 745,
 							"character": 4
 						}
 					],
@@ -14730,7 +14736,7 @@
 					}
 				},
 				{
-					"id": 1003,
+					"id": 1010,
 					"name": "visibleVizs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14762,7 +14768,7 @@
 					}
 				},
 				{
-					"id": 1001,
+					"id": 1008,
 					"name": "vizId",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14790,34 +14796,34 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						1006,
-						1019,
-						1025,
-						1023,
-						997,
 						1013,
-						1012,
-						998,
-						1009,
-						996,
-						1014,
-						1033,
-						1030,
-						1007,
-						1024,
 						1026,
-						999,
-						1005,
-						1018,
-						1002,
-						1017,
-						1016,
 						1032,
-						1031,
-						1015,
-						1034,
+						1030,
+						1004,
+						1020,
+						1019,
+						1005,
+						1016,
 						1003,
-						1001
+						1021,
+						1040,
+						1037,
+						1014,
+						1031,
+						1033,
+						1006,
+						1012,
+						1025,
+						1009,
+						1024,
+						1023,
+						1039,
+						1038,
+						1022,
+						1041,
+						1010,
+						1008
 					]
 				}
 			],
@@ -14857,7 +14863,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 877,
+							"line": 878,
 							"character": 4
 						}
 					],
@@ -14878,7 +14884,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 881,
+							"line": 882,
 							"character": 4
 						}
 					],
@@ -14900,7 +14906,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 887,
+							"line": 888,
 							"character": 4
 						}
 					],
@@ -14940,13 +14946,13 @@
 			"sources": [
 				{
 					"fileName": "types.ts",
-					"line": 873,
+					"line": 874,
 					"character": 17
 				}
 			]
 		},
 		{
-			"id": 1035,
+			"id": 1042,
 			"name": "SageViewConfig",
 			"kind": 256,
 			"kindString": "Interface",
@@ -14955,6 +14961,10 @@
 				"shortText": "The configuration attributes for the embedded Natural language search view. Based on\nGPT and LLM.",
 				"tags": [
 					{
+						"tag": "version:",
+						"text": "SDK: 1.23.0 | ThoughtSpot: 9.4.0.cl, 9.5.1-sw"
+					},
+					{
 						"tag": "group",
 						"text": "Embed components\n"
 					}
@@ -14962,7 +14972,7 @@
 			},
 			"children": [
 				{
-					"id": 1051,
+					"id": 1061,
 					"name": "additionalFlags",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14981,27 +14991,27 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 638,
+							"line": 639,
 							"character": 4
 						}
 					],
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 1052,
+							"id": 1062,
 							"name": "__type",
 							"kind": 65536,
 							"kindString": "Type literal",
 							"flags": {},
 							"indexSignature": {
-								"id": 1053,
+								"id": 1063,
 								"name": "__index",
 								"kind": 8192,
 								"kindString": "Index signature",
 								"flags": {},
 								"parameters": [
 									{
-										"id": 1054,
+										"id": 1064,
 										"name": "key",
 										"kind": 32768,
 										"flags": {},
@@ -15037,7 +15047,7 @@
 					}
 				},
 				{
-					"id": 1057,
+					"id": 1067,
 					"name": "contextMenuTrigger",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15056,13 +15066,13 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 657,
+							"line": 658,
 							"character": 4
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 890,
+						"id": 896,
 						"name": "ContextMenuTriggerOptions"
 					},
 					"inheritedFrom": {
@@ -15071,7 +15081,7 @@
 					}
 				},
 				{
-					"id": 1055,
+					"id": 1065,
 					"name": "customizations",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15094,13 +15104,13 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 646,
+							"line": 647,
 							"character": 4
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 1134,
+						"id": 1144,
 						"name": "CustomisationsInterface"
 					},
 					"inheritedFrom": {
@@ -15109,7 +15119,30 @@
 					}
 				},
 				{
-					"id": 1037,
+					"id": 1049,
+					"name": "dataSource",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isOptional": true
+					},
+					"comment": {
+						"shortText": "The data source GUID to set on load."
+					},
+					"sources": [
+						{
+							"fileName": "embed/sage.ts",
+							"line": 53,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 1044,
 					"name": "disableWorksheetChange",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15122,7 +15155,7 @@
 					"sources": [
 						{
 							"fileName": "embed/sage.ts",
-							"line": 30,
+							"line": 31,
 							"character": 4
 						}
 					],
@@ -15132,7 +15165,7 @@
 					}
 				},
 				{
-					"id": 1045,
+					"id": 1055,
 					"name": "disabledActionReason",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15145,7 +15178,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 583,
+							"line": 584,
 							"character": 4
 						}
 					],
@@ -15159,7 +15192,7 @@
 					}
 				},
 				{
-					"id": 1044,
+					"id": 1054,
 					"name": "disabledActions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15178,7 +15211,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 579,
+							"line": 580,
 							"character": 4
 						}
 					],
@@ -15186,7 +15219,7 @@
 						"type": "array",
 						"elementType": {
 							"type": "reference",
-							"id": 799,
+							"id": 801,
 							"name": "Action"
 						}
 					},
@@ -15196,7 +15229,7 @@
 					}
 				},
 				{
-					"id": 1041,
+					"id": 1051,
 					"name": "frameParams",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15209,13 +15242,13 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 555,
+							"line": 556,
 							"character": 4
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 1111,
+						"id": 1121,
 						"name": "FrameParams"
 					},
 					"inheritedFrom": {
@@ -15224,7 +15257,7 @@
 					}
 				},
 				{
-					"id": 1046,
+					"id": 1056,
 					"name": "hiddenActions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15247,7 +15280,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 598,
+							"line": 599,
 							"character": 4
 						}
 					],
@@ -15255,7 +15288,7 @@
 						"type": "array",
 						"elementType": {
 							"type": "reference",
-							"id": 799,
+							"id": 801,
 							"name": "Action"
 						}
 					},
@@ -15265,7 +15298,7 @@
 					}
 				},
 				{
-					"id": 1065,
+					"id": 1075,
 					"name": "hiddenTabs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15288,7 +15321,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 725,
+							"line": 726,
 							"character": 4
 						}
 					],
@@ -15305,7 +15338,7 @@
 					}
 				},
 				{
-					"id": 1062,
+					"id": 1072,
 					"name": "hideLiveboardHeader",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15328,7 +15361,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 694,
+							"line": 695,
 							"character": 4
 						}
 					],
@@ -15342,7 +15375,30 @@
 					}
 				},
 				{
-					"id": 1038,
+					"id": 1048,
+					"name": "hideSampleQuestions",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isOptional": true
+					},
+					"comment": {
+						"shortText": "If set to true, sample questions would be hidden to user.\nThese sample questions are autogenerated based on selected datasource."
+					},
+					"sources": [
+						{
+							"fileName": "embed/sage.ts",
+							"line": 49,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					}
+				},
+				{
+					"id": 1045,
 					"name": "hideWorksheetSelector",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15355,7 +15411,7 @@
 					"sources": [
 						{
 							"fileName": "embed/sage.ts",
-							"line": 34,
+							"line": 35,
 							"character": 4
 						}
 					],
@@ -15365,7 +15421,7 @@
 					}
 				},
 				{
-					"id": 1056,
+					"id": 1066,
 					"name": "insertAsSibling",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15378,7 +15434,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 651,
+							"line": 652,
 							"character": 4
 						}
 					],
@@ -15392,7 +15448,7 @@
 					}
 				},
 				{
-					"id": 1058,
+					"id": 1068,
 					"name": "linkOverride",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15411,7 +15467,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 663,
+							"line": 664,
 							"character": 4
 						}
 					],
@@ -15425,7 +15481,7 @@
 					}
 				},
 				{
-					"id": 1050,
+					"id": 1060,
 					"name": "locale",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15444,7 +15500,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 627,
+							"line": 628,
 							"character": 4
 						}
 					],
@@ -15458,7 +15514,7 @@
 					}
 				},
 				{
-					"id": 1049,
+					"id": 1059,
 					"name": "runtimeFilters",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15471,7 +15527,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 621,
+							"line": 622,
 							"character": 4
 						}
 					],
@@ -15489,7 +15545,30 @@
 					}
 				},
 				{
-					"id": 1048,
+					"id": 1047,
+					"name": "searchQuery",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isOptional": true
+					},
+					"comment": {
+						"shortText": "The query string to pre-fill in natual language search bar"
+					},
+					"sources": [
+						{
+							"fileName": "embed/sage.ts",
+							"line": 44,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 1058,
 					"name": "showAlerts",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15508,7 +15587,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 616,
+							"line": 617,
 							"character": 4
 						}
 					],
@@ -15522,7 +15601,7 @@
 					}
 				},
 				{
-					"id": 1064,
+					"id": 1074,
 					"name": "showLiveboardDescription",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15545,7 +15624,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 708,
+							"line": 709,
 							"character": 4
 						}
 					],
@@ -15559,7 +15638,7 @@
 					}
 				},
 				{
-					"id": 1063,
+					"id": 1073,
 					"name": "showLiveboardTitle",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15582,7 +15661,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 701,
+							"line": 702,
 							"character": 4
 						}
 					],
@@ -15596,7 +15675,7 @@
 					}
 				},
 				{
-					"id": 1036,
+					"id": 1043,
 					"name": "showObjectResults",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15609,7 +15688,7 @@
 					"sources": [
 						{
 							"fileName": "embed/sage.ts",
-							"line": 26,
+							"line": 27,
 							"character": 4
 						}
 					],
@@ -15619,7 +15698,7 @@
 					}
 				},
 				{
-					"id": 1039,
+					"id": 1046,
 					"name": "showObjectSuggestions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15632,7 +15711,7 @@
 					"sources": [
 						{
 							"fileName": "embed/sage.ts",
-							"line": 39,
+							"line": 40,
 							"character": 4
 						}
 					],
@@ -15642,7 +15721,7 @@
 					}
 				},
 				{
-					"id": 1047,
+					"id": 1057,
 					"name": "visibleActions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15666,7 +15745,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 610,
+							"line": 611,
 							"character": 4
 						}
 					],
@@ -15674,7 +15753,7 @@
 						"type": "array",
 						"elementType": {
 							"type": "reference",
-							"id": 799,
+							"id": 801,
 							"name": "Action"
 						}
 					},
@@ -15684,7 +15763,7 @@
 					}
 				},
 				{
-					"id": 1066,
+					"id": 1076,
 					"name": "visibleTabs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15708,7 +15787,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 744,
+							"line": 745,
 							"character": 4
 						}
 					],
@@ -15730,35 +15809,38 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						1051,
-						1057,
-						1055,
-						1037,
-						1045,
-						1044,
-						1041,
-						1046,
+						1061,
+						1067,
 						1065,
-						1062,
-						1038,
-						1056,
-						1058,
-						1050,
 						1049,
+						1044,
+						1055,
+						1054,
+						1051,
+						1056,
+						1075,
+						1072,
 						1048,
-						1064,
-						1063,
-						1036,
-						1039,
+						1045,
+						1066,
+						1068,
+						1060,
+						1059,
 						1047,
-						1066
+						1058,
+						1074,
+						1073,
+						1043,
+						1046,
+						1057,
+						1076
 					]
 				}
 			],
 			"sources": [
 				{
 					"fileName": "embed/sage.ts",
-					"line": 22,
+					"line": 23,
 					"character": 17
 				}
 			],
@@ -15770,7 +15852,7 @@
 			]
 		},
 		{
-			"id": 966,
+			"id": 973,
 			"name": "SearchBarViewConfig",
 			"kind": 256,
 			"kindString": "Interface",
@@ -15785,7 +15867,7 @@
 			},
 			"children": [
 				{
-					"id": 977,
+					"id": 984,
 					"name": "additionalFlags",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15804,27 +15886,27 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 638,
+							"line": 639,
 							"character": 4
 						}
 					],
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 978,
+							"id": 985,
 							"name": "__type",
 							"kind": 65536,
 							"kindString": "Type literal",
 							"flags": {},
 							"indexSignature": {
-								"id": 979,
+								"id": 986,
 								"name": "__index",
 								"kind": 8192,
 								"kindString": "Index signature",
 								"flags": {},
 								"parameters": [
 									{
-										"id": 980,
+										"id": 987,
 										"name": "key",
 										"kind": 32768,
 										"flags": {},
@@ -15860,7 +15942,7 @@
 					}
 				},
 				{
-					"id": 982,
+					"id": 989,
 					"name": "contextMenuTrigger",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15879,13 +15961,13 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 657,
+							"line": 658,
 							"character": 4
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 890,
+						"id": 896,
 						"name": "ContextMenuTriggerOptions"
 					},
 					"inheritedFrom": {
@@ -15894,7 +15976,7 @@
 					}
 				},
 				{
-					"id": 970,
+					"id": 977,
 					"name": "customizations",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15917,13 +15999,13 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 646,
+							"line": 647,
 							"character": 4
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 1134,
+						"id": 1144,
 						"name": "CustomisationsInterface"
 					},
 					"inheritedFrom": {
@@ -15932,7 +16014,7 @@
 					}
 				},
 				{
-					"id": 968,
+					"id": 975,
 					"name": "dataSource",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15961,7 +16043,7 @@
 					}
 				},
 				{
-					"id": 967,
+					"id": 974,
 					"name": "dataSources",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15993,7 +16075,7 @@
 					}
 				},
 				{
-					"id": 972,
+					"id": 979,
 					"name": "disabledActionReason",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16006,7 +16088,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 583,
+							"line": 584,
 							"character": 4
 						}
 					],
@@ -16020,7 +16102,7 @@
 					}
 				},
 				{
-					"id": 971,
+					"id": 978,
 					"name": "disabledActions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16039,7 +16121,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 579,
+							"line": 580,
 							"character": 4
 						}
 					],
@@ -16047,7 +16129,7 @@
 						"type": "array",
 						"elementType": {
 							"type": "reference",
-							"id": 799,
+							"id": 801,
 							"name": "Action"
 						}
 					},
@@ -16057,7 +16139,7 @@
 					}
 				},
 				{
-					"id": 990,
+					"id": 997,
 					"name": "frameParams",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16070,13 +16152,13 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 555,
+							"line": 556,
 							"character": 4
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 1111,
+						"id": 1121,
 						"name": "FrameParams"
 					},
 					"inheritedFrom": {
@@ -16085,7 +16167,7 @@
 					}
 				},
 				{
-					"id": 973,
+					"id": 980,
 					"name": "hiddenActions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16108,7 +16190,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 598,
+							"line": 599,
 							"character": 4
 						}
 					],
@@ -16116,7 +16198,7 @@
 						"type": "array",
 						"elementType": {
 							"type": "reference",
-							"id": 799,
+							"id": 801,
 							"name": "Action"
 						}
 					},
@@ -16126,7 +16208,7 @@
 					}
 				},
 				{
-					"id": 975,
+					"id": 982,
 					"name": "hiddenTabs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16149,7 +16231,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 725,
+							"line": 726,
 							"character": 4
 						}
 					],
@@ -16166,7 +16248,7 @@
 					}
 				},
 				{
-					"id": 985,
+					"id": 992,
 					"name": "hideLiveboardHeader",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16189,7 +16271,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 694,
+							"line": 695,
 							"character": 4
 						}
 					],
@@ -16203,7 +16285,7 @@
 					}
 				},
 				{
-					"id": 993,
+					"id": 1000,
 					"name": "insertAsSibling",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16216,7 +16298,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 651,
+							"line": 652,
 							"character": 4
 						}
 					],
@@ -16230,7 +16312,7 @@
 					}
 				},
 				{
-					"id": 983,
+					"id": 990,
 					"name": "linkOverride",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16249,7 +16331,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 663,
+							"line": 664,
 							"character": 4
 						}
 					],
@@ -16263,7 +16345,7 @@
 					}
 				},
 				{
-					"id": 981,
+					"id": 988,
 					"name": "locale",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16282,7 +16364,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 627,
+							"line": 628,
 							"character": 4
 						}
 					],
@@ -16296,7 +16378,7 @@
 					}
 				},
 				{
-					"id": 969,
+					"id": 976,
 					"name": "searchOptions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16319,7 +16401,7 @@
 					}
 				},
 				{
-					"id": 986,
+					"id": 993,
 					"name": "showLiveboardDescription",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16342,7 +16424,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 708,
+							"line": 709,
 							"character": 4
 						}
 					],
@@ -16356,7 +16438,7 @@
 					}
 				},
 				{
-					"id": 987,
+					"id": 994,
 					"name": "showLiveboardTitle",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16379,7 +16461,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 701,
+							"line": 702,
 							"character": 4
 						}
 					],
@@ -16393,7 +16475,7 @@
 					}
 				},
 				{
-					"id": 974,
+					"id": 981,
 					"name": "visibleActions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16417,7 +16499,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 610,
+							"line": 611,
 							"character": 4
 						}
 					],
@@ -16425,7 +16507,7 @@
 						"type": "array",
 						"elementType": {
 							"type": "reference",
-							"id": 799,
+							"id": 801,
 							"name": "Action"
 						}
 					},
@@ -16435,7 +16517,7 @@
 					}
 				},
 				{
-					"id": 976,
+					"id": 983,
 					"name": "visibleTabs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16459,7 +16541,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 744,
+							"line": 745,
 							"character": 4
 						}
 					],
@@ -16481,25 +16563,25 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
+						984,
+						989,
 						977,
-						982,
-						970,
-						968,
-						967,
-						972,
-						971,
-						990,
-						973,
 						975,
-						985,
-						993,
-						983,
-						981,
-						969,
-						986,
-						987,
 						974,
-						976
+						979,
+						978,
+						997,
+						980,
+						982,
+						992,
+						1000,
+						990,
+						988,
+						976,
+						993,
+						994,
+						981,
+						983
 					]
 				}
 			],
@@ -16537,7 +16619,7 @@
 			]
 		},
 		{
-			"id": 927,
+			"id": 933,
 			"name": "SearchViewConfig",
 			"kind": 256,
 			"kindString": "Interface",
@@ -16553,7 +16635,7 @@
 			},
 			"children": [
 				{
-					"id": 950,
+					"id": 957,
 					"name": "additionalFlags",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16572,27 +16654,27 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 638,
+							"line": 639,
 							"character": 4
 						}
 					],
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 951,
+							"id": 958,
 							"name": "__type",
 							"kind": 65536,
 							"kindString": "Type literal",
 							"flags": {},
 							"indexSignature": {
-								"id": 952,
+								"id": 959,
 								"name": "__index",
 								"kind": 8192,
 								"kindString": "Index signature",
 								"flags": {},
 								"parameters": [
 									{
-										"id": 953,
+										"id": 960,
 										"name": "key",
 										"kind": 32768,
 										"flags": {},
@@ -16628,7 +16710,7 @@
 					}
 				},
 				{
-					"id": 937,
+					"id": 944,
 					"name": "answerId",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16651,7 +16733,7 @@
 					}
 				},
 				{
-					"id": 928,
+					"id": 934,
 					"name": "collapseDataSources",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16674,7 +16756,7 @@
 					}
 				},
 				{
-					"id": 956,
+					"id": 963,
 					"name": "contextMenuTrigger",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16693,13 +16775,13 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 657,
+							"line": 658,
 							"character": 4
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 890,
+						"id": 896,
 						"name": "ContextMenuTriggerOptions"
 					},
 					"inheritedFrom": {
@@ -16708,7 +16790,7 @@
 					}
 				},
 				{
-					"id": 954,
+					"id": 961,
 					"name": "customizations",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16731,13 +16813,13 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 646,
+							"line": 647,
 							"character": 4
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 1134,
+						"id": 1144,
 						"name": "CustomisationsInterface"
 					},
 					"inheritedFrom": {
@@ -16746,7 +16828,7 @@
 					}
 				},
 				{
-					"id": 934,
+					"id": 941,
 					"name": "dataSource",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16775,7 +16857,7 @@
 					}
 				},
 				{
-					"id": 933,
+					"id": 940,
 					"name": "dataSources",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16807,7 +16889,7 @@
 					}
 				},
 				{
-					"id": 944,
+					"id": 951,
 					"name": "disabledActionReason",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16820,7 +16902,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 583,
+							"line": 584,
 							"character": 4
 						}
 					],
@@ -16834,7 +16916,7 @@
 					}
 				},
 				{
-					"id": 943,
+					"id": 950,
 					"name": "disabledActions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16853,7 +16935,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 579,
+							"line": 580,
 							"character": 4
 						}
 					],
@@ -16861,7 +16943,7 @@
 						"type": "array",
 						"elementType": {
 							"type": "reference",
-							"id": 799,
+							"id": 801,
 							"name": "Action"
 						}
 					},
@@ -16871,7 +16953,7 @@
 					}
 				},
 				{
-					"id": 931,
+					"id": 938,
 					"name": "enableSearchAssist",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16900,7 +16982,30 @@
 					}
 				},
 				{
-					"id": 932,
+					"id": 937,
+					"name": "expandAllDataSource",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isOptional": true
+					},
+					"comment": {
+						"shortText": "If set to true, expands all the data sources panel."
+					},
+					"sources": [
+						{
+							"fileName": "embed/search.ts",
+							"line": 66,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					}
+				},
+				{
+					"id": 939,
 					"name": "forceTable",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16923,7 +17028,7 @@
 					}
 				},
 				{
-					"id": 940,
+					"id": 947,
 					"name": "frameParams",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16936,13 +17041,13 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 555,
+							"line": 556,
 							"character": 4
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 1111,
+						"id": 1121,
 						"name": "FrameParams"
 					},
 					"inheritedFrom": {
@@ -16951,7 +17056,7 @@
 					}
 				},
 				{
-					"id": 945,
+					"id": 952,
 					"name": "hiddenActions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16974,7 +17079,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 598,
+							"line": 599,
 							"character": 4
 						}
 					],
@@ -16982,7 +17087,7 @@
 						"type": "array",
 						"elementType": {
 							"type": "reference",
-							"id": 799,
+							"id": 801,
 							"name": "Action"
 						}
 					},
@@ -16992,7 +17097,7 @@
 					}
 				},
 				{
-					"id": 964,
+					"id": 971,
 					"name": "hiddenTabs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -17015,7 +17120,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 725,
+							"line": 726,
 							"character": 4
 						}
 					],
@@ -17032,7 +17137,7 @@
 					}
 				},
 				{
-					"id": 929,
+					"id": 935,
 					"name": "hideDataSources",
 					"kind": 1024,
 					"kindString": "Property",
@@ -17055,7 +17160,7 @@
 					}
 				},
 				{
-					"id": 961,
+					"id": 968,
 					"name": "hideLiveboardHeader",
 					"kind": 1024,
 					"kindString": "Property",
@@ -17078,7 +17183,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 694,
+							"line": 695,
 							"character": 4
 						}
 					],
@@ -17092,7 +17197,7 @@
 					}
 				},
 				{
-					"id": 930,
+					"id": 936,
 					"name": "hideResults",
 					"kind": 1024,
 					"kindString": "Property",
@@ -17115,7 +17220,7 @@
 					}
 				},
 				{
-					"id": 938,
+					"id": 945,
 					"name": "hideSearchBar",
 					"kind": 1024,
 					"kindString": "Property",
@@ -17144,7 +17249,7 @@
 					}
 				},
 				{
-					"id": 955,
+					"id": 962,
 					"name": "insertAsSibling",
 					"kind": 1024,
 					"kindString": "Property",
@@ -17157,7 +17262,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 651,
+							"line": 652,
 							"character": 4
 						}
 					],
@@ -17171,7 +17276,7 @@
 					}
 				},
 				{
-					"id": 957,
+					"id": 964,
 					"name": "linkOverride",
 					"kind": 1024,
 					"kindString": "Property",
@@ -17190,7 +17295,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 663,
+							"line": 664,
 							"character": 4
 						}
 					],
@@ -17204,7 +17309,7 @@
 					}
 				},
 				{
-					"id": 949,
+					"id": 956,
 					"name": "locale",
 					"kind": 1024,
 					"kindString": "Property",
@@ -17223,7 +17328,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 627,
+							"line": 628,
 							"character": 4
 						}
 					],
@@ -17237,7 +17342,7 @@
 					}
 				},
 				{
-					"id": 948,
+					"id": 955,
 					"name": "runtimeFilters",
 					"kind": 1024,
 					"kindString": "Property",
@@ -17250,7 +17355,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 621,
+							"line": 622,
 							"character": 4
 						}
 					],
@@ -17268,7 +17373,7 @@
 					}
 				},
 				{
-					"id": 936,
+					"id": 943,
 					"name": "searchOptions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -17291,7 +17396,7 @@
 					}
 				},
 				{
-					"id": 935,
+					"id": 942,
 					"name": "searchQuery",
 					"kind": 1024,
 					"kindString": "Property",
@@ -17320,7 +17425,7 @@
 					}
 				},
 				{
-					"id": 947,
+					"id": 954,
 					"name": "showAlerts",
 					"kind": 1024,
 					"kindString": "Property",
@@ -17339,7 +17444,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 616,
+							"line": 617,
 							"character": 4
 						}
 					],
@@ -17353,7 +17458,7 @@
 					}
 				},
 				{
-					"id": 963,
+					"id": 970,
 					"name": "showLiveboardDescription",
 					"kind": 1024,
 					"kindString": "Property",
@@ -17376,7 +17481,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 708,
+							"line": 709,
 							"character": 4
 						}
 					],
@@ -17390,7 +17495,7 @@
 					}
 				},
 				{
-					"id": 962,
+					"id": 969,
 					"name": "showLiveboardTitle",
 					"kind": 1024,
 					"kindString": "Property",
@@ -17413,7 +17518,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 701,
+							"line": 702,
 							"character": 4
 						}
 					],
@@ -17427,7 +17532,7 @@
 					}
 				},
 				{
-					"id": 946,
+					"id": 953,
 					"name": "visibleActions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -17451,7 +17556,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 610,
+							"line": 611,
 							"character": 4
 						}
 					],
@@ -17459,7 +17564,7 @@
 						"type": "array",
 						"elementType": {
 							"type": "reference",
-							"id": 799,
+							"id": 801,
 							"name": "Action"
 						}
 					},
@@ -17469,7 +17574,7 @@
 					}
 				},
 				{
-					"id": 965,
+					"id": 972,
 					"name": "visibleTabs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -17493,7 +17598,7 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 744,
+							"line": 745,
 							"character": 4
 						}
 					],
@@ -17515,35 +17620,36 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						950,
-						937,
-						928,
-						956,
-						954,
-						934,
-						933,
-						944,
-						943,
-						931,
-						932,
-						940,
-						945,
-						964,
-						929,
-						961,
-						930,
-						938,
-						955,
 						957,
-						949,
-						948,
-						936,
-						935,
-						947,
+						944,
+						934,
 						963,
+						961,
+						941,
+						940,
+						951,
+						950,
+						938,
+						937,
+						939,
+						947,
+						952,
+						971,
+						935,
+						968,
+						936,
+						945,
 						962,
-						946,
-						965
+						964,
+						956,
+						955,
+						943,
+						942,
+						954,
+						970,
+						969,
+						953,
+						972
 					]
 				}
 			],
@@ -17562,7 +17668,7 @@
 			]
 		},
 		{
-			"id": 1145,
+			"id": 1155,
 			"name": "customCssInterface",
 			"kind": 256,
 			"kindString": "Interface",
@@ -17572,7 +17678,7 @@
 			},
 			"children": [
 				{
-					"id": 1147,
+					"id": 1157,
 					"name": "rules_UNSTABLE",
 					"kind": 1024,
 					"kindString": "Property",
@@ -17602,20 +17708,20 @@
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 1148,
+							"id": 1158,
 							"name": "__type",
 							"kind": 65536,
 							"kindString": "Type literal",
 							"flags": {},
 							"indexSignature": {
-								"id": 1149,
+								"id": 1159,
 								"name": "__index",
 								"kind": 8192,
 								"kindString": "Index signature",
 								"flags": {},
 								"parameters": [
 									{
-										"id": 1150,
+										"id": 1160,
 										"name": "selector",
 										"kind": 32768,
 										"flags": {},
@@ -17628,7 +17734,7 @@
 								"type": {
 									"type": "reflection",
 									"declaration": {
-										"id": 1151,
+										"id": 1161,
 										"name": "__type",
 										"kind": 65536,
 										"kindString": "Type literal",
@@ -17641,14 +17747,14 @@
 											}
 										],
 										"indexSignature": {
-											"id": 1152,
+											"id": 1162,
 											"name": "__index",
 											"kind": 8192,
 											"kindString": "Index signature",
 											"flags": {},
 											"parameters": [
 												{
-													"id": 1153,
+													"id": 1163,
 													"name": "declaration",
 													"kind": 32768,
 													"flags": {},
@@ -17670,7 +17776,7 @@
 					}
 				},
 				{
-					"id": 1146,
+					"id": 1156,
 					"name": "variables",
 					"kind": 1024,
 					"kindString": "Property",
@@ -17689,7 +17795,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 1154,
+						"id": 1164,
 						"name": "CustomCssVariables"
 					}
 				}
@@ -17699,8 +17805,8 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						1147,
-						1146
+						1157,
+						1156
 					]
 				}
 			],
@@ -17713,7 +17819,7 @@
 			]
 		},
 		{
-			"id": 1117,
+			"id": 1127,
 			"name": "DOMSelector",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -17740,7 +17846,7 @@
 			}
 		},
 		{
-			"id": 1121,
+			"id": 1131,
 			"name": "MessageCallback",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -17748,14 +17854,14 @@
 			"sources": [
 				{
 					"fileName": "types.ts",
-					"line": 778,
+					"line": 779,
 					"character": 12
 				}
 			],
 			"type": {
 				"type": "reflection",
 				"declaration": {
-					"id": 1122,
+					"id": 1132,
 					"name": "__type",
 					"kind": 65536,
 					"kindString": "Type literal",
@@ -17772,13 +17878,13 @@
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 778,
+							"line": 779,
 							"character": 30
 						}
 					],
 					"signatures": [
 						{
-							"id": 1123,
+							"id": 1133,
 							"name": "__type",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -17788,19 +17894,19 @@
 							},
 							"parameters": [
 								{
-									"id": 1124,
+									"id": 1134,
 									"name": "payload",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1129,
+										"id": 1139,
 										"name": "MessagePayload"
 									}
 								},
 								{
-									"id": 1125,
+									"id": 1135,
 									"name": "responder",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17810,7 +17916,7 @@
 									"type": {
 										"type": "reflection",
 										"declaration": {
-											"id": 1126,
+											"id": 1136,
 											"name": "__type",
 											"kind": 65536,
 											"kindString": "Type literal",
@@ -17818,13 +17924,13 @@
 											"sources": [
 												{
 													"fileName": "types.ts",
-													"line": 785,
+													"line": 786,
 													"character": 16
 												}
 											],
 											"signatures": [
 												{
-													"id": 1127,
+													"id": 1137,
 													"name": "__type",
 													"kind": 4096,
 													"kindString": "Call signature",
@@ -17834,7 +17940,7 @@
 													},
 													"parameters": [
 														{
-															"id": 1128,
+															"id": 1138,
 															"name": "data",
 															"kind": 32768,
 															"kindString": "Parameter",
@@ -17865,7 +17971,7 @@
 			}
 		},
 		{
-			"id": 1118,
+			"id": 1128,
 			"name": "MessageOptions",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -17882,21 +17988,21 @@
 			"sources": [
 				{
 					"fileName": "types.ts",
-					"line": 766,
+					"line": 767,
 					"character": 12
 				}
 			],
 			"type": {
 				"type": "reflection",
 				"declaration": {
-					"id": 1119,
+					"id": 1129,
 					"name": "__type",
 					"kind": 65536,
 					"kindString": "Type literal",
 					"flags": {},
 					"children": [
 						{
-							"id": 1120,
+							"id": 1130,
 							"name": "start",
 							"kind": 1024,
 							"kindString": "Property",
@@ -17909,7 +18015,7 @@
 							"sources": [
 								{
 									"fileName": "types.ts",
-									"line": 771,
+									"line": 772,
 									"character": 4
 								}
 							],
@@ -17924,14 +18030,14 @@
 							"title": "Properties",
 							"kind": 1024,
 							"children": [
-								1120
+								1130
 							]
 						}
 					],
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 766,
+							"line": 767,
 							"character": 29
 						}
 					]
@@ -17939,7 +18045,7 @@
 			}
 		},
 		{
-			"id": 1129,
+			"id": 1139,
 			"name": "MessagePayload",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -17956,21 +18062,21 @@
 			"sources": [
 				{
 					"fileName": "types.ts",
-					"line": 752,
+					"line": 753,
 					"character": 12
 				}
 			],
 			"type": {
 				"type": "reflection",
 				"declaration": {
-					"id": 1130,
+					"id": 1140,
 					"name": "__type",
 					"kind": 65536,
 					"kindString": "Type literal",
 					"flags": {},
 					"children": [
 						{
-							"id": 1132,
+							"id": 1142,
 							"name": "data",
 							"kind": 1024,
 							"kindString": "Property",
@@ -17978,7 +18084,7 @@
 							"sources": [
 								{
 									"fileName": "types.ts",
-									"line": 756,
+									"line": 757,
 									"character": 4
 								}
 							],
@@ -17988,7 +18094,7 @@
 							}
 						},
 						{
-							"id": 1133,
+							"id": 1143,
 							"name": "status",
 							"kind": 1024,
 							"kindString": "Property",
@@ -17998,7 +18104,7 @@
 							"sources": [
 								{
 									"fileName": "types.ts",
-									"line": 758,
+									"line": 759,
 									"character": 4
 								}
 							],
@@ -18008,7 +18114,7 @@
 							}
 						},
 						{
-							"id": 1131,
+							"id": 1141,
 							"name": "type",
 							"kind": 1024,
 							"kindString": "Property",
@@ -18016,7 +18122,7 @@
 							"sources": [
 								{
 									"fileName": "types.ts",
-									"line": 754,
+									"line": 755,
 									"character": 4
 								}
 							],
@@ -18031,16 +18137,16 @@
 							"title": "Properties",
 							"kind": 1024,
 							"children": [
-								1132,
-								1133,
-								1131
+								1142,
+								1143,
+								1141
 							]
 						}
 					],
 					"sources": [
 						{
 							"fileName": "types.ts",
-							"line": 752,
+							"line": 753,
 							"character": 29
 						}
 					]
@@ -18058,7 +18164,7 @@
 			"sources": [
 				{
 					"fileName": "embed/base.ts",
-					"line": 262,
+					"line": 263,
 					"character": 13
 				}
 			],
@@ -18084,6 +18190,7 @@
 							"kind": 32768,
 							"kindString": "Parameter",
 							"flags": {},
+							"comment": {},
 							"type": {
 								"type": "reference",
 								"name": "executeTMLInput"
@@ -18114,7 +18221,7 @@
 			"sources": [
 				{
 					"fileName": "embed/base.ts",
-					"line": 308,
+					"line": 310,
 					"character": 13
 				}
 			],
@@ -18140,6 +18247,7 @@
 							"kind": 32768,
 							"kindString": "Parameter",
 							"flags": {},
+							"comment": {},
 							"type": {
 								"type": "reference",
 								"name": "exportTMLInput"
@@ -18197,7 +18305,7 @@
 					},
 					"type": {
 						"type": "reference",
-						"id": 893,
+						"id": 899,
 						"name": "EmbedConfig"
 					}
 				}
@@ -18297,7 +18405,7 @@
 							},
 							"type": {
 								"type": "reference",
-								"id": 893,
+								"id": 899,
 								"name": "EmbedConfig"
 							}
 						}
@@ -18444,7 +18552,7 @@
 								"type": "array",
 								"elementType": {
 									"type": "reference",
-									"id": 1106,
+									"id": 1116,
 									"name": "PrefetchFeatures"
 								}
 							}
@@ -18463,17 +18571,17 @@
 			"title": "Enumerations",
 			"kind": 4,
 			"children": [
-				799,
+				801,
 				601,
 				590,
 				595,
 				651,
-				890,
-				795,
+				896,
+				797,
 				682,
-				747,
+				749,
 				643,
-				1106,
+				1116,
 				667
 			]
 		},
@@ -18492,29 +18600,29 @@
 			"title": "Interfaces",
 			"kind": 256,
 			"children": [
-				1067,
+				1077,
 				603,
-				1154,
-				1142,
-				1134,
-				893,
-				1111,
-				995,
+				1164,
+				1152,
+				1144,
+				899,
+				1121,
+				1002,
 				663,
-				1035,
-				966,
-				927,
-				1145
+				1042,
+				973,
+				933,
+				1155
 			]
 		},
 		{
 			"title": "Type aliases",
 			"kind": 4194304,
 			"children": [
-				1117,
-				1121,
-				1118,
-				1129
+				1127,
+				1131,
+				1128,
+				1139
 			]
 		},
 		{
