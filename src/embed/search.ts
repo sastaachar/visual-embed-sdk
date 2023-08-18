@@ -109,6 +109,14 @@ export interface SearchViewConfig extends ViewConfig {
      * @version SDK: 1.21.0 | ThoughtSpot: 9.2.0.cl
      */
     hideSearchBar?: boolean;
+    /**
+     * Flag to control Data panel experience
+     *
+     * @default false
+     * @version SDK: 1.26.0 | Thoughtspot: 9.7.0.cl
+     * @hidden
+     */
+    dataPanelV2?: boolean;
 }
 
 export const HiddenActionItemByDefaultForSearchEmbed = [
@@ -162,6 +170,7 @@ export class SearchEmbed extends TsEmbed {
             dataSource,
             dataSources,
             excludeRuntimeFiltersfromURL,
+            dataPanelV2 = false,
         } = this.viewConfig;
         const queryParams = this.getBaseQueryParams();
 
@@ -195,6 +204,7 @@ export class SearchEmbed extends TsEmbed {
             queryParams[Param.ForceTable] = true;
         }
 
+        queryParams[Param.DataPanelV2Enabled] = dataPanelV2;
         queryParams[Param.DataSourceMode] = this.getDataSourceMode();
         queryParams[Param.UseLastSelectedDataSource] = false;
         queryParams[Param.searchEmbed] = true;

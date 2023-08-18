@@ -14,6 +14,23 @@ import { getQueryParamString } from '../utils';
 import { V1Embed } from './ts-embed';
 
 /**
+ * Configuration for search options
+ */
+export interface SearchOptions {
+    /**
+     * The tml string to load the answer
+     */
+    searchQuery: string;
+    /**
+     * Boolean to determine if the search should be executed or not.
+     * if it is executed, put the focus on the results.
+     * if it’s not executed, put the focus in the search bar - at the end of
+     * the tokens
+     */
+    executeSearch?: boolean;
+}
+
+/**
  * The configuration attributes for the embedded Natural language search view. Based on
  * GPT and LLM.
  *
@@ -22,7 +39,9 @@ import { V1Embed } from './ts-embed';
  */
 export interface SageViewConfig extends ViewConfig {
     /**
-     * If set to true, object results are shown.
+     * If set to true, a list of liveboard and answers related
+     * to the natural language search will be shown below the
+     * AI generated answer.
      */
     showObjectResults?: boolean;
     /**
@@ -34,7 +53,8 @@ export interface SageViewConfig extends ViewConfig {
      */
     hideWorksheetSelector?: boolean,
     /**
-     * If set to true, the object search suggestions are not shown
+     * If set to true, the search suggestions will contain existing
+     * liveboards and answers in addition with the autocomplete
      *
      */
     showObjectSuggestions?: boolean;
@@ -51,6 +71,11 @@ export interface SageViewConfig extends ViewConfig {
      * The data source GUID to set on load.
      */
     dataSource?: string;
+    /**
+     * Configuration for search options
+     */
+    searchOptions?: SearchOptions;
+
 }
 export const HiddenActionItemByDefaultForSageEmbed = [
     Action.Save,
@@ -102,7 +127,7 @@ export class SageEmbed extends V1Embed {
         params[Param.DisableWorksheetChange] = !!disableWorksheetChange;
         params[Param.HideWorksheetSelector] = !!hideWorksheetSelector;
         params[Param.HideEurekaSuggestions] = !showObjectSuggestions;
-        params[Param.HideSampleQuestions] = !hideSampleQuestions;
+        params[Param.HideSampleQuestions] = !!hideSampleQuestions;
         params[Param.HideActions] = [
             ...(params[Param.HideActions] ?? []),
             ...HiddenActionItemByDefaultForSageEmbed,
@@ -121,9 +146,17 @@ export class SageEmbed extends V1Embed {
         const path = 'eureka';
         const postHashObj = {};
         const tsPostHashParams = this.getThoughtSpotPostUrlParams();
+        const {
+            dataSource, searchOptions,
+        } = this.viewConfig;
 
-        if (this.viewConfig.searchQuery) postHashObj[Param.Query] = this.viewConfig.searchQuery;
-        if (this.viewConfig.dataSource) postHashObj[Param.WorksheetId] = this.viewConfig.dataSource;
+        if (dataSource) postHashObj[Param.WorksheetId] = dataSource;
+        if (searchOptions?.searchQuery) {
+            postHashObj[Param.Query] = searchOptions?.searchQuery;
+            if (searchOptions.executeSearch) {
+                postHashObj[Param.executeSearch] = true;
+            }
+        }
         let sagePostHashParams = new URLSearchParams(postHashObj).toString();
         if (sagePostHashParams) sagePostHashParams = `${tsPostHashParams ? '&' : '?'}${sagePostHashParams}`;
 
