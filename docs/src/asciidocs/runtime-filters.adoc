@@ -11,7 +11,8 @@ Runtime filters provide the ability to apply filters to a Liveboard or Answer by
 
 [NOTE]
 ====
-The runtime filters operation returns an error if the URL exceeds 2000 characters.
+The runtime filters operation returns an error if the URL exceeds 2000 characters. 
+Ensure that you add the runtime filter parameters in the URL before `#/path` in the URL, so that the parameters persist. For examples, see xref:runtime-filters.adoc#rt-url-params[Apply runtime filters on a Liveboard].
 ====
 
 == How runtime filters work
@@ -124,13 +125,10 @@ new Date('2020-05-22').getTime() / 1000
 ----
 ====
 
-== Apply runtime filters on a Liveboard or visualization
+[rt-url-params]
+== Apply runtime filters on a Liveboard
 
 The following examples show the runtime filter query string in a Liveboard URL:
-
-----
-https://{ThoughtSpot-Host}/#/pinboard/d084c256-e284-4fc4-b80c-111cb606449a?col1=State&op1=EQ&val1=California
-----
 
 ----
 https://{ThoughtSpot-Host}/?col1=State&op1=EQ&val1=California#/pinboard/d084c256-e284-4fc4-b80c-111cb606449a
@@ -139,15 +137,9 @@ https://{ThoughtSpot-Host}/?col1=State&op1=EQ&val1=California#/pinboard/d084c256
 You can apply multiple filters in the same URL as shown in this example:
 
 ----
-https://{ThoughtSpot-Host}/#/pinboard/d084c256-e284-4fc4-b80c-111cb606449a?col1=State&op1=EQ&val1=California&col2=product&op2=BEGINS_WITH&val2=Travel
-----
-
-////
-----
 https://{ThoughtSpot-Host}/?col1=State&op1=EQ&val1=California&col2=product&op2=BEGINS_WITH&val2=Travel#/pinboard/d084c256-e284-4fc4-b80c-111cb606449a
 ----
-////
-
+ 
 == Apply runtime filters on embedded objects
 
 If you are xref:embed-without-sdk.adoc[embedding a Liveboard or visualization without using the Visual Embed SDK], you can append the filters in the embedded object URL as shown in these examples:
