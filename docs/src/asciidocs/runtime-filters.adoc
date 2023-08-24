@@ -12,7 +12,7 @@ Runtime filters provide the ability to apply filters to a Liveboard or Answer by
 [NOTE]
 ====
 The runtime filters operation returns an error if the URL exceeds 2000 characters. 
-Ensure that you add the runtime filter parameters in the URL before `#/path` in the URL, so that the parameters persist. For examples, see xref:runtime-filters.adoc#rtURLParams[Apply runtime filters on a Liveboard]. 
+Ensure that you add the runtime filter parameters before `#/path` in the URL, so that the parameters persist. For examples, see xref:runtime-filters.adoc#rtURLParams[Apply runtime filters on a Liveboard]. 
 ====
 
 == How runtime filters work
