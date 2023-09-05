@@ -867,6 +867,99 @@ export enum RuntimeFilterOp {
 }
 
 /**
+ * A map of the supported Date filter types
+ */
+// eslint-disable-next-line no-shadow
+export enum DateFilterTypes {
+    /**
+     * Between / Not Between
+     */
+    EXACT_DATE_RANGE = 'EXACT_DATE_RANGE',
+    /**
+     * Exact Date
+     */
+    EXACT_DATE = 'EXACT_DATE',
+    /**
+     * Month Year
+     */
+    MONTH_YEAR = 'MONTH_YEAR',
+    /**
+     * Quarter Qear
+     */
+    QUARTER_YEAR = 'QUARTER_YEAR',
+    /**
+     * Year Only
+     */
+    YEAR_ONLY = 'YEAR_ONLY',
+    /**
+     * Today
+     */
+    TODAY = 'TODAY',
+    /**
+     * YESTERDAY
+     */
+    YESTERDAY = 'YESTERDAY',
+    /**
+     * Tomorrow
+     */
+    TOMORROW = 'TOMORROW',
+    /**
+     * This Period
+     */
+    THIS_PERIOD = 'THIS_PERIOD',
+    /**
+     * Last N Period
+     */
+    LAST_N_PERIOD = 'LAST_N_PERIOD',
+    /**
+     * Next N Period
+     */
+    NEXT_N_PERIOD = 'NEXT_N_PERIOD',
+    /**
+     * Period To Date
+     */
+    PERIOD_TO_DATE = 'PERIOD_TO_DATE',
+}
+/**
+ * A map of the supported Date Periods
+ */
+// eslint-disable-next-line no-shadow
+export enum DatePeriods {
+    /**
+     * Second
+     * */
+    SECOND = 'SECOND',
+    /**
+     * Minute
+     * */
+    MINUTE = 'MINUTE',
+    /**
+     * Hour
+     * */
+    HOUR = 'HOUR',
+    /**
+     * Day
+     * */
+    DAY = 'DAY',
+    /**
+     * Week
+     * */
+    WEEK = 'WEEK',
+    /**
+     * Month
+     * */
+    MONTH = 'MONTH',
+    /**
+     * Quarter
+     * */
+    QUARTER = 'QUARTER',
+    /**
+     * Year
+     * */
+    YEAR = 'YEAR',
+}
+
+/**
  * A filter that can be applied to ThoughtSpot answers, Liveboards, or
  * visualizations at runtime.
  */
@@ -1983,12 +2076,32 @@ export enum HostEvent {
     /**
      * Updates the visible filters on the Liveboard.
      *
-     * @param - filter: filter object containing column name and filter operation and values
-     * @example
+     * @param - Filter: A filter object that includes the column name, operator, negate, and values for non-date columns.
+     * For date columns, the object may also include the type and datePeriod in addition to the column name, operator, negate, and values.
+     *
+     * @example Non date Columns
      *
      * ```js
      * liveboardEmbed.trigger(HostEvent.UpdateFilters, {
-     *  filter: { columnName: 'column name', operator: RuntimeFilterOp.EQ, values: [1,2,3] }
+     *  filters: {
+     *      columnName: 'column name',
+     *      operator: RuntimeFilterOp.EQ,
+     *      values: [1,2,3]
+     *  }
+     * })
+     * ```
+     *
+     *@example Date Columns
+     *
+     * ```js
+     * liveboardEmbed.trigger(HostEvent.UpdateFilters, {
+     *   filters: {
+     *      columnName: 'Commit Date,
+     *      operator: RuntimeFilterOp.EQ,
+     *      values: [5],
+     *      datePeriod: DatePeriods.MONTH
+     *      type: DateFilterTypes.NEXT_N_PERIOD,
+     *   }
      * })
      * ```
      * @version SDK: 1.23.0 | ThoughtSpot: 9.4.0.cl

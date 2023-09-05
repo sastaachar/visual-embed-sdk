@@ -56,7 +56,6 @@ a {
     padding: 10px 25px;
 }
 
-
 .d-inline-block {
     display: inline-block;
 }
@@ -104,7 +103,7 @@ button {
 }
 
 .bordered img {
-  border: 1px solid var(--border-color);
+    border: 1px solid var(--border-color);
 }
 
 .displayNone {
@@ -118,8 +117,8 @@ button {
 /*Tags style start*/
 
 .video {
-   width: 800px;
-   height: 600px;
+    width: 800px;
+    height: 600px;
 }
 
 .tag {
@@ -151,7 +150,6 @@ button {
     border-color: $tip-color;
 }
 
-
 .eaTag {
     border-radius: $beta-border-radius;
     display: inline-block;
@@ -180,8 +178,6 @@ button {
     margin-right: 1px;
 }
 
-
-
 .blueBackground {
     background-color: $note-color;
 }
@@ -199,15 +195,15 @@ button {
 }
 
 .greyBackground {
-    background-color: #C0C6CF;
+    background-color: #c0c6cf;
 }
 
 .greyDarkBackground {
-    background-color: #A5ACB9;
+    background-color: #a5acb9;
 }
 
 .greyLightBackground {
-    background-color: #EAEDF2;
+    background-color: #eaedf2;
 }
 
 .orangeBackground {
@@ -226,14 +222,12 @@ button {
     background-color: $tag-color-light;
 }
 
-.eaBackground  {
+.eaBackground {
     background-color: #8c62f5;
 }
 .betaBackground {
-    background-color: #06BF7F;
+    background-color: #06bf7f;
 }
-
-
 
 /*Tags style end*/
 
@@ -247,7 +241,7 @@ button {
     width: 100%;
     padding: $padding-sm $padding-sm $padding-sm $padding-md;
     background-color: var(--announcement-block-color);
-    }
+}
 
 .boxDiv {
     padding: 15px;
@@ -262,10 +256,9 @@ button {
 }
 
 .container {
-    margin:0 0 30px 0;
+    margin: 0 0 30px 0;
     padding: 5px;
     width: auto;
-
 }
 
 .homeHeader {
@@ -277,12 +270,12 @@ button {
 }
 
 .homeHeaderText {
-      display: inline-block;
-      padding: 5px 5px 5px 20px;
-      width: 600px;
-      max-width: 33%;
-      margin: 0;
-      vertical-align: top;
+    display: inline-block;
+    padding: 5px 5px 5px 20px;
+    width: 600px;
+    max-width: 33%;
+    margin: 0;
+    vertical-align: top;
 }
 
 .homeBullet {
@@ -298,14 +291,13 @@ button {
     color: $darkblue;
 }
 
-.blockHome{
+.blockHome {
     border-top: 0.5px solid var(--border-color);
     border-bottom: 0.5px solid var(--border-color);
     margin: 20px 10px 5px 10px;
-
 }
 
-.blockHomeContent{
+.blockHomeContent {
     padding: 15px;
     display: inline-block;
     margin: 10px;
@@ -341,7 +333,6 @@ button {
     margin: 5px auto;
 }
 
-
 .boxBody {
     font-size: 13px;
     font-weight: $font-weight-normal;
@@ -361,9 +352,9 @@ button {
 
 .boxAuto {
     border: 0.5px solid $disabledcolor;
-	height: auto;
-	width: 100%;
-	padding: 0 0 0 2px;
+    height: auto;
+    width: 100%;
+    padding: 0 0 0 2px;
 }
 
 .tableContainer {
@@ -382,16 +373,14 @@ button {
     padding: 15px;
 }
 
-summary.title  {
+summary.title {
     font-size: $font-size-summ-title;
     margin-top: $margin-sm;
     margin-left: 3px;
     font-weight: $font-weight-normal;
     line-height: $line-height-doc;
     color: var(--primary-color);
-
 }
-
 
 .introTile {
     padding: $padding-md;
@@ -415,18 +404,16 @@ summary.title  {
     margin: auto;
     padding: 10px;
     font-weight: $font-weight-bold;
-
 }
 
 .cardBlockHeading {
-       margin-top: $margin-lg;
-       padding-bottom: $padding-sm;
-       border-bottom: 1px solid var(--border-color);
-       font-size: 26px;
-       font-weight: $font-weight-bold;
-       text-align: center;
+    margin-top: $margin-lg;
+    padding-bottom: $padding-sm;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 26px;
+    font-weight: $font-weight-bold;
+    text-align: center;
 }
-
 
 a.anchor {
     position: absolute;
@@ -434,20 +421,19 @@ a.anchor {
     width: 1.75ex;
     margin-left: -1.5ex;
     visibility: hidden;
-    font-size: .8em;
+    font-size: 0.8em;
     font-weight: 400;
     padding-top: 0.05em;
 }
 
-
-.introCard     {
+.introCard {
     padding: 15px;
     display: inline-block;
     position: relative;
     height: 225px;
     max-height: 500px;
     width: 300px;
-    max-width:400px;
+    max-width: 400px;
     margin: 10px;
     box-shadow: var(--box-shadow);
     border-radius: 10px;
@@ -455,8 +441,6 @@ a.anchor {
         box-shadow: var(--box-shadow-hover);
     }
 }
-
-
 
 /* Div box style end */
 
@@ -491,23 +475,23 @@ a.anchor {
     }
 
     .homeHeader {
-         width: 100%;
-         max-width: 100%;
-        }
+        width: 100%;
+        max-width: 100%;
+    }
 
     .documentWrapper {
         width: 100%;
     }
     .homeHeaderText {
-         width: 100%;
-         max-width: 100%;
+        width: 100%;
+        max-width: 100%;
     }
     .homeHeader {
-         width: 100%;
+        width: 100%;
     }
     .introTile {
-         height: 100%;
-         margin: 10px;
+        height: 100%;
+        margin: 10px;
     }
     .boxBody {
         font-size: 12px;
@@ -521,23 +505,23 @@ a.anchor {
     }
 
     .homeBanner {
-       display: none;
+        display: none;
     }
 
     .homeHeader {
-            width: 100%;
-            max-width: 100%;
+        width: 100%;
+        max-width: 100%;
     }
 
-     .blockHome {
-         border: 0;
-     }
+    .blockHome {
+        border: 0;
+    }
 
-     .documentWrapper {
-          documentView {
-                 padding-left: 5px;
-             }
-     }
+    .documentWrapper {
+        documentView {
+            padding-left: 5px;
+        }
+    }
 
     .containerWrapper {
         padding: 10px 10px 10px 12px;
@@ -555,10 +539,10 @@ a.anchor {
     }
 
     .blockHome {
-             border: 0;
+        border: 0;
     }
 
-   .introCard {
+    .introCard {
         width: 100%;
     }
 
@@ -575,8 +559,8 @@ a.anchor {
         margin: 5px;
     }
     .tableContainer {
-	overflow: scroll;
-}
+        overflow: scroll;
+    }
 }
 
 @media screen and (max-width: $mobile-resolution-max) {
@@ -587,4 +571,7 @@ a.anchor {
 
 .searchResultHighlightColor {
     color: var(--secondary-color);
+}
+dt.example {
+    margin-bottom: 10px;
 }
