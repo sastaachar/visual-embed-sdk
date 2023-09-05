@@ -2096,7 +2096,7 @@ export enum HostEvent {
      * ```js
      * liveboardEmbed.trigger(HostEvent.UpdateFilters, {
      *   filters: {
-     *      columnName: 'Commit Date,
+     *      columnName: 'column name,
      *      operator: RuntimeFilterOp.EQ,
      *      values: [5],
      *      datePeriod: DatePeriods.MONTH
