@@ -5425,11 +5425,11 @@
 							},
 							{
 								"tag": "example",
-								"text": "Non date Columns\n\n```js\nliveboardEmbed.trigger(HostEvent.UpdateFilters, {\n filters: {\n     columnName: 'column name',\n     operator: RuntimeFilterOp.EQ,\n     values: [1,2,3]\n }\n})\n```\n"
+								"text": "Non date Columns\n\n```js\nliveboardEmbed.trigger(HostEvent.UpdateFilters, {\n filters: [{\n     columnName: 'column name',\n     operator: RuntimeFilterOp.EQ,\n     values: [1,2,3]\n }]\n})\n```\n"
 							},
 							{
 								"tag": "example",
-								"text": "Date Columns\n\n```js\nliveboardEmbed.trigger(HostEvent.UpdateFilters, {\n  filters: {\n     columnName: 'column name,\n     operator: RuntimeFilterOp.EQ,\n     values: [5],\n     datePeriod: DatePeriods.MONTH\n     type: DateFilterTypes.NEXT_N_PERIOD,\n  }\n})\n```"
+								"text": "Date Columns\n\n```js\nliveboardEmbed.trigger(HostEvent.UpdateFilters, {\n  filters: [{\n     columnName: 'column name',\n     operator: RuntimeFilterOp.EQ,\n     values: [5],\n     datePeriod: DatePeriods.MONTH\n     type: DateFilterTypes.NEXT_N_PERIOD,\n  }]\n})\n```"
 							},
 							{
 								"tag": "version",

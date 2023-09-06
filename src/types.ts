@@ -2083,11 +2083,11 @@ export enum HostEvent {
      *
      * ```js
      * liveboardEmbed.trigger(HostEvent.UpdateFilters, {
-     *  filters: {
+     *  filters: [{
      *      columnName: 'column name',
      *      operator: RuntimeFilterOp.EQ,
      *      values: [1,2,3]
-     *  }
+     *  }]
      * })
      * ```
      *
@@ -2095,13 +2095,13 @@ export enum HostEvent {
      *
      * ```js
      * liveboardEmbed.trigger(HostEvent.UpdateFilters, {
-     *   filters: {
-     *      columnName: 'column name,
+     *   filters: [{
+     *      columnName: 'column name',
      *      operator: RuntimeFilterOp.EQ,
      *      values: [5],
      *      datePeriod: DatePeriods.MONTH
      *      type: DateFilterTypes.NEXT_N_PERIOD,
-     *   }
+     *   }]
      * })
      * ```
      * @version SDK: 1.23.0 | ThoughtSpot: 9.4.0.cl
