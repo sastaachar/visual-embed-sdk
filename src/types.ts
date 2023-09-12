@@ -742,6 +742,10 @@ export interface ViewConfig {
      * @version SDK: 1.26.0 | Thoughtspot: 9.7.0.cl
      */
     visibleTabs?: string[];
+    /**
+     * is hidden TBD
+     */
+    isHiddenByDefault?: boolean;
 }
 
 /**
@@ -2108,7 +2112,7 @@ export enum Param {
     DisableLoginRedirect = 'disableLoginRedirect',
     visibleVizs = 'pinboardVisibleVizs',
     LiveboardV2Enabled = 'isPinboardV2Enabled',
-    DataPanelV2Enabled ='enableDataPanelV2',
+    DataPanelV2Enabled = 'enableDataPanelV2',
     ShowAlerts = 'showAlerts',
     Locale = 'locale',
     CustomStyle = 'customStyle',
@@ -2170,15 +2174,15 @@ export enum Param {
  */
 // eslint-disable-next-line no-shadow
 export enum Action {
-   /**
-    * The **Save** action on an Answer or Liveboard.
-    * Allows users to save the changes.
-    *
-    * @example
-    * ```js
-    * disabledActions: [Action.SaveAsView]
-    * ```
-    */
+    /**
+     * The **Save** action on an Answer or Liveboard.
+     * Allows users to save the changes.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.SaveAsView]
+     * ```
+     */
     Save = 'save',
     /**
      * @hidden
@@ -2432,25 +2436,25 @@ export enum Action {
      * ```
      */
     ImportTML = 'importTSL',
-   /**
-    * The **Update TML** menu action for Liveboards and Answers.
-    * Update TML representation of ThoughtSpot objects.
-    *
-    * @example
-    * ```js
-    * disabledActions: [Action.UpdateTML]
-    * ```
-    */
+    /**
+     * The **Update TML** menu action for Liveboards and Answers.
+     * Update TML representation of ThoughtSpot objects.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.UpdateTML]
+     * ```
+     */
     UpdateTML = 'updateTSL',
-   /**
-    * The **Edit TML** menu action for Liveboards and Answers.
-    * Opens the TML editor.
-    *
-    * @example
-    * ```js
-    * disabledActions: [Action.EditTML]
-    * ```
-    */
+    /**
+     * The **Edit TML** menu action for Liveboards and Answers.
+     * Opens the TML editor.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.EditTML]
+     * ```
+     */
     EditTML = 'editTSL',
     /**
      * The **Present** menu action for Liveboards and Answers.
@@ -2557,14 +2561,14 @@ export enum Action {
      * @hidden
      */
     AnalysisInfo = 'analysisInfo',
-   /**
-    * The **Schedule** menu action on a Liveboard.
-    *
-    * @example
-    * ```js
-    * disabledActions: [Action.Subscription]
-    * ```
-    */
+    /**
+     * The **Schedule** menu action on a Liveboard.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.Subscription]
+     * ```
+     */
     Subscription = 'subscription',
     /**
      * The **Explore** action on Liveboard visualizations
@@ -2586,26 +2590,26 @@ export enum Action {
      */
 
     DrillInclude = 'context-menu-item-include',
-   /**
-    * The action to exclude data points on a drilled-down Answer
-    * or visualization
-    *
-    * @example
-    * ```js
-    * disabledActions: [Action.DrillInclude]
-    * ```
-    */
+    /**
+     * The action to exclude data points on a drilled-down Answer
+     * or visualization
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.DrillInclude]
+     * ```
+     */
     DrillExclude = 'context-menu-item-exclude',
-   /**
-    * The **Copy to clipboard** menu action on tables in an Answer
-    * or Liveboard.
-    * Copies the selected data point.
-    *
-    * @example
-    * ```js
-    * disabledActions: [Action.CopyToClipboard]
-    * ```
-    */
+    /**
+     * The **Copy to clipboard** menu action on tables in an Answer
+     * or Liveboard.
+     * Copies the selected data point.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.CopyToClipboard]
+     * ```
+     */
     CopyToClipboard = 'context-menu-item-copy-to-clipboard',
     CopyAndEdit = 'context-menu-item-copy-and-edit',
     /**
@@ -2614,36 +2618,36 @@ export enum Action {
     DrillEdit = 'context-menu-item-edit',
     EditMeasure = 'context-menu-item-edit-measure',
     Separator = 'context-menu-item-separator',
-   /**
-    * The **Drill down** menu action on Answers and Liveboard
-    * visualizations.
-    * Allows drilling down to a specific data point on a chart or table.
-    *
-    * @example
-    * ```js
-    * disabledActions: [Action.DrillDown]
-    * ```
-    */
+    /**
+     * The **Drill down** menu action on Answers and Liveboard
+     * visualizations.
+     * Allows drilling down to a specific data point on a chart or table.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.DrillDown]
+     * ```
+     */
     DrillDown = 'DRILL',
-   /**
-    * The request access action on Liveboards.
-    * Allows users with view permissions to request edit access to a Liveboard.
-    *
-    * @example
-    * ```js
-    * disabledActions: [Action.RequestAccess]
-    * ```
-    */
+    /**
+     * The request access action on Liveboards.
+     * Allows users with view permissions to request edit access to a Liveboard.
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.RequestAccess]
+     * ```
+     */
     RequestAccess = 'requestAccess',
-   /**
-    * The **Query visualizer** and **Query SQL** buttons in Query details panel
-    * of the Answer page
-    *
-    * @example
-    * ```js
-    * disabledActions: [Action.QueryDetailsButtons]
-    * ```
-    */
+    /**
+     * The **Query visualizer** and **Query SQL** buttons in Query details panel
+     * of the Answer page
+     *
+     * @example
+     * ```js
+     * disabledActions: [Action.QueryDetailsButtons]
+     * ```
+     */
     QueryDetailsButtons = 'QueryDetailsButtons',
     /**
      * The **Delete** action for Answers.

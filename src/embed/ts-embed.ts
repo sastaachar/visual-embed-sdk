@@ -565,6 +565,9 @@ export class TsEmbed {
                     this.iFrame.addEventListener('error', () => {
                         nextInQueue();
                     });
+                    if (this.viewConfig.isHiddenByDefault) {
+                        this.hideEmbed();
+                    }
                     this.insertIntoDOM(this.iFrame);
                     const prefetchIframe = document.querySelectorAll('.prefetchIframe');
                     if (prefetchIframe.length) {
@@ -583,6 +586,47 @@ export class TsEmbed {
                     this.handleError(error);
                 });
         });
+    }
+
+    /**
+     * hide
+     */
+
+    public shieldDiv: HTMLDivElement;
+
+    public isHidden = false;
+
+    public hideEmbed(): void {
+        if (this.isHidden) return;
+        if (!this.shieldDiv) this.shieldDiv = document.createElement('div');
+
+        this.shieldDiv.style.opacity = '0';
+        this.shieldDiv.style.zIndex = '-999';
+        this.shieldDiv.style.position = 'absolute';
+        this.shieldDiv.style.top = `${this.el.clientTop - this.el.scrollTop}px`;
+        this.shieldDiv.style.left = `${this.el.clientLeft - this.el.scrollLeft}px`;
+        this.shieldDiv.style.width = this.iFrame.style.width;
+        this.shieldDiv.style.height = this.iFrame.style.height;
+
+        this.el.appendChild(this.shieldDiv);
+        (this.iFrame).style.zIndex = '-999';
+        (this.el as HTMLDivElement).style.position = 'fixed';
+        (this.el as HTMLDivElement).style.opacity = '0';
+        (this.el as HTMLDivElement).style.zIndex = '-1000';
+
+        this.isHidden = true;
+    }
+
+    public showEmbed(): void {
+        if (!this.isHidden) return;
+
+        this.shieldDiv.remove();
+        this.iFrame.style.removeProperty('zIndex');
+        (this.el as HTMLDivElement).style.removeProperty('position');
+        (this.el as HTMLDivElement).style.removeProperty('opacity');
+        (this.el as HTMLDivElement).style.removeProperty('z-index');
+
+        this.isHidden = false;
     }
 
     protected insertIntoDOM(child: string | Node): void {
