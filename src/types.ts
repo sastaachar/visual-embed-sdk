@@ -770,7 +770,7 @@ export interface ViewConfig {
     /**
      *  
      */
-    isHiddenBydefault?: boolean;
+    isHiddenByDefault?: boolean;
 }
 
 /**
