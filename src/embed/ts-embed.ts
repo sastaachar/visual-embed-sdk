@@ -59,25 +59,25 @@ import { AuthFailureType, getAuthenticaionToken } from '../auth';
 const { version } = pkgInfo;
 
 /**
- * Global prefix for all Thoughtspot postHash Params.
- */
+* Global prefix for all Thoughtspot postHash Params.
+*/
 export const THOUGHTSPOT_PARAM_PREFIX = 'ts-';
 const TS_EMBED_ID = '_thoughtspot-embed';
 
 /**
- * The event id map from v2 event names to v1 event id
- * v1 events are the classic embed events implemented in Blink v1
- * We cannot rename v1 event types to maintain backward compatibility
- *
- * @internal
- */
+* The event id map from v2 event names to v1 event id
+* v1 events are the classic embed events implemented in Blink v1
+* We cannot rename v1 event types to maintain backward compatibility
+*
+* @internal
+*/
 const V1EventMap = {};
 
 /**
- * Base class for embedding v2 experience
- * Note: the v2 version of ThoughtSpot Blink is built on the new stack:
- * React+GraphQL
- */
+* Base class for embedding v2 experience
+* Note: the v2 version of ThoughtSpot Blink is built on the new stack:
+* React+GraphQL
+*/
 export class TsEmbed {
     /**
      * The DOM node which was inserted by the SDK to either
@@ -576,6 +576,9 @@ export class TsEmbed {
                     this.iFrame.addEventListener('error', () => {
                         nextInQueue();
                     });
+                    if (this.viewConfig.isHiddenByDefault) {
+                        this.hideEmbed();
+                    }
                     this.insertIntoDOM(this.iFrame);
                     const prefetchIframe = document.querySelectorAll('.prefetchIframe');
                     if (prefetchIframe.length) {
@@ -594,6 +597,47 @@ export class TsEmbed {
                     this.handleError(error);
                 });
         });
+    }
+
+    /**
+     * hide
+     */
+
+    public shieldDiv: HTMLDivElement;
+
+    public isHidden = false;
+
+    public hideEmbed(): void {
+        if (this.isHidden) return;
+        if (!this.shieldDiv) this.shieldDiv = document.createElement('div');
+
+        this.shieldDiv.style.opacity = '0';
+        this.shieldDiv.style.zIndex = '-999';
+        this.shieldDiv.style.position = 'absolute';
+        this.shieldDiv.style.top = `${this.el.clientTop - this.el.scrollTop}px`;
+        this.shieldDiv.style.left = `${this.el.clientLeft - this.el.scrollLeft}px`;
+        this.shieldDiv.style.width = this.iFrame.style.width;
+        this.shieldDiv.style.height = this.iFrame.style.height;
+
+        this.el.appendChild(this.shieldDiv);
+        (this.iFrame).style.zIndex = '-999';
+        (this.el as HTMLDivElement).style.position = 'fixed';
+        (this.el as HTMLDivElement).style.opacity = '0';
+        (this.el as HTMLDivElement).style.zIndex = '-1000';
+
+        this.isHidden = true;
+    }
+
+    public showEmbed(): void {
+        if (!this.isHidden) return;
+
+        this.shieldDiv.remove();
+        this.iFrame.style.removeProperty('zIndex');
+        (this.el as HTMLDivElement).style.removeProperty('position');
+        (this.el as HTMLDivElement).style.removeProperty('opacity');
+        (this.el as HTMLDivElement).style.removeProperty('z-index');
+
+        this.isHidden = false;
     }
 
     protected insertIntoDOM(child: string | Node): void {
@@ -889,12 +933,12 @@ export class TsEmbed {
 }
 
 /**
- * Base class for embedding v1 experience
- * Note: The v1 version of ThoughtSpot Blink works on the AngularJS stack
- * which is currently under migration to v2
- *
- * @inheritdoc
- */
+* Base class for embedding v1 experience
+* Note: The v1 version of ThoughtSpot Blink works on the AngularJS stack
+* which is currently under migration to v2
+*
+* @inheritdoc
+*/
 export class V1Embed extends TsEmbed {
     protected viewConfig: ViewConfig;
 
