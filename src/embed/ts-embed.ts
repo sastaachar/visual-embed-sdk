@@ -142,7 +142,10 @@ export class TsEmbed {
 
     private defaultHiddenActions = [Action.ReportError];
 
+    private domSelectorForEmbed: DOMSelector;
+
     constructor(domSelector: DOMSelector, viewConfig?: ViewConfig) {
+        this.domSelectorForEmbed = domSelector;
         this.el = getDOMNode(domSelector);
         // TODO: handle error
         this.embedConfig = getEmbedConfig();
@@ -565,6 +568,9 @@ export class TsEmbed {
                     this.iFrame.addEventListener('error', () => {
                         nextInQueue();
                     });
+                    // eslint-disable-next-line @typescript-eslint/no-empty-function
+                    // (this.iFrame.contentWindow as any).console.log = () => {
+                    // };
                     this.insertIntoDOM(this.iFrame);
                     const prefetchIframe = document.querySelectorAll('.prefetchIframe');
                     if (prefetchIframe.length) {
@@ -585,7 +591,161 @@ export class TsEmbed {
         });
     }
 
+    public getPreRenderDivId(preRenderId?: string): string {
+        if (preRenderId) return `prefetchIframe-${preRenderId}`;
+        return `prefetchIframe-${this.prerenderId}`;
+    }
+
+    private handlePreRenderInsert(child: string | Node) {
+        let div = (document.querySelector(`#${this.getPreRenderDivId()}`)) as HTMLDivElement;
+
+        if (!div) {
+            div = document.createElement('div');
+        }
+
+        div.innerHTML = '';
+        div.id = this.getPreRenderDivId();
+
+        div.style.zIndex = '-9999';
+        div.style.position = 'absolute';
+
+        div.style.width = '100vw';
+        div.style.height = '100vh';
+
+        const embedDiv = document.createElement('div');
+        const shieldDiv = document.createElement('div');
+        shieldDiv.id = `prefetchIframeShield-${this.prerenderId}`;
+        embedDiv.id = `prefetchIframeEmbed-${this.prerenderId}`;
+        embedDiv.style.width = '100vw';
+        embedDiv.style.height = '100vh';
+
+        embedDiv.style.position = 'absolute';
+        embedDiv.style.top = '0px';
+        embedDiv.style.left = '0px';
+
+        shieldDiv.style.position = 'absolute';
+        shieldDiv.style.top = '0px';
+        shieldDiv.style.left = '0px';
+
+        shieldDiv.style.width = '100%';
+        shieldDiv.style.height = '100%';
+        shieldDiv.style.backgroundColor = 'pink';
+        shieldDiv.style.zIndex = '-9999';
+
+        div.append(embedDiv, shieldDiv);
+
+        if (typeof child === 'string') {
+            embedDiv.innerHTML = child;
+            return;
+        }
+
+        embedDiv.appendChild(child);
+
+        this.insertedDomEl = div;
+
+        document.body.appendChild(div);
+
+        this.hidePreRendered();
+    }
+
+    public hidePreRendered(preRenderId?: string): TsEmbed {
+        if (preRenderId) {
+            this.insertedDomEl = (document.querySelector(`#${this.getPreRenderDivId(preRenderId)}`)) as HTMLDivElement;
+        }
+        (this.insertedDomEl as HTMLDivElement).style.zIndex = '-999';
+        (this.insertedDomEl as HTMLDivElement).style.opacity = '0';
+        ((this.insertedDomEl as HTMLElement).children[0] as HTMLDivElement).style.opacity = '0';
+        ((this.insertedDomEl as HTMLElement).children[0] as HTMLDivElement).style.zIndex = '-1000';
+
+        ((this.insertedDomEl as HTMLElement).children[1] as HTMLDivElement).style.opacity = '0';
+        ((this.insertedDomEl as HTMLElement).children[1] as HTMLDivElement).style.zIndex = '-999';
+
+        if (this.resizeObserver) this.resizeObserver.unobserve(this.el);
+        return this;
+    }
+
+    private resizeObserver: ResizeObserver
+
+    public showPreRendered(preRenderId?: string): TsEmbed {
+        if (preRenderId) {
+            this.insertedDomEl = (document.querySelector(`#${this.getPreRenderDivId(preRenderId)}`)) as HTMLDivElement;
+        }
+
+        this.resizeObserver = new ResizeObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.contentRect) {
+                    (this.insertedDomEl as HTMLDivElement).style.width = `${entry.contentRect.width}px`;
+                    (this.insertedDomEl as HTMLDivElement).style.height = `${entry.contentRect.height}px`;
+                }
+                console.log(entry.contentRect);
+            });
+
+            // console.log('Size changed');
+        });
+        this.el = getDOMNode(this.domSelectorForEmbed);
+
+        // console.log('El ', this.el);
+        this.resizeObserver.observe(this.el);
+
+        // if (document.querySelector('#trackingDiv')) {
+        let trackingDiv = document.getElementById('trackingDiv');
+        console.log(document.getElementById('trackingDiv'));
+        if (!trackingDiv) {
+            trackingDiv = document.createElement('div');
+            this.el.appendChild(trackingDiv);
+        }
+        trackingDiv.id = 'trackingDiv';
+        // trackingDiv.style.position = 'absolute';
+        // trackingDiv.style.width = '20px';
+        // trackingDiv.style.height = '20px';
+        // }
+        (trackingDiv as HTMLDivElement).style.left = `${this.el.getBoundingClientRect().x}px`;
+        (trackingDiv as HTMLDivElement).style.top = `${this.el.getBoundingClientRect().y}px`;
+
+        const io = new IntersectionObserver((e) => {
+            e.forEach((e1) => {
+                // this.insertedDomEl.style.top = e1.boundingClientRect.top
+                console.log(e1);
+                // (e1.target as HTMLDivElement).style.left = `${this.el.getBoundingClientRect().x}px`;
+                // (e1.target as HTMLDivElement).style.top = `${this.el.getBoundingClientRect().y}px`;
+            });
+        }, { root: this.insertedDomEl as HTMLDListElement, threshold: 1 });
+
+        io.observe(this.el as HTMLDivElement);
+
+        (this.insertedDomEl as HTMLDivElement).style.left = `${this.el.getBoundingClientRect().x}px`;
+        (this.insertedDomEl as HTMLDivElement).style.top = `${this.el.getBoundingClientRect().y}px`;
+
+        // io.observe(this.el);
+        (this.insertedDomEl as HTMLDivElement).style.zIndex = 'auto';
+        (this.insertedDomEl as HTMLDivElement).style.opacity = '1';
+        ((this.insertedDomEl as HTMLElement).children[0] as HTMLDivElement).style.opacity = '1';
+        ((this.insertedDomEl as HTMLElement).children[0] as HTMLDivElement).style.zIndex = 'auto';
+
+        ((this.insertedDomEl as HTMLElement).children[1] as HTMLDivElement).style.opacity = '0';
+        ((this.insertedDomEl as HTMLElement).children[1] as HTMLDivElement).style.zIndex = '-999';
+        return this;
+    }
+
+    public updatePreRenderedView(newStyle: Partial<CSSStyleDeclaration>): TsEmbed {
+        if (!this.isPrerenderedFull) {
+            throw Error('Pre-rendered view is not enabled');
+        }
+
+        console.log(this.insertedDomEl, '11');
+
+        Object.keys(newStyle).forEach((key) => {
+            // eslint-disable-next-line max-len
+            if ((this.insertedDomEl as HTMLElement)?.style) { (this.insertedDomEl as HTMLElement).style[key] = newStyle[key]; }
+        });
+        return this;
+    }
+
     protected insertIntoDOM(child: string | Node): void {
+        if (this.isPrerenderedFull) {
+            this.handlePreRenderInsert(child);
+            return;
+        }
         if (this.viewConfig.insertAsSibling) {
             if (typeof child === 'string') {
                 const div = document.createElement('div');
@@ -607,6 +767,17 @@ export class TsEmbed {
             this.el.appendChild(child);
             this.insertedDomEl = child;
         }
+    }
+
+    private isPrerenderedFull = false;
+
+    private prerenderId: string;
+
+    public prerender(prerendereId: string): TsEmbed {
+        this.prerenderId = prerendereId;
+        this.isPrerenderedFull = true;
+        this.render();
+        return this;
     }
 
     /**
@@ -793,7 +964,8 @@ export class TsEmbed {
      * @param data The payload to send with the message
      */
     public trigger(messageType: HostEvent, data: any = {}): Promise<any> {
-        uploadMixpanelEvent(`${MIXPANEL_EVENT.VISUAL_SDK_TRIGGER}-${messageType}`);
+        uploadMixpanelEvent(`${MIXPANEL_EVENT.VISUAL_SDK_TRIGGER
+            } - ${messageType} `);
         return processTrigger(this.iFrame, messageType, this.thoughtSpotHost, data);
     }
 
@@ -835,7 +1007,7 @@ export class TsEmbed {
         postURLParamsObj.forEach(addKeyValuePairCb);
 
         let tsParams = params.toString();
-        tsParams = tsParams ? `?${tsParams}` : '';
+        tsParams = tsParams ? `? ${tsParams} ` : '';
 
         return tsParams;
     }
@@ -911,13 +1083,13 @@ export class V1Embed extends TsEmbed {
      * @example
      * ```js
      * tsEmbed.on(EmbedEvent.Error, (data) => {
-     *   console.error(data);
+     * console.error(data);
      * });
      * ```
      * @example
      * ```js
      * tsEmbed.on(EmbedEvent.Save, (data) => {
-     *   console.log("Answer save clicked", data);
+     * console.log("Answer save clicked", data);
      * }, {
      *   start: true // This will trigger the callback on start of save
      * });
@@ -929,7 +1101,7 @@ export class V1Embed extends TsEmbed {
         options: MessageOptions = { start: false },
     ): typeof TsEmbed.prototype {
         const eventType = this.getCompatibleEventType(messageType);
-        uploadMixpanelEvent(`${MIXPANEL_EVENT.VISUAL_SDK_ON}-${messageType}`);
+        uploadMixpanelEvent(`${MIXPANEL_EVENT.VISUAL_SDK_ON} -${messageType} `);
         return super.on(eventType, callback, options);
     }
 }

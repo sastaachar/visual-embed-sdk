@@ -298,4 +298,4 @@ export class LiveboardEmbed extends V1Embed {
 /**
  * @hidden
  */
-export class PinboardEmbed extends LiveboardEmbed {}
+export class PinboardEmbed extends LiveboardEmbed { }

@@ -13,60 +13,50 @@ import { EmbedProps, getViewPropsAndListeners } from './util';
 
 const componentFactory = <T extends typeof TsEmbed, U extends EmbedProps, V extends ViewConfig>(
     EmbedConstructor: T,
-) => React.forwardRef<TsEmbed, U>(
-    (props: U, forwardedRef: React.MutableRefObject<TsEmbed>) => {
+) =>
+    React.forwardRef<TsEmbed, U>((props: U, forwardedRef: React.MutableRefObject<TsEmbed>) => {
         const ref = React.useRef<HTMLDivElement>(null);
         const { className, ...embedProps } = props;
-        const { viewConfig, listeners } = getViewPropsAndListeners<
-                Omit<U, 'className'>,
-                V
-            >(embedProps);
+        const { viewConfig, listeners } = getViewPropsAndListeners<Omit<U, 'className'>, V>(
+            embedProps,
+        );
         useDeepCompareEffect(() => {
             const tsEmbed = new EmbedConstructor(
-                    ref!.current,
-                    deepMerge(
-                        {
-                            insertAsSibling: viewConfig.insertAsSibling,
-                            frameParams: {
-                                class: viewConfig.insertAsSibling
-                                    ? className || ''
-                                    : '',
-                            },
+                ref!.current,
+                deepMerge(
+                    {
+                        insertAsSibling: viewConfig.insertAsSibling,
+                        frameParams: {
+                            class: viewConfig.insertAsSibling ? className || '' : '',
                         },
-                        viewConfig,
-                    ),
+                    },
+                    viewConfig,
+                ),
             );
             Object.keys(listeners).forEach((eventName) => {
-                tsEmbed.on(
-                        eventName as EmbedEvent,
-                        listeners[eventName as EmbedEvent],
-                );
+                tsEmbed.on(eventName as EmbedEvent, listeners[eventName as EmbedEvent]);
             });
+
             tsEmbed.render();
             if (forwardedRef) {
                 // eslint-disable-next-line no-param-reassign
                 forwardedRef.current = tsEmbed;
             }
             return () => {
-                tsEmbed.destroy();
+                if (viewConfig.preRenderId) {
+                    tsEmbed.hidePreRendered();
+                } else {
+                    tsEmbed.destroy();
+                }
             };
         }, [viewConfig, listeners]);
 
-        return (
-            (viewConfig.insertAsSibling)
-                ? <span
-                    data-testid="tsEmbed"
-                    ref={ref}
-                    style={{ position: 'absolute' }}
-                ></span>
-                : <div
-                    data-testid="tsEmbed"
-                    ref={ref}
-                    className={className}>
-                </div>
+        return viewConfig.insertAsSibling ? (
+            <span data-testid="tsEmbed" ref={ref} style={{ position: 'absolute' }}></span>
+        ) : (
+            <div data-testid="tsEmbed" ref={ref} className={className}></div>
         );
-    },
-);
+    });
 
 interface SearchProps extends EmbedProps, SearchViewConfig {}
 
@@ -166,11 +156,9 @@ interface SageEmbedProps extends EmbedProps, SageViewConfig {}
  * }
  * ```
  */
-export const SageEmbed = componentFactory<
-    typeof _SageEmbed,
-    SageEmbedProps,
-    SageViewConfig
->(_SageEmbed);
+export const SageEmbed = componentFactory<typeof _SageEmbed, SageEmbedProps, SageViewConfig>(
+    _SageEmbed,
+);
 
 /**
  * Get a reference to the embed component to trigger events on the component.
