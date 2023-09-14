@@ -513,12 +513,22 @@ export interface EmbedConfig {
 
     /**
      * Host config incase embedded app is inside TS app itself
+     *
+     * @hidden
      */
     hostConfig?: {
         hostUserGuid: string;
         hostClusterId: string;
         hostClusterName: string;
     }
+
+    /**
+     * Pendo API key to enable Pendo tracking to your own subscription, the key
+     * is added as an additional key to the embed, as per this [doc](https://support.pendo.io/hc/en-us/articles/360032201951-Send-data-to-multiple-subscriptions).
+     *
+     * @version SDK: 1.27.0 | ThoughtSpot: 9.8.0.cl
+     */
+    pendoTrackingKey?: string;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -1372,6 +1382,7 @@ export enum EmbedEvent {
      */
     InsertIntoSlide = 'insertInToSlide',
     /**
+     * @hidden
      * Emitted when a user changes any filter on a Liveboard.
      *
      * @version SDK: 1.23.0 | ThoughtSpot: 9.4.0.cl
@@ -1395,6 +1406,12 @@ export enum EmbedEvent {
      * @version SDK : 1.27.0 | Thoughtspot: 9.8.0.cl
      */
     UpdateConnection = 'updateConnection',
+    /**
+     * Emitten when a user creates a new worksheet
+     *
+     * @version SDK : 1.27.0 | Thoughtspot: 9.8.0.cl
+     */
+    CreateWorksheet = 'createWorksheet',
 }
 
 /**
@@ -2039,6 +2056,7 @@ export enum HostEvent {
      */
     ResetSearch = 'resetSearch',
     /**
+     * @hidden
      * Gets the currents visible and runtime filters applied on a Liveboard
      *
      * @example
@@ -2047,6 +2065,7 @@ export enum HostEvent {
      */
     GetFilters = 'getFilters',
     /**
+     * @hidden
      * Updates the visible filters on the Liveboard.
      *
      * @param - filter: filter object containing column name and filter operation and values
@@ -2207,6 +2226,7 @@ export enum Param {
     Query = 'query',
     HideHomepageLeftNav = 'hideHomepageLeftNav',
     ModularHomeExperienceEnabled = 'modularHomeExperience',
+    PendoTrackingKey = 'additionalPendoKey',
 }
 
 /**
